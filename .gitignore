@@ -1,0 +1,6 @@
+.venv/
+out/
+assets/*
+!assets/manifest.json
+__pycache__/
+*.blend1

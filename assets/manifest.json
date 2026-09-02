@@ -1,0 +1,38 @@
+{
+  "source": "https://polyhaven.com (CC0)",
+  "note": "Fetched by `python -m homespec.assets`. Not committed; the manifest is the record.",
+  "hdris": {
+    "kloofendal_48d_partly_cloudy_puresky": {"resolution": "2k", "format": "hdr"}
+  },
+  "textures": {
+    "wood_floor": {"resolution": "2k"},
+    "painted_plaster_wall": {"resolution": "2k"},
+    "oak_veneer_01": {"resolution": "2k"},
+    "wood_floor_deck": {"resolution": "2k"},
+    "concrete_floor_02": {"resolution": "2k"},
+    "rough_linen": {"resolution": "2k"},
+    "american_walnut_veneer": {"resolution": "2k"},
+    "terrazzo_tiles": {"resolution": "2k"},
+    "brick_wall_02": {"resolution": "2k"}
+  },
+  "models": {
+    "dining_chair_02": {"resolution": "1k"},
+    "mid_century_lounge_chair": {"resolution": "1k"},
+    "coffee_table_round_01": {"resolution": "1k"},
+    "potted_plant_02": {"resolution": "1k"},
+    "potted_plant_04": {"resolution": "1k"},
+    "ceramic_vase_02": {"resolution": "1k"},
+    "wooden_bowl_01": {"resolution": "1k"},
+    "outdoor_table_chair_set_01": {"resolution": "1k"},
+    "jacaranda_tree": {"resolution": "1k"},
+    "planter_box_02": {"resolution": "1k"},
+    "modern_wooden_cabinet": {"resolution": "1k"},
+    "vintage_electric_kettle": {"resolution": "1k"},
+    "hanging_picture_frame_01": {"resolution": "1k"},
+    "hanging_picture_frame_02": {"resolution": "1k"},
+    "brass_vase_01": {"resolution": "1k"},
+    "brass_vase_03": {"resolution": "1k"},
+    "desk_lamp_arm_01": {"resolution": "1k"},
+    "wall_clock": {"resolution": "1k"}
+  }
+}
