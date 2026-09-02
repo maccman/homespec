@@ -68,7 +68,8 @@ def main(argv=None):
     ap.add_argument("--manifest", default="assets/manifest.json")
     ap.add_argument("--dest", default="assets")
     args = ap.parse_args(argv)
-    man = json.load(open(args.manifest))
+    with open(args.manifest) as f:
+        man = json.load(f)
     jobs = ([(fetch_hdri, k, v) for k, v in man.get("hdris", {}).items()]
             + [(fetch_texture, k, v) for k, v in man.get("textures", {}).items()]
             + [(fetch_model, k, v) for k, v in man.get("models", {}).items()])

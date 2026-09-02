@@ -1,47 +1,115 @@
 # homespec
 
-A house as source code. One spec compiles into every artifact the project
-needs: the contractor's model, dimensioned drawings, schedules, a rule
-report, and a walkthrough.
+A house as source code.
 
+One spec compiles into everything a project needs: the contractor's BIM
+model, dimensioned drawings, schedules, a rule report, and a walkthrough you
+can walk around in. Edit the spec, rebuild, and every output agrees.
+
+```python
+from homespec import *
+
+def build() -> House:
+    with House("cabin") as house:
+        L0 = Level("L0", height=2700)
+        g = Grid(x={"A": 0, "B": 6000}, y={"1": 0, "2": 4000})
+        A, B, one, two = g.lines("A", "B", "1", "2")
+
+        plaster = Material("plaster", texture="polyhaven/painted_plaster_wall", product="Lime plaster", supplier="TBD")
+        ext = Assembly("ext", layers=[Layer(material="plaster", thickness=15), Layer(material="timber_frame", thickness=140),
+                                      Layer(material="plaster", thickness=15)], finish_in=plaster)
+
+        W1 = Wall("W1", A & one, B & one, assembly=ext, level=L0)
+        W2 = Wall("W2", B & one, B & two, assembly=ext, level=L0)
+        W3 = Wall("W3", B & two, A & two, assembly=ext, level=L0)
+        W4 = Wall("W4", A & two, A & one, assembly=ext, level=L0)
+        Door("D1", host=W1, width=900, height=2100, at=600)
+        Window("N1", host=W3, width=1800, height=1200, sill=900, at="center")
+        Space("room", outline=[A & one, B & one, B & two, A & two], use="studio", level=L0, bounded_by=[W1, W2, W3, W4])
+    return house
 ```
-projects/<name>/project.py       the spec: walls, openings, joinery, services, checks
-projects/<name>/presentation.py  how it looks: furniture, sky, camera (never reaches the contractor)
-projects/<name>/decisions.md     why the spec says what it says
-
-homespec/core.py       entities, exact geometry (OpenCascade via build123d), the IR
-homespec/lib.py        the standard vocabulary: wall, opening, slab, ceiling, space, bookcase, kitchen_run, light, outlet
-homespec/build.py      compile: IR -> IFC, plans, schedules, checks
-homespec/export_*.py   one exporter per output, each reads only the IR
-homespec/checks.py     rules that run on every build
-homespec/blender_scene.py   Blender consumer of the IR: stills, animation, walk file
-```
-
-## Build
 
 ```bash
-.venv/bin/python -m homespec.build projects/library_room
+homespec build projects/cabin
 ```
 
-Outputs in `out/library_room/`:
+```
+cabin: 9 entities -> out/cabin
+  ir        out/cabin/ir.json
+  ifc       out/cabin/house.ifc
+  ids       out/cabin/requirements.ids
+  drawings  out/cabin/drawings/plan_L0.svg, plan_L0.pdf, plan_L0.dxf
+  schedules 6 files
+  checks    11 passed, 0 failed
+```
 
-- `ir.json` + `geometry/` — the compiled house: every entity with tags, parameters, relations, STEP and OBJ
-- `house.ifc` — for anyone with BIM software; walls are real IfcWalls with voids
-- `drawings/plan_L0.pdf` — dimensioned floor plan, true section at +1200
-- `schedules/*.csv` — walls, openings, finishes, joinery, services, spaces
-- `checks.md` — every rule that ran and what it found
+## What you get
 
-Then the walkthrough (needs Blender and the Poly Haven assets in `assets/`):
+- **`house.ifc`** — IFC 4 with real `IfcWall` bodies, `IfcOpeningElement`
+  voids filled by doors and windows, storeys, spaces, materials, and a
+  property set on every element carrying its spec parameters. Opens in any
+  BIM tool.
+- **`drawings/`** — a dimensioned floor plan as SVG, PDF and DXF. A true
+  section cut with the CAD kernel, with every opening dimensioned from its
+  wall's start.
+- **`schedules/`** — walls, openings, finishes, joinery, services, spaces as
+  CSV.
+- **`checks.md`** — every rule that ran and what it found, plus an IDS file
+  validated against the IFC.
+- **`house.blend`** — a Blender scene of the same model for stills, a
+  cinematic animation, or a first-person walk.
+
+Every entity keeps its id everywhere: spec, IFC name, drawing tag, schedule
+row, Blender object.
+
+## Install
 
 ```bash
-/Applications/Blender.app/Contents/MacOS/Blender -b --python homespec/blender_scene.py -- out/library_room projects/library_room/presentation.py still
+uv venv --python 3.13 && uv pip install -e ".[dev]"
+homespec assets          # CC0 textures and models from Poly Haven (optional, for rendering)
 ```
 
-Modes: `still` (Cycles frame), `anim` (Cycles frames for ffmpeg), `save` (Eevee walk file `house_walk.blend`).
+Rendering needs [Blender](https://www.blender.org) 4.2 or later. PDF output
+needs `rsvg-convert` (`brew install librsvg`); SVG and DXF need nothing.
 
-## Ideas that matter
+## Rendering and walking
 
-- The spec says what, not how. An assembly is a name and layers; the compiler draws it.
-- Nothing is positioned twice. Openings are offsets along walls; joinery sits against walls; move a grid line and everything follows.
-- Exporters read the IR only. Universality lives in the source; decidability lives in the IR.
-- Every entity keeps its id everywhere: spec, IFC name, drawing tag, schedule row, Blender object.
+```bash
+homespec render projects/library_room --mode still      # a Cycles frame
+homespec render projects/library_room --mode anim       # frames for ffmpeg
+homespec render projects/library_room --mode save       # the walk file
+homespec walk   projects/library_room                   # open it; press W to walk
+```
+
+## How it is put together
+
+```
+source ──compile──▶ IR ──export──▶ IFC · drawings · schedules · checks · Blender
+```
+
+The **source** is a Python file in a declarative subset: definitions and
+elements as constructor calls. The **IR** is the compiled house as data, with
+exact geometry per entity, a JSON schema and a version. Every exporter reads
+only the IR. The core does not know what a wall is; `Wall` is an ordinary
+element class in the standard vocabulary, and a project can add its own.
+
+Read [docs/design.md](docs/design.md) for the reasoning and
+[docs/vocabulary.md](docs/vocabulary.md) for every element and its fields.
+The example project in `projects/library_room/` shows a complete room with
+its `decisions.md`.
+
+## Development
+
+```bash
+pytest                    # unit, property and end-to-end tests
+ruff check homespec       # lint
+pyright                   # types
+homespec schema           # the IR's JSON schema
+```
+
+## Status
+
+Alpha. One example project, one level, straight walls. See the end of
+`docs/design.md` for what is deliberately not here yet.
+
+MIT licensed.

@@ -1,0 +1,84 @@
+"""homespec: a house as source code.
+
+::
+
+    from homespec import *
+
+    def build() -> House:
+        with House("cabin") as house:
+            L0 = Level("L0", height=2700)
+            ...
+        return house
+
+The public API is the :class:`House`, the vocabulary in :mod:`homespec.elements`,
+the unit helpers, and :func:`homespec.pipeline.build_project`.
+"""
+from .elements import (
+    Assembly,
+    Beam,
+    BeamGrid,
+    Bookcase,
+    Ceiling,
+    Clerestory,
+    Covering,
+    Door,
+    Downlight,
+    FromEnd,
+    Glazing,
+    Grid,
+    GridLine,
+    KitchenRun,
+    Layer,
+    Leaf,
+    Level,
+    Material,
+    Opening,
+    OpeningGeometry,
+    Outlet,
+    Part,
+    Pendant,
+    Render,
+    Setbacks,
+    Site,
+    Slab,
+    SlidingDoor,
+    Space,
+    UpperCabinet,
+    Wall,
+    WallGeometry,
+    Window,
+    from_end,
+)
+from .model import (
+    Build,
+    Context,
+    Definition,
+    Element,
+    Extrusion,
+    House,
+    NonNegative,
+    Outline,
+    Positive,
+    Realized,
+    Ref,
+    Relation,
+    definition,
+    element,
+    positional,
+)
+from .units import cm, m, mm, to_m
+
+__version__ = "0.1.0"
+
+__all__ = [
+    "House", "Element", "Definition", "Context", "Realized", "Build", "Ref", "Relation", "Extrusion",
+    "element", "definition", "positional", "Positive", "NonNegative", "Outline",
+    "mm", "cm", "m", "to_m",
+    "Assembly", "Layer", "Level", "Material", "Render", "Setbacks", "Site",
+    "Beam", "BeamGrid", "Ceiling", "Slab",
+    "Grid", "GridLine",
+    "Bookcase", "Covering", "KitchenRun", "Part", "UpperCabinet",
+    "Downlight", "Outlet", "Pendant",
+    "Space",
+    "Clerestory", "Door", "FromEnd", "Glazing", "Leaf", "Opening", "OpeningGeometry", "SlidingDoor", "Wall", "WallGeometry", "Window", "from_end",
+]
