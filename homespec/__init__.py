@@ -14,16 +14,21 @@ The public API is the :class:`House`, the vocabulary in :mod:`homespec.elements`
 the unit helpers, and :func:`homespec.pipeline.build_project`.
 """
 from .elements import (
+    Arch,
+    ArchVoid,
     Assembly,
     Beam,
     BeamGrid,
     Bookcase,
     Ceiling,
+    Chimney,
     Clerestory,
+    Column,
     Covering,
     Door,
     Downlight,
     FromEnd,
+    Gable,
     Glazing,
     Grid,
     GridLine,
@@ -38,6 +43,7 @@ from .elements import (
     Part,
     Pendant,
     Render,
+    Roof,
     Setbacks,
     Site,
     Slab,
@@ -80,5 +86,6 @@ __all__ = [
     "Bookcase", "Covering", "KitchenRun", "Part", "UpperCabinet",
     "Downlight", "Outlet", "Pendant",
     "Space",
+    "Column", "Chimney", "Roof", "Gable", "Arch", "ArchVoid",
     "Clerestory", "Door", "FromEnd", "Glazing", "Leaf", "Opening", "OpeningGeometry", "SlidingDoor", "Wall", "WallGeometry", "Window", "from_end",
 ]

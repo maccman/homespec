@@ -281,3 +281,47 @@ class SlidingDoor(Door):
         gx = 0.0 if self.open_leaf == "end" else leaf_w
         pane = G.frame_box(wall.body, x + gx + fs, (wall.thickness - 10) / 2, z + fs, (leaf_w - 2 * fs, 10, self.height - 2 * fs))
         return [pane], self.width * self.height
+
+
+@element
+class Arch(Opening):
+    """An open arched passage through a wall: no frame, no glass, a semicircular head above ``height``.
+
+    ``height`` is the springing line; the overall clear height is ``height + width / 2``.
+    """
+
+    kind: ClassVar[str] = "arch"
+    ifc_class: ClassVar[str | None] = None
+
+    def clear_width(self) -> float:
+        return self.width
+
+    def realize(self, ctx: Context) -> Realized:
+        wall = ctx.derived(self.host, WallGeometry)
+        x = self.position(wall)
+        z = wall.elevation + self.sill
+        t = wall.thickness
+        r = self.width / 2
+        centre = wall.body.point(x + r, t / 2)
+        void = G.frame_box(wall.body, x, -100, z, (self.width, t + 200, self.height)) + G.horizontal_cylinder(r, t + 200, (centre[0], centre[1], z + self.height), wall.angle + 90)
+        ctx.cut(self.host, void)
+        level = self.level or ctx.built(self.host).level
+        void_entity = ArchVoid(f"{self.id}.void", opening=self.id, level=level)
+        ctx.emit(void_entity, Realized(solid=void, relations=[Relation(pred="part_of", obj=self.id)]))
+        ctx.relate(self.host, "has_opening", self.id)
+        geom = OpeningGeometry(host=self.host, from_start=x, from_end=wall.length - x - self.width, width=self.width, height=self.height + r,
+                               sill=self.sill, head=self.sill + self.height + r, clear_width=self.width, clear_height=self.height + r,
+                               glass_area_mm2=0.0, mullions=0,
+                               void=Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=t + 200, height=self.height + r))
+        return Realized(derived={**geom.model_dump(), "springing": self.height, "radius": r, "void_entity": void_entity.id}, level=level,
+                        relations=[Relation(pred="hosted_in", obj=self.host)], tags={"passage"})
+
+
+@element
+class ArchVoid(Element):
+    """The exact shape cut for an arch, kept so the IFC opening can be a true arch rather than a box."""
+
+    kind: ClassVar[str] = "void"
+    ifc_class: ClassVar[str | None] = None
+    physical: ClassVar[bool] = False
+    opening: Ref

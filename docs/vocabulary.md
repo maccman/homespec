@@ -31,6 +31,10 @@ millimetres. A `Ref` field accepts the object or its id.
 | `Downlight(id, at, level, watts=None)` | recessed at the ceiling | `IfcLightFixture` |
 | `Pendant(id, at, drop, level, watts=None)` | hangs `drop` below the ceiling | `IfcLightFixture` |
 | `Outlet(id, on, from_start, height, variant="double")` | on a wall's inside face | `IfcOutlet` |
+| `Arch(id, host, width, height, at)` | an open round-headed passage; `height` is the springing line | a true arched void in the host, no product |
+| `Roof(id, outline, level, material, kind_="gable", ridge_along="x", pitch=22, overhang=600, thickness=250, eave=None)` | gable or shed (`kind_="shed"`, `high_side`); eave underside at the level height unless `eave` | `IfcRoof` + `Gable` infills for gable roofs |
+| `Column(id, at, level, size=None, radius=None, height=None, base=0)` | square or round; height defaults to the level | `IfcColumn` |
+| `Chimney(id, at, level, size, base, height)` | a column that starts at the roof line | `IfcChimney` |
 
 ## Derived facts
 

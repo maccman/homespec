@@ -95,8 +95,9 @@ element class in the standard vocabulary, and a project can add its own.
 
 Read [docs/design.md](docs/design.md) for the reasoning and
 [docs/vocabulary.md](docs/vocabulary.md) for every element and its fields.
-The example project in `projects/library_room/` shows a complete room with
-its `decisions.md`.
+Two example projects live in `projects/`, each with its `decisions.md`:
+`library_room`, one furnished room, and `casale_poggio`, a two-bedroom
+Umbrian stone farmhouse with a gable roof, arches, a pergola and a pool.
 
 ## Development
 
@@ -109,7 +110,7 @@ homespec schema           # the IR's JSON schema
 
 ## Status
 
-Alpha. One example project, one level, straight walls. See the end of
+Alpha. Two example projects, one level each, straight walls. See the end of
 `docs/design.md` for what is deliberately not here yet.
 
 MIT licensed.

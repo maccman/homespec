@@ -27,13 +27,24 @@ CUT_HEIGHT = 1200.0
 
 
 class Sheet(BaseModel):
-    """Paper and scale. Defaults to A3 landscape at 1:50."""
+    """Paper and scale. Defaults to A3 landscape; ``scale=None`` picks the largest standard scale that fits."""
 
     width: float = 420.0
     height: float = 297.0
     margin: float = 25.0
-    scale: float = 50.0
+    scale: float | None = None
     title_block_width: float = 62.0
+
+    def fitted(self, bounds: tuple[float, float, float, float]) -> Sheet:
+        if self.scale is not None:
+            return self
+        minx, miny, maxx, maxy = bounds
+        avail_w = self.width - 2 * self.margin - self.title_block_width - 8
+        avail_h = self.height - 2 * self.margin
+        for sc in (20, 25, 50, 100, 200, 500):
+            if (maxx - minx) / sc <= avail_w and (maxy - miny) / sc <= avail_h:
+                return self.model_copy(update={"scale": float(sc)})
+        return self.model_copy(update={"scale": 1000.0})
 
 
 class Dimension(BaseModel):
@@ -97,20 +108,34 @@ def plan_view(ir: IRDocument, level: str, cut: float = CUT_HEIGHT) -> PlanView:
         if e.kind != "wall" and e.kind not in ("glazing", "leaf") and "." not in e.id:
             view.labels.append(Label(at=((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2), text=e.id))
 
+    for s in ir.of_kind("space"):
+        if s.level != level:
+            continue
+        cx = sum(p[0] for p in s.params["outline"]) / len(s.params["outline"])
+        cy = sum(p[1] for p in s.params["outline"]) / len(s.params["outline"])
+        view.labels.append(Label(at=(cx, cy + 180), text=s.id.upper(), size=3.0))
+        view.labels.append(Label(at=(cx, cy - 180), text=f"{s.params['use'].replace('_', ' ')}  {s.derived['area_mm2'] / 1e6:.1f} m²", size=2.2))
+
     for w in ir.of_kind("wall"):
         if w.level != level:
             continue
         face = Frame.model_validate(w.derived["face"])
         t, L = w.derived["thickness"], w.derived["length"]
+        external = w.has("external")
         ticks = {0.0, L}
         for oid in w.related("has_opening"):
             d = ir.entity(oid).derived
             ticks |= {d["from_start"], d["from_start"] + d["width"]}
         chain = sorted(round(v, 1) for v in ticks)
-        view.dimensions.append(Dimension(base=face.point(0, -(t + 900)), u=face.u, n=face.n, ticks=chain))
-        if len(chain) > 2:
-            view.dimensions.append(Dimension(base=face.point(0, -(t + 1600)), u=face.u, n=face.n, ticks=[0.0, L]))
-        view.labels.append(Label(at=face.point(L * 0.25, -(t + 260)), text=f"{w.id}  {w.derived['assembly']}  {int(t)}", angle=_readable(face.angle), size=2.2))
+        if external:
+            view.dimensions.append(Dimension(base=face.point(0, -(t + 900)), u=face.u, n=face.n, ticks=chain))
+            if len(chain) > 2:
+                view.dimensions.append(Dimension(base=face.point(0, -(t + 1600)), u=face.u, n=face.n, ticks=[0.0, L]))
+            view.labels.append(Label(at=face.point(L * 0.25, -(t + 260)), text=f"{w.id}  {w.derived['assembly']}  {int(t)}", angle=_readable(face.angle), size=2.2))
+        elif len(chain) > 2:
+            # internal walls: only the openings, on the room side, close to the wall
+            view.dimensions.append(Dimension(base=face.point(0, t / 2 + 450), u=face.u, n=face.n, ticks=chain))
+            view.labels.append(Label(at=face.point(L * 0.5, t / 2 + 160), text=f"{w.id}  {int(t)}", angle=_readable(face.angle), size=2.0))
     pad = 1800
     view.bounds = (min(xs) - pad, min(ys) - pad, max(xs) + pad, max(ys) + pad)
     return view
@@ -118,14 +143,15 @@ def plan_view(ir: IRDocument, level: str, cut: float = CUT_HEIGHT) -> PlanView:
 
 # --------------------------------------------------------------------------- SVG
 def write_svg(view: PlanView, path: str, title: str, sheet: Sheet | None = None) -> str:
-    sh = sheet or Sheet()
+    sh = (sheet or Sheet()).fitted(view.bounds)
+    sc = float(sh.scale or 50.0)
     minx, miny, maxx, maxy = view.bounds
-    plan_w, plan_h = (maxx - minx) / sh.scale, (maxy - miny) / sh.scale
+    plan_w, plan_h = (maxx - minx) / sc, (maxy - miny) / sc
     ox = sh.margin + (sh.width - 2 * sh.margin - sh.title_block_width - 8 - plan_w) / 2
     oy = sh.margin + (sh.height - 2 * sh.margin - plan_h) / 2
 
     def T(p: Point) -> tuple[float, float]:
-        return (ox + (p[0] - minx) / sh.scale, oy + (maxy - p[1]) / sh.scale)
+        return (ox + (p[0] - minx) / sc, oy + (maxy - p[1]) / sc)
 
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{sh.width}mm" height="{sh.height}mm" viewBox="0 0 {sh.width} {sh.height}" font-family="Helvetica, Arial, sans-serif">',
            '<defs><pattern id="hatch" width="1.2" height="1.2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
@@ -149,15 +175,17 @@ def write_svg(view: PlanView, path: str, title: str, sheet: Sheet | None = None)
                     d = " ".join(("M" if i == 0 else "L") + f"{T(p)[0]:.2f},{T(p)[1]:.2f}" for i, p in enumerate(loop)) + " Z"
                     out.append(f'<path d="{d}" {style[layer]}/>')
     for dim in view.dimensions:
-        out += _svg_dimension(dim, T, sh.scale)
+        out += _svg_dimension(dim, T, sc)
+    label_scale = 50.0 / sc
     for lb in view.labels:
         p = T(lb.at)
-        out.append(f'<text x="{p[0]:.2f}" y="{p[1] + 1:.2f}" font-size="{lb.size}" text-anchor="middle" transform="rotate({-lb.angle:.1f} {p[0]:.2f} {p[1]:.2f})">{_esc(lb.text)}</text>')
+        size = max(1.6, lb.size * max(label_scale, 0.7))
+        out.append(f'<text x="{p[0]:.2f}" y="{p[1] + 1:.2f}" font-size="{size:.2f}" text-anchor="middle" transform="rotate({-lb.angle:.1f} {p[0]:.2f} {p[1]:.2f})">{_esc(lb.text)}</text>')
     tb_x = sh.width - sh.margin - sh.title_block_width
     tb_y = sh.height - sh.margin - 44
     out.append(f'<rect x="{tb_x}" y="{tb_y}" width="{sh.title_block_width}" height="44" fill="none" stroke="#000" stroke-width="0.4"/>')
     y = tb_y + 6
-    for text, size, bold in [(title, 4.2, True), (f"Floor plan  {view.level}", 3.2, False), (f"Cut at +{int(view.cut)} mm   Scale 1:{int(sh.scale)} @ A3", 2.4, False),
+    for text, size, bold in [(title, 4.2, True), (f"Floor plan  {view.level}", 3.2, False), (f"Cut at +{int(view.cut)} mm   Scale 1:{int(sc)} @ A3", 2.4, False),
                              (f"Generated {datetime.date.today().isoformat()}", 2.4, False), ("NOT FOR CONSTRUCTION", 2.6, True), ("Dimensions in mm to wall reference lines", 2.0, False)]:
         out.append(f'<text x="{tb_x + 3}" y="{y:.1f}" font-size="{size}" font-weight="{"bold" if bold else "normal"}">{_esc(text)}</text>')
         y += size + 2.2

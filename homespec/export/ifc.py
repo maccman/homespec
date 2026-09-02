@@ -93,21 +93,25 @@ def export_ifc(ir: IRDocument, path: str) -> str:
             ifcopenshell.api.spatial.assign_container(f, products=[prod], relating_structure=storeys[e.level])
         if e.material:
             ifcopenshell.api.material.assign_material(f, products=[prod], type="IfcMaterial", material=material(e.material))
-        if e.kind == "wall":
+        if e.ifc_class == "IfcWall":
             _pset(f, prod, "Pset_WallCommon", {"IsExternal": e.has("external"), "LoadBearing": e.has("external")})
         _pset(f, prod, "HouseSpec", {**_scalar_props(e.params), **_scalar_props({k: v for k, v in e.derived.items() if k not in ("face", "body", "void")}),
                                      "tags": ",".join(e.tags), "kind": e.kind})
         products[e.id] = prod
 
     for e in ir.tagged("opening"):
-        if e.id not in products:
-            continue
         host = ir.entity(e.derived["host"])
+        if host.id not in products:
+            continue
         void = ifcopenshell.api.root.create_entity(f, ifc_class="IfcOpeningElement", name=f"{e.id}.void")
-        _extrusion_rep(f, body, Extrusion.model_validate(e.derived["void"]), void)
+        if e.derived.get("void_entity"):
+            _mesh_rep(f, body, ir, ir.entity(e.derived["void_entity"]), void)     # an exact shape, e.g. an arch
+        else:
+            _extrusion_rep(f, body, Extrusion.model_validate(e.derived["void"]), void)
         ifcopenshell.api.feature.add_feature(f, feature=void, element=products[host.id])
-        ifcopenshell.api.feature.add_filling(f, opening=void, element=products[e.id])
-        _pset(f, products[e.id], "Pset_DoorCommon" if e.has("door") else "Pset_WindowCommon", {"IsExternal": e.has("external")})
+        if e.id in products:
+            ifcopenshell.api.feature.add_filling(f, opening=void, element=products[e.id])
+            _pset(f, products[e.id], "Pset_DoorCommon" if e.has("door") else "Pset_WindowCommon", {"IsExternal": e.has("external")})
 
     f.write(path)
     return path

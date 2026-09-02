@@ -145,6 +145,33 @@ def cylinder(radius: float, height: float, at: Point3 = (0.0, 0.0, 0.0)) -> Soli
     return Location(at) * Cylinder(radius, height, align=(Align.CENTER, Align.CENTER, Align.MIN))
 
 
+def horizontal_cylinder(radius: float, length: float, center: Point3, angle: float = 0.0) -> Solid:
+    """A cylinder lying flat, its axis along the plan direction ``angle`` degrees from +x, centred on ``center``."""
+    return Location(center, (0, 0, angle)) * Location((0, 0, 0), (0, 90, 0)) * Cylinder(radius, length)
+
+
+def prism_profile(profile: Sequence[Point], start: float, length: float, along: str = "x") -> Solid:
+    """Extrude a vertical profile along a plan axis.
+
+    ``profile`` points are ``(across, z)``: for ``along="x"`` they are ``(y, z)``
+    and the solid spans ``start .. start + length`` in x; for ``along="y"``
+    they are ``(x, z)`` and it spans that range in y. Winding does not
+    matter. Roofs and gables are built this way.
+    """
+    pts = list(profile)
+    if _signed_area(pts) < 0:
+        pts.reverse()
+    if along == "x":
+        face = Plane.YZ * Polygon(*pts, align=None)
+        return Location((start, 0, 0)) * extrude(face, amount=length)
+    face = Plane.XZ * Polygon(*pts, align=None)
+    return Location((0, start, 0)) * extrude(face, amount=-length)
+
+
+def _signed_area(pts: Sequence[Point]) -> float:
+    return sum(pts[i][0] * pts[(i + 1) % len(pts)][1] - pts[(i + 1) % len(pts)][0] * pts[i][1] for i in range(len(pts))) / 2
+
+
 def group(shapes: Iterable[Solid]) -> Solid:
     """Several solids as one shape, without booleans (planks, shelves, mullions)."""
     items = list(shapes)
@@ -233,7 +260,7 @@ def read_obj(path: str, scale_to: float = 1000.0) -> tuple[list[Point3], list[tu
 __all__ = [
     "Point", "Point3", "Loop", "Solid", "Frame", "BBox",
     "add", "sub", "scale", "length", "unit", "left", "dot", "angle_of",
-    "box", "frame_box", "prism", "cylinder", "group",
+    "box", "frame_box", "prism", "cylinder", "horizontal_cylinder", "prism_profile", "group",
     "bbox", "volume", "polygon_area", "tessellate", "section_loops",
     "write_step", "read_step", "write_obj", "read_obj",
 ]

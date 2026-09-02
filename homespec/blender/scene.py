@@ -198,8 +198,34 @@ class Scene:
         o.rotation_euler = d.to_track_quat('Z', 'Y').to_euler()
         return o
 
+    _models: dict = {}
+
     def model(self, asset: str, loc, rot_z=0.0, scale=1.0, height=None):
-        """Import a glTF asset by id, merged to one object, its bounding-box bottom centre at ``loc``."""
+        """Place a glTF asset by id with its bounding-box bottom centre at ``loc``.
+
+        The first use imports and merges the asset; later uses are linked
+        duplicates sharing the same mesh, so a grove of trees costs one tree.
+        """
+        base = self._models.get(asset)
+        if base is None:
+            base = self._import(asset)
+            if base is None:
+                return None
+            self._models[asset] = base
+            o = base
+        else:
+            o = base.copy()
+            o.data = base.data
+            scn.collection.objects.link(o)
+            o.name = f"{asset}.{len([x for x in bpy.data.objects if x.name.startswith(asset)])}"
+        if height:
+            scale = height / base["homespec_height"]
+        o.scale = (scale,) * 3
+        o.rotation_euler = (0.0, 0.0, rot_z)
+        o.location = loc
+        return o
+
+    def _import(self, asset: str):
         files = glob.glob(f"{ASSETS}/models/{asset}/*.gltf") + glob.glob(f"{ASSETS}/models/{asset}/*.glb")
         if not files:
             print("MISSING MODEL", asset)
@@ -227,11 +253,7 @@ class Scene:
         hi = Vector((max(v.x for v in bb), max(v.y for v in bb), max(v.z for v in bb)))
         ctr = (lo + hi) / 2
         o.data.transform(Matrix.Translation((-ctr.x, -ctr.y, -lo.z)))
-        if height:
-            scale = height / (hi.z - lo.z)
-        o.scale = (scale,) * 3
-        o.rotation_euler[2] = rot_z
-        o.location = loc
+        o["homespec_height"] = float(hi.z - lo.z)
         return o
 
     def point_light(self, name, loc, energy, color=(1, 0.85, 0.7), radius=0.15, reflect=False):

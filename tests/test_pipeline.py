@@ -9,6 +9,8 @@ import pytest
 from homespec.export import read_shapes
 from homespec.ir import IRDocument, schema
 
+LIBRARY_ROOM_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "projects", "library_room")
+
 
 def test_build_passes_all_checks(library_room_report):
     # 4 walls, 3 openings + 3 glazing, slab, ceiling + 6 beams, space, bookcase, kitchen group + 6 parts, 7 lights, 5 outlets
@@ -63,3 +65,18 @@ def test_bookcase_sits_inside_the_room(library_room_ir):
     assert bk.max[1] <= 2500 + 1e-6 and bk.min[1] >= 2500 - 340 - 1e-6
     k = library_room_ir.entity("K1.counter").geometry.bbox
     assert k.min[1] >= -2500 - 1e-6
+
+
+def test_the_farmhouse_builds_and_passes_every_rule(tmp_path):
+    """The second example: 21 rooms' worth of walls, arches, a gable roof, a pergola. Every rule green."""
+    from homespec.pipeline import build_project
+
+    report = build_project(os.path.join(os.path.dirname(LIBRARY_ROOM_DIR), "casale_poggio"), str(tmp_path), drawings=False)
+    assert report.ok, report.failures
+    ir = IRDocument.read(report.out_dir)
+    assert {e.kind for e in ir.entities} >= {"wall", "door", "window", "arch", "roof", "gable", "column", "beam", "space", "kitchen"}
+    assert len(ir.of_kind("space")) == 8 and len(ir.of_kind("gable")) == 2
+    shapes = read_shapes(report.files["ifc"][0])
+    assert shapes["R0"].max[2] == pytest.approx(ir.entity("R0").derived["z_ridge"], abs=1)
+    living = ir.entity("living")
+    assert "A1" in [o.id for o in ir.tagged("arch") if o.derived["host"] in living.related("bounded_by")]

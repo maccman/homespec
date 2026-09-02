@@ -20,11 +20,19 @@ def _bbox(e: IREntity) -> BBox:
     return e.geometry.bbox
 
 
-@rule("ceiling_height", clause="habitable rooms 2400 min (rule of thumb)")
+SERVICE_USES = {"bathroom", "bath", "wc", "ensuite", "hall", "corridor", "lobby", "store", "utility", "laundry", "garage", "loggia", "porch", "terrace"}
+
+
+def _habitable(space: IREntity) -> bool:
+    return space.params.get("use", "") not in SERVICE_USES
+
+
+@rule("ceiling_height", clause="habitable rooms 2400 min, service rooms 2100 (rule of thumb)")
 def ceiling_height(ir: IRDocument) -> Iterable[Result]:
     for s in ir.of_kind("space"):
         h = ir.levels[s.level].height if s.level else 0
-        yield Result(rule="", target=s.id, ok=h >= 2400, value=h, limit=2400, note="finished floor to ceiling lining")
+        limit = 2400 if _habitable(s) else 2100
+        yield Result(rule="", target=s.id, ok=h >= limit, value=h, limit=limit, note="finished floor to ceiling lining")
 
 
 @rule("headroom_under_beam", clause="2100 clear under projections (rule of thumb)")
@@ -34,29 +42,33 @@ def headroom(ir: IRDocument) -> Iterable[Result]:
         yield Result(rule="", target=b.id, ok=clear >= 2100, value=clear, limit=2100)
 
 
-@rule("glazing_ratio", clause="glass area >= 10% of floor area (rule of thumb)")
+@rule("glazing_ratio", clause="habitable rooms: glass area >= 10% of floor area (rule of thumb)")
 def glazing_ratio(ir: IRDocument) -> Iterable[Result]:
     for s in ir.of_kind("space"):
+        if not _habitable(s):
+            continue
         walls = set(s.related("bounded_by"))
         glass = sum(o.derived["glass_area_mm2"] for o in ir.tagged("opening") if o.derived["host"] in walls)
         ratio = glass / s.derived["area_mm2"]
         yield Result(rule="", target=s.id, ok=ratio >= 0.10, value=round(ratio, 3), limit=0.10, note="glass area / floor area")
 
 
-@rule("egress_door", clause="one external door >= 800 x 2000 clear per space (rule of thumb)")
+@rule("egress_door", clause="every room has a door or passage >= 800 x 2000 clear (rule of thumb)")
 def egress(ir: IRDocument) -> Iterable[Result]:
     for s in ir.of_kind("space"):
         walls = set(s.related("bounded_by"))
-        doors = [o for o in ir.tagged("door") if o.derived["host"] in walls]
-        good = [d for d in doors if d.derived["clear_width"] >= 800 and d.derived["clear_height"] >= 2000]
-        yield Result(rule="", target=s.id, ok=bool(good), value=", ".join(d.id for d in good) or "none", limit="1 door >= 800 x 2000 clear")
+        ways = [o for o in ir.tagged("opening") if o.derived["host"] in walls and (o.has("door") or o.has("passage"))]
+        need = 800 if _habitable(s) else 620
+        good = [d for d in ways if d.derived["clear_width"] >= need and d.derived["clear_height"] >= 2000]
+        yield Result(rule="", target=s.id, ok=bool(good), value=", ".join(d.id for d in good) or "none", limit=f"1 door or passage >= {need} x 2000 clear")
 
 
-@rule("door_clear_width", clause="800 clear per leaf (rule of thumb)")
+@rule("door_clear_width", clause="external doors 800 clear per leaf, internal 620 (rule of thumb)")
 def door_width(ir: IRDocument) -> Iterable[Result]:
     for d in ir.tagged("door"):
         cw = d.derived["clear_width"]
-        yield Result(rule="", target=d.id, ok=cw >= 800, value=cw, limit=800, note="inside the frame")
+        limit = 800 if d.has("external") else 620
+        yield Result(rule="", target=d.id, ok=cw >= limit, value=cw, limit=limit, note="inside the frame")
 
 
 @rule("opening_fits_wall")
@@ -92,8 +104,10 @@ def kitchen_clearance(ir: IRDocument) -> Iterable[Result]:
                 continue
             (bx0, by0, _), (bx1, by1, _) = e.geometry.bbox.min, e.geometry.bbox.max
             other = sbox(bx0, by0, bx1, by1)
-            if zone.intersects(other):
-                nearest = min(face.local(c)[1] for c in ((bx0, by0), (bx1, by0), (bx1, by1), (bx0, by1)))
+            overlap = zone.intersection(other)
+            if overlap.area > 1.0:
+                ox0, oy0, ox1, oy1 = overlap.bounds
+                nearest = min(face.local(c)[1] for c in ((ox0, oy0), (ox1, oy0), (ox1, oy1), (ox0, oy1)))
                 clear = nearest - front
                 worst = clear if worst is None else min(worst, clear)
         yield Result(rule="", target=k.id, ok=worst is None or worst >= need, value="clear" if worst is None else round(worst), limit=need, note="fixed elements only")
@@ -123,3 +137,12 @@ def setbacks(ir: IRDocument) -> Iterable[Result]:
     yield Result(rule="", target="building", ok=allowed.contains(footprint),
                  value=f"x {int(min(xs))}..{int(max(xs))}, y {int(min(ys))}..{int(max(ys))}", limit=str(sb),
                  note="front = -y, rear = +y; parcel bounds used")
+
+
+@rule("roof_pitch", clause="clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb)")
+def roof_pitch(ir: IRDocument) -> Iterable[Result]:
+    for r in ir.of_kind("roof"):
+        pitch = r.derived["pitch"]
+        tiles = "tile" in (ir.materials[r.material].product or "").lower() if r.material and r.material in ir.materials else False
+        ok = 18 <= pitch <= 35 if tiles else pitch >= 3
+        yield Result(rule="", target=r.id, ok=ok, value=pitch, limit="18..35" if tiles else ">= 3", note="clay tiles" if tiles else "low-slope covering")
