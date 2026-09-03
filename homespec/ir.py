@@ -4,6 +4,8 @@ Everything downstream of :meth:`homespec.model.House.compile` reads only
 this. It is versioned, has a JSON schema (:func:`schema`), and carries no
 code. On disk it is ``ir.json`` beside a ``geometry/`` directory holding one
 STEP (exact) and one OBJ (tessellated, metres) file per physical entity.
+It also records where solids interpenetrate (:mod:`homespec.clashes`), a
+geometric fact computed once here so that rules never need the kernel.
 """
 from __future__ import annotations
 
@@ -14,10 +16,11 @@ from typing import Any, TypeVar
 from pydantic import BaseModel, ConfigDict, Field
 
 from . import geometry as G
+from .clashes import Clash, find_clashes
 from .geometry import BBox
 from .model import Build, Extrusion, Relation, dump
 
-IR_VERSION = "0.1"
+IR_VERSION = "0.2"
 
 
 class Geometry(BaseModel):
@@ -97,6 +100,7 @@ class IRDocument(BaseModel):
     grid: dict[str, Any] | None = None
     site: dict[str, Any] | None = None
     entities: list[IREntity]
+    clashes: list[Clash] = Field(default_factory=list, description="Pairs of physical entities whose solids share volume.")
 
     directory: str | None = Field(default=None, exclude=True, description="Where the geometry files live; set on read.")
 
@@ -140,8 +144,11 @@ def schema() -> dict[str, Any]:
     return IRDocument.model_json_schema()
 
 
-def write_ir(build: Build, out_dir: str) -> IRDocument:
-    """Serialize a :class:`~homespec.model.Build`: geometry files first, then ``ir.json``."""
+def write_ir(build: Build, out_dir: str, clashes: list[Clash] | None = None) -> IRDocument:
+    """Serialize a :class:`~homespec.model.Build`: geometry files first, then ``ir.json``.
+
+    ``clashes`` are found here unless the caller already ran the pass.
+    """
     geo = os.path.join(out_dir, "geometry")
     os.makedirs(geo, exist_ok=True)
     house = build.house
@@ -170,6 +177,7 @@ def write_ir(build: Build, out_dir: str) -> IRDocument:
         grid=dump(house.grid, exclude={"id"}) if house.grid else None,
         site=dump(house.site, exclude={"id"}) if house.site else None,
         entities=entities,
+        clashes=find_clashes(build) if clashes is None else clashes,
     )
     doc.write(out_dir)
     return doc

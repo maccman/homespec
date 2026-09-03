@@ -154,6 +154,7 @@ def build() -> House:
              abuts=["x0"])                                                                                                # against the main wing
         Roof("RP", outline=[(-500, -3500), (14500, -3500), (14500, 0), (-500, 0)], level=L0, material=brande, shape="flat", eave=2950, thickness=70, overhang=100,
              abuts=["y1"])                                                                                                # the brush runs to the house wall
+        house.allow("D1.surround", "RP", "the brush cover is cut around the stone surround where the pergola meets the arched door")
         for k, x in enumerate(range(0, 14001, 3500), 1):
             Column(f"PP{k}", at=(x, -3300), radius=40, height=2800, level=L0, material=iron)    # the beam sits on the posts
         Beam("PB", (-500, -3300), (14500, -3300), width=80, depth=80, underside=2800, level=L0, material=iron)

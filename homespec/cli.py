@@ -25,7 +25,7 @@ def build(project: str = typer.Argument(..., help="Project directory containing 
           no_ifc: bool = typer.Option(False, "--no-ifc"), no_drawings: bool = typer.Option(False, "--no-drawings")) -> None:
     """Compile a project: IR, IFC, drawings, schedules and checks."""
     report = build_project(project, out, ifc=not no_ifc, drawings=not no_drawings)
-    typer.echo(f"{report.project}: {report.entities} entities -> {report.out_dir}")
+    typer.echo(f"{report.project}: {report.entities} entities, {report.clashes} clashes -> {report.out_dir}")
     for stage, files in report.files.items():
         typer.echo(f"  {stage:9s} {', '.join(files)}")
     fails = report.failures

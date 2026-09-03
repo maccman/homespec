@@ -14,6 +14,7 @@ from pydantic import BaseModel, Field
 
 from .checks import Result, run, write_report
 from .checks import ids as ids_checks
+from .clashes import find_clashes
 from .export import export_ifc, export_plan, export_schedules
 from .ir import IRDocument
 from .model import House
@@ -25,6 +26,7 @@ class Report(BaseModel):
     project: str
     out_dir: str
     entities: int
+    clashes: int = 0
     files: dict[str, list[str]] = Field(default_factory=dict)
     results: list[Result] = Field(default_factory=list)
     timings: dict[str, float] = Field(default_factory=dict)
@@ -68,7 +70,11 @@ def build_project(project_dir: str, out_dir: str | None = None, *, ifc: bool = T
     timings["compile"] = time.time() - t
 
     t = time.time()
-    build.write(out)
+    clashes = find_clashes(build)
+    timings["clashes"] = time.time() - t
+
+    t = time.time()
+    build.write(out, clashes)
     ir = IRDocument.read(out)
     timings["ir"] = time.time() - t
 
@@ -92,7 +98,7 @@ def build_project(project_dir: str, out_dir: str | None = None, *, ifc: bool = T
             results += ids_checks.validate(ir.project, files["ifc"][0])
         files["checks"] = list(write_report(results, out, ir.project))
         timings["checks"] = time.time() - t
-    return Report(project=ir.project, out_dir=out, entities=len(ir.entities), files=files, results=results, timings=timings)
+    return Report(project=ir.project, out_dir=out, entities=len(ir.entities), clashes=len(ir.clashes), files=files, results=results, timings=timings)
 
 
 def blender_binary() -> str:
