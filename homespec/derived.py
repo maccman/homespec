@@ -100,6 +100,7 @@ class SlabGeometry(BaseModel):
     area_mm2: float
     z_top: float
     voids: int
+    outline: list[list[float]]
 
 
 class CeilingGeometry(BaseModel):
@@ -111,6 +112,7 @@ class CeilingGeometry(BaseModel):
     kind: Literal["flat", "planks"]
     plank_width: float | None = None
     count: int | None = None
+    voids: int = 0
 
 
 class BeamGeometry(BaseModel):
@@ -152,11 +154,14 @@ class OutletGeometry(BaseModel):
 
 
 class PoolGeometry(BaseModel):
+    """``outline`` is the water; ``cut_outline`` is the shell's outer edge, which is what a deck or slab is cut to."""
+
     area_mm2: float
     depth: float
     water_volume_m3: float
     z_top: float
     outline: list[list[float]]
+    cut_outline: list[list[float]]
 
 
 __all__ = [

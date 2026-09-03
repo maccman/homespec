@@ -36,3 +36,10 @@ counter entity is 40; change `counter_thickness` if the supplier quotes 30.
 ## D-007 Bookcase bays are 800
 8 bays over 6400. 800 keeps shelf deflection under load acceptable with a
 40 panel (rule of thumb 900 max, enforced by `shelf_span`).
+
+## D-008 Downlights sit between the beams
+The six downlights `L1..L6` are at x = -3200, 0 and 3200, midway between
+the walnut beams, which run at 1600 centres from -4000. The first draft had
+them on the beam lines, recessed into the beam soffits and hidden inside
+them: the clash check found it, the renders had not.
+

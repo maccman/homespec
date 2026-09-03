@@ -98,3 +98,62 @@ black chairs, a painted buffet. Kitchen: a charcoal island with a stone top
 under copper pendants, the run along the north wall. Bedroom: an
 upholstered bed facing its window, bedside lamps on stools, a mirror over
 the head. All of it is presentation; the spec carries only the pendants.
+
+## D-018 Walls are 500 mm: 450 of rubble and 50 of lime
+Every outline in the spec puts the outer faces on the 500 lines (the tower
+0..7500, the kitchen from 21500) while `rubble_wall` summed to 550. The clash
+check found the 50 mm: the kitchen walls KS and KN started inside ME, the
+partition PC inside TE, and the main wing's gable inside the tower wall. The
+stone layer is now 450 and the plaster 50, as at the casale.
+
+## D-019 Roofs stop at the walls they meet, and sit on their génoise
+RM abuts the tower and RK abuts the main wing (`abuts=["x0"]`): no overhang,
+no gable and no génoise on that side, so the roof no longer runs 450 mm into
+the taller wall. A génoise lifts its roof so the underside clears the outer
+corner of the top course; the eaves rose about 350 mm on RM and 250 mm on
+RT and RK, which is where the reference has them: the tiles sit on the
+corbelled courses. The same pass found that hip roofs were hollow between
+their ends (two thin shells that never met), which had hidden D-026.
+
+## D-020 The arched door springs at 2000 and has no shutters
+`D1` is 1900 wide; with the springing at 2300 the fanlight's crown and the
+lintel of its surround reached into the first-floor slab. At 2000 the head
+is 2950 and the lintel stops 30 below the floor. The listing's arch has no
+shutters (ref-23) and neither does this one; the pergola shades it.
+
+## D-021 The chimney starts at the wall head
+`CH` is on `L1` and its `base` is measured from that level, so `base=2900`
+puts the stack on the wall head at 6400 and through the roof. The earlier
+6400 had it floating 1.5 m above the ridge, visible in the gallery render
+and invisible to every check: nothing intersected it.
+
+## D-022 The pool deck is the finished level
+`LP` is -1980, the top of the travertine. The gravel `GD` sits 20 lower and
+is cut around the deck and the pool's shell; the deck is cut to the shell
+too (a pool publishes `cut_outline`, 250 outside its water). The steps
+`ST0` rise 1980 to the house terrace and start on the deck, not 20 below it.
+
+## D-023 The pergola beam sits on its posts, and the brush runs to the wall
+Posts `PP1..5` are 2800 high, the underside of `PB`. The brush cover `RP`
+runs to the house wall (`abuts=["y1"]`) with its 100 overhang elsewhere.
+Where it meets the arched door the stone surround stands 25 mm proud of
+the wall and the brush is cut around it: `house.allow("D1.surround", "RP")`
+records that on purpose rather than moving the door or shortening the
+pergola, which the terrace furniture and the wisteria are laid out along.
+
+## D-024 Stair wells continue through the ceilings
+`C0T` and `C1T` carry `voids=["ST1"]` and `voids=["ST2"]`, the same wells
+`F1` and `F2` leave open, so the flights no longer pass through the lining
+and the tower's joists are trimmed at the well.
+
+## D-025 Fittings sit clear of joists and cabinets
+The bathroom downlights `L6..L9` are at 10950 and 17550, midway between the
+600-centre joists of `C1M`, not inside them. The kitchen outlet `S6` is
+1100 above the floor, over the counter, not behind the base cabinets.
+
+## D-026 The east bedroom window sits above the kitchen roof
+`N18` on `ME` had its sill at 4400, exactly where the kitchen's hip roof
+meets the wing wall (its top reaches about 4850 there). The sill is 5000:
+a small high window over the roof, and bedroom 3 still has `N5` to the
+south for its 0.8 m² of glass.
+

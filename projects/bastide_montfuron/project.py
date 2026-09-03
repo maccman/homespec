@@ -19,7 +19,7 @@ def build() -> House:
         L0 = Level("L0", elevation=0, height=3200)
         L1 = Level("L1", elevation=3500, height=2900)
         L2 = Level("L2", elevation=6700, height=2600)
-        LP = Level("LP", elevation=-2000, height=2200)      # the pool terrace and garden below the retaining wall
+        LP = Level("LP", elevation=-1980, height=2200)      # the pool deck below the retaining wall: finished level, where people stand
 
         # ---- materials: two addresses each, rendering and buying
         stone = Material("limestone_rubble", texture="polyhaven/coral_stone_wall", product="Local limestone rubble, lime mortar, pointed flush", supplier="Carrières de Provence",
@@ -53,7 +53,7 @@ def build() -> House:
         Material("brass", product="Aged brass", render=Render(color=(0.7, 0.55, 0.3), rough=0.4, metal=1.0))
         Material("white", product="White ceramic", render=Render(color=(0.92, 0.92, 0.9), rough=0.4))
 
-        rubble = Assembly("rubble_wall", layers=[Layer(material="limestone_rubble", thickness=500), Layer(material="lime_plaster", thickness=50)], finish_in=lime, finish_out=stone)
+        rubble = Assembly("rubble_wall", layers=[Layer(material="limestone_rubble", thickness=450), Layer(material="lime_plaster", thickness=50)], finish_in=lime, finish_out=stone)
         partition = Assembly("partition", layers=[Layer(material="lime_plaster", thickness=15), Layer(material="brick_block", thickness=120), Layer(material="lime_plaster", thickness=15)], finish_in=lime)
         breast = Assembly("chimney_breast", layers=[Layer(material="limestone_rubble", thickness=600)], finish_in=cut)
         garden = Assembly("garden_wall", layers=[Layer(material="limestone_rubble", thickness=500)], finish_in=stone, finish_out=stone)
@@ -75,7 +75,7 @@ def build() -> House:
         KN = Wall("KN", (30000, 6500), (21500, 6500), assembly=rubble, level=L0)
 
         # ---- the south facade: the arched door with a window each side, three windows above; the tower's glazed screen
-        ArchedDoor("D1", host=MS, width=1900, height=2300, at=5800, panes=(1, 5), frame=frame, surround=cut, shutters=shutter, leaves=2)
+        ArchedDoor("D1", host=MS, width=1900, height=2000, at=5800, panes=(1, 5), frame=frame, surround=cut, leaves=2)   # no shutters: the listing's arch has none
         Window("N1", host=MS, width=1200, height=1600, sill=800, at=1500, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
         Window("N2", host=MS, width=1200, height=1600, sill=800, at=10800, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
         for k, x in enumerate((1500, 6150, 10800), 3):
@@ -96,7 +96,7 @@ def build() -> House:
         Window("N15", host=MN, width=800, height=1000, sill=4700, at=3275, panes=(2, 2), frame=frame, surround=cut)      # bath 2
         Window("N16", host=MN, width=1000, height=1300, sill=4400, at=6250, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)   # corridor
         Window("N17", host=MN, width=800, height=1000, sill=4700, at=9500, panes=(2, 2), frame=frame, surround=cut)      # bath 1
-        Window("N18", host=ME, width=1000, height=1300, sill=4400, at=3000, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)   # bedroom 3, east
+        Window("N18", host=ME, width=1000, height=1300, sill=5000, at=3000, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)   # bedroom 3, east, above the kitchen roof
         # kitchen wing: two glazed doors south, a window east and north
         Door("D3", host=KS, width=1850, height=2400, at=1200, glazed=True, leaves=2, panes=(2, 5), frame=frame, surround=cut, shutters=shutter)
         Door("D4", host=KS, width=1850, height=2400, at=5300, glazed=True, leaves=2, panes=(2, 5), frame=frame, surround=cut, shutters=shutter)
@@ -110,7 +110,7 @@ def build() -> House:
         Door("D5", host=ME, width=1000, height=2200, at=2000, frame=frame, leaf="door_grey")
         FP = Wall("FP", (9500, 7500), (11500, 7500), assembly=breast, level=L0, align="right", external=False)
         Arch("FP.hearth", host=FP, width=1200, height=800, at=400)
-        Chimney("CH", at=(10500, 7250), size=800, base=6400, height=1700, level=L1, material=stone)
+        Chimney("CH", at=(10500, 7250), size=800, base=2900, height=1700, level=L1, material=stone)    # from the wall head at 6400, through the roof
 
         # ---- stairs in the tower: a flight along the north wall to L1, a flight along the south wall to L2
         Stair("ST1", (1000, 6000), (1, 0), width=1000, rise=3500, going=270, level=L0, to_level=L1, material=cut)
@@ -137,36 +137,38 @@ def build() -> House:
         Ceiling("C0M", outline=[(7500, 500), (21000, 500), (21000, 7500), (7500, 7500)], level=L0, material=lime, thickness=30,
                 beams=BeamGrid(width=140, depth=220, spacing=600, along="y", material=limed))
         Ceiling("C0T", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], level=L0, material=lime, thickness=30,
-                beams=BeamGrid(width=140, depth=220, spacing=600, along="x", material=limed))
+                beams=BeamGrid(width=140, depth=220, spacing=600, along="x", material=limed), voids=["ST1"])
         Ceiling("C0K", outline=[(21500, 1500), (30000, 1500), (30000, 6500), (21500, 6500)], level=L0, material=lime, thickness=30,
                 beams=BeamGrid(width=120, depth=200, spacing=600, along="y", material=limed))
         Ceiling("C1M", outline=[(7500, 500), (21000, 500), (21000, 7500), (7500, 7500)], level=L1, material=lime, thickness=30,
                 beams=BeamGrid(width=120, depth=180, spacing=600, along="y", material=limed))
-        Ceiling("C1T", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], level=L1, material=lime, thickness=30)
+        Ceiling("C1T", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], level=L1, material=lime, thickness=30, voids=["ST2"])
         Ceiling("C2T", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], level=L2, material=lime, thickness=30,
                 beams=BeamGrid(width=120, depth=180, spacing=600, along="x", material=limed))
 
         # ---- roofs: hipped tower, gabled main wing, hipped kitchen, all with génoise; the brush pergola along the terrace
         Roof("RT", outline=[(0, 0), (7500, 0), (7500, 7500), (0, 7500)], level=L2, material=tiles, shape="hip", pitch=28, overhang=450, thickness=220, genoise=2)
         Roof("RM", outline=[(7500, 0), (21500, 0), (21500, 8000), (7500, 8000)], level=L1, material=tiles, shape="gable", ridge_along="x", pitch=24, overhang=450,
-             thickness=220, genoise=3, gable_thickness=550, gable_material=stone)
-        Roof("RK", outline=[(21500, 1000), (30500, 1000), (30500, 7000), (21500, 7000)], level=L0, material=tiles, shape="hip", pitch=22, overhang=450, thickness=220, genoise=2)
-        Roof("RP", outline=[(-500, -3500), (14500, -3500), (14500, -100), (-500, -100)], level=L0, material=brande, shape="flat", eave=2950, thickness=70, overhang=100)
+             thickness=220, genoise=3, gable_thickness=500, gable_material=stone, abuts=["x0"])                         # against the tower
+        Roof("RK", outline=[(21500, 1000), (30500, 1000), (30500, 7000), (21500, 7000)], level=L0, material=tiles, shape="hip", pitch=22, overhang=450, thickness=220, genoise=2,
+             abuts=["x0"])                                                                                                # against the main wing
+        Roof("RP", outline=[(-500, -3500), (14500, -3500), (14500, 0), (-500, 0)], level=L0, material=brande, shape="flat", eave=2950, thickness=70, overhang=100,
+             abuts=["y1"])                                                                                                # the brush runs to the house wall
         for k, x in enumerate(range(0, 14001, 3500), 1):
-            Column(f"PP{k}", at=(x, -3300), radius=40, height=2880, level=L0, material=iron)
+            Column(f"PP{k}", at=(x, -3300), radius=40, height=2800, level=L0, material=iron)    # the beam sits on the posts
         Beam("PB", (-500, -3300), (14500, -3300), width=80, depth=80, underside=2800, level=L0, material=iron)
 
         # ---- terraces: the house terrace, the retaining wall, grand steps, the pool and its deck below
         Slab("TR", outline=[(-3000, -5000), (33000, -5000), (33000, 0), (-3000, 0)], thickness=150, level=L0, material=cut)
-        Wall("RW1", (13300, -5000), (-3000, -5000), assembly=garden, level=LP, height=2300, align="right")     # retaining walls either side of the steps
-        Wall("RW2", (33000, -5000), (15700, -5000), assembly=garden, level=LP, height=2300, align="right")
-        Stair("ST0", (13300, -8600), (0, 1), width=2400, align="right", rise=2000, going=300, max_riser=170, level=LP, to_level=L0, material=cut)
-        Slab("GD", outline=[(-6000, -22000), (36000, -22000), (36000, -5500), (-6000, -5500)], thickness=200, level=LP, material="gravel",
+        Wall("RW1", (13300, -5000), (-3000, -5000), assembly=garden, level=LP, height=2280, align="right")     # retaining walls either side of the steps, 300 above the terrace
+        Wall("RW2", (33000, -5000), (15700, -5000), assembly=garden, level=LP, height=2280, align="right")
+        Stair("ST0", (13300, -8600), (0, 1), width=2400, align="right", rise=1980, going=300, max_riser=170, level=LP, to_level=L0, material=cut)
+        Slab("PD", outline=[(3500, -18000), (23500, -18000), (23500, -8000), (3500, -8000)], thickness=100, level=LP, material="travertine",
              voids=["PL"])
-        Slab("PD", outline=[(3500, -18000), (23500, -18000), (23500, -8000), (3500, -8000)], thickness=100, level=LP, material="travertine", top=20,
-             voids=["PL"])
+        Slab("GD", outline=[(-6000, -22000), (36000, -22000), (36000, -5500), (-6000, -5500)], thickness=200, level=LP, material="gravel", top=-20,
+             voids=["PL", "PD"])                                                                                          # the gravel stops at the deck
         Pool("PL", outline=[(6500, -16500), (20500, -16500), (20500, -10000), (6500, -10000)], level=LP, depth=1500, coping=500, material="pool_tile",
-             coping_material="travertine", water_material="pool_water", top=20)
+             coping_material="travertine", water_material="pool_water")
 
         # ---- rooms
         Space("hall", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], use="hall", level=L0, bounded_by=[TS, TE, TN, TW])
@@ -192,10 +194,11 @@ def build() -> House:
         Pendant("L3", at=(3750, 3750), drop=900, level=L0, watts=100)
         Pendant("L4", at=(25750, 4000), drop=1100, level=L0, watts=80)
         Pendant("L5", at=(3750, 3750), drop=800, level=L1, watts=60)
-        for i, (x, y, lv) in enumerate([(11100, 3000, L1), (17325, 3000, L1), (11100, 5000, L1), (17325, 5000, L1)], 6):
-            Downlight(f"L{i}", at=(x, y), level=lv, watts=8, material="white")
-        for i, sp in enumerate((MS, MS, MN, TS, KS, KN), 1):
+        for i, (x, y, lv) in enumerate([(10950, 3000, L1), (17550, 3000, L1), (10950, 5000, L1), (17550, 5000, L1)], 6):
+            Downlight(f"L{i}", at=(x, y), level=lv, watts=8, material="white")                                          # between the joists, not in them
+        for i, sp in enumerate((MS, MS, MN, TS, KS), 1):
             Outlet(f"S{i}", on=sp, from_start=600 + i * 900, height=300)
+        Outlet("S6", on=KN, from_start=6000, height=1100, variant="double_counter")                                     # above the kitchen counter
 
         # ---- rules of this house
         @house.check
