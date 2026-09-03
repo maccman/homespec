@@ -110,7 +110,7 @@ def dress(scene, M):
     M.dining_rug_border = scene.flat("dining_rug_border", (0.42, 0.34, 0.22), rough=0.9)
     CHAIR_TINT = (0.15, 0.13, 0.11)
 
-    TX, TY = 17.9, 4.0           # table centre
+    TX, TY = 18.2, 4.0           # table centre: the head chair at the west end stays a metre clear of arch A1
     HALF_L, HALF_W = 1.75, 0.5   # half length / half width
 
     # ---- the table: a thick plank top, an apron, two lathe-turned trestle legs, a low stretcher
@@ -124,12 +124,13 @@ def dress(scene, M):
     _turned_leg(scene, M, leg_e, TY, "e")
     scene.rod("dining_stretcher", (leg_w, TY, 0.17), (leg_e, TY, 0.17), 0.045, M.dining_oak)
 
-    # ---- ten black chairs: eight side chairs plus two wider armchairs at the heads (rotation varies slightly)
+    # ---- ten black chairs: eight side chairs plus two wider armchairs at the heads, every one facing the table
+    # (the library's chairs face -y before rotation; the north row keeps that, the south row turns about)
     for _tag, sx in (("1", TX - 1.2), ("2", TX - 0.4), ("3", TX + 0.4), ("4", TX + 1.2)):
-        scene.model("dining_chair_02", (sx, TY + 0.75, 0.0), rot_z=math.radians(180 + R.uniform(-6, 6)), tint=CHAIR_TINT)
-        scene.model("dining_chair_02", (sx, TY - 0.75, 0.0), rot_z=math.radians(R.uniform(-6, 6)), tint=CHAIR_TINT)
-    scene.model("gallinera_chair", (TX - HALF_L - 0.55, TY, 0.0), rot_z=math.radians(-90 + R.uniform(-4, 4)), tint=CHAIR_TINT)
-    scene.model("gallinera_chair", (TX + HALF_L + 0.55, TY, 0.0), rot_z=math.radians(90 + R.uniform(-4, 4)), tint=CHAIR_TINT)
+        scene.model("dining_chair_02", (sx, TY + 0.75, 0.0), rot_z=math.radians(R.uniform(-6, 6)), tint=CHAIR_TINT)
+        scene.model("dining_chair_02", (sx, TY - 0.75, 0.0), rot_z=math.radians(180 + R.uniform(-6, 6)), tint=CHAIR_TINT)
+    scene.model("gallinera_chair", (TX - HALF_L - 0.55, TY, 0.0), rot_z=math.radians(90 + R.uniform(-4, 4)), tint=CHAIR_TINT)     # faces east
+    scene.model("gallinera_chair", (TX + HALF_L + 0.55, TY, 0.0), rot_z=math.radians(-90 + R.uniform(-4, 4)), tint=CHAIR_TINT)    # faces west
 
     # ---- table dressing: a linen runner, brass candlesticks down the middle, a centrepiece
     scene.box("dining_runner", (TX, TY, 0.775), (2.6, 0.34, 0.01), M.linen, bevel=0.004)
@@ -144,7 +145,7 @@ def dress(scene, M):
     _rattan_pendant(scene, M, 18.45, "e", 2.95, 1.9)
 
     # ---- east wall: the glass-fronted dresser north of the kitchen door, a low sideboard south of it
-    wall_x = 20.88
+    wall_x = 21.0                # the east wall's inside face (ME is x 21.0..21.5)
     _glass_dresser(scene, M, wall_x, 5.7)
 
     sy = 1.45
@@ -152,22 +153,22 @@ def dress(scene, M):
     cons_x = wall_x - 0.23
     scene.table_lamp("dining_console_lamp", (cons_x, sy - 0.65, top_z), 0.16, 0.4, M.brass, M.shade, 30)
     scene.model("metal_jug", (cons_x, sy - 0.15, top_z), scale=1.0)
-    scene.model("wine_bottles_01", (cons_x, sy + 0.25, top_z), scale=0.9)
+    scene.model("wine_bottles_01", (cons_x - 0.05, sy + 0.25, top_z), rot_z=math.radians(90), scale=0.9)   # the row of bottles along the sideboard, not through the wall
     scene.model("wooden_bowl_01", (cons_x, sy + 0.68, top_z), scale=1.0)
     lemon_r = scene.rng("dining_lemons")
     for k in range(6):
         ang = lemon_r.uniform(0, math.tau)
         rad = lemon_r.uniform(0.0, 0.05)
         scene.sphere(f"dining_lemon_{k}", (cons_x + rad * math.cos(ang), sy + 0.68 + rad * math.sin(ang), top_z + 0.03 + 0.01 * k), 0.035, M.dining_lemon)
-    scene.model("hanging_picture_frame_02", (wall_x - 0.05, 4.0, 1.9), rot_z=math.radians(90), scale=1.3)
+    scene.model("hanging_picture_frame_02", (wall_x - 0.03, 4.0, 1.9), rot_z=math.radians(-90), scale=1.3)   # its back on the wall, facing west
     scene.point_light("dining_frame_light", (wall_x - 0.35, 4.0, 2.1), 8, color=(1.0, 0.85, 0.65), radius=0.03)
 
     # ---- south wall: a big framed painting on the blank stretch before the window, picked out by a small light
-    scene.model("fancy_picture_frame_02", (16.3, 0.58, 1.9), rot_z=0.0, scale=2.3)
+    scene.model("fancy_picture_frame_02", (16.3, 0.6, 1.0), rot_z=math.radians(180), scale=2.3)    # 1.8 m tall, placed by its bottom: from 1.0 to 2.8; facing north
     scene.point_light("dining_painting_light", (16.3, 0.9, 2.25), 18, color=(1.0, 0.97, 0.92), radius=0.04)
 
     # ---- north wall: a frame west of the window, brass sconces further out at each side
-    scene.model("fancy_picture_frame_01", (16.3, 7.42, 1.9), scale=1.6)
+    scene.model("fancy_picture_frame_01", (16.3, 7.48, 1.9), scale=1.6)          # its back on the north wall (y 7.5), facing the room
     scene.sconce("dining_sconce_w", (15.2, 7.42, 2.05), M.brass, M.shade)
     scene.sconce("dining_sconce_e", (20.35, 7.42, 2.05), M.brass, M.shade)
 
@@ -180,7 +181,7 @@ def dress(scene, M):
     scene.rod("dining_curtain_pole_s", (17.85, 0.62, 2.55), (19.95, 0.62, 2.55), 0.014, M.iron)
 
     # ---- a big plant in the north-east corner, clear of the dresser
-    scene.model("potted_plant_02", (20.1, 7.15, 0.0), scale=1.3)
+    scene.model("potted_plant_02", (20.1, 7.05, 0.0), scale=1.3)                      # in the corner, its pot clear of the north wall (y 7.5)
 
     # ---- a natural-weave rug under the table with a darker bound edge
     scene.box("dining_rug_edge", (TX, TY, 0.008), (4.74, 3.24, 0.01), M.dining_rug_border)

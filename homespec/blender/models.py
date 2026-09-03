@@ -22,6 +22,13 @@ class Models:
         ``height`` rescales uniformly to that height in metres. ``tint``
         multiplies every material's colour, so one chair model can be painted
         black, grey or white: each tint is its own shared mesh.
+
+        ``rot_z`` turns the piece about z. The library's chairs, sofas and
+        beds face -y before any rotation and their backs are at +y; mirrors,
+        pictures and wall lamps are thin along y, so they hang on a wall
+        that runs along x and need ``rot_z`` of a quarter turn for one that
+        runs along y. A placed object carries ``homespec = "model"`` for the
+        scene audit.
         """
         key = asset if tint is None else f"{asset}@{','.join(f'{c:.2f}' for c in tint)}"
         base = self._models.get(key)
@@ -40,13 +47,17 @@ class Models:
         else:
             o = base.copy()
             o.data = base.data
+            o.hide_render = o.hide_viewport = False     # the base may be the hidden untinted template a tinted first use left behind
             session.scn.collection.objects.link(o)
             o.name = f"{asset}.{len([x for x in bpy.data.objects if x.name.startswith(asset)])}"
         if height:
             scale = height / base["homespec_height"]
         o.scale = (scale,) * 3
+        o.rotation_mode = 'XYZ'                 # the glTF importer leaves objects in quaternion mode, where an euler rotation is ignored
         o.rotation_euler = (0.0, 0.0, rot_z)
         o.location = loc
+        o["homespec"] = "model"
+        o["homespec_asset"] = asset
         return o
 
     def _import_materials(self, asset: str):

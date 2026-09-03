@@ -69,7 +69,7 @@ def dress(scene):
         room.dress(scene, M)
         for eid, (asset, energy) in getattr(room, "PENDANTS", {}).items():   # chandeliers hang from the spec's pendants
             c = scene.center(eid)
-            z = 2.2 if c.z < 4.0 else c.z - 0.9
+            z = scene.ir["levels"][scene.entity(eid)["level"]]["elevation"] / 1000 + 2.2     # the lowest point 2.2 m over its own floor (D-010)
             scene.model(asset, (c.x, c.y, z), scale=1.0)
             scene.point_light(f"{eid}_light", (c.x, c.y, z + 0.4), energy, radius=0.25)
     for e in scene.ir["entities"]:

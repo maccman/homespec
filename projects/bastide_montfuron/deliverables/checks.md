@@ -1,6 +1,6 @@
 # Checks: bastide-montfuron
 
-339 passed, 0 failed
+342 passed, 0 failed
 
 | result | rule | target | value | limit | note | clause |
 |---|---|---|---|---|---|---|
@@ -298,6 +298,9 @@
 | PASS | roof_pitch | RM | 24.0 | 18..35 | clay tiles | clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb) |
 | PASS | roof_pitch | RK | 22.0 | 18..35 | clay tiles | clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb) |
 | PASS | roof_pitch | RP | 22.0 | >= 3 | low-slope covering | clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb) |
+| PASS | stair_lands_clear | ST1 | 1000 | 1000 | clear beyond the top riser | a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width) |
+| PASS | stair_lands_clear | ST2 | 1000 | 1000 | clear beyond the top riser | a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width) |
+| PASS | stair_lands_clear | ST0 | 2400 | 2400 | clear beyond the top riser | a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width) |
 | PASS | stair_proportions | ST1 | riser 175, going 270, 2R+G 620 | 150..190 / >=250 / 550..700 |  | risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb) |
 | PASS | stair_proportions | ST2 | riser 178, going 270, 2R+G 626 | 150..190 / >=250 / 550..700 |  | risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb) |
 | PASS | stair_proportions | ST0 | riser 165, going 300, 2R+G 630 | 150..190 / >=250 / 550..700 |  | risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb) |

@@ -47,6 +47,19 @@ def render(project: str, out: str | None = None, mode: str = typer.Option("still
 
 
 @app.command()
+def audit(project: str, out: str | None = None) -> None:
+    """Dress the walkthrough scene and list what a designer would notice: things in walls, floating, in the way, through ceilings. Needs a prior build."""
+    from .pipeline import audit as _audit
+
+    findings = _audit(project, out)
+    for line in findings:
+        typer.echo(line)
+    typer.echo(f"{len(findings)} findings")
+    if findings:
+        raise typer.Exit(code=1)
+
+
+@app.command()
 def views(project: str, out: str | None = None, only: str = typer.Option("", help="Comma-separated view numbers or names, e.g. 05,plan_L0"),
           focus: str = typer.Option("", help="Comma-separated entity ids to add close-ups of"),
           res: str = typer.Option("1600x1200", help="Resolution")) -> None:

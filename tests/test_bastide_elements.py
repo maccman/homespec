@@ -91,6 +91,25 @@ def test_stair_sizes_its_risers_and_the_floor_above_gets_a_void():
     assert math.isclose(G.volume(f1.solid), (8000 * 6000 - 5400 * 1000) * 300, rel_tol=1e-6)
 
 
+def test_a_flight_needs_a_landing_before_a_wall(tmp_path):
+    """Twenty risers of 175 at 270 fill 5.4 m of a 6.5 m room: started 1 m from the near wall the flight lands 600 short of the far one, started at the wall it lands 1.1 m clear."""
+    from homespec.checks.residential import stair_lands_clear
+    from homespec.ir import write_ir
+
+    def clearance(start_x):
+        house = _house()
+        with house:
+            Wall("W", (7000, 500), (7000, 7000), assembly="stone", level="L0", height=6300)
+            Stair("ST", (start_x, 6000), (1, 0), width=1000, rise=3500, max_riser=175, level="L0")
+        ir = write_ir(house.compile(), str(tmp_path / str(start_x)))
+        (r,) = list(stair_lands_clear(ir))
+        return r
+
+    short = clearance(1000)
+    assert not short.ok and short.value == 600 and "W" in short.note
+    assert clearance(500).ok
+
+
 def test_dressed_window_emits_its_parts():
     house = _house()
     with house:

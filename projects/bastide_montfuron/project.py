@@ -112,9 +112,10 @@ def build() -> House:
         Arch("FP.hearth", host=FP, width=1200, height=800, at=400)
         Chimney("CH", at=(10500, 7250), size=800, base=2900, height=1700, level=L1, material=stone)    # from the wall head at 6400, through the roof
 
-        # ---- stairs in the tower: a flight along the north wall to L1, a flight along the south wall to L2
-        Stair("ST1", (1000, 6000), (1, 0), width=1000, rise=3500, going=270, level=L0, to_level=L1, material=cut)
-        Stair("ST2", (6000, 1500), (-1, 0), width=1000, rise=3200, going=270, level=L1, to_level=L2, material=cut)
+        # ---- stairs in the tower: a flight along the north wall to L1, a flight along the south wall to L2; each starts at a
+        # wall, is entered from the room over its first treads, and lands its own width clear of the wall ahead (D-028)
+        Stair("ST1", (500, 6000), (1, 0), width=1000, rise=3500, going=270, level=L0, to_level=L1, material=cut)
+        Stair("ST2", (7000, 1500), (-1, 0), width=1000, rise=3200, going=270, level=L1, to_level=L2, material=cut)
 
         # ---- inside, first floor: a corridor along the north, three bedrooms south, two bathrooms between them
         PC = Wall("PC", (7500, 6125), (21000, 6125), assembly=partition, level=L1, align="center", external=False)

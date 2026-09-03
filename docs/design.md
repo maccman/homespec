@@ -94,7 +94,9 @@ the stair or pool it is cut for, and the outline is written once.
 
 `homespec/blender/` is a package of plain modules that run inside Blender:
 `session` (paths and the IR), `materials`, `building` (the meshes),
-`primitives`, `plants`, `models`, `lighting`, `camera`, `furniture` and
+`primitives`, `plants`, `models`, `lighting`, `camera`, `furniture`,
+`audit` (what a designer would notice in the dressed scene: things inside
+walls, floating, in the way of a door or a stair, through a ceiling) and
 `frames` (rendering and its checks). `scene.py` is the entry point and
 assembles the `Scene` a presentation dresses with. The modules import each
 other by name because `homespec` itself cannot be imported there.

@@ -194,6 +194,44 @@ meets the wing wall (its top reaches about 4850 there). The sill is 5000:
 a small high window over the roof, and bedroom 3 still has `N5` to the
 south for its 0.8 m² of glass.
 
+## D-028 The flights start at a wall and land clear
+Entities: ST1, ST2, F1, F2, C0T, C1T
+Twenty risers at 270 fill 5.4 m of the tower's 6.5 m. Started a metre off
+the west wall, ST1 met the east wall 600 short of its own width, and ST2
+arrived 640 from the west wall: the hall render showed a flight running
+into a wall, and the tower's guard rails had fenced off both arrivals.
+Each flight now starts at the wall it climbs from (ST1 at x 500, ST2 at
+x 7000), is entered from the room over its first two treads with the
+newel on the third, and lands at least its own width short of the wall
+ahead (1.1 m for ST1, 1.64 m for ST2). The generic rule
+`stair_lands_clear` measures that landing for every flight; the voids in
+F1, F2, C0T and C1T follow the flights, and the hall and tower modules
+read the flights from the IR, so a balustrade or a guard cannot drift
+from its stair again.
+
+## D-029 Placed models turn, and the dressed scene audits itself
+The glTF importer leaves objects in quaternion mode, so the `rot_z` every
+room passed to `Scene.model` was silently ignored: every chair, sofa,
+console and mirror in the walkthrough stood at its asset's default
+heading, and the rooms had been dressed around that without anyone
+noticing (the hall's console 0.9 m inside the west wall with its
+candlesticks in the air beyond it, the dining chairs with their backs to
+the table). `Scene.model` now sets the rotation mode, and every rotation
+in `rooms/` was checked against the assets' own axes: the library's
+chairs, sofas, beds, mirrors, pictures and wall lamps all face -y before
+they are turned. The same pass found that an asset first placed with a
+tint left a hidden template behind, and that every later untinted copy
+of it inherited the hiding (the main bedroom's mirror, the tower's, the
+kitchen's rush chair were never rendered); copies are now always shown. Since no build check could have seen any of that, the
+walkthrough now audits itself: `homespec audit`, and the start of every
+render, lists placed things inside walls, floating, in the way of a door,
+an arch or a stair, or through a ceiling, and the `design-audit` skill
+says what to look for by eye. Its first run found the beds of bedrooms 1
+and 3 standing across their doors, a picture through the dining ceiling,
+the mirror over the fire through the living-room ceiling, pots in walls,
+kitchen crocks 50 mm above the counter and a console opposite bedroom
+3's door; all are fixed.
+
 ## Against the reference
 
 The listing's photographs are in `docs/agents/refs/` (contact sheets `refs_a.jpg`
@@ -248,4 +286,7 @@ and `refs_b.jpg`).
   flights against the tower's inside faces: everything is set out from
   grid numbers, not from a survey.
 - The site: the parcel, its slope and its north are placeholders.
+- The routes the scene audit keeps clear are rules of thumb: a metre in
+  front of an opening, a flight's width at its ends. No code was consulted
+  for them, and nothing checks door swings.
 

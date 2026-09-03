@@ -39,8 +39,11 @@ class Plants:
         o.location = loc
         o.scale = (1.0, 1.0, scale_z)
         o.rotation_euler = (0.0, 0.0, self.rng(name).uniform(0.0, 6.28))
+        o["homespec"] = "plant"
         if core is not None:
-            self.sphere(f"{name}_core", loc, r * 0.8, core).scale = (1.0, 1.0, scale_z)
+            c = self.sphere(f"{name}_core", loc, r * 0.8, core)
+            c.scale = (1.0, 1.0, scale_z)
+            c["homespec"] = "plant"
         return o
 
     def _leaf_ball(self, name, r, leaf, seed, m, cover):
@@ -80,6 +83,7 @@ class Plants:
             o.data = base.data
             session.scn.collection.objects.link(o)
         o.name = name
+        o["homespec"] = "plant"
         o.location = loc
         o.rotation_euler = (0.0, 0.0, self.rng(name).uniform(0.0, 6.28))
         return o
