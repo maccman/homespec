@@ -25,7 +25,7 @@ def test_gable_roof_geometry_and_gables():
     assert math.isclose(roof.derived["z_ridge"], 3000 + half * math.tan(math.radians(22)))
     assert [e.id for e in b.tagged("gable")] == ["R.G1", "R.G2"]
     g1 = G.bbox(b["R.G1"].solid)
-    assert math.isclose(g1.min[0], -500) and math.isclose(g1.max[0], 0), "gable sits in the end wall"
+    assert math.isclose(g1.min[0], -500, abs_tol=1e-6) and math.isclose(g1.max[0], 0, abs_tol=1e-6), "gable sits in the end wall"
 
 
 def test_shed_roof_slopes_from_the_high_side():

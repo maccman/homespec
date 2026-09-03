@@ -80,7 +80,7 @@ class Roof(Element):
                 solid = solid & other
                 derived["z_ridge"] = z_eave + (min(x1 - x0, y1 - y0) / 2 + oh) * slope
             else:
-                self._emit_gables(ctx, x0, x1, y0, y1, t, z_eave, slope, lv.elevation + lv.height)
+                self._emit_gables(ctx, x0, x1, y0, y1, t, z_eave, slope, lv.elevation + lv.height, solid)
         else:
             axis_x = self.high_side in ("x0", "x1")
             if axis_x:
@@ -115,7 +115,15 @@ class Roof(Element):
         derived.update(z_ridge=z_ridge, rise=rise, span=(ly1 - ly0) + 2 * oh, rafter_length=math.hypot(half, rise))
         return G.prism_profile(profile, lx0 - oh, (lx1 - lx0) + 2 * oh, along="x" if along_x else "y")
 
-    def _emit_gables(self, ctx, x0, x1, y0, y1, t, z_eave, slope, z_wall_top):
+    def _emit_gables(self, ctx, x0, x1, y0, y1, t, z_eave, slope, z_wall_top, roof_solid):
+        """The infill between the wall head and the roof at each end.
+
+        The gable is cut against the roof itself, so its top edge is the
+        roof's underside exactly: at the wall face that underside sits
+        ``overhang * slope`` above the eave less the roof's thickness, not at
+        the wall head, and a straight line from the wall head to the apex
+        used to leave a sliver of sky along the rake.
+        """
         along_x = self.ridge_along == "x"
         if along_x:
             lx0, lx1, ly0, ly1 = x0, x1, y0, y1
@@ -123,12 +131,14 @@ class Roof(Element):
             lx0, lx1, ly0, ly1 = y0, y1, x0, x1
         mid, inner_half = (ly0 + ly1) / 2, (ly1 - ly0) / 2
         apex = z_eave - t + (inner_half + self.overhang) * slope
-        profile = [(mid - inner_half, z_wall_top), (mid, apex), (mid + inner_half, z_wall_top)]
+        z_face = z_eave + self.overhang * slope - 1              # just inside the roof's top surface at the wall face
+        z_top = apex + t - 1                                     # and just under the ridge; the roof trims the rest
+        profile = [(mid - inner_half, z_wall_top), (mid - inner_half, z_face), (mid, z_top), (mid + inner_half, z_face), (mid + inner_half, z_wall_top)]
         gt = self.gable_thickness
         for k, gx in enumerate((lx0, lx1 - gt), 1):
             gable = Gable(f"{self.id}.G{k}", roof=self.id, level=self.level, material=self.gable_material, tags={"external"})
-            ctx.emit(gable, Realized(solid=G.prism_profile(profile, gx, gt, along="x" if along_x else "y"),
-                                     derived={"height": apex - z_wall_top, "thickness": gt}, relations=[Relation(pred="part_of", obj=self.id)]))
+            solid = G.prism_profile(profile, gx, gt, along="x" if along_x else "y") - roof_solid
+            ctx.emit(gable, Realized(solid=solid, derived={"height": apex - z_wall_top, "thickness": gt}, relations=[Relation(pred="part_of", obj=self.id)]))
 
     def _emit_genoise(self, ctx, x0, x1, y0, y1, z_wall_top):
         """Courses of tiles stepping out from the wall head, on the eave sides (gable) or all sides (hip, flat)."""
