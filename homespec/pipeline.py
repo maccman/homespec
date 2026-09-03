@@ -8,6 +8,7 @@ from __future__ import annotations
 import importlib.util
 import os
 import time
+from collections.abc import Sequence
 from typing import Any
 
 from pydantic import BaseModel, Field
@@ -115,20 +116,17 @@ class RenderError(RuntimeError):
     """Blender ran but the result is not usable; the message carries Blender's own words."""
 
 
-def render(project_dir: str, out_dir: str | None, mode: str, frame: str = "1", extra_env: dict[str, str] | None = None) -> int:
-    """Run the Blender consumer headless: ``still``, ``anim`` or ``save`` (the walk file).
+def _blender(script: str, args: list[str], env: dict[str, str] | None = None) -> list[str]:
+    """Run a script inside headless Blender and return its output lines.
 
-    Blender's output is streamed through. A Python traceback inside Blender,
-    a camera inside solid geometry, or a black frame ends in ``RenderError``
-    rather than a quiet exit code of zero.
+    Blender's output is streamed through. A Python traceback inside Blender
+    or any line starting ``ERROR`` (a camera inside solid geometry, a black
+    frame, a blank view) ends in ``RenderError`` rather than a quiet exit
+    code of zero.
     """
     import subprocess
 
-    out = out_dir or os.path.join("out", os.path.basename(os.path.normpath(project_dir)))
-    script = os.path.join(os.path.dirname(__file__), "blender", "scene.py")
-    pres = os.path.join(project_dir, "presentation.py")
-    env = {**os.environ, "FRAME": frame, **(extra_env or {})}
-    proc = subprocess.Popen([blender_binary(), "-b", "--python", script, "--", out, pres, mode], env=env,
+    proc = subprocess.Popen([blender_binary(), "-b", "--python", script, "--", *args], env={**os.environ, **(env or {})},
                             stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     lines: list[str] = []
     assert proc.stdout is not None
@@ -147,7 +145,41 @@ def render(project_dir: str, out_dir: str | None, mode: str, frame: str = "1", e
         raise RenderError("\n".join(problems))
     if code != 0:
         raise RenderError(f"Blender exited with {code}")
+    return lines
+
+
+def render(project_dir: str, out_dir: str | None, mode: str, frame: str = "1", extra_env: dict[str, str] | None = None) -> int:
+    """Run the Blender consumer headless: ``still``, ``anim`` or ``save`` (the walk file)."""
+    out = out_dir or os.path.join("out", os.path.basename(os.path.normpath(project_dir)))
+    script = os.path.join(os.path.dirname(__file__), "blender", "scene.py")
+    pres = os.path.join(project_dir, "presentation.py")
+    _blender(script, [out, pres, mode], {"FRAME": frame, **(extra_env or {})})
     return 0
+
+
+def views(project_dir: str, out_dir: str | None, only: Sequence[str] = (), focus: Sequence[str] = (),
+          resolution: tuple[int, int] = (1600, 1200)) -> list[str]:
+    """Plan the diagnostic views from a built IR and render them with Workbench into ``<out>/views``.
+
+    ``only`` keeps the views whose name starts with any of the given
+    prefixes (``"05"``, ``"plan"`` after the number); ``focus`` adds
+    close-ups of those entities. Returns the PNG paths.
+    """
+    from .views import plan_views
+
+    out = out_dir or os.path.join("out", os.path.basename(os.path.normpath(project_dir)))
+    if not os.path.exists(os.path.join(out, "ir.json")):
+        raise FileNotFoundError(f"{out}/ir.json missing; run `homespec build {project_dir}` first")
+    ir = IRDocument.read(out)
+    plan = plan_views(ir, focus=focus, resolution=resolution)
+    if only:
+        plan.views = [v for v in plan.views if any(v.name.startswith(p) or v.name[3:].startswith(p) for p in only)]
+        if not plan.views:
+            raise ValueError(f"no view matches {', '.join(only)}")
+    views_dir = os.path.join(out, "views")
+    manifest = plan.write(views_dir)
+    lines = _blender(os.path.join(os.path.dirname(__file__), "blender", "views.py"), [out, manifest])
+    return [ln.split(" ", 2)[2].strip() for ln in lines if ln.startswith("VIEW ")]
 
 
 def walk(project_dir: str, out_dir: str | None, engine: str = "cycles") -> Any:

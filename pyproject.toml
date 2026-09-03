@@ -44,6 +44,7 @@ packages = ["homespec"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+markers = ["blender: needs a Blender binary (skipped when none is found)"]
 
 [tool.ruff]
 line-length = 160

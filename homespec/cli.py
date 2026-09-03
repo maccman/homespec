@@ -47,6 +47,19 @@ def render(project: str, out: str | None = None, mode: str = typer.Option("still
 
 
 @app.command()
+def views(project: str, out: str | None = None, only: str = typer.Option("", help="Comma-separated view numbers or names, e.g. 05,plan_L0"),
+          focus: str = typer.Option("", help="Comma-separated entity ids to add close-ups of"),
+          res: str = typer.Option("1600x1200", help="Resolution")) -> None:
+    """Render the diagnostic views with Workbench: orbits, elevations, a plan per storey, sections, structure. Needs a prior build."""
+    from .pipeline import views as _views
+
+    rx, ry = (int(v) for v in res.lower().split("x"))
+    written = _views(project, out, only=[p for p in only.split(",") if p], focus=[f for f in focus.split(",") if f], resolution=(rx, ry))
+    for path in written:
+        typer.echo(path)
+
+
+@app.command()
 def movie(project: str, out: str | None = None, fps: int = typer.Option(24, help="Frames per second"),
           crf: int = typer.Option(18, help="H.264 quality, lower is better")) -> None:
     """Render the camera path defined in presentation.py and encode it as renders/walkthrough.mp4."""

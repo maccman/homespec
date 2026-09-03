@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import math
+from collections.abc import Sequence
 from dataclasses import field
 from typing import Any, ClassVar, Literal
 
@@ -95,7 +96,7 @@ class Roof(Element):
         elif self.shape in ("gable", "hip"):
             across: Axis = "y" if self.ridge_along == "x" else "x"
             top = self._surface(across, ext, free, z_eave, slope)
-            surfaces = [(top, across)]
+            surfaces: list[tuple[Line, Axis]] = [(top, across)]
             z_ridge = max(z for _, z in top)
             if self.shape == "hip":
                 other = self._surface(self.ridge_along, ext, free, z_eave, slope)
@@ -148,7 +149,7 @@ class Roof(Element):
         return G.prism_profile(profile, ext[along + "0"], ext[along + "1"] - ext[along + "0"], along=along)
 
     @classmethod
-    def _shell(cls, surfaces: list[tuple[Line, Axis]], ext: dict[str, float], t: float) -> Any:
+    def _shell(cls, surfaces: Sequence[tuple[Line, Axis]], ext: dict[str, float], t: float) -> Any:
         """The roof ``t`` thick under its top surfaces.
 
         The top of a hip is the lower of its two sloped surfaces and its
