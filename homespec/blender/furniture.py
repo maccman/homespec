@@ -92,3 +92,22 @@ class Furniture:
             self.box(f"{name}_arm_{dx}", (x + dx, y, z + 0.5), (0.14, 0.9, 0.2), wicker, rot_z=rot)
         self.box(f"{name}_pillow_a", (x - 0.6, y + 0.25, z + 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot, bevel=0.05)
         self.box(f"{name}_pillow_b", (x + 0.6, y + 0.25, z + 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot, bevel=0.05)
+
+    def wall_light(self, name, at, direction, brass, shade, watts=12):
+        """A brass wall sconce with a linen drum shade, like ``sconce`` but for any wall.
+
+        ``at`` is the mounting point on the wall; the shade stands off 0.2 m
+        from it toward the unit vector ``direction`` (dx, dy) in plan, i.e.
+        into the room. Use this instead of ``sconce`` for walls that do not
+        face -y (east, west and south walls); built with ``rod``/``cone`` so
+        it needs no wall-facing rotation.
+        """
+        x, y, z = at
+        dx, dy = direction
+        n = (dx * dx + dy * dy) ** 0.5 or 1.0
+        dx, dy = dx / n, dy / n
+        ox, oy = x + dx * 0.2, y + dy * 0.2
+        self.rod(f"{name}_plate", (x, y, z), (x + dx * 0.02, y + dy * 0.02, z), 0.05, brass)
+        self.rod(f"{name}_arm", (x + dx * 0.02, y + dy * 0.02, z), (ox, oy, z + 0.02), 0.008, brass)
+        self.cone(f"{name}_shade", (ox, oy, z + 0.02), 0.09, 0.075, 0.16, shade)
+        self.point_light(f"{name}_light", (ox, oy, z + 0.05), watts, color=(1.0, 0.8, 0.55), radius=0.03)
