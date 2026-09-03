@@ -1,0 +1,20 @@
+id,level,assembly,thickness_mm,length_mm,height_mm,external,finish_inside,layers_out_to_in,openings
+TS,L0,rubble_wall,550,6500,9300,True,lime_white,limestone_rubble 500 / lime_plaster 50,D2 N6 N7
+TE,L0,rubble_wall,550,6500,9300,True,lime_white,limestone_rubble 500 / lime_plaster 50,A0 A2
+TN,L0,rubble_wall,550,6500,9300,True,lime_white,limestone_rubble 500 / lime_plaster 50,N11 N12
+TW,L0,rubble_wall,550,6500,9300,True,lime_white,limestone_rubble 500 / lime_plaster 50,N8 N9 N10
+MS,L0,rubble_wall,550,13500,6400,True,lime_white,limestone_rubble 500 / lime_plaster 50,D1 N1 N2 N3 N4 N5
+ME,L0,rubble_wall,550,7000,6400,True,lime_white,limestone_rubble 500 / lime_plaster 50,N18 D5
+MN,L0,rubble_wall,550,13500,6400,True,lime_white,limestone_rubble 500 / lime_plaster 50,D0 N13 N14 N15 N16 N17
+KS,L0,rubble_wall,550,8500,3200,True,lime_white,limestone_rubble 500 / lime_plaster 50,D3 D4
+KE,L0,rubble_wall,550,5000,3200,True,lime_white,limestone_rubble 500 / lime_plaster 50,N19
+KN,L0,rubble_wall,550,8500,3200,True,lime_white,limestone_rubble 500 / lime_plaster 50,N20
+P1,L0,partition,150,7000,3200,False,lime_white,lime_plaster 15 / brick_block 120 / lime_plaster 15,A1
+FP,L0,chimney_breast,600,2000,3200,False,cut_stone,limestone_rubble 600,FP.hearth
+PC,L1,partition,150,13500,2900,False,lime_white,lime_plaster 15 / brick_block 120 / lime_plaster 15,D6 D7 D8
+PB1,L1,partition,150,5550,2900,False,lime_white,lime_plaster 15 / brick_block 120 / lime_plaster 15,D9
+PB2,L1,partition,150,5550,2900,False,lime_white,lime_plaster 15 / brick_block 120 / lime_plaster 15,
+PB3,L1,partition,150,5550,2900,False,lime_white,lime_plaster 15 / brick_block 120 / lime_plaster 15,D10
+PB4,L1,partition,150,5550,2900,False,lime_white,lime_plaster 15 / brick_block 120 / lime_plaster 15,
+RW1,LP,garden_wall,500,16300,2300,True,limestone_rubble,limestone_rubble 500,
+RW2,LP,garden_wall,500,17300,2300,True,limestone_rubble,limestone_rubble 500,

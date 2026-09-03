@@ -95,9 +95,38 @@ element class in the standard vocabulary, and a project can add its own.
 
 Read [docs/design.md](docs/design.md) for the reasoning and
 [docs/vocabulary.md](docs/vocabulary.md) for every element and its fields.
-Two example projects live in `projects/`, each with its `decisions.md`:
-`library_room`, one furnished room, and `casale_poggio`, a two-bedroom
-Umbrian stone farmhouse with a gable roof, arches, a pergola and a pool.
+Three example projects live in `projects/`, each with its `decisions.md`:
+`library_room`, one furnished room; `casale_poggio`, a two-bedroom Umbrian
+stone farmhouse with a gable roof, arches, a pergola and a pool; and
+`bastide_montfuron`, a three-storey Provençal villa.
+
+## Example: Bastide de Montfuron
+
+A tower, two wings, hipped and gabled roofs with génoise cornices, louvred
+shutters in dressed-stone surrounds, an arched glazed door, a brande pergola,
+two straight stairs, a terrace over a retaining wall and a pool garden two
+metres below. 284 entities, 210 checks, four plan sheets.
+
+![The bastide from the pool deck](projects/bastide_montfuron/gallery/01_pool_deck.jpg)
+
+| | |
+|---|---|
+| ![Living room](projects/bastide_montfuron/gallery/03_living_room.jpg) | ![Dining room](projects/bastide_montfuron/gallery/04_dining_room.jpg) |
+| ![Kitchen](projects/bastide_montfuron/gallery/06_kitchen.jpg) | ![Ground floor plan](projects/bastide_montfuron/gallery/plan_L0.jpg) |
+
+The source is [project.py](projects/bastide_montfuron/project.py); the
+furniture, planting, sky and camera are in
+[presentation.py](projects/bastide_montfuron/presentation.py) and never reach
+the contractor. What the contractor does get is committed under
+[deliverables/](projects/bastide_montfuron/deliverables): the IFC, the plans
+as PDF and DXF, the schedules, the checks report and the IDS. More renders are
+in [gallery/](projects/bastide_montfuron/gallery).
+
+```bash
+homespec build  projects/bastide_montfuron
+homespec render projects/bastide_montfuron --mode still --frame 1,600,810,1056,1152
+homespec walk   projects/bastide_montfuron
+```
 
 ## Development
 
@@ -110,7 +139,8 @@ homespec schema           # the IR's JSON schema
 
 ## Status
 
-Alpha. Two example projects, one level each, straight walls. See the end of
+Alpha. Three example projects, up to three storeys, straight walls, gable,
+hip, shed and flat roofs, straight stairs, pools. See the end of
 `docs/design.md` for what is deliberately not here yet.
 
 MIT licensed.

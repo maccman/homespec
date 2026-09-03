@@ -1,0 +1,16 @@
+id,kind,on_wall,from_wall_start_mm,height_mm,x_mm,y_mm,z_mm
+L1,pendant,,,,11000,4000,2100
+L2,pendant,,,,17800,4000,2000
+L3,pendant,,,,3750,3750,2300
+L4,pendant,,,,25750,4000,2100
+L5,pendant,,,,3750,3750,5600
+L6,downlight,,,,11100,3000,6364
+L7,downlight,,,,17325,3000,6364
+L8,downlight,,,,11100,5000,6364
+L9,downlight,,,,17325,5000,6364
+S1,outlet,MS,1500,300,9043,506,300
+S2,outlet,MS,2400,300,9943,506,300
+S3,outlet,MN,3300,300,17657,7494,300
+S4,outlet,TS,4200,300,4743,506,300
+S5,outlet,KS,5100,300,26643,1506,300
+S6,outlet,KN,6000,300,23957,6494,300

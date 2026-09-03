@@ -1,0 +1,5 @@
+id,type,against_wall,from_wall_start_mm,length_mm,depth_mm,height_mm,material,detail
+K1.base,base,KN,,6500,650,760,door_grey,doors=7 door_width=929
+K1.kick,kick,KN,,,,100,steel_black,
+K1.counter,counter,KN,,6500,670,,marble_counter,thickness=40 top=900
+K1.pulls,pulls,KN,,,,740,brass,count=7
