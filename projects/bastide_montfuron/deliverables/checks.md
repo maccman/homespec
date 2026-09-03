@@ -110,17 +110,17 @@
 | PASS | glazing_ratio | bed3 | 0.86 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
 | PASS | glazing_ratio | study | 0.309 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
 | PASS | egress_door | hall | D2, A0, A2 | 1 door or passage >= 620 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | living | D1, D0, A0, A1, A2 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
+| PASS | egress_door | living | D1, D0, A0, A1 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
 | PASS | egress_door | dining | D1, D0, A1, D5 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
 | PASS | egress_door | kitchen | D3, D4, D5 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | landing | D2, A0, A2 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
+| PASS | egress_door | landing | D2, A0 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
 | PASS | egress_door | corridor | D0, A0, D5, A2 | 1 door or passage >= 620 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | bed1 | D1, A0, A2 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
+| PASS | egress_door | bed1 | D1, A0 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
 | PASS | egress_door | bath1 | D1 | 1 door or passage >= 620 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
 | PASS | egress_door | bed2 | D1 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
 | PASS | egress_door | bath2 | D1 | 1 door or passage >= 620 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
 | PASS | egress_door | bed3 | D1, D5 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | study | D2, A0, A2 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
+| PASS | egress_door | study | D2, A0 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
 | PASS | egress_door | terrace | D1, D2, D3, D4 | 1 door or passage >= 620 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
 | PASS | door_clear_width | D1 | 830.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
 | PASS | door_clear_width | D2 | 1400.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
@@ -139,7 +139,7 @@
 | PASS | openings_do_not_overlap | D2/N6 | None | None |  |  |
 | PASS | openings_do_not_overlap | N6/N7 | None | None |  |  |
 | PASS | opening_fits_wall | A0 | 2450+1600 of 6500; head 3000 of 9300 | None |  |  |
-| PASS | opening_fits_wall | A2 | 2550+1400 of 6500; head 6300 of 9300 | None |  |  |
+| PASS | opening_fits_wall | A2 | 5750+700 of 6500; head 5950 of 9300 | None |  |  |
 | PASS | openings_do_not_overlap | A0/A2 | None | None |  |  |
 | PASS | opening_fits_wall | N11 | 2750+1000 of 6500; head 5700 of 9300 | None |  |  |
 | PASS | opening_fits_wall | N12 | 2850+800 of 6500; head 8500 of 9300 | None |  |  |
@@ -211,6 +211,6 @@
 | PASS | ids | Ifcwindow carries its homespec id and tags | 20/20 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcslab carries its homespec id and tags | 6/6 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcbeam carries its homespec id and tags | 84/84 pass | all |  | IDS 1.0 |
-| PASS | ids | Ifcfurniture carries its homespec id and tags | 4/4 pass | all |  | IDS 1.0 |
+| PASS | ids | Ifcfurniture carries its homespec id and tags | 5/5 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifclightfixture carries its homespec id and tags | 9/9 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcoutlet carries its homespec id and tags | 6/6 pass | all |  | IDS 1.0 |

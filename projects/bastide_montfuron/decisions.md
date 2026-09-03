@@ -115,7 +115,19 @@ under copper pendants, the run along the north wall. Bedroom: an
 upholstered bed facing its window, bedside lamps on stools, a mirror over
 the head. All of it is presentation; the spec carries only the pendants.
 
-## D-018 Walls are 500 mm: 450 of rubble and 50 of lime
+## D-018 Each room is dressed by its own module, and was audited by its own agent
+Entities: K1, A2
+The presentation is one module per room (`rooms/`), each owning its
+furniture, its camera shots and the spec pendants it hangs a light from.
+Seven agents worked one room each, in their own worktree and branch, from
+one brief and the listing's photographs, and their audits found what one
+pair of eyes had missed: a console inside a wall, curtains in the wrong
+room, a shelf through the ceiling, a mattress inside a bed, a kitchen run
+declared with no splashback or upper cabinets, and the tower's first-floor
+arch opening into a bedroom instead of the corridor. The last two were spec
+fixes (K1, A2); the rest were presentation.
+
+## D-019 Walls are 500 mm: 450 of rubble and 50 of lime
 Entities: rubble_wall, KS, KN, ME, PC, TE
 Every outline in the spec puts the outer faces on the 500 lines (the tower
 0..7500, the kitchen from 21500) while `rubble_wall` summed to 550. The clash
@@ -123,7 +135,7 @@ check found the 50 mm: the kitchen walls KS and KN started inside ME, the
 partition PC inside TE, and the main wing's gable inside the tower wall. The
 stone layer is now 450 and the plaster 50, as at the casale.
 
-## D-019 Roofs stop at the walls they meet, and sit on their génoise
+## D-020 Roofs stop at the walls they meet, and sit on their génoise
 Entities: RM, RK, RT, TE, ME
 RM abuts the tower and RK abuts the main wing (`abuts=["x0"]`): no overhang,
 no gable and no génoise on that side, so the roof no longer runs 450 mm into
@@ -131,30 +143,30 @@ the taller wall. A génoise lifts its roof so the underside clears the outer
 corner of the top course; the eaves rose about 350 mm on RM and 250 mm on
 RT and RK, which is where the reference has them: the tiles sit on the
 corbelled courses. The same pass found that hip roofs were hollow between
-their ends (two thin shells that never met), which had hidden D-026.
+their ends (two thin shells that never met), which had hidden D-027.
 
-## D-020 The arched door springs at 2000 and has no shutters
+## D-021 The arched door springs at 2000 and has no shutters
 Entities: D1, F1
 `D1` is 1900 wide; with the springing at 2300 the fanlight's crown and the
 lintel of its surround reached into the first-floor slab. At 2000 the head
 is 2950 and the lintel stops 30 below the floor. The listing's arch has no
 shutters (ref-23) and neither does this one; the pergola shades it.
 
-## D-021 The chimney starts at the wall head
+## D-022 The chimney starts at the wall head
 Entities: CH
 `CH` is on `L1` and its `base` is measured from that level, so `base=2900`
 puts the stack on the wall head at 6400 and through the roof. The earlier
 6400 had it floating 1.5 m above the ridge, visible in the gallery render
 and invisible to every check: nothing intersected it.
 
-## D-022 The pool deck is the finished level
+## D-023 The pool deck is the finished level
 Entities: LP, GD, PD, PL, ST0
 `LP` is -1980, the top of the travertine. The gravel `GD` sits 20 lower and
 is cut around the deck and the pool's shell; the deck is cut to the shell
 too (a pool publishes `cut_outline`, 250 outside its water). The steps
 `ST0` rise 1980 to the house terrace and start on the deck, not 20 below it.
 
-## D-023 The pergola beam sits on its posts, and the brush runs to the wall
+## D-024 The pergola beam sits on its posts, and the brush runs to the wall
 Entities: PP1, PP2, PP3, PP4, PP5, PB, RP, D1.surround
 Posts `PP1..5` are 2800 high, the underside of `PB`. The brush cover `RP`
 runs to the house wall (`abuts=["y1"]`) with its 100 overhang elsewhere.
@@ -163,19 +175,19 @@ the wall and the brush is cut around it: `house.allow("D1.surround", "RP")`
 records that on purpose rather than moving the door or shortening the
 pergola, which the terrace furniture and the wisteria are laid out along.
 
-## D-024 Stair wells continue through the ceilings
+## D-025 Stair wells continue through the ceilings
 Entities: C0T, C1T, ST1, ST2, F1, F2
 `C0T` and `C1T` carry `voids=["ST1"]` and `voids=["ST2"]`, the same wells
 `F1` and `F2` leave open, so the flights no longer pass through the lining
 and the tower's joists are trimmed at the well.
 
-## D-025 Fittings sit clear of joists and cabinets
+## D-026 Fittings sit clear of joists and cabinets
 Entities: L6, L7, L8, L9, C1M, S6
 The bathroom downlights `L6..L9` are at 10950 and 17550, midway between the
 600-centre joists of `C1M`, not inside them. The kitchen outlet `S6` is
 1100 above the floor, over the counter, not behind the base cabinets.
 
-## D-026 The east bedroom window sits above the kitchen roof
+## D-027 The east bedroom window sits above the kitchen roof
 Entities: N18, ME, N5
 `N18` on `ME` had its sill at 4400, exactly where the kitchen's hip roof
 meets the wing wall (its top reaches about 4850 there). The sill is 5000:
@@ -190,11 +202,11 @@ and `refs_b.jpg`).
 | The listing shows | The model | Kept or changed |
 |---|---|---|
 | Three blocks stepping down: a tower, a wing, a low kitchen (ref-3, ref-23) | three blocks with shared walls | kept (D-001) |
-| Low canal-tile roofs on two or three génoise courses (ref-5, ref-6) | hips and a gable at 22 to 28 degrees, each roof sitting on its courses | changed this pass: the roofs rose onto the courses (D-019) |
-| The arched glazed door with a fanlight and no shutters (ref-14, ref-23) | D1, no shutters | changed (D-020) |
+| Low canal-tile roofs on two or three génoise courses (ref-5, ref-6) | hips and a gable at 22 to 28 degrees, each roof sitting on its courses | changed this pass: the roofs rose onto the courses (D-020) |
+| The arched glazed door with a fanlight and no shutters (ref-14, ref-23) | D1, no shutters | changed (D-021) |
 | A black steel frame to that arch (ref-14) | painted oak, like every other window | kept: one joinery finish outside; the hall's screen D2 is the steel one |
 | Small-paned windows in stone surrounds with grey-blue louvred shutters (ref-5, ref-6) | every window | kept (D-004, D-015) |
-| A brush pergola before the tower and the hall, stopping short of the arched door (ref-19, ref-22, ref-23) | RP runs to x 14.5, over the door's west jamb | kept (D-023) |
+| A brush pergola before the tower and the hall, stopping short of the arched door (ref-19, ref-22, ref-23) | RP runs to x 14.5, over the door's west jamb | kept (D-024) |
 | The pool below the house terrace, a retaining wall and steps between (ref-3, ref-8, ref-20) | RW1, RW2, ST0, PL | kept (D-006) |
 | Lime-washed oak joists at close centres over boards (ref-13, ref-14, ref-16) | joists at 600 under every ceiling | kept (D-007) |
 | A dressed-stone fireplace with a mantel and an iron screen (ref-15) | FP with an arched hearth; mantel and screen are presentation | kept (D-007, D-017) |
@@ -205,7 +217,7 @@ and `refs_b.jpg`).
 
 - Shortening the pergola to stop before the arched door, as the photographs
   do. The terrace furniture and the wisteria are laid out along its length;
-  the brush is cut around the surround instead (D-023).
+  the brush is cut around the surround instead (D-024).
 - A black steel frame for D1 to match ref-14. The exterior joinery is
   painted oak throughout, one finish for the joiner.
 - Slabs drawn to the inside faces so that nothing shares volume. A slab

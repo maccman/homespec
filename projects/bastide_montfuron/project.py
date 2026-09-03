@@ -127,7 +127,7 @@ def build() -> House:
         Door("D8", host=PC, width=950, height=2100, at=11525, frame=frame, leaf="door_grey")     # corridor -> bedroom 3
         Door("D9", host=PB1, width=800, height=2100, at=4000, frame=frame, leaf="door_grey")     # bedroom 1 -> bath 1
         Door("D10", host=PB3, width=800, height=2100, at=4000, frame=frame, leaf="door_grey")    # bedroom 2 -> bath 2
-        Arch("A2", host=TE, width=1400, height=2100, at=2550, sill=3500)                          # tower landing -> corridor, through the tower wall on L1
+        Arch("A2", host=TE, width=700, height=2100, at=5750, sill=3500)                           # tower landing -> corridor, through the tower wall on L1
 
         # ---- floors and ceilings
         Slab("F0", outline=[(0, 0), (30500, 0), (30500, 7500), (21500, 7500), (21500, 8000), (7500, 8000), (7500, 7500), (0, 7500)], thickness=250, level=L0, material=floor)
@@ -187,7 +187,8 @@ def build() -> House:
         Space("terrace", outline=[(-3000, -5000), (33000, -5000), (33000, 0), (-3000, 0)], use="terrace", level=L0, bounded_by=[MS, TS, KS])
 
         # ---- kitchen along the north wall, under the window
-        KitchenRun("K1", on=KN, from_start=1000, length=6500, depth=650, counter_height=900, fronts="door_grey", counter="marble_counter", doors=7, pulls="brass", splash_height=0)
+        KitchenRun("K1", on=KN, from_start=1000, length=6500, depth=650, counter_height=900, fronts="door_grey", counter="marble_counter", doors=7, pulls="brass", splash_height=100,
+                   upper=UpperCabinet(from_start=1000, length=2650))    # east end only: the window (from_start 3650..4850) and the range/hood over the west end stay clear
 
         # ---- services: chandeliers where people gather, lanterns on the terrace posts, downlights in the bathrooms
         Pendant("L1", at=(11000, 4000), drop=1100, level=L0, watts=200)
