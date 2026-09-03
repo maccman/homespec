@@ -47,7 +47,7 @@ def dress(scene, M):
     scene.rug("living_rug_field", (11.0, 4.0, 0.006), (4.0, 2.8), rug_field)
 
     # ---- two linen sofas facing each other across a low table, on the fire's axis
-    for name, cy, rot in (("living_sofa_south", 2.55, 0), ("living_sofa_north", 5.55, 180)):
+    for _name, cy, rot in (("living_sofa_south", 2.55, 0), ("living_sofa_north", 5.55, 180)):
         scene.model("Sofa_01", (11.0, cy, 0.0), rot_z=math.radians(rot), scale=1.15, tint=(1.16, 1.11, 1.01))
     # cushions tucked into each sofa's corners, leaning gently on the backrest (a moderate, consistent tilt this time)
     for k, (cx, cy, mat, lean) in enumerate((
