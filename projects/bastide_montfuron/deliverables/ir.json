@@ -2040,6 +2040,7 @@
     "clear_height": 3130.0,
     "glass_area_mm2": 4863027.7705,
     "mullions": 1,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       13300.0,
@@ -2058,8 +2059,10 @@
      "thickness": 750.0,
      "height": 3250.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -2139,7 +2142,12 @@
    "level": "L0",
    "material": "shutter_grey",
    "params": {
-    "opening": "D1"
+    "opening": "D1",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -2185,7 +2193,11 @@
    "level": "L0",
    "material": "cut_stone",
    "params": {
-    "opening": "D1"
+    "opening": "D1",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -2261,6 +2273,7 @@
     "clear_height": 1480.0,
     "glass_area_mm2": 1598400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       9000.0,
@@ -2279,8 +2292,10 @@
      "thickness": 750.0,
      "height": 1600.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -2360,7 +2375,12 @@
    "level": "L0",
    "material": "shutter_grey",
    "params": {
-    "opening": "N1"
+    "opening": "N1",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -2406,7 +2426,11 @@
    "level": "L0",
    "material": "cut_stone",
    "params": {
-    "opening": "N1"
+    "opening": "N1",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -2482,6 +2506,7 @@
     "clear_height": 1480.0,
     "glass_area_mm2": 1598400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       18300.0,
@@ -2500,8 +2525,10 @@
      "thickness": 750.0,
      "height": 1600.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -2581,7 +2608,12 @@
    "level": "L0",
    "material": "shutter_grey",
    "params": {
-    "opening": "N2"
+    "opening": "N2",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -2627,7 +2659,11 @@
    "level": "L0",
    "material": "cut_stone",
    "params": {
-    "opening": "N2"
+    "opening": "N2",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -2703,6 +2739,7 @@
     "clear_height": 1280.0,
     "glass_area_mm2": 1382400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       9000.0,
@@ -2721,8 +2758,10 @@
      "thickness": 750.0,
      "height": 1400.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -2802,7 +2841,12 @@
    "level": "L1",
    "material": "shutter_grey",
    "params": {
-    "opening": "N3"
+    "opening": "N3",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -2848,7 +2892,11 @@
    "level": "L1",
    "material": "cut_stone",
    "params": {
-    "opening": "N3"
+    "opening": "N3",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -2924,6 +2972,7 @@
     "clear_height": 1280.0,
     "glass_area_mm2": 1382400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       13650.0,
@@ -2942,8 +2991,10 @@
      "thickness": 750.0,
      "height": 1400.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -3023,7 +3074,12 @@
    "level": "L1",
    "material": "shutter_grey",
    "params": {
-    "opening": "N4"
+    "opening": "N4",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -3069,7 +3125,11 @@
    "level": "L1",
    "material": "cut_stone",
    "params": {
-    "opening": "N4"
+    "opening": "N4",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -3145,6 +3205,7 @@
     "clear_height": 1280.0,
     "glass_area_mm2": 1382400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       18300.0,
@@ -3163,8 +3224,10 @@
      "thickness": 750.0,
      "height": 1400.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -3244,7 +3307,12 @@
    "level": "L1",
    "material": "shutter_grey",
    "params": {
-    "opening": "N5"
+    "opening": "N5",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -3290,7 +3358,11 @@
    "level": "L1",
    "material": "cut_stone",
    "params": {
-    "opening": "N5"
+    "opening": "N5",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -3368,6 +3440,7 @@
     "clear_height": 2500.0,
     "glass_area_mm2": 7000000.0,
     "mullions": 1,
+    "frame_size": 50.0,
     "void": {
      "origin": [
       2250.0,
@@ -3385,7 +3458,11 @@
      "length": 3000.0,
      "thickness": 750.0,
      "height": 2600.0
-    }
+    },
+    "void_entity": null,
+    "shutters": null,
+    "surround": null,
+    "grille": null
    },
    "relations": [
     {
@@ -3496,6 +3573,7 @@
     "clear_height": 1180.0,
     "glass_area_mm2": 1038400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       3250.0,
@@ -3514,8 +3592,10 @@
      "thickness": 750.0,
      "height": 1300.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -3595,7 +3675,12 @@
    "level": "L1",
    "material": "shutter_grey",
    "params": {
-    "opening": "N6"
+    "opening": "N6",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -3641,7 +3726,11 @@
    "level": "L1",
    "material": "cut_stone",
    "params": {
-    "opening": "N6"
+    "opening": "N6",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -3717,6 +3806,7 @@
     "clear_height": 880.0,
     "glass_area_mm2": 598400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       3350.0,
@@ -3735,7 +3825,10 @@
      "thickness": 750.0,
      "height": 1000.0
     },
-    "surround": "cut_stone"
+    "void_entity": null,
+    "shutters": null,
+    "surround": "cut_stone",
+    "grille": "iron"
    },
    "relations": [
     {
@@ -3815,7 +3908,11 @@
    "level": "L2",
    "material": "cut_stone",
    "params": {
-    "opening": "N7"
+    "opening": "N7",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -3860,7 +3957,9 @@
    "level": "L2",
    "material": "iron",
    "params": {
-    "opening": "N7"
+    "opening": "N7",
+    "bar": 18.0,
+    "pitch": 140.0
    },
    "derived": {
     "bars": 4
@@ -3933,6 +4032,7 @@
     "clear_height": 1280.0,
     "glass_area_mm2": 1126400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       -150.0,
@@ -3951,8 +4051,10 @@
      "thickness": 750.0,
      "height": 1400.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -4032,7 +4134,12 @@
    "level": "L0",
    "material": "shutter_grey",
    "params": {
-    "opening": "N8"
+    "opening": "N8",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -4078,7 +4185,11 @@
    "level": "L0",
    "material": "cut_stone",
    "params": {
-    "opening": "N8"
+    "opening": "N8",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -4154,6 +4265,7 @@
     "clear_height": 1180.0,
     "glass_area_mm2": 1038400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       -150.0,
@@ -4172,8 +4284,10 @@
      "thickness": 750.0,
      "height": 1300.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -4253,7 +4367,12 @@
    "level": "L1",
    "material": "shutter_grey",
    "params": {
-    "opening": "N9"
+    "opening": "N9",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -4299,7 +4418,11 @@
    "level": "L1",
    "material": "cut_stone",
    "params": {
-    "opening": "N9"
+    "opening": "N9",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -4375,6 +4498,7 @@
     "clear_height": 880.0,
     "glass_area_mm2": 598400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       -150.0,
@@ -4393,7 +4517,10 @@
      "thickness": 750.0,
      "height": 1000.0
     },
-    "surround": "cut_stone"
+    "void_entity": null,
+    "shutters": null,
+    "surround": "cut_stone",
+    "grille": "iron"
    },
    "relations": [
     {
@@ -4473,7 +4600,11 @@
    "level": "L2",
    "material": "cut_stone",
    "params": {
-    "opening": "N10"
+    "opening": "N10",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -4518,7 +4649,9 @@
    "level": "L2",
    "material": "iron",
    "params": {
-    "opening": "N10"
+    "opening": "N10",
+    "bar": 18.0,
+    "pitch": 140.0
    },
    "derived": {
     "bars": 4
@@ -4591,6 +4724,7 @@
     "clear_height": 1180.0,
     "glass_area_mm2": 1038400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       4250.0,
@@ -4609,8 +4743,10 @@
      "thickness": 750.0,
      "height": 1300.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -4690,7 +4826,12 @@
    "level": "L1",
    "material": "shutter_grey",
    "params": {
-    "opening": "N11"
+    "opening": "N11",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -4736,7 +4877,11 @@
    "level": "L1",
    "material": "cut_stone",
    "params": {
-    "opening": "N11"
+    "opening": "N11",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -4812,6 +4957,7 @@
     "clear_height": 880.0,
     "glass_area_mm2": 598400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       4150.0,
@@ -4830,7 +4976,10 @@
      "thickness": 750.0,
      "height": 1000.0
     },
-    "surround": "cut_stone"
+    "void_entity": null,
+    "shutters": null,
+    "surround": "cut_stone",
+    "grille": "iron"
    },
    "relations": [
     {
@@ -4910,7 +5059,11 @@
    "level": "L2",
    "material": "cut_stone",
    "params": {
-    "opening": "N12"
+    "opening": "N12",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -4955,7 +5108,9 @@
    "level": "L2",
    "material": "iron",
    "params": {
-    "opening": "N12"
+    "opening": "N12",
+    "bar": 18.0,
+    "pitch": 140.0
    },
    "derived": {
     "bars": 4
@@ -5030,6 +5185,7 @@
     "clear_height": 2280.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       14850.0,
@@ -5048,7 +5204,10 @@
      "thickness": 750.0,
      "height": 2400.0
     },
-    "surround": "cut_stone"
+    "void_entity": null,
+    "shutters": null,
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -5126,7 +5285,11 @@
    "level": "L0",
    "material": "cut_stone",
    "params": {
-    "opening": "D0"
+    "opening": "D0",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -5202,6 +5365,7 @@
     "clear_height": 1480.0,
     "glass_area_mm2": 1598400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       19000.0,
@@ -5220,8 +5384,10 @@
      "thickness": 750.0,
      "height": 1600.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -5301,7 +5467,12 @@
    "level": "L0",
    "material": "shutter_grey",
    "params": {
-    "opening": "N13"
+    "opening": "N13",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -5347,7 +5518,11 @@
    "level": "L0",
    "material": "cut_stone",
    "params": {
-    "opening": "N13"
+    "opening": "N13",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -5423,6 +5598,7 @@
     "clear_height": 1480.0,
     "glass_area_mm2": 1598400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       10700.0,
@@ -5441,8 +5617,10 @@
      "thickness": 750.0,
      "height": 1600.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -5522,7 +5700,12 @@
    "level": "L0",
    "material": "shutter_grey",
    "params": {
-    "opening": "N14"
+    "opening": "N14",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -5568,7 +5751,11 @@
    "level": "L0",
    "material": "cut_stone",
    "params": {
-    "opening": "N14"
+    "opening": "N14",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -5644,6 +5831,7 @@
     "clear_height": 880.0,
     "glass_area_mm2": 598400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       17725.0,
@@ -5662,7 +5850,10 @@
      "thickness": 750.0,
      "height": 1000.0
     },
-    "surround": "cut_stone"
+    "void_entity": null,
+    "shutters": null,
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -5742,7 +5933,11 @@
    "level": "L1",
    "material": "cut_stone",
    "params": {
-    "opening": "N15"
+    "opening": "N15",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -5818,6 +6013,7 @@
     "clear_height": 1180.0,
     "glass_area_mm2": 1038400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       14750.0,
@@ -5836,8 +6032,10 @@
      "thickness": 750.0,
      "height": 1300.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -5917,7 +6115,12 @@
    "level": "L1",
    "material": "shutter_grey",
    "params": {
-    "opening": "N16"
+    "opening": "N16",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -5963,7 +6166,11 @@
    "level": "L1",
    "material": "cut_stone",
    "params": {
-    "opening": "N16"
+    "opening": "N16",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -6039,6 +6246,7 @@
     "clear_height": 880.0,
     "glass_area_mm2": 598400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       11500.0,
@@ -6057,7 +6265,10 @@
      "thickness": 750.0,
      "height": 1000.0
     },
-    "surround": "cut_stone"
+    "void_entity": null,
+    "shutters": null,
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -6137,7 +6348,11 @@
    "level": "L1",
    "material": "cut_stone",
    "params": {
-    "opening": "N17"
+    "opening": "N17",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -6213,6 +6428,7 @@
     "clear_height": 1180.0,
     "glass_area_mm2": 1038400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       21650.0,
@@ -6231,8 +6447,10 @@
      "thickness": 750.0,
      "height": 1300.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -6312,7 +6530,12 @@
    "level": "L1",
    "material": "shutter_grey",
    "params": {
-    "opening": "N18"
+    "opening": "N18",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -6358,7 +6581,11 @@
    "level": "L1",
    "material": "cut_stone",
    "params": {
-    "opening": "N18"
+    "opening": "N18",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -6436,6 +6663,7 @@
     "clear_height": 2280.0,
     "glass_area_mm2": 3670800.0,
     "mullions": 1,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       22700.0,
@@ -6454,8 +6682,10 @@
      "thickness": 750.0,
      "height": 2400.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -6535,7 +6765,12 @@
    "level": "L0",
    "material": "shutter_grey",
    "params": {
-    "opening": "D3"
+    "opening": "D3",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -6581,7 +6816,11 @@
    "level": "L0",
    "material": "cut_stone",
    "params": {
-    "opening": "D3"
+    "opening": "D3",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -6659,6 +6898,7 @@
     "clear_height": 2280.0,
     "glass_area_mm2": 3670800.0,
     "mullions": 1,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       26800.0,
@@ -6677,8 +6917,10 @@
      "thickness": 750.0,
      "height": 2400.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -6758,7 +7000,12 @@
    "level": "L0",
    "material": "shutter_grey",
    "params": {
-    "opening": "D4"
+    "opening": "D4",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -6804,7 +7051,11 @@
    "level": "L0",
    "material": "cut_stone",
    "params": {
-    "opening": "D4"
+    "opening": "D4",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -6880,6 +7131,7 @@
     "clear_height": 1280.0,
     "glass_area_mm2": 1126400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       30650.0,
@@ -6898,8 +7150,10 @@
      "thickness": 750.0,
      "height": 1400.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -6979,7 +7233,12 @@
    "level": "L0",
    "material": "shutter_grey",
    "params": {
-    "opening": "N19"
+    "opening": "N19",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -7025,7 +7284,11 @@
    "level": "L0",
    "material": "cut_stone",
    "params": {
-    "opening": "N19"
+    "opening": "N19",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -7101,6 +7364,7 @@
     "clear_height": 1280.0,
     "glass_area_mm2": 1382400.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       26350.0,
@@ -7119,8 +7383,10 @@
      "thickness": 750.0,
      "height": 1400.0
     },
+    "void_entity": null,
     "shutters": "shutter_grey",
-    "surround": "cut_stone"
+    "surround": "cut_stone",
+    "grille": null
    },
    "relations": [
     {
@@ -7200,7 +7466,12 @@
    "level": "L0",
    "material": "shutter_grey",
    "params": {
-    "opening": "N20"
+    "opening": "N20",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0
    },
    "derived": {
     "leaves": 2,
@@ -7246,7 +7517,11 @@
    "level": "L0",
    "material": "cut_stone",
    "params": {
-    "opening": "N20"
+    "opening": "N20",
+    "jamb": 140.0,
+    "lintel": 220.0,
+    "sill_height": 100.0,
+    "projection": 25.0
    },
    "derived": {
     "jamb": 140.0,
@@ -7321,6 +7596,7 @@
     "clear_height": 3000.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       7650.0,
@@ -7339,9 +7615,12 @@
      "thickness": 750.0,
      "height": 3000.0
     },
+    "void_entity": "A0.void",
+    "shutters": null,
+    "surround": null,
+    "grille": null,
     "springing": 2200.0,
-    "radius": 800.0,
-    "void_entity": "A0.void"
+    "radius": 800.0
    },
    "relations": [
     {
@@ -7553,6 +7832,7 @@
     "clear_height": 3100.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       14750.0,
@@ -7571,9 +7851,12 @@
      "thickness": 350.0,
      "height": 3100.0
     },
+    "void_entity": "A1.void",
+    "shutters": null,
+    "surround": null,
+    "grille": null,
     "springing": 2100.0,
-    "radius": 1000.0,
-    "void_entity": "A1.void"
+    "radius": 1000.0
    },
    "relations": [
     {
@@ -7668,6 +7951,7 @@
     "clear_height": 2080.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       21650.0,
@@ -7685,7 +7969,11 @@
      "length": 1000.0,
      "thickness": 750.0,
      "height": 2200.0
-    }
+    },
+    "void_entity": null,
+    "shutters": null,
+    "surround": null,
+    "grille": null
    },
    "relations": [
     {
@@ -7905,6 +8193,7 @@
     "clear_height": 1400.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       9900.0,
@@ -7923,9 +8212,12 @@
      "thickness": 800.0,
      "height": 1400.0
     },
+    "void_entity": "FP.hearth.void",
+    "shutters": null,
+    "surround": null,
+    "grille": null,
     "springing": 800.0,
-    "radius": 600.0,
-    "void_entity": "FP.hearth.void"
+    "radius": 600.0
    },
    "relations": [
     {
@@ -8843,6 +9135,7 @@
     "clear_height": 1980.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       8700.0,
@@ -8860,7 +9153,11 @@
      "length": 950.0,
      "thickness": 350.0,
      "height": 2100.0
-    }
+    },
+    "void_entity": null,
+    "shutters": null,
+    "surround": null,
+    "grille": null
    },
    "relations": [
     {
@@ -8970,6 +9267,7 @@
     "clear_height": 1980.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       13500.0,
@@ -8987,7 +9285,11 @@
      "length": 950.0,
      "thickness": 350.0,
      "height": 2100.0
-    }
+    },
+    "void_entity": null,
+    "shutters": null,
+    "surround": null,
+    "grille": null
    },
    "relations": [
     {
@@ -9097,6 +9399,7 @@
     "clear_height": 1980.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       19025.0,
@@ -9114,7 +9417,11 @@
      "length": 950.0,
      "thickness": 350.0,
      "height": 2100.0
-    }
+    },
+    "void_entity": null,
+    "shutters": null,
+    "surround": null,
+    "grille": null
    },
    "relations": [
     {
@@ -9224,6 +9531,7 @@
     "clear_height": 1980.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       10450.0,
@@ -9241,7 +9549,11 @@
      "length": 800.0,
      "thickness": 350.0,
      "height": 2100.0
-    }
+    },
+    "void_entity": null,
+    "shutters": null,
+    "surround": null,
+    "grille": null
    },
    "relations": [
     {
@@ -9351,6 +9663,7 @@
     "clear_height": 1980.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       16675.0,
@@ -9368,7 +9681,11 @@
      "length": 800.0,
      "thickness": 350.0,
      "height": 2100.0
-    }
+    },
+    "void_entity": null,
+    "shutters": null,
+    "surround": null,
+    "grille": null
    },
    "relations": [
     {
@@ -9476,6 +9793,7 @@
     "clear_height": 2800.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
+    "frame_size": 60.0,
     "void": {
      "origin": [
       7650.0,
@@ -9494,9 +9812,12 @@
      "thickness": 750.0,
      "height": 2800.0
     },
+    "void_entity": "A2.void",
+    "shutters": null,
+    "surround": null,
+    "grille": null,
     "springing": 2100.0,
-    "radius": 700.0,
-    "void_entity": "A2.void"
+    "radius": 700.0
    },
    "relations": [
     {
@@ -9662,28 +9983,11 @@
     "thickness": 300.0,
     "top": 0.0,
     "voids": [
-     [
-      [
-       1000.0,
-       5900.0
-      ],
-      [
-       6300.0,
-       5900.0
-      ],
-      [
-       6300.0,
-       7000.0
-      ],
-      [
-       1000.0,
-       7000.0
-      ]
-     ]
+     "ST1"
     ]
    },
    "derived": {
-    "area_mm2": 162420000.0,
+    "area_mm2": 162850000.0,
     "z_top": 3500.0,
     "voids": 1
    },
@@ -9703,7 +10007,7 @@
       3500.0
      ]
     },
-    "volume_mm3": 48726000000.0
+    "volume_mm3": 48855000000.0
    },
    "extrusion": null
   },
@@ -9740,28 +10044,11 @@
     "thickness": 300.0,
     "top": 0.0,
     "voids": [
-     [
-      [
-       900.0,
-       1400.0
-      ],
-      [
-       6100.0,
-       1400.0
-      ],
-      [
-       6100.0,
-       2600.0
-      ],
-      [
-       900.0,
-       2600.0
-      ]
-     ]
+     "ST2"
     ]
    },
    "derived": {
-    "area_mm2": 50010000.0,
+    "area_mm2": 51390000.0,
     "z_top": 6700.0,
     "voids": 1
    },
@@ -9781,7 +10068,7 @@
       6700.0
      ]
     },
-    "volume_mm3": 15003000000.0
+    "volume_mm3": 15417000000.0
    },
    "extrusion": null
   },
@@ -15401,8 +15688,7 @@
     "z_eave": 2950.0,
     "thickness": 70.0,
     "overhang": 100.0,
-    "plan_area_mm2": 51000000.0,
-    "z_top": 2950.0
+    "plan_area_mm2": 51000000.0
    },
    "relations": [],
    "geometry": {
@@ -16060,162 +16346,6 @@
    "extrusion": null
   },
   {
-   "id": "GD",
-   "kind": "slab",
-   "ifc_class": "IfcSlab",
-   "physical": true,
-   "tags": [
-    "floor",
-    "slab"
-   ],
-   "level": "LP",
-   "material": "gravel",
-   "params": {
-    "outline": [
-     [
-      -6000.0,
-      -22000.0
-     ],
-     [
-      36000.0,
-      -22000.0
-     ],
-     [
-      36000.0,
-      -5500.0
-     ],
-     [
-      -6000.0,
-      -5500.0
-     ]
-    ],
-    "thickness": 200.0,
-    "top": 0.0,
-    "voids": [
-     [
-      [
-       6500.0,
-       -16500.0
-      ],
-      [
-       20500.0,
-       -16500.0
-      ],
-      [
-       20500.0,
-       -10000.0
-      ],
-      [
-       6500.0,
-       -10000.0
-      ]
-     ]
-    ]
-   },
-   "derived": {
-    "area_mm2": 602000000.0,
-    "z_top": -2000.0,
-    "voids": 1
-   },
-   "relations": [],
-   "geometry": {
-    "step": "geometry/GD.step",
-    "obj": "geometry/GD.obj",
-    "bbox": {
-     "min": [
-      -6000.0,
-      -22000.0,
-      -2200.0
-     ],
-     "max": [
-      36000.0,
-      -5500.0,
-      -2000.0
-     ]
-    },
-    "volume_mm3": 120399999999.99998
-   },
-   "extrusion": null
-  },
-  {
-   "id": "PD",
-   "kind": "slab",
-   "ifc_class": "IfcSlab",
-   "physical": true,
-   "tags": [
-    "floor",
-    "slab"
-   ],
-   "level": "LP",
-   "material": "travertine",
-   "params": {
-    "outline": [
-     [
-      3500.0,
-      -18000.0
-     ],
-     [
-      23500.0,
-      -18000.0
-     ],
-     [
-      23500.0,
-      -8000.0
-     ],
-     [
-      3500.0,
-      -8000.0
-     ]
-    ],
-    "thickness": 100.0,
-    "top": 20.0,
-    "voids": [
-     [
-      [
-       6500.0,
-       -16500.0
-      ],
-      [
-       20500.0,
-       -16500.0
-      ],
-      [
-       20500.0,
-       -10000.0
-      ],
-      [
-       6500.0,
-       -10000.0
-      ]
-     ]
-    ]
-   },
-   "derived": {
-    "area_mm2": 109000000.0,
-    "z_top": -1980.0,
-    "voids": 1
-   },
-   "relations": [],
-   "geometry": {
-    "step": "geometry/PD.step",
-    "obj": "geometry/PD.obj",
-    "bbox": {
-     "min": [
-      3500.0,
-      -18000.0,
-      -2080.0
-     ],
-     "max": [
-      23500.0,
-      -8000.0,
-      -1980.0
-     ]
-    },
-    "volume_mm3": 10899999999.999998
-   },
-   "extrusion": null
-  },
-  {
    "id": "PL",
    "kind": "pool",
    "ifc_class": "IfcBuildingElementProxy",
@@ -16259,7 +16389,25 @@
     "area_mm2": 91000000.0,
     "depth": 1500.0,
     "water_volume_m3": 122.85,
-    "z_top": -1980.0
+    "z_top": -1980.0,
+    "outline": [
+     [
+      6500.0,
+      -16500.0
+     ],
+     [
+      20500.0,
+      -16500.0
+     ],
+     [
+      20500.0,
+      -10000.0
+     ],
+     [
+      6500.0,
+      -10000.0
+     ]
+    ]
    },
    "relations": [],
    "geometry": {
@@ -18323,6 +18471,128 @@
      ]
     },
     "volume_mm3": 88752.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "GD",
+   "kind": "slab",
+   "ifc_class": "IfcSlab",
+   "physical": true,
+   "tags": [
+    "floor",
+    "slab"
+   ],
+   "level": "LP",
+   "material": "gravel",
+   "params": {
+    "outline": [
+     [
+      -6000.0,
+      -22000.0
+     ],
+     [
+      36000.0,
+      -22000.0
+     ],
+     [
+      36000.0,
+      -5500.0
+     ],
+     [
+      -6000.0,
+      -5500.0
+     ]
+    ],
+    "thickness": 200.0,
+    "top": 0.0,
+    "voids": [
+     "PL"
+    ]
+   },
+   "derived": {
+    "area_mm2": 602000000.0,
+    "z_top": -2000.0,
+    "voids": 1
+   },
+   "relations": [],
+   "geometry": {
+    "step": "geometry/GD.step",
+    "obj": "geometry/GD.obj",
+    "bbox": {
+     "min": [
+      -6000.0,
+      -22000.0,
+      -2200.0
+     ],
+     "max": [
+      36000.0,
+      -5500.0,
+      -2000.0
+     ]
+    },
+    "volume_mm3": 120399999999.99998
+   },
+   "extrusion": null
+  },
+  {
+   "id": "PD",
+   "kind": "slab",
+   "ifc_class": "IfcSlab",
+   "physical": true,
+   "tags": [
+    "floor",
+    "slab"
+   ],
+   "level": "LP",
+   "material": "travertine",
+   "params": {
+    "outline": [
+     [
+      3500.0,
+      -18000.0
+     ],
+     [
+      23500.0,
+      -18000.0
+     ],
+     [
+      23500.0,
+      -8000.0
+     ],
+     [
+      3500.0,
+      -8000.0
+     ]
+    ],
+    "thickness": 100.0,
+    "top": 20.0,
+    "voids": [
+     "PL"
+    ]
+   },
+   "derived": {
+    "area_mm2": 109000000.0,
+    "z_top": -1980.0,
+    "voids": 1
+   },
+   "relations": [],
+   "geometry": {
+    "step": "geometry/PD.step",
+    "obj": "geometry/PD.obj",
+    "bbox": {
+     "min": [
+      3500.0,
+      -18000.0,
+      -2080.0
+     ],
+     "max": [
+      23500.0,
+      -8000.0,
+      -1980.0
+     ]
+    },
+    "volume_mm3": 10899999999.999998
    },
    "extrusion": null
   }

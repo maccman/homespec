@@ -26,6 +26,7 @@ from .walls import (
                     Leaf,
                     Opening,
                     OpeningGeometry,
+                    OpeningPart,
                     Shutters,
                     SlidingDoor,
                     Surround,
@@ -42,7 +43,7 @@ __all__ = [
     "Bookcase", "Covering", "KitchenRun", "Part", "UpperCabinet",
     "Downlight", "Outlet", "Pendant",
     "Space",
-    "Column", "Chimney", "Roof", "Gable", "Cornice", "Arch", "ArchVoid", "ArchedDoor", "Shutters", "Surround", "Grille",
+    "Column", "Chimney", "Roof", "Gable", "Cornice", "Arch", "ArchVoid", "ArchedDoor", "OpeningPart", "Shutters", "Surround", "Grille",
     "Stair", "Landing", "Pool", "PoolWater", "Coping",
     "Clerestory", "Door", "FromEnd", "Glazing", "Leaf", "Opening", "OpeningGeometry", "SlidingDoor", "Wall", "WallGeometry", "Window", "from_end",
 ]

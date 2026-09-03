@@ -67,6 +67,11 @@ def _to_id(value: Any) -> Any:
 
 
 Ref = Annotated[str, BeforeValidator(_to_id)]
+
+
+def ref_id(value: Any) -> str:
+    """The id of a reference given as an element or as its id."""
+    return _to_id(value)
 """A reference to a definition or element: accepts the object or its id, stores the id."""
 
 Positive = Annotated[float, Field(gt=0)]
@@ -256,7 +261,7 @@ class Context:
     def __init__(self, house: House, build: Build) -> None:
         self.house = house
         self.build = build
-        self._pending: list[tuple[Element, Realized]] = []
+        self._pending: list[tuple[Element, Realized | None]] = []
 
     # ---- definitions
     def level(self, element_or_id: Element | str) -> Any:
@@ -305,8 +310,15 @@ class Context:
         b = self.built(id)
         b.solid = b.solid - void
 
-    def emit(self, element: Element, realized: Realized) -> None:
-        """Add a sub-entity produced while realizing another (glass in a window, beams in a ceiling). It lands right after its parent."""
+    def emit(self, element: Element, realized: Realized | None = None) -> None:
+        """Add a sub-entity produced while realizing another. It lands right after its parent.
+
+        Pass the ``Realized`` when the parent has already built the child's
+        geometry (glass in a window, beams in a ceiling). Pass nothing and
+        the child realizes itself once the parent is in the build, reading
+        the parent's derived facts through this context: that is how the
+        parts of an opening work, and how a project adds its own.
+        """
         self._pending.append((element, realized))
 
     def relate(self, subject: str, pred: str, obj: str) -> None:
@@ -385,11 +397,14 @@ class House:
         token = _registration.set(False)
         try:
             for el in _ordered(self.elements):
-                realized = el.realize(ctx)
-                build.add(el, realized)
-                for child, child_realized in ctx._pending:
-                    build.add(child, child_realized)
+                build.add(el, el.realize(ctx))
+                queue = list(ctx._pending)
                 ctx._pending.clear()
+                while queue:                                   # children after their parent, grandchildren after them
+                    child, child_realized = queue.pop(0)
+                    build.add(child, child_realized if child_realized is not None else child.realize(ctx))
+                    queue = list(ctx._pending) + queue
+                    ctx._pending.clear()
         finally:
             _registration.reset(token)
         return build

@@ -6,32 +6,9 @@ from typing import Any, ClassVar, Literal
 from pydantic import BaseModel
 
 from .. import geometry as G
+from ..derived import ArchGeometry, OpeningGeometry, WallGeometry
 from ..geometry import Frame, Point
 from ..model import Context, Element, Extrusion, Positive, Realized, Ref, Relation, element, positional
-
-
-class WallGeometry(BaseModel):
-    """Derived facts about a realized wall, for the vocabulary and the exporters.
-
-    ``face`` is the reference line (the inside face for a CCW loop with
-    ``align="right"``); ``body`` is the corner of the wall body on the same
-    side, which is what an extrusion starts from. Both share ``u`` and ``n``.
-    """
-
-    start: Point
-    end: Point
-    length: float
-    thickness: float
-    height: float
-    elevation: float
-    angle: float
-    face: Frame
-    body: Frame
-    assembly: str
-    align: str
-
-    def z_top(self) -> float:
-        return self.elevation + self.height
 
 
 @element
@@ -90,23 +67,6 @@ def from_end(distance: float) -> FromEnd:
 Position = float | Literal["center"] | FromEnd
 
 
-class OpeningGeometry(BaseModel):
-    """Derived facts about an opening: where it is along the wall and what it clears."""
-
-    host: str
-    from_start: float
-    from_end: float
-    width: float
-    height: float
-    sill: float
-    head: float
-    clear_width: float
-    clear_height: float
-    glass_area_mm2: float
-    mullions: int
-    void: Extrusion
-
-
 # --------------------------------------------------------------------------- parts an opening may carry
 @element
 class Glazing(Element):
@@ -127,30 +87,106 @@ class Leaf(Element):
 
 
 @element
-class Shutters(Element):
-    """A pair of shutters hinged open against the outside of the wall. Emitted by an opening with ``shutters``."""
+class OpeningPart(Element):
+    """Something that dresses an opening and builds itself from the opening's geometry.
+
+    A part names its ``opening``, is realized after it, and reads the
+    opening's :class:`OpeningGeometry` and the host wall's
+    :class:`WallGeometry` through :meth:`geometry`. ``Window(shutters=...)``
+    is sugar that emits a :class:`Shutters`; a project can declare its own
+    part, a pediment or a balcony, the same way and never touch the core.
+    """
+
+    kind: ClassVar[str] = "part"
+    ifc_class: ClassVar[str | None] = "IfcBuildingElementProxy"
+    opening: Ref
+
+    def deps(self) -> list[str]:
+        return [self.opening]
+
+    def geometry(self, ctx: Context) -> tuple[OpeningGeometry, WallGeometry]:
+        geom = ctx.derived(self.opening, OpeningGeometry)
+        return geom, ctx.derived(geom.host, WallGeometry)
+
+    def finish(self, ctx: Context, geom: OpeningGeometry, wall: WallGeometry, solid: Any, derived: dict) -> Realized:
+        """The realized part: on the opening's storey, part of it, external when its wall is."""
+        tags = {"external"} if "external" in ctx.built(geom.host).tags else set()
+        return Realized(solid=solid, derived=derived, level=ctx.level_at(wall.elevation + geom.sill).id,
+                        relations=[Relation(pred="part_of", obj=self.opening)], tags=tags)
+
+
+@element
+class Shutters(OpeningPart):
+    """A pair of louvred shutters hinged open against the outside of the wall: stiles, rails and slats."""
 
     kind: ClassVar[str] = "shutters"
     ifc_class: ClassVar[str | None] = "IfcShadingDevice"
-    opening: Ref
+    thickness: Positive = 35.0
+    stile: Positive = 60.0
+    rail: Positive = 80.0
+    slat: Positive = 45.0
+    pitch: Positive = 57.0
+
+    def realize(self, ctx: Context) -> Realized:
+        geom, wall = self.geometry(ctx)
+        x, z, head = geom.from_start, wall.elevation + geom.sill, geom.height
+        leaf_w, thick, stile, rail, slat, pitch = geom.width / 2, self.thickness, self.stile, self.rail, self.slat, self.pitch
+        o = -thick - 15
+        leaves = []
+        for along in (x - leaf_w - 20, x + geom.width + 20):
+            leaves.append(G.frame_box(wall.body, along, o, z, (stile, thick, head)))
+            leaves.append(G.frame_box(wall.body, along + leaf_w - stile, o, z, (stile, thick, head)))
+            for rz in (z, z + head / 2 - rail / 2, z + head - rail):
+                leaves.append(G.frame_box(wall.body, along + stile, o, rz, (leaf_w - 2 * stile, thick, rail)))
+            for lo, hi in ((z + rail, z + head / 2 - rail / 2), (z + head / 2 + rail / 2, z + head - rail)):
+                sz = lo + 12
+                while sz + slat <= hi - 12:
+                    leaves.append(G.frame_box(wall.body, along + stile, o + 8, sz, (leaf_w - 2 * stile, 18.0, slat)))
+                    sz += pitch
+        return self.finish(ctx, geom, wall, G.group(leaves), {"leaves": 2, "style": "louvred", "leaf_width": leaf_w, "height": head, "thickness": thick})
 
 
 @element
-class Surround(Element):
+class Surround(OpeningPart):
     """Dressed-stone jambs, lintel and sill standing proud of the wall around an opening."""
 
     kind: ClassVar[str] = "surround"
-    ifc_class: ClassVar[str | None] = "IfcBuildingElementProxy"
-    opening: Ref
+    jamb: Positive = 140.0
+    lintel: Positive = 220.0
+    sill_height: Positive = 100.0
+    projection: Positive = 25.0
+
+    def realize(self, ctx: Context) -> Realized:
+        geom, wall = self.geometry(ctx)
+        x, z, head = geom.from_start, wall.elevation + geom.sill, geom.height
+        jamb, lintel, sillh, proud = self.jamb, self.lintel, self.sill_height, self.projection
+        parts = [
+            G.frame_box(wall.body, x - jamb, -proud, z, (jamb, proud + 60, head)),
+            G.frame_box(wall.body, x + geom.width, -proud, z, (jamb, proud + 60, head)),
+            G.frame_box(wall.body, x - jamb, -proud, z + head, (geom.width + 2 * jamb, proud + 60, lintel)),
+            G.frame_box(wall.body, x - jamb, -proud - 30, z - sillh, (geom.width + 2 * jamb, proud + 90, sillh)),
+        ]
+        return self.finish(ctx, geom, wall, G.group(parts), {"jamb": jamb, "lintel": lintel, "sill": sillh, "projection": proud})
 
 
 @element
-class Grille(Element):
-    """An iron grille outside a window."""
+class Grille(OpeningPart):
+    """An iron grille outside a window: two rails and vertical bars at ``pitch``."""
 
     kind: ClassVar[str] = "grille"
-    ifc_class: ClassVar[str | None] = "IfcBuildingElementProxy"
-    opening: Ref
+    bar: Positive = 18.0
+    pitch: Positive = 140.0
+
+    def realize(self, ctx: Context) -> Realized:
+        geom, wall = self.geometry(ctx)
+        x, z, head, fs, bar = geom.from_start, wall.elevation + geom.sill, geom.height, geom.frame_size, self.bar
+        inner = geom.width - 2 * fs
+        rods = [G.frame_box(wall.body, x + fs, -40, z + fs + h_off, (inner, bar, bar)) for h_off in (head * 0.3, head * 0.65)]
+        n = max(2, int(inner / self.pitch))
+        for k in range(n):
+            rx = x + fs + inner * (k + 0.5) / n - bar / 2
+            rods.append(G.frame_box(wall.body, rx, -40, z + fs, (bar, bar, head - 2 * fs)))
+        return self.finish(ctx, geom, wall, G.group(rods), {"bars": n})
 
 
 @element
@@ -257,50 +293,17 @@ class Opening(Element):
         void_ex = Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=t + 200, height=head)
         geom = OpeningGeometry(host=self.host, from_start=x, from_end=wall.length - x - self.width, width=self.width, height=head,
                                sill=self.sill, head=self.sill + head, clear_width=self.clear_width(), clear_height=head - 2 * fs,
-                               glass_area_mm2=glass_area, mullions=len(self.mullion_positions()), void=void_ex)
+                               glass_area_mm2=glass_area, mullions=len(self.mullion_positions()), frame_size=fs, void=void_ex)
         derived = geom.model_dump()
         part_of = [Relation(pred="part_of", obj=self.id)]
         if panes:
             ctx.emit(Glazing(f"{self.id}.glass", opening=self.id, level=level, material=self.glazing),
                      Realized(solid=G.group(panes), derived={"area_mm2": glass_area}, relations=part_of))
         self.fill(ctx, wall, x, level)
-        if self.shutters:
-            # louvred leaves: two stiles, three rails, 45 mm slats at 57 mm pitch in each panel
-            leaf_w, thick, stile, rail, slat, pitch = self.width / 2, 35.0, 60.0, 80.0, 45.0, 57.0
-            o = -thick - 15
-            leaves = []
-            for along in (x - leaf_w - 20, x + self.width + 20):
-                leaves.append(G.frame_box(wall.body, along, o, z, (stile, thick, head)))
-                leaves.append(G.frame_box(wall.body, along + leaf_w - stile, o, z, (stile, thick, head)))
-                for rz in (z, z + head / 2 - rail / 2, z + head - rail):
-                    leaves.append(G.frame_box(wall.body, along + stile, o, rz, (leaf_w - 2 * stile, thick, rail)))
-                for lo, hi in ((z + rail, z + head / 2 - rail / 2), (z + head / 2 + rail / 2, z + head - rail)):
-                    sz = lo + 12
-                    while sz + slat <= hi - 12:
-                        leaves.append(G.frame_box(wall.body, along + stile, o + 8, sz, (leaf_w - 2 * stile, 18.0, slat)))
-                        sz += pitch
-            ctx.emit(Shutters(f"{self.id}.shutters", opening=self.id, level=level, material=self.shutters, tags={"external"}),
-                     Realized(solid=G.group(leaves), derived={"leaves": 2, "style": "louvred", "leaf_width": leaf_w, "height": head, "thickness": thick}, relations=part_of))
-            derived["shutters"] = self.shutters
-        if self.surround:
-            jamb, lintel, sillh, proud = 140.0, 220.0, 100.0, 25.0
-            parts = [
-                G.frame_box(wall.body, x - jamb, -proud, z, (jamb, proud + 60, head)),
-                G.frame_box(wall.body, x + self.width, -proud, z, (jamb, proud + 60, head)),
-                G.frame_box(wall.body, x - jamb, -proud, z + head, (self.width + 2 * jamb, proud + 60, lintel)),
-                G.frame_box(wall.body, x - jamb, -proud - 30, z - sillh, (self.width + 2 * jamb, proud + 90, sillh)),
-            ]
-            ctx.emit(Surround(f"{self.id}.surround", opening=self.id, level=level, material=self.surround, tags={"external"}),
-                     Realized(solid=G.group(parts), derived={"jamb": jamb, "lintel": lintel, "sill": sillh, "projection": proud}, relations=part_of))
-            derived["surround"] = self.surround
-        if self.grille:
-            rods = [G.frame_box(wall.body, x + fs, -40, z + fs + h_off, (self.width - 2 * fs, 18, 18)) for h_off in (head * 0.3, head * 0.65)]
-            n = max(2, int((self.width - 2 * fs) / 140))
-            for k in range(n):
-                rx = x + fs + (self.width - 2 * fs) * (k + 0.5) / n - 9
-                rods.append(G.frame_box(wall.body, rx, -40, z + fs, (18, 18, head - 2 * fs)))
-            ctx.emit(Grille(f"{self.id}.grille", opening=self.id, level=level, material=self.grille, tags={"external"}),
-                     Realized(solid=G.group(rods), derived={"bars": n}, relations=part_of))
+        for part_cls, material, key in ((Shutters, self.shutters, "shutters"), (Surround, self.surround, "surround"), (Grille, self.grille, "grille")):
+            if material:                                   # the sugar: a material name emits a part that builds itself
+                ctx.emit(part_cls(f"{self.id}.{key}", opening=self.id, material=material))
+                derived[key] = material
         ctx.relate(self.host, "has_opening", self.id)
         host_tags = ctx.built(self.host).tags
         return Realized(solid=G.group(members), derived=derived, material=self.frame, level=level,
@@ -436,7 +439,7 @@ class Arch(Opening):
         geom = OpeningGeometry(host=self.host, from_start=x, from_end=wall.length - x - self.width, width=self.width, height=head,
                                sill=self.sill, head=self.sill + head, clear_width=self.width, clear_height=head, glass_area_mm2=0.0, mullions=0,
                                void=Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=wall.thickness + 200, height=head))
-        return Realized(derived={**geom.model_dump(), "springing": self.height, "radius": self.width / 2, "void_entity": void_entity.id}, level=level,
+        return Realized(derived=ArchGeometry(**{**geom.model_dump(), "springing": self.height, "radius": self.width / 2, "void_entity": void_entity.id}).model_dump(), level=level,
                         relations=[Relation(pred="hosted_in", obj=self.host)])
 
 

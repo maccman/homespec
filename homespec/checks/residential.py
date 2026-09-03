@@ -10,7 +10,8 @@ from collections.abc import Iterable
 from shapely.geometry import Polygon
 from shapely.geometry import box as sbox
 
-from ..geometry import BBox, Frame
+from ..derived import BeamGeometry, BookcaseGeometry, KitchenGeometry, OpeningGeometry, RoofGeometry, SpaceGeometry, StairGeometry, WallGeometry
+from ..geometry import BBox
 from ..ir import IRDocument, IREntity
 from .base import Result, rule
 
@@ -38,7 +39,7 @@ def ceiling_height(ir: IRDocument) -> Iterable[Result]:
 @rule("headroom_under_beam", clause="2100 clear under projections (rule of thumb)")
 def headroom(ir: IRDocument) -> Iterable[Result]:
     for b in ir.of_kind("beam"):
-        clear = b.derived["clear_below"]
+        clear = b.derived_as(BeamGeometry).clear_below
         yield Result(rule="", target=b.id, ok=clear >= 2100, value=clear, limit=2100)
 
 
@@ -48,8 +49,8 @@ def glazing_ratio(ir: IRDocument) -> Iterable[Result]:
         if not _habitable(s):
             continue
         walls = set(s.related("bounded_by"))
-        glass = sum(o.derived["glass_area_mm2"] for o in ir.tagged("opening") if o.derived["host"] in walls)
-        ratio = glass / s.derived["area_mm2"]
+        glass = sum(g.glass_area_mm2 for g in (o.derived_as(OpeningGeometry) for o in ir.tagged("opening")) if g.host in walls)
+        ratio = glass / s.derived_as(SpaceGeometry).area_mm2
         yield Result(rule="", target=s.id, ok=ratio >= 0.10, value=round(ratio, 3), limit=0.10, note="glass area / floor area")
 
 
@@ -57,16 +58,16 @@ def glazing_ratio(ir: IRDocument) -> Iterable[Result]:
 def egress(ir: IRDocument) -> Iterable[Result]:
     for s in ir.of_kind("space"):
         walls = set(s.related("bounded_by"))
-        ways = [o for o in ir.tagged("opening") if o.derived["host"] in walls and (o.has("door") or o.has("passage"))]
+        ways = [(o, o.derived_as(OpeningGeometry)) for o in ir.tagged("opening") if o.has("door") or o.has("passage")]
         need = 800 if _habitable(s) else 620
-        good = [d for d in ways if d.derived["clear_width"] >= need and d.derived["clear_height"] >= 2000]
+        good = [o for o, g in ways if g.host in walls and g.clear_width >= need and g.clear_height >= 2000]
         yield Result(rule="", target=s.id, ok=bool(good), value=", ".join(d.id for d in good) or "none", limit=f"1 door or passage >= {need} x 2000 clear")
 
 
 @rule("door_clear_width", clause="external doors 800 clear per leaf, internal 620 (rule of thumb)")
 def door_width(ir: IRDocument) -> Iterable[Result]:
     for d in ir.tagged("door"):
-        cw = d.derived["clear_width"]
+        cw = d.derived_as(OpeningGeometry).clear_width
         limit = 800 if d.has("external") else 620
         yield Result(rule="", target=d.id, ok=cw >= limit, value=cw, limit=limit, note="inside the frame")
 
@@ -74,15 +75,14 @@ def door_width(ir: IRDocument) -> Iterable[Result]:
 @rule("opening_fits_wall")
 def opening_fits(ir: IRDocument) -> Iterable[Result]:
     for w in ir.of_kind("wall"):
-        ops = sorted((ir.entity(i) for i in w.related("has_opening")), key=lambda o: o.derived["from_start"])
-        L, H = w.derived["length"], w.derived["height"]
-        for o in ops:
-            d = o.derived
-            fits = d["from_start"] >= 0 and d["from_end"] >= 0 and d["head"] <= H
-            yield Result(rule="", target=o.id, ok=fits, value=f"{int(d['from_start'])}+{int(d['width'])} of {int(L)}; head {int(d['head'])} of {int(H)}")
-        for a, b in zip(ops, ops[1:], strict=False):
-            da, db = a.derived, b.derived
-            overlap = da["from_start"] + da["width"] > db["from_start"] and da["sill"] < db["head"] and db["sill"] < da["head"]
+        ops = sorted(((ir.entity(i), ir.entity(i).derived_as(OpeningGeometry)) for i in w.related("has_opening")), key=lambda og: og[1].from_start)
+        wg = w.derived_as(WallGeometry)
+        L, H = wg.length, wg.height
+        for o, d in ops:
+            fits = d.from_start >= 0 and d.from_end >= 0 and d.head <= H
+            yield Result(rule="", target=o.id, ok=fits, value=f"{int(d.from_start)}+{int(d.width)} of {int(L)}; head {int(d.head)} of {int(H)}")
+        for (a, da), (b, db) in zip(ops, ops[1:], strict=False):
+            overlap = da.from_start + da.width > db.from_start and da.sill < db.head and db.sill < da.head
             yield Result(rule="openings_do_not_overlap", target=f"{a.id}/{b.id}", ok=not overlap)
 
 
@@ -90,8 +90,8 @@ def opening_fits(ir: IRDocument) -> Iterable[Result]:
 def kitchen_clearance(ir: IRDocument) -> Iterable[Result]:
     for k in ir.of_kind("kitchen"):
         host = ir.entity(k.params["on"])
-        face = Frame.model_validate(host.derived["face"])
-        front = k.derived["front"]
+        face = host.derived_as(WallGeometry).face
+        front = k.derived_as(KitchenGeometry).front
         need = 900
         x0, L = k.params["from_start"], k.params["length"]
         # the walking zone, in the wall's frame, as a world polygon
@@ -116,7 +116,7 @@ def kitchen_clearance(ir: IRDocument) -> Iterable[Result]:
 @rule("shelf_span", clause="900 max unsupported shelf span at 40 panel (rule of thumb)")
 def shelf_span(ir: IRDocument) -> Iterable[Result]:
     for b in ir.of_kind("bookcase"):
-        bw = b.derived["bay_width"]
+        bw = b.derived_as(BookcaseGeometry).bay_width
         yield Result(rule="", target=b.id, ok=bw <= 900, value=round(bw), limit=900)
 
 
@@ -142,7 +142,7 @@ def setbacks(ir: IRDocument) -> Iterable[Result]:
 @rule("roof_pitch", clause="clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb)")
 def roof_pitch(ir: IRDocument) -> Iterable[Result]:
     for r in ir.of_kind("roof"):
-        pitch = r.derived["pitch"]
+        pitch = r.derived_as(RoofGeometry).pitch
         tiles = "tile" in (ir.materials[r.material].product or "").lower() if r.material and r.material in ir.materials else False
         ok = 18 <= pitch <= 35 if tiles else pitch >= 3
         yield Result(rule="", target=r.id, ok=ok, value=pitch, limit="18..35" if tiles else ">= 3", note="clay tiles" if tiles else "low-slope covering")
@@ -151,6 +151,7 @@ def roof_pitch(ir: IRDocument) -> Iterable[Result]:
 @rule("stair_proportions", clause="risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb)")
 def stair_proportions(ir: IRDocument) -> Iterable[Result]:
     for st in ir.of_kind("stair"):
-        r, g = st.derived["riser"], st.derived["going"]
+        sg = st.derived_as(StairGeometry)
+        r, g = sg.riser, sg.going
         ok = 150 <= r <= 190 and g >= 250 and 550 <= 2 * r + g <= 700
         yield Result(rule="", target=st.id, ok=ok, value=f"riser {r:.0f}, going {g:.0f}, 2R+G {2 * r + g:.0f}", limit="150..190 / >=250 / 550..700")

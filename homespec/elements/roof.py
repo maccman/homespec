@@ -5,6 +5,7 @@ import math
 from typing import ClassVar, Literal
 
 from .. import geometry as G
+from ..derived import RoofGeometry
 from ..geometry import Point
 from ..model import Context, Element, NonNegative, Outline, Positive, Realized, Ref, Relation, element
 
@@ -98,7 +99,7 @@ class Roof(Element):
 
         if self.genoise:
             self._emit_genoise(ctx, x0, x1, y0, y1, lv.elevation + lv.height)
-        return Realized(solid=solid, derived=derived, tags={"external"})
+        return Realized(solid=solid, derived=RoofGeometry(**derived).model_dump(exclude_none=True), tags={"external"})
 
     # ---- pieces
     def _gable_prism(self, x0, x1, y0, y1, oh, t, z_eave, slope, along_x, derived):

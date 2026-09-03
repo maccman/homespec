@@ -4,6 +4,7 @@ from __future__ import annotations
 from typing import ClassVar
 
 from .. import geometry as G
+from ..derived import ColumnGeometry
 from ..geometry import Point
 from ..model import Context, Element, Positive, Realized, element
 
@@ -32,7 +33,7 @@ class Column(Element):
             s = self.size or 300.0
             solid = G.box((s, s, h), (self.at[0] - s / 2, self.at[1] - s / 2, z))
             section = {"size": s}
-        return Realized(solid=solid, derived={"height": h, "z_top": z + h, **section}, tags={"structure"})
+        return Realized(solid=solid, derived=ColumnGeometry(height=h, z_top=z + h, **section).model_dump(exclude_none=True), tags={"structure"})
 
 
 @element

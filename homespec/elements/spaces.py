@@ -5,6 +5,7 @@ from dataclasses import field
 from typing import ClassVar
 
 from .. import geometry as G
+from ..derived import SpaceGeometry
 from ..model import Context, Element, Outline, Realized, Ref, Relation, element
 
 
@@ -30,7 +31,7 @@ class Space(Element):
             ctx.relate(w, "bounds", self.id)
         return Realized(
             solid=G.prism(self.outline, lv.elevation, lv.height),
-            derived={"area_mm2": G.polygon_area(self.outline), "height": lv.height},
+            derived=SpaceGeometry(area_mm2=G.polygon_area(self.outline), height=lv.height).model_dump(),
             relations=[Relation(pred="bounded_by", obj=w) for w in self.bounded_by],
             tags={self.use},
         )

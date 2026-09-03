@@ -44,6 +44,7 @@ from .elements import (
     Material,
     Opening,
     OpeningGeometry,
+    OpeningPart,
     Outlet,
     Part,
     Pendant,
@@ -96,7 +97,7 @@ __all__ = [
     "Bookcase", "Covering", "KitchenRun", "Part", "UpperCabinet",
     "Downlight", "Outlet", "Pendant",
     "Space",
-    "Column", "Chimney", "Roof", "Gable", "Cornice", "Arch", "ArchVoid", "ArchedDoor", "Shutters", "Surround", "Grille",
+    "Column", "Chimney", "Roof", "Gable", "Cornice", "Arch", "ArchVoid", "ArchedDoor", "OpeningPart", "Shutters", "Surround", "Grille",
     "Stair", "Landing", "Pool", "PoolWater", "Coping",
     "Clerestory", "Door", "FromEnd", "Glazing", "Leaf", "Opening", "OpeningGeometry", "SlidingDoor", "Wall", "WallGeometry", "Window", "from_end",
 ]

@@ -20,7 +20,8 @@ from ezdxf.enums import TextEntityAlignment
 from ezdxf.filemanagement import new as new_dxf
 from pydantic import BaseModel, Field
 
-from ..geometry import Frame, Loop, Point, add, read_step, scale, section_loops
+from ..derived import OpeningGeometry, SpaceGeometry, WallGeometry
+from ..geometry import Loop, Point, add, read_step, scale, section_loops
 from ..ir import IRDocument
 
 CUT_HEIGHT = 1200.0
@@ -115,26 +116,25 @@ def plan_view(ir: IRDocument, level: str, cut: float = CUT_HEIGHT) -> PlanView:
         cx = sum(p[0] for p in s.params["outline"]) / len(s.params["outline"])
         cy = sum(p[1] for p in s.params["outline"]) / len(s.params["outline"])
         view.labels.append(Label(at=(cx, cy + 180), text=s.id.upper(), size=3.0))
-        view.labels.append(Label(at=(cx, cy - 180), text=f"{s.params['use'].replace('_', ' ')}  {s.derived['area_mm2'] / 1e6:.1f} m²", size=2.2))
+        view.labels.append(Label(at=(cx, cy - 180), text=f"{s.params['use'].replace('_', ' ')}  {s.derived_as(SpaceGeometry).area_mm2 / 1e6:.1f} m²", size=2.2))
 
     for w in ir.of_kind("wall"):
         if not w.geometry or not (w.geometry.bbox.min[2] <= cut_z <= w.geometry.bbox.max[2]):
             continue
-        face = Frame.model_validate(w.derived["face"])
-        t, L = w.derived["thickness"], w.derived["length"]
+        wg = w.derived_as(WallGeometry)
+        face, t, L, wall_z = wg.face, wg.thickness, wg.length, wg.elevation
         external = w.has("external")
         ticks = {0.0, L}
-        wall_z = w.derived["elevation"]
         for oid in w.related("has_opening"):
-            d = ir.entity(oid).derived
-            if wall_z + d["sill"] <= cut_z <= wall_z + d["head"]:
-                ticks |= {d["from_start"], d["from_start"] + d["width"]}
+            d = ir.entity(oid).derived_as(OpeningGeometry)
+            if wall_z + d.sill <= cut_z <= wall_z + d.head:
+                ticks |= {d.from_start, d.from_start + d.width}
         chain = sorted(round(v, 1) for v in ticks)
         if external:
             view.dimensions.append(Dimension(base=face.point(0, -(t + 900)), u=face.u, n=face.n, ticks=chain))
             if len(chain) > 2:
                 view.dimensions.append(Dimension(base=face.point(0, -(t + 1600)), u=face.u, n=face.n, ticks=[0.0, L]))
-            view.labels.append(Label(at=face.point(L * 0.25, -(t + 260)), text=f"{w.id}  {w.derived['assembly']}  {int(t)}", angle=_readable(face.angle), size=2.2))
+            view.labels.append(Label(at=face.point(L * 0.25, -(t + 260)), text=f"{w.id}  {wg.assembly}  {int(t)}", angle=_readable(face.angle), size=2.2))
         elif len(chain) > 2:
             # internal walls: only the openings, on the room side, close to the wall
             view.dimensions.append(Dimension(base=face.point(0, t / 2 + 450), u=face.u, n=face.n, ticks=chain))

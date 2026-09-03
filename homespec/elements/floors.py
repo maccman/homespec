@@ -2,18 +2,24 @@
 from __future__ import annotations
 
 from dataclasses import field
-from typing import ClassVar, Literal
+from typing import Any, ClassVar, Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 from .. import geometry as G
+from ..derived import BeamGeometry, CeilingGeometry, SlabGeometry
 from ..geometry import Point
-from ..model import Context, Element, Outline, Positive, Realized, Ref, Relation, element, positional
+from ..model import Context, Element, Outline, Positive, Realized, Ref, Relation, element, positional, ref_id
 
 
 @element
 class Slab(Element):
-    """A floor slab whose top sits at the level (plus ``top``) and whose outline is the plan polygon."""
+    """A floor slab whose top sits at the level (plus ``top``) and whose outline is the plan polygon.
+
+    A void is an outline, or the id (or object) of an entity that publishes
+    an ``outline`` in its derived facts: a stair, a pool. Naming the entity
+    means the hole follows it, and the outline is written once.
+    """
 
     kind: ClassVar[str] = "slab"
     ifc_class: ClassVar[str | None] = "IfcSlab"
@@ -21,16 +27,37 @@ class Slab(Element):
     outline: Outline
     thickness: Positive
     top: float = 0.0
-    voids: list[list[Point]] = field(default_factory=list)
+    voids: list[list[Point] | str] = field(default_factory=list)
+
+    @field_validator("voids", mode="before")
+    @classmethod
+    def _void_refs(cls, voids: Any) -> Any:
+        return [v if isinstance(v, (list, tuple)) else ref_id(v) for v in voids]
+
+    def deps(self) -> list[str]:
+        return [v for v in self.voids if isinstance(v, str)]
+
+    def void_outlines(self, ctx: Context) -> list[list[Point]]:
+        outlines = []
+        for v in self.voids:
+            if isinstance(v, str):
+                d = ctx.built(v).derived
+                if "outline" not in d:
+                    raise ValueError(f"{self.id!r}: void {v!r} publishes no outline")
+                outlines.append([tuple(p) for p in d["outline"]])
+            else:
+                outlines.append(list(v))
+        return outlines
 
     def realize(self, ctx: Context) -> Realized:
         lv = ctx.level(self)
         z_top = lv.elevation + self.top
         solid = G.prism(self.outline, z_top - self.thickness, self.thickness)
-        for void in self.voids:
+        voids = self.void_outlines(ctx)
+        for void in voids:
             solid = solid - G.prism(void, z_top - self.thickness - 10, self.thickness + 20)
-        area = G.polygon_area(self.outline) - sum(G.polygon_area(v) for v in self.voids)
-        return Realized(solid=solid, derived={"area_mm2": area, "z_top": z_top, "voids": len(self.voids)}, tags={"floor"})
+        area = G.polygon_area(self.outline) - sum(G.polygon_area(v) for v in voids)
+        return Realized(solid=solid, derived=SlabGeometry(area_mm2=area, z_top=z_top, voids=len(voids)).model_dump(), tags={"floor"})
 
 
 @element
@@ -51,7 +78,7 @@ class Beam(Element):
         span = G.length(G.sub(self.end, self.start))
         solid = G.frame_box(frame, 0.0, -self.width / 2, self.underside, (span, self.width, self.depth))
         lv = ctx.level(self)
-        return Realized(solid=solid, derived={"span": span, "clear_below": self.underside - lv.elevation, "size": [self.width, self.depth]})
+        return Realized(solid=solid, derived=BeamGeometry(span=span, clear_below=self.underside - lv.elevation, size=[self.width, self.depth]).model_dump())
 
 
 class BeamGrid(BaseModel):
@@ -105,7 +132,7 @@ class Ceiling(Element):
                 r.relations.append(Relation(pred="part_of", obj=self.id))
                 ctx.emit(beam, r)
             derived.update(beams=len(lines), beam_spacing=b.spacing)
-        return Realized(solid=solid, derived=derived, tags={"lining"})
+        return Realized(solid=solid, derived=CeilingGeometry(**derived).model_dump(exclude_none=True), tags={"lining"})
 
 
 def _centred(a: float, b: float, spacing: float) -> list[float]:

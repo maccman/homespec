@@ -5,6 +5,7 @@ import math
 from typing import ClassVar, Literal
 
 from .. import geometry as G
+from ..derived import StairGeometry
 from ..geometry import Frame, Point
 from ..model import Context, Element, Positive, Realized, Ref, Relation, element, positional
 
@@ -44,8 +45,8 @@ class Stair(Element):
         steps = [G.frame_box(frame, i * self.going, off, lv.elevation, (self.going, self.width, riser * (i + 1))) for i in range(n)]
         run = n * self.going
         top = frame.point(run)
-        derived = {"steps": n, "riser": riser, "going": self.going, "run": run, "top": list(top), "pitch": math.degrees(math.atan2(riser, self.going)),
-                   "outline": [list(frame.point(0, off)), list(frame.point(run, off)), list(frame.point(run, off + self.width)), list(frame.point(0, off + self.width))]}
+        derived = StairGeometry(steps=n, riser=riser, going=self.going, run=run, top=list(top), pitch=math.degrees(math.atan2(riser, self.going)),
+                                outline=[list(frame.point(0, off)), list(frame.point(run, off)), list(frame.point(run, off + self.width)), list(frame.point(0, off + self.width))]).model_dump()
         relations = [Relation(pred="rises_to", obj=self.to_level)] if self.to_level else []
         return Realized(solid=G.group(steps), derived=derived, relations=relations, tags={"circulation"})
 

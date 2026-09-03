@@ -5,6 +5,7 @@ import csv
 import os
 from typing import Any
 
+from ..derived import OpeningGeometry, SpaceGeometry, WallGeometry
 from ..ir import IRDocument
 
 
@@ -20,15 +21,17 @@ def export_schedules(ir: IRDocument, out_dir: str) -> list[str]:
             w.writerows(rows)
         written.append(p)
 
+    walls = [(w, w.derived_as(WallGeometry)) for w in ir.of_kind("wall")]
     write("walls", ["id", "level", "assembly", "thickness_mm", "length_mm", "height_mm", "external", "finish_inside", "layers_out_to_in", "openings"],
-          [[w.id, w.level, w.derived["assembly"], _i(w.derived["thickness"]), _i(w.derived["length"]), _i(w.derived["height"]), w.has("external"),
-            w.material, " / ".join(f"{layer.material} {_i(layer.thickness)}" for layer in ir.assemblies[w.derived["assembly"]].layers), " ".join(w.related("has_opening"))]
-           for w in ir.of_kind("wall")])
+          [[w.id, w.level, g.assembly, _i(g.thickness), _i(g.length), _i(g.height), w.has("external"),
+            w.material, " / ".join(f"{layer.material} {_i(layer.thickness)}" for layer in ir.assemblies[g.assembly].layers), " ".join(w.related("has_opening"))]
+           for w, g in walls])
 
+    openings = [(o, o.derived_as(OpeningGeometry)) for o in ir.tagged("opening")]
     write("openings", ["id", "kind", "host_wall", "width_mm", "height_mm", "sill_mm", "head_mm", "from_wall_start_mm", "clear_width_mm", "mullions", "frame", "frame_size_mm", "glazing", "glass_area_m2"],
-          [[o.id, o.kind, o.derived["host"], _i(o.derived["width"]), _i(o.derived["height"]), _i(o.derived["sill"]), _i(o.derived["head"]), _i(o.derived["from_start"]),
-            _i(o.derived["clear_width"]), o.derived["mullions"], o.material, o.params.get("frame_size"), o.params.get("glazing"), round(o.derived["glass_area_mm2"] / 1e6, 2)]
-           for o in ir.tagged("opening")])
+          [[o.id, o.kind, g.host, _i(g.width), _i(g.height), _i(g.sill), _i(g.head), _i(g.from_start),
+            _i(g.clear_width), g.mullions, o.material, o.params.get("frame_size"), o.params.get("glazing"), round(g.glass_area_mm2 / 1e6, 2)]
+           for o, g in openings])
 
     write("finishes", ["material", "used_by", "texture", "product", "supplier", "finish", "notes"],
           [[k, " ".join(e.id for e in ir.entities if e.material == k), m.texture or "", m.product or "", m.supplier or "", m.finish or "", m.notes or ""]
@@ -46,8 +49,8 @@ def export_schedules(ir: IRDocument, out_dir: str) -> list[str]:
            for e in ir.tagged("service") if e.geometry])
 
     write("spaces", ["id", "level", "use", "area_m2", "height_mm", "bounded_by", "glazing_m2"],
-          [[s.id, s.level, s.params["use"], round(s.derived["area_mm2"] / 1e6, 2), _i(s.derived["height"]), " ".join(s.related("bounded_by")),
-            round(sum(o.derived["glass_area_mm2"] for o in ir.tagged("opening") if o.derived["host"] in s.related("bounded_by")) / 1e6, 2)]
+          [[s.id, s.level, s.params["use"], round(s.derived_as(SpaceGeometry).area_mm2 / 1e6, 2), _i(s.derived_as(SpaceGeometry).height), " ".join(s.related("bounded_by")),
+            round(sum(g.glass_area_mm2 for _, g in openings if g.host in s.related("bounded_by")) / 1e6, 2)]
            for s in ir.of_kind("space")])
     return written
 

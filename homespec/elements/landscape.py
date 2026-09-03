@@ -6,6 +6,7 @@ from typing import ClassVar
 from shapely.geometry import Polygon
 
 from .. import geometry as G
+from ..derived import PoolGeometry
 from ..geometry import Point
 from ..model import Context, Element, Outline, Positive, Realized, Ref, Relation, element
 
@@ -59,7 +60,8 @@ class Pool(Element):
         coping = G.prism(rim, z_top, self.coping_thickness) - G.prism(self.outline, z_top - 10, self.coping_thickness + 20)
         ctx.emit(Coping(f"{self.id}.coping", pool=self.id, level=level, material=self.coping_material),
                  Realized(solid=coping, derived={"width": self.coping, "thickness": self.coping_thickness}, relations=[Relation(pred="part_of", obj=self.id)]))
-        return Realized(solid=shell, derived={"area_mm2": area, "depth": self.depth, "water_volume_m3": area * (self.depth - self.freeboard) / 1e9, "z_top": z_top},
+        return Realized(solid=shell, derived=PoolGeometry(area_mm2=area, depth=self.depth, water_volume_m3=area * (self.depth - self.freeboard) / 1e9, z_top=z_top,
+                                              outline=[list(p) for p in self.outline]).model_dump(),
                         tags={"external", "landscape"})
 
 

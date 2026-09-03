@@ -63,6 +63,42 @@ real walls, not meshes; everything else carries its exact tessellation.
 Exporters never rebuild geometry from parameters. That rule exists because
 the first version broke it and the bug it produced was the first one found.
 
+## Parts build themselves
+
+An element may emit children while it is realized. It can hand the child a
+finished `Realized` (the glass of a window, the beams under a ceiling), or
+it can emit the bare element and let it realize itself once the parent is
+in the build. The parts that dress an opening work the second way:
+`Shutters`, `Surround` and `Grille` subclass `OpeningPart`, name their
+opening, and read its `OpeningGeometry` and the wall's `WallGeometry`
+through the context. `Window(shutters="paint")` is sugar that emits one. A
+project adds a pediment or a balcony the same way, without touching the
+core, and it lands on the right storey, tagged external exactly when its
+wall is.
+
+## Derived facts are typed
+
+Every element publishes what it worked out (`homespec.derived`): a wall its
+frames and length, an opening its clear sizes and void, a stair its outline,
+a roof its ridge. The IR stores them as plain dicts because Blender's Python
+cannot import this package, but producers build them from the models and
+every Python consumer reads them back through `IREntity.derived_as`, so a
+producer and a consumer that disagree fail at compile time, not in a
+schedule. Small sub-parts keep informal dicts; nothing downstream depends on
+them.
+
+Entities may refer to each other by these facts too: a slab's void can name
+the stair or pool it is cut for, and the outline is written once.
+
+## The Blender consumer
+
+`homespec/blender/` is a package of plain modules that run inside Blender:
+`session` (paths and the IR), `materials`, `building` (the meshes),
+`primitives`, `plants`, `models`, `lighting`, `camera`, `furniture` and
+`frames` (rendering and its checks). `scene.py` is the entry point and
+assembles the `Scene` a presentation dresses with. The modules import each
+other by name because `homespec` itself cannot be imported there.
+
 ## Intent lives next to outcome
 
 Rules run on every build and fail it. Generic rules ship in

@@ -13,7 +13,7 @@ iron,N7.grille N10.grille N12.grille PP1 PP2 PP3 PP4 PP5 PB,,"Wrought iron posts
 glass_double,D1.glass N1.glass N2.glass N3.glass N4.glass N5.glass D2.glass N6.glass N7.glass N8.glass N9.glass N10.glass N11.glass N12.glass N13.glass N14.glass N15.glass N16.glass N17.glass N18.glass D3.glass D4.glass N19.glass N20.glass,,Slim double glazing 4/12/4,,,
 door_grey,D0.leaf D5.leaf D6.leaf D7.leaf D8.leaf D9.leaf D10.leaf K1.base,,"Oak plank doors, painted",,,
 brande,RP,polyhaven/gravel,Heather brush (brande) on galvanised mesh,TBD,,
-travertine,PD PL.coping,polyhaven/beige_wall_001,"Travertine coping and pool deck 600 x 400, tumbled",TBD,,
+travertine,PL.coping PD,polyhaven/beige_wall_001,"Travertine coping and pool deck 600 x 400, tumbled",TBD,,
 pool_tile,PL,,"Pool render, pale grey-blue",,,
 pool_water,PL.water,,Water,,,
 gravel,GD,polyhaven/gravel,Crushed limestone gravel 6-14 mm,local quarry,,

@@ -18,11 +18,15 @@ millimetres. A `Ref` field accepts the object or its id.
 | Class | Fields | Produces |
 |---|---|---|
 | `Wall(id, start, end, assembly, level, align="right", external=True, height=None, material=None)` | traced CCW; body outside the line by default | `IfcWall` extrusion; derived `WallGeometry` |
-| `Window(id, host, width, height, sill=0, at="center", frame, frame_size=60, glazing, mullions=0, panes=(1,1), shutters=None, surround=None, grille=None)` | `at` is mm from the wall start, `"center"`, or `from_end(d)`; `panes` are (columns, rows) of glazing bars; naming a material for `shutters`, `surround` or `grille` emits that part; shutters are louvred leaves (stiles, rails, 45 mm slats) | `IfcWindow` + a void in the host + `Glazing` (+ `Shutters`, `Surround`, `Grille`) |
+| `Window(id, host, width, height, sill=0, at="center", frame, frame_size=60, glazing, mullions=0, panes=(1,1), shutters=None, surround=None, grille=None)` | `at` is mm from the wall start, `"center"`, or `from_end(d)`; `panes` are (columns, rows) of glazing bars; naming a material for `shutters`, `surround` or `grille` emits that part (see the parts below) | `IfcWindow` + a void in the host + `Glazing` (+ `Shutters`, `Surround`, `Grille`) |
+| `OpeningPart(id, opening, material)` | base class of anything that dresses an opening; realized after it from its `OpeningGeometry` and the wall's `WallGeometry`, on the opening's storey, external when the wall is. Subclass it in a project for a pediment or a balcony | `IfcBuildingElementProxy` |
+| `Shutters(id, opening, material, thickness=35, stile=60, rail=80, slat=45, pitch=57)` | a pair of louvred leaves hinged open outside the wall | `IfcShadingDevice` |
+| `Surround(id, opening, material, jamb=140, lintel=220, sill_height=100, projection=25)` | dressed-stone jambs, lintel and sill standing proud of the wall | `IfcBuildingElementProxy` |
+| `Grille(id, opening, material, bar=18, pitch=140)` | an iron grille outside the window | `IfcBuildingElementProxy` |
 | `Clerestory(...)` | a `Window` with `frame_size=40`, `mullions=3` and its own tag | as Window |
 | `Door(id, host, width, height, ..., leaf, glazed=False)` | hinged, one leaf | `IfcDoor` + `Leaf` |
 | `SlidingDoor(id, host, width, height, ..., leaves=2, open_leaf="end")` | one leaf glazed and fixed, the other drawn open | `IfcDoor` + `Glazing` |
-| `Slab(id, outline, thickness, level, material, top=0, voids=[])` | top at level + `top`; `voids` are cut through (stairs) | `IfcSlab` |
+| `Slab(id, outline, thickness, level, material, top=0, voids=[])` | top at level + `top`; a void is an outline, or the id of a stair or pool whose published `outline` is cut through, so the hole follows it | `IfcSlab` |
 | `Ceiling(id, outline, level, material, plank=None, thickness=24, beams=None)` | planks across the short axis when `plank` is set; `beams=BeamGrid(width, depth, spacing, along, material)` | `IfcCovering` + `Beam` children |
 | `Beam(id, start, end, width, depth, underside, level, material)` | standalone beam | `IfcBeam` |
 | `Space(id, outline, use, level, bounded_by=[...], occupancy=None)` | the target of most checks | `IfcSpace` |
@@ -34,7 +38,7 @@ millimetres. A `Ref` field accepts the object or its id.
 | `Arch(id, host, width, height, at)` | an open round-headed passage; `height` is the springing line | a true arched void in the host, no product |
 | `Roof(id, outline, level, material, shape="gable", ridge_along="x", pitch=22, overhang=600, thickness=250, eave=None, genoise=0)` | `gable`, `hip`, `shed` (`high_side`) or `flat`; eave at the level height unless `eave`; `genoise` courses of tiles under the eaves | `IfcRoof` + `Gable` infills (gable) + `Cornice` (génoise) |
 | `ArchedDoor(id, host, width, height, ...)` | a glazed door under a semicircular fanlight; `height` is the springing line | `IfcDoor` + arched void + `Glazing` |
-| `Stair(id, start, direction, width, rise, going=270, max_riser=180, align="left", level, to_level)` | a straight flight; risers sized from `rise`; `align` puts the width left of, right of or astride the line from `start` | `IfcStair`; give the floor above a `voids` entry |
+| `Stair(id, start, direction, width, rise, going=270, max_riser=180, align="left", level, to_level)` | a straight flight; risers sized from `rise`; `align` puts the width left of, right of or astride the line from `start`; publishes its `outline` | `IfcStair`; give the floor above `voids=[stair]` |
 | `Landing(id, outline, top, thickness, level)` | a platform between flights | `IfcSlab` |
 | `Pool(id, outline, level, depth=1400, coping=400, material, coping_material, water_material)` | shell, coping and water | `IfcBuildingElementProxy` + `Coping` + `PoolWater` |
 | `Column(id, at, level, size=None, radius=None, height=None, base=0)` | square or round; height defaults to the level | `IfcColumn` |

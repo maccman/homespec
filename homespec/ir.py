@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import json
 import os
-from typing import Any
+from typing import Any, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -25,6 +25,9 @@ class Geometry(BaseModel):
     obj: str
     bbox: BBox
     volume_mm3: float
+
+
+M = TypeVar("M", bound=BaseModel)
 
 
 class IREntity(BaseModel):
@@ -48,6 +51,10 @@ class IREntity(BaseModel):
 
     def related(self, pred: str) -> list[str]:
         return [r.obj for r in self.relations if r.pred == pred]
+
+    def derived_as(self, model: type[M]) -> M:
+        """The derived facts as one of the :mod:`homespec.derived` models."""
+        return model.model_validate(self.derived)
 
 
 class IRLevel(BaseModel):

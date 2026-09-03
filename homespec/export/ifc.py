@@ -24,6 +24,7 @@ import ifcopenshell.api.unit
 import ifcopenshell.geom
 import numpy as np
 
+from ..derived import OpeningGeometry
 from ..geometry import BBox, read_obj
 from ..ir import IRDocument, IREntity
 from ..model import Extrusion
@@ -100,14 +101,15 @@ def export_ifc(ir: IRDocument, path: str) -> str:
         products[e.id] = prod
 
     for e in ir.tagged("opening"):
-        host = ir.entity(e.derived["host"])
+        og = e.derived_as(OpeningGeometry)
+        host = ir.entity(og.host)
         if host.id not in products:
             continue
         void = ifcopenshell.api.root.create_entity(f, ifc_class="IfcOpeningElement", name=f"{e.id}.void")
-        if e.derived.get("void_entity"):
-            _mesh_rep(f, body, ir, ir.entity(e.derived["void_entity"]), void)     # an exact shape, e.g. an arch
+        if og.void_entity:
+            _mesh_rep(f, body, ir, ir.entity(og.void_entity), void)     # an exact shape, e.g. an arch
         else:
-            _extrusion_rep(f, body, Extrusion.model_validate(e.derived["void"]), void)
+            _extrusion_rep(f, body, og.void, void)
         ifcopenshell.api.feature.add_feature(f, feature=void, element=products[host.id])
         if e.id in products:
             ifcopenshell.api.feature.add_filling(f, opening=void, element=products[e.id])

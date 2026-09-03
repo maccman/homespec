@@ -6,6 +6,7 @@ from typing import Annotated, Any, ClassVar
 from pydantic import BaseModel, Field
 
 from .. import geometry as G
+from ..derived import BookcaseGeometry, KitchenGeometry
 from ..model import Context, Element, NonNegative, Positive, Realized, Ref, Relation, element
 from .walls import WallGeometry
 
@@ -61,7 +62,7 @@ class Bookcase(Element):
             x = self.from_start + j * self.length / self.bays - (0.0 if j == 0 else self.panel if j == self.bays else self.panel / 2)
             parts.append(G.frame_box(f, x, 0.0, z, (self.panel, self.depth, self.height)))
         return Realized(
-            solid=G.group(parts), derived={"bay_width": self.length / self.bays, "shelf_pitch": pitch},
+            solid=G.group(parts), derived=BookcaseGeometry(bay_width=self.length / self.bays, shelf_pitch=pitch).model_dump(),
             relations=[Relation(pred="against", obj=self.on)], tags={"fixed", "joinery"}, level=self.level or ctx.built(self.on).level,
         )
 
@@ -127,4 +128,4 @@ class KitchenRun(Element):
             u = self.upper
             part("upper", G.frame_box(f, u.from_start, 0.0, z + u.bottom, (u.length, u.depth, u.height)), self.fronts,
                  from_start=u.from_start, length=u.length, depth=u.depth, height=u.height, bottom=u.bottom)
-        return Realized(derived={"counter_top": self.counter_height, "front": d + 20}, relations=[Relation(pred="against", obj=self.on)], tags={"fixed", "group"}, level=lvl)
+        return Realized(derived=KitchenGeometry(counter_top=self.counter_height, front=d + 20).model_dump(), relations=[Relation(pred="against", obj=self.on)], tags={"fixed", "group"}, level=lvl)

@@ -132,8 +132,8 @@ def build() -> House:
         # ---- floors and ceilings
         Slab("F0", outline=[(0, 0), (30500, 0), (30500, 7500), (21500, 7500), (21500, 8000), (7500, 8000), (7500, 7500), (0, 7500)], thickness=250, level=L0, material=floor)
         Slab("F1", outline=[(0, 0), (21500, 0), (21500, 8000), (7500, 8000), (7500, 7500), (0, 7500)], thickness=300, level=L1, material=floor,
-             voids=[[(1000, 5900), (6300, 5900), (6300, 7000), (1000, 7000)]])
-        Slab("F2", outline=[(0, 0), (7500, 0), (7500, 7500), (0, 7500)], thickness=300, level=L2, material=floor, voids=[[(900, 1400), (6100, 1400), (6100, 2600), (900, 2600)]])
+             voids=["ST1"])
+        Slab("F2", outline=[(0, 0), (7500, 0), (7500, 7500), (0, 7500)], thickness=300, level=L2, material=floor, voids=["ST2"])
         Ceiling("C0M", outline=[(7500, 500), (21000, 500), (21000, 7500), (7500, 7500)], level=L0, material=lime, thickness=30,
                 beams=BeamGrid(width=140, depth=220, spacing=600, along="y", material=limed))
         Ceiling("C0T", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], level=L0, material=lime, thickness=30,
@@ -162,9 +162,9 @@ def build() -> House:
         Wall("RW2", (33000, -5000), (15700, -5000), assembly=garden, level=LP, height=2300, align="right")
         Stair("ST0", (13300, -8600), (0, 1), width=2400, align="right", rise=2000, going=300, max_riser=170, level=LP, to_level=L0, material=cut)
         Slab("GD", outline=[(-6000, -22000), (36000, -22000), (36000, -5500), (-6000, -5500)], thickness=200, level=LP, material="gravel",
-             voids=[[(6500, -16500), (20500, -16500), (20500, -10000), (6500, -10000)]])
+             voids=["PL"])
         Slab("PD", outline=[(3500, -18000), (23500, -18000), (23500, -8000), (3500, -8000)], thickness=100, level=LP, material="travertine", top=20,
-             voids=[[(6500, -16500), (20500, -16500), (20500, -10000), (6500, -10000)]])
+             voids=["PL"])
         Pool("PL", outline=[(6500, -16500), (20500, -16500), (20500, -10000), (6500, -10000)], level=LP, depth=1500, coping=500, material="pool_tile",
              coping_material="travertine", water_material="pool_water", top=20)
 
