@@ -265,14 +265,22 @@ class Opening(Element):
                      Realized(solid=G.group(panes), derived={"area_mm2": glass_area}, relations=part_of))
         self.fill(ctx, wall, x, level)
         if self.shutters:
-            leaf_w, thick = self.width / 2, 35.0
+            # louvred leaves: two stiles, three rails, 45 mm slats at 57 mm pitch in each panel
+            leaf_w, thick, stile, rail, slat, pitch = self.width / 2, 35.0, 60.0, 80.0, 45.0, 57.0
+            o = -thick - 15
             leaves = []
             for along in (x - leaf_w - 20, x + self.width + 20):
-                leaves.append(G.frame_box(wall.body, along, -thick - 15, z, (leaf_w, thick, head)))
-                for bz in (z + 150, z + head / 2 - 40, z + head - 230):
-                    leaves.append(G.frame_box(wall.body, along + 30, -thick - 15 - 25, bz, (leaf_w - 60, 25, 80)))
+                leaves.append(G.frame_box(wall.body, along, o, z, (stile, thick, head)))
+                leaves.append(G.frame_box(wall.body, along + leaf_w - stile, o, z, (stile, thick, head)))
+                for rz in (z, z + head / 2 - rail / 2, z + head - rail):
+                    leaves.append(G.frame_box(wall.body, along + stile, o, rz, (leaf_w - 2 * stile, thick, rail)))
+                for lo, hi in ((z + rail, z + head / 2 - rail / 2), (z + head / 2 + rail / 2, z + head - rail)):
+                    sz = lo + 12
+                    while sz + slat <= hi - 12:
+                        leaves.append(G.frame_box(wall.body, along + stile, o + 8, sz, (leaf_w - 2 * stile, 18.0, slat)))
+                        sz += pitch
             ctx.emit(Shutters(f"{self.id}.shutters", opening=self.id, level=level, material=self.shutters, tags={"external"}),
-                     Realized(solid=G.group(leaves), derived={"leaves": 2, "leaf_width": leaf_w, "height": head, "thickness": thick}, relations=part_of))
+                     Realized(solid=G.group(leaves), derived={"leaves": 2, "style": "louvred", "leaf_width": leaf_w, "height": head, "thickness": thick}, relations=part_of))
             derived["shutters"] = self.shutters
         if self.surround:
             jamb, lintel, sillh, proud = 140.0, 220.0, 100.0, 25.0

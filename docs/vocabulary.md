@@ -18,7 +18,7 @@ millimetres. A `Ref` field accepts the object or its id.
 | Class | Fields | Produces |
 |---|---|---|
 | `Wall(id, start, end, assembly, level, align="right", external=True, height=None, material=None)` | traced CCW; body outside the line by default | `IfcWall` extrusion; derived `WallGeometry` |
-| `Window(id, host, width, height, sill=0, at="center", frame, frame_size=60, glazing, mullions=0, panes=(1,1), shutters=None, surround=None, grille=None)` | `at` is mm from the wall start, `"center"`, or `from_end(d)`; `panes` are (columns, rows) of glazing bars; naming a material for `shutters`, `surround` or `grille` emits that part | `IfcWindow` + a void in the host + `Glazing` (+ `Shutters`, `Surround`, `Grille`) |
+| `Window(id, host, width, height, sill=0, at="center", frame, frame_size=60, glazing, mullions=0, panes=(1,1), shutters=None, surround=None, grille=None)` | `at` is mm from the wall start, `"center"`, or `from_end(d)`; `panes` are (columns, rows) of glazing bars; naming a material for `shutters`, `surround` or `grille` emits that part; shutters are louvred leaves (stiles, rails, 45 mm slats) | `IfcWindow` + a void in the host + `Glazing` (+ `Shutters`, `Surround`, `Grille`) |
 | `Clerestory(...)` | a `Window` with `frame_size=40`, `mullions=3` and its own tag | as Window |
 | `Door(id, host, width, height, ..., leaf, glazed=False)` | hinged, one leaf | `IfcDoor` + `Leaf` |
 | `SlidingDoor(id, host, width, height, ..., leaves=2, open_leaf="end")` | one leaf glazed and fixed, the other drawn open | `IfcDoor` + `Glazing` |

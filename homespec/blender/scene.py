@@ -136,6 +136,31 @@ def flat(name: str, color, rough: float = 0.5, metal: float = 0.0, emit: float =
     return m
 
 
+def _tinted(m, tint, key):
+    """A copy of material ``m`` whose base colour is multiplied by ``tint``."""
+    t = m.copy()
+    t.name = f"{m.name}@{key}"
+    if not t.use_nodes:
+        t.diffuse_color = (*[c * k for c, k in zip(t.diffuse_color[:3], tint, strict=False)], 1)
+        return t
+    nodes, links = t.node_tree.nodes, t.node_tree.links
+    for b in [n for n in nodes if n.type == 'BSDF_PRINCIPLED']:
+        inp = b.inputs["Base Color"]
+        mix = nodes.new("ShaderNodeMix")
+        mix.data_type = 'RGBA'
+        mix.blend_type = 'MULTIPLY'
+        mix.inputs[0].default_value = 1.0
+        mix.inputs[7].default_value = (*tint, 1)
+        if inp.links:
+            src = inp.links[0].from_socket
+            links.remove(inp.links[0])
+            links.new(src, mix.inputs[6])
+        else:
+            mix.inputs[6].default_value = inp.default_value
+        links.new(mix.outputs[2], inp)
+    return t
+
+
 _MATERIALS: dict = {}
 
 
@@ -249,18 +274,27 @@ class Scene:
 
     _models: dict = {}
 
-    def model(self, asset: str, loc, rot_z=0.0, scale=1.0, height=None):
+    def model(self, asset: str, loc, rot_z=0.0, scale=1.0, height=None, tint=None):
         """Place a glTF asset by id with its bounding-box bottom centre at ``loc``.
 
         The first use imports and merges the asset; later uses are linked
         duplicates sharing the same mesh, so a grove of trees costs one tree.
+        ``tint`` multiplies every material's colour, so one chair model can be
+        painted black, grey or white: each tint is its own shared mesh.
         """
-        base = self._models.get(asset)
+        key = asset if tint is None else f"{asset}@{','.join(f'{c:.2f}' for c in tint)}"
+        base = self._models.get(key)
         if base is None:
             base = self._import(asset)
             if base is None:
                 return None
-            self._models[asset] = base
+            if tint is not None:
+                base.data = base.data.copy()
+                base.name = key
+                base.data.materials.clear()
+                for m in self._import_materials(asset):
+                    base.data.materials.append(_tinted(m, tint, key))
+            self._models[key] = base
             o = base
         else:
             o = base.copy()
@@ -273,6 +307,15 @@ class Scene:
         o.rotation_euler = (0.0, 0.0, rot_z)
         o.location = loc
         return o
+
+    def _import_materials(self, asset: str):
+        src = self._models.get(asset)
+        if src is None:
+            src = self._import(asset)
+            self._models[asset] = src
+            src.hide_render = src.hide_viewport = True     # the untinted original stays as a hidden template
+            src.location = (0.0, 0.0, -50.0)
+        return list(src.data.materials)
 
     def _import(self, asset: str):
         files = glob.glob(f"{ASSETS}/models/{asset}/*.gltf") + glob.glob(f"{ASSETS}/models/{asset}/*.glb")

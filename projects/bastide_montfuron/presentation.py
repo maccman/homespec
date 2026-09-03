@@ -182,8 +182,8 @@ def dress(scene):
     for dx, dy in ((-1.45, -0.45), (1.45, -0.45), (-1.45, 0.45), (1.45, 0.45)):
         scene.box(f"dining_leg_{dx}_{dy}", (17.8 + dx, 4.0 + dy, 0.36), (0.09, 0.09, 0.72), oak)
     for _k, dx in enumerate((-1.1, -0.35, 0.4, 1.15)):
-        scene.model("painted_wooden_chair_02", (17.8 + dx, 4.75, 0.0), rot_z=math.radians(180 + R.uniform(-6, 6)))
-        scene.model("painted_wooden_chair_02", (17.8 + dx, 3.25, 0.0), rot_z=math.radians(R.uniform(-6, 6)))
+        scene.model("painted_wooden_chair_02", (17.8 + dx, 4.75, 0.0), rot_z=math.radians(180 + R.uniform(-6, 6)), tint=(0.16, 0.16, 0.17))
+        scene.model("painted_wooden_chair_02", (17.8 + dx, 3.25, 0.0), rot_z=math.radians(R.uniform(-6, 6)), tint=(0.16, 0.16, 0.17))
     scene.model("brass_candleholders", (17.2, 4.0, 0.77))
     scene.model("ceramic_vase_04", (18.5, 4.0, 0.77))
     scene.model("wine_bottles_01", (16.9, 4.15, 0.77), scale=0.9)

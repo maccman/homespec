@@ -82,3 +82,10 @@ place and the slabs reference it.
 `geometry.prism` normalises winding. Shapely buffers hand back clockwise
 rings, and a clockwise face extrudes downward, which is how the pool shell
 spent a day under its own water.
+
+## D-015 Shutters are louvred, and painted models are tinted
+The listing's shutters are louvred, so `Window.shutters` now builds stiles,
+rails and 45 mm slats rather than a plank leaf; the joiner reads the same
+thing the renderer does. The dining chairs are the library's painted chair
+with a black tint applied at placement (`Scene.model(tint=...)`), which is
+how one CC0 model stands in for the black Windsor chairs of the photographs.
