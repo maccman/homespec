@@ -121,7 +121,7 @@ stone farmhouse with a gable roof, arches, a pergola and a pool; and
 A tower, two wings, hipped and gabled roofs with génoise cornices, louvred
 shutters in dressed-stone surrounds, an arched glazed door, a brande pergola,
 two straight stairs, a terrace over a retaining wall and a pool garden two
-metres below. 282 entities, 338 checks, four plan sheets, 104 pairs of solids
+metres below. 284 entities, 339 checks, four plan sheets, 104 pairs of solids
 that share volume and a row saying why each is allowed.
 
 ![The bastide from the pool deck](projects/bastide_montfuron/gallery/01_pool_deck.jpg)
