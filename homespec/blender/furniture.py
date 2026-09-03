@@ -99,3 +99,19 @@ class Furniture:
             self.box(f"{name}_arm_{dx}", (x + dx, y, z + 0.5), (0.14, 0.9, 0.2), wicker, rot_z=rot)
         self.box(f"{name}_pillow_a", (x - 0.6, y + 0.25, z + 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot, bevel=0.05)
         self.box(f"{name}_pillow_b", (x + 0.6, y + 0.25, z + 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot, bevel=0.05)
+
+    def wall_light(self, name, at, brass, shade, facing=(0.0, -1.0), watts=12):
+        """A brass wall arm with a small linen drum shade, like ``sconce`` but for any wall.
+
+        ``at`` is on the wall; ``facing`` is the unit (x, y) direction the
+        shade stands off toward (into the room), so a south-wall fixture
+        uses ``facing=(0, 1)`` and an east-wall one ``facing=(-1, 0)``.
+        """
+        x, y, z = at
+        fx, fy = facing
+        rot = math.atan2(fx, -fy)                       # matches the sconce's own -y-facing case at rot=0
+        ox, oy = x + fx * 0.2, y + fy * 0.2
+        self.box(f"{name}_plate", (x - fx * 0.01, y - fy * 0.01, z), (0.14, 0.09, 0.14), brass, rot_z=rot)
+        self.rod(f"{name}_arm", (x - fx * 0.02, y - fy * 0.02, z), (ox, oy, z + 0.02), 0.008, brass)
+        self.cone(f"{name}_shade", (ox, oy, z + 0.02), 0.09, 0.075, 0.16, shade, verts=32)
+        self.point_light(f"{name}_light", (ox, oy, z + 0.05), watts, color=(1.0, 0.8, 0.55), radius=0.03)
