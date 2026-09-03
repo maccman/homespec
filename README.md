@@ -112,12 +112,17 @@ metres below. 284 entities, 210 checks, four plan sheets.
 | | |
 |---|---|
 | ![Living room](projects/bastide_montfuron/gallery/03_living_room.jpg) | ![Dining room](projects/bastide_montfuron/gallery/04_dining_room.jpg) |
-| ![Kitchen](projects/bastide_montfuron/gallery/06_kitchen.jpg) | ![Ground floor plan](projects/bastide_montfuron/gallery/plan_L0.jpg) |
+| ![Kitchen](projects/bastide_montfuron/gallery/06_kitchen.jpg) | ![Hall](projects/bastide_montfuron/gallery/07_hall.jpg) |
+| ![Main bedroom](projects/bastide_montfuron/gallery/05_bedroom.jpg) | ![Tower bedroom](projects/bastide_montfuron/gallery/08_tower.jpg) |
+| ![Under the pergola](projects/bastide_montfuron/gallery/02_pergola.jpg) | ![Ground floor plan](projects/bastide_montfuron/gallery/plan_L0.jpg) |
 
 The source is [project.py](projects/bastide_montfuron/project.py); the
 furniture, planting, sky and camera are in
-[presentation.py](projects/bastide_montfuron/presentation.py) and never reach
-the contractor. What the contractor does get is committed under
+[presentation.py](projects/bastide_montfuron/presentation.py) and one module
+per room under [rooms/](projects/bastide_montfuron/rooms), and never reach the
+contractor. Each room was audited and dressed by its own agent from the
+brief in [docs/agents/bastide-room-brief.md](docs/agents/bastide-room-brief.md);
+`HOMESPEC_ROOM=kitchen` renders one room's views on their own. What the contractor does get is committed under
 [deliverables/](projects/bastide_montfuron/deliverables): the IFC, the plans
 as PDF and DXF, the schedules, the checks report and the IDS. More renders are
 in [gallery/](projects/bastide_montfuron/gallery).

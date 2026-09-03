@@ -98,3 +98,14 @@ black chairs, a painted buffet. Kitchen: a charcoal island with a stone top
 under copper pendants, the run along the north wall. Bedroom: an
 upholstered bed facing its window, bedside lamps on stools, a mirror over
 the head. All of it is presentation; the spec carries only the pendants.
+
+## D-018 Each room is dressed by its own module, and was audited by its own agent
+The presentation is one module per room (`rooms/`), each owning its
+furniture, its camera shots and the spec pendants it hangs a light from.
+Seven agents worked one room each, in their own worktree and branch, from
+one brief and the listing's photographs, and their audits found what one
+pair of eyes had missed: a console inside a wall, curtains in the wrong
+room, a shelf through the ceiling, a mattress inside a bed, a kitchen run
+declared with no splashback or upper cabinets, and the tower's first-floor
+arch opening into a bedroom instead of the corridor. The last two were spec
+fixes (K1, A2); the rest were presentation.

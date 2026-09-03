@@ -917,7 +917,7 @@
       9300.0
      ]
     },
-    "volume_mm3": 28718250082.89697
+    "volume_mm3": 29844247290.450397
    },
    "extrusion": {
     "origin": [
@@ -9765,10 +9765,10 @@
    "material": null,
    "params": {
     "host": "TE",
-    "width": 1400.0,
+    "width": 700.0,
     "height": 2100.0,
     "sill": 3500.0,
-    "at": 2550.0,
+    "at": 5750.0,
     "frame": "steel_black",
     "frame_size": 60.0,
     "glazing": "glass_double",
@@ -9783,21 +9783,21 @@
    },
    "derived": {
     "host": "TE",
-    "from_start": 2550.0,
-    "from_end": 2550.0,
-    "width": 1400.0,
-    "height": 2800.0,
+    "from_start": 5750.0,
+    "from_end": 50.0,
+    "width": 700.0,
+    "height": 2450.0,
     "sill": 3500.0,
-    "head": 6300.0,
-    "clear_width": 1400.0,
-    "clear_height": 2800.0,
+    "head": 5950.0,
+    "clear_width": 700.0,
+    "clear_height": 2450.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
     "frame_size": 60.0,
     "void": {
      "origin": [
       7650.0,
-      3050.0,
+      6250.0,
       3500.0
      ],
      "u": [
@@ -9808,16 +9808,16 @@
       -1.0,
       0.0
      ],
-     "length": 1400.0,
+     "length": 700.0,
      "thickness": 750.0,
-     "height": 2800.0
+     "height": 2450.0
     },
     "void_entity": "A2.void",
     "shutters": null,
     "surround": null,
     "grille": null,
     "springing": 2100.0,
-    "radius": 700.0
+    "radius": 350.0
    },
    "relations": [
     {
@@ -9854,16 +9854,16 @@
     "bbox": {
      "min": [
       6900.0,
-      3050.0,
+      6250.0,
       3500.0
      ],
      "max": [
       7650.0,
-      4450.0,
-      6300.0
+      6950.0,
+      5950.0
      ]
     },
-    "volume_mm3": 2782267650.0971246
+    "volume_mm3": 1246816912.5242813
    },
    "extrusion": null
   },
@@ -15420,16 +15420,16 @@
     "bbox": {
      "min": [
       7500.0,
-      -1.3315429953347776e-13,
+      44.128090258927024,
       6400.0
      ],
      "max": [
       8050.0,
-      8000.0,
+      7955.871909741075,
       8161.267649622986
      ]
     },
-    "volume_mm3": 3874788829.1705704
+    "volume_mm3": 3832042071.3735895
    },
    "extrusion": null
   },
@@ -15463,16 +15463,16 @@
     "bbox": {
      "min": [
       20950.0,
-      -1.3315429953347776e-13,
+      44.128090258927024,
       6400.0
      ],
      "max": [
       21500.0,
-      8000.0,
+      7955.871909741075,
       8161.267649622986
      ]
     },
-    "volume_mm3": 3874788829.1705704
+    "volume_mm3": 3832042071.3735895
    },
    "extrusion": null
   },
@@ -17569,11 +17569,17 @@
     "depth": 650.0,
     "counter_height": 900.0,
     "counter_thickness": 40.0,
-    "splash_height": 0.0,
+    "splash_height": 100.0,
     "toe": 100.0,
     "doors": 7,
     "pulls": "brass",
-    "upper": null
+    "upper": {
+     "from_start": 1000.0,
+     "length": 2650.0,
+     "depth": 320.0,
+     "height": 600.0,
+     "bottom": 1650.0
+    }
    },
    "derived": {
     "counter_top": 900.0,
@@ -17732,6 +17738,53 @@
    "extrusion": null
   },
   {
+   "id": "K1.splash",
+   "kind": "part",
+   "ifc_class": "IfcCovering",
+   "physical": true,
+   "tags": [
+    "fixed",
+    "joinery",
+    "kitchen",
+    "part"
+   ],
+   "level": "L0",
+   "material": "marble_counter",
+   "params": {
+    "of": "K1",
+    "role": "splash"
+   },
+   "derived": {
+    "length": 6500.0,
+    "height": 100.0,
+    "bottom": 900.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "K1"
+    }
+   ],
+   "geometry": {
+    "step": "geometry/K1.splash.step",
+    "obj": "geometry/K1.splash.obj",
+    "bbox": {
+     "min": [
+      22500.0,
+      6480.0,
+      900.0
+     ],
+     "max": [
+      29000.0,
+      6500.000000000001,
+      1000.0
+     ]
+    },
+    "volume_mm3": 12999999.999999998
+   },
+   "extrusion": null
+  },
+  {
    "id": "K1.pulls",
    "kind": "part",
    "ifc_class": "IfcFurniture",
@@ -17779,6 +17832,55 @@
      ]
     },
     "volume_mm3": 504000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "K1.upper",
+   "kind": "part",
+   "ifc_class": "IfcFurniture",
+   "physical": true,
+   "tags": [
+    "fixed",
+    "joinery",
+    "kitchen",
+    "part"
+   ],
+   "level": "L0",
+   "material": "door_grey",
+   "params": {
+    "of": "K1",
+    "role": "upper"
+   },
+   "derived": {
+    "from_start": 1000.0,
+    "length": 2650.0,
+    "depth": 320.0,
+    "height": 600.0,
+    "bottom": 1650.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "K1"
+    }
+   ],
+   "geometry": {
+    "step": "geometry/K1.upper.step",
+    "obj": "geometry/K1.upper.obj",
+    "bbox": {
+     "min": [
+      26350.0,
+      6180.0,
+      1650.0
+     ],
+     "max": [
+      29000.0,
+      6500.0,
+      2250.0
+     ]
+    },
+    "volume_mm3": 508800000.0
    },
    "extrusion": null
   },
