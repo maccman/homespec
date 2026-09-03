@@ -107,11 +107,27 @@ names the clause or rule of thumb it implements. Requirements that concern
 properties rather than geometry are also emitted as an IDS file, the
 industry's formal requirements format, and validated against the IFC.
 
+Solids that share volume are a fact the compiler records (`homespec.clashes`)
+and a rule judges (`no_clash`): a beam bedded in a wall, glass in its rebate
+and a chimney through the roof are how a house is built; a stair through a
+ceiling is not. Every overlap gets a row saying why it was allowed, and a
+project may allow one more with `house.allow`, which needs a reason.
+
 Decisions and their reasons live in `decisions.md` beside the source, one
-short entry per decision, referencing entity ids.
+short entry per decision. An `Entities:` line names what a decision
+governs, and the build checks those ids still exist, so a decision cannot
+quietly outlive what it decided. Three ledgers close the file: what the
+model does against its reference, what was considered and left alone, and
+what nobody has verified, kept apart from what is out of scope.
+
+The same model can be looked at without a presentation: `homespec views`
+plans a set of orthographic cameras from the IR and renders them with
+Workbench, one colour per kind, in seconds. Sections cut through the walls
+show what photographs hide.
 
 ## What is deliberately not here yet
 
 No round trip from IFC or Blender back to source. No constraint solver, only
-checks. No sections or elevations, only the plan. Each is compatible with
-the design and none is needed to prove it.
+checks. No drawn sections or elevations for the contractor, only the plan
+sheet; the views cut sections for the eye. Each is compatible with the
+design and none is needed to prove it.

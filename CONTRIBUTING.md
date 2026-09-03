@@ -27,7 +27,17 @@ shaped the way it is. Changes that fit it are easy to land.
 
 Decorate a generator over the IR with `@rule(name, clause=...)` in
 `homespec/checks/`. Name the clause or rule of thumb it implements. Rules
-read `derived` facts and bounding boxes, not geometry files.
+read `derived` facts, bounding boxes and the IR's `clashes`, not geometry
+files. A vocabulary change that makes two things share volume is a change
+to the clash policy in `homespec/checks/clashes.py`, or a fix.
+
+**Adding a decision**
+
+Every spec change that a reader could ask "why?" about gets a `## D-nnn`
+entry in the project's `decisions.md`, with an `Entities:` line naming what
+it governs. Keep the three ledgers at the end current: against the
+reference, considered and not changed, not verified. The build checks the
+ids and the ledgers.
 
 **Before you push**
 
