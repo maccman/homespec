@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import math
+import os
 
 import bpy
 import session
@@ -62,7 +63,12 @@ class Camera:
             scn.keyframe_insert(data_path="view_settings.exposure", frame=int(round(t * fps)) + 1)
 
     def render_settings(self, rx=1280, ry=720, samples=128, exposure=0.1, adaptive=0.05):
+        """Resolution, sampling and colour. ``HOMESPEC_RES=1280x720`` and ``HOMESPEC_SAMPLES=64`` in the environment override, for quick looks."""
         scn = session.scn
+        if os.environ.get("HOMESPEC_RES"):
+            rx, ry = (int(v) for v in os.environ["HOMESPEC_RES"].lower().split("x"))
+        if os.environ.get("HOMESPEC_SAMPLES"):
+            samples = int(os.environ["HOMESPEC_SAMPLES"])
         scn.render.resolution_x, scn.render.resolution_y = rx, ry
         scn.render.fps = 24
         scn.render.image_settings.file_format = 'PNG'
