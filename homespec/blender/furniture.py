@@ -82,6 +82,13 @@ class Furniture:
         for dx, dy in ((-0.8, -0.3), (0.8, -0.3), (-0.8, 0.3), (0.8, 0.3)):
             self.box(f"{name}_leg_{dx}_{dy}", p(dx, dy, 0.13), (0.03, 0.03, 0.26), iron, rot_z=rot)
 
+    def parasol(self, name, at, pole_m, canopy_m, r=1.7, pole_h=2.3, canopy_h=0.55):
+        """A market parasol: a slim pole and a tapered canvas canopy over a pool deck or garden table."""
+        x, y, z = at
+        self.cyl(f"{name}_pole", (x, y, z + pole_h / 2), 0.03, pole_h, pole_m, verts=12)
+        self.cone(f"{name}_canopy", (x, y, z + pole_h - 0.05), r, 0.04, canopy_h, canopy_m)
+        self.sphere(f"{name}_finial", (x, y, z + pole_h + canopy_h - 0.02), 0.03, pole_m)
+
     def wicker_sofa(self, name, at, rot, wicker, cushion):
         """A two-seat wicker sofa with a seat cushion and two pillows, its back toward +y before ``rot``."""
         x, y, z = at
