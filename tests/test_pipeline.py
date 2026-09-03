@@ -80,3 +80,18 @@ def test_the_farmhouse_builds_and_passes_every_rule(tmp_path):
     assert shapes["R0"].max[2] == pytest.approx(ir.entity("R0").derived["z_ridge"], abs=1)
     living = ir.entity("living")
     assert "A1" in [o.id for o in ir.tagged("arch") if o.derived["host"] in living.related("bounded_by")]
+
+
+def test_the_bastide_builds_and_passes_every_rule(tmp_path):
+    """The third example: three blocks, four storeys, a pool terrace. Every rule green, including what shares volume and what the decisions cite."""
+    from homespec.pipeline import build_project
+
+    report = build_project(os.path.join(os.path.dirname(LIBRARY_ROOM_DIR), "bastide_montfuron"), str(tmp_path), drawings=False)
+    assert report.ok, report.failures
+    ir = IRDocument.read(report.out_dir)
+    assert report.clashes == len(ir.clashes) > 50, "a stone house has plenty of beams bedded in walls"
+    rows = {r.target: r for r in report.results if r.rule == "no_clash"}
+    assert rows["D1.surround/RP"].note.startswith("allowed by the project")
+    assert all(r.ok for r in report.results if r.rule.startswith("decision"))
+    assert rows["CH/RM"].ok and rows["CH/RM"].note == "a chimney passes through the fabric", "the chimney stands on the wall head and rises through the roof"
+

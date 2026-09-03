@@ -1,7 +1,8 @@
 """Compile a project directory into everything it produces.
 
 A project directory holds ``project.py`` defining ``build() -> House``, an
-optional ``presentation.py`` for the walkthrough, and ``decisions.md``.
+optional ``presentation.py`` for the walkthrough, and ``decisions.md``,
+which the build checks (:mod:`homespec.checks.decisions`).
 """
 from __future__ import annotations
 
@@ -14,6 +15,7 @@ from typing import Any
 from pydantic import BaseModel, Field
 
 from .checks import Result, run, write_report
+from .checks import decisions as decision_checks
 from .checks import ids as ids_checks
 from .clashes import find_clashes
 from .export import export_ifc, export_plan, export_schedules
@@ -97,6 +99,7 @@ def build_project(project_dir: str, out_dir: str | None = None, *, ifc: bool = T
         results = run(ir, extra=house.checks)
         if ifc:
             results += ids_checks.validate(ir.project, files["ifc"][0])
+        results += decision_checks.validate(project_dir, ir)
         files["checks"] = list(write_report(results, out, ir.project))
         timings["checks"] = time.time() - t
     return Report(project=ir.project, out_dir=out, entities=len(ir.entities), clashes=len(ir.clashes), files=files, results=results, timings=timings)
