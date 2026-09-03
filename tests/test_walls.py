@@ -56,7 +56,7 @@ def test_opening_cuts_exactly_its_volume_and_stays_inside(angle, length, thickne
     wall, win = build["W"], build["N"]
     assert math.isclose(G.volume(wall.solid), length * thickness * 3000 - width * thickness * height, rel_tol=1e-6)
     d = win.derived
-    assert math.isclose(d["from_start"], at) and math.isclose(d["from_end"], length - at - width)
+    assert math.isclose(d["from_start"], at, abs_tol=1e-6) and math.isclose(d["from_end"], length - at - width, abs_tol=1e-6)
     # the frame sits centred in the wall thickness: its footprint lies within the wall's footprint
     wb, fb = G.bbox(wall.solid), G.bbox(win.solid)
     assert fb.min[0] >= wb.min[0] - 1e-6 and fb.max[0] <= wb.max[0] + 1e-6

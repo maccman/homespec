@@ -26,7 +26,8 @@ def dress(scene):
     wicker = scene.pbr("p_wicker", "rough_linen", tile=0.12, value=0.85, tint=(0.62, 0.5, 0.34))
     oak = scene.pbr("p_oak", "oak_wood_planks", tile=1.2, value=1.1, tint=(1.0, 0.92, 0.8))
     iron = scene.flat("p_iron", (0.06, 0.06, 0.06), rough=0.5, metal=0.7)
-    box_green = scene.flat("p_box", (0.06, 0.12, 0.05), rough=1.0, bump=0.6)
+    box_leaf = scene.flat("p_box_leaf", (0.08, 0.17, 0.06), rough=0.85)
+    box_core = scene.flat("p_box_core", (0.03, 0.06, 0.02), rough=1.0)
     lavender = scene.flat("p_lavender", (0.5, 0.46, 0.66), rough=1.0)
     lavender_leaf = scene.flat("p_lavender_leaf", (0.36, 0.42, 0.34), rough=1.0)
     oleander = scene.flat("p_oleander", (0.14, 0.28, 0.12), rough=1.0)
@@ -59,12 +60,12 @@ def dress(scene):
         y = R.uniform(-8.6, -6.2)
         kind = R.random()
         if kind < 0.3:
-            r = R.uniform(0.35, 0.8)
-            scene.blob(f"box_{k}", (x + R.uniform(-0.2, 0.2), y, -2.0 + r * 0.72), r, box_green, noise=0.24, seed=k)
+            r = R.choice((0.4, 0.5, 0.6, 0.75))
+            scene.foliage(f"box_{k}", (x + R.uniform(-0.2, 0.2), y, -2.0 + r * 0.7), r, box_leaf, leaf=0.035, seed=k % 3, core=box_core)
         elif kind < 0.62:
             scene.model(R.choice(shrubs), (x, y, -2.0), rot_z=R.uniform(0, 6.28), height=R.uniform(0.7, 1.3))
         elif kind < 0.84:
-            _lavender(scene, f"lav_b_{k}", (x, y, -2.0), lavender, lavender_leaf, R)
+            scene.spikes(f"lav_b_{k}", (x, y, -2.0), lavender_leaf, lavender, r=R.choice((0.35, 0.42, 0.5)), seed=k % 3)
         else:
             scene.model("wild_rooibos_bush", (x, y, -2.0), rot_z=R.uniform(0, 6.28), scale=R.uniform(1.0, 1.5))
         if R.random() < 0.5:
@@ -77,16 +78,16 @@ def dress(scene):
         x = R.uniform(-3.5, 33.5)
         if 12.6 < x < 16.4:
             continue
-        r = R.uniform(0.5, 0.9)
-        scene.blob(f"climber_{k}", (x, -5.75 - r * 0.35, R.uniform(-1.5, -0.35)), r, vine, noise=0.2, seed=k + 100, scale_z=0.8).scale = (1.0, 0.45, 0.8)
+        r = R.choice((0.5, 0.7, 0.9))
+        scene.foliage(f"climber_{k}", (x, -5.75 - r * 0.3, R.uniform(-1.5, -0.35)), r, vine, leaf=0.07, seed=k % 3, cover=1.2).scale = (1.0, 0.45, 0.8)
     # box balls in pots at the pool corners and along the south deck, lavender rows beyond it
     for k, (x, y) in enumerate([(5.5, -9.4), (21.5, -9.4), (21.5, -17.6), (24.8, -13.0)]):
         scene.model("planter_pot_clay", (x, y, -2.0), rot_z=R.uniform(0, 6.28), scale=1.5)
-        scene.blob(f"pot_box_p_{k}", (x, y, -1.05), 0.45, box_green, noise=0.12, seed=k + 200)
+        scene.foliage(f"pot_box_p_{k}", (x, y, -1.05), 0.42, box_leaf, leaf=0.03, seed=k % 3, core=box_core)
     for k in range(26):
         x, y = R.uniform(-4.0, 32.0), R.uniform(-21.6, -19.7)
         if R.random() < 0.6:
-            _lavender(scene, f"lav_s_{k}", (x, y, -2.0), lavender, lavender_leaf, R)
+            scene.spikes(f"lav_s_{k}", (x, y, -2.0), lavender_leaf, lavender, r=R.choice((0.35, 0.42, 0.5)), seed=k % 3)
         else:
             scene.model(R.choice(shrubs), (x, y, -2.0), rot_z=R.uniform(0, 6.28), height=R.uniform(0.6, 1.1))
     for k, (x, y) in enumerate([(-2.5, -7.5), (29.5, -8.0), (-3.5, -21.8), (31.5, -22.5)]):
@@ -96,7 +97,7 @@ def dress(scene):
     for k in range(7):
         x, y, h = 40.5 + R.uniform(-0.3, 0.3), -26 + k * 3.5, R.uniform(8.0, 10.5)
         scene.cyl(f"cypress_trunk_{k}", (x, y, -1.6), 0.12, 1.0, trunk)
-        scene.sphere(f"cypress_{k}", (x, y, -1.4 + h / 2), 1.0, cypress).scale = (0.42, 0.42, h / 2)
+        scene.foliage(f"cypress_{k}", (x, y, -1.4 + h / 2), 1.0, cypress, leaf=0.12, seed=k % 2, cover=1.6, core=cypress).scale = (0.42, 0.42, h / 2)
     for _k, (x, y, h) in enumerate([(-14, 6, 12), (-9, 16, 11), (36, 14, 10), (-16, -14, 11)]):
         scene.model("island_tree_01", (x, y, -0.05 if y > 0 else -2.4), rot_z=R.uniform(0, 6.28), height=h)
     for _k in range(34):                    # the oak wood on the slope behind
@@ -110,10 +111,10 @@ def dress(scene):
     # a vine over the kitchen wing and along the pergola beam
     for k in range(70):          # a creeper on the kitchen wing's south wall, hugging the stone
         x, z = R.uniform(22.5, 29.5), R.uniform(1.6, 3.4)
-        scene.sphere(f"vine_k_{k}", (x, -0.72 - R.uniform(0.0, 0.12), z), R.uniform(0.14, 0.26), vine).scale = (1.0, 0.5, 1.0)
+        scene.foliage(f"vine_k_{k}", (x, -0.72 - R.uniform(0.0, 0.1), z), 0.2, vine, leaf=0.06, seed=k % 2, cover=1.2).scale = (1.0, 0.5, 1.0)
     for k in range(160):         # and a wisteria along the pergola's front beam
         x = R.uniform(-0.6, 14.6)
-        scene.sphere(f"vine_p_{k}", (x, -3.4 + R.uniform(-0.14, 0.14), 2.86 + R.uniform(-0.1, 0.16)), R.uniform(0.07, 0.14), vine)
+        scene.foliage(f"vine_p_{k}", (x, -3.4 + R.uniform(-0.14, 0.14), 2.86 + R.uniform(-0.1, 0.16)), 0.12, vine, leaf=0.05, seed=k % 2, cover=1.2)
 
     # ---- terrace life: lantern posts, wicker seating under the pergola, pots along the walls
     for k, x in enumerate((-1.0, 9.0, 16.5, 25.0)):
@@ -129,7 +130,7 @@ def dress(scene):
         scene.model("painted_wooden_chair_01", (23.5 + dx, -2.2 + dy, 0.0), rot_z=math.radians(rz + R.uniform(-8, 8)))
     for _k, (x, y) in enumerate([(-1.5, -0.7), (15.8, -0.8), (20.5, -0.7), (31.0, -1.0), (12.2, -4.2), (18.5, -4.2), (0.5, -4.3), (26.5, -4.3)]):
         scene.model("planter_pot_clay", (x, y, 0.0), rot_z=R.uniform(0, 6.28), scale=R.uniform(0.9, 1.4))
-        scene.sphere(f"pot_box_{k}", (x, y, 0.82), 0.36, box_green)
+        scene.foliage(f"pot_box_{k}", (x, y, 0.85), 0.36, box_leaf, leaf=0.03, seed=k % 3, core=box_core)
     for _k, (x, y) in enumerate([(2.2, -0.6), (7.2, -0.6), (28.0, -0.8)]):
         scene.model("ceramic_pot", (x, y, 0.0), rot_z=R.uniform(0, 6.28), scale=1.6)
     scene.model("potted_plant_02", (21.2, -0.8, 0.0), scale=1.2)
@@ -281,17 +282,17 @@ def _lounger(scene, name, at, rot, wicker, linen, cushion, iron):
     c, s = math.cos(rot), math.sin(rot)
     def p(dx, dy, dz):
         return (x + dx * c - dy * s, y + dx * s + dy * c, z + dz)
-    scene.box(f"{name}_base", p(0, 0, 0.3), (1.95, 0.74, 0.1), wicker, rot_z=rot)
+    scene.box(f"{name}_base", p(0, 0, 0.3), (1.95, 0.74, 0.1), wicker, rot_z=rot, bevel=0.03)
     for dy in (-0.36, 0.36):                              # wicker side rails
         scene.box(f"{name}_rail_{dy}", p(0.1, dy, 0.38), (1.7, 0.05, 0.08), wicker, rot_z=rot)
-    scene.box(f"{name}_cushion", p(0.15, 0, 0.41), (1.55, 0.64, 0.09), cushion, rot_z=rot)
+    scene.box(f"{name}_cushion", p(0.15, 0, 0.41), (1.55, 0.64, 0.09), cushion, rot_z=rot, bevel=0.03)
     back = scene.box(f"{name}_back", p(-0.72, 0, 0.6), (0.6, 0.74, 0.08), wicker, rot_z=rot)
     back.rotation_euler[1] = -0.95
     back.rotation_euler[2] = rot
-    pad = scene.box(f"{name}_pad", p(-0.66, 0, 0.64), (0.56, 0.62, 0.08), cushion, rot_z=rot)
+    pad = scene.box(f"{name}_pad", p(-0.66, 0, 0.64), (0.56, 0.62, 0.08), cushion, rot_z=rot, bevel=0.03)
     pad.rotation_euler[1] = -0.95
     pad.rotation_euler[2] = rot
-    pillow = scene.box(f"{name}_pillow", p(-0.8, 0, 0.9), (0.14, 0.42, 0.34), linen, rot_z=rot)
+    pillow = scene.box(f"{name}_pillow", p(-0.8, 0, 0.9), (0.14, 0.42, 0.34), linen, rot_z=rot, bevel=0.04)
     pillow.rotation_euler[1] = -0.95
     pillow.rotation_euler[2] = rot
     for dx, dy in ((-0.8, -0.3), (0.8, -0.3), (-0.8, 0.3), (0.8, 0.3)):
@@ -300,27 +301,23 @@ def _lounger(scene, name, at, rot, wicker, linen, cushion, iron):
 
 def _wicker_sofa(scene, name, at, rot, wicker, cushion):
     x, y, z = at
-    scene.box(f"{name}_seat", (x, y, z + 0.22), (2.2, 0.9, 0.44), wicker, rot_z=rot)
-    scene.box(f"{name}_cushion", (x, y + 0.05, z + 0.5), (2.0, 0.8, 0.12), cushion, rot_z=rot)
+    scene.box(f"{name}_seat", (x, y, z + 0.22), (2.2, 0.9, 0.44), wicker, rot_z=rot, bevel=0.04)
+    scene.box(f"{name}_cushion", (x, y + 0.05, z + 0.5), (2.0, 0.8, 0.12), cushion, rot_z=rot, bevel=0.04)
     scene.box(f"{name}_back", (x, y + 0.38, z + 0.6), (2.2, 0.14, 0.4), wicker, rot_z=rot)
     for dx in (-1.03, 1.03):
         scene.box(f"{name}_arm_{dx}", (x + dx, y, z + 0.5), (0.14, 0.9, 0.2), wicker, rot_z=rot)
-    scene.box(f"{name}_pillow_a", (x - 0.6, y + 0.25, z + 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot)
-    scene.box(f"{name}_pillow_b", (x + 0.6, y + 0.25, z + 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot)
+    scene.box(f"{name}_pillow_a", (x - 0.6, y + 0.25, z + 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot, bevel=0.05)
+    scene.box(f"{name}_pillow_b", (x + 0.6, y + 0.25, z + 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot, bevel=0.05)
 
 
-def _lavender(scene, name, at, flower, leaf, R):
-    x, y, z = at
-    scene.sphere(f"{name}_leaf", (x, y, z + 0.22), 0.5, leaf).scale = (1.0, 1.0, 0.5)
-    scene.sphere(f"{name}_bloom", (x, y, z + 0.42), 0.46, flower).scale = (1.0, 1.0, 0.45)
 
 
 def _oleander(scene, name, at, leaf, flower, R):
     x, y, z = at
-    for k in range(7):
-        scene.sphere(f"{name}_l{k}", (x + R.uniform(-1.0, 1.0), y + R.uniform(-1.0, 1.0), z + 1.0 + R.uniform(0, 1.2)), R.uniform(0.6, 0.9), leaf)
-    for k in range(10):
-        scene.sphere(f"{name}_b{k}", (x + R.uniform(-1.3, 1.3), y + R.uniform(-1.3, 1.3), z + 1.6 + R.uniform(0, 1.0)), 0.18, flower)
+    scene.foliage(f"{name}_leaves", (x, y, z + 1.4), 1.3, leaf, leaf=0.11, seed=1, scale_z=1.1, core=leaf, cover=1.3)
+    for k in range(9):
+        a, e = R.uniform(0, 6.28), R.uniform(0.1, 1.2)
+        scene.foliage(f"{name}_bloom_{k}", (x + 1.25 * math.cos(a) * math.cos(e), y + 1.25 * math.sin(a) * math.cos(e), z + 1.4 + 1.35 * math.sin(e)), 0.2, flower, leaf=0.035, seed=k % 2, scale_z=0.9)
 
 
 def _plane_tree(scene, name, at, h, trunk, leaf, R):
