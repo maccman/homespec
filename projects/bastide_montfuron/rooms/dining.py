@@ -125,7 +125,7 @@ def dress(scene, M):
     scene.rod("dining_stretcher", (leg_w, TY, 0.17), (leg_e, TY, 0.17), 0.045, M.dining_oak)
 
     # ---- ten black chairs: eight side chairs plus two wider armchairs at the heads (rotation varies slightly)
-    for tag, sx in (("1", TX - 1.2), ("2", TX - 0.4), ("3", TX + 0.4), ("4", TX + 1.2)):
+    for _tag, sx in (("1", TX - 1.2), ("2", TX - 0.4), ("3", TX + 0.4), ("4", TX + 1.2)):
         scene.model("dining_chair_02", (sx, TY + 0.75, 0.0), rot_z=math.radians(180 + R.uniform(-6, 6)), tint=CHAIR_TINT)
         scene.model("dining_chair_02", (sx, TY - 0.75, 0.0), rot_z=math.radians(R.uniform(-6, 6)), tint=CHAIR_TINT)
     scene.model("gallinera_chair", (TX - HALF_L - 0.55, TY, 0.0), rot_z=math.radians(-90 + R.uniform(-4, 4)), tint=CHAIR_TINT)
