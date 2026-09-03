@@ -30,8 +30,8 @@ def build() -> House:
                         render=Render(tile=1.6, value=1.3, tint=(0.99, 0.97, 0.93)))
         tiles = Material("canal_tiles", texture="polyhaven/clay_roof_tiles", product="Reclaimed terracotta canal tiles, mixed batch", supplier="salvage yard, Apt",
                          render=Render(tile=1.1, value=0.85, tint=(0.9, 0.82, 0.74)))
-        floor = Material("burgundy_stone", texture="polyhaven/stone_tiles_02", product="Pierre de Bourgogne flagstones 600 x 400, tumbled", supplier="TBD",
-                         finish="honed, sealed", render=Render(tile=1.4, value=1.2, tint=(1.0, 0.96, 0.88)))
+        floor = Material("burgundy_stone", texture="polyhaven/monastery_stone_floor", product="Pierre de Bourgogne flagstones 600 x 400, tumbled", supplier="TBD",
+                         finish="honed, sealed", render=Render(tile=2.2, value=1.25, wash=0.15, tint=(1.0, 0.96, 0.9)))
         Material("oak_beams", texture="polyhaven/oak_wood_planks", product="Reclaimed oak beams, limewashed", supplier="salvage",
                          render=Render(tile=1.6, value=1.15, tint=(1.0, 0.95, 0.88)))
         limed = Material("limed_oak", texture="polyhaven/oak_wood_planks", product="Oak beams and joists, lime-washed", supplier="local sawmill",

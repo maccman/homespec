@@ -20,10 +20,15 @@ def dress(scene):
     rug_jute = scene.pbr("p_rug_jute", "rough_linen", tile=0.6, value=0.9, tint=(0.8, 0.7, 0.52))
     brass = scene.flat("p_brass", (0.8, 0.62, 0.3), rough=0.35, metal=1.0)
     shade = scene.flat("p_shade", (0.96, 0.9, 0.78), rough=0.9, emit=1.4)
+    copper = scene.flat("p_copper", (0.85, 0.45, 0.3), rough=0.3, metal=1.0)
+    straw = scene.flat("p_straw", (0.62, 0.45, 0.24), rough=0.9, bump=0.7)
+    charcoal = scene.flat("p_charcoal", (0.16, 0.17, 0.17), rough=0.6)
+    white_linen = scene.pbr("p_white_linen", "rough_linen", tile=0.5, value=1.35, tint=(0.98, 0.97, 0.94))
+    taupe_linen = scene.flat("p_taupe_linen", (0.5, 0.42, 0.34), rough=0.95, bump=0.4)
     cut_stone = scene.pbr("p_cut_stone", "beige_wall_001", tile=1.0, value=0.95, tint=(0.96, 0.9, 0.78))
     linen = scene.pbr("p_linen", "rough_linen", tile=0.5, value=1.25, tint=(0.94, 0.92, 0.86))
     grey_linen = scene.pbr("p_grey_linen", "rough_linen", tile=0.5, value=0.8, tint=(0.62, 0.58, 0.52))
-    wicker = scene.pbr("p_wicker", "rough_linen", tile=0.12, value=0.85, tint=(0.62, 0.5, 0.34))
+    wicker = scene.pbr("p_wicker", "rough_linen", tile=0.12, value=1.0, tint=(0.78, 0.62, 0.4))
     oak = scene.pbr("p_oak", "oak_wood_planks", tile=1.2, value=1.1, tint=(1.0, 0.92, 0.8))
     iron = scene.flat("p_iron", (0.06, 0.06, 0.06), rough=0.5, metal=0.7)
     box_leaf = scene.flat("p_box_leaf", (0.08, 0.17, 0.06), rough=0.85)
@@ -36,7 +41,6 @@ def dress(scene):
     pine = scene.flat("p_pine", (0.10, 0.20, 0.09), rough=1.0)
     trunk = scene.flat("p_trunk", (0.28, 0.22, 0.16), rough=0.9)
     vine = scene.flat("p_vine", (0.08, 0.2, 0.07), rough=1.0, bump=0.6)
-    marble = scene.pbr("p_marble", "marble_01", tile=1.0, value=1.1)
 
     # ---- the land: gravel court north, the upper terrace already paved by the spec, the lower garden and hills
     scene.box("ground_upper", (14, 22, -0.3), (160, 40, 0.5), earth)
@@ -151,7 +155,10 @@ def dress(scene):
     scene.model("brass_candleholders", (1.2, 3.4, 0.82), scale=0.8)
     # living room: two sofas facing across a coffee table toward the fire, armchairs, books, lamps
     scene.model("Sofa_01", (11.0, 5.6, 0.0), rot_z=math.radians(180))
-    scene.model("sofa_02", (11.0, 2.6, 0.0), rot_z=math.radians(0))
+    scene.model("Sofa_01", (11.0, 2.6, 0.0), rot_z=math.radians(0))
+    for k, (cx, cy) in enumerate(((10.45, 5.72), (11.55, 2.48))):
+        c = scene.box(f"cushion_{k}", (cx, cy, 0.6), (0.46, 0.15, 0.42), taupe_linen, rot_z=0.0, bevel=0.05)
+        c.rotation_euler[0] = math.radians(-14 if cy > 4 else 14)
     scene.model("CoffeeTable_01", (11.0, 4.1, 0.0))
     _rug(scene, "living_rug", (11.0, 4.1, 0.0), (4.6, 3.4), rug_jute)
     scene.model("ornate_mirror_01", (10.5, 7.42, 1.9), rot_z=math.radians(180), scale=1.8)
@@ -163,12 +170,20 @@ def dress(scene):
     scene.model("Ottoman_01", (14.3, 2.1, 0.0), rot_z=math.radians(90))
     scene.model("ceramic_vase_02", (11.4, 4.1, 0.53), scale=0.8)
     scene.model("wicker_basket_02", (9.0, 6.9, 0.0), scale=1.1)
+    for cx in (5.45, 8.05):                                     # linen curtains either side of the arched door
+        scene.box(f"curtain_{cx}", (cx, 0.62, 1.3), (0.42, 0.14, 2.6), linen, bevel=0.05)
+    scene.rod("curtain_pole", (5.1, 0.62, 2.65), (8.4, 0.62, 2.65), 0.015, iron)
+    for sx in (8.9, 12.1):                                      # sconces with linen shades flanking the fire
+        _sconce(scene, f"sconce_{sx}", (sx, 7.42, 1.75), brass, shade)
+    scene.box("fire_screen", (10.5, 7.02, 0.36), (0.9, 0.02, 0.72), iron)
+    scene.box("fireback", (10.5, 7.42, 0.95), (1.4, 0.16, 1.9), charcoal)
+    scene.model("ceramic_pot", (9.2, 7.1, 0.0), scale=1.4)
+    scene.model("potted_plant_04", (9.2, 7.1, 0.0), scale=1.2)
     for k in range(4):
         z = 0.12 + 0.05 * (k % 2)
         scene.rod(f"log_{k}", (10.2 + 0.2 * k, 6.6, z), (10.2 + 0.2 * k, 7.2, z), 0.07, oak)
     scene.model("ArmChair_01", (8.6, 4.1, 0.0), rot_z=math.radians(90))
     scene.model("ArmChair_01", (13.6, 4.1, 0.0), rot_z=math.radians(-90))
-    scene.model("throw_pillows_01", (11.0, 5.6, 0.45), rot_z=math.radians(180))
     scene.model("book_encyclopedia_set_01", (10.6, 4.1, 0.46))
     scene.model("wooden_bookshelf_worn", (14.35, 5.5, 0.0), rot_z=math.radians(-90))
     scene.model("painted_wooden_cabinet", (8.1, 1.4, 0.0), rot_z=math.radians(90))
@@ -189,6 +204,10 @@ def dress(scene):
     scene.model("ceramic_vase_04", (18.5, 4.0, 0.77))
     scene.model("wine_bottles_01", (16.9, 4.15, 0.77), scale=0.9)
     scene.model("painted_wooden_cabinet", (20.55, 2.6, 0.0), rot_z=math.radians(-90), scale=1.2)
+    for px in (16.6, 19.0):
+        _wicker_pendant(scene, f"pendant_{px}", (px, 4.0), 3.45, 1.95, straw, iron, 120)
+    scene.model("metal_jug", (20.3, 2.6, 0.95), scale=1.0)
+    scene.model("wine_bottles_01", (20.3, 3.1, 0.95), scale=0.9)
     scene.model("hanging_picture_frame_03", (20.95, 5.5, 1.7), rot_z=math.radians(-90), scale=1.6)
     scene.model("fancy_picture_frame_01", (16.5, 7.45, 1.7), scale=1.8)
     scene.model("hanging_picture_frame_02", (19.2, 7.45, 1.7), scale=1.6)
@@ -198,8 +217,14 @@ def dress(scene):
         scene.model("industrial_wall_lamp", (x, 7.45, 2.1), rot_z=math.radians(180), scale=0.9)
         scene.point_light(f"dining_wall_{x}", (x, 7.1, 2.0), 15, color=(1.0, 0.8, 0.55), radius=0.06)
     # kitchen: the run is in the spec; an island, stools, pans, a bowl of fruit, a shelf of jars
-    scene.box("island", (25.75, 3.6, 0.45), (2.4, 1.0, 0.9), scene.pbr("p_grey_paint", "wood_shutter", tile=0.8, value=1.15, tint=(0.7, 0.72, 0.72)))
-    scene.box("island_top", (25.75, 3.6, 0.92), (2.5, 1.1, 0.04), marble)
+    scene.box("island", (25.75, 3.6, 0.45), (2.4, 1.0, 0.9), charcoal)
+    scene.box("island_top", (25.75, 3.6, 0.92), (2.5, 1.1, 0.04), cut_stone)
+    for px in (25.1, 26.4):
+        scene.cone(f"kitchen_pendant_{px}", (px, 3.6, 1.95), 0.19, 0.04, 0.24, copper)
+        scene.rod(f"kitchen_pendant_cord_{px}", (px, 3.6, 2.19), (px, 3.6, 3.0), 0.005, iron)
+        scene.point_light(f"kitchen_pendant_light_{px}", (px, 3.6, 2.0), 45, color=(1.0, 0.8, 0.55), radius=0.05)
+    scene.model("brass_pot_01", (24.6, 6.15, 0.95), scale=0.9)
+    scene.model("wooden_bowl_01", (26.3, 3.5, 0.95), scale=0.9)
     for dx in (-0.7, 0.0, 0.7):
         scene.model("wooden_stool_01", (25.75 + dx, 2.7, 0.0), rot_z=math.radians(R.uniform(0, 30)))
     scene.model("wooden_bowl_02", (25.3, 3.6, 0.95))
@@ -210,23 +235,25 @@ def dress(scene):
     scene.model("wicker_basket_02", (29.4, 2.0, 0.0))
     # bedrooms: beds, side tables, lamps; the tower study with a desk under the eaves
     scene.model("GothicBed_01", (8.9, 3.0, 3.5), rot_z=math.radians(90))
-    scene.model("old_bed_frame", (14.2, 3.0, 3.5), rot_z=math.radians(90))
+    _bed(scene, "bed_main", (14.9, 3.2, 3.5), math.radians(180), taupe_linen, white_linen, grey_linen)
+    scene.point_light("bedroom_light", (14.2, 3.2, 6.1), 160, color=(1.0, 0.85, 0.7), radius=0.3)
     scene.box("bed2_mattress", (14.2, 3.0, 3.95), (1.7, 2.0, 0.3), linen)
     scene.model("vintage_day_bed", (19.6, 3.0, 3.5), rot_z=math.radians(90))
-    scene.model("throw_pillows_01", (14.2, 3.0, 4.1), rot_z=math.radians(90))
+    scene.model("ornate_mirror_01", (16.38, 3.2, 5.25), rot_z=math.radians(-90), scale=1.4)
+    for cx in (13.2, 15.2):
+        scene.box(f"curtain_bed_{cx}", (cx, 0.62, 3.5 + 1.25), (0.4, 0.12, 2.5), linen, bevel=0.05)
     scene.model("vintage_cabinet_01", (12.3, 1.0, 3.5), rot_z=math.radians(90))
     for x in (8.9, 14.2, 19.6):
         scene.model("wooden_stool_01", (x - 1.2, 1.7, 3.5), scale=1.1)
         _table_lamp(scene, f"lamp_bed_{x}", (x - 1.2, 1.7, 3.5 + 0.46), 0.16, 0.42, brass, shade, 25)
-        _rug(scene, f"rug_bed_{x}", (x, 3.9, 3.5), (2.4, 3.2), rug_jute)
-    scene.model("painted_wooden_bench", (14.2, 4.6, 3.5), rot_z=math.radians(90))
+        _rug(scene, f"rug_bed_{x}", (x + 0.7, 3.2, 3.5), (3.2, 2.6), rug_jute)
     scene.model("WoodenChair_01", (9.4, 5.4, 3.5), rot_z=math.radians(200))
     scene.model("painted_wooden_table", (3.75, 3.0, 6.7), rot_z=math.radians(0), scale=0.9)
     scene.model("Rockingchair_01", (5.2, 5.2, 6.7), rot_z=math.radians(-120))
     scene.model("horse_statue_01", (2.4, 3.75, 0.0), rot_z=math.radians(90), scale=0.5)
 
     # ---- lights: chandeliers hang from the spec's pendants, lanterns on the pergola posts, warm points in the rooms
-    for eid, asset, energy in (("L1", "Chandelier_02", 220), ("L2", "lantern_chandelier_01", 180), ("L3", "Chandelier_01", 120), ("L4", "hanging_industrial_lamp", 90), ("L5", "wooden_lantern_01", 60)):
+    for eid, asset, energy in (("L1", "Chandelier_02", 220), ("L3", "Chandelier_01", 120), ("L4", "hanging_industrial_lamp", 90), ("L5", "wooden_lantern_01", 60)):
         c = scene.center(eid)
         z = 2.2 if c.z < 4.0 else c.z - 0.9
         scene.model(asset, (c.x, c.y, z), scale=1.0)
@@ -252,17 +279,54 @@ def dress(scene):
         (12.0, (14.5, -9.4, -0.3), (0.0, 0.94, 0.33)),        # at the foot of the steps
         (17.0, (14.5, -5.5, 1.5), (0.0, 0.98, 0.18)),         # on the terrace, the arched door ahead
         (21.0, (14.5, -1.2, 1.55), (-0.25, 0.95, 0.1)),        # under the door
-        (25.0, (12.5, 1.8, 1.6), (-0.8, 0.55, 0.05)),         # inside, the living room and the fire
+        (25.0, (13.9, 1.4, 1.55), (-0.66, 0.74, -0.04)),      # inside: sofas, the fire, the lamps
         (29.0, (10.0, 4.0, 1.6), (-0.98, 0.15, 0.05)),        # toward the hall arch
         (33.0, (12.0, 4.2, 1.6), (0.98, 0.1, 0.05)),          # turning to the dining room
         (37.0, (16.5, 4.0, 1.6), (0.95, 0.3, 0.1)),           # through the arch, the long table
         (40.0, (18.8, 4.0, 1.6), (0.6, 0.78, 0.1)),           # the dining room
+        (44.0, (12.3, 5.4, 5.0), (0.72, -0.68, -0.12)),       # the main bedroom, from its door
+        (48.0, (22.3, 2.0, 1.55), (0.86, 0.5, -0.06)),        # the kitchen
     ], fps=24, lens=26, fstop=8.0, focus=6.0)
-    scene.exposure([(0.0, 0.0), (20.0, 0.0), (24.0, 1.0), (40.0, 1.0)])
+    scene.exposure([(0.0, 0.0), (20.0, 0.0), (24.0, 1.0), (41.0, 1.0), (43.0, 1.2), (45.0, 1.2), (47.0, 1.0), (48.0, 1.0)])
     scene.render_settings(rx=1600, ry=900, samples=128, exposure=0.0, adaptive=0.08)
 
 
 # --------------------------------------------------------------------------- procedural props the asset library lacks
+def _sconce(scene, name, at, brass, shade):
+    """A brass wall arm with a small linen drum shade; ``at`` is on the wall, the shade stands off it."""
+    x, y, z = at
+    scene.box(f"{name}_plate", (x, y - 0.01, z), (0.09, 0.02, 0.14), brass)
+    scene.rod(f"{name}_arm", (x, y - 0.02, z), (x, y - 0.2, z + 0.02), 0.008, brass)
+    scene.cone(f"{name}_shade", (x, y - 0.2, z + 0.02), 0.09, 0.075, 0.16, shade)
+    scene.point_light(f"{name}_light", (x, y - 0.2, z + 0.05), 12, color=(1.0, 0.8, 0.55), radius=0.03)
+
+
+def _wicker_pendant(scene, name, at, ceiling, bottom, wicker, iron, watts):
+    """A woven bell shade hanging on a cord, as over the listing's dining table."""
+    x, y = at
+    h = 0.55
+    scene.cone(f"{name}_shade", (x, y, bottom), 0.34, 0.09, h, wicker)
+    scene.rod(f"{name}_cord", (x, y, bottom + h), (x, y, ceiling), 0.004, iron)
+    scene.point_light(f"{name}_light", (x, y, bottom + 0.2), watts, color=(1.0, 0.8, 0.55), radius=0.06)
+
+
+def _bed(scene, name, at, rot, base_m, sheet_m, throw_m):
+    """An upholstered bed: base, mattress, tall headboard, pillows and a folded throw; the head is at -x before ``rot``."""
+    x, y, z = at
+    c, s_ = math.cos(rot), math.sin(rot)
+    def p(dx, dy, dz):
+        return (x + dx * c - dy * s_, y + dx * s_ + dy * c, z + dz)
+    scene.box(f"{name}_base", p(0, 0, 0.18), (2.05, 1.7, 0.36), base_m, rot_z=rot, bevel=0.03)
+    scene.box(f"{name}_mattress", p(0, 0, 0.47), (2.0, 1.65, 0.22), sheet_m, rot_z=rot, bevel=0.06)
+    scene.box(f"{name}_head", p(-1.06, 0, 0.62), (0.1, 1.8, 1.24), base_m, rot_z=rot, bevel=0.03)
+    for dy in (-0.42, 0.42):
+        scene.box(f"{name}_pillow_{dy}", p(-0.72, dy, 0.68), (0.5, 0.72, 0.16), sheet_m, rot_z=rot, bevel=0.06)
+    scene.box(f"{name}_throw", p(0.7, 0, 0.62), (0.6, 1.7, 0.08), throw_m, rot_z=rot, bevel=0.03)
+    scene.box(f"{name}_bench", p(1.32, 0, 0.24), (0.42, 1.2, 0.1), throw_m, rot_z=rot, bevel=0.03)
+    for dx, dy in ((1.15, -0.5), (1.5, -0.5), (1.15, 0.5), (1.5, 0.5)):
+        scene.box(f"{name}_bench_leg_{dx}_{dy}", p(dx, dy, 0.1), (0.03, 0.03, 0.2), base_m, rot_z=rot)
+
+
 def _table_lamp(scene, name, at, r_shade, h, brass, shade, watts):
     """A brass column with a linen drum shade and a warm point inside it."""
     x, y, z = at

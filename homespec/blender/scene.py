@@ -248,6 +248,16 @@ class Scene:
         bpy.ops.object.shade_smooth()
         return o
 
+    def cone(self, name, loc, r_bottom, r_top, h, m, verts=48, open_ends=True):
+        """A frustum standing on ``loc``: lampshades, pots, bell shades. Open at both ends by default."""
+        bpy.ops.mesh.primitive_cone_add(vertices=verts, radius1=r_bottom, radius2=r_top, depth=h, location=(loc[0], loc[1], loc[2] + h / 2),
+                                        end_fill_type='NOTHING' if open_ends else 'NGON')
+        o = bpy.context.object
+        o.name = name
+        o.data.materials.append(m)
+        bpy.ops.object.shade_smooth()
+        return o
+
     def sphere(self, name, loc, r, m):
         bpy.ops.mesh.primitive_uv_sphere_add(radius=r, location=loc, segments=24, ring_count=12)
         o = bpy.context.object

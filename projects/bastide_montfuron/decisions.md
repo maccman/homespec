@@ -89,3 +89,12 @@ rails and 45 mm slats rather than a plank leaf; the joiner reads the same
 thing the renderer does. The dining chairs are the library's painted chair
 with a black tint applied at placement (`Scene.model(tint=...)`), which is
 how one CC0 model stands in for the black Windsor chairs of the photographs.
+
+## D-017 The rooms are dressed from the listing's photographs
+Living room: linen sofas either side of a low dark table, shaded sconces
+flanking a dressed-stone fire with an iron screen, table lamps, curtains at
+the arched door. Dining: the long oak table under two woven straw bells,
+black chairs, a painted buffet. Kitchen: a charcoal island with a stone top
+under copper pendants, the run along the north wall. Bedroom: an
+upholstered bed facing its window, bedside lamps on stools, a mirror over
+the head. All of it is presentation; the spec carries only the pendants.
