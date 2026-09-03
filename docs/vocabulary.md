@@ -37,6 +37,7 @@ millimetres. A `Ref` field accepts the object or its id.
 | `Outlet(id, on, from_start, height, variant="double")` | on a wall's inside face | `IfcOutlet` |
 | `Arch(id, host, width, height, at)` | an open round-headed passage; `height` is the springing line | a true arched void in the host, no product |
 | `Roof(id, outline, level, material, shape="gable", ridge_along="x", pitch=22, overhang=600, thickness=250, eave=None, genoise=0, abuts=[])` | `gable`, `hip`, `shed` (`high_side`) or `flat`; eave at the level height unless `eave`, lifted onto the génoise when there is one; `genoise` courses of tiles under the free eaves; `abuts` names sides that meet a taller wall: no overhang, gable or génoise there | `IfcRoof` + `Gable` infills (gable) + `Cornice` (génoise) |
+| `WallToRoofInfill(id, wall, roof, material=None)` | continues the named wall from its head to the exact realized underside of the named roof; inherits the wall's thickness, finish and external status and the roof's level without changing either solid | `IfcWall` |
 | `ArchedDoor(id, host, width, height, ...)` | a glazed door under a semicircular fanlight; `height` is the springing line | `IfcDoor` + arched void + `Glazing` |
 | `Stair(id, start, direction, width, rise, going=270, max_riser=180, align="left", base=0, level, to_level)` | a straight flight; risers sized from `rise`; `align` puts the width left of, right of or astride the line from `start`; `base` lifts the foot onto a landing (the mass still stands on the floor); publishes its `outline` | `IfcStair`; give the floor above `voids=[stair]` |
 | `Landing(id, outline, top, thickness, level)` | a platform between flights | `IfcSlab` |
@@ -49,12 +50,13 @@ millimetres. A `Ref` field accepts the object or its id.
 Realizing an element records what a builder needs in `derived`:
 
 - `WallGeometry`: `start, end, length, thickness, height, elevation, angle, face, body` where `face` and `body` are `Frame`s.
+- `WallToRoofInfillGeometry`: `wall, roof, z_base, max_height, thickness, assembly, body`.
 - `OpeningGeometry`: `host, from_start, from_end, width, height, sill, head, clear_width, clear_height, glass_area_mm2, mullions, void`.
 - Spaces: `area_mm2, height`. Beams: `span, clear_below`. Bookcases: `bay_width, shelf_pitch`.
 
 ## Relations
 
-`has_opening`, `hosted_in`, `part_of`, `bounds`, `bounded_by`, `against`, `on_wall`. Exporters and checks navigate these by id.
+`has_opening`, `hosted_in`, `part_of`, `bounds`, `bounded_by`, `against`, `on_wall`, `extends`, `meets`. Exporters and checks navigate these by id.
 
 ## Writing your own element
 

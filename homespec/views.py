@@ -29,11 +29,11 @@ from .ir import IRDocument, IREntity
 Vec = tuple[float, float, float]
 Colour = tuple[float, float, float]
 
-STRUCTURE = {"wall", "gable", "slab", "landing", "beam", "column", "chimney", "stair"}
+STRUCTURE = {"wall", "wall_infill", "gable", "slab", "landing", "beam", "column", "chimney", "stair"}
 """What the structure view keeps."""
 
 COLOURS: dict[str, Colour] = {
-    "wall": (0.82, 0.74, 0.60), "gable": (0.76, 0.68, 0.54), "slab": (0.58, 0.58, 0.58), "landing": (0.62, 0.62, 0.60),
+    "wall": (0.82, 0.74, 0.60), "wall_infill": (0.82, 0.74, 0.60), "gable": (0.76, 0.68, 0.54), "slab": (0.58, 0.58, 0.58), "landing": (0.62, 0.62, 0.60),
     "roof": (0.72, 0.38, 0.30), "cornice": (0.78, 0.50, 0.38), "ceiling": (0.93, 0.91, 0.85), "beam": (0.56, 0.38, 0.22),
     "column": (0.44, 0.46, 0.62), "chimney": (0.52, 0.40, 0.36), "stair": (0.86, 0.66, 0.30),
     "window": (0.12, 0.12, 0.12), "clerestory": (0.12, 0.12, 0.12), "door": (0.20, 0.16, 0.14), "sliding_door": (0.12, 0.12, 0.12),

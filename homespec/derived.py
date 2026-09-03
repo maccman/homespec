@@ -86,6 +86,18 @@ class RoofGeometry(BaseModel):
     rafter_length: float | None = None
 
 
+class WallToRoofInfillGeometry(BaseModel):
+    """The masonry added above one wall and clipped to one roof underside."""
+
+    wall: str
+    roof: str
+    z_base: float
+    max_height: float
+    thickness: float
+    assembly: str
+    body: Frame
+
+
 class StairGeometry(BaseModel):
     steps: int
     riser: float

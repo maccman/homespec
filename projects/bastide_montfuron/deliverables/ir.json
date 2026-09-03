@@ -16098,6 +16098,618 @@
    "extrusion": null
   },
   {
+   "id": "TS.infill",
+   "kind": "wall_infill",
+   "ifc_class": "IfcWall",
+   "physical": true,
+   "tags": [
+    "external",
+    "wall_infill"
+   ],
+   "level": "L2",
+   "material": "lime_white",
+   "params": {
+    "wall": "TS",
+    "roof": "RT"
+   },
+   "derived": {
+    "wall": "TS",
+    "roof": "RT",
+    "z_base": 9300.0,
+    "max_height": 501.5624,
+    "thickness": 500.0,
+    "assembly": "rubble_wall",
+    "body": {
+     "origin": [
+      500.0,
+      0.0
+     ],
+     "u": [
+      1.0,
+      0.0
+     ],
+     "n": [
+      -0.0,
+      1.0
+     ]
+    }
+   },
+   "relations": [
+    {
+     "pred": "extends",
+     "obj": "TS",
+     "note": ""
+    },
+    {
+     "pred": "meets",
+     "obj": "RT",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/TS.infill.step",
+    "obj": "geometry/TS.infill.obj",
+    "bbox": {
+     "min": [
+      500.0,
+      -5.129306866752158e-14,
+      9300.0
+     ],
+     "max": [
+      7000.0,
+      500.0000000000001,
+      9801.562413529806
+     ]
+    },
+    "volume_mm3": 1198063930.7469163
+   },
+   "extrusion": null
+  },
+  {
+   "id": "TE.infill",
+   "kind": "wall_infill",
+   "ifc_class": "IfcWall",
+   "physical": true,
+   "tags": [
+    "external",
+    "wall_infill"
+   ],
+   "level": "L2",
+   "material": "lime_white",
+   "params": {
+    "wall": "TE",
+    "roof": "RT"
+   },
+   "derived": {
+    "wall": "TE",
+    "roof": "RT",
+    "z_base": 9300.0,
+    "max_height": 501.5624,
+    "thickness": 500.0,
+    "assembly": "rubble_wall",
+    "body": {
+     "origin": [
+      7500.0,
+      500.0
+     ],
+     "u": [
+      0.0,
+      1.0
+     ],
+     "n": [
+      -1.0,
+      0.0
+     ]
+    }
+   },
+   "relations": [
+    {
+     "pred": "extends",
+     "obj": "TE",
+     "note": ""
+    },
+    {
+     "pred": "meets",
+     "obj": "RT",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/TE.infill.step",
+    "obj": "geometry/TE.infill.obj",
+    "bbox": {
+     "min": [
+      7000.0,
+      500.0,
+      9300.0
+     ],
+     "max": [
+      7500.000000000002,
+      7000.0,
+      9801.562413529806
+     ]
+    },
+    "volume_mm3": 1198063930.7469163
+   },
+   "extrusion": null
+  },
+  {
+   "id": "TN.infill",
+   "kind": "wall_infill",
+   "ifc_class": "IfcWall",
+   "physical": true,
+   "tags": [
+    "external",
+    "wall_infill"
+   ],
+   "level": "L2",
+   "material": "lime_white",
+   "params": {
+    "wall": "TN",
+    "roof": "RT"
+   },
+   "derived": {
+    "wall": "TN",
+    "roof": "RT",
+    "z_base": 9300.0,
+    "max_height": 501.5624,
+    "thickness": 500.0,
+    "assembly": "rubble_wall",
+    "body": {
+     "origin": [
+      7000.0,
+      7500.0
+     ],
+     "u": [
+      -1.0,
+      0.0
+     ],
+     "n": [
+      -0.0,
+      -1.0
+     ]
+    }
+   },
+   "relations": [
+    {
+     "pred": "extends",
+     "obj": "TN",
+     "note": ""
+    },
+    {
+     "pred": "meets",
+     "obj": "RT",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/TN.infill.step",
+    "obj": "geometry/TN.infill.obj",
+    "bbox": {
+     "min": [
+      499.9999999999999,
+      6999.999999999999,
+      9300.0
+     ],
+     "max": [
+      7000.0,
+      7500.000000000001,
+      9801.562413529806
+     ]
+    },
+    "volume_mm3": 1198063930.7469172
+   },
+   "extrusion": null
+  },
+  {
+   "id": "TW.infill",
+   "kind": "wall_infill",
+   "ifc_class": "IfcWall",
+   "physical": true,
+   "tags": [
+    "external",
+    "wall_infill"
+   ],
+   "level": "L2",
+   "material": "lime_white",
+   "params": {
+    "wall": "TW",
+    "roof": "RT"
+   },
+   "derived": {
+    "wall": "TW",
+    "roof": "RT",
+    "z_base": 9300.0,
+    "max_height": 501.5624,
+    "thickness": 500.0,
+    "assembly": "rubble_wall",
+    "body": {
+     "origin": [
+      0.0,
+      7000.0
+     ],
+     "u": [
+      0.0,
+      -1.0
+     ],
+     "n": [
+      1.0,
+      0.0
+     ]
+    }
+   },
+   "relations": [
+    {
+     "pred": "extends",
+     "obj": "TW",
+     "note": ""
+    },
+    {
+     "pred": "meets",
+     "obj": "RT",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/TW.infill.step",
+    "obj": "geometry/TW.infill.obj",
+    "bbox": {
+     "min": [
+      -3.672838300934028e-13,
+      500.0,
+      9300.0
+     ],
+     "max": [
+      500.0000000000015,
+      7000.0,
+      9801.562413529806
+     ]
+    },
+    "volume_mm3": 1198063930.7469172
+   },
+   "extrusion": null
+  },
+  {
+   "id": "MS.infill",
+   "kind": "wall_infill",
+   "ifc_class": "IfcWall",
+   "physical": true,
+   "tags": [
+    "external",
+    "wall_infill"
+   ],
+   "level": "L1",
+   "material": "lime_white",
+   "params": {
+    "wall": "MS",
+    "roof": "RM"
+   },
+   "derived": {
+    "wall": "MS",
+    "roof": "RM",
+    "z_base": 6400.0,
+    "max_height": 552.8261,
+    "thickness": 500.0,
+    "assembly": "rubble_wall",
+    "body": {
+     "origin": [
+      7500.0,
+      0.0
+     ],
+     "u": [
+      1.0,
+      0.0
+     ],
+     "n": [
+      -0.0,
+      1.0
+     ]
+    }
+   },
+   "relations": [
+    {
+     "pred": "extends",
+     "obj": "MS",
+     "note": ""
+    },
+    {
+     "pred": "meets",
+     "obj": "RM",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/MS.infill.step",
+    "obj": "geometry/MS.infill.obj",
+    "bbox": {
+     "min": [
+      7500.0,
+      -1.1994074147998301e-13,
+      6400.0
+     ],
+     "max": [
+      21000.0,
+      500.0000000000002,
+      6952.826087687573
+     ]
+    },
+    "volume_mm3": 2980252685.432965
+   },
+   "extrusion": null
+  },
+  {
+   "id": "MN.infill",
+   "kind": "wall_infill",
+   "ifc_class": "IfcWall",
+   "physical": true,
+   "tags": [
+    "external",
+    "wall_infill"
+   ],
+   "level": "L1",
+   "material": "lime_white",
+   "params": {
+    "wall": "MN",
+    "roof": "RM"
+   },
+   "derived": {
+    "wall": "MN",
+    "roof": "RM",
+    "z_base": 6400.0,
+    "max_height": 552.8261,
+    "thickness": 500.0,
+    "assembly": "rubble_wall",
+    "body": {
+     "origin": [
+      21000.0,
+      8000.0
+     ],
+     "u": [
+      -1.0,
+      0.0
+     ],
+     "n": [
+      -0.0,
+      -1.0
+     ]
+    }
+   },
+   "relations": [
+    {
+     "pred": "extends",
+     "obj": "MN",
+     "note": ""
+    },
+    {
+     "pred": "meets",
+     "obj": "RM",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/MN.infill.step",
+    "obj": "geometry/MN.infill.obj",
+    "bbox": {
+     "min": [
+      7500.0,
+      7499.999999999999,
+      6400.0
+     ],
+     "max": [
+      21000.0,
+      8000.000000000002,
+      6952.826087687573
+     ]
+    },
+    "volume_mm3": 2980252685.4329605
+   },
+   "extrusion": null
+  },
+  {
+   "id": "KS.infill",
+   "kind": "wall_infill",
+   "ifc_class": "IfcWall",
+   "physical": true,
+   "tags": [
+    "external",
+    "wall_infill"
+   ],
+   "level": "L0",
+   "material": "lime_white",
+   "params": {
+    "wall": "KS",
+    "roof": "RK"
+   },
+   "derived": {
+    "wall": "KS",
+    "roof": "RK",
+    "z_base": 3200.0,
+    "max_height": 414.7378,
+    "thickness": 500.0,
+    "assembly": "rubble_wall",
+    "body": {
+     "origin": [
+      21500.0,
+      1000.0
+     ],
+     "u": [
+      1.0,
+      0.0
+     ],
+     "n": [
+      -0.0,
+      1.0
+     ]
+    }
+   },
+   "relations": [
+    {
+     "pred": "extends",
+     "obj": "KS",
+     "note": ""
+    },
+    {
+     "pred": "meets",
+     "obj": "RK",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/KS.infill.step",
+    "obj": "geometry/KS.infill.obj",
+    "bbox": {
+     "min": [
+      21500.0,
+      1000.0,
+      3200.0
+     ],
+     "max": [
+      30000.0,
+      1500.0000000000005,
+      3614.737833567907
+     ]
+    },
+    "volume_mm3": 1333357927.713748
+   },
+   "extrusion": null
+  },
+  {
+   "id": "KE.infill",
+   "kind": "wall_infill",
+   "ifc_class": "IfcWall",
+   "physical": true,
+   "tags": [
+    "external",
+    "wall_infill"
+   ],
+   "level": "L0",
+   "material": "lime_white",
+   "params": {
+    "wall": "KE",
+    "roof": "RK"
+   },
+   "derived": {
+    "wall": "KE",
+    "roof": "RK",
+    "z_base": 3200.0,
+    "max_height": 414.7378,
+    "thickness": 500.0,
+    "assembly": "rubble_wall",
+    "body": {
+     "origin": [
+      30500.0,
+      1500.0
+     ],
+     "u": [
+      0.0,
+      1.0
+     ],
+     "n": [
+      -1.0,
+      0.0
+     ]
+    }
+   },
+   "relations": [
+    {
+     "pred": "extends",
+     "obj": "KE",
+     "note": ""
+    },
+    {
+     "pred": "meets",
+     "obj": "RK",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/KE.infill.step",
+    "obj": "geometry/KE.infill.obj",
+    "bbox": {
+     "min": [
+      30000.0,
+      1500.0,
+      3200.0
+     ],
+     "max": [
+      30500.0,
+      6500.0,
+      3614.7378335679073
+     ]
+    },
+    "volume_mm3": 784328192.7727935
+   },
+   "extrusion": null
+  },
+  {
+   "id": "KN.infill",
+   "kind": "wall_infill",
+   "ifc_class": "IfcWall",
+   "physical": true,
+   "tags": [
+    "external",
+    "wall_infill"
+   ],
+   "level": "L0",
+   "material": "lime_white",
+   "params": {
+    "wall": "KN",
+    "roof": "RK"
+   },
+   "derived": {
+    "wall": "KN",
+    "roof": "RK",
+    "z_base": 3200.0,
+    "max_height": 414.7378,
+    "thickness": 500.0,
+    "assembly": "rubble_wall",
+    "body": {
+     "origin": [
+      30000.0,
+      7000.0
+     ],
+     "u": [
+      -1.0,
+      0.0
+     ],
+     "n": [
+      -0.0,
+      -1.0
+     ]
+    }
+   },
+   "relations": [
+    {
+     "pred": "extends",
+     "obj": "KN",
+     "note": ""
+    },
+    {
+     "pred": "meets",
+     "obj": "RK",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/KN.infill.step",
+    "obj": "geometry/KN.infill.obj",
+    "bbox": {
+     "min": [
+      21500.0,
+      6499.999999999999,
+      3200.0
+     ],
+     "max": [
+      30000.0,
+      7000.000000000001,
+      3614.7378335679073
+     ]
+    },
+    "volume_mm3": 1333357927.7137475
+   },
+   "extrusion": null
+  },
+  {
    "id": "RP",
    "kind": "roof",
    "ifc_class": "IfcRoof",
@@ -20541,6 +21153,24 @@
      10900.0,
      7650.0,
      7462.224733138122
+    ]
+   }
+  },
+  {
+   "a": "CH",
+   "b": "MN.infill",
+   "volume_mm3": 62332072.35473183,
+   "depth_mm": 150.0000003000032,
+   "bbox": {
+    "min": [
+     10100.0,
+     7499.999999999999,
+     6400.0
+    ],
+    "max": [
+     10900.0,
+     7650.0,
+     6952.826087687574
     ]
    }
   },

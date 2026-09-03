@@ -4,10 +4,12 @@ import math
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
-from homespec import Assembly, BeamGrid, Ceiling, Column, Downlight, House, Layer, Level, Roof, Wall, Window
+from homespec import Assembly, BeamGrid, Ceiling, Column, Downlight, House, Layer, Level, Roof, Wall, WallToRoofInfill, Window
 from homespec import geometry as G
 from homespec.checks import run
-from homespec.clashes import find_clashes
+from homespec.checks.clashes import allowance
+from homespec.clashes import Clash, find_clashes
+from homespec.geometry import BBox
 from homespec.ir import IRDocument
 from homespec.model import Build, Element, Realized
 
@@ -103,6 +105,19 @@ def test_the_rule_allows_construction_and_rejects_mistakes(tmp_path):
     assert not rows["CL.B2/L1"].ok and rows["CL.B2/L1"].note == "beam into downlight" and rows["CL.B2/L1"].limit == "0 mm"
     assert rows["CL.B4/L2"].ok and "notches" in rows["CL.B4/L2"].note
     assert not rows["R/C"].ok and rows["R/C"].note == "roof into column"
+
+
+def test_a_wall_infill_head_gets_the_same_limited_roof_allowance(tmp_path):
+    with House("t") as house:
+        Level("L0", height=3000)
+        Assembly("a", layers=[Layer(material="x", thickness=200)])
+        Wall("W", (0, 200), (6000, 200), assembly="a", level="L0")
+        Roof("R", outline=[(0, 0), (6000, 0), (6000, 4000), (0, 4000)], level="L0", genoise=2, overhang=400)
+        WallToRoofInfill("I", wall="W", roof="R")
+    ir = house.compile().write(str(tmp_path), clashes=[])
+    bb = ir.entity("I").geometry.bbox
+    clash = Clash(a="I", b="R", volume_mm3=4000, depth_mm=20, bbox=BBox(min=(bb.min[0], bb.min[1], bb.max[2] - 20), max=bb.max))
+    assert allowance(ir, clash) == ("<= 60 mm", "wall_infill head dressed to the roof slope")
 
 
 def test_an_allowance_needs_a_reason_and_both_entities():

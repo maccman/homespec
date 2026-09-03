@@ -98,7 +98,7 @@ def plan_view(ir: IRDocument, level: str, cut: float = CUT_HEIGHT) -> PlanView:
             continue
         lo, hi = e.geometry.bbox.min, e.geometry.bbox.max
         if lo[2] <= cut_z <= hi[2]:
-            layer = "walls" if e.kind in ("wall", "gable") else "openings" if e.has("opening") or e.kind in ("glazing", "leaf") else "joinery"
+            layer = "walls" if e.kind in ("wall", "wall_infill", "gable") else "openings" if e.has("opening") or e.kind in ("glazing", "leaf") else "joinery"
             view.shapes.append(Shape2D(loops=section_loops(read_step(ir.path(e.geometry.step)), cut_z), layer=layer, id=e.id))
         elif floor_z - 300 <= hi[2] < cut_z and e.level == level:
             view.shapes.append(Shape2D(loops=section_loops(read_step(ir.path(e.geometry.step)), hi[2] - 0.5), layer="below", id=e.id))

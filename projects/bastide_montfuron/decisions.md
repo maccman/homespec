@@ -236,6 +236,22 @@ the mirror over the fire through the living-room ceiling, pots in walls,
 kitchen crocks 50 mm above the counter and a console opposite bedroom
 3's door; all are fixed.
 
+## D-030 Wall heads follow the roof underside behind the génoise
+Entities: TS.infill, TE.infill, TN.infill, TW.infill, MS.infill, MN.infill, KS.infill, KE.infill, KN.infill, RT, RM, RK, CH
+The génoise correctly lifts each roof above its level, but that left a band
+of air between the square wall heads and the sloping roof undersides. Nine
+`WallToRoofInfill` elements now continue the exposed tower, main-wing and
+kitchen walls through that band. Each takes its plan, thickness, finish and
+external status from its wall, then clips the extension against the
+realized downward faces of its roof. It does not calculate another roof
+profile or alter the roof solid: RT, RM and RK keep the pitches, eaves,
+ridges, overhangs and abutting sides fixed in D-020. The infill meets the
+roof without sharing volume; the clash policy treats `wall_infill` as a
+support too, so a construction-tolerance wedge at its dressed head is judged
+by the same 60 mm limit as a wall or gable rather than waved through at any
+depth. CH now passes through MN.infill on its way through RM, so infill is
+also fabric under the existing chimney allowance.
+
 ## Against the reference
 
 The listing's photographs are in `docs/agents/refs/` (contact sheets `refs_a.jpg`
@@ -244,7 +260,7 @@ and `refs_b.jpg`).
 | The listing shows | The model | Kept or changed |
 |---|---|---|
 | Three blocks stepping down: a tower, a wing, a low kitchen (ref-3, ref-23) | three blocks with shared walls | kept (D-001) |
-| Low canal-tile roofs on two or three génoise courses (ref-5, ref-6) | hips and a gable at 22 to 28 degrees, each roof sitting on its courses | changed this pass: the roofs rose onto the courses (D-020) |
+| Low canal-tile roofs on two or three génoise courses (ref-5, ref-6) | hips and a gable at 22 to 28 degrees, each roof sitting on its courses with wall infill behind | changed: the roofs rose onto the courses (D-020), then the wall heads were filled to their unchanged undersides (D-030) |
 | The arched glazed door with a fanlight and no shutters (ref-14, ref-23) | D1, no shutters | changed (D-021) |
 | A black steel frame to that arch (ref-14) | painted oak, like every other window | kept: one joinery finish outside; the hall's screen D2 is the steel one |
 | Small-paned windows in stone surrounds with grey-blue louvred shutters (ref-5, ref-6) | every window | kept (D-004, D-015) |
@@ -267,12 +283,6 @@ and `refs_b.jpg`).
   the outer faces is written once.
 - An arched stone surround for D1. `Surround` is rectangular; the lintel
   over the fanlight stands in for voussoirs until there is an arched part.
-- Walls built up to the roof underside behind the génoise. The walls stop
-  at their level height and the roofs sit on the courses 200 to 350 mm
-  higher, so a section shows a band above the wall heads that masonry
-  fills in the real house. Raising the walls would put their heads into
-  the roof slope by the rise across their thickness, beyond what the clash
-  policy allows a head; the vocabulary needs a wall that meets a roof.
 
 ## Not verified
 
@@ -284,8 +294,8 @@ and `refs_b.jpg`).
 - The flue: CH stands on the wall head above FP, but nothing routes a flue
   from the hearth to the stack.
 - The junctions the clash policy waves through: slabs 300 into walls,
-  joists pocketed 60 to 140, wall heads in roof slopes, the brush cover cut
-  around D1's surround.
+  joists pocketed 60 to 140, construction-tolerance wedges at wall or
+  infill heads in roof slopes, and the brush cover cut around D1's surround.
 - Setting-out of the steps ST0 between the retaining walls and of the
   flights against the tower's inside faces: everything is set out from
   grid numbers, not from a survey.
@@ -293,4 +303,3 @@ and `refs_b.jpg`).
 - The routes the scene audit keeps clear are rules of thumb: a metre in
   front of an opening, a flight's width at its ends. No code was consulted
   for them, and nothing checks door swings.
-

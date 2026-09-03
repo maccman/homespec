@@ -185,6 +185,20 @@ def group(shapes: Iterable[Solid]) -> Solid:
     return items[0] if len(items) == 1 else Compound(children=items)
 
 
+def volume_below(shape: Solid, z: float) -> Solid:
+    """The vertical volume below a solid's downward-facing skin, as far as ``z``.
+
+    A roof's lower faces are its exact underside. Extruding those faces
+    vertically down makes a clipping volume for masonry that must finish at
+    that underside without reconstructing the roof from its parameters.
+    """
+    downward = [face for face in shape.faces() if face.normal_at().Z < -1e-6]
+    if not downward:
+        raise ValueError("shape has no downward-facing skin")
+    distance = max(bbox(shape).max[2] - z + 1.0, 1.0)
+    return group(extrude(face, amount=distance, dir=(0, 0, -1)) for face in downward)
+
+
 # --------------------------------------------------------------------------- measuring
 def bbox(shape: Solid) -> BBox:
     bb = shape.bounding_box()
@@ -294,7 +308,7 @@ def read_obj(path: str, scale_to: float = 1000.0) -> tuple[list[Point3], list[tu
 __all__ = [
     "Point", "Point3", "Loop", "Solid", "Frame", "BBox",
     "add", "sub", "scale", "length", "unit", "left", "dot", "angle_of",
-    "box", "frame_box", "prism", "cylinder", "horizontal_cylinder", "prism_profile", "group",
+    "box", "frame_box", "prism", "cylinder", "horizontal_cylinder", "prism_profile", "group", "volume_below",
     "bbox", "volume", "polygon_area", "tessellate", "solids", "is_box", "overlap", "thickness", "section_loops",
     "write_step", "read_step", "write_obj", "read_obj",
 ]

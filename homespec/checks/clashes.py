@@ -27,11 +27,11 @@ WEDGE = 60.0
 """Millimetres a wall head may run into a roof plane: the sliver a slope leaves before the wall is dressed to it."""
 
 BEARERS = {"beam", "slab", "landing", "ceiling"}
-"""Kinds that bear into a wall or gable: pocketed, built in, run to the outside face."""
+"""Kinds that bear into a wall, wall infill or gable: pocketed, built in, run to the outside face."""
 
-SUPPORTS = {"wall", "gable"}
+SUPPORTS = {"wall", "wall_infill", "gable"}
 
-FABRIC = {"roof", "ceiling", "beam", "wall", "gable", "slab"}
+FABRIC = {"roof", "ceiling", "beam", "wall", "wall_infill", "gable", "slab"}
 """What a chimney passes through."""
 
 
