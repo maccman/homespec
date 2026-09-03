@@ -41,7 +41,7 @@ class Sheet(BaseModel):
         minx, miny, maxx, maxy = bounds
         avail_w = self.width - 2 * self.margin - self.title_block_width - 8
         avail_h = self.height - 2 * self.margin
-        for sc in (20, 25, 50, 100, 200, 500):
+        for sc in (20, 25, 50, 100, 125, 150, 200, 500):
             if (maxx - minx) / sc <= avail_w and (maxy - miny) / sc <= avail_h:
                 return self.model_copy(update={"scale": float(sc)})
         return self.model_copy(update={"scale": 1000.0})
