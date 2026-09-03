@@ -13,6 +13,12 @@
     "dry_orchard_meadow": {
       "resolution": "2k",
       "format": "hdr"
+    },
+    "kloppenheim_06_puresky": {
+      "resolution": "2k"
+    },
+    "qwantani_puresky": {
+      "resolution": "2k"
     }
   },
   "textures": {
@@ -398,6 +404,24 @@
     },
     "chinese_console_table": {
       "resolution": "1k"
-    }
+    },
+    "shrub_01": {},
+    "shrub_02": {},
+    "shrub_03": {},
+    "shrub_04": {},
+    "wild_rooibos_bush": {},
+    "searsia_lucida": {},
+    "searsia_burchellii": {},
+    "potted_plant_01": {},
+    "planter_box_03": {},
+    "periwinkle_plant": {},
+    "grass_medium_02": {},
+    "Ottoman_01": {},
+    "ClassicConsole_01": {},
+    "gothic_coffee_table": {},
+    "fancy_picture_frame_02": {},
+    "brass_diya_lantern": {},
+    "metal_jug": {},
+    "wooden_picnic_table": {}
   }
 }

@@ -45,12 +45,15 @@ class Render(BaseModel):
     tile: float = 1.0
     tint: tuple[float, float, float] = (1.0, 1.0, 1.0)
     value: float = 1.0
+    wash: float = 0.0
     rough_mul: float = 1.0
     color: tuple[float, float, float] | None = None
     rough: float = 0.5
     metal: float = 0.0
     emit: float = 0.0
     transmission: float = 0.0
+    absorb: float = 0.0
+    bump: float = 0.0
 
 
 @definition

@@ -135,8 +135,13 @@ def frame_box(frame: Frame, along: float, offset: float, z: float, size: Point3)
 
 
 def prism(outline: Sequence[Point], z0: float, height: float) -> Solid:
-    """Extrude a closed plan polygon from ``z0`` by ``height`` (negative goes down)."""
-    face = Polygon(*outline, align=None)
+    """Extrude a closed plan polygon from ``z0`` by ``height`` (negative goes down).
+
+    The outline may be traced either way round: a clockwise polygon would
+    otherwise face down and extrude the wrong way.
+    """
+    pts = list(outline) if _signed_area(outline) >= 0 else list(reversed(list(outline)))
+    face = Polygon(*pts, align=None)
     return Location((0, 0, z0)) * extrude(face, amount=height)
 
 

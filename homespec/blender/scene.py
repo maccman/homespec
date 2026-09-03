@@ -45,7 +45,7 @@ def _image(path: str, colorspace: str):
     return im
 
 
-def pbr(name: str, texture: str, tile: float = 1.0, rough_mul: float = 1.0, tint=(1, 1, 1), value: float = 1.0):
+def pbr(name: str, texture: str, tile: float = 1.0, rough_mul: float = 1.0, tint=(1, 1, 1), value: float = 1.0, wash: float = 0.0):
     """A Principled material driven by a Poly Haven texture set, box-projected in world metres (no UVs needed)."""
     d = os.path.join(ASSETS, "textures", texture.split("/")[-1])
     m = bpy.data.materials.new(name)
@@ -79,7 +79,15 @@ def pbr(name: str, texture: str, tile: float = 1.0, rough_mul: float = 1.0, tint
         hs.inputs["Value"].default_value = value
         nt.links.new(dif.outputs["Color"], hs.inputs["Color"])
         nt.links.new(hs.outputs["Color"], mix.inputs[6])
-        nt.links.new(mix.outputs[2], b.inputs["Base Color"])
+        out = mix.outputs[2]
+        if wash:                                   # lime wash, whitewash, bleached paint: mix toward white
+            wm = nt.nodes.new("ShaderNodeMix")
+            wm.data_type = 'RGBA'
+            wm.inputs[0].default_value = wash
+            wm.inputs[7].default_value = (0.97, 0.96, 0.93, 1)
+            nt.links.new(out, wm.inputs[6])
+            out = wm.outputs[2]
+        nt.links.new(out, b.inputs["Base Color"])
     rg = tex("Rough", "Non-Color")
     if rg:
         mr = nt.nodes.new("ShaderNodeMath")
@@ -96,20 +104,35 @@ def pbr(name: str, texture: str, tile: float = 1.0, rough_mul: float = 1.0, tint
     return m
 
 
-def flat(name: str, color, rough: float = 0.5, metal: float = 0.0, emit: float = 0.0, transmission: float = 0.0):
-    """A plain Principled material."""
+def flat(name: str, color, rough: float = 0.5, metal: float = 0.0, emit: float = 0.0, transmission: float = 0.0, bump: float = 0.0, absorb: float = 0.0):
+    """A plain Principled material; ``bump`` adds a fine procedural relief (foliage, render, rough paint)."""
     m = bpy.data.materials.new(name)
     m.use_nodes = True
-    b = m.node_tree.nodes["Principled BSDF"]
+    nodes, links = m.node_tree.nodes, m.node_tree.links
+    b = nodes["Principled BSDF"]
     b.inputs["Base Color"].default_value = (*color, 1)
     b.inputs["Roughness"].default_value = rough
     b.inputs["Metallic"].default_value = metal
+    if bump:
+        noise = nodes.new("ShaderNodeTexNoise")
+        noise.inputs["Scale"].default_value = 60.0
+        noise.inputs["Detail"].default_value = 6.0
+        bmp = nodes.new("ShaderNodeBump")
+        bmp.inputs["Strength"].default_value = bump
+        bmp.inputs["Distance"].default_value = 0.02
+        links.new(noise.outputs["Fac"], bmp.inputs["Height"])
+        links.new(bmp.outputs["Normal"], b.inputs["Normal"])
     if emit:
         b.inputs["Emission Color"].default_value = (*color, 1)
         b.inputs["Emission Strength"].default_value = emit
     if transmission:
         b.inputs["Transmission Weight"].default_value = transmission
-        b.inputs["IOR"].default_value = 1.5
+        b.inputs["IOR"].default_value = 1.33 if absorb else 1.5
+    if absorb:                                     # water, coloured glass: the colour deepens with depth
+        va = nodes.new("ShaderNodeVolumeAbsorption")
+        va.inputs["Color"].default_value = (*color, 1)
+        va.inputs["Density"].default_value = absorb
+        links.new(va.outputs["Volume"], nodes["Material Output"].inputs["Volume"])
     return m
 
 
@@ -123,9 +146,10 @@ def material_for(key: str):
     spec = IR["materials"].get(key, {})
     r = spec.get("render", {})
     if spec.get("texture"):
-        _MATERIALS[key] = pbr(key, spec["texture"], tile=r.get("tile", 1.0), rough_mul=r.get("rough_mul", 1.0), tint=tuple(r.get("tint", (1, 1, 1))), value=r.get("value", 1.0))
+        _MATERIALS[key] = pbr(key, spec["texture"], tile=r.get("tile", 1.0), rough_mul=r.get("rough_mul", 1.0), tint=tuple(r.get("tint", (1, 1, 1))), value=r.get("value", 1.0), wash=r.get("wash", 0.0))
     else:
-        _MATERIALS[key] = flat(key, tuple(r.get("color") or (0.8, 0.8, 0.8)), rough=r.get("rough", 0.5), metal=r.get("metal", 0.0), emit=r.get("emit", 0.0), transmission=r.get("transmission", 0.0))
+        _MATERIALS[key] = flat(key, tuple(r.get("color") or (0.8, 0.8, 0.8)), rough=r.get("rough", 0.5), metal=r.get("metal", 0.0), emit=r.get("emit", 0.0),
+                               transmission=r.get("transmission", 0.0), bump=r.get("bump", 0.0), absorb=r.get("absorb", 0.0))
     return _MATERIALS[key]
 
 
@@ -198,6 +222,21 @@ class Scene:
         bpy.ops.mesh.primitive_uv_sphere_add(radius=r, location=loc, segments=24, ring_count=12)
         o = bpy.context.object
         o.name = name
+        o.data.materials.append(m)
+        bpy.ops.object.shade_smooth()
+        return o
+
+    def blob(self, name, loc, r, m, noise=0.18, seed=0, scale_z=0.85):
+        """A clipped shrub: an icosphere whose vertices are pushed in and out by 3-D noise."""
+        from mathutils import noise as N
+        bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=3, radius=r, location=loc)
+        o = bpy.context.object
+        o.name = name
+        off = Vector((seed * 7.3, seed * 3.1, seed * 5.7))
+        for v in o.data.vertices:
+            n = N.noise((v.co / r) * 2.2 + off)
+            v.co *= 1.0 + noise * n
+        o.scale = (1.0, 1.0, scale_z)
         o.data.materials.append(m)
         bpy.ops.object.shade_smooth()
         return o

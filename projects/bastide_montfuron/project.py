@@ -32,10 +32,12 @@ def build() -> House:
                          render=Render(tile=1.1, value=0.85, tint=(0.9, 0.82, 0.74)))
         floor = Material("burgundy_stone", texture="polyhaven/stone_tiles_02", product="Pierre de Bourgogne flagstones 600 x 400, tumbled", supplier="TBD",
                          finish="honed, sealed", render=Render(tile=1.4, value=1.2, tint=(1.0, 0.96, 0.88)))
-        beams = Material("oak_beams", texture="polyhaven/oak_wood_planks", product="Reclaimed oak beams, limewashed", supplier="salvage",
+        Material("oak_beams", texture="polyhaven/oak_wood_planks", product="Reclaimed oak beams, limewashed", supplier="salvage",
                          render=Render(tile=1.6, value=1.15, tint=(1.0, 0.95, 0.88)))
-        shutter = Material("shutter_grey", product="Solid pine plank shutters, painted", supplier="local joiner",
-                           finish="Farrow and Ball Light Blue, matt", render=Render(color=(0.62, 0.68, 0.72), rough=0.75))
+        limed = Material("limed_oak", texture="polyhaven/oak_wood_planks", product="Oak beams and joists, lime-washed", supplier="local sawmill",
+                         finish="lime wash, brushed back", render=Render(tile=1.0, value=1.2, wash=0.55, tint=(0.98, 0.95, 0.9)))
+        shutter = Material("shutter_grey", product="Louvred pine shutters, painted", supplier="local joiner",
+                           finish="Farrow and Ball Light Blue, matt", render=Render(color=(0.66, 0.72, 0.76), rough=0.7))
         frame = Material("frame_white", product="Oak windows, painted off-white", supplier="local joiner", render=Render(color=(0.9, 0.88, 0.82), rough=0.5))
         steel = Material("steel_black", product="Thermally broken steel screens, black", supplier="TBD", render=Render(color=(0.05, 0.05, 0.05), rough=0.45, metal=0.7))
         iron = Material("iron", product="Wrought iron posts and railings, wax finish", supplier="local smith", render=Render(color=(0.07, 0.07, 0.07), rough=0.5, metal=0.7))
@@ -44,8 +46,8 @@ def build() -> House:
         brande = Material("brande", texture="polyhaven/gravel", product="Heather brush (brande) on galvanised mesh", supplier="TBD", render=Render(tile=0.6, value=0.55, tint=(0.55, 0.42, 0.28)))
         Material("travertine", texture="polyhaven/beige_wall_001", product="Travertine coping and pool deck 600 x 400, tumbled", supplier="TBD",
                  render=Render(tile=1.2, value=1.25, tint=(1.0, 0.97, 0.9)))
-        Material("pool_tile", product="Pool render, pale grey-green", render=Render(color=(0.55, 0.72, 0.72), rough=0.5))
-        Material("pool_water", product="Water", render=Render(color=(0.35, 0.68, 0.78), rough=0.03, transmission=0.9))
+        Material("pool_tile", product="Pool render, pale grey-blue", render=Render(color=(0.7, 0.8, 0.8), rough=0.6))
+        Material("pool_water", product="Water", render=Render(color=(0.25, 0.7, 0.88), rough=0.03, transmission=1.0, absorb=0.8, bump=0.08))
         Material("gravel", texture="polyhaven/gravel", product="Crushed limestone gravel 6-14 mm", supplier="local quarry", render=Render(tile=2.5, value=1.4, tint=(1.0, 0.98, 0.92)))
         Material("marble_counter", texture="polyhaven/marble_01", product="Carrara marble 30 mm", supplier="TBD", render=Render(tile=1.0, value=1.1))
         Material("brass", product="Aged brass", render=Render(color=(0.7, 0.55, 0.3), rough=0.4, metal=1.0))
@@ -133,16 +135,16 @@ def build() -> House:
              voids=[[(1000, 5900), (6300, 5900), (6300, 7000), (1000, 7000)]])
         Slab("F2", outline=[(0, 0), (7500, 0), (7500, 7500), (0, 7500)], thickness=300, level=L2, material=floor, voids=[[(900, 1400), (6100, 1400), (6100, 2600), (900, 2600)]])
         Ceiling("C0M", outline=[(7500, 500), (21000, 500), (21000, 7500), (7500, 7500)], level=L0, material=lime, thickness=30,
-                beams=BeamGrid(width=140, depth=220, spacing=600, along="y", material=beams))
+                beams=BeamGrid(width=140, depth=220, spacing=600, along="y", material=limed))
         Ceiling("C0T", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], level=L0, material=lime, thickness=30,
-                beams=BeamGrid(width=140, depth=220, spacing=600, along="x", material=beams))
+                beams=BeamGrid(width=140, depth=220, spacing=600, along="x", material=limed))
         Ceiling("C0K", outline=[(21500, 1500), (30000, 1500), (30000, 6500), (21500, 6500)], level=L0, material=lime, thickness=30,
-                beams=BeamGrid(width=120, depth=200, spacing=600, along="y", material=beams))
+                beams=BeamGrid(width=120, depth=200, spacing=600, along="y", material=limed))
         Ceiling("C1M", outline=[(7500, 500), (21000, 500), (21000, 7500), (7500, 7500)], level=L1, material=lime, thickness=30,
-                beams=BeamGrid(width=120, depth=180, spacing=600, along="y", material=beams))
+                beams=BeamGrid(width=120, depth=180, spacing=600, along="y", material=limed))
         Ceiling("C1T", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], level=L1, material=lime, thickness=30)
         Ceiling("C2T", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], level=L2, material=lime, thickness=30,
-                beams=BeamGrid(width=120, depth=180, spacing=600, along="x", material=beams))
+                beams=BeamGrid(width=120, depth=180, spacing=600, along="x", material=limed))
 
         # ---- roofs: hipped tower, gabled main wing, hipped kitchen, all with génoise; the brush pergola along the terrace
         Roof("RT", outline=[(0, 0), (7500, 0), (7500, 7500), (0, 7500)], level=L2, material=tiles, kind_="hip", pitch=28, overhang=450, thickness=220, genoise=2)
@@ -159,8 +161,10 @@ def build() -> House:
         Wall("RW1", (13300, -5000), (-3000, -5000), assembly=garden, level=LP, height=2300, align="right")     # retaining walls either side of the steps
         Wall("RW2", (33000, -5000), (15700, -5000), assembly=garden, level=LP, height=2300, align="right")
         Stair("ST0", (15700, -8600), (0, 1), width=2400, rise=2000, going=300, max_riser=170, level=LP, to_level=L0, material=cut)
-        Slab("GD", outline=[(-6000, -22000), (36000, -22000), (36000, -5500), (-6000, -5500)], thickness=200, level=LP, material="gravel")
-        Slab("PD", outline=[(3500, -18000), (23500, -18000), (23500, -8000), (3500, -8000)], thickness=100, level=LP, material="travertine", top=20)
+        Slab("GD", outline=[(-6000, -22000), (36000, -22000), (36000, -5500), (-6000, -5500)], thickness=200, level=LP, material="gravel",
+             voids=[[(6500, -16500), (20500, -16500), (20500, -10000), (6500, -10000)]])
+        Slab("PD", outline=[(3500, -18000), (23500, -18000), (23500, -8000), (3500, -8000)], thickness=100, level=LP, material="travertine", top=20,
+             voids=[[(6500, -16500), (20500, -16500), (20500, -10000), (6500, -10000)]])
         Pool("PL", outline=[(6500, -16500), (20500, -16500), (20500, -10000), (6500, -10000)], level=LP, depth=1500, coping=500, material="pool_tile",
              coping_material="travertine", water_material="pool_water", top=20)
 

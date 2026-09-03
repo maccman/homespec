@@ -65,3 +65,20 @@ A pendant's own centre is a poor datum: it is a fixing, not a fitting.
 Slabs and terraces drawn "below" a cut do not enlarge the sheet; the walls
 that are cut do. Otherwise the pool terrace forces the house onto a 1:200
 sheet and every dimension goes unreadable.
+
+## D-012 Water is coloured by depth, not by paint
+The pool water renders as clear water (full transmission, IOR 1.33) with
+volume absorption tuned so red dies first. The shell is pale. That is why
+real pools are turquoise, and painting the surface teal never looks right.
+`Render.absorb` carries the density; anything with an `absorb` is a volume.
+
+## D-013 Every slab knows where the pool is
+The deck and the gravel garden carry the pool outline as a void, and the
+presentation's ground plane sits below the water line. Three things were
+covering the water before anyone noticed; the outline now lives in one
+place and the slabs reference it.
+
+## D-014 Outlines may be traced either way
+`geometry.prism` normalises winding. Shapely buffers hand back clockwise
+rings, and a clockwise face extrudes downward, which is how the pool shell
+spent a day under its own water.

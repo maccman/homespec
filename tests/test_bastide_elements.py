@@ -88,3 +88,18 @@ def test_pool_shell_water_and_coping():
     assert math.isclose(G.bbox(b["P.water"].solid).max[2], -150)
     cb = G.bbox(b["P.coping"].solid)
     assert math.isclose(cb.min[0], -400) and math.isclose(cb.max[0], 10400)
+
+
+def test_prism_extrudes_upward_whichever_way_the_outline_is_traced():
+    ccw = [(0, 0), (1000, 0), (1000, 1000), (0, 1000)]
+    for outline in (ccw, list(reversed(ccw))):
+        bb = G.bbox(G.prism(outline, -3730, 1750))
+        assert math.isclose(bb.min[2], -3730) and math.isclose(bb.max[2], -1980)
+
+
+def test_pool_shell_rises_to_the_coping():
+    house = _house()
+    with house:
+        Pool("P", outline=[(0, 0), (10000, 0), (10000, 4000), (0, 4000)], level="L0", depth=1400, coping=400, material="tile")
+    b = house.compile()
+    assert math.isclose(G.bbox(b["P"].solid).max[2], 0) and math.isclose(G.bbox(b["P"].solid).min[2], -1400 - 250)
