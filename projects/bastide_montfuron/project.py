@@ -127,7 +127,7 @@ def build() -> House:
         Door("D8", host=PC, width=950, height=2100, at=11525, frame=frame, leaf="door_grey")     # corridor -> bedroom 3
         Door("D9", host=PB1, width=800, height=2100, at=4000, frame=frame, leaf="door_grey")     # bedroom 1 -> bath 1
         Door("D10", host=PB3, width=800, height=2100, at=4000, frame=frame, leaf="door_grey")    # bedroom 2 -> bath 2
-        Arch("A2", host=TE, width=1400, height=2100, at=2550, sill=3500)                          # tower landing -> corridor, through the tower wall on L1
+        Arch("A2", host=TE, width=700, height=2100, at=5750, sill=3500)                           # tower landing -> corridor, through the tower wall on L1
 
         # ---- floors and ceilings
         Slab("F0", outline=[(0, 0), (30500, 0), (30500, 7500), (21500, 7500), (21500, 8000), (7500, 8000), (7500, 7500), (0, 7500)], thickness=250, level=L0, material=floor)
