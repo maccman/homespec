@@ -3,13 +3,15 @@
 Runs inside Blender's own Python, so it depends on nothing but ``bpy`` and
 reads ``ir.json`` as plain JSON::
 
-    blender -b --python homespec/blender/scene.py -- <out_dir> <presentation.py> still|anim|save [assets_dir]
+    blender -b --python homespec/blender/scene.py -- <out_dir> <presentation.py> still|anim|save|audit [assets_dir]
 
 The building is imported from the IR's geometry files (``building``) with
 materials from the spec's render hints (``materials``). The presentation
 module then dresses it through a :class:`Scene`, which is assembled from
 the primitives, plants, models, lighting, camera and furniture modules.
-``frames`` renders the requested mode and checks the result.
+``audit`` then looks at what was placed (things in walls, floating, in the
+way) and ``frames`` renders the requested mode and checks the result;
+``audit`` as the mode stops after the audit.
 
 The modules live beside this file and are imported by name: this directory
 goes on ``sys.path`` because ``homespec`` itself cannot be imported inside
@@ -26,6 +28,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
 
+import audit  # noqa: E402
 import bpy  # noqa: E402
 import building  # noqa: E402
 import frames  # noqa: E402
@@ -85,7 +88,11 @@ def main() -> None:
     assert spec and spec.loader
     pres = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(pres)
+    before = {o.name for o in bpy.data.objects}
     pres.dress(scene)
+    audit.run(before)                          # what a designer would notice, before a minute of Cycles is spent
+    if session.MODE == "audit":
+        return
     os.makedirs(os.path.join(session.OUT, "renders"), exist_ok=True)
     bpy.ops.wm.save_as_mainfile(filepath=os.path.join(session.OUT, "house.blend"))
     print("OBJECTS", len(bpy.data.objects), flush=True)

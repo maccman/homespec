@@ -130,10 +130,12 @@ def dress(scene, M):
     bed1_sheet = scene.flat("bed1_sheet", (0.93, 0.91, 0.86), rough=0.85)
     bed1_throw = scene.flat("bed1_throw", (0.52, 0.56, 0.47), rough=0.9)
 
-    scene.bed("bed1_bed", (8.85, 4.65, FLOOR), math.radians(-90), bed1_upholstery, bed1_sheet, bed1_throw)
-    _nightstand(scene, M, "bed1_stand_l", 7.8, 5.25)
-    _nightstand(scene, M, "bed1_stand_r", 9.9, 5.25)
-    scene.rug("bed1_rug", (8.85, 4.2, FLOOR), (2.3, 3.3), M.rug_jute)
+    # the bed's head against the partition PB1 (x 10.2), its length along the room: the door D6 in the north partition and
+    # the bathroom door D9 both open onto clear floor (the audit's ``in_the_way``), and the bench at its foot clears the tower wall
+    scene.bed("bed1_bed", (9.09, 3.3, FLOOR), math.radians(180), bed1_upholstery, bed1_sheet, bed1_throw)
+    _nightstand(scene, M, "bed1_stand_l", 9.8, 2.2)
+    _nightstand(scene, M, "bed1_stand_r", 9.8, 4.3)
+    scene.rug("bed1_rug", (8.85, 3.3, FLOOR), (2.4, 2.6), M.rug_jute)
     _flush_light(scene, "bed1_ceiling", (8.85, 3.3, CEILING), M.shade)
 
     _wardrobe(scene, "bed1_wardrobe", (7.9, 1.5, FLOOR), 0.95, 0.55, 1.9, bed1_paint, wardrobe_trim, front_axis="x", front_sign=1)
@@ -160,7 +162,7 @@ def dress(scene, M):
     _curtain_panel(scene, M, "bed2_curtain_l", 13.2, 0.62, FLOOR, 2.7, M.linen)
     _curtain_panel(scene, M, "bed2_curtain_r", 15.2, 0.62, FLOOR, 2.7, M.linen)
     scene.rod("bed2_curtain_pole", (12.95, 0.62, FLOOR + 2.8), (15.45, 0.62, FLOOR + 2.8), 0.014, M.iron)
-    scene.model("ornate_mirror_01", (16.25, 3.2, FLOOR + 1.75), rot_z=math.radians(-90), scale=1.3)
+    scene.model("ornate_mirror_01", (16.40, 3.2, FLOOR + 1.75), rot_z=math.radians(-90), scale=1.3)    # on PB3, over the bed's head
     _wall_light(scene, "bed2_sconce_l", (16.25, 2.78, FLOOR + 1.85), M.brass, M.shade, axis="x", sign=-1)
     _wall_light(scene, "bed2_sconce_r", (16.25, 3.62, FLOOR + 1.85), M.brass, M.shade, axis="x", sign=-1)
     _panel(scene, "bed2_art", (12.7, 6.0, FLOOR + 1.8), 0.45, 0.6, frame_dark, art_c, axis="y", sign=-1)
@@ -173,10 +175,11 @@ def dress(scene, M):
     bed3_sheet = scene.flat("bed3_sheet", (0.91, 0.89, 0.84), rough=0.85)
     bed3_throw = scene.flat("bed3_throw", (0.68, 0.53, 0.3), rough=0.9)
 
-    scene.bed("bed3_bed", (19.61, 4.65, FLOOR), math.radians(-90), bed3_upholstery, bed3_sheet, bed3_throw)
-    _nightstand(scene, M, "bed3_stand_l", 18.5, 5.25)
-    _nightstand(scene, M, "bed3_stand_r", 20.7, 5.25)
-    scene.rug("bed3_rug", (19.61, 4.2, FLOOR), (2.3, 3.3), M.rug_jute)
+    # the bed's head against the partition PB4 (x 18.225), its length along the room, so the door D8 opens onto clear floor
+    scene.bed("bed3_bed", (19.34, 3.3, FLOOR), 0.0, bed3_upholstery, bed3_sheet, bed3_throw)
+    _nightstand(scene, M, "bed3_stand_l", 18.6, 2.2)
+    _nightstand(scene, M, "bed3_stand_r", 18.6, 4.4)
+    scene.rug("bed3_rug", (19.4, 3.3, FLOOR), (2.4, 2.6), M.rug_jute)
     _flush_light(scene, "bed3_ceiling", (19.61, 3.3, CEILING), M.shade)
 
     _wardrobe(scene, "bed3_wardrobe", (20.25, 0.87, FLOOR), 0.95, 0.55, 1.9, bed3_paint, wardrobe_trim, front_axis="y", front_sign=1)
@@ -192,15 +195,16 @@ def dress(scene, M):
 
     scene.rug("corridor_runner", (14.0, 6.85, FLOOR), (12.0, 0.7), corridor_runner)
     for x in (9.1, 12.6, 15.85, 19.4):
-        scene.sconce(f"corridor_sconce_{x}", (x, 7.42, FLOOR + 1.85), M.brass, M.shade)
+        scene.sconce(f"corridor_sconce_{x}", (x, 7.5, FLOOR + 1.85), M.brass, M.shade)      # on the north wall's inside face (MN is y 7.5..8)
     _panel(scene, "corridor_art_1", (11.5, 6.25, FLOOR + 1.8), 0.5, 0.65, frame_dark, art_a, axis="y", sign=1)
     _panel(scene, "corridor_art_2", (17.0, 6.25, FLOOR + 1.8), 0.5, 0.65, frame_dark, art_c, axis="y", sign=1)
     for x in (11.5, 17.0):
         _flush_light(scene, f"corridor_ceiling_{x}", (x, 6.85, CEILING), M.shade, watts=70)
-    scene.model("chinese_console_table", (20.55, 6.85, FLOOR), rot_z=math.radians(-90), scale=1.1)
-    scene.table_lamp("corridor_lamp", (20.55, 6.6, FLOOR + 0.82), 0.14, 0.36, M.brass, M.shade, 25)
-    scene.model("ceramic_vase_02", (20.55, 7.1, FLOOR + 0.82), scale=0.7)
-    _panel(scene, "corridor_mirror", (20.85, 6.85, FLOOR + 1.75), 0.5, 0.7, frame_dark, mirror_glass, axis="x", sign=-1)
+    # a console along the north wall between the last two doors, clear of the metre in front of D8; its flat top is at 0.632 x 1.1
+    scene.model("chinese_console_table", (18.05, 7.30, FLOOR), scale=1.1)
+    scene.table_lamp("corridor_lamp", (17.4, 7.30, FLOOR + 0.695), 0.14, 0.36, M.brass, M.shade, 25)
+    scene.model("ceramic_vase_02", (18.7, 7.32, FLOOR + 0.695), scale=0.7)
+    _panel(scene, "corridor_mirror", (18.05, 7.48, FLOOR + 1.75), 0.5, 0.7, frame_dark, mirror_glass, axis="y", sign=-1)
     scene.model("wicker_basket_01", (7.75, 7.1, FLOOR), scale=0.9)
 
 

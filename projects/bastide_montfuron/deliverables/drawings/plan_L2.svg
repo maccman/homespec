@@ -2,46 +2,46 @@
 <defs><pattern id="hatch" width="1.2" height="1.2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="1.2" stroke="#333" stroke-width="0.18"/></pattern></defs>
 <rect width="420.0" height="297.0" fill="white"/>
 <rect x="17.0" y="17.0" width="386.0" height="263.0" fill="none" stroke="#000" stroke-width="0.5"/>
-<path d="M99.02,187.90 L97.62,187.90 L97.62,188.75 L99.02,188.75 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M108.42,187.90 L107.02,187.90 L107.02,188.75 L108.42,188.75 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
+<path d="M99.02,187.90 L97.62,187.90 L97.62,188.75 L99.02,188.75 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
+<path d="M100.56,188.72 L100.38,188.72 L100.38,188.90 L100.56,188.90 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
+<path d="M102.26,188.72 L102.08,188.72 L102.08,188.90 L102.26,188.90 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M103.97,188.72 L103.78,188.72 L103.78,188.90 L103.97,188.90 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M105.66,188.72 L105.48,188.72 L105.48,188.90 L105.66,188.90 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
-<path d="M102.26,188.72 L102.08,188.72 L102.08,188.90 L102.26,188.90 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
-<path d="M100.56,188.72 L100.38,188.72 L100.38,188.90 L100.56,188.90 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
-<path d="M66.12,156.40 L66.12,155.00 L65.27,155.00 L65.27,156.40 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M66.12,147.00 L66.12,145.60 L65.27,145.60 L65.27,147.00 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
+<path d="M66.12,156.40 L66.12,155.00 L65.27,155.00 L65.27,156.40 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M65.30,150.24 L65.30,150.06 L65.12,150.06 L65.12,150.24 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
-<path d="M65.30,148.54 L65.30,148.36 L65.12,148.36 L65.12,148.54 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M65.30,151.94 L65.30,151.76 L65.12,151.76 L65.12,151.94 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M65.30,153.64 L65.30,153.46 L65.12,153.46 L65.12,153.64 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
+<path d="M65.30,148.54 L65.30,148.36 L65.12,148.36 L65.12,148.54 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M97.62,114.10 L99.02,114.10 L99.02,113.25 L97.62,113.25 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M107.02,114.10 L108.42,114.10 L108.42,113.25 L107.03,113.25 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
-<path d="M100.38,113.28 L100.56,113.28 L100.56,113.10 L100.38,113.10 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
-<path d="M102.08,113.28 L102.26,113.28 L102.26,113.10 L102.08,113.10 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M105.48,113.28 L105.66,113.28 L105.66,113.10 L105.48,113.10 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
+<path d="M100.38,113.28 L100.56,113.28 L100.56,113.10 L100.38,113.10 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M103.78,113.28 L103.97,113.28 L103.97,113.10 L103.78,113.10 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
+<path d="M102.08,113.28 L102.26,113.28 L102.26,113.10 L102.08,113.10 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M174.52,112.00 L166.52,112.00 L166.52,120.00 L174.52,120.00 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M285.02,129.83 L140.52,129.83 L140.52,134.77 L285.02,134.77 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
 <path d="M285.02,162.23 L140.52,162.23 L140.52,167.17 L285.02,167.17 Z" fill="#e8e8e8" stroke="#000" stroke-width="0.3"/>
+<path d="M99.62,185.70 L99.02,185.70 L99.02,186.30 L99.62,186.30 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
 <path d="M107.02,185.70 L106.42,185.70 L106.42,186.30 L107.02,186.30 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
 <path d="M103.17,185.85 L102.88,185.85 L102.88,186.15 L103.17,186.15 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
-<path d="M99.62,185.70 L99.02,185.70 L99.02,186.30 L99.62,186.30 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
 <path d="M106.42,185.95 L99.62,185.95 L99.62,186.05 L106.42,186.05 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
-<path d="M68.32,147.60 L68.32,147.00 L67.72,147.00 L67.72,147.60 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
-<path d="M68.32,155.00 L68.32,154.40 L67.72,154.40 L67.72,155.00 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
 <path d="M68.17,151.15 L68.17,150.85 L67.88,150.85 L67.88,151.15 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
+<path d="M68.32,155.00 L68.32,154.40 L67.72,154.40 L67.72,155.00 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
+<path d="M68.32,147.60 L68.32,147.00 L67.72,147.00 L67.72,147.60 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
 <path d="M68.07,154.40 L68.07,147.60 L67.97,147.60 L67.97,154.40 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
+<path d="M102.88,116.15 L103.17,116.15 L103.17,115.85 L102.88,115.85 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
 <path d="M99.02,116.30 L99.62,116.30 L99.62,115.70 L99.02,115.70 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
 <path d="M106.42,116.30 L107.02,116.30 L107.02,115.70 L106.42,115.70 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
-<path d="M102.88,116.15 L103.17,116.15 L103.17,115.85 L102.88,115.85 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
 <path d="M99.62,116.05 L106.42,116.05 L106.42,115.95 L99.62,115.95 Z" fill="#fff" stroke="#000" stroke-width="0.35"/>
-<path d="M99.02,183.50 L70.52,183.50 L70.52,188.50 L99.02,188.50 Z" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
 <path d="M107.02,183.50 L107.02,188.50 L135.52,188.50 L135.52,183.50 Z" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<path d="M99.02,183.50 L70.52,183.50 L70.52,188.50 L99.02,188.50 Z" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
 <path d="M135.53,118.50 L135.52,183.50 L140.52,183.50 L140.52,118.50 Z" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
-<path d="M99.02,118.50 L99.02,113.50 L70.52,113.50 L70.52,118.50 Z" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
 <path d="M107.02,118.50 L135.52,118.50 L135.52,113.50 L107.02,113.50 Z" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
-<path d="M70.53,147.00 L70.52,118.50 L65.52,118.50 L65.53,147.00 Z" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<path d="M99.02,118.50 L99.02,113.50 L70.52,113.50 L70.52,118.50 Z" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
 <path d="M70.52,155.00 L65.53,155.00 L65.53,183.50 L70.53,183.50 Z" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
+<path d="M70.53,147.00 L70.52,118.50 L65.52,118.50 L65.53,147.00 Z" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
 <path d="M280.52,134.77 L275.52,134.77 L275.52,162.23 L280.52,162.23 Z" fill="url(#hatch)" stroke="#000" stroke-width="0.5"/>
 <line x1="70.52" y1="197.50" x2="135.52" y2="197.50" stroke="#000" stroke-width="0.2"/>
 <line x1="70.52" y1="198.70" x2="70.52" y2="196.30" stroke="#000" stroke-width="0.35"/>

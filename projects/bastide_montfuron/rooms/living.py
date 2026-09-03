@@ -46,8 +46,9 @@ def dress(scene, M):
     scene.rug("living_rug_border", (11.0, 4.0, 0.0), (4.4, 3.2), rug_border)
     scene.rug("living_rug_field", (11.0, 4.0, 0.006), (4.0, 2.8), rug_field)
 
-    # ---- two linen sofas facing each other across a low table, on the fire's axis
-    for _name, cy, rot in (("living_sofa_south", 2.55, 0), ("living_sofa_north", 5.55, 180)):
+    # ---- two linen sofas facing each other across a low table, on the fire's axis (the model faces -y unrotated,
+    # so the north sofa keeps that and the south one turns about; the cushions below lean on each back)
+    for _name, cy, rot in (("living_sofa_south", 2.55, 180), ("living_sofa_north", 5.55, 0)):
         scene.model("Sofa_01", (11.0, cy, 0.0), rot_z=math.radians(rot), scale=1.15, tint=(1.16, 1.11, 1.01))
     # cushions tucked into each sofa's corners, leaning gently on the backrest (a moderate, consistent tilt this time)
     for k, (cx, cy, mat, lean) in enumerate((
@@ -70,8 +71,8 @@ def dress(scene, M):
     scene.model("wooden_candlestick", (11.35, 3.83, 0.425))
 
     # ---- armchairs set diagonally, clear of the hall arch (west, y 2.95-4.55) and the dining arch (east, y 3-5)
-    scene.model("ArmChair_01", (8.5, 2.7, 0.0), rot_z=math.radians(117))
-    scene.model("ArmChair_01", (13.6, 5.35, 0.0), rot_z=math.radians(-63))
+    scene.model("ArmChair_01", (8.7, 2.45, 0.0), rot_z=math.radians(117))            # both armchairs sit just clear of the arches' approaches
+    scene.model("ArmChair_01", (13.55, 5.5, 0.0), rot_z=math.radians(-63))
     scene.model("Ottoman_01", (13.0, 5.0, 0.0), rot_z=math.radians(-63))
 
     # ---- the chimney breast: a carved stone chimneypiece around the spec's arched hearth (opening x 9.9-11.1, apex z 1.4)
@@ -80,7 +81,7 @@ def dress(scene, M):
         scene.box(f"living_fp_jamb_{jx}", (jx, 6.75, 0.775), (0.34, 0.30, 1.35), M.cut_stone)
     scene.box("living_fp_frieze", (10.5, 6.78, 1.44), (1.62, 0.28, 0.06), M.cut_stone)
     scene.box("living_fp_shelf", (10.5, 6.75, 1.53), (2.24, 0.36, 0.11), M.cut_stone, bevel=0.01)
-    scene.model("ornate_mirror_01", (10.5, 6.72, 2.35), rot_z=math.radians(180), scale=1.35, tint=(0.82, 0.78, 0.66))
+    scene.model("ornate_mirror_01", (10.5, 6.72, 1.85), scale=1.35, tint=(0.82, 0.78, 0.66))   # faces -y into the room; a metre tall, its top under the joists
     # the mantel shelf, styled: a vase, candles, the clock, a bud vase (all clear of the mirror's footprint at centre)
     scene.model("antique_ceramic_vase_01", (9.60, 6.68, 1.585), scale=0.85)
     scene.model("wooden_candlestick", (10.05, 6.65, 1.585))
@@ -115,15 +116,15 @@ def dress(scene, M):
     for sx in (8.9, 12.1):
         scene.sconce(f"living_sconce_fp_{sx}", (sx, 7.42, 1.75), M.brass, M.shade)
     scene.model("wicker_basket_02", (11.75, 7.15, 0.0), scale=1.1)
-    scene.model("ceramic_pot", (9.15, 7.15, 0.0), scale=1.3)
-    scene.model("potted_plant_04", (9.35, 7.25, 0.0), scale=1.2)
+    scene.model("ceramic_pot", (9.05, 7.05, 0.0), scale=1.3)                         # against the north wall (y 7.5), beside the breast
+    scene.model("potted_plant_04", (8.7, 7.2, 0.0), scale=1.2)
     scene.model("wooden_lantern_01", (12.1, 6.6, 0.0), scale=1.0)
 
     # ---- west wall (the tower's old stone wall TE): a console vignette below a picture, flanked by sconces
-    scene.model("painted_wooden_cabinet", (8.1, 1.4, 0.0), rot_z=math.radians(90), height=0.85)
-    scene.model("desk_lamp_arm_01", (8.18, 1.20, 0.85), rot_z=math.radians(60), height=0.45, tint=(0.22, 0.20, 0.19))
-    scene.model("standing_picture_frame_01", (8.05, 1.55, 0.85), height=0.30)
-    scene.model("book_encyclopedia_set_01", (8.15, 1.35, 0.85), height=0.16, rot_z=math.radians(90))
+    scene.model("painted_wooden_cabinet", (7.83, 1.4, 0.0), rot_z=math.radians(90), height=0.85)     # its length along the wall, its back 2 cm off it
+    scene.model("desk_lamp_arm_01", (7.91, 1.20, 0.85), rot_z=math.radians(60), height=0.45, tint=(0.22, 0.20, 0.19))
+    scene.model("standing_picture_frame_01", (7.78, 1.55, 0.85), rot_z=math.radians(90), height=0.30)   # facing east, into the room
+    scene.model("book_encyclopedia_set_01", (7.88, 1.35, 0.85), height=0.16, rot_z=math.radians(90))
     scene.model("hanging_picture_frame_02", (7.55, 1.4, 1.85), rot_z=math.radians(90), scale=1.3)
     scene.wall_light("living_sconce_cab_1", (7.55, 0.75, 1.85), M.brass, M.shade, facing=(1, 0))
     scene.wall_light("living_sconce_cab_2", (7.55, 2.05, 1.85), M.brass, M.shade, facing=(1, 0))

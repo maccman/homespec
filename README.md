@@ -83,6 +83,7 @@ needs `rsvg-convert` (`brew install librsvg`); SVG and DXF need nothing.
 ```bash
 homespec views  projects/library_room                   # diagnostic views into out/library_room/views
 homespec views  projects/bastide_montfuron --focus CH   # plus close-ups of one entity
+homespec audit  projects/bastide_montfuron              # the dressed scene, judged: things in walls, floating, in the way
 homespec render projects/library_room --mode still      # a Cycles frame
 homespec render projects/library_room --mode anim       # frames for ffmpeg
 homespec render projects/library_room --mode save       # the walk file
@@ -91,7 +92,10 @@ homespec walk   projects/library_room                   # open it; press W to wa
 
 The views need no presentation and no textures. Look there before spending
 an hour on Cycles: a chimney floating above its ridge or a stair through a
-ceiling is obvious in a section and invisible in a photograph.
+ceiling is obvious in a section and invisible in a photograph. The audit
+looks at what the presentation adds, the way a designer would: a console
+inside a wall, candlesticks in the air, a bed across a doorway, a pot at
+the foot of a stair. Every render prints the same findings first.
 
 | | |
 |---|---|
@@ -121,7 +125,7 @@ stone farmhouse with a gable roof, arches, a pergola and a pool; and
 A tower, two wings, hipped and gabled roofs with génoise cornices, louvred
 shutters in dressed-stone surrounds, an arched glazed door, a brande pergola,
 two straight stairs, a terrace over a retaining wall and a pool garden two
-metres below. 284 entities, 339 checks, four plan sheets, 104 pairs of solids
+metres below. 286 entities, 345 checks, four plan sheets, 104 pairs of solids
 that share volume and a row saying why each is allowed.
 
 ![The bastide from the pool deck](projects/bastide_montfuron/gallery/01_pool_deck.jpg)

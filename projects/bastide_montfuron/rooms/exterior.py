@@ -77,7 +77,7 @@ def dress(scene, M):
     joint = scene.flat("ext_paving_joint", (0.52, 0.47, 0.4), rough=0.9)
 
     # ---- the land: gravel court north, the upper terrace already paved by the spec, the lower garden and hills
-    scene.box("ground_upper", (14, 22, -0.3), (160, 40, 0.5), M.earth)
+    scene.box("ground_upper", (14, 18.5, -0.3), (160, 47, 0.5), M.earth)           # the house's platform, from the retaining wall's line north
     scene.box("gravel_court", (14, 12, -0.04), (40, 8, 0.08), M.gravel)
     scene.box("ground_lower", (14, -40, -2.45), (200, 70, 0.5), M.earth)
     Rh = scene.rng("hills")
@@ -90,7 +90,7 @@ def dress(scene, M):
 
     # ---- the north forecourt: gravel court, clipped box in kerbed square beds, big pots, shallow steps to the door
     Rf = scene.rng("forecourt")
-    door_cx, wall_y = 14.25, 8.05
+    door_cx, wall_y = 14.25, 8.05                                   # the front door's centre; the north wall's outer face is y 8.0
     scene.box("fc_landing", (door_cx, wall_y + 0.55, 0.045), (2.2, 1.15, 0.15), M.cut_stone)   # the threshold sill
     scene.box("fc_step", (door_cx, wall_y + 1.55, 0.005), (3.2, 1.15, 0.06), M.cut_stone)      # one shallow step to the gravel
     for i, dx in enumerate((-1.35, 1.35)):
@@ -185,7 +185,7 @@ def dress(scene, M):
         tree = R.choice(("island_tree_01", "island_tree_01", "island_tree_02", "searsia_burchellii"))
         scene.model(tree, (x, y, -0.1), rot_z=R.uniform(0, 6.28), height=R.uniform(5.0, 6.5) if tree.startswith("searsia") else R.uniform(8.0, 13.0))
     for x, y in [(-22.0, -2.0), (-26.0, -14.0), (44.0, 2.0), (48.0, -10.0), (-20.0, -26.0), (40.0, -30.0)]:
-        scene.model(R.choice(("island_tree_01", "island_tree_02")), (x, y, -2.4), rot_z=R.uniform(0, 6.28), height=R.uniform(8.0, 12.0))
+        scene.model(R.choice(("island_tree_01", "island_tree_02")), (x, y, -0.1 if y > -5 else -2.4), rot_z=R.uniform(0, 6.28), height=R.uniform(8.0, 12.0))
     for k, (x, y, h) in enumerate([(44, -40, 12), (52, -20, 11), (-30, -34, 12)]):
         scene.pine(f"pine_{k}", (x, y, -2.4), h, M.trunk, M.pine)
     # a vine over the kitchen wing and along the pergola beam
@@ -220,18 +220,18 @@ def dress(scene, M):
     scene.model("ceramic_vase_02", (6.8, -1.75, 0.42), scale=0.6)
     scene.model("book_encyclopedia_set_01", (6.55, -2.05, 0.42), rot_z=math.radians(20), scale=0.7)
     scene.model("outdoor_table_chair_set_01", (17.5, -2.4, 0.0), rot_z=math.radians(15))
-    scene.model("painted_wooden_table", (23.5, -2.2, 0.0), rot_z=math.radians(90))
+    scene.model("painted_wooden_table", (23.5, -2.2, 0.0))                                   # 2.4 long along the terrace
     scene.model("wooden_bowl_01", (23.5, -2.2, 0.75), scale=1.0)
-    for dx, dy, rz in [(-1.4, 0.55, 180), (-0.7, 0.55, 180), (0.15, 0.55, 180), (-1.4, -0.55, 0), (-0.7, -0.55, 0), (0.15, -0.55, 0)]:
+    for dx, dy, rz in [(-1.4, 0.55, 0), (-0.7, 0.55, 0), (0.15, 0.55, 0), (-1.4, -0.55, 180), (-0.7, -0.55, 180), (0.15, -0.55, 180)]:   # each row faces the table
         scene.model("painted_wooden_chair_01", (23.5 + dx, -2.2 + dy, 0.0), rot_z=math.radians(rz + R.uniform(-8, 8)))
     _lamp_post(scene, M, "kw_lamp", 26.6, -3.2, h=2.6, lantern_scale=0.65, watts=20)
     for k, (x, y) in enumerate([(-1.5, -0.7), (15.8, -0.8), (20.5, -0.7), (31.0, -1.0), (12.2, -4.2), (18.5, -4.2), (0.5, -4.3), (26.5, -4.3)]):
         scene.model("planter_pot_clay", (x, y, 0.0), rot_z=R.uniform(0, 6.28), scale=R.uniform(0.9, 1.4))
         scene.foliage(f"pot_box_{k}", (x, y, 0.85), 0.36, M.box_leaf, leaf=0.03, seed=k % 3, core=M.box_core)
-    for _k, (x, y) in enumerate([(2.2, -0.6), (7.2, -0.6), (28.0, -0.8)]):
+    for _k, (x, y) in enumerate([(1.4, -0.8), (7.2, -0.8), (28.0, -0.8)]):            # wide pots, turned at random: 0.15 off the wall, clear of the hall's door
         scene.model("ceramic_pot", (x, y, 0.0), rot_z=R.uniform(0, 6.28), scale=1.6)
     scene.model("potted_plant_02", (21.2, -0.8, 0.0), scale=1.2)
-    scene.model("potted_plant_04", (14.6, -3.0, 0.0), scale=1.4)
+    scene.model("potted_plant_04", (16.1, -3.2, 0.0), scale=1.4)                       # beside the head of the garden steps, not on their landing
     # the terrace's plain-slab paving reads as flagstones: joint lines scored across the cut-stone slab
     for i, x in enumerate([-2.6 + 0.9 * kk for kk in range(40)]):
         scene.box(f"tr_joint_x_{i}", (x, -2.5, 0.001), (0.02, 5.0, 0.004), joint)
@@ -247,6 +247,6 @@ def dress(scene, M):
     for k, x in enumerate((1.75, 5.25, 8.75, 12.25)):
         scene.model("Lantern_01", (x, -3.3, 2.65), scale=0.6)
         scene.point_light(f"pergola_light_{k}", (x, -3.3, 2.5), 18, color=(1.0, 0.78, 0.5), radius=0.08)
-    for k, (x, y) in enumerate([(3.75, -0.55), (14.5, -0.55), (23.5, -1.05), (27.5, -1.05)]):
-        scene.model("industrial_wall_lamp", (x, y, 2.4), rot_z=math.radians(-90), scale=0.9)
-        scene.point_light(f"wall_lamp_{k}", (x, y - 0.3, 2.3), 15, color=(1.0, 0.8, 0.55), radius=0.06)
+    for k, (x, y_face) in enumerate([(3.75, 0.0), (14.5, 0.0), (23.5, 1.0), (27.5, 1.0)]):     # on the south faces of the tower, the wing and the kitchen
+        scene.model("industrial_wall_lamp", (x, y_face - 0.07, 2.4), scale=0.9)
+        scene.point_light(f"wall_lamp_{k}", (x, y_face - 0.3, 2.3), 15, color=(1.0, 0.8, 0.55), radius=0.06)

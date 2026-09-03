@@ -74,12 +74,12 @@ def dress(scene, M):
         pan.rotation_euler[0] = math.radians(90)         # tip the pan up to hang face-out from the hook
     scene.model("brass_pot_01", (22.97, 6.40, 1.72), scale=0.55)   # hangs by its own handles, right way up
 
-    # ---- counter-top life either side of the range: a bread crock, oil bottles, the kettle
-    scene.model("ceramic_pot", (22.85, 6.20, 0.95), scale=0.85)
+    # ---- counter-top life either side of the range: a bread crock, oil bottles, the kettle (the counter's top is at 0.90)
+    scene.model("ceramic_pot", (22.85, 6.20, 0.90), scale=0.85)
     scene.rod("kitchen_bread_crock_loaf", (22.95, 6.05, 1.20), (23.15, 5.85, 1.05), 0.028, tan)
-    scene.model("wine_bottles_01", (24.45, 6.15, 0.95), tint=(0.9, 0.6, 0.2))
-    scene.model("wine_bottles_01", (24.62, 6.18, 0.95), tint=(0.4, 0.55, 0.35))
-    scene.model("vintage_electric_kettle", (24.92, 6.18, 0.95), rot_z=math.radians(-20))
+    scene.model("wine_bottles_01", (24.45, 6.15, 0.90), tint=(0.9, 0.6, 0.2))
+    scene.model("wine_bottles_01", (24.62, 6.18, 0.90), tint=(0.4, 0.55, 0.35))
+    scene.model("vintage_electric_kettle", (24.92, 6.18, 0.90), rot_z=math.radians(-20))
 
     # ---- butler sink and brass bridge tap, centred under the window N20 (x 25.15..26.35)
     sx = 25.75
@@ -96,10 +96,10 @@ def dress(scene, M):
     scene.model("potted_plant_04", (25.35, 6.55, 1.0))          # a plant on the sill, off-centre of the tap
 
     # ---- the east bay: base and the spec's new upper cabinets, with pulls to match the base run
-    scene.model("pot_enamel_01", (27.3, 6.15, 0.95))
-    scene.model("brass_pot_01", (28.5, 6.15, 0.95))
-    scene.model("carved_wooden_plate", (26.65, 6.20, 0.955))
-    scene.model("carved_wooden_plate", (26.65, 6.20, 0.985), rot_z=math.radians(25))
+    scene.model("pot_enamel_01", (27.3, 6.15, 0.90))
+    scene.model("brass_pot_01", (28.5, 6.15, 0.90))
+    scene.model("carved_wooden_plate", (26.65, 6.20, 0.905))
+    scene.model("carved_wooden_plate", (26.65, 6.20, 0.935), rot_z=math.radians(25))
     for ux in (26.68, 27.35, 28.02, 28.69):
         scene.rod(f"kitchen_upper_pull_{ux:.2f}", (ux, 6.18, 1.70), (ux, 6.16, 1.70), 0.008, M.brass)
 
@@ -138,7 +138,7 @@ def dress(scene, M):
     # ---- three stools that vary: a rounded bar chair, a chunky rustic stool, a ladder-back
     scene.model("bar_chair_round_01", (ix - 0.85, 2.65, 0.0), rot_z=math.radians(R.uniform(-10, 10)))
     scene.model("wooden_stool_01", (ix, 2.60, 0.0), rot_z=math.radians(R.uniform(-15, 15)), height=0.72)
-    scene.model("gallinera_chair", (ix + 0.85, 2.65, 0.0), rot_z=math.radians(R.uniform(-10, 10)), height=0.80)
+    scene.model("gallinera_chair", (ix + 0.85, 2.65, 0.0), rot_z=math.radians(180 + R.uniform(-10, 10)), height=0.80)   # facing the island
 
     # ---- two long-drop copper pendants over the island (bottom at 1.85, per the brief), not the spec's L4 lamp
     scene.pendant_bell("kitchen_island_pendant_a", (ix - 0.70, iy), 3.25, 1.85, M.copper, M.iron, 60)

@@ -1,13 +1,17 @@
 """The tower's upper rooms: a bedroom on the first floor (z 3.5) and the study under the roof (z 6.7), x 0.5..7 by y 0.5..7.
 
-The stair ST1 arrives on the first floor along the north wall (its void
-in F1 at x 1..6.4, y 6..7); the stair ST2 leaves the first floor along the
-south wall (y 0.5..1.5, from x 6 at the bottom to x 1.14 at the top) and
-arrives on the second floor, where F2 has its void at x 0.9..6.1, y 1.4..2.6.
-Both voids are kept clear of furniture and guarded with an iron balustrade;
-ST2's open (north-facing) edge on the first floor gets a raked balustrade
-following its rise. The small grilled windows of the top floor look every
-way. Arch A2 (east wall, first floor) is kept clear for circulation.
+The stair ST1 arrives on the first floor along the north wall, from its
+quarter landing in the north-west corner to 1.1 m short of the east wall
+(its void in F1 follows it, y 6..7); the stair ST2 leaves the first floor
+along the south wall (y 0.5..1.5, from the east wall at the bottom to
+1.64 m short of the west wall at the top) and arrives on the second
+floor, where F2's void follows it. Both stairs are read from the IR
+(D-028): each void is guarded along its open edges, the guard stopping
+where the flight arrives; ST2's open north edge gets a raked balustrade
+from its third tread, the first two being how it is entered from the
+room. The small grilled windows of the
+top floor look every way. Arch A2 (east wall, first floor) is kept clear
+for circulation.
 """
 import math
 
@@ -149,18 +153,27 @@ def dress(scene, M):
     scene.box("tower1_valance_n9", (0.60, 3.75, 5.82), (0.10, 1.35, 0.16), M.linen, bevel=0.02)     # short pelmets: N9 is behind
     scene.box("tower1_valance_n11", (3.75, 6.90, 5.82), (1.35, 0.10, 0.16), M.linen, bevel=0.02)    # the bed, N11 over the void
 
-    # the F1 stairwell void (x 1..6.4, y 6..7): guarded on its open south edge and both short returns
-    _rail_run(scene, "tower1_rail_void_s", (1.0, 6.0), (6.4, 6.0), 3.5, 3.5, M.iron)
-    _rail_run(scene, "tower1_rail_void_w", (1.0, 6.0), (1.0, 6.9), 3.5, 3.5, M.iron)
-    _rail_run(scene, "tower1_rail_void_e", (6.4, 6.0), (6.4, 6.9), 3.5, 3.5, M.iron)
-    # ST2 rising to the study along the south wall: a raked balustrade on its open (north) edge
-    _rail_run(scene, "tower1_rail_st2", (6.0, 1.5), (1.14, 1.5), 3.5, 6.7, M.iron)
+    # the F1 stairwell void, ST1's own outline: guarded along its open south edge and its west end (the floor over the
+    # quarter landing) up to the top riser, where the flight arrives and the guard must stop
+    st1 = scene.entity("ST1")["derived"]
+    (x1a, y1), (x1b, _) = [(p[0] / 1000, p[1] / 1000) for p in st1["outline"][:2]]
+    y1_far = st1["outline"][3][1] / 1000
+    _rail_run(scene, "tower1_rail_void_s", (x1a, y1), (x1b, y1), 3.5, 3.5, M.iron)
+    _rail_run(scene, "tower1_rail_void_w", (x1a, y1), (x1a, y1_far - 0.05), 3.5, 3.5, M.iron)
+    # ST2 rising to the study along the south wall: a raked balustrade on its open (north) edge, parallel to the
+    # line of its nosings, from the third tread; the first two are open, entered from the room
+    st2 = scene.entity("ST2")["derived"]
+    (x2a, y2), (x2b, _) = [(p[0] / 1000, p[1] / 1000) for p in st2["outline"][:2]]        # foot at the east wall, head to the west
+    riser2, going2 = st2["riser"] / 1000, st2["going"] / 1000
+    x_n = x2a - 2 * going2 - 0.07
+    z_n = 3.5 + riser2 + (x2a - x_n) * riser2 / going2
+    _rail_run(scene, "tower1_rail_st2", (x_n, y2 + 0.07), (x2b + 0.06, y2 + 0.07), z_n, z_n + (x_n - x2b - 0.06) * riser2 / going2, M.iron)
 
     scene.point_light("tower1_fill", (4.2, 4.0, 6.15), 160, color=(1.0, 0.87, 0.72), radius=0.4)
 
     # =========================================================== the study, under the roof ====================
     scene.model("painted_wooden_table", (1.0, 4.3, 6.7), rot_z=math.radians(90), scale=0.85)   # the writing desk, against TW under N10
-    scene.model("painted_wooden_chair_02", (1.85, 3.75, 6.7), rot_z=math.radians(90))
+    scene.model("painted_wooden_chair_02", (1.85, 3.75, 6.7), rot_z=math.radians(-90))       # facing the desk, west
     scene.model("desk_lamp_arm_01", (1.0, 3.9, 7.515), rot_z=math.radians(45), tint=(0.06, 0.045, 0.03))   # the stock orange, toned to dark bronze
     scene.point_light("study_desk_light", (1.0, 3.75, 7.9), 30, color=(1.0, 0.82, 0.58), radius=0.06)
 
@@ -169,12 +182,12 @@ def dress(scene, M):
     scene.model("wooden_lantern_01", (front_x + 0.09, 6.05, 8.85), scale=0.7)
     scene.model("mantel_clock_01", (front_x + 0.07, 4.7, 8.85), rot_z=math.radians(-90), scale=0.8)
 
-    scene.model("vintage_day_bed", (3.75, 6.55, 6.7), rot_z=math.radians(180))                 # against TN, under N12
+    scene.model("vintage_day_bed", (3.75, 6.55, 6.7))                                          # its back (+y) against TN, under N12
     scene.box("study_daybed_throw", (3.75, 6.32, 7.12), (0.55, 0.5, 0.10), M.taupe_linen, bevel=0.04)
-    scene.model("Rockingchair_01", (5.6, 5.6, 6.7), rot_z=math.radians(-140))
+    scene.model("Rockingchair_01", (5.6, 5.6, 6.7), rot_z=math.radians(-45))                    # turned to the room from the corner
     scene.rug("study_rug", (3.9, 5.2, 6.7), (3.0, 2.4), M.rug_jute)
     scene.table_lamp("study_floor_lamp", (5.6, 6.35, 6.7), 0.22, 1.7, M.brass, M.shade, 60)     # a standing lamp by the daybed
-    scene.model("potted_plant_01", (2.3, 0.8, 6.7), scale=0.8)                                  # dressing the small window N7
+    scene.model("potted_plant_01", (0.85, 1.0, 6.7), scale=0.8)                                 # the south-west corner, west of the stair's head
 
     scene.model("hanging_picture_frame_01", (0.55, 2.75, 8.30), rot_z=math.radians(90), scale=0.8)   # the house's history: old
     scene.model("hanging_picture_frame_02", (0.55, 2.95, 7.95), rot_z=math.radians(90), scale=0.8)   # photographs and a clock,
@@ -184,10 +197,8 @@ def dress(scene, M):
     scene.sconce("study_sconce_b", (5.3, 7.0, 8.4), M.brass, M.shade, watts=22)
     scene.pendant_bell("study_pendant", (5.4, 4.6), 9.28, 8.30, M.straw, M.iron, 130)
 
-    # the F2 void (x 0.9..6.1, y 1.4..2.6), a hole in the middle of the floor: guarded on all four sides
-    _rail_run(scene, "study_rail_void_s", (0.9, 1.4), (6.1, 1.4), 6.7, 6.7, M.iron)
-    _rail_run(scene, "study_rail_void_n", (0.9, 2.6), (6.1, 2.6), 6.7, 6.7, M.iron)
-    _rail_run(scene, "study_rail_void_w", (0.9, 1.4), (0.9, 2.6), 6.7, 6.7, M.iron)
-    _rail_run(scene, "study_rail_void_e", (6.1, 1.4), (6.1, 2.6), 6.7, 6.7, M.iron)
+    # the F2 void, ST2's own outline along the south wall: guarded along its open north edge; the wall closes its east
+    # end and the south side, and the flight arrives at its west end
+    _rail_run(scene, "study_rail_void_n", (x2a, y2), (x2b, y2), 6.7, 6.7, M.iron)
 
     scene.point_light("study_fill", (3.8, 4.8, 9.0), 150, color=(1.0, 0.87, 0.72), radius=0.4)

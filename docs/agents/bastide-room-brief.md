@@ -25,12 +25,12 @@ C0K); first floor 2.9 m; study 2.6 m to the eaves.
 
 Rooms (inside faces):
 
-- hall: x 0.5..7, y 0.5..7, z 0. Stair ST1 climbs the north wall (x 1..6.4, y 6..7) to z 3.5. Arch A0 to the living room in the east wall at y 2.95..4.55. Door D2 (steel screen, 3 m wide) in the south wall at x 2.25..5.25 to the terrace. Window N8 in the west wall at y 3..4. Pendant L3 at (3.75, 3.75).
+- hall: x 0.5..7, y 0.5..7, z 0. Three steps ST1a (x 0.5..1.5, y 5.19..6) climb from the room to the quarter landing ST1L (x 0.5..1.5, y 6..7, at z 0.525), from which the flight ST1 climbs the north wall (x 1.5..5.92, y 6..7) to z 3.5, landing 1.08 m short of the east wall. Arch A0 to the living room in the east wall at y 2.95..4.55. Door D2 (steel screen, 3 m wide) in the south wall at x 2.25..5.25 to the terrace. Window N8 in the west wall at y 3.5..4.5. Pendant L3 at (3.75, 3.75).
 - living: x 7.5..14.5, y 0.5..7.5, z 0. Chimney breast FP x 9.5..11.5 on the north wall with an arched hearth 1.2 wide. Arched glazed door D1 in the south wall at x 13.3..15.2 (its glass is hidden so the camera can pass). Windows N1 (south, x 9..10.2) and N13 (north, x 9.5..10.7). Arch A1 to the dining room in the partition P1 (x 14.5) at y 3..5. Pendant L1 at (11, 4).
 - dining: x 14.7..21, y 0.5..7.5, z 0. Door D5 to the kitchen in the east wall at y 2.5..3.5. Door D0 north at x 13.65..14.85 (that is in the living room's part of the wall), window N14 north x 17.8..19, N2 south x 18.3..19.5. Pendant L2 at (17.8, 4) (unused; the room has straw pendants).
 - kitchen: x 21.5..30, y 1.5..6.5, z 0. Run K1 along the north wall (y 6.5): base units, stone counter at 0.9, splashback, upper cabinets. Doors D3 (x 22.7..24.55) and D4 (x 26.8..28.65) in the south wall to the terrace. Window N19 east at y 3.5..4.5, N20 north at x 25.15..26.35. Pendant L4 at (25.75, 4).
 - bedrooms (first floor, z 3.5): corridor y 6.2..7.5 along the north; bed1 x 7.5..10.2, bath1 x 10.35..11.85, bed2 (main) x 12..16.4, bath2 x 16.6..18.1, bed3 x 18.2..21; all y 0.5..6.0. Doors D6, D7, D8 in the corridor partition at x 8.7, 13.5, 19.0; D9 (bed1 to bath1) and D10 (bed2 to bath2) at y 4.5. Windows south: N3 x 9..10.2, N4 x 13.65..14.85, N5 x 18.3..19.5 (sill 0.9 above the floor); north: N15, N16, N17 into the corridor; N18 east in bed3. Downlights L6..L9 in bed1 and bed2/bath.
-- tower upper: landing/bedroom x 0.5..7, y 0.5..7 at z 3.5 with the void of ST1 at y 6..7 and stair ST2 rising along the south wall (y 0.5..1.5, x 6 down to 1.1) to the study at z 6.7 (void at y 1.4..2.6). Arch A2 in the east wall at z 3.5 connects to the main wing corridor. Windows N6/N9/N11 (first floor) and N7/N10/N12 (study, small and grilled). Pendant L5 at (3.75, 3.75, 5.6).
+- tower upper: landing/bedroom x 0.5..7, y 0.5..7 at z 3.5 with the void of ST1 at x 1.5..5.92, y 6..7 (the flight arrives at its east end) and stair ST2 rising along the south wall (y 0.5..1.5, from the east wall at x 7 down to 2.14) to the study at z 6.7, where the void follows it. Read both stairs from the IR (`scene.entity("ST1")["derived"]`), never from these numbers. Arch A2 in the east wall at z 3.5 connects to the main wing corridor. Windows N6/N9/N11 (first floor) and N7/N10/N12 (study, small and grilled). Pendant L5 at (3.75, 3.75, 5.6).
 - exterior: everything outside, the terrace and the pool garden, the planting and the woodland.
 
 The full entity list with coordinates is `out/bastide_montfuron/ir.json`
@@ -52,25 +52,31 @@ showroom: a house someone would want to live in.
 
 ## What you must do
 
-1. Audit. Start with the diagnostic views (`homespec views`, seconds each,
-   no materials): the plan of your storey and the two sections show where
-   the walls, floors and openings really are before you spend a minute on
-   a Cycles frame, and `out/bastide_montfuron/checks.md` lists under
-   `no_clash` every pair of solids that share volume and whether
-   construction allows it. Then render your room's shots, look at them, and
-   list what is wrong: floating furniture, furniture inside walls, things
-   below the floor or above the ceiling, missing walls or doors the spec
-   should have, bare surfaces, lights that read as black, objects that pass
-   through each other, scale mistakes, anything a visitor would notice.
-   Check against the plan. Write the audit down before you change anything.
+1. Audit. Invoke the `design-audit` skill (`.claude/skills/design-audit`):
+   it is the checklist for this step and the next. Start with the
+   diagnostic views (`homespec views`, seconds each, no materials): the
+   plan of your storey and the two sections show where the walls, floors
+   and openings really are before you spend a minute on a Cycles frame,
+   and `out/bastide_montfuron/checks.md` lists under `no_clash` every pair
+   of solids that share volume and whether construction allows it. Run
+   `homespec audit projects/bastide_montfuron`: it lists every placed
+   thing inside a wall, floating, in the way of a door, an arch or a stair,
+   or through a ceiling, with its position. Then render your room's shots,
+   look at them, and list what is wrong: floating furniture, furniture
+   inside walls, things below the floor or above the ceiling, missing walls
+   or doors the spec should have, bare surfaces, lights that read as black,
+   objects that pass through each other, scale mistakes, chairs facing a
+   wall, anything a visitor would notice. Check against the plan. Write
+   the audit down before you change anything.
 2. Fix and dress. Bring the room to high fidelity in the style above. Fix
    every audit item. Compose the room as a designer would: a focal point,
    circulation left clear, things on surfaces, light at three heights
    (ceiling, table, wall), textiles, plants, art. Every object must rest on
    something. Keep the camera views in mind but dress the whole room.
 3. Verify. Re-render, look, iterate until the shots look like the listing's
-   photographs of the same kind of room. Render at low resolution while
-   iterating and at full resolution at the end.
+   photographs of the same kind of room. Every render prints the audit's
+   findings first; your room's must be gone. Render at low resolution
+   while iterating and at full resolution at the end.
 4. Report. Your final message must list: the audit findings and what you
    did about each; what you added; any spec changes, each with its entry in
    `decisions.md` (an `Entities:` line naming what it governs, and the
@@ -91,6 +97,7 @@ export PYTHONPATH=$PWD
 ~/repos/homespec/.venv/bin/homespec views projects/bastide_montfuron --only plan,section --focus <ids>   # Workbench, seconds
 HOMESPEC_ROOM=<room> HOMESPEC_RES=960x540 HOMESPEC_SAMPLES=48 \
   ~/repos/homespec/.venv/bin/homespec render projects/bastide_montfuron --mode still --frame 1,97,193
+~/repos/homespec/.venv/bin/homespec audit projects/bastide_montfuron    # the dressed scene, judged; a minute, no render
 ```
 
 `<room>` is your module name: exterior, hall, living, dining, kitchen,
@@ -123,6 +130,12 @@ emit=, transmission=, bump=, absorb=)`. Give every material a unique name.
   from `assets/models/<asset>/`, placed by its bounding-box bottom centre.
   `height` rescales to that height; `tint` multiplies its colours (black
   chairs from a grey model: `tint=(0.16, 0.16, 0.17)`). Returns the object.
+  Before `rot_z`, the library's chairs, sofas, benches and beds face -y
+  (their backs at +y), consoles and tables are long along x, and mirrors,
+  pictures and wall lamps are thin along y (they hang on a wall running
+  along x; give them a quarter turn for one running along y). A chair at
+  `rot_z=math.radians(90)` faces +x. Measure an asset you are unsure of
+  with `o.dimensions` rather than guessing.
 - `scene.box(name, (cx, cy, cz), (sx, sy, sz), material, rot_z=0, bevel=0)`:
   centre and size; `bevel` rounds edges (cushions, mattresses).
 - `scene.cyl(name, (cx, cy, cz), r, h, material)`, `scene.cone(name, (x, y, z_bottom), r_bottom, r_top, h, material)`,

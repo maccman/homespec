@@ -112,9 +112,13 @@ def build() -> House:
         Arch("FP.hearth", host=FP, width=1200, height=800, at=400)
         Chimney("CH", at=(10500, 7250), size=800, base=2900, height=1700, level=L1, material=stone)    # from the wall head at 6400, through the roof
 
-        # ---- stairs in the tower: a flight along the north wall to L1, a flight along the south wall to L2
-        Stair("ST1", (1000, 6000), (1, 0), width=1000, rise=3500, going=270, level=L0, to_level=L1, material=cut)
-        Stair("ST2", (6000, 1500), (-1, 0), width=1000, rise=3200, going=270, level=L1, to_level=L2, material=cut)
+        # ---- stairs in the tower (D-028): to L1, three steps up from the room to a quarter landing in the north-west corner,
+        # then the flight along the north wall, landing its own width clear of the east wall; to L2, a flight along the south
+        # wall from the east wall, entered over its first treads
+        Stair("ST1a", (500, 5190), (0, 1), width=1000, align="right", rise=525, going=270, level=L0, material=cut)
+        Landing("ST1L", outline=[(500, 6000), (1500, 6000), (1500, 7000), (500, 7000)], top=525, thickness=525, level=L0, material=cut)
+        Stair("ST1", (1500, 6000), (1, 0), width=1000, base=525, rise=2975, going=260, level=L0, to_level=L1, material=cut)
+        Stair("ST2", (7000, 1500), (-1, 0), width=1000, rise=3200, going=270, level=L1, to_level=L2, material=cut)
 
         # ---- inside, first floor: a corridor along the north, three bedrooms south, two bathrooms between them
         PC = Wall("PC", (7500, 6125), (21000, 6125), assembly=partition, level=L1, align="center", external=False)
@@ -221,6 +225,7 @@ def build() -> House:
                 if not to:
                     continue
                 expected = ir.levels[to].elevation - ir.levels[st.level].elevation
-                yield ("stair_reaches_floor", st.id, abs(st.params["rise"] - expected) < 1, st.params["rise"], expected, f"{st.level} -> {to}")
+                climb = st.params["rise"] + st.params.get("base", 0)                    # a flight leaving a landing counts the landing
+                yield ("stair_reaches_floor", st.id, abs(climb - expected) < 1, climb, expected, f"{st.level} -> {to}")
 
     return house

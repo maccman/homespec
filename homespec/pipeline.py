@@ -160,6 +160,23 @@ def render(project_dir: str, out_dir: str | None, mode: str, frame: str = "1", e
     return 0
 
 
+def audit(project_dir: str, out_dir: str | None = None) -> list[str]:
+    """Dress the walkthrough scene without rendering and return the scene audit's findings, one per line.
+
+    A finding names a placed object and what a designer would say about it:
+    it stands in a wall, it floats, it is in the way of a door or a stair,
+    it passes through the ceiling. The same lines print at the start of
+    every render; here they are the result.
+    """
+    out = out_dir or os.path.join("out", os.path.basename(os.path.normpath(project_dir)))
+    if not os.path.exists(os.path.join(out, "ir.json")):
+        raise FileNotFoundError(f"{out}/ir.json missing; run `homespec build {project_dir}` first")
+    script = os.path.join(os.path.dirname(__file__), "blender", "scene.py")
+    pres = os.path.join(project_dir, "presentation.py")
+    lines = _blender(script, [out, pres, "audit"])
+    return [ln[len("AUDIT "):].strip() for ln in lines if ln.startswith("AUDIT ") and not ln.startswith("AUDIT total")]
+
+
 def views(project_dir: str, out_dir: str | None, only: Sequence[str] = (), focus: Sequence[str] = (),
           resolution: tuple[int, int] = (1600, 1200)) -> list[str]:
     """Plan the diagnostic views from a built IR and render them with Workbench into ``<out>/views``.

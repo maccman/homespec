@@ -148,6 +148,36 @@ def roof_pitch(ir: IRDocument) -> Iterable[Result]:
         yield Result(rule="", target=r.id, ok=ok, value=pitch, limit="18..35" if tiles else ">= 3", note="clay tiles" if tiles else "low-slope covering")
 
 
+@rule("stair_lands_clear", clause="a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width)")
+def stair_lands_clear(ir: IRDocument) -> Iterable[Result]:
+    """A flight that runs into a wall has nowhere to arrive: the width of the flight beyond its top riser is the landing.
+
+    Walls of the arrival storey (those standing between the arrival floor
+    and two metres above it) are measured from the top riser along the
+    line of travel, across the flight's own width.
+    """
+    walls = [(w.id, _bbox(w)) for k in ("wall", "gable", "chimney") for w in ir.of_kind(k) if w.geometry]
+    for st in ir.of_kind("stair"):
+        sg = st.derived_as(StairGeometry)
+        width = float(st.params.get("width", 1000.0))
+        a, b, c = (tuple(p) for p in sg.outline[:3])                     # the foot and the head on the reference side, the head across
+        ux, uy = (b[0] - a[0]) / sg.run, (b[1] - a[1]) / sg.run
+        z_arrive = (ir.levels[st.level].elevation if st.level else 0.0) + sg.base + float(st.params["rise"])
+        landing = Polygon([b, c, (c[0] + ux * width, c[1] + uy * width), (b[0] + ux * width, b[1] + uy * width)])
+        clear, blocker = width, ""
+        for wid, bb in walls:
+            if bb.max[2] <= z_arrive + 1 or bb.min[2] >= z_arrive + 2000:
+                continue
+            hit = landing.intersection(sbox(bb.min[0], bb.min[1], bb.max[0], bb.max[1]))
+            if not isinstance(hit, Polygon) or hit.area < 1.0:
+                continue
+            depth = min((x - b[0]) * ux + (y - b[1]) * uy for x, y in hit.exterior.coords)
+            if depth < clear:
+                clear, blocker = depth, wid
+        yield Result(rule="", target=st.id, ok=clear >= width - 1, value=round(clear), limit=round(width),
+                     note=f"{blocker} stands {round(clear)} beyond the top riser" if blocker else "clear beyond the top riser")
+
+
 @rule("stair_proportions", clause="risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb)")
 def stair_proportions(ir: IRDocument) -> Iterable[Result]:
     for st in ir.of_kind("stair"):

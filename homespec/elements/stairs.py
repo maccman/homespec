@@ -16,7 +16,9 @@ class Stair(Element):
 
     Risers are sized from ``rise`` and ``max_riser``; the going is fixed.
     The flight is a solid stepped mass, which is what a plan cuts and what a
-    builder sets out from. Give the floor above a matching void.
+    builder sets out from. Give the floor above a matching void. ``base``
+    lifts the foot above the level's floor, for a flight that leaves a
+    landing; the mass still stands on the floor.
 
     ``align`` says where the flight sits relative to the line from ``start``
     in ``direction``: ``"left"`` puts the width on the left of the line (the
@@ -34,6 +36,7 @@ class Stair(Element):
     going: Positive = 270.0
     max_riser: Positive = 180.0
     align: Literal["left", "right", "center"] = "left"
+    base: float = 0.0
     to_level: Ref | None = None
 
     def realize(self, ctx: Context) -> Realized:
@@ -42,10 +45,10 @@ class Stair(Element):
         riser = self.rise / n
         frame = Frame.along(self.start, G.add(self.start, self.direction))
         off = {"left": 0.0, "right": -self.width, "center": -self.width / 2}[self.align]
-        steps = [G.frame_box(frame, i * self.going, off, lv.elevation, (self.going, self.width, riser * (i + 1))) for i in range(n)]
+        steps = [G.frame_box(frame, i * self.going, off, lv.elevation, (self.going, self.width, self.base + riser * (i + 1))) for i in range(n)]
         run = n * self.going
         top = frame.point(run)
-        derived = StairGeometry(steps=n, riser=riser, going=self.going, run=run, top=list(top), pitch=math.degrees(math.atan2(riser, self.going)),
+        derived = StairGeometry(steps=n, riser=riser, going=self.going, run=run, top=list(top), pitch=math.degrees(math.atan2(riser, self.going)), base=self.base,
                                 outline=[list(frame.point(0, off)), list(frame.point(run, off)), list(frame.point(run, off + self.width)), list(frame.point(0, off + self.width))]).model_dump()
         relations = [Relation(pred="rises_to", obj=self.to_level)] if self.to_level else []
         return Realized(solid=G.group(steps), derived=derived, relations=relations, tags={"circulation"})
