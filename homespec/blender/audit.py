@@ -200,7 +200,7 @@ def _routes(walls: list[Box]) -> list[Box]:
             going = d["going"] / 1000
             ahead = (b - a).normalized()
             across = (dd - a).normalized()
-            z0 = levels[e["level"]]["elevation"] / 1000
+            z0 = levels[e["level"]]["elevation"] / 1000 + d.get("base", 0.0) / 1000       # the foot, which may be on a landing
             z1 = z0 + e["params"]["rise"] / 1000
             zones.append((_box(f"the landing at the head of {e['id']}", [b, c, b + ahead * width, c + ahead * width], z1, z1 + ROUTE_HEIGHT), (b + c) / 2 + ahead * 0.01))
             foot = _box(f"the foot of {e['id']}", [a, dd, a - ahead * width, dd - ahead * width], z0, z0 + ROUTE_HEIGHT)

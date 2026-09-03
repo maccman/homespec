@@ -8454,7 +8454,7 @@
    "extrusion": null
   },
   {
-   "id": "ST1",
+   "id": "ST1a",
    "kind": "stair",
    "ifc_class": "IfcStair",
    "physical": true,
@@ -8467,6 +8467,141 @@
    "params": {
     "start": [
      500.0,
+     5190.0
+    ],
+    "direction": [
+     0.0,
+     1.0
+    ],
+    "width": 1000.0,
+    "rise": 525.0,
+    "going": 270.0,
+    "max_riser": 180.0,
+    "align": "right",
+    "base": 0.0,
+    "to_level": null
+   },
+   "derived": {
+    "steps": 3,
+    "riser": 175.0,
+    "going": 270.0,
+    "run": 810.0,
+    "top": [
+     500.0,
+     6000.0
+    ],
+    "pitch": 32.9492,
+    "outline": [
+     [
+      1500.0,
+      5190.0
+     ],
+     [
+      1500.0,
+      6000.0
+     ],
+     [
+      500.0,
+      6000.0
+     ],
+     [
+      500.0,
+      5190.0
+     ]
+    ],
+    "base": 0.0
+   },
+   "relations": [],
+   "geometry": {
+    "step": "geometry/ST1a.step",
+    "obj": "geometry/ST1a.obj",
+    "bbox": {
+     "min": [
+      500.0,
+      5190.0,
+      0.0
+     ],
+     "max": [
+      1500.0,
+      6000.0,
+      525.0
+     ]
+    },
+    "volume_mm3": 283500000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "ST1L",
+   "kind": "landing",
+   "ifc_class": "IfcSlab",
+   "physical": true,
+   "tags": [
+    "circulation",
+    "landing"
+   ],
+   "level": "L0",
+   "material": "cut_stone",
+   "params": {
+    "outline": [
+     [
+      500.0,
+      6000.0
+     ],
+     [
+      1500.0,
+      6000.0
+     ],
+     [
+      1500.0,
+      7000.0
+     ],
+     [
+      500.0,
+      7000.0
+     ]
+    ],
+    "top": 525.0,
+    "thickness": 525.0
+   },
+   "derived": {
+    "z_top": 525.0,
+    "area_mm2": 1000000.0
+   },
+   "relations": [],
+   "geometry": {
+    "step": "geometry/ST1L.step",
+    "obj": "geometry/ST1L.obj",
+    "bbox": {
+     "min": [
+      500.0,
+      6000.0,
+      0.0
+     ],
+     "max": [
+      1500.0,
+      7000.0,
+      525.0
+     ]
+    },
+    "volume_mm3": 525000000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "ST1",
+   "kind": "stair",
+   "ifc_class": "IfcStair",
+   "physical": true,
+   "tags": [
+    "circulation",
+    "stair"
+   ],
+   "level": "L0",
+   "material": "cut_stone",
+   "params": {
+    "start": [
+     1500.0,
      6000.0
     ],
     "direction": [
@@ -8474,40 +8609,42 @@
      0.0
     ],
     "width": 1000.0,
-    "rise": 3500.0,
-    "going": 270.0,
+    "rise": 2975.0,
+    "going": 260.0,
     "max_riser": 180.0,
     "align": "left",
+    "base": 525.0,
     "to_level": "L1"
    },
    "derived": {
-    "steps": 20,
+    "steps": 17,
     "riser": 175.0,
-    "going": 270.0,
-    "run": 5400.0,
+    "going": 260.0,
+    "run": 4420.0,
     "top": [
-     5900.0,
+     5920.0,
      6000.0
     ],
-    "pitch": 32.9492,
+    "pitch": 33.9436,
     "outline": [
      [
-      500.0,
+      1500.0,
       6000.0
      ],
      [
-      5900.0,
+      5920.0,
       6000.0
      ],
      [
-      5900.0,
+      5920.0,
       7000.0
      ],
      [
-      500.0,
+      1500.0,
       7000.0
      ]
-    ]
+    ],
+    "base": 525.0
    },
    "relations": [
     {
@@ -8521,17 +8658,17 @@
     "obj": "geometry/ST1.obj",
     "bbox": {
      "min": [
-      500.0,
+      1500.0,
       6000.0,
       0.0
      ],
      "max": [
-      5900.0,
+      5920.0,
       7000.0,
       3500.0
      ]
     },
-    "volume_mm3": 9922500000.0
+    "volume_mm3": 9282000000.0
    },
    "extrusion": null
   },
@@ -8560,6 +8697,7 @@
     "going": 270.0,
     "max_riser": 180.0,
     "align": "left",
+    "base": 0.0,
     "to_level": "L2"
    },
    "derived": {
@@ -8589,7 +8727,8 @@
       7000.0,
       500.0
      ]
-    ]
+    ],
+    "base": 0.0
    },
    "relations": [
     {
@@ -10194,7 +10333,7 @@
     ]
    },
    "derived": {
-    "area_mm2": 162850000.0,
+    "area_mm2": 163830000.0,
     "z_top": 3500.0,
     "voids": 1,
     "outline": [
@@ -10240,7 +10379,7 @@
       3500.0
      ]
     },
-    "volume_mm3": 48855000000.0
+    "volume_mm3": 49149000000.0
    },
    "extrusion": null
   },
@@ -11793,7 +11932,7 @@
       3200.0
      ]
     },
-    "volume_mm3": 1105500000.0
+    "volume_mm3": 1134900000.0
    },
    "extrusion": null
   },
@@ -12363,7 +12502,7 @@
     "obj": "geometry/C0T.B10.obj",
     "bbox": {
      "min": [
-      5900.0,
+      500.0,
       6080.0,
       2950.0
      ],
@@ -12373,7 +12512,7 @@
       3170.0
      ]
     },
-    "volume_mm3": 33880000.0
+    "volume_mm3": 64064000.0
    },
    "extrusion": null
   },
@@ -12421,7 +12560,7 @@
     "obj": "geometry/C0T.B11.obj",
     "bbox": {
      "min": [
-      5900.0,
+      500.0,
       6680.0,
       2950.0
      ],
@@ -12431,7 +12570,7 @@
       3170.0
      ]
     },
-    "volume_mm3": 33880000.0
+    "volume_mm3": 64064000.0
    },
    "extrusion": null
   },
@@ -16628,6 +16767,7 @@
     "going": 300.0,
     "max_riser": 170.0,
     "align": "right",
+    "base": 0.0,
     "to_level": "L0"
    },
    "derived": {
@@ -16657,7 +16797,8 @@
       13300.0,
       -8600.0
      ]
-    ]
+    ],
+    "base": 0.0
    },
    "relations": [
     {
@@ -19308,8 +19449,8 @@
   {
    "a": "TN",
    "b": "F1",
-   "volume_mm3": 975000000.0,
-   "depth_mm": 300.00000042426564,
+   "volume_mm3": 974999999.9999998,
+   "depth_mm": 300.0000003000023,
    "bbox": {
     "min": [
      499.99999999999926,
@@ -19398,8 +19539,8 @@
   {
    "a": "TW",
    "b": "F1",
-   "volume_mm3": 975000000.0000002,
-   "depth_mm": 300.00000042426564,
+   "volume_mm3": 975000000.0000014,
+   "depth_mm": 300.0000003000023,
    "bbox": {
     "min": [
      0.0,
@@ -19407,7 +19548,7 @@
      3200.0
     ],
     "max": [
-     500.0000000000018,
+     500.000000000002,
      7000.0,
      3500.0
     ]

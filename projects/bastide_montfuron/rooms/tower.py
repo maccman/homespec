@@ -1,14 +1,15 @@
 """The tower's upper rooms: a bedroom on the first floor (z 3.5) and the study under the roof (z 6.7), x 0.5..7 by y 0.5..7.
 
-The stair ST1 arrives on the first floor along the north wall, from the
-west wall to 1.1 m short of the east one (its void in F1 follows it, y
-6..7); the stair ST2 leaves the first floor along the south wall (y
-0.5..1.5, from the east wall at the bottom to 1.64 m short of the west
-wall at the top) and arrives on the second floor, where F2's void follows
-it. Both stairs are read from the IR (D-028): each void is guarded along
-its open edge, the guard stopping where the flight arrives; ST2's open
-north edge gets a raked balustrade from its third tread, the first two
-being how it is entered from the room. The small grilled windows of the
+The stair ST1 arrives on the first floor along the north wall, from its
+quarter landing in the north-west corner to 1.1 m short of the east wall
+(its void in F1 follows it, y 6..7); the stair ST2 leaves the first floor
+along the south wall (y 0.5..1.5, from the east wall at the bottom to
+1.64 m short of the west wall at the top) and arrives on the second
+floor, where F2's void follows it. Both stairs are read from the IR
+(D-028): each void is guarded along its open edges, the guard stopping
+where the flight arrives; ST2's open north edge gets a raked balustrade
+from its third tread, the first two being how it is entered from the
+room. The small grilled windows of the
 top floor look every way. Arch A2 (east wall, first floor) is kept clear
 for circulation.
 """
@@ -152,11 +153,13 @@ def dress(scene, M):
     scene.box("tower1_valance_n9", (0.60, 3.75, 5.82), (0.10, 1.35, 0.16), M.linen, bevel=0.02)     # short pelmets: N9 is behind
     scene.box("tower1_valance_n11", (3.75, 6.90, 5.82), (1.35, 0.10, 0.16), M.linen, bevel=0.02)    # the bed, N11 over the void
 
-    # the F1 stairwell void, ST1's own outline: guarded along its open south edge from the wall it starts at to the
-    # top riser, where the flight arrives and the guard must stop
+    # the F1 stairwell void, ST1's own outline: guarded along its open south edge and its west end (the floor over the
+    # quarter landing) up to the top riser, where the flight arrives and the guard must stop
     st1 = scene.entity("ST1")["derived"]
     (x1a, y1), (x1b, _) = [(p[0] / 1000, p[1] / 1000) for p in st1["outline"][:2]]
+    y1_far = st1["outline"][3][1] / 1000
     _rail_run(scene, "tower1_rail_void_s", (x1a, y1), (x1b, y1), 3.5, 3.5, M.iron)
+    _rail_run(scene, "tower1_rail_void_w", (x1a, y1), (x1a, y1_far - 0.05), 3.5, 3.5, M.iron)
     # ST2 rising to the study along the south wall: a raked balustrade on its open (north) edge, parallel to the
     # line of its nosings, from the third tread; the first two are open, entered from the room
     st2 = scene.entity("ST2")["derived"]

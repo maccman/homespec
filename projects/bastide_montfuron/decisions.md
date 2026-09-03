@@ -194,20 +194,24 @@ meets the wing wall (its top reaches about 4850 there). The sill is 5000:
 a small high window over the roof, and bedroom 3 still has `N5` to the
 south for its 0.8 m² of glass.
 
-## D-028 The flights start at a wall and land clear
-Entities: ST1, ST2, F1, F2, C0T, C1T
-Twenty risers at 270 fill 5.4 m of the tower's 6.5 m. Started a metre off
-the west wall, ST1 met the east wall 600 short of its own width, and ST2
-arrived 640 from the west wall: the hall render showed a flight running
-into a wall, and the tower's guard rails had fenced off both arrivals.
-Each flight now starts at the wall it climbs from (ST1 at x 500, ST2 at
-x 7000), is entered from the room over its first two treads with the
-newel on the third, and lands at least its own width short of the wall
-ahead (1.1 m for ST1, 1.64 m for ST2). The generic rule
-`stair_lands_clear` measures that landing for every flight; the voids in
-F1, F2, C0T and C1T follow the flights, and the hall and tower modules
-read the flights from the IR, so a balustrade or a guard cannot drift
-from its stair again.
+## D-028 The flights land clear, and ST1 turns at its foot
+Entities: ST1, ST1a, ST1L, ST2, F1, F2, C0T, C1T
+Twenty risers at 270 fill 5.4 m of the tower's 6.5 m, which leaves no
+room for a landing at either end of a straight flight. Started a metre
+off the west wall, ST1 met the east wall 600 short of its own width, and
+ST2 arrived 640 from the west wall: the hall render showed a flight
+running into a wall, and the tower's guard rails had fenced off both
+arrivals. Starting ST1 at the wall instead read as a flight emerging from
+one. So ST1 now turns at its foot, as an architect would draw it: three
+steps (ST1a) climb from the room to a quarter landing (ST1L) in the
+north-west corner, and the flight leaves the landing (`Stair.base`, a new
+field: the foot lifted above the floor, the mass still standing on it)
+along the north wall to arrive 1.08 m short of the east wall. ST2 starts
+at the east wall, entered over its first two treads with the newel on the
+third, and lands 1.64 m clear. The generic rule `stair_lands_clear`
+measures every flight's landing; the voids in F1, F2, C0T and C1T follow
+the flights, and the hall and tower modules read the flights from the IR,
+so a balustrade or a guard cannot drift from its stair again.
 
 ## D-029 Placed models turn, and the dressed scene audits itself
 The glTF importer leaves objects in quaternion mode, so the `rot_z` every

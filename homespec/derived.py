@@ -94,6 +94,7 @@ class StairGeometry(BaseModel):
     top: list[float]
     pitch: float
     outline: list[list[float]]
+    base: float = 0.0
 
 
 class SlabGeometry(BaseModel):

@@ -1,12 +1,12 @@
 """The hall: the tower's ground floor, x 0.5..7 by y 0.5..7, with the stair to the first floor and the arch to the living room.
 
-The stair ST1 climbs along the north wall from the west wall to the first
-floor at z 3.5. It starts at the wall and is entered from the room over its
-first two open treads, the newel standing on the third, and it arrives
-1.1 m short of the east wall, which is its landing (D-028); its outline,
-risers and going are read from the IR so the balustrade follows the spec.
-Its open side faces the room at y = 6.0, so that is where the balustrade
-goes. The arch A0 in the east wall (y 2.95..4.55) opens to the living
+Three steps (ST1a) climb from the room to a quarter landing (ST1L) in the
+north-west corner, and from it the flight ST1 climbs along the north wall
+to the first floor at z 3.5, arriving 1.1 m short of the east wall (D-028);
+outlines, risers and goings are read from the IR so the balustrade follows
+the spec. The flight's open side faces the room at y = 6.0 and the three
+steps' open side faces east at x = 1.5, so that is where the balustrade
+goes, turning on a post at the landing's corner. The arch A0 in the east wall (y 2.95..4.55) opens to the living
 room; the steel screen door D2 (3 m) in the south wall (x 2.25..5.25)
 opens to the terrace; the window N8 is in the west wall (y 3.5..4.5). The
 console runs along the west wall under its mirror, south of the window,
@@ -76,34 +76,52 @@ def dress(scene, M):
     # ---- a fig in the north-east corner: beside the high end of the stair, clear of its foot, the arch and the sconce
     scene.model("potted_plant_01", (6.5, 5.45, 0.0), scale=1.3)
 
-    # ---- the stair ST1: an iron balustrade with an oak handrail on its open side, set out from the IR's own geometry
+    # ---- the stair: an iron balustrade with an oak handrail along every open edge, set out from the IR's own geometry:
+    # up the three steps' east edge to a post on the landing's corner, then along the flight's south edge to the top
     st = scene.entity("ST1")["derived"]
-    (x0, y_open), (x1, _) = [(p[0] / 1000, p[1] / 1000) for p in st["outline"][:2]]     # the open edge, foot to head
-    riser, going, steps = st["riser"] / 1000, st["going"] / 1000, st["steps"]
+    (x0, y_open), (x1, _) = [(p[0] / 1000, p[1] / 1000) for p in st["outline"][:2]]     # the flight's open edge, foot to head
+    riser, going, steps, base = st["riser"] / 1000, st["going"] / 1000, st["steps"], st.get("base", 0.0) / 1000
     z_top = scene.bbox("ST1")[1].z
-    open_treads = 2                                                                   # entered from the room over these; the newel stands on the next
-    rail_h, guard_h, y_rail = 0.9, 0.95, y_open + 0.07
-    x_newel, z_newel = x0 + open_treads * going + 0.07, (open_treads + 1) * riser
+    sa = scene.entity("ST1a")["derived"]
+    riser_a, going_a, steps_a = sa["riser"] / 1000, sa["going"] / 1000, sa["steps"]
+    xa_open = max(p[0] for p in sa["outline"]) / 1000                                  # the three steps' open edge, east
+    ya0 = min(p[1] for p in sa["outline"]) / 1000                                      # their foot
+    rail_h, guard_h = 0.9, 0.95
+    y_rail, x_rail = y_open + 0.07, xa_open - 0.07
     x_top = x1 - 0.06
 
-    def nosing(x):                                                                    # the line through the tread noses
-        return riser + (x - x0) * riser / going
+    def nosing_a(y):                                                                  # the line through the three steps' noses
+        return riser_a + (y - ya0) * riser_a / going_a
 
-    def rail(x):                                                                      # the handrail, from the bottom newel to the landing guard's height
-        t = (x - x_newel) / (x_top - x_newel)
-        return (nosing(x_newel) + rail_h) * (1 - t) + (z_top + guard_h) * t
+    def nosing(x):                                                                    # the line through the flight's noses
+        return base + riser + (x - x0) * riser / going
 
-    for i in range(open_treads, steps):
+    def rail(x):                                                                      # the flight's handrail, from the corner post to the landing guard's height
+        t = (x - x_rail) / (x_top - x_rail)
+        return (nosing(x_rail) + rail_h) * (1 - t) + (z_top + guard_h) * t
+
+    y_foot = ya0 + 0.07
+    for j in range(steps_a):                                                          # the three steps: balusters on their east edge
+        for k, f in enumerate((0.3, 0.75)):
+            y = ya0 + (j + f) * going_a
+            if abs(y - y_foot) < 0.1 or abs(y - y_rail) < 0.1:
+                continue
+            scene.rod(f"hall_st1a_baluster_{j}_{k}", (x_rail, y, (j + 1) * riser_a), (x_rail, y, nosing_a(y) + rail_h), 0.011, M.iron)
+    scene.rod("hall_st1a_handrail", (x_rail, y_foot, nosing_a(y_foot) + rail_h), (x_rail, y_rail, nosing_a(y_rail) + rail_h), 0.028, M.oak)
+    for i in range(steps):                                                            # the flight: balusters on its south edge
         for k, f in enumerate((0.3, 0.75)):
             x = x0 + (i + f) * going
-            if abs(x - x_newel) < 0.1 or abs(x - x_top) < 0.1:
+            if abs(x - x_rail) < 0.1 or abs(x - x_top) < 0.1:
                 continue
-            scene.rod(f"hall_st1_baluster_{i}_{k}", (x, y_rail, (i + 1) * riser), (x, y_rail, rail(x)), 0.011, M.iron)
-    scene.rod("hall_st1_handrail", (x_newel, y_rail, rail(x_newel)), (x_top, y_rail, rail(x_top)), 0.028, M.oak)
-    for tag, x, z in (("base", x_newel, z_newel), ("top", x_top, z_top)):
-        h = rail(x) - z + 0.1
-        scene.cyl(f"hall_st1_newel_{tag}", (x, y_rail, z + h / 2), 0.032, h, M.iron, verts=16)
-        scene.sphere(f"hall_st1_newel_{tag}_cap", (x, y_rail, z + h + 0.03), 0.036, M.brass)
+            scene.rod(f"hall_st1_baluster_{i}_{k}", (x, y_rail, base + (i + 1) * riser), (x, y_rail, rail(x)), 0.011, M.iron)
+    scene.rod("hall_st1_handrail", (x_rail, y_rail, rail(x_rail)), (x_top, y_rail, rail(x_top)), 0.028, M.oak)
+    posts = (("foot", (x_rail, y_foot), 0.0, nosing_a(y_foot) + rail_h),                       # at the foot of the three steps
+             ("corner", (x_rail, y_rail), base, max(nosing_a(y_rail) + rail_h, rail(x_rail))),  # on the landing, where the rails turn
+             ("top", (x_top, y_rail), z_top, rail(x_top)))                                      # at the head
+    for tag, (x, y), z, z_rail in posts:
+        h = z_rail - z + 0.1
+        scene.cyl(f"hall_st1_newel_{tag}", (x, y, z + h / 2), 0.032, h, M.iron, verts=16)
+        scene.sphere(f"hall_st1_newel_{tag}_cap", (x, y, z + h + 0.03), 0.036, M.brass)
 
 
 def _sunhat(scene, name, at, straw, band):

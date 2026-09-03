@@ -1,6 +1,6 @@
 # Checks: bastide-montfuron
 
-342 passed, 0 failed
+345 passed, 0 failed
 
 | result | rule | target | value | limit | note | clause |
 |---|---|---|---|---|---|---|
@@ -298,10 +298,12 @@
 | PASS | roof_pitch | RM | 24.0 | 18..35 | clay tiles | clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb) |
 | PASS | roof_pitch | RK | 22.0 | 18..35 | clay tiles | clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb) |
 | PASS | roof_pitch | RP | 22.0 | >= 3 | low-slope covering | clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb) |
+| PASS | stair_lands_clear | ST1a | 1000 | 1000 | clear beyond the top riser | a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width) |
 | PASS | stair_lands_clear | ST1 | 1000 | 1000 | clear beyond the top riser | a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width) |
 | PASS | stair_lands_clear | ST2 | 1000 | 1000 | clear beyond the top riser | a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width) |
 | PASS | stair_lands_clear | ST0 | 2400 | 2400 | clear beyond the top riser | a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width) |
-| PASS | stair_proportions | ST1 | riser 175, going 270, 2R+G 620 | 150..190 / >=250 / 550..700 |  | risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb) |
+| PASS | stair_proportions | ST1a | riser 175, going 270, 2R+G 620 | 150..190 / >=250 / 550..700 |  | risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb) |
+| PASS | stair_proportions | ST1 | riser 175, going 260, 2R+G 610 | 150..190 / >=250 / 550..700 |  | risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb) |
 | PASS | stair_proportions | ST2 | riser 178, going 270, 2R+G 626 | 150..190 / >=250 / 550..700 |  | risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb) |
 | PASS | stair_proportions | ST0 | riser 165, going 300, 2R+G 630 | 150..190 / >=250 / 550..700 |  | risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb) |
 | PASS | bedroom_window | bed1 | 4.15 | 0.8 | m² of glass on the bedroom's own walls | holiday-let brief |
@@ -316,12 +318,12 @@
 | PASS | ids | Ifcwall carries its homespec id and tags | 20/20 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcdoor carries its homespec id and tags | 11/11 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcwindow carries its homespec id and tags | 20/20 pass | all |  | IDS 1.0 |
-| PASS | ids | Ifcslab carries its homespec id and tags | 6/6 pass | all |  | IDS 1.0 |
+| PASS | ids | Ifcslab carries its homespec id and tags | 7/7 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcbeam carries its homespec id and tags | 84/84 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcfurniture carries its homespec id and tags | 5/5 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifclightfixture carries its homespec id and tags | 9/9 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcoutlet carries its homespec id and tags | 6/6 pass | all |  | IDS 1.0 |
-| PASS | decision_ids | decisions.md | 26 decisions | one entry per id |  |  |
+| PASS | decision_ids | decisions.md | 28 decisions | one entry per id |  |  |
 | PASS | decision_entities | D-001 | TE, ME | ids in the build | Three blocks, not one |  |
 | PASS | decision_entities | D-002 | ST1, ST2, F1, F2 | ids in the build | The tower holds the stairs |  |
 | PASS | decision_entities | D-003 | RT, RM, RK | ids in the build | Roofs are low and hipped where the reference hips |  |
@@ -344,5 +346,6 @@
 | PASS | decision_entities | D-025 | C0T, C1T, ST1, ST2, F1, F2 | ids in the build | Stair wells continue through the ceilings |  |
 | PASS | decision_entities | D-026 | L6, L7, L8, L9, C1M, S6 | ids in the build | Fittings sit clear of joists and cabinets |  |
 | PASS | decision_entities | D-027 | N18, ME, N5 | ids in the build | The east bedroom window sits above the kitchen roof |  |
+| PASS | decision_entities | D-028 | ST1, ST1a, ST1L, ST2, F1, F2, C0T, C1T | ids in the build | The flights land clear, and ST1 turns at its foot |  |
 | PASS | decision_ledgers | Considered and not changed | present | a '## Considered and not changed' section |  |  |
 | PASS | decision_ledgers | Not verified | present | a '## Not verified' section |  |  |

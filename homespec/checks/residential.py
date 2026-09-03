@@ -162,7 +162,7 @@ def stair_lands_clear(ir: IRDocument) -> Iterable[Result]:
         width = float(st.params.get("width", 1000.0))
         a, b, c = (tuple(p) for p in sg.outline[:3])                     # the foot and the head on the reference side, the head across
         ux, uy = (b[0] - a[0]) / sg.run, (b[1] - a[1]) / sg.run
-        z_arrive = (ir.levels[st.level].elevation if st.level else 0.0) + float(st.params["rise"])
+        z_arrive = (ir.levels[st.level].elevation if st.level else 0.0) + sg.base + float(st.params["rise"])
         landing = Polygon([b, c, (c[0] + ux * width, c[1] + uy * width), (b[0] + ux * width, b[1] + uy * width)])
         clear, blocker = width, ""
         for wid, bb in walls:
