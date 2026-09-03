@@ -23,7 +23,7 @@ def dress(scene):
     copper = scene.flat("p_copper", (0.85, 0.45, 0.3), rough=0.3, metal=1.0)
     straw = scene.flat("p_straw", (0.62, 0.45, 0.24), rough=0.9, bump=0.7)
     charcoal = scene.flat("p_charcoal", (0.16, 0.17, 0.17), rough=0.6)
-    white_linen = scene.pbr("p_white_linen", "rough_linen", tile=0.5, value=1.35, tint=(0.98, 0.97, 0.94))
+    white_linen = scene.flat("p_white_linen", (0.9, 0.84, 0.74), rough=0.95, bump=0.4)
     taupe_linen = scene.flat("p_taupe_linen", (0.5, 0.42, 0.34), rough=0.95, bump=0.4)
     cut_stone = scene.pbr("p_cut_stone", "beige_wall_001", tile=1.0, value=0.95, tint=(0.96, 0.9, 0.78))
     linen = scene.pbr("p_linen", "rough_linen", tile=0.5, value=1.25, tint=(0.94, 0.92, 0.86))
