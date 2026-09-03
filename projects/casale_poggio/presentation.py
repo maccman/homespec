@@ -108,10 +108,40 @@ def dress(scene):
     for x in (4.6, 8.5, 12.4, 16.05):
         scene.point_light(f"lantern_{x}", (x, -2.75, 2.35), 15, color=(1.0, 0.75, 0.45), radius=0.08)
 
-    # ---- afternoon light from the south-west, the camera on the terrace looking back at the loggia
+    # ---- afternoon light from the south-west
     scene.world_hdri(HDRI, rotation_deg=150, strength=1.6)
     scene.sun((0.55, 0.6, -0.55), energy=4.5, angle=1.0)
-    start, end = (26.0, -12.5, 1.6), (22.5, -10.5, 1.6)
-    look = (-0.78, 0.62, 0.05)
-    scene.camera([(1, (start, look)), (72, (end, look))], lens=30, fstop=5.6, focus=16.0, frames=72)
-    scene.render_settings(rx=1600, ry=900, samples=128, exposure=0.0)
+    for eid in ("L1_light", "L2_light", "L3_light"):
+        light = scene.scene.objects.get(eid)
+        if light is not None:
+            light.data.energy = 160
+    for e in scene.ir["entities"]:
+        if e["kind"] == "downlight":
+            light = scene.scene.objects.get(f"{e['id']}_light")
+            if light is not None:
+                light.data.energy = 30
+    # a horizon of hills so the terrace shots have somewhere to look
+    hill = scene.flat("p_hill", (0.30, 0.34, 0.24), rough=1.0)
+    for k, (x, y, rx, ry, h) in enumerate([(-40, -140, 120, 60, 22), (60, -170, 160, 70, 30), (150, -110, 110, 60, 18), (-120, -90, 90, 50, 14), (220, -40, 100, 60, 12)]):
+        mound = scene.sphere(f"hill_{k}", (x, y, -0.6), 1.0, hill)
+        mound.scale = (rx, ry, h)
+
+    # ---- the walk: pool, loggia, living room, through the arch to the kitchen, out to the terrace.
+    # D4 and D5 stand open, so their glass is hidden.
+    scene.hide("D4.glass")
+    scene.hide("D5.glass")
+    scene.path([
+        (0.0, (15.5, -9.5, 1.5), (-0.55, 0.83, 0.02)),      # from the pool corner, the whole loggia ahead
+        (5.0, (12.6, -5.2, 1.55), (-0.35, 0.93, 0.02)),      # walking up the terrace
+        (8.5, (10.7, -2.0, 1.6), (0.0, 1.0, 0.0)),           # under the pergola, facing the living room door D4
+        (11.5, (10.7, 1.0, 1.6), (-0.5, 0.86, 0.0)),         # inside, the fireplace wall and sofa ahead
+        (14.0, (9.4, 3.2, 1.6), (-0.98, 0.2, 0.0)),          # looking west down the living room to the hall arch
+        (16.5, (10.8, 3.5, 1.6), (1.0, 0.0, 0.0)),           # turning east toward the kitchen arch A2
+        (19.0, (13.4, 3.8, 1.6), (0.3, 0.95, 0.0)),          # through the arch, counter and window ahead
+        (21.5, (14.8, 4.2, 1.6), (-0.3, -0.95, -0.05)),      # swing to the dining table
+        (24.0, (14.3, 1.0, 1.6), (0.0, -1.0, 0.0)),          # toward the open door D5
+        (27.0, (14.3, -1.6, 1.55), (-0.3, -0.95, 0.05)),     # back under the pergola
+        (30.0, (13.2, -4.8, 1.6), (-0.55, -0.8, 0.12)),      # out on the terrace: pool, olives, the hills beyond
+    ], fps=24, lens=24, fstop=8.0, focus=4.0)
+    scene.exposure([(0.0, 0.0), (8.0, 0.0), (11.0, 1.1), (21.5, 1.1), (24.0, 0.5), (26.5, 0.0), (30.0, 0.0)])
+    scene.render_settings(rx=1280, ry=720, samples=40, exposure=0.0, adaptive=0.1)

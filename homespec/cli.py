@@ -47,6 +47,15 @@ def render(project: str, out: str | None = None, mode: str = typer.Option("still
 
 
 @app.command()
+def movie(project: str, out: str | None = None, fps: int = typer.Option(24, help="Frames per second"),
+          crf: int = typer.Option(18, help="H.264 quality, lower is better")) -> None:
+    """Render the camera path defined in presentation.py and encode it as renders/walkthrough.mp4."""
+    from .pipeline import movie as _movie
+
+    typer.echo(_movie(project, out, fps, crf))
+
+
+@app.command()
 def walk(project: str, out: str | None = None, engine: str = typer.Option("cycles", help="cycles | eevee")) -> None:
     """Open the walk file in Blender. Press W to walk."""
     from .pipeline import walk as _walk

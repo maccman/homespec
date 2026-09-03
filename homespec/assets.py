@@ -17,6 +17,7 @@ import urllib.request
 API = "https://api.polyhaven.com"
 UA = {"User-Agent": "homespec/0.1 (asset fetch)"}   # Poly Haven returns 403 without a user agent
 TEXTURE_MAPS = ("Diffuse", "nor_gl", "Rough", "Displacement", "AO", "arm")
+MAX_MODEL_BYTES = 80 * 1024 * 1024   # a scene of instances, not one tree that fills the GPU
 
 
 def _get(url):
@@ -50,6 +51,9 @@ def fetch_model(mid, spec, dest):
     res = spec.get("resolution", "1k")
     r = res if res in files["gltf"] else sorted(files["gltf"])[0]
     g = files["gltf"][r]["gltf"]
+    total = g.get("size", 0) + sum(info.get("size", 0) for info in g.get("include", {}).values())
+    if total > MAX_MODEL_BYTES:
+        return f"model {mid}: {total / 1e6:.0f} MB, over the {MAX_MODEL_BYTES / 1e6:.0f} MB limit, skipped"
     d = f"{dest}/models/{mid}"
     _save(g["url"], f"{d}/{os.path.basename(g['url'])}")
     for rel, info in g.get("include", {}).items():

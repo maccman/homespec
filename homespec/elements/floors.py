@@ -1,6 +1,7 @@
 """Slabs, ceilings and beams."""
 from __future__ import annotations
 
+from dataclasses import field
 from typing import ClassVar, Literal
 
 from pydantic import BaseModel
@@ -20,12 +21,16 @@ class Slab(Element):
     outline: Outline
     thickness: Positive
     top: float = 0.0
+    voids: list[list[Point]] = field(default_factory=list)
 
     def realize(self, ctx: Context) -> Realized:
         lv = ctx.level(self)
         z_top = lv.elevation + self.top
-        return Realized(solid=G.prism(self.outline, z_top - self.thickness, self.thickness),
-                        derived={"area_mm2": G.polygon_area(self.outline), "z_top": z_top}, tags={"floor"})
+        solid = G.prism(self.outline, z_top - self.thickness, self.thickness)
+        for void in self.voids:
+            solid = solid - G.prism(void, z_top - self.thickness - 10, self.thickness + 20)
+        area = G.polygon_area(self.outline) - sum(G.polygon_area(v) for v in self.voids)
+        return Realized(solid=solid, derived={"area_mm2": area, "z_top": z_top, "voids": len(self.voids)}, tags={"floor"})
 
 
 @element

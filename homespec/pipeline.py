@@ -126,3 +126,22 @@ def walk(project_dir: str, out_dir: str | None, engine: str = "cycles") -> Any:
         raise FileNotFoundError(f"{blend} missing; run `homespec render {project_dir} --mode save` first")
     script = os.path.join(os.path.dirname(__file__), "blender", "walk.py")
     return subprocess.Popen([blender_binary(), blend, "--python", script, "--", engine])
+
+
+def movie(project_dir: str, out_dir: str | None, fps: int = 24, crf: int = 18) -> str:
+    """Render the animation frames and stitch them into ``renders/walkthrough.mp4`` with ffmpeg."""
+    import shutil
+    import subprocess
+
+    out = out_dir or os.path.join("out", os.path.basename(os.path.normpath(project_dir)))
+    code = render(project_dir, out, "anim")
+    if code != 0:
+        raise RuntimeError(f"Blender exited with {code}")
+    frames = os.path.join(out, "renders", "anim")
+    target = os.path.join(out, "renders", "walkthrough.mp4")
+    ffmpeg = shutil.which("ffmpeg")
+    if not ffmpeg:
+        raise FileNotFoundError(f"frames are in {frames}; install ffmpeg to encode them")
+    subprocess.run([ffmpeg, "-y", "-loglevel", "error", "-framerate", str(fps), "-i", os.path.join(frames, "frame_%04d.png"),
+                    "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", str(crf), "-movflags", "+faststart", target], check=True)
+    return target

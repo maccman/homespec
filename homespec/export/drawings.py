@@ -91,20 +91,21 @@ def plan_view(ir: IRDocument, level: str, cut: float = CUT_HEIGHT) -> PlanView:
     xs: list[float] = []
     ys: list[float] = []
     skip = {"space", "slab", "ceiling", "beam", "downlight", "pendant"}
+    floor_z = lv.elevation
     for e in ir.entities:
-        if e.level != level or not e.geometry or not e.physical or e.kind in skip:
+        if not e.geometry or not e.physical or e.kind in skip:
             continue
         lo, hi = e.geometry.bbox.min, e.geometry.bbox.max
-        shape = read_step(ir.path(e.geometry.step))
         if lo[2] <= cut_z <= hi[2]:
-            layer = "walls" if e.kind == "wall" else "openings" if e.has("opening") or e.kind in ("glazing", "leaf") else "joinery"
-            view.shapes.append(Shape2D(loops=section_loops(shape, cut_z), layer=layer, id=e.id))
-        elif hi[2] < cut_z:
-            view.shapes.append(Shape2D(loops=section_loops(shape, hi[2] - 0.5), layer="below", id=e.id))
+            layer = "walls" if e.kind in ("wall", "gable") else "openings" if e.has("opening") or e.kind in ("glazing", "leaf") else "joinery"
+            view.shapes.append(Shape2D(loops=section_loops(read_step(ir.path(e.geometry.step)), cut_z), layer=layer, id=e.id))
+        elif floor_z - 300 <= hi[2] < cut_z and e.level == level:
+            view.shapes.append(Shape2D(loops=section_loops(read_step(ir.path(e.geometry.step)), hi[2] - 0.5), layer="below", id=e.id))
         else:
             continue
-        xs += [lo[0], hi[0]]
-        ys += [lo[1], hi[1]]
+        if view.shapes[-1].layer != "below":     # what is cut sets the sheet; slabs and terraces below just draw
+            xs += [lo[0], hi[0]]
+            ys += [lo[1], hi[1]]
         if e.kind != "wall" and e.kind not in ("glazing", "leaf") and "." not in e.id:
             view.labels.append(Label(at=((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2), text=e.id))
 
@@ -117,15 +118,17 @@ def plan_view(ir: IRDocument, level: str, cut: float = CUT_HEIGHT) -> PlanView:
         view.labels.append(Label(at=(cx, cy - 180), text=f"{s.params['use'].replace('_', ' ')}  {s.derived['area_mm2'] / 1e6:.1f} m²", size=2.2))
 
     for w in ir.of_kind("wall"):
-        if w.level != level:
+        if not w.geometry or not (w.geometry.bbox.min[2] <= cut_z <= w.geometry.bbox.max[2]):
             continue
         face = Frame.model_validate(w.derived["face"])
         t, L = w.derived["thickness"], w.derived["length"]
         external = w.has("external")
         ticks = {0.0, L}
+        wall_z = w.derived["elevation"]
         for oid in w.related("has_opening"):
             d = ir.entity(oid).derived
-            ticks |= {d["from_start"], d["from_start"] + d["width"]}
+            if wall_z + d["sill"] <= cut_z <= wall_z + d["head"]:
+                ticks |= {d["from_start"], d["from_start"] + d["width"]}
         chain = sorted(round(v, 1) for v in ticks)
         if external:
             view.dimensions.append(Dimension(base=face.point(0, -(t + 900)), u=face.u, n=face.n, ticks=chain))
@@ -137,6 +140,8 @@ def plan_view(ir: IRDocument, level: str, cut: float = CUT_HEIGHT) -> PlanView:
             view.dimensions.append(Dimension(base=face.point(0, t / 2 + 450), u=face.u, n=face.n, ticks=chain))
             view.labels.append(Label(at=face.point(L * 0.5, t / 2 + 160), text=f"{w.id}  {int(t)}", angle=_readable(face.angle), size=2.0))
     pad = 1800
+    if not xs:
+        xs, ys = [0.0, 1000.0], [0.0, 1000.0]
     view.bounds = (min(xs) - pad, min(ys) - pad, max(xs) + pad, max(ys) + pad)
     return view
 

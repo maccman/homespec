@@ -1,4 +1,4 @@
-"""Walls and the openings in them."""
+"""Walls and the openings in them, with what dresses an opening: glazing bars, shutters, surrounds, grilles."""
 from __future__ import annotations
 
 from typing import Any, ClassVar, Literal
@@ -41,7 +41,9 @@ class Wall(Element):
     Trace walls counter-clockwise around a room. With the default
     ``align="right"`` the body sits outside the line, so the line is the inside
     face and grid dimensions are room dimensions. ``material`` is the inside
-    finish and defaults to the assembly's ``finish_in``.
+    finish and defaults to the assembly's ``finish_in``. ``height`` may span
+    several storeys; openings on upper floors use a ``sill`` measured from the
+    wall's own level.
     """
 
     kind: ClassVar[str] = "wall"
@@ -105,9 +107,70 @@ class OpeningGeometry(BaseModel):
     void: Extrusion
 
 
+# --------------------------------------------------------------------------- parts an opening may carry
+@element
+class Glazing(Element):
+    """The glass of an opening. Rendered, scheduled with its opening, not a separate IFC product."""
+
+    kind: ClassVar[str] = "glazing"
+    ifc_class: ClassVar[str | None] = None
+    opening: Ref
+
+
+@element
+class Leaf(Element):
+    """A door leaf."""
+
+    kind: ClassVar[str] = "leaf"
+    ifc_class: ClassVar[str | None] = None
+    opening: Ref
+
+
+@element
+class Shutters(Element):
+    """A pair of shutters hinged open against the outside of the wall. Emitted by an opening with ``shutters``."""
+
+    kind: ClassVar[str] = "shutters"
+    ifc_class: ClassVar[str | None] = "IfcShadingDevice"
+    opening: Ref
+
+
+@element
+class Surround(Element):
+    """Dressed-stone jambs, lintel and sill standing proud of the wall around an opening."""
+
+    kind: ClassVar[str] = "surround"
+    ifc_class: ClassVar[str | None] = "IfcBuildingElementProxy"
+    opening: Ref
+
+
+@element
+class Grille(Element):
+    """An iron grille outside a window."""
+
+    kind: ClassVar[str] = "grille"
+    ifc_class: ClassVar[str | None] = "IfcBuildingElementProxy"
+    opening: Ref
+
+
+@element
+class ArchVoid(Element):
+    """The exact shape cut for an arch, kept so the IFC opening can be a true arch rather than a box."""
+
+    kind: ClassVar[str] = "void"
+    ifc_class: ClassVar[str | None] = None
+    physical: ClassVar[bool] = False
+    opening: Ref
+
+
+# --------------------------------------------------------------------------- openings
 @element
 class Opening(Element):
-    """Base for anything cut into a wall. Subclasses decide what fills the hole."""
+    """Base for anything cut into a wall. Subclasses decide what fills the hole.
+
+    ``panes`` divides the glass into (columns, rows) with bars; ``shutters``,
+    ``surround`` and ``grille`` name materials and emit those parts.
+    """
 
     kind: ClassVar[str] = "opening"
     ifc_class: ClassVar[str | None] = "IfcWindow"
@@ -120,6 +183,11 @@ class Opening(Element):
     frame: Ref = "steel_black"
     frame_size: Positive = 60.0
     glazing: Ref = "glass_double"
+    panes: tuple[int, int] = (1, 1)
+    bar_size: Positive = 30.0
+    shutters: Ref | None = None
+    surround: Ref | None = None
+    grille: Ref | None = None
 
     def deps(self) -> list[str]:
         return [self.host]
@@ -129,10 +197,10 @@ class Opening(Element):
 
     # ---- what subclasses vary
     def mullion_positions(self) -> list[float]:
-        """Distances from the opening's start to each mullion centre."""
+        """Distances from the opening's start to each structural mullion centre."""
         return []
 
-    def panes(self, x: float, wall: WallGeometry, z: float) -> tuple[list[Any], float]:
+    def panes_of(self, x: float, wall: WallGeometry, z: float) -> tuple[list[Any], float]:
         """Glass solids and total glass area. Default: one pane filling the frame."""
         fs = self.frame_size
         pane = G.frame_box(wall.body, x + fs, (wall.thickness - 10) / 2, z + fs, (self.width - 2 * fs, 10, self.height - 2 * fs))
@@ -140,6 +208,30 @@ class Opening(Element):
 
     def clear_width(self) -> float:
         return self.width - 2 * self.frame_size
+
+    def void_solid(self, x: float, wall: WallGeometry, z: float) -> Any:
+        return G.frame_box(wall.body, x, -100, z, (self.width, wall.thickness + 200, self.height))
+
+    def frame_members(self, x: float, wall: WallGeometry, z: float) -> list[Any]:
+        fs, t = self.frame_size, wall.thickness
+        depth = (t - fs) / 2
+        members = [
+            G.frame_box(wall.body, x, depth, z, (self.width, fs, fs)),
+            G.frame_box(wall.body, x, depth, z + self.height - fs, (self.width, fs, fs)),
+            G.frame_box(wall.body, x, depth, z, (fs, fs, self.height)),
+            G.frame_box(wall.body, x + self.width - fs, depth, z, (fs, fs, self.height)),
+        ]
+        for mx in self.mullion_positions():
+            members.append(G.frame_box(wall.body, x + mx - fs / 2, depth, z, (fs, fs, self.height)))
+        cols, rows = self.panes
+        bs, bdepth = self.bar_size, (t - self.bar_size) / 2
+        for c in range(1, cols):
+            bx = x + fs + (self.width - 2 * fs) * c / cols - bs / 2
+            members.append(G.frame_box(wall.body, bx, bdepth, z + fs, (bs, bs, self.height - 2 * fs)))
+        for r in range(1, rows):
+            bz = z + fs + (self.height - 2 * fs) * r / rows - bs / 2
+            members.append(G.frame_box(wall.body, x + fs, bdepth, bz, (self.width - 2 * fs, bs, bs)))
+        return members
 
     # ---- realization
     def position(self, wall: WallGeometry) -> float:
@@ -149,55 +241,65 @@ class Opening(Element):
             return wall.length - self.at.from_end - self.width
         return float(self.at)
 
+    def head_height(self) -> float:
+        return self.height
+
     def realize(self, ctx: Context) -> Realized:
         wall = ctx.derived(self.host, WallGeometry)
         x = self.position(wall)
         z = wall.elevation + self.sill
         t, fs = wall.thickness, self.frame_size
-
-        void = G.frame_box(wall.body, x, -100, z, (self.width, t + 200, self.height))
-        ctx.cut(self.host, void)
-
-        depth = (t - fs) / 2
-        members = [
-            G.frame_box(wall.body, x, depth, z, (self.width, fs, fs)),
-            G.frame_box(wall.body, x, depth, z + self.height - fs, (self.width, fs, fs)),
-            G.frame_box(wall.body, x, depth, z, (fs, fs, self.height)),
-            G.frame_box(wall.body, x + self.width - fs, depth, z, (fs, fs, self.height)),
-        ]
-        mullions = self.mullion_positions()
-        for mx in mullions:
-            members.append(G.frame_box(wall.body, x + mx - fs / 2, depth, z, (fs, fs, self.height)))
-        panes, glass_area = self.panes(x, wall, z)
-
-        void_ex = Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=t + 200, height=self.height)
-        geom = OpeningGeometry(host=self.host, from_start=x, from_end=wall.length - x - self.width, width=self.width, height=self.height,
-                               sill=self.sill, head=self.sill + self.height, clear_width=self.clear_width(), clear_height=self.height - 2 * fs,
-                               glass_area_mm2=glass_area, mullions=len(mullions), void=void_ex)
+        ctx.cut(self.host, self.void_solid(x, wall, z))
+        members = self.frame_members(x, wall, z)
+        panes, glass_area = self.panes_of(x, wall, z)
         level = self.level or ctx.built(self.host).level
+        head = self.head_height()
+        void_ex = Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=t + 200, height=head)
+        geom = OpeningGeometry(host=self.host, from_start=x, from_end=wall.length - x - self.width, width=self.width, height=head,
+                               sill=self.sill, head=self.sill + head, clear_width=self.clear_width(), clear_height=head - 2 * fs,
+                               glass_area_mm2=glass_area, mullions=len(self.mullion_positions()), void=void_ex)
+        derived = geom.model_dump()
+        part_of = [Relation(pred="part_of", obj=self.id)]
         if panes:
-            glass = Glazing(f"{self.id}.glass", opening=self.id, level=level, material=self.glazing)
-            ctx.emit(glass, Realized(solid=G.group(panes), derived={"area_mm2": glass_area}, relations=[Relation(pred="part_of", obj=self.id)]))
+            ctx.emit(Glazing(f"{self.id}.glass", opening=self.id, level=level, material=self.glazing),
+                     Realized(solid=G.group(panes), derived={"area_mm2": glass_area}, relations=part_of))
         self.fill(ctx, wall, x, level)
+        if self.shutters:
+            leaf_w, thick = self.width / 2, 35.0
+            leaves = []
+            for along in (x - leaf_w - 20, x + self.width + 20):
+                leaves.append(G.frame_box(wall.body, along, -thick - 15, z, (leaf_w, thick, head)))
+                for bz in (z + 150, z + head / 2 - 40, z + head - 230):
+                    leaves.append(G.frame_box(wall.body, along + 30, -thick - 15 - 25, bz, (leaf_w - 60, 25, 80)))
+            ctx.emit(Shutters(f"{self.id}.shutters", opening=self.id, level=level, material=self.shutters, tags={"external"}),
+                     Realized(solid=G.group(leaves), derived={"leaves": 2, "leaf_width": leaf_w, "height": head, "thickness": thick}, relations=part_of))
+            derived["shutters"] = self.shutters
+        if self.surround:
+            jamb, lintel, sillh, proud = 140.0, 220.0, 100.0, 25.0
+            parts = [
+                G.frame_box(wall.body, x - jamb, -proud, z, (jamb, proud + 60, head)),
+                G.frame_box(wall.body, x + self.width, -proud, z, (jamb, proud + 60, head)),
+                G.frame_box(wall.body, x - jamb, -proud, z + head, (self.width + 2 * jamb, proud + 60, lintel)),
+                G.frame_box(wall.body, x - jamb, -proud - 30, z - sillh, (self.width + 2 * jamb, proud + 90, sillh)),
+            ]
+            ctx.emit(Surround(f"{self.id}.surround", opening=self.id, level=level, material=self.surround, tags={"external"}),
+                     Realized(solid=G.group(parts), derived={"jamb": jamb, "lintel": lintel, "sill": sillh, "projection": proud}, relations=part_of))
+            derived["surround"] = self.surround
+        if self.grille:
+            rods = [G.frame_box(wall.body, x + fs, -40, z + fs + h_off, (self.width - 2 * fs, 18, 18)) for h_off in (head * 0.3, head * 0.65)]
+            n = max(2, int((self.width - 2 * fs) / 140))
+            for k in range(n):
+                rx = x + fs + (self.width - 2 * fs) * (k + 0.5) / n - 9
+                rods.append(G.frame_box(wall.body, rx, -40, z + fs, (18, 18, head - 2 * fs)))
+            ctx.emit(Grille(f"{self.id}.grille", opening=self.id, level=level, material=self.grille, tags={"external"}),
+                     Realized(solid=G.group(rods), derived={"bars": n}, relations=part_of))
         ctx.relate(self.host, "has_opening", self.id)
         host_tags = ctx.built(self.host).tags
-        return Realized(
-            solid=G.group(members), derived=geom.model_dump(), material=self.frame, level=level,
-            relations=[Relation(pred="hosted_in", obj=self.host)],
-            tags={"external"} if "external" in host_tags else set(),
-        )
+        return Realized(solid=G.group(members), derived=derived, material=self.frame, level=level,
+                        relations=[Relation(pred="hosted_in", obj=self.host)], tags={"external"} if "external" in host_tags else set())
 
     def fill(self, ctx: Context, wall: WallGeometry, x: float, level: str | None) -> None:
         """Hook for subclasses that put something other than glass in the frame (a door leaf)."""
-
-
-@element
-class Glazing(Element):
-    """The glass of an opening. Rendered, scheduled with its opening, not a separate IFC product."""
-
-    kind: ClassVar[str] = "glazing"
-    ifc_class: ClassVar[str | None] = None
-    opening: Ref
 
 
 @element
@@ -224,15 +326,6 @@ class Clerestory(Window):
 
 
 @element
-class Leaf(Element):
-    """A door leaf."""
-
-    kind: ClassVar[str] = "leaf"
-    ifc_class: ClassVar[str | None] = None
-    opening: Ref
-
-
-@element
 class Door(Opening):
     """A hinged door: one solid leaf, no glass unless ``glazed``."""
 
@@ -240,22 +333,36 @@ class Door(Opening):
     ifc_class: ClassVar[str | None] = "IfcDoor"
     leaf: Ref = "door_leaf"
     glazed: bool = False
+    leaves: Literal[1, 2] = 1
 
     def all_tags(self) -> set[str]:
         return super().all_tags() | {"door"}
 
-    def panes(self, x: float, wall: WallGeometry, z: float) -> tuple[list[Any], float]:
-        if self.glazed:
-            return super().panes(x, wall, z)
-        return [], 0.0
+    def mullion_positions(self) -> list[float]:
+        return [self.width / 2] if self.leaves == 2 else []
+
+    def clear_width(self) -> float:
+        return self.width / self.leaves - 2 * self.frame_size
+
+    def panes_of(self, x: float, wall: WallGeometry, z: float) -> tuple[list[Any], float]:
+        if not self.glazed:
+            return [], 0.0
+        fs = self.frame_size
+        if self.leaves == 1:
+            return super().panes_of(x, wall, z)
+        leaf_w = self.width / 2
+        panes = [G.frame_box(wall.body, x + gx + fs, (wall.thickness - 10) / 2, z + fs, (leaf_w - 2 * fs, 10, self.height - 2 * fs)) for gx in (0.0, leaf_w)]
+        return panes, 2 * (leaf_w - 2 * fs) * (self.height - 2 * fs)
 
     def fill(self, ctx: Context, wall: WallGeometry, x: float, level: str | None) -> None:
         if self.glazed:
             return
         fs = self.frame_size
-        leaf = G.frame_box(wall.body, x + fs, (wall.thickness - 40) / 2, wall.elevation + self.sill + 10, (self.width - 2 * fs, 40, self.height - fs - 10))
+        leaf_w = self.width / self.leaves
+        parts = [G.frame_box(wall.body, x + k * leaf_w + fs, (wall.thickness - 40) / 2, wall.elevation + self.sill + 10, (leaf_w - 2 * fs, 40, self.height - fs - 10))
+                 for k in range(self.leaves)]
         ctx.emit(Leaf(f"{self.id}.leaf", opening=self.id, level=level, material=self.leaf),
-                 Realized(solid=leaf, relations=[Relation(pred="part_of", obj=self.id)]))
+                 Realized(solid=G.group(parts), relations=[Relation(pred="part_of", obj=self.id)]))
 
 
 @element
@@ -267,16 +374,10 @@ class SlidingDoor(Door):
     leaves: Literal[1, 2] = 2
     open_leaf: Literal["start", "end"] = "end"
 
-    def mullion_positions(self) -> list[float]:
-        return [self.width / 2] if self.leaves == 2 else []
-
-    def clear_width(self) -> float:
-        return self.width / self.leaves - 2 * self.frame_size
-
-    def panes(self, x: float, wall: WallGeometry, z: float) -> tuple[list[Any], float]:
+    def panes_of(self, x: float, wall: WallGeometry, z: float) -> tuple[list[Any], float]:
         fs = self.frame_size
         if self.leaves == 1:
-            return Opening.panes(self, x, wall, z)
+            return Opening.panes_of(self, x, wall, z)
         leaf_w = self.width / 2
         gx = 0.0 if self.open_leaf == "end" else leaf_w
         pane = G.frame_box(wall.body, x + gx + fs, (wall.thickness - 10) / 2, z + fs, (leaf_w - 2 * fs, 10, self.height - 2 * fs))
@@ -293,35 +394,98 @@ class Arch(Opening):
     kind: ClassVar[str] = "arch"
     ifc_class: ClassVar[str | None] = None
 
+    def all_tags(self) -> set[str]:
+        return super().all_tags() | {"passage"}
+
     def clear_width(self) -> float:
         return self.width
+
+    def head_height(self) -> float:
+        return self.height + self.width / 2
+
+    def void_solid(self, x: float, wall: WallGeometry, z: float) -> Any:
+        t, r = wall.thickness, self.width / 2
+        centre = wall.body.point(x + r, t / 2)
+        return G.frame_box(wall.body, x, -100, z, (self.width, t + 200, self.height)) + G.horizontal_cylinder(r, t + 200, (centre[0], centre[1], z + self.height), wall.angle + 90)
+
+    def frame_members(self, x: float, wall: WallGeometry, z: float) -> list[Any]:
+        return []
+
+    def panes_of(self, x: float, wall: WallGeometry, z: float) -> tuple[list[Any], float]:
+        return [], 0.0
 
     def realize(self, ctx: Context) -> Realized:
         wall = ctx.derived(self.host, WallGeometry)
         x = self.position(wall)
         z = wall.elevation + self.sill
-        t = wall.thickness
-        r = self.width / 2
-        centre = wall.body.point(x + r, t / 2)
-        void = G.frame_box(wall.body, x, -100, z, (self.width, t + 200, self.height)) + G.horizontal_cylinder(r, t + 200, (centre[0], centre[1], z + self.height), wall.angle + 90)
-        ctx.cut(self.host, void)
         level = self.level or ctx.built(self.host).level
+        void = self.void_solid(x, wall, z)
+        ctx.cut(self.host, void)
         void_entity = ArchVoid(f"{self.id}.void", opening=self.id, level=level)
         ctx.emit(void_entity, Realized(solid=void, relations=[Relation(pred="part_of", obj=self.id)]))
         ctx.relate(self.host, "has_opening", self.id)
-        geom = OpeningGeometry(host=self.host, from_start=x, from_end=wall.length - x - self.width, width=self.width, height=self.height + r,
-                               sill=self.sill, head=self.sill + self.height + r, clear_width=self.width, clear_height=self.height + r,
-                               glass_area_mm2=0.0, mullions=0,
-                               void=Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=t + 200, height=self.height + r))
-        return Realized(derived={**geom.model_dump(), "springing": self.height, "radius": r, "void_entity": void_entity.id}, level=level,
-                        relations=[Relation(pred="hosted_in", obj=self.host)], tags={"passage"})
+        head = self.head_height()
+        geom = OpeningGeometry(host=self.host, from_start=x, from_end=wall.length - x - self.width, width=self.width, height=head,
+                               sill=self.sill, head=self.sill + head, clear_width=self.width, clear_height=head, glass_area_mm2=0.0, mullions=0,
+                               void=Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=wall.thickness + 200, height=head))
+        return Realized(derived={**geom.model_dump(), "springing": self.height, "radius": self.width / 2, "void_entity": void_entity.id}, level=level,
+                        relations=[Relation(pred="hosted_in", obj=self.host)])
 
 
 @element
-class ArchVoid(Element):
-    """The exact shape cut for an arch, kept so the IFC opening can be a true arch rather than a box."""
+class ArchedDoor(Door):
+    """A glazed door under a semicircular fanlight: the Provençal bastide's centrepiece.
 
-    kind: ClassVar[str] = "void"
-    ifc_class: ClassVar[str | None] = None
-    physical: ClassVar[bool] = False
-    opening: Ref
+    ``height`` is the springing line of the arch; the head is ``height + width / 2``.
+    """
+
+    kind: ClassVar[str] = "arched_door"
+    glazed: bool = True
+    leaves: Literal[1, 2] = 2
+
+    def all_tags(self) -> set[str]:
+        return super().all_tags() | {"door"}
+
+    def head_height(self) -> float:
+        return self.height + self.width / 2
+
+    def void_solid(self, x: float, wall: WallGeometry, z: float) -> Any:
+        t, r = wall.thickness, self.width / 2
+        centre = wall.body.point(x + r, t / 2)
+        return G.frame_box(wall.body, x, -100, z, (self.width, t + 200, self.height)) + G.horizontal_cylinder(r, t + 200, (centre[0], centre[1], z + self.height), wall.angle + 90)
+
+    def frame_members(self, x: float, wall: WallGeometry, z: float) -> list[Any]:
+        fs, t, r = self.frame_size, wall.thickness, self.width / 2
+        depth = (t - fs) / 2
+        members = [
+            G.frame_box(wall.body, x, depth, z, (self.width, fs, fs)),
+            G.frame_box(wall.body, x, depth, z, (fs, fs, self.height)),
+            G.frame_box(wall.body, x + self.width - fs, depth, z, (fs, fs, self.height)),
+            G.frame_box(wall.body, x, depth, z + self.height - fs / 2, (self.width, fs, fs)),          # transom at the springing line
+        ]
+        for mx in self.mullion_positions():
+            members.append(G.frame_box(wall.body, x + mx - fs / 2, depth, z, (fs, fs, self.height)))
+        cols, rows = self.panes
+        bs, bdepth = self.bar_size, (t - self.bar_size) / 2
+        for c in range(1, cols):
+            bx = x + fs + (self.width - 2 * fs) * c / cols - bs / 2
+            members.append(G.frame_box(wall.body, bx, bdepth, z + fs, (bs, bs, self.height - 2 * fs)))
+        for rr in range(1, rows):
+            bz = z + fs + (self.height - 2 * fs) * rr / rows - bs / 2
+            members.append(G.frame_box(wall.body, x + fs, bdepth, bz, (self.width - 2 * fs, bs, bs)))
+        centre = wall.body.point(x + r, depth + fs / 2)
+        ring = G.horizontal_cylinder(r, fs, (centre[0], centre[1], z + self.height), wall.angle + 90) - G.horizontal_cylinder(r - fs, fs + 2, (centre[0], centre[1], z + self.height), wall.angle + 90)
+        upper = G.frame_box(wall.body, x - 10, depth - 10, z + self.height, (self.width + 20, fs + 20, r + 10))
+        members.append(ring & upper)
+        members.append(G.frame_box(wall.body, x + r - bs / 2, bdepth, z + self.height, (bs, bs, r - fs)))   # a spoke up the middle of the fanlight
+        return members
+
+    def panes_of(self, x: float, wall: WallGeometry, z: float) -> tuple[list[Any], float]:
+        panes, area = Door.panes_of(self, x, wall, z)
+        fs, t, r = self.frame_size, wall.thickness, self.width / 2
+        centre = wall.body.point(x + r, (t - 10) / 2 + 5)
+        disc = G.horizontal_cylinder(r - fs, 10, (centre[0], centre[1], z + self.height), wall.angle + 90)
+        upper = G.frame_box(wall.body, x, (t - 10) / 2 - 5, z + self.height, (self.width, 20, r))
+        panes.append(disc & upper)
+        import math as _m
+        return panes, area + _m.pi * (r - fs) ** 2 / 2

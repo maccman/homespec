@@ -18,11 +18,11 @@ millimetres. A `Ref` field accepts the object or its id.
 | Class | Fields | Produces |
 |---|---|---|
 | `Wall(id, start, end, assembly, level, align="right", external=True, height=None, material=None)` | traced CCW; body outside the line by default | `IfcWall` extrusion; derived `WallGeometry` |
-| `Window(id, host, width, height, sill=0, at="center", frame, frame_size=60, glazing, mullions=0)` | `at` is mm from the wall start, `"center"`, or `from_end(d)` | `IfcWindow` + a void in the host + `Glazing` |
+| `Window(id, host, width, height, sill=0, at="center", frame, frame_size=60, glazing, mullions=0, panes=(1,1), shutters=None, surround=None, grille=None)` | `at` is mm from the wall start, `"center"`, or `from_end(d)`; `panes` are (columns, rows) of glazing bars; naming a material for `shutters`, `surround` or `grille` emits that part | `IfcWindow` + a void in the host + `Glazing` (+ `Shutters`, `Surround`, `Grille`) |
 | `Clerestory(...)` | a `Window` with `frame_size=40`, `mullions=3` and its own tag | as Window |
 | `Door(id, host, width, height, ..., leaf, glazed=False)` | hinged, one leaf | `IfcDoor` + `Leaf` |
 | `SlidingDoor(id, host, width, height, ..., leaves=2, open_leaf="end")` | one leaf glazed and fixed, the other drawn open | `IfcDoor` + `Glazing` |
-| `Slab(id, outline, thickness, level, material, top=0)` | top at level + `top` | `IfcSlab` |
+| `Slab(id, outline, thickness, level, material, top=0, voids=[])` | top at level + `top`; `voids` are cut through (stairs) | `IfcSlab` |
 | `Ceiling(id, outline, level, material, plank=None, thickness=24, beams=None)` | planks across the short axis when `plank` is set; `beams=BeamGrid(width, depth, spacing, along, material)` | `IfcCovering` + `Beam` children |
 | `Beam(id, start, end, width, depth, underside, level, material)` | standalone beam | `IfcBeam` |
 | `Space(id, outline, use, level, bounded_by=[...], occupancy=None)` | the target of most checks | `IfcSpace` |
@@ -32,7 +32,11 @@ millimetres. A `Ref` field accepts the object or its id.
 | `Pendant(id, at, drop, level, watts=None)` | hangs `drop` below the ceiling | `IfcLightFixture` |
 | `Outlet(id, on, from_start, height, variant="double")` | on a wall's inside face | `IfcOutlet` |
 | `Arch(id, host, width, height, at)` | an open round-headed passage; `height` is the springing line | a true arched void in the host, no product |
-| `Roof(id, outline, level, material, kind_="gable", ridge_along="x", pitch=22, overhang=600, thickness=250, eave=None)` | gable or shed (`kind_="shed"`, `high_side`); eave underside at the level height unless `eave` | `IfcRoof` + `Gable` infills for gable roofs |
+| `Roof(id, outline, level, material, kind_="gable", ridge_along="x", pitch=22, overhang=600, thickness=250, eave=None, genoise=0)` | `gable`, `hip`, `shed` (`high_side`) or `flat`; eave at the level height unless `eave`; `genoise` courses of tiles under the eaves | `IfcRoof` + `Gable` infills (gable) + `Cornice` (génoise) |
+| `ArchedDoor(id, host, width, height, ...)` | a glazed door under a semicircular fanlight; `height` is the springing line | `IfcDoor` + arched void + `Glazing` |
+| `Stair(id, start, direction, width, rise, going=270, max_riser=180, level, to_level)` | a straight flight; risers sized from `rise` | `IfcStair`; give the floor above a `voids` entry |
+| `Landing(id, outline, top, thickness, level)` | a platform between flights | `IfcSlab` |
+| `Pool(id, outline, level, depth=1400, coping=400, material, coping_material, water_material)` | shell, coping and water | `IfcBuildingElementProxy` + `Coping` + `PoolWater` |
 | `Column(id, at, level, size=None, radius=None, height=None, base=0)` | square or round; height defaults to the level | `IfcColumn` |
 | `Chimney(id, at, level, size, base, height)` | a column that starts at the roof line | `IfcChimney` |
 

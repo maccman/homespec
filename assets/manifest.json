@@ -9,6 +9,10 @@
     "citrus_orchard_road_puresky": {
       "resolution": "2k",
       "format": "hdr"
+    },
+    "dry_orchard_meadow": {
+      "resolution": "2k",
+      "format": "hdr"
     }
   },
   "textures": {
@@ -67,6 +71,72 @@
       "resolution": "2k"
     },
     "dark_wooden_planks": {
+      "resolution": "2k"
+    },
+    "stone_tiles": {
+      "resolution": "2k"
+    },
+    "stone_tiles_02": {
+      "resolution": "2k"
+    },
+    "monastery_stone_floor": {
+      "resolution": "2k"
+    },
+    "beige_wall_001": {
+      "resolution": "2k"
+    },
+    "plaster_grey_04": {
+      "resolution": "2k"
+    },
+    "clay_roof_tiles": {
+      "resolution": "2k"
+    },
+    "roof_tiles_14": {
+      "resolution": "2k"
+    },
+    "marble_01": {
+      "resolution": "2k"
+    },
+    "velour_velvet": {
+      "resolution": "2k"
+    },
+    "fabric_pattern_05": {
+      "resolution": "2k"
+    },
+    "quatrefoil_jacquard_fabric": {
+      "resolution": "2k"
+    },
+    "oak_veneer_02": {
+      "resolution": "2k"
+    },
+    "stone_floor": {
+      "resolution": "2k"
+    },
+    "mixed_stone_tiles": {
+      "resolution": "2k"
+    },
+    "old_stone_wall": {
+      "resolution": "2k"
+    },
+    "stone_wall_02": {
+      "resolution": "2k"
+    },
+    "rustic_stone_wall_02": {
+      "resolution": "2k"
+    },
+    "coral_stone_wall": {
+      "resolution": "2k"
+    },
+    "plaster_stone_wall_02": {
+      "resolution": "2k"
+    },
+    "stacked_stone_wall": {
+      "resolution": "2k"
+    },
+    "castle_wall_slates": {
+      "resolution": "2k"
+    },
+    "dry_riverbed_rock": {
       "resolution": "2k"
     }
   },
@@ -162,6 +232,171 @@
       "resolution": "1k"
     },
     "wooden_bookshelf_worn": {
+      "resolution": "1k"
+    },
+    "Chandelier_01": {
+      "resolution": "1k"
+    },
+    "Chandelier_02": {
+      "resolution": "1k"
+    },
+    "Chandelier_03": {
+      "resolution": "1k"
+    },
+    "lantern_chandelier_01": {
+      "resolution": "1k"
+    },
+    "ArmChair_01": {
+      "resolution": "1k"
+    },
+    "Sofa_01": {
+      "resolution": "1k"
+    },
+    "sofa_02": {
+      "resolution": "1k"
+    },
+    "painted_wooden_chair_01": {
+      "resolution": "1k"
+    },
+    "painted_wooden_chair_02": {
+      "resolution": "1k"
+    },
+    "painted_wooden_table": {
+      "resolution": "1k"
+    },
+    "WoodenTable_01": {
+      "resolution": "1k"
+    },
+    "WoodenTable_03": {
+      "resolution": "1k"
+    },
+    "CoffeeTable_01": {
+      "resolution": "1k"
+    },
+    "GothicBed_01": {
+      "resolution": "1k"
+    },
+    "old_bed_frame": {
+      "resolution": "1k"
+    },
+    "throw_pillows_01": {
+      "resolution": "1k"
+    },
+    "ornate_mirror_01": {
+      "resolution": "1k"
+    },
+    "book_encyclopedia_set_01": {
+      "resolution": "1k"
+    },
+    "brass_candleholders": {
+      "resolution": "1k"
+    },
+    "wooden_candlestick": {
+      "resolution": "1k"
+    },
+    "wicker_basket_01": {
+      "resolution": "1k"
+    },
+    "wicker_basket_02": {
+      "resolution": "1k"
+    },
+    "wine_bottles_01": {
+      "resolution": "1k"
+    },
+    "antique_ceramic_vase_01": {
+      "resolution": "1k"
+    },
+    "ceramic_vase_01": {
+      "resolution": "1k"
+    },
+    "ceramic_vase_04": {
+      "resolution": "1k"
+    },
+    "standing_picture_frame_01": {
+      "resolution": "1k"
+    },
+    "standing_picture_frame_02": {
+      "resolution": "1k"
+    },
+    "mantel_clock_01": {
+      "resolution": "1k"
+    },
+    "painted_wooden_cabinet": {
+      "resolution": "1k"
+    },
+    "drawer_cabinet": {
+      "resolution": "1k"
+    },
+    "vintage_cabinet_01": {
+      "resolution": "1k"
+    },
+    "Shelf_01": {
+      "resolution": "1k"
+    },
+    "hanging_industrial_lamp": {
+      "resolution": "1k"
+    },
+    "industrial_wall_lamp": {
+      "resolution": "1k"
+    },
+    "wooden_lantern_01": {
+      "resolution": "1k"
+    },
+    "island_tree_01": {
+      "resolution": "1k"
+    },
+    "island_tree_03": {
+      "resolution": "1k"
+    },
+    "tree_small_02": {
+      "resolution": "1k"
+    },
+    "horse_statue_01": {
+      "resolution": "1k"
+    },
+    "wine_barrel_01": {
+      "resolution": "1k"
+    },
+    "planter_box_01": {
+      "resolution": "1k"
+    },
+    "fancy_picture_frame_01": {
+      "resolution": "1k"
+    },
+    "hanging_picture_frame_03": {
+      "resolution": "1k"
+    },
+    "wooden_stool_01": {
+      "resolution": "1k"
+    },
+    "bar_chair_round_01": {
+      "resolution": "1k"
+    },
+    "wooden_bowl_02": {
+      "resolution": "1k"
+    },
+    "carved_wooden_plate": {
+      "resolution": "1k"
+    },
+    "pot_enamel_01": {
+      "resolution": "1k"
+    },
+    "brass_pan_01": {
+      "resolution": "1k"
+    },
+    "modern_coffee_table_01": {
+      "resolution": "1k"
+    },
+    "GreenChair_01": {
+      "resolution": "1k"
+    },
+    "Rockingchair_01": {
+      "resolution": "1k"
+    },
+    "painted_wooden_sofa": {
+      "resolution": "1k"
+    },
+    "chinese_console_table": {
       "resolution": "1k"
     }
   }

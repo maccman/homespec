@@ -146,3 +146,11 @@ def roof_pitch(ir: IRDocument) -> Iterable[Result]:
         tiles = "tile" in (ir.materials[r.material].product or "").lower() if r.material and r.material in ir.materials else False
         ok = 18 <= pitch <= 35 if tiles else pitch >= 3
         yield Result(rule="", target=r.id, ok=ok, value=pitch, limit="18..35" if tiles else ">= 3", note="clay tiles" if tiles else "low-slope covering")
+
+
+@rule("stair_proportions", clause="risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb)")
+def stair_proportions(ir: IRDocument) -> Iterable[Result]:
+    for st in ir.of_kind("stair"):
+        r, g = st.derived["riser"], st.derived["going"]
+        ok = 150 <= r <= 190 and g >= 250 and 550 <= 2 * r + g <= 700
+        yield Result(rule="", target=st.id, ok=ok, value=f"riser {r:.0f}, going {g:.0f}, 2R+G {2 * r + g:.0f}", limit="150..190 / >=250 / 550..700")

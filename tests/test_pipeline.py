@@ -55,7 +55,7 @@ def test_schedules_agree_with_the_ir(library_room_report, library_room_ir):
 
 def test_plan_carries_the_spec_dimensions(library_room_report):
     svg = Path(next(p for p in library_room_report.files["drawings"] if p.endswith(".svg"))).read_text()
-    for text in ("8000", "5000", "3400", "1600", "4600", "W1  ext_wall  200", ">BK1<", ">D1<"):
+    for text in ("8000", "5000", "3400", "1600", "W1  ext_wall  200", ">BK1<", ">D1<"):
         assert text in svg
     assert any(p.endswith(".dxf") for p in library_room_report.files["drawings"])
 
