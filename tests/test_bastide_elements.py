@@ -21,10 +21,52 @@ def test_hip_roof_meets_at_a_ridge_and_has_no_gables():
     b = house.compile()
     roof = b["R"]
     bb = G.bbox(roof.solid)
-    assert math.isclose(bb.max[2], roof.derived["z_ridge"], abs_tol=1) and math.isclose(roof.derived["z_ridge"], 3000 + (4000 + 400) * math.tan(math.radians(25)))
+    slope = math.tan(math.radians(25))
+    z_eave = 3000 + 3 * 70 + 250 - (400 - 3 * 90) * slope           # lifted so the underside clears the top course's outer corner
+    assert math.isclose(roof.derived["z_eave"], z_eave) and math.isclose(roof.derived["z_ridge"], z_eave + (4000 + 400) * slope)
+    assert math.isclose(bb.max[2], roof.derived["z_ridge"], abs_tol=1)
     assert not b.tagged("gable")
     cornice = b["R.genoise"]
     assert cornice.derived["courses"] == 3 and G.bbox(cornice.solid).min[0] == -270 and G.bbox(cornice.solid).min[2] == 3000
+    assert not G.overlap(roof.solid, cornice.solid), "the roof sits on the génoise, not in it"
+
+
+def test_a_roof_against_a_taller_wall_stops_at_the_outline():
+    house = _house()
+    with house:
+        Roof("R", outline=[(0, 0), (12000, 0), (12000, 8000), (0, 8000)], level="L0", pitch=25, overhang=400, gable_thickness=500, genoise=2, material="tile",
+             abuts=["x0"])
+    b = house.compile()
+    bb = G.bbox(b["R"].solid)
+    assert math.isclose(bb.min[0], 0, abs_tol=1e-6) and math.isclose(bb.max[0], 12400) and math.isclose(bb.min[1], -400), "no overhang on the abutting side, the usual one elsewhere"
+    assert [e.id for e in b.tagged("gable")] == ["R.G2"], "no gable where the wall is"
+    assert G.bbox(b["R.genoise"].solid).min[0] == 0, "the courses stop at the wall"
+
+
+def test_a_hip_against_a_wall_keeps_its_ridge_to_the_wall():
+    house = _house()
+    with house:
+        Roof("R", outline=[(0, 0), (12000, 0), (12000, 8000), (0, 8000)], level="L0", shape="hip", pitch=25, overhang=400, material="tile", abuts=["x0"])
+    r = house.compile()["R"]
+    z_ridge = r.derived["z_ridge"]
+    at_wall = G.section_loops(r.solid, z_ridge - 1)
+    assert at_wall and min(p[0] for loop in at_wall for p in loop) < 1, "the ridge runs all the way to the abutting wall"
+    assert max(p[0] for loop in at_wall for p in loop) < 8100, "and hips down at the free end"
+
+
+def test_a_hip_roof_is_solid_through_the_middle():
+    house = _house()
+    with house:
+        Roof("R", outline=[(0, 0), (9000, 0), (9000, 6000), (0, 6000)], level="L0", shape="hip", pitch=22, overhang=450, thickness=220, material="tile")
+    r = house.compile()["R"]
+    slope = math.tan(math.radians(22))
+    half = 3000 + 450
+    loops = G.section_loops(r.solid, 3000 + 100)
+    xs = [p[0] for loop in loops for p in loop]
+    assert len(loops) == 1 and min(xs) < 0 and max(xs) > 9000, "a slice just above the eave is one ring around the whole roof"
+    ridge = G.section_loops(r.solid, r.derived["z_ridge"] - 60)
+    xs = [p[0] for loop in ridge for p in loop]
+    assert max(xs) - min(xs) > 9000 - 2 * half - 60 / slope, "the ridge runs between the hips"
 
 
 def test_flat_roof_is_a_slab_at_the_eave():

@@ -62,8 +62,8 @@ def build() -> House:
                    upper=UpperCabinet(from_start=3900, length=3000, depth=320, height=600, bottom=1650))
 
         # ---- services
-        for i, (x, y) in enumerate([(-2400, 1600), (-2400, -400), (800, 1600), (800, -400), (2400, 1600), (2400, -400)], 1):
-            Downlight(f"L{i}", at=(x, y), level=L0, watts=8)
+        for i, (x, y) in enumerate([(-3200, 1600), (-3200, -400), (0, 1600), (0, -400), (3200, 1600), (3200, -400)], 1):
+            Downlight(f"L{i}", at=(x, y), level=L0, watts=8)       # midway between the beams, which sit at 1600 centres from -4000
         Pendant("L7", at=(-1600, -1250), drop=950, level=L0, watts=60)
         Outlet("P1", on=W1, from_start=1200, height=300)
         Outlet("P2", on=W1, from_start=3600, height=1100, variant="double_counter")

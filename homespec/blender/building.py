@@ -9,8 +9,12 @@ from materials import material_for
 from mathutils import Vector
 
 
-def import_building() -> int:
-    """Import every physical entity's mesh and give it its material. Returns the count."""
+def import_building(materials: bool = True) -> int:
+    """Import every physical entity's mesh and give it its material. Returns the count.
+
+    ``materials=False`` imports bare meshes, for renders that colour by
+    kind and never load a texture.
+    """
     n = 0
     for e in session.IR["entities"]:
         if not e.get("geometry") or not e["physical"]:
@@ -19,11 +23,14 @@ def import_building() -> int:
         o = bpy.context.selected_objects[0]
         o.name = e["id"]
         o.data.materials.clear()
+        for p in o.data.polygons:
+            p.use_smooth = False
+        if not materials:
+            n += 1
+            continue
         o.data.materials.append(material_for(e["material"] or "default"))
         if e["kind"] == "glazing":
             o.visible_shadow = False
-        for p in o.data.polygons:
-            p.use_smooth = False
         # external walls: the assembly's outside finish on the faces that look outward
         if e["kind"] in ("wall", "gable") and "external" in e["tags"]:
             asm = session.IR["assemblies"].get(e["derived"].get("assembly", ""), {})

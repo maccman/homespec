@@ -55,7 +55,7 @@ def registered() -> list[tuple[str, str, Rule]]:
 
 def run(ir: IRDocument, extra: Iterable[Callable[..., Any]] = ()) -> list[Result]:
     """Run every registered rule and the project's own over the IR."""
-    from . import residential  # noqa: F401  (registers the standard rules)
+    from . import clashes, residential  # noqa: F401  (registers the standard rules)
 
     results: list[Result] = []
     for name, clause, fn in _RULES:

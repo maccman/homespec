@@ -23,10 +23,10 @@ def test_the_sugar_emits_parts_that_build_themselves():
         Window("N", host=w, width=1200, height=1500, sill=900, at=2000, shutters="paint", surround="cut_stone", grille="iron")
     b = house.compile()
     ids = list(b.entities)
-    assert ids.index("N") < ids.index("N.shutters") < ids.index("N.surround") < ids.index("N.grille")
+    assert ids.index("N") < ids.index("N.surround") < ids.index("N.shutters") < ids.index("N.grille"), "the stone first, then what hangs on it"
     for part in ("N.shutters", "N.surround", "N.grille"):
         assert b[part].level == "L0" and b[part].has("external") and any(r.pred == "part_of" and r.obj == "N" for r in b[part].relations)
-    assert G.bbox(b["N.shutters"].solid).max[1] <= -450 + 1e-6, "shutters hang outside the 450 wall"
+    assert G.bbox(b["N.shutters"].solid).max[1] <= -450 - 25 - 15 + 1e-6, "shutters hang clear of the surround, which stands 25 proud of the 450 wall"
     assert b["N.grille"].derived["bars"] >= 2
 
 
@@ -70,12 +70,13 @@ def test_slab_voids_may_name_a_stair_or_a_pool():
     house = _house()
     with house:
         Stair("ST", (1000, 1000), (1, 0), width=1000, rise=3300, level="L0", to_level="L1")
-        pool = Pool("P", outline=[(9000, 0), (12000, 0), (12000, 2000), (9000, 2000)], level="L0", depth=1400, material="tile")
+        pool = Pool("P", outline=[(9000, 1000), (12000, 1000), (12000, 3000), (9000, 3000)], level="L0", depth=1400, material="tile")
         Slab("F1", outline=[(0, 0), (14000, 0), (14000, 6000), (0, 6000)], thickness=300, level="L1", voids=["ST", pool])
     b = house.compile()
     f1 = b["F1"]
     ids = list(b.entities)
     assert ids.index("ST") < ids.index("F1") and ids.index("P") < ids.index("F1")
     run = b["ST"].derived["run"]
-    expected = 14000 * 6000 - run * 1000 - 3000 * 2000
+    expected = 14000 * 6000 - run * 1000 - (3000 + 500) * (2000 + 500)    # the pool's hole is its shell, 250 outside the water each way
     assert math.isclose(G.volume(f1.solid), expected * 300, rel_tol=1e-6) and f1.derived["voids"] == 2
+    assert G.polygon_area(b["P"].derived["cut_outline"]) == (3000 + 500) * (2000 + 500)

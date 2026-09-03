@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from .. import geometry as G
 from ..derived import ArchGeometry, OpeningGeometry, WallGeometry
 from ..geometry import Frame, Point
-from ..model import Context, Element, Extrusion, Positive, Realized, Ref, Relation, element, positional
+from ..model import Built, Context, Element, Extrusion, Positive, Realized, Ref, Relation, element, positional
 
 
 @element
@@ -108,6 +108,13 @@ class OpeningPart(Element):
         geom = ctx.derived(self.opening, OpeningGeometry)
         return geom, ctx.derived(geom.host, WallGeometry)
 
+    def sibling(self, ctx: Context, kind: str) -> Built | None:
+        """Another part of the same opening, already realized: the surround the shutters hang clear of."""
+        for b in ctx.build:
+            if b.element.kind == kind and self.opening in b.related("part_of"):
+                return b
+        return None
+
     def finish(self, ctx: Context, geom: OpeningGeometry, wall: WallGeometry, solid: Any, derived: dict) -> Realized:
         """The realized part: on the opening's storey, part of it, external when its wall is."""
         tags = {"external"} if "external" in ctx.built(geom.host).tags else set()
@@ -117,7 +124,11 @@ class OpeningPart(Element):
 
 @element
 class Shutters(OpeningPart):
-    """A pair of louvred shutters hinged open against the outside of the wall: stiles, rails and slats."""
+    """A pair of louvred shutters hinged open against the outside of the wall: stiles, rails and slats.
+
+    They hang ``clear`` millimetres off the wall, or off the surround when
+    the opening has one, so the leaves swing past the stone.
+    """
 
     kind: ClassVar[str] = "shutters"
     ifc_class: ClassVar[str | None] = "IfcShadingDevice"
@@ -126,12 +137,15 @@ class Shutters(OpeningPart):
     rail: Positive = 80.0
     slat: Positive = 45.0
     pitch: Positive = 57.0
+    clear: Positive = 15.0
 
     def realize(self, ctx: Context) -> Realized:
         geom, wall = self.geometry(ctx)
         x, z, head = geom.from_start, wall.elevation + geom.sill, geom.height
         leaf_w, thick, stile, rail, slat, pitch = geom.width / 2, self.thickness, self.stile, self.rail, self.slat, self.pitch
-        o = -thick - 15
+        surround = self.sibling(ctx, "surround")
+        proud = float(surround.derived["projection"]) if surround is not None else 0.0
+        o = -(proud + self.clear) - thick
         leaves = []
         for along in (x - leaf_w - 20, x + geom.width + 20):
             leaves.append(G.frame_box(wall.body, along, o, z, (stile, thick, head)))
@@ -148,7 +162,10 @@ class Shutters(OpeningPart):
 
 @element
 class Surround(OpeningPart):
-    """Dressed-stone jambs, lintel and sill standing proud of the wall around an opening."""
+    """Dressed-stone jambs, lintel and sill standing proud of the wall around an opening.
+
+    An opening at floor level gets no sill: a door's threshold is the floor.
+    """
 
     kind: ClassVar[str] = "surround"
     jamb: Positive = 140.0
@@ -164,9 +181,10 @@ class Surround(OpeningPart):
             G.frame_box(wall.body, x - jamb, -proud, z, (jamb, proud + 60, head)),
             G.frame_box(wall.body, x + geom.width, -proud, z, (jamb, proud + 60, head)),
             G.frame_box(wall.body, x - jamb, -proud, z + head, (geom.width + 2 * jamb, proud + 60, lintel)),
-            G.frame_box(wall.body, x - jamb, -proud - 30, z - sillh, (geom.width + 2 * jamb, proud + 90, sillh)),
         ]
-        return self.finish(ctx, geom, wall, G.group(parts), {"jamb": jamb, "lintel": lintel, "sill": sillh, "projection": proud})
+        if geom.sill > 0:
+            parts.append(G.frame_box(wall.body, x - jamb, -proud - 30, z - sillh, (geom.width + 2 * jamb, proud + 90, sillh)))
+        return self.finish(ctx, geom, wall, G.group(parts), {"jamb": jamb, "lintel": lintel, "sill": sillh if geom.sill > 0 else 0.0, "projection": proud})
 
 
 @element
@@ -210,6 +228,8 @@ class Opening(Element):
 
     kind: ClassVar[str] = "opening"
     ifc_class: ClassVar[str | None] = "IfcWindow"
+    threshold: ClassVar[bool] = True
+    """Whether the frame has a bottom member. A door's threshold is the floor."""
 
     host: Ref
     width: Positive
@@ -245,6 +265,9 @@ class Opening(Element):
     def clear_width(self) -> float:
         return self.width - 2 * self.frame_size
 
+    def clear_height(self) -> float:
+        return self.head_height() - (2 if self.threshold else 1) * self.frame_size
+
     def void_solid(self, x: float, wall: WallGeometry, z: float) -> Any:
         return G.frame_box(wall.body, x, -100, z, (self.width, wall.thickness + 200, self.height))
 
@@ -252,11 +275,12 @@ class Opening(Element):
         fs, t = self.frame_size, wall.thickness
         depth = (t - fs) / 2
         members = [
-            G.frame_box(wall.body, x, depth, z, (self.width, fs, fs)),
             G.frame_box(wall.body, x, depth, z + self.height - fs, (self.width, fs, fs)),
             G.frame_box(wall.body, x, depth, z, (fs, fs, self.height)),
             G.frame_box(wall.body, x + self.width - fs, depth, z, (fs, fs, self.height)),
         ]
+        if self.threshold:
+            members.append(G.frame_box(wall.body, x, depth, z, (self.width, fs, fs)))
         for mx in self.mullion_positions():
             members.append(G.frame_box(wall.body, x + mx - fs / 2, depth, z, (fs, fs, self.height)))
         cols, rows = self.panes
@@ -292,7 +316,7 @@ class Opening(Element):
         head = self.head_height()
         void_ex = Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=t + 200, height=head)
         geom = OpeningGeometry(host=self.host, from_start=x, from_end=wall.length - x - self.width, width=self.width, height=head,
-                               sill=self.sill, head=self.sill + head, clear_width=self.clear_width(), clear_height=head - 2 * fs,
+                               sill=self.sill, head=self.sill + head, clear_width=self.clear_width(), clear_height=self.clear_height(),
                                glass_area_mm2=glass_area, mullions=len(self.mullion_positions()), frame_size=fs, void=void_ex)
         derived = geom.model_dump()
         part_of = [Relation(pred="part_of", obj=self.id)]
@@ -300,8 +324,8 @@ class Opening(Element):
             ctx.emit(Glazing(f"{self.id}.glass", opening=self.id, level=level, material=self.glazing),
                      Realized(solid=G.group(panes), derived={"area_mm2": glass_area}, relations=part_of))
         self.fill(ctx, wall, x, level)
-        for part_cls, material, key in ((Shutters, self.shutters, "shutters"), (Surround, self.surround, "surround"), (Grille, self.grille, "grille")):
-            if material:                                   # the sugar: a material name emits a part that builds itself
+        for part_cls, material, key in ((Surround, self.surround, "surround"), (Shutters, self.shutters, "shutters"), (Grille, self.grille, "grille")):
+            if material:                                   # the sugar: a material name emits a part that builds itself; the stone first, then what hangs on it
                 ctx.emit(part_cls(f"{self.id}.{key}", opening=self.id, material=material))
                 derived[key] = material
         ctx.relate(self.host, "has_opening", self.id)
@@ -342,6 +366,7 @@ class Door(Opening):
 
     kind: ClassVar[str] = "door"
     ifc_class: ClassVar[str | None] = "IfcDoor"
+    threshold: ClassVar[bool] = False
     leaf: Ref = "door_leaf"
     glazed: bool = False
     leaves: Literal[1, 2] = 1
@@ -469,10 +494,9 @@ class ArchedDoor(Door):
         fs, t, r = self.frame_size, wall.thickness, self.width / 2
         depth = (t - fs) / 2
         members = [
-            G.frame_box(wall.body, x, depth, z, (self.width, fs, fs)),
             G.frame_box(wall.body, x, depth, z, (fs, fs, self.height)),
             G.frame_box(wall.body, x + self.width - fs, depth, z, (fs, fs, self.height)),
-            G.frame_box(wall.body, x, depth, z + self.height - fs / 2, (self.width, fs, fs)),          # transom at the springing line
+            G.frame_box(wall.body, x, depth, z + self.height - fs, (self.width, fs, fs)),              # transom under the springing line
         ]
         for mx in self.mullion_positions():
             members.append(G.frame_box(wall.body, x + mx - fs / 2, depth, z, (fs, fs, self.height)))

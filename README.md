@@ -54,8 +54,14 @@ cabin: 9 entities -> out/cabin
   wall's start.
 - **`schedules/`** — walls, openings, finishes, joinery, services, spaces as
   CSV.
-- **`checks.md`** — every rule that ran and what it found, plus an IDS file
-  validated against the IFC.
+- **`checks.md`** — every rule that ran and what it found: the rules of
+  thumb, every pair of solids that share volume and whether construction
+  allows it, and whether `decisions.md` still refers to things that exist.
+  Plus an IDS file validated against the IFC.
+- **`views/`** — on request (`homespec views`), Workbench renders of the same
+  model for the eye: orbits, elevations, a plan section per storey, a long
+  and a cross section, the structure alone. One colour per kind, black
+  outlines, a second per frame.
 - **`house.blend`** — a Blender scene of the same model for stills, a
   cinematic animation, or a first-person walk.
 
@@ -72,14 +78,24 @@ homespec assets          # CC0 textures and models from Poly Haven (optional, fo
 Rendering needs [Blender](https://www.blender.org) 4.2 or later. PDF output
 needs `rsvg-convert` (`brew install librsvg`); SVG and DXF need nothing.
 
-## Rendering and walking
+## Looking, rendering and walking
 
 ```bash
+homespec views  projects/library_room                   # diagnostic views into out/library_room/views
+homespec views  projects/bastide_montfuron --focus CH   # plus close-ups of one entity
 homespec render projects/library_room --mode still      # a Cycles frame
 homespec render projects/library_room --mode anim       # frames for ffmpeg
 homespec render projects/library_room --mode save       # the walk file
 homespec walk   projects/library_room                   # open it; press W to walk
 ```
+
+The views need no presentation and no textures. Look there before spending
+an hour on Cycles: a chimney floating above its ridge or a stair through a
+ceiling is obvious in a section and invisible in a photograph.
+
+| | |
+|---|---|
+| ![The bastide's structure](projects/bastide_montfuron/gallery/11_structure_view.jpg) | ![The bastide in long section](projects/bastide_montfuron/gallery/12_long_section.jpg) |
 
 ## How it is put together
 
@@ -105,7 +121,8 @@ stone farmhouse with a gable roof, arches, a pergola and a pool; and
 A tower, two wings, hipped and gabled roofs with génoise cornices, louvred
 shutters in dressed-stone surrounds, an arched glazed door, a brande pergola,
 two straight stairs, a terrace over a retaining wall and a pool garden two
-metres below. 284 entities, 210 checks, four plan sheets.
+metres below. 284 entities, 339 checks, four plan sheets, 104 pairs of solids
+that share volume and a row saying why each is allowed.
 
 ![The bastide from the pool deck](projects/bastide_montfuron/gallery/01_pool_deck.jpg)
 

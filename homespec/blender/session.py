@@ -19,11 +19,15 @@ BY: dict = {}
 scn = None
 
 
-def configure(out: str, pres: str, mode: str, assets: str | None = None) -> None:
-    """Absolute paths throughout: Blender remaps relative paths against the blend file on save."""
+def configure(out: str, pres: str | None, mode: str, assets: str | None = None) -> None:
+    """Absolute paths throughout: Blender remaps relative paths against the blend file on save.
+
+    ``pres`` is the presentation module, or None for a run that dresses
+    nothing (the diagnostic views).
+    """
     global OUT, PRES, MODE, ASSETS, IR, BY, scn
-    OUT, PRES, MODE = os.path.abspath(out), os.path.abspath(pres), mode
-    ASSETS = os.path.abspath(assets or os.path.join(os.path.dirname(PRES), "..", "..", "assets"))
+    OUT, PRES, MODE = os.path.abspath(out), os.path.abspath(pres) if pres else "", mode
+    ASSETS = os.path.abspath(assets or os.path.join(os.path.dirname(PRES) if PRES else OUT, "..", "..", "assets"))
     bpy.ops.wm.read_factory_settings(use_empty=True)
     scn = bpy.context.scene
     scn.unit_settings.system = 'METRIC'

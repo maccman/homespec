@@ -25,7 +25,7 @@ def build(project: str = typer.Argument(..., help="Project directory containing 
           no_ifc: bool = typer.Option(False, "--no-ifc"), no_drawings: bool = typer.Option(False, "--no-drawings")) -> None:
     """Compile a project: IR, IFC, drawings, schedules and checks."""
     report = build_project(project, out, ifc=not no_ifc, drawings=not no_drawings)
-    typer.echo(f"{report.project}: {report.entities} entities -> {report.out_dir}")
+    typer.echo(f"{report.project}: {report.entities} entities, {report.clashes} clashes -> {report.out_dir}")
     for stage, files in report.files.items():
         typer.echo(f"  {stage:9s} {', '.join(files)}")
     fails = report.failures
@@ -44,6 +44,19 @@ def render(project: str, out: str | None = None, mode: str = typer.Option("still
     from .pipeline import render as _render
 
     raise typer.Exit(code=_render(project, out, mode, frame))
+
+
+@app.command()
+def views(project: str, out: str | None = None, only: str = typer.Option("", help="Comma-separated view numbers or names, e.g. 05,plan_L0"),
+          focus: str = typer.Option("", help="Comma-separated entity ids to add close-ups of"),
+          res: str = typer.Option("1600x1200", help="Resolution")) -> None:
+    """Render the diagnostic views with Workbench: orbits, elevations, a plan per storey, sections, structure. Needs a prior build."""
+    from .pipeline import views as _views
+
+    rx, ry = (int(v) for v in res.lower().split("x"))
+    written = _views(project, out, only=[p for p in only.split(",") if p], focus=[f for f in focus.split(",") if f], resolution=(rx, ry))
+    for path in written:
+        typer.echo(path)
 
 
 @app.command()

@@ -204,6 +204,35 @@ def tessellate(shape: Solid, tolerance: float = 2.0) -> tuple[list[Point3], list
     return [(p.X, p.Y, p.Z) for p in verts], [tuple(int(i) for i in t) for t in tris]  # type: ignore[misc]
 
 
+def solids(shape: Solid) -> list[Solid]:
+    """The solids a shape is made of: a compound's children, else the shape itself."""
+    parts = list(shape.solids())
+    return parts or [shape]
+
+
+def is_box(shape: Solid) -> bool:
+    """Whether a solid fills its axis-aligned bounds, which only an unrotated box does."""
+    size = shape.bounding_box().size
+    full = size.X * size.Y * size.Z
+    return full > 0 and math.isclose(float(shape.volume), full, rel_tol=1e-6)
+
+
+def overlap(a: Solid, b: Solid) -> list[Solid]:
+    """The solids two shapes share. Empty when they are disjoint or meet only at faces or edges."""
+    result = a.intersect(b)
+    if result is None:
+        return []
+    parts = list(result) if isinstance(result, list) else [result]
+    pieces = [s for p in parts for s in p.solids()]
+    return [s for s in pieces if float(s.volume) > 0]
+
+
+def thickness(shape: Solid) -> float:
+    """The smallest extent of the oriented bounding box: how deep a sliver is, whichever way it leans."""
+    size = shape.oriented_bounding_box().size
+    return float(min(size.X, size.Y, size.Z))
+
+
 def section_loops(shape: Solid, z: float) -> list[Loop]:
     """Outer loops of the horizontal section through ``shape`` at height ``z``, as ordered points."""
     loops: list[Loop] = []
@@ -266,6 +295,6 @@ __all__ = [
     "Point", "Point3", "Loop", "Solid", "Frame", "BBox",
     "add", "sub", "scale", "length", "unit", "left", "dot", "angle_of",
     "box", "frame_box", "prism", "cylinder", "horizontal_cylinder", "prism_profile", "group",
-    "bbox", "volume", "polygon_area", "tessellate", "section_loops",
+    "bbox", "volume", "polygon_area", "tessellate", "solids", "is_box", "overlap", "thickness", "section_loops",
     "write_step", "read_step", "write_obj", "read_obj",
 ]

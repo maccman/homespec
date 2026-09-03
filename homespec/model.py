@@ -96,6 +96,7 @@ class Relation(BaseModel):
 
     pred: str
     obj: str
+    note: str = ""
 
 
 class Extrusion(BaseModel):
@@ -248,11 +249,15 @@ class Build:
     def tagged(self, *tags: str) -> list[Built]:
         return [b for b in self if b.has(*tags)]
 
-    def write(self, out_dir: str) -> Any:
-        """Write the IR (``ir.json`` plus geometry files) to ``out_dir``. Returns the :class:`homespec.ir.IRDocument`."""
+    def write(self, out_dir: str, clashes: Any = None) -> Any:
+        """Write the IR (``ir.json`` plus geometry files) to ``out_dir``. Returns the :class:`homespec.ir.IRDocument`.
+
+        Pass the result of :func:`homespec.clashes.find_clashes` when it has
+        already run; otherwise the pass runs here.
+        """
         from .ir import write_ir
 
-        return write_ir(self, out_dir)
+        return write_ir(self, out_dir, clashes)
 
 
 class Context:
@@ -342,6 +347,7 @@ class House:
         self.site: Any = None
         self.elements: OrderedDict[str, Element] = OrderedDict()
         self.checks: list[Callable[..., Any]] = []
+        self.allowances: list[tuple[str, str, str]] = []
 
     # ---- context
     def __enter__(self) -> House:
@@ -389,6 +395,18 @@ class House:
         self.checks.append(fn)
         return fn
 
+    def allow(self, a: Any, b: Any, note: str) -> None:
+        """Declare that two entities may share volume, and why.
+
+        The ``no_clash`` rule reports the pair as allowed with the note. Use
+        it for what the default policy does not cover and the vocabulary
+        cannot express; a reason is required because the next reader will
+        ask for one.
+        """
+        if not note.strip():
+            raise ValueError(f"allow({ref_id(a)!r}, {ref_id(b)!r}) needs a note saying why")
+        self.allowances.append((ref_id(a), ref_id(b), note))
+
     # ---- compile
     def compile(self) -> Build:
         """Realize every element, in dependency order, into a :class:`Build`."""
@@ -405,6 +423,9 @@ class House:
                     build.add(child, child_realized if child_realized is not None else child.realize(ctx))
                     queue = list(ctx._pending) + queue
                     ctx._pending.clear()
+            for a, b, note in self.allowances:
+                build[b]                                       # both must exist; the lookup raises otherwise
+                build[a].relations.append(Relation(pred="may_overlap", obj=b, note=note))
         finally:
             _registration.reset(token)
         return build

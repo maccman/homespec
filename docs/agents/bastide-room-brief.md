@@ -9,8 +9,8 @@ at the same time, so stay inside your file unless the brief says otherwise.
 
 ## The house
 
-Metres, z up, origin at the tower's south-west corner. Walls are 600 thick
-(rubble stone outside, lime plaster inside), partitions 200.
+Metres, z up, origin at the tower's south-west corner. Walls are 500 thick
+(450 of rubble stone outside, 50 of lime plaster inside), partitions 150.
 
 | Part | Plan | Floors |
 |---|---|---|
@@ -52,12 +52,17 @@ showroom: a house someone would want to live in.
 
 ## What you must do
 
-1. Audit. Render your room's shots, look at them, and list what is wrong:
-   floating furniture, furniture inside walls, things below the floor or
-   above the ceiling, missing walls or doors the spec should have, bare
-   surfaces, lights that read as black, objects that pass through each other,
-   scale mistakes, anything a visitor would notice. Check against the plan.
-   Write the audit down before you change anything.
+1. Audit. Start with the diagnostic views (`homespec views`, seconds each,
+   no materials): the plan of your storey and the two sections show where
+   the walls, floors and openings really are before you spend a minute on
+   a Cycles frame, and `out/bastide_montfuron/checks.md` lists under
+   `no_clash` every pair of solids that share volume and whether
+   construction allows it. Then render your room's shots, look at them, and
+   list what is wrong: floating furniture, furniture inside walls, things
+   below the floor or above the ceiling, missing walls or doors the spec
+   should have, bare surfaces, lights that read as black, objects that pass
+   through each other, scale mistakes, anything a visitor would notice.
+   Check against the plan. Write the audit down before you change anything.
 2. Fix and dress. Bring the room to high fidelity in the style above. Fix
    every audit item. Compose the room as a designer would: a focal point,
    circulation left clear, things on surfaces, light at three heights
@@ -67,8 +72,12 @@ showroom: a house someone would want to live in.
    photographs of the same kind of room. Render at low resolution while
    iterating and at full resolution at the end.
 4. Report. Your final message must list: the audit findings and what you
-   did about each; what you added; any spec changes; the paths of your final
-   renders; anything you could not fix and why.
+   did about each; what you added; any spec changes, each with its entry in
+   `decisions.md` (an `Entities:` line naming what it governs, and the
+   ledgers at the end updated); a table against the listing's photographs
+   of your room, what the reference shows, what the model does, kept or
+   changed and why; the paths of your final renders; anything you could not
+   fix and why, under "Not verified" if nobody can check it from here.
 
 ## How to work
 
@@ -79,6 +88,7 @@ your worktree is the one used:
 ```bash
 export PYTHONPATH=$PWD
 ~/repos/homespec/.venv/bin/homespec build projects/bastide_montfuron          # only after a spec change
+~/repos/homespec/.venv/bin/homespec views projects/bastide_montfuron --only plan,section --focus <ids>   # Workbench, seconds
 HOMESPEC_ROOM=<room> HOMESPEC_RES=960x540 HOMESPEC_SAMPLES=48 \
   ~/repos/homespec/.venv/bin/homespec render projects/bastide_montfuron --mode still --frame 1,97,193
 ```

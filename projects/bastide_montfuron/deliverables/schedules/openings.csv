@@ -1,5 +1,5 @@
 id,kind,host_wall,width_mm,height_mm,sill_mm,head_mm,from_wall_start_mm,clear_width_mm,mullions,frame,frame_size_mm,glazing,glass_area_m2
-D1,arched_door,MS,1900,3250,0,3250,5800,830,1,frame_white,60.0,glass_double,4.86
+D1,arched_door,MS,1900,2950,0,2950,5800,830,1,frame_white,60.0,glass_double,4.37
 N1,window,MS,1200,1600,800,2400,1500,1080,0,frame_white,60.0,glass_double,1.6
 N2,window,MS,1200,1600,800,2400,10800,1080,0,frame_white,60.0,glass_double,1.6
 N3,window,MS,1200,1400,4400,5800,1500,1080,0,frame_white,60.0,glass_double,1.38
@@ -19,7 +19,7 @@ N14,window,MN,1200,1600,800,2400,10300,1080,0,frame_white,60.0,glass_double,1.6
 N15,window,MN,800,1000,4700,5700,3275,680,0,frame_white,60.0,glass_double,0.6
 N16,window,MN,1000,1300,4400,5700,6250,880,0,frame_white,60.0,glass_double,1.04
 N17,window,MN,800,1000,4700,5700,9500,680,0,frame_white,60.0,glass_double,0.6
-N18,window,ME,1000,1300,4400,5700,3000,880,0,frame_white,60.0,glass_double,1.04
+N18,window,ME,1000,1300,5000,6300,3000,880,0,frame_white,60.0,glass_double,1.04
 D3,door,KS,1850,2400,0,2400,1200,805,1,frame_white,60.0,glass_double,3.67
 D4,door,KS,1850,2400,0,2400,5300,805,1,frame_white,60.0,glass_double,3.67
 N19,window,KE,1000,1400,900,2300,2000,880,0,frame_white,60.0,glass_double,1.13
