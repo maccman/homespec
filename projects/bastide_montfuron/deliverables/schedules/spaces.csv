@@ -1,14 +1,14 @@
 id,level,use,area_m2,height_mm,bounded_by,glazing_m2
 hall,L0,hall,42.25,3200,TS TE TN TW,13.04
-living,L0,living,49.0,3200,MS P1 MN TE,17.64
-dining,L0,dining,44.45,3200,MS ME MN P1,18.68
+living,L0,living,49.0,3200,MS P1 MN TE,17.14
+dining,L0,dining,44.45,3200,MS ME MN P1,18.18
 kitchen,L0,kitchen,42.5,3200,KS KE KN ME,10.89
 landing,L1,landing,42.25,2900,TS TE TN TW,13.04
 corridor,L1,corridor,17.55,2900,PC ME MN TE,6.47
-bed1,L1,bedroom,14.98,2900,MS PB1 PC TE,12.21
-bath1,L1,bathroom,8.32,2900,MS PB2 PC PB1,12.21
-bed2,L1,bedroom,24.56,2900,MS PB3 PC PB2,12.21
-bath2,L1,bathroom,8.32,2900,MS PB4 PC PB3,12.21
-bed3,L1,bedroom,15.4,2900,MS ME PC PB4,13.25
+bed1,L1,bedroom,14.98,2900,MS PB1 PC TE,11.71
+bath1,L1,bathroom,8.32,2900,MS PB2 PC PB1,11.71
+bed2,L1,bedroom,24.56,2900,MS PB3 PC PB2,11.71
+bath2,L1,bathroom,8.32,2900,MS PB4 PC PB3,11.71
+bed3,L1,bedroom,15.4,2900,MS ME PC PB4,12.75
 study,L2,study,42.25,2600,TS TE TN TW,13.04
-terrace,L0,terrace,180.0,3200,MS TS KS,28.19
+terrace,L0,terrace,180.0,3200,MS TS KS,27.69

@@ -93,6 +93,10 @@ The views need no presentation and no textures. Look there before spending
 an hour on Cycles: a chimney floating above its ridge or a stair through a
 ceiling is obvious in a section and invisible in a photograph.
 
+| | |
+|---|---|
+| ![The bastide's structure](projects/bastide_montfuron/gallery/11_structure_view.jpg) | ![The bastide in long section](projects/bastide_montfuron/gallery/12_long_section.jpg) |
+
 ## How it is put together
 
 ```

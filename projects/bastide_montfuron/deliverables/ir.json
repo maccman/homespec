@@ -1,5 +1,5 @@
 {
- "homespec": "0.1",
+ "homespec": "0.2",
  "project": "bastide-montfuron",
  "units": "mm",
  "levels": {
@@ -16,17 +16,17 @@
    "height": 2600.0
   },
   "LP": {
-   "elevation": -2000.0,
+   "elevation": -1980.0,
    "height": 2200.0
   }
  },
  "assemblies": {
   "rubble_wall": {
-   "thickness": 550.0,
+   "thickness": 500.0,
    "layers": [
     {
      "material": "limestone_rubble",
-     "thickness": 500.0
+     "thickness": 450.0
     },
     {
      "material": "lime_plaster",
@@ -697,7 +697,7 @@
      500.0
     ],
     "length": 6500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 9300.0,
     "elevation": 0.0,
     "angle": 0.0,
@@ -718,7 +718,7 @@
     "body": {
      "origin": [
       500.0,
-      -50.0
+      0.0
      ],
      "u": [
       1.0,
@@ -735,31 +735,38 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "D2"
+     "obj": "D2",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N6"
+     "obj": "N6",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N7"
+     "obj": "N7",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "hall"
+     "obj": "hall",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "landing"
+     "obj": "landing",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "study"
+     "obj": "study",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "terrace"
+     "obj": "terrace",
+     "note": ""
     }
    ],
    "geometry": {
@@ -768,7 +775,7 @@
     "bbox": {
      "min": [
       500.0,
-      -50.0,
+      0.0,
       0.0
      ],
      "max": [
@@ -777,12 +784,12 @@
       9300.0
      ]
     },
-    "volume_mm3": 27802499999.999992
+    "volume_mm3": 25275000000.000004
    },
    "extrusion": {
     "origin": [
      500.0,
-     -50.0,
+     0.0,
      0.0
     ],
     "u": [
@@ -794,7 +801,7 @@
      1.0
     ],
     "length": 6500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 9300.0
    }
   },
@@ -833,7 +840,7 @@
      7000.0
     ],
     "length": 6500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 9300.0,
     "elevation": 0.0,
     "angle": 90.0,
@@ -853,7 +860,7 @@
     },
     "body": {
      "origin": [
-      7550.0,
+      7500.0,
       500.0
      ],
      "u": [
@@ -871,35 +878,43 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "A0"
+     "obj": "A0",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "A2"
+     "obj": "A2",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "hall"
+     "obj": "hall",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "living"
+     "obj": "living",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "landing"
+     "obj": "landing",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "corridor"
+     "obj": "corridor",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed1"
+     "obj": "bed1",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "study"
+     "obj": "study",
+     "note": ""
     }
    ],
    "geometry": {
@@ -912,16 +927,16 @@
       0.0
      ],
      "max": [
-      7550.000000000002,
+      7500.000000000002,
       7000.0,
       9300.0
      ]
     },
-    "volume_mm3": 29844247290.450397
+    "volume_mm3": 27131133900.40944
    },
    "extrusion": {
     "origin": [
-     7550.0,
+     7500.0,
      500.0,
      0.0
     ],
@@ -934,7 +949,7 @@
      0.0
     ],
     "length": 6500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 9300.0
    }
   },
@@ -973,7 +988,7 @@
      7000.0
     ],
     "length": 6500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 9300.0,
     "elevation": 0.0,
     "angle": 180.0,
@@ -994,7 +1009,7 @@
     "body": {
      "origin": [
       7000.0,
-      7550.0
+      7500.0
      ],
      "u": [
       -1.0,
@@ -1011,23 +1026,28 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "N11"
+     "obj": "N11",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N12"
+     "obj": "N12",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "hall"
+     "obj": "hall",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "landing"
+     "obj": "landing",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "study"
+     "obj": "study",
+     "note": ""
     }
    ],
    "geometry": {
@@ -1041,16 +1061,16 @@
      ],
      "max": [
       7000.0,
-      7550.000000000001,
+      7500.000000000001,
       9300.0
      ]
     },
-    "volume_mm3": 32092500000.000008
+    "volume_mm3": 29174999999.999996
    },
    "extrusion": {
     "origin": [
      7000.0,
-     7550.0,
+     7500.0,
      0.0
     ],
     "u": [
@@ -1062,7 +1082,7 @@
      -1.0
     ],
     "length": 6500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 9300.0
    }
   },
@@ -1101,7 +1121,7 @@
      500.0
     ],
     "length": 6500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 9300.0,
     "elevation": 0.0,
     "angle": -90.0,
@@ -1121,7 +1141,7 @@
     },
     "body": {
      "origin": [
-      -50.0,
+      0.0,
       7000.0
      ],
      "u": [
@@ -1139,27 +1159,33 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "N8"
+     "obj": "N8",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N9"
+     "obj": "N9",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N10"
+     "obj": "N10",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "hall"
+     "obj": "hall",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "landing"
+     "obj": "landing",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "study"
+     "obj": "study",
+     "note": ""
     }
    ],
    "geometry": {
@@ -1167,21 +1193,21 @@
     "obj": "geometry/TW.obj",
     "bbox": {
      "min": [
-      -50.0,
+      0.0,
       500.0,
       0.0
      ],
      "max": [
-      500.0000000000015,
+      500.0000000000014,
       7000.0,
       9300.0
      ]
     },
-    "volume_mm3": 31322499999.999996
+    "volume_mm3": 28474999999.999996
    },
    "extrusion": {
     "origin": [
-     -50.0,
+     0.0,
      7000.0,
      0.0
     ],
@@ -1194,7 +1220,7 @@
      0.0
     ],
     "length": 6500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 9300.0
    }
   },
@@ -1233,7 +1259,7 @@
      500.0
     ],
     "length": 13500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 6400.0,
     "elevation": 0.0,
     "angle": 0.0,
@@ -1254,7 +1280,7 @@
     "body": {
      "origin": [
       7500.0,
-      -50.0
+      0.0
      ],
      "u": [
       1.0,
@@ -1271,59 +1297,73 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "D1"
+     "obj": "D1",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N1"
+     "obj": "N1",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N2"
+     "obj": "N2",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N3"
+     "obj": "N3",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N4"
+     "obj": "N4",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N5"
+     "obj": "N5",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "living"
+     "obj": "living",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "dining"
+     "obj": "dining",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed1"
+     "obj": "bed1",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bath1"
+     "obj": "bath1",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed2"
+     "obj": "bed2",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bath2"
+     "obj": "bath2",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed3"
+     "obj": "bed3",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "terrace"
+     "obj": "terrace",
+     "note": ""
     }
    ],
    "geometry": {
@@ -1332,7 +1372,7 @@
     "bbox": {
      "min": [
       7500.0,
-      -50.0000000000003,
+      -2.983175671499173e-13,
       0.0
      ],
      "max": [
@@ -1341,12 +1381,12 @@
       6400.0
      ]
     },
-    "volume_mm3": 39452795973.287186
+    "volume_mm3": 36151178157.533806
    },
    "extrusion": {
     "origin": [
      7500.0,
-     -50.0,
+     0.0,
      0.0
     ],
     "u": [
@@ -1358,7 +1398,7 @@
      1.0
     ],
     "length": 13500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 6400.0
    }
   },
@@ -1397,7 +1437,7 @@
      7500.0
     ],
     "length": 7000.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 6400.0,
     "elevation": 0.0,
     "angle": 90.0,
@@ -1417,7 +1457,7 @@
     },
     "body": {
      "origin": [
-      21550.0,
+      21500.0,
       500.0
      ],
      "u": [
@@ -1435,27 +1475,33 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "N18"
+     "obj": "N18",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "D5"
+     "obj": "D5",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "dining"
+     "obj": "dining",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "kitchen"
+     "obj": "kitchen",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "corridor"
+     "obj": "corridor",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed3"
+     "obj": "bed3",
+     "note": ""
     }
    ],
    "geometry": {
@@ -1468,16 +1514,16 @@
       0.0
      ],
      "max": [
-      21550.0,
+      21500.0,
       7500.0,
       6400.0
      ]
     },
-    "volume_mm3": 22715000000.000004
+    "volume_mm3": 20650000000.0
    },
    "extrusion": {
     "origin": [
-     21550.0,
+     21500.0,
      500.0,
      0.0
     ],
@@ -1490,7 +1536,7 @@
      0.0
     ],
     "length": 7000.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 6400.0
    }
   },
@@ -1529,7 +1575,7 @@
      7500.0
     ],
     "length": 13500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 6400.0,
     "elevation": 0.0,
     "angle": 180.0,
@@ -1550,7 +1596,7 @@
     "body": {
      "origin": [
       21000.0,
-      8050.0
+      8000.0
      ],
      "u": [
       -1.0,
@@ -1567,39 +1613,48 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "D0"
+     "obj": "D0",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N13"
+     "obj": "N13",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N14"
+     "obj": "N14",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N15"
+     "obj": "N15",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N16"
+     "obj": "N16",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "N17"
+     "obj": "N17",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "living"
+     "obj": "living",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "dining"
+     "obj": "dining",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "corridor"
+     "obj": "corridor",
+     "note": ""
     }
    ],
    "geometry": {
@@ -1613,16 +1668,16 @@
      ],
      "max": [
       21000.0,
-      8050.000000000002,
+      8000.000000000002,
       6400.0
      ]
     },
-    "volume_mm3": 42228999999.99998
+    "volume_mm3": 38390000000.00003
    },
    "extrusion": {
     "origin": [
      21000.0,
-     8050.0,
+     8000.0,
      0.0
     ],
     "u": [
@@ -1634,7 +1689,7 @@
      -1.0
     ],
     "length": 13500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 6400.0
    }
   },
@@ -1673,7 +1728,7 @@
      1500.0
     ],
     "length": 8500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 3200.0,
     "elevation": 0.0,
     "angle": 0.0,
@@ -1694,7 +1749,7 @@
     "body": {
      "origin": [
       21500.0,
-      950.0
+      1000.0
      ],
      "u": [
       1.0,
@@ -1711,19 +1766,23 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "D3"
+     "obj": "D3",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "D4"
+     "obj": "D4",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "kitchen"
+     "obj": "kitchen",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "terrace"
+     "obj": "terrace",
+     "note": ""
     }
    ],
    "geometry": {
@@ -1732,7 +1791,7 @@
     "bbox": {
      "min": [
       21500.0,
-      950.0,
+      1000.0,
       0.0
      ],
      "max": [
@@ -1741,12 +1800,12 @@
       3200.0
      ]
     },
-    "volume_mm3": 10076000000.000002
+    "volume_mm3": 9160000000.0
    },
    "extrusion": {
     "origin": [
      21500.0,
-     950.0,
+     1000.0,
      0.0
     ],
     "u": [
@@ -1758,7 +1817,7 @@
      1.0
     ],
     "length": 8500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 3200.0
    }
   },
@@ -1797,7 +1856,7 @@
      6500.0
     ],
     "length": 5000.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 3200.0,
     "elevation": 0.0,
     "angle": 90.0,
@@ -1817,7 +1876,7 @@
     },
     "body": {
      "origin": [
-      30550.0,
+      30500.0,
       1500.0
      ],
      "u": [
@@ -1835,11 +1894,13 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "N19"
+     "obj": "N19",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "kitchen"
+     "obj": "kitchen",
+     "note": ""
     }
    ],
    "geometry": {
@@ -1852,16 +1913,16 @@
       0.0
      ],
      "max": [
-      30550.0,
+      30500.0,
       6500.0,
       3200.0
      ]
     },
-    "volume_mm3": 8030000000.0
+    "volume_mm3": 7299999999.999998
    },
    "extrusion": {
     "origin": [
-     30550.0,
+     30500.0,
      1500.0,
      0.0
     ],
@@ -1874,7 +1935,7 @@
      0.0
     ],
     "length": 5000.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 3200.0
    }
   },
@@ -1913,7 +1974,7 @@
      6500.0
     ],
     "length": 8500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 3200.0,
     "elevation": 0.0,
     "angle": 180.0,
@@ -1934,7 +1995,7 @@
     "body": {
      "origin": [
       30000.0,
-      7050.0
+      7000.0
      ],
      "u": [
       -1.0,
@@ -1951,11 +2012,13 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "N20"
+     "obj": "N20",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "kitchen"
+     "obj": "kitchen",
+     "note": ""
     }
    ],
    "geometry": {
@@ -1969,16 +2032,16 @@
      ],
      "max": [
       30000.0,
-      7050.000000000001,
+      7000.000000000001,
       3200.0
      ]
     },
-    "volume_mm3": 14035999999.999996
+    "volume_mm3": 12759999999.999998
    },
    "extrusion": {
     "origin": [
      30000.0,
-     7050.0,
+     7000.0,
      0.0
     ],
     "u": [
@@ -1990,7 +2053,7 @@
      -1.0
     ],
     "length": 8500.0,
-    "thickness": 550.0,
+    "thickness": 500.0,
     "height": 3200.0
    }
   },
@@ -2010,7 +2073,7 @@
    "params": {
     "host": "MS",
     "width": 1900.0,
-    "height": 2300.0,
+    "height": 2000.0,
     "sill": 0.0,
     "at": 5800.0,
     "frame": "frame_white",
@@ -2021,7 +2084,7 @@
      5
     ],
     "bar_size": 30.0,
-    "shutters": "shutter_grey",
+    "shutters": null,
     "surround": "cut_stone",
     "grille": null,
     "leaf": "door_leaf",
@@ -2033,18 +2096,18 @@
     "from_start": 5800.0,
     "from_end": 5800.0,
     "width": 1900.0,
-    "height": 3250.0,
+    "height": 2950.0,
     "sill": 0.0,
-    "head": 3250.0,
+    "head": 2950.0,
     "clear_width": 830.0,
-    "clear_height": 3130.0,
-    "glass_area_mm2": 4863027.7705,
+    "clear_height": 2890.0,
+    "glass_area_mm2": 4365027.7705,
     "mullions": 1,
     "frame_size": 60.0,
     "void": {
      "origin": [
       13300.0,
-      -150.0,
+      -100.0,
       0.0
      ],
      "u": [
@@ -2056,18 +2119,19 @@
       1.0
      ],
      "length": 1900.0,
-     "thickness": 750.0,
-     "height": 3250.0
+     "thickness": 700.0,
+     "height": 2950.0
     },
     "void_entity": null,
-    "shutters": "shutter_grey",
+    "shutters": null,
     "surround": "cut_stone",
     "grille": null
    },
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -2076,16 +2140,16 @@
     "bbox": {
      "min": [
       13300.0,
-      194.99999999999972,
+      219.99999999999972,
       0.0
      ],
      "max": [
       15200.0,
-      255.00000000000023,
-      3250.0
+      280.0000000000002,
+      2950.0
      ]
     },
-    "volume_mm3": 56133954.86868942
+    "volume_mm3": 46053954.868689366
    },
    "extrusion": null
   },
@@ -2103,12 +2167,13 @@
     "opening": "D1"
    },
    "derived": {
-    "area_mm2": 4863027.7705
+    "area_mm2": 4365027.7705
    },
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D1"
+     "obj": "D1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -2117,67 +2182,16 @@
     "bbox": {
      "min": [
       13360.0,
-      219.99999999999972,
+      244.99999999999972,
       60.0
      ],
      "max": [
       15140.0,
-      230.0000000000002,
-      3190.0
+      255.0000000000002,
+      2890.0
      ]
     },
-    "volume_mm3": 48630277.70454237
-   },
-   "extrusion": null
-  },
-  {
-   "id": "D1.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L0",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "D1",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 950.0,
-    "height": 3250.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "D1"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/D1.shutters.step",
-    "obj": "geometry/D1.shutters.obj",
-    "bbox": {
-     "min": [
-      12330.0,
-      -100.0,
-      0.0
-     ],
-     "max": [
-      16170.0,
-      -65.0,
-      3250.0
-     ]
-    },
-    "volume_mm3": 111163200.0
+    "volume_mm3": 43650277.70454237
    },
    "extrusion": null
   },
@@ -2202,13 +2216,19 @@
    "derived": {
     "jamb": 140.0,
     "lintel": 220.0,
-    "sill": 100.0,
+    "sill": 0.0,
     "projection": 25.0
    },
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D1"
+     "obj": "D1",
+     "note": ""
+    },
+    {
+     "pred": "may_overlap",
+     "obj": "RP",
+     "note": "the brush cover is cut around the stone surround where the pergola meets the arched door"
     }
    ],
    "geometry": {
@@ -2217,16 +2237,16 @@
     "bbox": {
      "min": [
       13160.0,
-      -105.0,
-      -100.0
+      -25.0,
+      0.0
      ],
      "max": [
       15340.0,
-      10.0,
-      3470.0
+      60.0,
+      3170.0
      ]
     },
-    "volume_mm3": 143186000.0
+    "volume_mm3": 110976000.0
    },
    "extrusion": null
   },
@@ -2277,7 +2297,7 @@
     "void": {
      "origin": [
       9000.0,
-      -150.0,
+      -100.0,
       800.0
      ],
      "u": [
@@ -2289,7 +2309,7 @@
       1.0
      ],
      "length": 1200.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1600.0
     },
     "void_entity": null,
@@ -2300,7 +2320,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -2309,12 +2330,12 @@
     "bbox": {
      "min": [
       9000.0,
-      195.0,
+      220.0,
       800.0
      ],
      "max": [
       10200.0,
-      255.0,
+      280.0,
       2400.0
      ]
     },
@@ -2341,7 +2362,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N1"
+     "obj": "N1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -2350,67 +2372,16 @@
     "bbox": {
      "min": [
       9060.0,
-      220.0,
+      245.0,
       860.0
      ],
      "max": [
       10140.0,
-      230.0,
+      255.0,
       2340.0
      ]
     },
     "volume_mm3": 15984000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N1.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L0",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N1",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 600.0,
-    "height": 1600.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N1"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N1.shutters.step",
-    "obj": "geometry/N1.shutters.obj",
-    "bbox": {
-     "min": [
-      8380.0,
-      -100.0,
-      800.0
-     ],
-     "max": [
-      10820.0,
-      -65.0,
-      2400.0
-     ]
-    },
-    "volume_mm3": 38611200.0
    },
    "extrusion": null
   },
@@ -2441,7 +2412,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N1"
+     "obj": "N1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -2450,16 +2422,69 @@
     "bbox": {
      "min": [
       8860.0,
-      -105.0,
+      -55.0,
       700.0
      ],
      "max": [
       10340.0,
-      10.0,
+      60.0,
       2620.0
      ]
     },
     "volume_mm3": 82776000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N1.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L0",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N1",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 600.0,
+    "height": 1600.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N1",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N1.shutters.step",
+    "obj": "geometry/N1.shutters.obj",
+    "bbox": {
+     "min": [
+      8380.0,
+      -75.0,
+      800.0
+     ],
+     "max": [
+      10820.0,
+      -40.0,
+      2400.0
+     ]
+    },
+    "volume_mm3": 38611200.0
    },
    "extrusion": null
   },
@@ -2510,7 +2535,7 @@
     "void": {
      "origin": [
       18300.0,
-      -150.0,
+      -100.0,
       800.0
      ],
      "u": [
@@ -2522,7 +2547,7 @@
       1.0
      ],
      "length": 1200.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1600.0
     },
     "void_entity": null,
@@ -2533,7 +2558,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -2542,12 +2568,12 @@
     "bbox": {
      "min": [
       18300.0,
-      195.0,
+      220.0,
       800.0
      ],
      "max": [
       19500.0,
-      255.0,
+      280.0,
       2400.0
      ]
     },
@@ -2574,7 +2600,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N2"
+     "obj": "N2",
+     "note": ""
     }
    ],
    "geometry": {
@@ -2583,67 +2610,16 @@
     "bbox": {
      "min": [
       18360.0,
-      220.0,
+      245.0,
       860.0
      ],
      "max": [
       19440.0,
-      230.0,
+      255.0,
       2340.0
      ]
     },
     "volume_mm3": 15984000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N2.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L0",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N2",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 600.0,
-    "height": 1600.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N2"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N2.shutters.step",
-    "obj": "geometry/N2.shutters.obj",
-    "bbox": {
-     "min": [
-      17680.0,
-      -100.0,
-      800.0
-     ],
-     "max": [
-      20120.0,
-      -65.0,
-      2400.0
-     ]
-    },
-    "volume_mm3": 38611200.0
    },
    "extrusion": null
   },
@@ -2674,7 +2650,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N2"
+     "obj": "N2",
+     "note": ""
     }
    ],
    "geometry": {
@@ -2683,16 +2660,69 @@
     "bbox": {
      "min": [
       18160.0,
-      -105.0,
+      -55.0,
       700.0
      ],
      "max": [
       19640.0,
-      10.0,
+      60.0,
       2620.0
      ]
     },
     "volume_mm3": 82776000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N2.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L0",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N2",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 600.0,
+    "height": 1600.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N2",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N2.shutters.step",
+    "obj": "geometry/N2.shutters.obj",
+    "bbox": {
+     "min": [
+      17680.0,
+      -75.0,
+      800.0
+     ],
+     "max": [
+      20120.0,
+      -40.0,
+      2400.0
+     ]
+    },
+    "volume_mm3": 38611200.0
    },
    "extrusion": null
   },
@@ -2743,7 +2773,7 @@
     "void": {
      "origin": [
       9000.0,
-      -150.0,
+      -100.0,
       4400.0
      ],
      "u": [
@@ -2755,7 +2785,7 @@
       1.0
      ],
      "length": 1200.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1400.0
     },
     "void_entity": null,
@@ -2766,7 +2796,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -2775,12 +2806,12 @@
     "bbox": {
      "min": [
       9000.0,
-      195.0,
+      220.0,
       4400.0
      ],
      "max": [
       10200.0,
-      255.0,
+      280.0,
       5800.0
      ]
     },
@@ -2807,7 +2838,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N3"
+     "obj": "N3",
+     "note": ""
     }
    ],
    "geometry": {
@@ -2816,67 +2848,16 @@
     "bbox": {
      "min": [
       9060.0,
-      220.0,
+      245.0,
       4460.0
      ],
      "max": [
       10140.0,
-      230.0,
+      255.0,
       5740.0
      ]
     },
     "volume_mm3": 13824000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N3.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L1",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N3",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 600.0,
-    "height": 1400.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N3"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N3.shutters.step",
-    "obj": "geometry/N3.shutters.obj",
-    "bbox": {
-     "min": [
-      8380.0,
-      -100.0,
-      4400.0
-     ],
-     "max": [
-      10820.0,
-      -65.0,
-      5800.0
-     ]
-    },
-    "volume_mm3": 33820800.0
    },
    "extrusion": null
   },
@@ -2907,7 +2888,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N3"
+     "obj": "N3",
+     "note": ""
     }
    ],
    "geometry": {
@@ -2916,16 +2898,69 @@
     "bbox": {
      "min": [
       8860.0,
-      -105.0,
+      -55.0,
       4300.0
      ],
      "max": [
       10340.0,
-      10.0,
+      60.0,
       6020.0
      ]
     },
     "volume_mm3": 78016000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N3.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L1",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N3",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 600.0,
+    "height": 1400.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N3",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N3.shutters.step",
+    "obj": "geometry/N3.shutters.obj",
+    "bbox": {
+     "min": [
+      8380.0,
+      -75.0,
+      4400.0
+     ],
+     "max": [
+      10820.0,
+      -40.0,
+      5800.0
+     ]
+    },
+    "volume_mm3": 33820800.0
    },
    "extrusion": null
   },
@@ -2976,7 +3011,7 @@
     "void": {
      "origin": [
       13650.0,
-      -150.0,
+      -100.0,
       4400.0
      ],
      "u": [
@@ -2988,7 +3023,7 @@
       1.0
      ],
      "length": 1200.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1400.0
     },
     "void_entity": null,
@@ -2999,7 +3034,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3008,12 +3044,12 @@
     "bbox": {
      "min": [
       13650.0,
-      195.0,
+      220.0,
       4400.0
      ],
      "max": [
       14850.0,
-      255.0,
+      280.0,
       5800.0
      ]
     },
@@ -3040,7 +3076,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N4"
+     "obj": "N4",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3049,67 +3086,16 @@
     "bbox": {
      "min": [
       13710.0,
-      220.0,
+      245.0,
       4460.0
      ],
      "max": [
       14790.0,
-      230.0,
+      255.0,
       5740.0
      ]
     },
     "volume_mm3": 13824000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N4.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L1",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N4",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 600.0,
-    "height": 1400.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N4"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N4.shutters.step",
-    "obj": "geometry/N4.shutters.obj",
-    "bbox": {
-     "min": [
-      13030.0,
-      -100.0,
-      4400.0
-     ],
-     "max": [
-      15470.0,
-      -65.0,
-      5800.0
-     ]
-    },
-    "volume_mm3": 33820800.0
    },
    "extrusion": null
   },
@@ -3140,7 +3126,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N4"
+     "obj": "N4",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3149,16 +3136,69 @@
     "bbox": {
      "min": [
       13510.0,
-      -105.0,
+      -55.0,
       4300.0
      ],
      "max": [
       14990.0,
-      10.0,
+      60.0,
       6020.0
      ]
     },
     "volume_mm3": 78016000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N4.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L1",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N4",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 600.0,
+    "height": 1400.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N4",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N4.shutters.step",
+    "obj": "geometry/N4.shutters.obj",
+    "bbox": {
+     "min": [
+      13030.0,
+      -75.0,
+      4400.0
+     ],
+     "max": [
+      15470.0,
+      -40.0,
+      5800.0
+     ]
+    },
+    "volume_mm3": 33820800.0
    },
    "extrusion": null
   },
@@ -3209,7 +3249,7 @@
     "void": {
      "origin": [
       18300.0,
-      -150.0,
+      -100.0,
       4400.0
      ],
      "u": [
@@ -3221,7 +3261,7 @@
       1.0
      ],
      "length": 1200.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1400.0
     },
     "void_entity": null,
@@ -3232,7 +3272,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3241,12 +3282,12 @@
     "bbox": {
      "min": [
       18300.0,
-      195.0,
+      220.0,
       4400.0
      ],
      "max": [
       19500.0,
-      255.0,
+      280.0,
       5800.0
      ]
     },
@@ -3273,7 +3314,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N5"
+     "obj": "N5",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3282,67 +3324,16 @@
     "bbox": {
      "min": [
       18360.0,
-      220.0,
+      245.0,
       4460.0
      ],
      "max": [
       19440.0,
-      230.0,
+      255.0,
       5740.0
      ]
     },
     "volume_mm3": 13824000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N5.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L1",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N5",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 600.0,
-    "height": 1400.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N5"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N5.shutters.step",
-    "obj": "geometry/N5.shutters.obj",
-    "bbox": {
-     "min": [
-      17680.0,
-      -100.0,
-      4400.0
-     ],
-     "max": [
-      20120.0,
-      -65.0,
-      5800.0
-     ]
-    },
-    "volume_mm3": 33820800.0
    },
    "extrusion": null
   },
@@ -3373,7 +3364,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N5"
+     "obj": "N5",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3382,16 +3374,69 @@
     "bbox": {
      "min": [
       18160.0,
-      -105.0,
+      -55.0,
       4300.0
      ],
      "max": [
       19640.0,
-      10.0,
+      60.0,
       6020.0
      ]
     },
     "volume_mm3": 78016000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N5.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L1",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N5",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 600.0,
+    "height": 1400.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N5",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N5.shutters.step",
+    "obj": "geometry/N5.shutters.obj",
+    "bbox": {
+     "min": [
+      17680.0,
+      -75.0,
+      4400.0
+     ],
+     "max": [
+      20120.0,
+      -40.0,
+      5800.0
+     ]
+    },
+    "volume_mm3": 33820800.0
    },
    "extrusion": null
   },
@@ -3437,14 +3482,14 @@
     "sill": 0.0,
     "head": 2600.0,
     "clear_width": 1400.0,
-    "clear_height": 2500.0,
+    "clear_height": 2550.0,
     "glass_area_mm2": 7000000.0,
     "mullions": 1,
     "frame_size": 50.0,
     "void": {
      "origin": [
       2250.0,
-      -150.0,
+      -100.0,
       0.0
      ],
      "u": [
@@ -3456,7 +3501,7 @@
       1.0
      ],
      "length": 3000.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 2600.0
     },
     "void_entity": null,
@@ -3467,7 +3512,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "TS"
+     "obj": "TS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3476,16 +3522,16 @@
     "bbox": {
      "min": [
       2250.0,
-      200.0,
+      225.0,
       0.0
      ],
      "max": [
       5250.0,
-      250.0,
+      275.0,
       2600.0
      ]
     },
-    "volume_mm3": 44875000.0
+    "volume_mm3": 37375000.0
    },
    "extrusion": null
   },
@@ -3508,7 +3554,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D2"
+     "obj": "D2",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3517,12 +3564,12 @@
     "bbox": {
      "min": [
       2300.0,
-      220.0,
+      245.0,
       50.0
      ],
      "max": [
       5200.0,
-      230.0,
+      255.0,
       2550.0
      ]
     },
@@ -3577,7 +3624,7 @@
     "void": {
      "origin": [
       3250.0,
-      -150.0,
+      -100.0,
       4400.0
      ],
      "u": [
@@ -3589,7 +3636,7 @@
       1.0
      ],
      "length": 1000.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1300.0
     },
     "void_entity": null,
@@ -3600,7 +3647,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "TS"
+     "obj": "TS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3609,12 +3657,12 @@
     "bbox": {
      "min": [
       3250.0,
-      195.0,
+      220.0,
       4400.0
      ],
      "max": [
       4250.0,
-      255.0,
+      280.0,
       5700.0
      ]
     },
@@ -3641,7 +3689,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N6"
+     "obj": "N6",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3650,67 +3699,16 @@
     "bbox": {
      "min": [
       3310.0,
-      220.0,
+      245.0,
       4460.0
      ],
      "max": [
       4190.0,
-      230.0,
+      255.0,
       5640.0
      ]
     },
     "volume_mm3": 10384000.000000004
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N6.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L1",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N6",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 500.0,
-    "height": 1300.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N6"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N6.shutters.step",
-    "obj": "geometry/N6.shutters.obj",
-    "bbox": {
-     "min": [
-      2730.0,
-      -100.0,
-      4400.0
-     ],
-     "max": [
-      4770.0,
-      -65.0,
-      5700.0
-     ]
-    },
-    "volume_mm3": 28384800.0
    },
    "extrusion": null
   },
@@ -3741,7 +3739,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N6"
+     "obj": "N6",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3750,16 +3749,69 @@
     "bbox": {
      "min": [
       3110.0,
-      -105.0,
+      -55.0,
       4300.0
      ],
      "max": [
       4390.0,
-      10.0,
+      60.0,
       5920.0
      ]
     },
     "volume_mm3": 69596000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N6.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L1",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N6",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 500.0,
+    "height": 1300.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N6",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N6.shutters.step",
+    "obj": "geometry/N6.shutters.obj",
+    "bbox": {
+     "min": [
+      2730.0,
+      -75.0,
+      4400.0
+     ],
+     "max": [
+      4770.0,
+      -40.0,
+      5700.0
+     ]
+    },
+    "volume_mm3": 28384800.0
    },
    "extrusion": null
   },
@@ -3810,7 +3862,7 @@
     "void": {
      "origin": [
       3350.0,
-      -150.0,
+      -100.0,
       7500.0
      ],
      "u": [
@@ -3822,7 +3874,7 @@
       1.0
      ],
      "length": 800.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1000.0
     },
     "void_entity": null,
@@ -3833,7 +3885,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "TS"
+     "obj": "TS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3842,12 +3895,12 @@
     "bbox": {
      "min": [
       3350.0,
-      195.0,
+      220.0,
       7500.0
      ],
      "max": [
       4150.0,
-      255.0,
+      280.0,
       8500.0
      ]
     },
@@ -3874,7 +3927,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N7"
+     "obj": "N7",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3883,12 +3937,12 @@
     "bbox": {
      "min": [
       3410.0,
-      220.0,
+      245.0,
       7560.0
      ],
      "max": [
       4090.0,
-      230.0,
+      255.0,
       8440.0
      ]
     },
@@ -3923,7 +3977,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N7"
+     "obj": "N7",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3932,12 +3987,12 @@
     "bbox": {
      "min": [
       3210.0,
-      -105.0,
+      -55.0,
       7400.0
      ],
      "max": [
       4290.0,
-      10.0,
+      60.0,
       8720.0
      ]
     },
@@ -3967,7 +4022,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N7"
+     "obj": "N7",
+     "note": ""
     }
    ],
    "geometry": {
@@ -3976,12 +4032,12 @@
     "bbox": {
      "min": [
       3410.0,
-      -90.0,
+      -40.0,
       7560.0
      ],
      "max": [
       4090.0,
-      -72.0,
+      -22.0,
       8440.0
      ]
     },
@@ -4035,7 +4091,7 @@
     "frame_size": 60.0,
     "void": {
      "origin": [
-      -150.0,
+      -100.0,
       4500.0,
       900.0
      ],
@@ -4048,7 +4104,7 @@
       0.0
      ],
      "length": 1000.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1400.0
     },
     "void_entity": null,
@@ -4059,7 +4115,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "TW"
+     "obj": "TW",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4067,12 +4124,12 @@
     "obj": "geometry/N8.obj",
     "bbox": {
      "min": [
-      195.0,
+      220.0,
       3500.0,
       900.0
      ],
      "max": [
-      255.00000000000023,
+      280.0000000000002,
       4500.0,
       2300.0
      ]
@@ -4100,7 +4157,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N8"
+     "obj": "N8",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4108,68 +4166,17 @@
     "obj": "geometry/N8.glass.obj",
     "bbox": {
      "min": [
-      220.0,
+      245.0,
       3560.0,
       960.0
      ],
      "max": [
-      230.0000000000002,
+      255.0000000000002,
       4440.0,
       2240.0
      ]
     },
     "volume_mm3": 11264000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N8.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L0",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N8",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 500.0,
-    "height": 1400.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N8"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N8.shutters.step",
-    "obj": "geometry/N8.shutters.obj",
-    "bbox": {
-     "min": [
-      -100.0,
-      2980.0,
-      900.0
-     ],
-     "max": [
-      -64.99999999999991,
-      5020.0,
-      2300.0
-     ]
-    },
-    "volume_mm3": 29224800.0
    },
    "extrusion": null
   },
@@ -4200,7 +4207,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N8"
+     "obj": "N8",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4208,17 +4216,70 @@
     "obj": "geometry/N8.surround.obj",
     "bbox": {
      "min": [
-      -105.0,
+      -55.0,
       3360.0,
       800.0
      ],
      "max": [
-      10.000000000000284,
+      60.000000000000284,
       4640.0,
       2520.0
      ]
     },
     "volume_mm3": 71976000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N8.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L0",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N8",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 500.0,
+    "height": 1400.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N8",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N8.shutters.step",
+    "obj": "geometry/N8.shutters.obj",
+    "bbox": {
+     "min": [
+      -75.0,
+      2980.0,
+      900.0
+     ],
+     "max": [
+      -39.999999999999915,
+      5020.0,
+      2300.0
+     ]
+    },
+    "volume_mm3": 29224800.0
    },
    "extrusion": null
   },
@@ -4268,7 +4329,7 @@
     "frame_size": 60.0,
     "void": {
      "origin": [
-      -150.0,
+      -100.0,
       4250.0,
       4400.0
      ],
@@ -4281,7 +4342,7 @@
       0.0
      ],
      "length": 1000.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1300.0
     },
     "void_entity": null,
@@ -4292,7 +4353,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "TW"
+     "obj": "TW",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4300,12 +4362,12 @@
     "obj": "geometry/N9.obj",
     "bbox": {
      "min": [
-      195.0,
+      220.0,
       3250.0,
       4400.0
      ],
      "max": [
-      255.00000000000023,
+      280.0000000000002,
       4250.0,
       5700.0
      ]
@@ -4333,7 +4395,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N9"
+     "obj": "N9",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4341,68 +4404,17 @@
     "obj": "geometry/N9.glass.obj",
     "bbox": {
      "min": [
-      220.0,
+      245.0,
       3310.0,
       4460.0
      ],
      "max": [
-      230.0000000000002,
+      255.0000000000002,
       4190.0,
       5640.0
      ]
     },
-    "volume_mm3": 10384000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N9.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L1",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N9",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 500.0,
-    "height": 1300.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N9"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N9.shutters.step",
-    "obj": "geometry/N9.shutters.obj",
-    "bbox": {
-     "min": [
-      -100.0,
-      2730.0,
-      4400.0
-     ],
-     "max": [
-      -64.99999999999991,
-      4770.0,
-      5700.0
-     ]
-    },
-    "volume_mm3": 28384800.0
+    "volume_mm3": 10384000.000000004
    },
    "extrusion": null
   },
@@ -4433,7 +4445,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N9"
+     "obj": "N9",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4441,17 +4454,70 @@
     "obj": "geometry/N9.surround.obj",
     "bbox": {
      "min": [
-      -105.0,
+      -55.0,
       3110.0,
       4300.0
      ],
      "max": [
-      10.000000000000284,
+      60.000000000000284,
       4390.0,
       5920.0
      ]
     },
     "volume_mm3": 69596000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N9.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L1",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N9",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 500.0,
+    "height": 1300.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N9",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N9.shutters.step",
+    "obj": "geometry/N9.shutters.obj",
+    "bbox": {
+     "min": [
+      -75.0,
+      2730.0,
+      4400.0
+     ],
+     "max": [
+      -39.999999999999915,
+      4770.0,
+      5700.0
+     ]
+    },
+    "volume_mm3": 28384800.0
    },
    "extrusion": null
   },
@@ -4501,7 +4567,7 @@
     "frame_size": 60.0,
     "void": {
      "origin": [
-      -150.0,
+      -100.0,
       4150.0,
       7500.0
      ],
@@ -4514,7 +4580,7 @@
       0.0
      ],
      "length": 800.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1000.0
     },
     "void_entity": null,
@@ -4525,7 +4591,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "TW"
+     "obj": "TW",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4533,12 +4600,12 @@
     "obj": "geometry/N10.obj",
     "bbox": {
      "min": [
-      195.0,
+      220.0,
       3350.0,
       7500.0
      ],
      "max": [
-      255.00000000000017,
+      280.00000000000017,
       4150.0,
       8500.0
      ]
@@ -4566,7 +4633,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N10"
+     "obj": "N10",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4574,12 +4642,12 @@
     "obj": "geometry/N10.glass.obj",
     "bbox": {
      "min": [
-      220.0,
+      245.0,
       3410.0,
       7560.0
      ],
      "max": [
-      230.00000000000014,
+      255.00000000000014,
       4090.0,
       8440.0
      ]
@@ -4615,7 +4683,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N10"
+     "obj": "N10",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4623,12 +4692,12 @@
     "obj": "geometry/N10.surround.obj",
     "bbox": {
      "min": [
-      -105.0,
+      -55.0,
       3210.0,
       7400.0
      ],
      "max": [
-      10.000000000000242,
+      60.00000000000024,
       4290.0,
       8720.0
      ]
@@ -4659,7 +4728,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N10"
+     "obj": "N10",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4667,12 +4737,12 @@
     "obj": "geometry/N10.grille.obj",
     "bbox": {
      "min": [
-      -90.0,
+      -40.0,
       3410.0,
       7560.0
      ],
      "max": [
-      -71.99999999999984,
+      -21.99999999999985,
       4090.0,
       8440.0
      ]
@@ -4728,7 +4798,7 @@
     "void": {
      "origin": [
       4250.0,
-      7650.0,
+      7600.0,
       4400.0
      ],
      "u": [
@@ -4740,7 +4810,7 @@
       -1.0
      ],
      "length": 1000.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1300.0
     },
     "void_entity": null,
@@ -4751,7 +4821,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "TN"
+     "obj": "TN",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4760,12 +4831,12 @@
     "bbox": {
      "min": [
       3250.0,
-      7245.0,
+      7220.0,
       4400.0
      ],
      "max": [
       4250.0,
-      7305.0,
+      7280.0,
       5700.0
      ]
     },
@@ -4792,7 +4863,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N11"
+     "obj": "N11",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4801,67 +4873,16 @@
     "bbox": {
      "min": [
       3310.0,
-      7270.0,
+      7245.0,
       4460.0
      ],
      "max": [
       4190.0,
-      7280.0,
+      7255.0,
       5640.0
      ]
     },
     "volume_mm3": 10384000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N11.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L1",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N11",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 500.0,
-    "height": 1300.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N11"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N11.shutters.step",
-    "obj": "geometry/N11.shutters.obj",
-    "bbox": {
-     "min": [
-      2730.0,
-      7565.0,
-      4400.0
-     ],
-     "max": [
-      4770.0,
-      7600.0,
-      5700.0
-     ]
-    },
-    "volume_mm3": 28384800.0
    },
    "extrusion": null
   },
@@ -4892,7 +4913,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N11"
+     "obj": "N11",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4901,16 +4923,69 @@
     "bbox": {
      "min": [
       3110.0,
-      7490.0,
+      7440.0,
       4300.0
      ],
      "max": [
       4390.0,
-      7605.0,
+      7555.0,
       5920.0
      ]
     },
     "volume_mm3": 69596000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N11.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L1",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N11",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 500.0,
+    "height": 1300.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N11",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N11.shutters.step",
+    "obj": "geometry/N11.shutters.obj",
+    "bbox": {
+     "min": [
+      2730.0,
+      7540.0,
+      4400.0
+     ],
+     "max": [
+      4770.0,
+      7575.0,
+      5700.0
+     ]
+    },
+    "volume_mm3": 28384800.0
    },
    "extrusion": null
   },
@@ -4961,7 +5036,7 @@
     "void": {
      "origin": [
       4150.0,
-      7650.0,
+      7600.0,
       7500.0
      ],
      "u": [
@@ -4973,7 +5048,7 @@
       -1.0
      ],
      "length": 800.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1000.0
     },
     "void_entity": null,
@@ -4984,7 +5059,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "TN"
+     "obj": "TN",
+     "note": ""
     }
    ],
    "geometry": {
@@ -4993,12 +5069,12 @@
     "bbox": {
      "min": [
       3350.0,
-      7245.0,
+      7220.0,
       7500.0
      ],
      "max": [
       4150.0,
-      7305.0,
+      7280.0,
       8500.0
      ]
     },
@@ -5025,7 +5101,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N12"
+     "obj": "N12",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5034,12 +5111,12 @@
     "bbox": {
      "min": [
       3410.0,
-      7270.0,
+      7245.0,
       7560.0
      ],
      "max": [
       4090.0,
-      7280.0,
+      7255.0,
       8440.0
      ]
     },
@@ -5074,7 +5151,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N12"
+     "obj": "N12",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5083,12 +5161,12 @@
     "bbox": {
      "min": [
       3210.0,
-      7490.0,
+      7440.0,
       7400.0
      ],
      "max": [
       4290.0,
-      7605.0,
+      7555.0,
       8720.0
      ]
     },
@@ -5118,7 +5196,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N12"
+     "obj": "N12",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5127,12 +5206,12 @@
     "bbox": {
      "min": [
       3410.0,
-      7572.0,
+      7522.0,
       7560.0
      ],
      "max": [
       4090.0,
-      7590.0,
+      7540.0,
       8440.0
      ]
     },
@@ -5182,14 +5261,14 @@
     "sill": 0.0,
     "head": 2400.0,
     "clear_width": 1080.0,
-    "clear_height": 2280.0,
+    "clear_height": 2340.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
     "frame_size": 60.0,
     "void": {
      "origin": [
       14850.0,
-      8150.0,
+      8100.0,
       0.0
      ],
      "u": [
@@ -5201,7 +5280,7 @@
       -1.0
      ],
      "length": 1200.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 2400.0
     },
     "void_entity": null,
@@ -5212,7 +5291,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MN"
+     "obj": "MN",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5221,16 +5301,16 @@
     "bbox": {
      "min": [
       13650.0,
-      7745.0,
+      7720.0,
       0.0
      ],
      "max": [
       14850.0,
-      7805.0,
+      7780.0,
       2400.0
      ]
     },
-    "volume_mm3": 25920000.0
+    "volume_mm3": 21600000.0
    },
    "extrusion": null
   },
@@ -5251,7 +5331,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D0"
+     "obj": "D0",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5260,12 +5341,12 @@
     "bbox": {
      "min": [
       13710.0,
-      7755.0,
+      7730.0,
       10.0
      ],
      "max": [
       14790.0,
-      7795.0,
+      7770.0,
       2340.0
      ]
     },
@@ -5294,13 +5375,14 @@
    "derived": {
     "jamb": 140.0,
     "lintel": 220.0,
-    "sill": 100.0,
+    "sill": 0.0,
     "projection": 25.0
    },
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D0"
+     "obj": "D0",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5309,16 +5391,16 @@
     "bbox": {
      "min": [
       13510.0,
-      7990.0,
-      -100.0
+      7940.0,
+      0.0
      ],
      "max": [
       14990.0,
-      8105.0,
+      8025.0,
       2620.0
      ]
     },
-    "volume_mm3": 101816000.0
+    "volume_mm3": 84796000.0
    },
    "extrusion": null
   },
@@ -5369,7 +5451,7 @@
     "void": {
      "origin": [
       19000.0,
-      8150.0,
+      8100.0,
       800.0
      ],
      "u": [
@@ -5381,7 +5463,7 @@
       -1.0
      ],
      "length": 1200.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1600.0
     },
     "void_entity": null,
@@ -5392,7 +5474,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MN"
+     "obj": "MN",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5401,12 +5484,12 @@
     "bbox": {
      "min": [
       17800.0,
-      7745.0,
+      7720.0,
       800.0
      ],
      "max": [
       19000.0,
-      7805.0,
+      7780.0,
       2400.0
      ]
     },
@@ -5433,7 +5516,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N13"
+     "obj": "N13",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5442,67 +5526,16 @@
     "bbox": {
      "min": [
       17860.0,
-      7770.0,
+      7745.0,
       860.0
      ],
      "max": [
       18940.0,
-      7780.0,
+      7755.0,
       2340.0
      ]
     },
     "volume_mm3": 15984000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N13.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L0",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N13",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 600.0,
-    "height": 1600.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N13"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N13.shutters.step",
-    "obj": "geometry/N13.shutters.obj",
-    "bbox": {
-     "min": [
-      17180.0,
-      8065.0,
-      800.0
-     ],
-     "max": [
-      19620.0,
-      8100.0,
-      2400.0
-     ]
-    },
-    "volume_mm3": 38611200.0
    },
    "extrusion": null
   },
@@ -5533,7 +5566,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N13"
+     "obj": "N13",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5542,16 +5576,69 @@
     "bbox": {
      "min": [
       17660.0,
-      7990.0,
+      7940.0,
       700.0
      ],
      "max": [
       19140.0,
-      8105.0,
+      8055.0,
       2620.0
      ]
     },
     "volume_mm3": 82776000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N13.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L0",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N13",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 600.0,
+    "height": 1600.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N13",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N13.shutters.step",
+    "obj": "geometry/N13.shutters.obj",
+    "bbox": {
+     "min": [
+      17180.0,
+      8040.0,
+      800.0
+     ],
+     "max": [
+      19620.0,
+      8075.0,
+      2400.0
+     ]
+    },
+    "volume_mm3": 38611200.0
    },
    "extrusion": null
   },
@@ -5602,7 +5689,7 @@
     "void": {
      "origin": [
       10700.0,
-      8150.0,
+      8100.0,
       800.0
      ],
      "u": [
@@ -5614,7 +5701,7 @@
       -1.0
      ],
      "length": 1200.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1600.0
     },
     "void_entity": null,
@@ -5625,7 +5712,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MN"
+     "obj": "MN",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5634,12 +5722,12 @@
     "bbox": {
      "min": [
       9500.0,
-      7745.0,
+      7720.0,
       800.0
      ],
      "max": [
       10700.0,
-      7805.0,
+      7780.0,
       2400.0
      ]
     },
@@ -5666,7 +5754,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N14"
+     "obj": "N14",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5675,67 +5764,16 @@
     "bbox": {
      "min": [
       9560.0,
-      7770.0,
+      7745.0,
       860.0
      ],
      "max": [
       10640.0,
-      7780.0,
+      7755.0,
       2340.0
      ]
     },
     "volume_mm3": 15984000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N14.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L0",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N14",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 600.0,
-    "height": 1600.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N14"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N14.shutters.step",
-    "obj": "geometry/N14.shutters.obj",
-    "bbox": {
-     "min": [
-      8880.0,
-      8065.0,
-      800.0
-     ],
-     "max": [
-      11320.0,
-      8100.0,
-      2400.0
-     ]
-    },
-    "volume_mm3": 38611200.0
    },
    "extrusion": null
   },
@@ -5766,7 +5804,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N14"
+     "obj": "N14",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5775,16 +5814,69 @@
     "bbox": {
      "min": [
       9360.0,
-      7990.0,
+      7940.0,
       700.0
      ],
      "max": [
       10840.0,
-      8105.0,
+      8055.0,
       2620.0
      ]
     },
     "volume_mm3": 82776000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N14.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L0",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N14",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 600.0,
+    "height": 1600.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N14",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N14.shutters.step",
+    "obj": "geometry/N14.shutters.obj",
+    "bbox": {
+     "min": [
+      8880.0,
+      8040.0,
+      800.0
+     ],
+     "max": [
+      11320.0,
+      8075.0,
+      2400.0
+     ]
+    },
+    "volume_mm3": 38611200.0
    },
    "extrusion": null
   },
@@ -5835,7 +5927,7 @@
     "void": {
      "origin": [
       17725.0,
-      8150.0,
+      8100.0,
       4700.0
      ],
      "u": [
@@ -5847,7 +5939,7 @@
       -1.0
      ],
      "length": 800.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1000.0
     },
     "void_entity": null,
@@ -5858,7 +5950,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MN"
+     "obj": "MN",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5867,12 +5960,12 @@
     "bbox": {
      "min": [
       16925.0,
-      7745.0,
+      7720.0,
       4700.0
      ],
      "max": [
       17725.0,
-      7805.0,
+      7780.0,
       5700.0
      ]
     },
@@ -5899,7 +5992,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N15"
+     "obj": "N15",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5908,12 +6002,12 @@
     "bbox": {
      "min": [
       16985.0,
-      7770.0,
+      7745.0,
       4760.0
      ],
      "max": [
       17665.0,
-      7780.0,
+      7755.0,
       5640.0
      ]
     },
@@ -5948,7 +6042,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N15"
+     "obj": "N15",
+     "note": ""
     }
    ],
    "geometry": {
@@ -5957,12 +6052,12 @@
     "bbox": {
      "min": [
       16785.0,
-      7990.0,
+      7940.0,
       4600.0
      ],
      "max": [
       17865.0,
-      8105.0,
+      8055.0,
       5920.0
      ]
     },
@@ -6017,7 +6112,7 @@
     "void": {
      "origin": [
       14750.0,
-      8150.0,
+      8100.0,
       4400.0
      ],
      "u": [
@@ -6029,7 +6124,7 @@
       -1.0
      ],
      "length": 1000.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1300.0
     },
     "void_entity": null,
@@ -6040,7 +6135,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MN"
+     "obj": "MN",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6049,12 +6145,12 @@
     "bbox": {
      "min": [
       13750.0,
-      7745.0,
+      7720.0,
       4400.0
      ],
      "max": [
       14750.0,
-      7805.0,
+      7780.0,
       5700.0
      ]
     },
@@ -6081,7 +6177,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N16"
+     "obj": "N16",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6090,67 +6187,16 @@
     "bbox": {
      "min": [
       13810.0,
-      7770.0,
+      7745.0,
       4460.0
      ],
      "max": [
       14690.0,
-      7780.0,
+      7755.0,
       5640.0
      ]
     },
     "volume_mm3": 10384000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N16.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L1",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N16",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 500.0,
-    "height": 1300.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N16"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N16.shutters.step",
-    "obj": "geometry/N16.shutters.obj",
-    "bbox": {
-     "min": [
-      13230.0,
-      8065.0,
-      4400.0
-     ],
-     "max": [
-      15270.0,
-      8100.0,
-      5700.0
-     ]
-    },
-    "volume_mm3": 28384800.0
    },
    "extrusion": null
   },
@@ -6181,7 +6227,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N16"
+     "obj": "N16",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6190,16 +6237,69 @@
     "bbox": {
      "min": [
       13610.0,
-      7990.0,
+      7940.0,
       4300.0
      ],
      "max": [
       14890.0,
-      8105.0,
+      8055.0,
       5920.0
      ]
     },
     "volume_mm3": 69596000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N16.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L1",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N16",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 500.0,
+    "height": 1300.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N16",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N16.shutters.step",
+    "obj": "geometry/N16.shutters.obj",
+    "bbox": {
+     "min": [
+      13230.0,
+      8040.0,
+      4400.0
+     ],
+     "max": [
+      15270.0,
+      8075.0,
+      5700.0
+     ]
+    },
+    "volume_mm3": 28384800.0
    },
    "extrusion": null
   },
@@ -6250,7 +6350,7 @@
     "void": {
      "origin": [
       11500.0,
-      8150.0,
+      8100.0,
       4700.0
      ],
      "u": [
@@ -6262,7 +6362,7 @@
       -1.0
      ],
      "length": 800.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1000.0
     },
     "void_entity": null,
@@ -6273,7 +6373,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "MN"
+     "obj": "MN",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6282,12 +6383,12 @@
     "bbox": {
      "min": [
       10700.0,
-      7745.0,
+      7720.0,
       4700.0
      ],
      "max": [
       11500.0,
-      7805.0,
+      7780.0,
       5700.0
      ]
     },
@@ -6314,7 +6415,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N17"
+     "obj": "N17",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6323,12 +6425,12 @@
     "bbox": {
      "min": [
       10760.0,
-      7770.0,
+      7745.0,
       4760.0
      ],
      "max": [
       11440.0,
-      7780.0,
+      7755.0,
       5640.0
      ]
     },
@@ -6363,7 +6465,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N17"
+     "obj": "N17",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6372,12 +6475,12 @@
     "bbox": {
      "min": [
       10560.0,
-      7990.0,
+      7940.0,
       4600.0
      ],
      "max": [
       11640.0,
-      8105.0,
+      8055.0,
       5920.0
      ]
     },
@@ -6401,7 +6504,7 @@
     "host": "ME",
     "width": 1000.0,
     "height": 1300.0,
-    "sill": 4400.0,
+    "sill": 5000.0,
     "at": 3000.0,
     "frame": "frame_white",
     "frame_size": 60.0,
@@ -6422,8 +6525,8 @@
     "from_end": 3000.0,
     "width": 1000.0,
     "height": 1300.0,
-    "sill": 4400.0,
-    "head": 5700.0,
+    "sill": 5000.0,
+    "head": 6300.0,
     "clear_width": 880.0,
     "clear_height": 1180.0,
     "glass_area_mm2": 1038400.0,
@@ -6431,9 +6534,9 @@
     "frame_size": 60.0,
     "void": {
      "origin": [
-      21650.0,
+      21600.0,
       3500.0,
-      4400.0
+      5000.0
      ],
      "u": [
       0.0,
@@ -6444,7 +6547,7 @@
       0.0
      ],
      "length": 1000.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1300.0
     },
     "void_entity": null,
@@ -6455,7 +6558,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "ME"
+     "obj": "ME",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6463,14 +6567,14 @@
     "obj": "geometry/N18.obj",
     "bbox": {
      "min": [
-      21245.0,
+      21220.0,
       3500.0,
-      4400.0
+      5000.0
      ],
      "max": [
-      21305.0,
+      21280.0,
       4500.0,
-      5700.0
+      6300.0
      ]
     },
     "volume_mm3": 19206000.0
@@ -6496,7 +6600,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N18"
+     "obj": "N18",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6504,68 +6609,17 @@
     "obj": "geometry/N18.glass.obj",
     "bbox": {
      "min": [
-      21270.0,
+      21245.0,
       3560.0,
-      4460.0
+      5060.0
      ],
      "max": [
-      21280.0,
+      21255.0,
       4440.0,
-      5640.0
+      6240.0
      ]
     },
     "volume_mm3": 10384000.000000004
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N18.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L1",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N18",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 500.0,
-    "height": 1300.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N18"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N18.shutters.step",
-    "obj": "geometry/N18.shutters.obj",
-    "bbox": {
-     "min": [
-      21565.0,
-      2980.0,
-      4400.0
-     ],
-     "max": [
-      21600.0,
-      5020.0,
-      5700.0
-     ]
-    },
-    "volume_mm3": 28384800.0
    },
    "extrusion": null
   },
@@ -6596,7 +6650,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N18"
+     "obj": "N18",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6604,17 +6659,70 @@
     "obj": "geometry/N18.surround.obj",
     "bbox": {
      "min": [
-      21490.0,
+      21440.0,
       3360.0,
-      4300.0
+      4900.0
      ],
      "max": [
-      21605.0,
+      21555.0,
       4640.0,
-      5920.0
+      6520.0
      ]
     },
     "volume_mm3": 69596000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N18.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L1",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N18",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 500.0,
+    "height": 1300.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N18",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N18.shutters.step",
+    "obj": "geometry/N18.shutters.obj",
+    "bbox": {
+     "min": [
+      21540.0,
+      2980.0,
+      5000.0
+     ],
+     "max": [
+      21575.0,
+      5020.0,
+      6300.0
+     ]
+    },
+    "volume_mm3": 28384800.0
    },
    "extrusion": null
   },
@@ -6660,14 +6768,14 @@
     "sill": 0.0,
     "head": 2400.0,
     "clear_width": 805.0,
-    "clear_height": 2280.0,
+    "clear_height": 2340.0,
     "glass_area_mm2": 3670800.0,
     "mullions": 1,
     "frame_size": 60.0,
     "void": {
      "origin": [
       22700.0,
-      850.0,
+      900.0,
       0.0
      ],
      "u": [
@@ -6679,7 +6787,7 @@
       1.0
      ],
      "length": 1850.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 2400.0
     },
     "void_entity": null,
@@ -6690,7 +6798,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "KS"
+     "obj": "KS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6699,16 +6808,16 @@
     "bbox": {
      "min": [
       22700.0,
-      1195.0,
+      1220.0,
       0.0
      ],
      "max": [
       24550.0,
-      1255.0,
+      1280.0,
       2400.0
      ]
     },
-    "volume_mm3": 47520000.0
+    "volume_mm3": 40860000.0
    },
    "extrusion": null
   },
@@ -6731,7 +6840,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D3"
+     "obj": "D3",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6740,67 +6850,16 @@
     "bbox": {
      "min": [
       22760.0,
-      1220.0,
+      1245.0,
       60.0
      ],
      "max": [
       24490.0,
-      1230.0,
+      1255.0,
       2340.0
      ]
     },
     "volume_mm3": 36708000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "D3.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L0",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "D3",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 925.0,
-    "height": 2400.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "D3"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/D3.shutters.step",
-    "obj": "geometry/D3.shutters.obj",
-    "bbox": {
-     "min": [
-      21755.0,
-      900.0,
-      0.0
-     ],
-     "max": [
-      25495.0,
-      935.0,
-      2400.0
-     ]
-    },
-    "volume_mm3": 80631600.0
    },
    "extrusion": null
   },
@@ -6825,13 +6884,14 @@
    "derived": {
     "jamb": 140.0,
     "lintel": 220.0,
-    "sill": 100.0,
+    "sill": 0.0,
     "projection": 25.0
    },
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D3"
+     "obj": "D3",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6840,16 +6900,69 @@
     "bbox": {
      "min": [
       22560.0,
-      895.0,
-      -100.0
+      975.0,
+      0.0
      ],
      "max": [
       24690.0,
-      1010.0,
+      1060.0,
       2620.0
      ]
     },
-    "volume_mm3": 121446000.0
+    "volume_mm3": 96951000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "D3.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L0",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "D3",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 925.0,
+    "height": 2400.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "D3",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/D3.shutters.step",
+    "obj": "geometry/D3.shutters.obj",
+    "bbox": {
+     "min": [
+      21755.0,
+      925.0,
+      0.0
+     ],
+     "max": [
+      25495.0,
+      960.0,
+      2400.0
+     ]
+    },
+    "volume_mm3": 80631600.0
    },
    "extrusion": null
   },
@@ -6895,14 +7008,14 @@
     "sill": 0.0,
     "head": 2400.0,
     "clear_width": 805.0,
-    "clear_height": 2280.0,
+    "clear_height": 2340.0,
     "glass_area_mm2": 3670800.0,
     "mullions": 1,
     "frame_size": 60.0,
     "void": {
      "origin": [
       26800.0,
-      850.0,
+      900.0,
       0.0
      ],
      "u": [
@@ -6914,7 +7027,7 @@
       1.0
      ],
      "length": 1850.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 2400.0
     },
     "void_entity": null,
@@ -6925,7 +7038,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "KS"
+     "obj": "KS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6934,16 +7048,16 @@
     "bbox": {
      "min": [
       26800.0,
-      1195.0,
+      1220.0,
       0.0
      ],
      "max": [
       28650.0,
-      1255.0,
+      1280.0,
       2400.0
      ]
     },
-    "volume_mm3": 47520000.0
+    "volume_mm3": 40860000.0
    },
    "extrusion": null
   },
@@ -6966,7 +7080,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D4"
+     "obj": "D4",
+     "note": ""
     }
    ],
    "geometry": {
@@ -6975,67 +7090,16 @@
     "bbox": {
      "min": [
       26860.0,
-      1220.0,
+      1245.0,
       60.0
      ],
      "max": [
       28590.0,
-      1230.0,
+      1255.0,
       2340.0
      ]
     },
     "volume_mm3": 36708000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "D4.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L0",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "D4",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 925.0,
-    "height": 2400.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "D4"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/D4.shutters.step",
-    "obj": "geometry/D4.shutters.obj",
-    "bbox": {
-     "min": [
-      25855.0,
-      900.0,
-      0.0
-     ],
-     "max": [
-      29595.0,
-      935.0,
-      2400.0
-     ]
-    },
-    "volume_mm3": 80631600.0
    },
    "extrusion": null
   },
@@ -7060,13 +7124,14 @@
    "derived": {
     "jamb": 140.0,
     "lintel": 220.0,
-    "sill": 100.0,
+    "sill": 0.0,
     "projection": 25.0
    },
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D4"
+     "obj": "D4",
+     "note": ""
     }
    ],
    "geometry": {
@@ -7075,16 +7140,69 @@
     "bbox": {
      "min": [
       26660.0,
-      895.0,
-      -100.0
+      975.0,
+      0.0
      ],
      "max": [
       28790.0,
-      1010.0,
+      1060.0,
       2620.0
      ]
     },
-    "volume_mm3": 121446000.0
+    "volume_mm3": 96951000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "D4.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L0",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "D4",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 925.0,
+    "height": 2400.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "D4",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/D4.shutters.step",
+    "obj": "geometry/D4.shutters.obj",
+    "bbox": {
+     "min": [
+      25855.0,
+      925.0,
+      0.0
+     ],
+     "max": [
+      29595.0,
+      960.0,
+      2400.0
+     ]
+    },
+    "volume_mm3": 80631600.0
    },
    "extrusion": null
   },
@@ -7134,7 +7252,7 @@
     "frame_size": 60.0,
     "void": {
      "origin": [
-      30650.0,
+      30600.0,
       3500.0,
       900.0
      ],
@@ -7147,7 +7265,7 @@
       0.0
      ],
      "length": 1000.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1400.0
     },
     "void_entity": null,
@@ -7158,7 +7276,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "KE"
+     "obj": "KE",
+     "note": ""
     }
    ],
    "geometry": {
@@ -7166,12 +7285,12 @@
     "obj": "geometry/N19.obj",
     "bbox": {
      "min": [
-      30245.0,
+      30220.0,
       3500.0,
       900.0
      ],
      "max": [
-      30305.0,
+      30280.0,
       4500.0,
       2300.0
      ]
@@ -7199,7 +7318,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N19"
+     "obj": "N19",
+     "note": ""
     }
    ],
    "geometry": {
@@ -7207,68 +7327,17 @@
     "obj": "geometry/N19.glass.obj",
     "bbox": {
      "min": [
-      30270.0,
+      30245.0,
       3560.0,
       960.0
      ],
      "max": [
-      30280.0,
+      30255.0,
       4440.0,
       2240.0
      ]
     },
     "volume_mm3": 11264000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N19.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L0",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N19",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 500.0,
-    "height": 1400.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N19"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N19.shutters.step",
-    "obj": "geometry/N19.shutters.obj",
-    "bbox": {
-     "min": [
-      30565.0,
-      2980.0,
-      900.0
-     ],
-     "max": [
-      30600.0,
-      5020.0,
-      2300.0
-     ]
-    },
-    "volume_mm3": 29224800.0
    },
    "extrusion": null
   },
@@ -7299,7 +7368,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N19"
+     "obj": "N19",
+     "note": ""
     }
    ],
    "geometry": {
@@ -7307,17 +7377,70 @@
     "obj": "geometry/N19.surround.obj",
     "bbox": {
      "min": [
-      30490.0,
+      30440.0,
       3360.0,
       800.0
      ],
      "max": [
-      30605.0,
+      30555.0,
       4640.0,
       2520.0
      ]
     },
     "volume_mm3": 71976000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N19.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L0",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N19",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 500.0,
+    "height": 1400.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N19",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N19.shutters.step",
+    "obj": "geometry/N19.shutters.obj",
+    "bbox": {
+     "min": [
+      30540.0,
+      2980.0,
+      900.0
+     ],
+     "max": [
+      30575.0,
+      5020.0,
+      2300.0
+     ]
+    },
+    "volume_mm3": 29224800.0
    },
    "extrusion": null
   },
@@ -7368,7 +7491,7 @@
     "void": {
      "origin": [
       26350.0,
-      7150.0,
+      7100.0,
       1000.0
      ],
      "u": [
@@ -7380,7 +7503,7 @@
       -1.0
      ],
      "length": 1200.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 1400.0
     },
     "void_entity": null,
@@ -7391,7 +7514,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "KN"
+     "obj": "KN",
+     "note": ""
     }
    ],
    "geometry": {
@@ -7400,12 +7524,12 @@
     "bbox": {
      "min": [
       25150.0,
-      6745.0,
+      6720.0,
       1000.0
      ],
      "max": [
       26350.0,
-      6805.0,
+      6780.0,
       2400.0
      ]
     },
@@ -7432,7 +7556,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N20"
+     "obj": "N20",
+     "note": ""
     }
    ],
    "geometry": {
@@ -7441,67 +7566,16 @@
     "bbox": {
      "min": [
       25210.0,
-      6770.0,
+      6745.0,
       1060.0
      ],
      "max": [
       26290.0,
-      6780.0,
+      6755.0,
       2340.0
      ]
     },
     "volume_mm3": 13824000.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "N20.shutters",
-   "kind": "shutters",
-   "ifc_class": "IfcShadingDevice",
-   "physical": true,
-   "tags": [
-    "external",
-    "shutters"
-   ],
-   "level": "L0",
-   "material": "shutter_grey",
-   "params": {
-    "opening": "N20",
-    "thickness": 35.0,
-    "stile": 60.0,
-    "rail": 80.0,
-    "slat": 45.0,
-    "pitch": 57.0
-   },
-   "derived": {
-    "leaves": 2,
-    "style": "louvred",
-    "leaf_width": 600.0,
-    "height": 1400.0,
-    "thickness": 35.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "N20"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/N20.shutters.step",
-    "obj": "geometry/N20.shutters.obj",
-    "bbox": {
-     "min": [
-      24530.0,
-      7065.0,
-      1000.0
-     ],
-     "max": [
-      26970.0,
-      7100.0,
-      2400.0
-     ]
-    },
-    "volume_mm3": 33820800.0
    },
    "extrusion": null
   },
@@ -7532,7 +7606,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "N20"
+     "obj": "N20",
+     "note": ""
     }
    ],
    "geometry": {
@@ -7541,16 +7616,69 @@
     "bbox": {
      "min": [
       25010.0,
-      6990.0,
+      6940.0,
       900.0
      ],
      "max": [
       26490.0,
-      7105.0,
+      7055.0,
       2620.0
      ]
     },
     "volume_mm3": 78016000.0
+   },
+   "extrusion": null
+  },
+  {
+   "id": "N20.shutters",
+   "kind": "shutters",
+   "ifc_class": "IfcShadingDevice",
+   "physical": true,
+   "tags": [
+    "external",
+    "shutters"
+   ],
+   "level": "L0",
+   "material": "shutter_grey",
+   "params": {
+    "opening": "N20",
+    "thickness": 35.0,
+    "stile": 60.0,
+    "rail": 80.0,
+    "slat": 45.0,
+    "pitch": 57.0,
+    "clear": 15.0
+   },
+   "derived": {
+    "leaves": 2,
+    "style": "louvred",
+    "leaf_width": 600.0,
+    "height": 1400.0,
+    "thickness": 35.0
+   },
+   "relations": [
+    {
+     "pred": "part_of",
+     "obj": "N20",
+     "note": ""
+    }
+   ],
+   "geometry": {
+    "step": "geometry/N20.shutters.step",
+    "obj": "geometry/N20.shutters.obj",
+    "bbox": {
+     "min": [
+      24530.0,
+      7040.0,
+      1000.0
+     ],
+     "max": [
+      26970.0,
+      7075.0,
+      2400.0
+     ]
+    },
+    "volume_mm3": 33820800.0
    },
    "extrusion": null
   },
@@ -7599,7 +7727,7 @@
     "frame_size": 60.0,
     "void": {
      "origin": [
-      7650.0,
+      7600.0,
       2950.0,
       0.0
      ],
@@ -7612,7 +7740,7 @@
       0.0
      ],
      "length": 1600.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 3000.0
     },
     "void_entity": "A0.void",
@@ -7625,7 +7753,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "TE"
+     "obj": "TE",
+     "note": ""
     }
    ],
    "geometry": null,
@@ -7648,7 +7777,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "A0"
+     "obj": "A0",
+     "note": ""
     }
    ],
    "geometry": {
@@ -7661,12 +7791,12 @@
       0.0
      ],
      "max": [
-      7650.0,
+      7600.0,
       4550.0,
       3000.0
      ]
     },
-    "volume_mm3": 3393982236.8615503
+    "volume_mm3": 3167716754.4041133
    },
    "extrusion": null
   },
@@ -7743,15 +7873,18 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "A1"
+     "obj": "A1",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "living"
+     "obj": "living",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "dining"
+     "obj": "dining",
+     "note": ""
     }
    ],
    "geometry": {
@@ -7861,7 +7994,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "P1"
+     "obj": "P1",
+     "note": ""
     }
    ],
    "geometry": null,
@@ -7884,7 +8018,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "A1"
+     "obj": "A1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -7948,13 +8083,13 @@
     "sill": 0.0,
     "head": 2200.0,
     "clear_width": 880.0,
-    "clear_height": 2080.0,
+    "clear_height": 2140.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
     "frame_size": 60.0,
     "void": {
      "origin": [
-      21650.0,
+      21600.0,
       2500.0,
       0.0
      ],
@@ -7967,7 +8102,7 @@
       0.0
      ],
      "length": 1000.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 2200.0
     },
     "void_entity": null,
@@ -7978,7 +8113,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "ME"
+     "obj": "ME",
+     "note": ""
     }
    ],
    "geometry": {
@@ -7986,17 +8122,17 @@
     "obj": "geometry/D5.obj",
     "bbox": {
      "min": [
-      21245.0,
+      21220.0,
       2500.0,
       0.0
      ],
      "max": [
-      21305.0,
+      21280.0,
       3500.0,
       2200.0
      ]
     },
-    "volume_mm3": 23040000.0
+    "volume_mm3": 19440000.0
    },
    "extrusion": null
   },
@@ -8017,7 +8153,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D5"
+     "obj": "D5",
+     "note": ""
     }
    ],
    "geometry": {
@@ -8025,12 +8162,12 @@
     "obj": "geometry/D5.leaf.obj",
     "bbox": {
      "min": [
-      21255.0,
+      21230.0,
       2560.0,
       10.0
      ],
      "max": [
-      21295.0,
+      21270.0,
       3440.0,
       2140.0
      ]
@@ -8112,7 +8249,8 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "FP.hearth"
+     "obj": "FP.hearth",
+     "note": ""
     }
    ],
    "geometry": {
@@ -8222,7 +8360,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "FP"
+     "obj": "FP",
+     "note": ""
     }
    ],
    "geometry": null,
@@ -8245,7 +8384,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "FP.hearth"
+     "obj": "FP.hearth",
+     "note": ""
     }
    ],
    "geometry": {
@@ -8286,11 +8426,11 @@
     "size": 800.0,
     "radius": null,
     "height": 1700.0,
-    "base": 6400.0
+    "base": 2900.0
    },
    "derived": {
     "height": 1700.0,
-    "z_top": 11600.0,
+    "z_top": 8100.0,
     "size": 800.0
    },
    "relations": [],
@@ -8301,12 +8441,12 @@
      "min": [
       10100.0,
       6850.0,
-      9900.0
+      6400.0
      ],
      "max": [
       10900.0,
       7650.0,
-      11600.0
+      8100.0
      ]
     },
     "volume_mm3": 1087999999.9999998
@@ -8372,7 +8512,8 @@
    "relations": [
     {
      "pred": "rises_to",
-     "obj": "L1"
+     "obj": "L1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -8453,7 +8594,8 @@
    "relations": [
     {
      "pred": "rises_to",
-     "obj": "L2"
+     "obj": "L2",
+     "note": ""
     }
    ],
    "geometry": {
@@ -8548,39 +8690,48 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "D6"
+     "obj": "D6",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "D7"
+     "obj": "D7",
+     "note": ""
     },
     {
      "pred": "has_opening",
-     "obj": "D8"
+     "obj": "D8",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "corridor"
+     "obj": "corridor",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed1"
+     "obj": "bed1",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bath1"
+     "obj": "bath1",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed2"
+     "obj": "bed2",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bath2"
+     "obj": "bath2",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed3"
+     "obj": "bed3",
+     "note": ""
     }
    ],
    "geometry": {
@@ -8692,15 +8843,18 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "D9"
+     "obj": "D9",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed1"
+     "obj": "bed1",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bath1"
+     "obj": "bath1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -8812,11 +8966,13 @@
    "relations": [
     {
      "pred": "bounds",
-     "obj": "bath1"
+     "obj": "bath1",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed2"
+     "obj": "bed2",
+     "note": ""
     }
    ],
    "geometry": {
@@ -8928,15 +9084,18 @@
    "relations": [
     {
      "pred": "has_opening",
-     "obj": "D10"
+     "obj": "D10",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed2"
+     "obj": "bed2",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bath2"
+     "obj": "bath2",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9048,11 +9207,13 @@
    "relations": [
     {
      "pred": "bounds",
-     "obj": "bath2"
+     "obj": "bath2",
+     "note": ""
     },
     {
      "pred": "bounds",
-     "obj": "bed3"
+     "obj": "bed3",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9132,7 +9293,7 @@
     "sill": 0.0,
     "head": 2100.0,
     "clear_width": 830.0,
-    "clear_height": 1980.0,
+    "clear_height": 2040.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
     "frame_size": 60.0,
@@ -9162,7 +9323,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "PC"
+     "obj": "PC",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9180,7 +9342,7 @@
       5600.0
      ]
     },
-    "volume_mm3": 21960000.0
+    "volume_mm3": 18540000.0
    },
    "extrusion": null
   },
@@ -9201,7 +9363,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D6"
+     "obj": "D6",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9264,7 +9427,7 @@
     "sill": 0.0,
     "head": 2100.0,
     "clear_width": 830.0,
-    "clear_height": 1980.0,
+    "clear_height": 2040.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
     "frame_size": 60.0,
@@ -9294,7 +9457,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "PC"
+     "obj": "PC",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9312,7 +9476,7 @@
       5600.0
      ]
     },
-    "volume_mm3": 21960000.0
+    "volume_mm3": 18540000.0
    },
    "extrusion": null
   },
@@ -9333,7 +9497,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D7"
+     "obj": "D7",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9396,7 +9561,7 @@
     "sill": 0.0,
     "head": 2100.0,
     "clear_width": 830.0,
-    "clear_height": 1980.0,
+    "clear_height": 2040.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
     "frame_size": 60.0,
@@ -9426,7 +9591,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "PC"
+     "obj": "PC",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9444,7 +9610,7 @@
       5600.0
      ]
     },
-    "volume_mm3": 21960000.0
+    "volume_mm3": 18540000.0
    },
    "extrusion": null
   },
@@ -9465,7 +9631,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D8"
+     "obj": "D8",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9528,7 +9695,7 @@
     "sill": 0.0,
     "head": 2100.0,
     "clear_width": 680.0,
-    "clear_height": 1980.0,
+    "clear_height": 2040.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
     "frame_size": 60.0,
@@ -9558,7 +9725,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "PB1"
+     "obj": "PB1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9576,7 +9744,7 @@
       5600.0
      ]
     },
-    "volume_mm3": 20880000.0
+    "volume_mm3": 18000000.0
    },
    "extrusion": null
   },
@@ -9597,7 +9765,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D9"
+     "obj": "D9",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9660,7 +9829,7 @@
     "sill": 0.0,
     "head": 2100.0,
     "clear_width": 680.0,
-    "clear_height": 1980.0,
+    "clear_height": 2040.0,
     "glass_area_mm2": 0.0,
     "mullions": 0,
     "frame_size": 60.0,
@@ -9690,7 +9859,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "PB3"
+     "obj": "PB3",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9708,7 +9878,7 @@
       5600.0
      ]
     },
-    "volume_mm3": 20880000.0
+    "volume_mm3": 18000000.0
    },
    "extrusion": null
   },
@@ -9729,7 +9899,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "D10"
+     "obj": "D10",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9796,7 +9967,7 @@
     "frame_size": 60.0,
     "void": {
      "origin": [
-      7650.0,
+      7600.0,
       6250.0,
       3500.0
      ],
@@ -9809,7 +9980,7 @@
       0.0
      ],
      "length": 700.0,
-     "thickness": 750.0,
+     "thickness": 700.0,
      "height": 2450.0
     },
     "void_entity": "A2.void",
@@ -9822,7 +9993,8 @@
    "relations": [
     {
      "pred": "hosted_in",
-     "obj": "TE"
+     "obj": "TE",
+     "note": ""
     }
    ],
    "geometry": null,
@@ -9845,7 +10017,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "A2"
+     "obj": "A2",
+     "note": ""
     }
    ],
    "geometry": {
@@ -9858,12 +10031,12 @@
       3500.0
      ],
      "max": [
-      7650.0,
+      7600.0,
       6950.0,
       5950.0
      ]
     },
-    "volume_mm3": 1246816912.5242813
+    "volume_mm3": 1163695785.0226624
    },
    "extrusion": null
   },
@@ -9920,7 +10093,41 @@
    "derived": {
     "area_mm2": 235750000.0,
     "z_top": 0.0,
-    "voids": 0
+    "voids": 0,
+    "outline": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      30500.0,
+      0.0
+     ],
+     [
+      30500.0,
+      7500.0
+     ],
+     [
+      21500.0,
+      7500.0
+     ],
+     [
+      21500.0,
+      8000.0
+     ],
+     [
+      7500.0,
+      8000.0
+     ],
+     [
+      7500.0,
+      7500.0
+     ],
+     [
+      0.0,
+      7500.0
+     ]
+    ]
    },
    "relations": [],
    "geometry": {
@@ -9989,7 +10196,33 @@
    "derived": {
     "area_mm2": 162850000.0,
     "z_top": 3500.0,
-    "voids": 1
+    "voids": 1,
+    "outline": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      21500.0,
+      0.0
+     ],
+     [
+      21500.0,
+      8000.0
+     ],
+     [
+      7500.0,
+      8000.0
+     ],
+     [
+      7500.0,
+      7500.0
+     ],
+     [
+      0.0,
+      7500.0
+     ]
+    ]
    },
    "relations": [],
    "geometry": {
@@ -10050,7 +10283,25 @@
    "derived": {
     "area_mm2": 51390000.0,
     "z_top": 6700.0,
-    "voids": 1
+    "voids": 1,
+    "outline": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      7500.0,
+      0.0
+     ],
+     [
+      7500.0,
+      7500.0
+     ],
+     [
+      0.0,
+      7500.0
+     ]
+    ]
    },
    "relations": [],
    "geometry": {
@@ -10111,11 +10362,13 @@
      "spacing": 600.0,
      "along": "y",
      "material": "limed_oak"
-    }
+    },
+    "voids": []
    },
    "derived": {
     "z_underside": 3170.0,
     "kind": "flat",
+    "voids": 0,
     "beams": 23,
     "beam_spacing": 600.0
    },
@@ -10174,7 +10427,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10231,7 +10485,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10288,7 +10543,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10345,7 +10601,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10402,7 +10659,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10459,7 +10717,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10516,7 +10775,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10573,7 +10833,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10630,7 +10891,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10687,7 +10949,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10744,7 +11007,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10801,7 +11065,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10858,7 +11123,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10915,7 +11181,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -10972,7 +11239,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11029,7 +11297,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11086,7 +11355,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11143,7 +11413,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11200,7 +11471,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11257,7 +11529,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11314,7 +11587,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11371,7 +11645,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11428,7 +11703,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0M"
+     "obj": "C0M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11489,11 +11765,15 @@
      "spacing": 600.0,
      "along": "x",
      "material": "limed_oak"
-    }
+    },
+    "voids": [
+     "ST1"
+    ]
    },
    "derived": {
     "z_underside": 3170.0,
     "kind": "flat",
+    "voids": 1,
     "beams": 11,
     "beam_spacing": 600.0
    },
@@ -11513,7 +11793,7 @@
       3200.0
      ]
     },
-    "volume_mm3": 1267500000.0
+    "volume_mm3": 1105500000.0
    },
    "extrusion": null
   },
@@ -11552,7 +11832,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0T"
+     "obj": "C0T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11609,7 +11890,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0T"
+     "obj": "C0T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11666,7 +11948,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0T"
+     "obj": "C0T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11723,7 +12006,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0T"
+     "obj": "C0T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11780,7 +12064,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0T"
+     "obj": "C0T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11837,7 +12122,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0T"
+     "obj": "C0T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11894,7 +12180,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0T"
+     "obj": "C0T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -11951,7 +12238,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0T"
+     "obj": "C0T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12008,7 +12296,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0T"
+     "obj": "C0T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12065,7 +12354,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0T"
+     "obj": "C0T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12083,7 +12373,7 @@
       3170.0
      ]
     },
-    "volume_mm3": 200200000.0
+    "volume_mm3": 33880000.0
    },
    "extrusion": null
   },
@@ -12122,7 +12412,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0T"
+     "obj": "C0T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12140,7 +12431,7 @@
       3170.0
      ]
     },
-    "volume_mm3": 200200000.0
+    "volume_mm3": 33880000.0
    },
    "extrusion": null
   },
@@ -12183,11 +12474,13 @@
      "spacing": 600.0,
      "along": "y",
      "material": "limed_oak"
-    }
+    },
+    "voids": []
    },
    "derived": {
     "z_underside": 3170.0,
     "kind": "flat",
+    "voids": 0,
     "beams": 15,
     "beam_spacing": 600.0
    },
@@ -12246,7 +12539,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12303,7 +12597,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12360,7 +12655,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12417,7 +12713,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12474,7 +12771,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12531,7 +12829,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12588,7 +12887,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12645,7 +12945,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12702,7 +13003,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12759,7 +13061,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12816,7 +13119,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12873,7 +13177,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12930,7 +13235,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -12987,7 +13293,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13044,7 +13351,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C0K"
+     "obj": "C0K",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13105,11 +13413,13 @@
      "spacing": 600.0,
      "along": "y",
      "material": "limed_oak"
-    }
+    },
+    "voids": []
    },
    "derived": {
     "z_underside": 6370.0,
     "kind": "flat",
+    "voids": 0,
     "beams": 23,
     "beam_spacing": 600.0
    },
@@ -13168,7 +13478,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13225,7 +13536,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13282,7 +13594,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13339,7 +13652,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13396,7 +13710,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13453,7 +13768,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13510,7 +13826,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13567,7 +13884,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13624,7 +13942,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13681,7 +14000,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13738,7 +14058,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13795,7 +14116,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13852,7 +14174,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13909,7 +14232,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -13966,7 +14290,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14023,7 +14348,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14080,7 +14406,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14137,7 +14464,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14194,7 +14522,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14251,7 +14580,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14308,7 +14638,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14365,7 +14696,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14422,7 +14754,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C1M"
+     "obj": "C1M",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14477,11 +14810,15 @@
     "plank": null,
     "thickness": 30.0,
     "gap": 6.0,
-    "beams": null
+    "beams": null,
+    "voids": [
+     "ST2"
+    ]
    },
    "derived": {
     "z_underside": 6370.0,
-    "kind": "flat"
+    "kind": "flat",
+    "voids": 1
    },
    "relations": [],
    "geometry": {
@@ -14499,7 +14836,7 @@
       6400.0
      ]
     },
-    "volume_mm3": 1267500000.0
+    "volume_mm3": 1121700000.0
    },
    "extrusion": null
   },
@@ -14542,11 +14879,13 @@
      "spacing": 600.0,
      "along": "x",
      "material": "limed_oak"
-    }
+    },
+    "voids": []
    },
    "derived": {
     "z_underside": 9270.0,
     "kind": "flat",
+    "voids": 0,
     "beams": 11,
     "beam_spacing": 600.0
    },
@@ -14605,7 +14944,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C2T"
+     "obj": "C2T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14662,7 +15002,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C2T"
+     "obj": "C2T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14719,7 +15060,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C2T"
+     "obj": "C2T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14776,7 +15118,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C2T"
+     "obj": "C2T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14833,7 +15176,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C2T"
+     "obj": "C2T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14890,7 +15234,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C2T"
+     "obj": "C2T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -14947,7 +15292,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C2T"
+     "obj": "C2T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -15004,7 +15350,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C2T"
+     "obj": "C2T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -15061,7 +15408,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C2T"
+     "obj": "C2T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -15118,7 +15466,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C2T"
+     "obj": "C2T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -15175,7 +15524,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "C2T"
+     "obj": "C2T",
+     "note": ""
     }
    ],
    "geometry": {
@@ -15237,16 +15587,17 @@
     "gable_thickness": 500.0,
     "gable_material": null,
     "genoise": 2,
-    "genoise_material": null
+    "genoise_material": null,
+    "abuts": []
    },
    "derived": {
     "shape": "hip",
     "pitch": 28.0,
-    "z_eave": 9300.0,
+    "z_eave": 9516.4385,
     "thickness": 220.0,
     "overhang": 450.0,
     "plan_area_mm2": 56250000.0,
-    "z_ridge": 11533.1796,
+    "z_ridge": 11749.6181,
     "rise": 2233.1796,
     "span": 8400.0,
     "rafter_length": 4756.7942
@@ -15257,17 +15608,17 @@
     "obj": "geometry/RT.obj",
     "bbox": {
      "min": [
-      -450.0000000000008,
-      -450.0000000000008,
-      9080.0
+      -450.0000000000005,
+      -450.0000000000005,
+      9296.438453451401
      ],
      "max": [
-      7950.000000000003,
-      7950.000000000003,
-      11533.17961297821
+      7950.000000000001,
+      7950.000000000001,
+      11749.618066429612
      ]
     },
-    "volume_mm3": 1479038460.9226708
+    "volume_mm3": 15523199999.999996
    },
    "extrusion": null
   },
@@ -15294,7 +15645,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "RT"
+     "obj": "RT",
+     "note": ""
     }
    ],
    "geometry": {
@@ -15353,19 +15705,22 @@
     "overhang": 450.0,
     "thickness": 220.0,
     "eave": null,
-    "gable_thickness": 550.0,
+    "gable_thickness": 500.0,
     "gable_material": "limestone_rubble",
     "genoise": 3,
-    "genoise_material": null
+    "genoise_material": null,
+    "abuts": [
+     "x0"
+    ]
    },
    "derived": {
     "shape": "gable",
     "pitch": 24.0,
-    "z_eave": 6400.0,
+    "z_eave": 6749.8588,
     "thickness": 220.0,
     "overhang": 450.0,
     "plan_area_mm2": 112000000.0,
-    "z_ridge": 8381.2676,
+    "z_ridge": 8731.1265,
     "rise": 1981.2676,
     "span": 8900.0,
     "rafter_length": 4871.1314
@@ -15376,60 +15731,17 @@
     "obj": "geometry/RM.obj",
     "bbox": {
      "min": [
-      7050.0,
+      7500.0,
       -450.0000000000002,
-      6180.0
+      6529.858836644464
      ],
      "max": [
       21950.0,
       8450.0,
-      8381.267649622985
+      8731.126486267449
      ]
     },
-    "volume_mm3": 29174200000.000004
-   },
-   "extrusion": null
-  },
-  {
-   "id": "RM.G1",
-   "kind": "gable",
-   "ifc_class": "IfcWall",
-   "physical": true,
-   "tags": [
-    "external",
-    "gable"
-   ],
-   "level": "L1",
-   "material": "limestone_rubble",
-   "params": {
-    "roof": "RM"
-   },
-   "derived": {
-    "height": 1761.2676,
-    "thickness": 550.0
-   },
-   "relations": [
-    {
-     "pred": "part_of",
-     "obj": "RM"
-    }
-   ],
-   "geometry": {
-    "step": "geometry/RM.G1.step",
-    "obj": "geometry/RM.G1.obj",
-    "bbox": {
-     "min": [
-      7500.0,
-      44.128090258927024,
-      6400.0
-     ],
-     "max": [
-      8050.0,
-      7955.871909741075,
-      8161.267649622986
-     ]
-    },
-    "volume_mm3": 3832042071.3735895
+    "volume_mm3": 28293099999.999996
    },
    "extrusion": null
   },
@@ -15448,13 +15760,14 @@
     "roof": "RM"
    },
    "derived": {
-    "height": 1761.2676,
-    "thickness": 550.0
+    "height": 2111.1265,
+    "thickness": 500.0
    },
    "relations": [
     {
      "pred": "part_of",
-     "obj": "RM"
+     "obj": "RM",
+     "note": ""
     }
    ],
    "geometry": {
@@ -15462,17 +15775,17 @@
     "obj": "geometry/RM.G2.obj",
     "bbox": {
      "min": [
-      20950.0,
-      44.128090258927024,
-      6400.0
+      21000.0,
+      -1.1994074147998301e-13,
+      6528.858836644464
      ],
      "max": [
       21500.0,
-      7955.871909741075,
-      8161.267649622986
+      8000.0,
+      8511.126486267449
      ]
     },
-    "volume_mm3": 3832042071.3735895
+    "volume_mm3": 4367241116.023653
    },
    "extrusion": null
   },
@@ -15499,7 +15812,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "RM"
+     "obj": "RM",
+     "note": ""
     }
    ],
    "geometry": {
@@ -15507,7 +15821,7 @@
     "obj": "geometry/RM.genoise.obj",
     "bbox": {
      "min": [
-      7230.0,
+      7500.0,
       -270.0,
       6400.0
      ],
@@ -15517,7 +15831,7 @@
       6610.0
      ]
     },
-    "volume_mm3": 1090152000.0
+    "volume_mm3": 1074276000.0
    },
    "extrusion": null
   },
@@ -15561,16 +15875,19 @@
     "gable_thickness": 500.0,
     "gable_material": null,
     "genoise": 2,
-    "genoise_material": null
+    "genoise_material": null,
+    "abuts": [
+     "x0"
+    ]
    },
    "derived": {
     "shape": "hip",
     "pitch": 22.0,
-    "z_eave": 3200.0,
+    "z_eave": 3450.9129,
     "thickness": 220.0,
     "overhang": 450.0,
     "plan_area_mm2": 54000000.0,
-    "z_ridge": 4593.8905,
+    "z_ridge": 4844.8034,
     "rise": 1393.8905,
     "span": 6900.0,
     "rafter_length": 3720.9449
@@ -15581,17 +15898,17 @@
     "obj": "geometry/RK.obj",
     "bbox": {
      "min": [
-      21050.0,
-      549.9999999999992,
-      2979.999999999999
+      21500.0,
+      550.0,
+      3230.9129190245076
      ],
      "max": [
-      30950.000000000004,
-      7450.000000000005,
-      4593.890479131292
+      30950.0,
+      7450.000000000002,
+      4844.803398155799
      ]
     },
-    "volume_mm3": 1609673189.1901798
+    "volume_mm3": 14345100000.000004
    },
    "extrusion": null
   },
@@ -15618,7 +15935,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "RK"
+     "obj": "RK",
+     "note": ""
     }
    ],
    "geometry": {
@@ -15626,7 +15944,7 @@
     "obj": "geometry/RK.genoise.obj",
     "bbox": {
      "min": [
-      21320.0,
+      21500.0,
       820.0,
       3200.0
      ],
@@ -15636,7 +15954,7 @@
       3340.0
      ]
     },
-    "volume_mm3": 589680000.0
+    "volume_mm3": 464940000.0
    },
    "extrusion": null
   },
@@ -15663,11 +15981,11 @@
      ],
      [
       14500.0,
-      -100.0
+      0.0
      ],
      [
       -500.0,
-      -100.0
+      0.0
      ]
     ],
     "shape": "flat",
@@ -15680,7 +15998,10 @@
     "gable_thickness": 500.0,
     "gable_material": null,
     "genoise": 0,
-    "genoise_material": null
+    "genoise_material": null,
+    "abuts": [
+     "y1"
+    ]
    },
    "derived": {
     "shape": "flat",
@@ -15688,7 +16009,7 @@
     "z_eave": 2950.0,
     "thickness": 70.0,
     "overhang": 100.0,
-    "plan_area_mm2": 51000000.0
+    "plan_area_mm2": 52500000.0
    },
    "relations": [],
    "geometry": {
@@ -15728,12 +16049,12 @@
     ],
     "size": null,
     "radius": 40.0,
-    "height": 2880.0,
+    "height": 2800.0,
     "base": 0.0
    },
    "derived": {
-    "height": 2880.0,
-    "z_top": 2880.0,
+    "height": 2800.0,
+    "z_top": 2800.0,
     "radius": 40.0
    },
    "relations": [],
@@ -15749,10 +16070,10 @@
      "max": [
       40.0,
       -3260.0,
-      2880.0
+      2800.0
      ]
     },
-    "volume_mm3": 14476458.947741754
+    "volume_mm3": 14074335.088082261
    },
    "extrusion": null
   },
@@ -15774,12 +16095,12 @@
     ],
     "size": null,
     "radius": 40.0,
-    "height": 2880.0,
+    "height": 2800.0,
     "base": 0.0
    },
    "derived": {
-    "height": 2880.0,
-    "z_top": 2880.0,
+    "height": 2800.0,
+    "z_top": 2800.0,
     "radius": 40.0
    },
    "relations": [],
@@ -15795,10 +16116,10 @@
      "max": [
       3540.0,
       -3260.0,
-      2880.0
+      2800.0
      ]
     },
-    "volume_mm3": 14476458.947741762
+    "volume_mm3": 14074335.088082267
    },
    "extrusion": null
   },
@@ -15820,12 +16141,12 @@
     ],
     "size": null,
     "radius": 40.0,
-    "height": 2880.0,
+    "height": 2800.0,
     "base": 0.0
    },
    "derived": {
-    "height": 2880.0,
-    "z_top": 2880.0,
+    "height": 2800.0,
+    "z_top": 2800.0,
     "radius": 40.0
    },
    "relations": [],
@@ -15841,10 +16162,10 @@
      "max": [
       7040.0,
       -3260.0,
-      2880.0
+      2800.0
      ]
     },
-    "volume_mm3": 14476458.94774178
+    "volume_mm3": 14074335.088082286
    },
    "extrusion": null
   },
@@ -15866,12 +16187,12 @@
     ],
     "size": null,
     "radius": 40.0,
-    "height": 2880.0,
+    "height": 2800.0,
     "base": 0.0
    },
    "derived": {
-    "height": 2880.0,
-    "z_top": 2880.0,
+    "height": 2800.0,
+    "z_top": 2800.0,
     "radius": 40.0
    },
    "relations": [],
@@ -15887,10 +16208,10 @@
      "max": [
       10540.0,
       -3260.0,
-      2880.0
+      2800.0
      ]
     },
-    "volume_mm3": 14476458.947741754
+    "volume_mm3": 14074335.08808226
    },
    "extrusion": null
   },
@@ -15912,12 +16233,12 @@
     ],
     "size": null,
     "radius": 40.0,
-    "height": 2880.0,
+    "height": 2800.0,
     "base": 0.0
    },
    "derived": {
-    "height": 2880.0,
-    "z_top": 2880.0,
+    "height": 2800.0,
+    "z_top": 2800.0,
     "radius": 40.0
    },
    "relations": [],
@@ -15933,10 +16254,10 @@
      "max": [
       14040.0,
       -3260.0,
-      2880.0
+      2800.0
      ]
     },
-    "volume_mm3": 14476458.947741754
+    "volume_mm3": 14074335.08808226
    },
    "extrusion": null
   },
@@ -16028,7 +16349,25 @@
    "derived": {
     "area_mm2": 180000000.0,
     "z_top": 0.0,
-    "voids": 0
+    "voids": 0,
+    "outline": [
+     [
+      -3000.0,
+      -5000.0
+     ],
+     [
+      33000.0,
+      -5000.0
+     ],
+     [
+      33000.0,
+      0.0
+     ],
+     [
+      -3000.0,
+      0.0
+     ]
+    ]
    },
    "relations": [],
    "geometry": {
@@ -16073,7 +16412,7 @@
     "assembly": "garden_wall",
     "align": "right",
     "external": true,
-    "height": 2300.0
+    "height": 2280.0
    },
    "derived": {
     "start": [
@@ -16086,8 +16425,8 @@
     ],
     "length": 16300.0,
     "thickness": 500.0,
-    "height": 2300.0,
-    "elevation": -2000.0,
+    "height": 2280.0,
+    "elevation": -1980.0,
     "angle": 180.0,
     "face": {
      "origin": [
@@ -16128,7 +16467,7 @@
      "min": [
       -3000.0,
       -5000.0,
-      -2000.0
+      -1980.0
      ],
      "max": [
       13300.0,
@@ -16136,13 +16475,13 @@
       300.0
      ]
     },
-    "volume_mm3": 18745000000.0
+    "volume_mm3": 18582000000.0
    },
    "extrusion": {
     "origin": [
      13300.0,
      -4500.0,
-     -2000.0
+     -1980.0
     ],
     "u": [
      -1.0,
@@ -16154,7 +16493,7 @@
     ],
     "length": 16300.0,
     "thickness": 500.0,
-    "height": 2300.0
+    "height": 2280.0
    }
   },
   {
@@ -16180,7 +16519,7 @@
     "assembly": "garden_wall",
     "align": "right",
     "external": true,
-    "height": 2300.0
+    "height": 2280.0
    },
    "derived": {
     "start": [
@@ -16193,8 +16532,8 @@
     ],
     "length": 17300.0,
     "thickness": 500.0,
-    "height": 2300.0,
-    "elevation": -2000.0,
+    "height": 2280.0,
+    "elevation": -1980.0,
     "angle": 180.0,
     "face": {
      "origin": [
@@ -16235,7 +16574,7 @@
      "min": [
       15700.0,
       -5000.0,
-      -2000.0
+      -1980.0
      ],
      "max": [
       33000.0,
@@ -16243,13 +16582,13 @@
       300.0
      ]
     },
-    "volume_mm3": 19895000000.000004
+    "volume_mm3": 19722000000.0
    },
    "extrusion": {
     "origin": [
      33000.0,
      -4500.0,
-     -2000.0
+     -1980.0
     ],
     "u": [
      -1.0,
@@ -16261,7 +16600,7 @@
     ],
     "length": 17300.0,
     "thickness": 500.0,
-    "height": 2300.0
+    "height": 2280.0
    }
   },
   {
@@ -16285,7 +16624,7 @@
      1.0
     ],
     "width": 2400.0,
-    "rise": 2000.0,
+    "rise": 1980.0,
     "going": 300.0,
     "max_riser": 170.0,
     "align": "right",
@@ -16293,14 +16632,14 @@
    },
    "derived": {
     "steps": 12,
-    "riser": 166.6667,
+    "riser": 165.0,
     "going": 300.0,
     "run": 3600.0,
     "top": [
      13300.0,
      -5000.0
     ],
-    "pitch": 29.0546,
+    "pitch": 28.8108,
     "outline": [
      [
       15700.0,
@@ -16323,7 +16662,8 @@
    "relations": [
     {
      "pred": "rises_to",
-     "obj": "L0"
+     "obj": "L0",
+     "note": ""
     }
    ],
    "geometry": {
@@ -16333,7 +16673,7 @@
      "min": [
       13300.0,
       -8600.0,
-      -2000.0
+      -1980.0
      ],
      "max": [
       15700.0,
@@ -16341,7 +16681,7 @@
       0.0
      ]
     },
-    "volume_mm3": 9359999999.999998
+    "volume_mm3": 9266400000.0
    },
    "extrusion": null
   },
@@ -16381,7 +16721,7 @@
     "coping": 500.0,
     "coping_thickness": 60.0,
     "freeboard": 150.0,
-    "top": 20.0,
+    "top": 0.0,
     "coping_material": "travertine",
     "water_material": "pool_water"
    },
@@ -16406,6 +16746,24 @@
      [
       6500.0,
       -10000.0
+     ]
+    ],
+    "cut_outline": [
+     [
+      6250.0,
+      -16750.0
+     ],
+     [
+      6250.0,
+      -9750.0
+     ],
+     [
+      20750.0,
+      -9750.0
+     ],
+     [
+      20750.0,
+      -16750.0
      ]
     ]
    },
@@ -16449,7 +16807,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "PL"
+     "obj": "PL",
+     "note": ""
     }
    ],
    "geometry": {
@@ -16491,7 +16850,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "PL"
+     "obj": "PL",
+     "note": ""
     }
    ],
    "geometry": {
@@ -16559,19 +16919,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "TS"
+     "obj": "TS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TE"
+     "obj": "TE",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TN"
+     "obj": "TN",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TW"
+     "obj": "TW",
+     "note": ""
     }
    ],
    "geometry": {
@@ -16639,19 +17003,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "P1"
+     "obj": "P1",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "MN"
+     "obj": "MN",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TE"
+     "obj": "TE",
+     "note": ""
     }
    ],
    "geometry": {
@@ -16719,19 +17087,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "ME"
+     "obj": "ME",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "MN"
+     "obj": "MN",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "P1"
+     "obj": "P1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -16799,19 +17171,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "KS"
+     "obj": "KS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "KE"
+     "obj": "KE",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "KN"
+     "obj": "KN",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "ME"
+     "obj": "ME",
+     "note": ""
     }
    ],
    "geometry": {
@@ -16879,19 +17255,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "TS"
+     "obj": "TS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TE"
+     "obj": "TE",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TN"
+     "obj": "TN",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TW"
+     "obj": "TW",
+     "note": ""
     }
    ],
    "geometry": {
@@ -16959,19 +17339,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "PC"
+     "obj": "PC",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "ME"
+     "obj": "ME",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "MN"
+     "obj": "MN",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TE"
+     "obj": "TE",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17039,19 +17423,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PB1"
+     "obj": "PB1",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PC"
+     "obj": "PC",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TE"
+     "obj": "TE",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17119,19 +17507,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PB2"
+     "obj": "PB2",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PC"
+     "obj": "PC",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PB1"
+     "obj": "PB1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17199,19 +17591,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PB3"
+     "obj": "PB3",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PC"
+     "obj": "PC",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PB2"
+     "obj": "PB2",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17279,19 +17675,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PB4"
+     "obj": "PB4",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PC"
+     "obj": "PC",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PB3"
+     "obj": "PB3",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17359,19 +17759,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "ME"
+     "obj": "ME",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PC"
+     "obj": "PC",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "PB4"
+     "obj": "PB4",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17439,19 +17843,23 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "TS"
+     "obj": "TS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TE"
+     "obj": "TE",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TN"
+     "obj": "TN",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TW"
+     "obj": "TW",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17518,15 +17926,18 @@
    "relations": [
     {
      "pred": "bounded_by",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "TS"
+     "obj": "TS",
+     "note": ""
     },
     {
      "pred": "bounded_by",
-     "obj": "KS"
+     "obj": "KS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17588,7 +17999,8 @@
    "relations": [
     {
      "pred": "against",
-     "obj": "KN"
+     "obj": "KN",
+     "note": ""
     }
    ],
    "geometry": null,
@@ -17621,7 +18033,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "K1"
+     "obj": "K1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17667,7 +18080,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "K1"
+     "obj": "K1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17715,7 +18129,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "K1"
+     "obj": "K1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17762,7 +18177,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "K1"
+     "obj": "K1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17813,7 +18229,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "K1"
+     "obj": "K1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -17862,7 +18279,8 @@
    "relations": [
     {
      "pred": "part_of",
-     "obj": "K1"
+     "obj": "K1",
+     "note": ""
     }
    ],
    "geometry": {
@@ -18118,7 +18536,7 @@
    "material": "white",
    "params": {
     "at": [
-     11100.0,
+     10950.0,
      3000.0
     ],
     "watts": 8.0
@@ -18133,12 +18551,12 @@
     "obj": "geometry/L6.obj",
     "bbox": {
      "min": [
-      11050.0,
+      10900.0,
       2950.0,
       6364.0
      ],
      "max": [
-      11150.0,
+      11000.0,
       3050.0,
       6376.0
      ]
@@ -18161,7 +18579,7 @@
    "material": "white",
    "params": {
     "at": [
-     17325.0,
+     17550.0,
      3000.0
     ],
     "watts": 8.0
@@ -18176,12 +18594,12 @@
     "obj": "geometry/L7.obj",
     "bbox": {
      "min": [
-      17275.0,
+      17500.0,
       2950.0,
       6364.0
      ],
      "max": [
-      17375.0,
+      17600.0,
       3050.0,
       6376.0
      ]
@@ -18204,7 +18622,7 @@
    "material": "white",
    "params": {
     "at": [
-     11100.0,
+     10950.0,
      5000.0
     ],
     "watts": 8.0
@@ -18219,12 +18637,12 @@
     "obj": "geometry/L8.obj",
     "bbox": {
      "min": [
-      11050.0,
+      10900.0,
       4950.0,
       6364.0
      ],
      "max": [
-      11150.0,
+      11000.0,
       5050.0,
       6376.0
      ]
@@ -18247,7 +18665,7 @@
    "material": "white",
    "params": {
     "at": [
-     17325.0,
+     17550.0,
      5000.0
     ],
     "watts": 8.0
@@ -18262,12 +18680,12 @@
     "obj": "geometry/L9.obj",
     "bbox": {
      "min": [
-      17275.0,
+      17500.0,
       4950.0,
       6364.0
      ],
      "max": [
-      17375.0,
+      17600.0,
       5050.0,
       6376.0
      ]
@@ -18304,7 +18722,8 @@
    "relations": [
     {
      "pred": "on_wall",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -18354,7 +18773,8 @@
    "relations": [
     {
      "pred": "on_wall",
-     "obj": "MS"
+     "obj": "MS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -18404,7 +18824,8 @@
    "relations": [
     {
      "pred": "on_wall",
-     "obj": "MN"
+     "obj": "MN",
+     "note": ""
     }
    ],
    "geometry": {
@@ -18454,7 +18875,8 @@
    "relations": [
     {
      "pred": "on_wall",
-     "obj": "TS"
+     "obj": "TS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -18504,7 +18926,8 @@
    "relations": [
     {
      "pred": "on_wall",
-     "obj": "KS"
+     "obj": "KS",
+     "note": ""
     }
    ],
    "geometry": {
@@ -18541,20 +18964,21 @@
    "params": {
     "on": "KN",
     "from_start": 6000.0,
-    "height": 300.0,
-    "variant": "double"
+    "height": 1100.0,
+    "variant": "double_counter"
    },
    "derived": {
     "at": [
      23957.0,
      6500.0
     ],
-    "z": 300.0
+    "z": 1100.0
    },
    "relations": [
     {
      "pred": "on_wall",
-     "obj": "KN"
+     "obj": "KN",
+     "note": ""
     }
    ],
    "geometry": {
@@ -18564,76 +18988,15 @@
      "min": [
       23914.0,
       6488.0,
-      300.0
+      1100.0
      ],
      "max": [
       24000.0,
       6500.0,
-      386.0
+      1186.0
      ]
     },
     "volume_mm3": 88752.0
-   },
-   "extrusion": null
-  },
-  {
-   "id": "GD",
-   "kind": "slab",
-   "ifc_class": "IfcSlab",
-   "physical": true,
-   "tags": [
-    "floor",
-    "slab"
-   ],
-   "level": "LP",
-   "material": "gravel",
-   "params": {
-    "outline": [
-     [
-      -6000.0,
-      -22000.0
-     ],
-     [
-      36000.0,
-      -22000.0
-     ],
-     [
-      36000.0,
-      -5500.0
-     ],
-     [
-      -6000.0,
-      -5500.0
-     ]
-    ],
-    "thickness": 200.0,
-    "top": 0.0,
-    "voids": [
-     "PL"
-    ]
-   },
-   "derived": {
-    "area_mm2": 602000000.0,
-    "z_top": -2000.0,
-    "voids": 1
-   },
-   "relations": [],
-   "geometry": {
-    "step": "geometry/GD.step",
-    "obj": "geometry/GD.obj",
-    "bbox": {
-     "min": [
-      -6000.0,
-      -22000.0,
-      -2200.0
-     ],
-     "max": [
-      36000.0,
-      -5500.0,
-      -2000.0
-     ]
-    },
-    "volume_mm3": 120399999999.99998
    },
    "extrusion": null
   },
@@ -18668,15 +19031,33 @@
      ]
     ],
     "thickness": 100.0,
-    "top": 20.0,
+    "top": 0.0,
     "voids": [
      "PL"
     ]
    },
    "derived": {
-    "area_mm2": 109000000.0,
+    "area_mm2": 98500000.0,
     "z_top": -1980.0,
-    "voids": 1
+    "voids": 1,
+    "outline": [
+     [
+      3500.0,
+      -18000.0
+     ],
+     [
+      23500.0,
+      -18000.0
+     ],
+     [
+      23500.0,
+      -8000.0
+     ],
+     [
+      3500.0,
+      -8000.0
+     ]
+    ]
    },
    "relations": [],
    "geometry": {
@@ -18694,9 +19075,1963 @@
       -1980.0
      ]
     },
-    "volume_mm3": 10899999999.999998
+    "volume_mm3": 9849999999.999998
    },
    "extrusion": null
+  },
+  {
+   "id": "GD",
+   "kind": "slab",
+   "ifc_class": "IfcSlab",
+   "physical": true,
+   "tags": [
+    "floor",
+    "slab"
+   ],
+   "level": "LP",
+   "material": "gravel",
+   "params": {
+    "outline": [
+     [
+      -6000.0,
+      -22000.0
+     ],
+     [
+      36000.0,
+      -22000.0
+     ],
+     [
+      36000.0,
+      -5500.0
+     ],
+     [
+      -6000.0,
+      -5500.0
+     ]
+    ],
+    "thickness": 200.0,
+    "top": -20.0,
+    "voids": [
+     "PL",
+     "PD"
+    ]
+   },
+   "derived": {
+    "area_mm2": 391500000.0,
+    "z_top": -2000.0,
+    "voids": 2,
+    "outline": [
+     [
+      -6000.0,
+      -22000.0
+     ],
+     [
+      36000.0,
+      -22000.0
+     ],
+     [
+      36000.0,
+      -5500.0
+     ],
+     [
+      -6000.0,
+      -5500.0
+     ]
+    ]
+   },
+   "relations": [],
+   "geometry": {
+    "step": "geometry/GD.step",
+    "obj": "geometry/GD.obj",
+    "bbox": {
+     "min": [
+      -6000.0,
+      -22000.0,
+      -2200.0
+     ],
+     "max": [
+      36000.0,
+      -5500.0,
+      -2000.0
+     ]
+    },
+    "volume_mm3": 98600000000.0
+   },
+   "extrusion": null
+  }
+ ],
+ "clashes": [
+  {
+   "a": "TS",
+   "b": "N6.surround",
+   "volume_mm3": 46416000.0,
+   "depth_mm": 60.00000031213303,
+   "bbox": {
+    "min": [
+     3110.0,
+     0.0,
+     4300.0
+    ],
+    "max": [
+     4390.0,
+     60.0,
+     5920.0
+    ]
+   }
+  },
+  {
+   "a": "TS",
+   "b": "N7.surround",
+   "volume_mm3": 37536000.0,
+   "depth_mm": 60.00000031213303,
+   "bbox": {
+    "min": [
+     3210.0,
+     0.0,
+     7400.0
+    ],
+    "max": [
+     4290.0,
+     60.0,
+     8720.0
+    ]
+   }
+  },
+  {
+   "a": "TS",
+   "b": "F1",
+   "volume_mm3": 975000000.0,
+   "depth_mm": 300.00000029999956,
+   "bbox": {
+    "min": [
+     500.0,
+     0.0,
+     3200.0
+    ],
+    "max": [
+     7000.0,
+     500.0,
+     3500.0
+    ]
+   }
+  },
+  {
+   "a": "TS",
+   "b": "F2",
+   "volume_mm3": 975000000.0,
+   "depth_mm": 300.00000030000047,
+   "bbox": {
+    "min": [
+     500.0,
+     0.0,
+     6400.0
+    ],
+    "max": [
+     7000.0,
+     500.0,
+     6700.0
+    ]
+   }
+  },
+  {
+   "a": "TE",
+   "b": "F1",
+   "volume_mm3": 975000000.0,
+   "depth_mm": 300.0000003000014,
+   "bbox": {
+    "min": [
+     7000.0,
+     500.0,
+     3200.0
+    ],
+    "max": [
+     7500.000000000002,
+     7000.000000000001,
+     3500.0
+    ]
+   }
+  },
+  {
+   "a": "TE",
+   "b": "F2",
+   "volume_mm3": 974999999.9999992,
+   "depth_mm": 300.0000003000023,
+   "bbox": {
+    "min": [
+     7000.0,
+     500.0,
+     6400.0
+    ],
+    "max": [
+     7500.000000000002,
+     7000.0,
+     6700.0
+    ]
+   }
+  },
+  {
+   "a": "TN",
+   "b": "N11.surround",
+   "volume_mm3": 46416000.00000034,
+   "depth_mm": 60.000000312134034,
+   "bbox": {
+    "min": [
+     3110.0,
+     7440.0,
+     4300.0
+    ],
+    "max": [
+     4390.0,
+     7500.000000000001,
+     5920.0
+    ]
+   }
+  },
+  {
+   "a": "TN",
+   "b": "N12.surround",
+   "volume_mm3": 37536000.00000022,
+   "depth_mm": 60.000000312133125,
+   "bbox": {
+    "min": [
+     3210.0,
+     7440.0,
+     7400.0
+    ],
+    "max": [
+     4290.0,
+     7500.000000000001,
+     8720.0
+    ]
+   }
+  },
+  {
+   "a": "TN",
+   "b": "F1",
+   "volume_mm3": 974999999.9999998,
+   "depth_mm": 300.0000003000023,
+   "bbox": {
+    "min": [
+     499.99999999999926,
+     7000.0,
+     3200.0
+    ],
+    "max": [
+     7000.0,
+     7500.000000000001,
+     3500.0
+    ]
+   }
+  },
+  {
+   "a": "TN",
+   "b": "F2",
+   "volume_mm3": 974999999.9999995,
+   "depth_mm": 300.00000030000047,
+   "bbox": {
+    "min": [
+     499.99999999999994,
+     7000.0,
+     6400.0
+    ],
+    "max": [
+     7000.0,
+     7500.000000000001,
+     6700.0
+    ]
+   }
+  },
+  {
+   "a": "TW",
+   "b": "N8.surround",
+   "volume_mm3": 48095999.99999953,
+   "depth_mm": 60.000000312132514,
+   "bbox": {
+    "min": [
+     5.24913446042774e-13,
+     3360.0,
+     800.0
+    ],
+    "max": [
+     60.000000000000284,
+     4640.0,
+     2520.0
+    ]
+   }
+  },
+  {
+   "a": "TW",
+   "b": "N9.surround",
+   "volume_mm3": 46415999.99999951,
+   "depth_mm": 60.00000031213246,
+   "bbox": {
+    "min": [
+     5.790923296444817e-13,
+     3110.0,
+     4300.0
+    ],
+    "max": [
+     60.000000000000284,
+     4390.0,
+     5920.0
+    ]
+   }
+  },
+  {
+   "a": "TW",
+   "b": "N10.surround",
+   "volume_mm3": 37535999.99999959,
+   "depth_mm": 60.000000312132435,
+   "bbox": {
+    "min": [
+     6.004086117172847e-13,
+     3210.0,
+     7400.0
+    ],
+    "max": [
+     60.00000000000024,
+     4290.0,
+     8720.0
+    ]
+   }
+  },
+  {
+   "a": "TW",
+   "b": "F1",
+   "volume_mm3": 975000000.0000014,
+   "depth_mm": 300.0000003000023,
+   "bbox": {
+    "min": [
+     0.0,
+     499.99999999999994,
+     3200.0
+    ],
+    "max": [
+     500.000000000002,
+     7000.0,
+     3500.0
+    ]
+   }
+  },
+  {
+   "a": "TW",
+   "b": "F2",
+   "volume_mm3": 975000000.0000002,
+   "depth_mm": 300.00000030000047,
+   "bbox": {
+    "min": [
+     0.0,
+     500.0,
+     6400.0
+    ],
+    "max": [
+     500.0000000000014,
+     7000.0,
+     6700.0
+    ]
+   }
+  },
+  {
+   "a": "MS",
+   "b": "D1.surround",
+   "volume_mm3": 78336000.0,
+   "depth_mm": 60.00000025,
+   "bbox": {
+    "min": [
+     13160.0,
+     0.0,
+     0.0
+    ],
+    "max": [
+     15340.0,
+     60.0,
+     3170.0
+    ]
+   }
+  },
+  {
+   "a": "MS",
+   "b": "N1.surround",
+   "volume_mm3": 55296000.0,
+   "depth_mm": 60.00000031213303,
+   "bbox": {
+    "min": [
+     8860.0,
+     0.0,
+     700.0
+    ],
+    "max": [
+     10340.0,
+     60.0,
+     2620.0
+    ]
+   }
+  },
+  {
+   "a": "MS",
+   "b": "N2.surround",
+   "volume_mm3": 55296000.0,
+   "depth_mm": 60.00000031213303,
+   "bbox": {
+    "min": [
+     18160.0,
+     0.0,
+     700.0
+    ],
+    "max": [
+     19640.0,
+     60.0,
+     2620.0
+    ]
+   }
+  },
+  {
+   "a": "MS",
+   "b": "N3.surround",
+   "volume_mm3": 51936000.0,
+   "depth_mm": 60.00000031213303,
+   "bbox": {
+    "min": [
+     8860.0,
+     0.0,
+     4300.0
+    ],
+    "max": [
+     10340.0,
+     60.0,
+     6020.0
+    ]
+   }
+  },
+  {
+   "a": "MS",
+   "b": "N4.surround",
+   "volume_mm3": 51936000.0,
+   "depth_mm": 60.00000031213303,
+   "bbox": {
+    "min": [
+     13510.0,
+     0.0,
+     4300.0
+    ],
+    "max": [
+     14990.0,
+     60.0,
+     6020.0
+    ]
+   }
+  },
+  {
+   "a": "MS",
+   "b": "N5.surround",
+   "volume_mm3": 51936000.0,
+   "depth_mm": 60.00000031213303,
+   "bbox": {
+    "min": [
+     18160.0,
+     0.0,
+     4300.0
+    ],
+    "max": [
+     19640.0,
+     60.0,
+     6020.0
+    ]
+   }
+  },
+  {
+   "a": "MS",
+   "b": "F1",
+   "volume_mm3": 2025000000.0,
+   "depth_mm": 300.00000029999956,
+   "bbox": {
+    "min": [
+     7500.0,
+     0.0,
+     3200.0
+    ],
+    "max": [
+     21000.0,
+     500.0,
+     3500.0
+    ]
+   }
+  },
+  {
+   "a": "ME",
+   "b": "N18.surround",
+   "volume_mm3": 37200000.000000045,
+   "depth_mm": 60.000000312134944,
+   "bbox": {
+    "min": [
+     21440.0,
+     3360.0,
+     4900.0
+    ],
+    "max": [
+     21500.0,
+     4640.0,
+     6400.0
+    ]
+   }
+  },
+  {
+   "a": "ME",
+   "b": "F1",
+   "volume_mm3": 1049999999.9999998,
+   "depth_mm": 300.00000030000047,
+   "bbox": {
+    "min": [
+     21000.0,
+     499.99999999999994,
+     3200.0
+    ],
+    "max": [
+     21500.0,
+     7500.0,
+     3500.0
+    ]
+   }
+  },
+  {
+   "a": "ME",
+   "b": "C0K.B1",
+   "volume_mm3": 9999999.999999998,
+   "depth_mm": 10.000000250001904,
+   "bbox": {
+    "min": [
+     21490.0,
+     1500.0,
+     2970.0
+    ],
+    "max": [
+     21500.0,
+     6500.0,
+     3170.0
+    ]
+   }
+  },
+  {
+   "a": "MN",
+   "b": "D0.surround",
+   "volume_mm3": 59856000.00000091,
+   "depth_mm": 60.000000312134034,
+   "bbox": {
+    "min": [
+     13510.0,
+     7940.0,
+     0.0
+    ],
+    "max": [
+     14990.0,
+     8000.000000000001,
+     2620.0
+    ]
+   }
+  },
+  {
+   "a": "MN",
+   "b": "N13.surround",
+   "volume_mm3": 55296000.0,
+   "depth_mm": 60.000000312133125,
+   "bbox": {
+    "min": [
+     17660.0,
+     7940.0,
+     700.0
+    ],
+    "max": [
+     19140.0,
+     8000.0,
+     2620.0
+    ]
+   }
+  },
+  {
+   "a": "MN",
+   "b": "N14.surround",
+   "volume_mm3": 55296000.00000126,
+   "depth_mm": 60.000000312134944,
+   "bbox": {
+    "min": [
+     9360.0,
+     7940.0,
+     700.0
+    ],
+    "max": [
+     10840.0,
+     8000.000000000002,
+     2620.0
+    ]
+   }
+  },
+  {
+   "a": "MN",
+   "b": "N15.surround",
+   "volume_mm3": 37536000.00000031,
+   "depth_mm": 60.000000312134034,
+   "bbox": {
+    "min": [
+     16785.0,
+     7940.0,
+     4600.0
+    ],
+    "max": [
+     17865.0,
+     8000.000000000001,
+     5920.0
+    ]
+   }
+  },
+  {
+   "a": "MN",
+   "b": "N16.surround",
+   "volume_mm3": 46416000.00000071,
+   "depth_mm": 60.000000312134034,
+   "bbox": {
+    "min": [
+     13610.0,
+     7940.0,
+     4300.0
+    ],
+    "max": [
+     14890.0,
+     8000.000000000001,
+     5920.0
+    ]
+   }
+  },
+  {
+   "a": "MN",
+   "b": "N17.surround",
+   "volume_mm3": 37536000.000000566,
+   "depth_mm": 60.000000312134034,
+   "bbox": {
+    "min": [
+     10560.0,
+     7940.0,
+     4600.0
+    ],
+    "max": [
+     11640.0,
+     8000.000000000002,
+     5920.0
+    ]
+   }
+  },
+  {
+   "a": "MN",
+   "b": "F1",
+   "volume_mm3": 2024999999.999999,
+   "depth_mm": 300.00000042426564,
+   "bbox": {
+    "min": [
+     7500.0,
+     7500.0,
+     3200.0
+    ],
+    "max": [
+     21000.0,
+     8000.0,
+     3500.0
+    ]
+   }
+  },
+  {
+   "a": "KS",
+   "b": "D3.surround",
+   "volume_mm3": 68436000.0,
+   "depth_mm": 60.000000312133125,
+   "bbox": {
+    "min": [
+     22560.0,
+     1000.0,
+     0.0
+    ],
+    "max": [
+     24690.0,
+     1060.0,
+     2620.0
+    ]
+   }
+  },
+  {
+   "a": "KS",
+   "b": "D4.surround",
+   "volume_mm3": 68436000.0,
+   "depth_mm": 60.000000312133125,
+   "bbox": {
+    "min": [
+     26660.0,
+     1000.0,
+     0.0
+    ],
+    "max": [
+     28790.0,
+     1060.0,
+     2620.0
+    ]
+   }
+  },
+  {
+   "a": "KE",
+   "b": "N19.surround",
+   "volume_mm3": 48095999.999999985,
+   "depth_mm": 60.000000312134944,
+   "bbox": {
+    "min": [
+     30440.0,
+     3360.0,
+     800.0
+    ],
+    "max": [
+     30500.0,
+     4640.0,
+     2520.0
+    ]
+   }
+  },
+  {
+   "a": "KE",
+   "b": "C0K.B15",
+   "volume_mm3": 9999999.999999998,
+   "depth_mm": 10.000000250001904,
+   "bbox": {
+    "min": [
+     30000.0,
+     1500.0,
+     2970.0
+    ],
+    "max": [
+     30010.0,
+     6500.0,
+     3170.0
+    ]
+   }
+  },
+  {
+   "a": "KN",
+   "b": "N20.surround",
+   "volume_mm3": 51936000.00000048,
+   "depth_mm": 60.000000312134034,
+   "bbox": {
+    "min": [
+     25010.0,
+     6940.0,
+     900.0
+    ],
+    "max": [
+     26490.0,
+     7000.000000000001,
+     2620.0
+    ]
+   }
+  },
+  {
+   "a": "D1",
+   "b": "D1.glass",
+   "volume_mm3": 2258987.3590119197,
+   "depth_mm": 10.000000300411727,
+   "bbox": {
+    "min": [
+     13360.0,
+     244.9999999999998,
+     421.0
+    ],
+    "max": [
+     15140.0,
+     255.0,
+     2890.0
+    ]
+   }
+  },
+  {
+   "a": "D1.surround",
+   "b": "RP",
+   "volume_mm3": 245000.0,
+   "depth_mm": 25.0,
+   "bbox": {
+    "min": [
+     13160.0,
+     -25.0,
+     2880.0
+    ],
+    "max": [
+     13300.0,
+     0.0,
+     2950.0
+    ]
+   }
+  },
+  {
+   "a": "N1",
+   "b": "N1.glass",
+   "volume_mm3": 1092000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     9060.0,
+     245.0,
+     860.0
+    ],
+    "max": [
+     10140.0,
+     255.0,
+     2340.0
+    ]
+   }
+  },
+  {
+   "a": "N2",
+   "b": "N2.glass",
+   "volume_mm3": 1092000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     18360.0,
+     245.0,
+     860.0
+    ],
+    "max": [
+     19440.0,
+     255.0,
+     2340.0
+    ]
+   }
+  },
+  {
+   "a": "N3",
+   "b": "N3.glass",
+   "volume_mm3": 1032000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     9060.0,
+     245.0,
+     4460.0
+    ],
+    "max": [
+     10140.0,
+     255.0,
+     5740.0
+    ]
+   }
+  },
+  {
+   "a": "N4",
+   "b": "N4.glass",
+   "volume_mm3": 1032000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     13710.0,
+     245.0,
+     4460.0
+    ],
+    "max": [
+     14790.0,
+     255.0,
+     5740.0
+    ]
+   }
+  },
+  {
+   "a": "N5",
+   "b": "N5.glass",
+   "volume_mm3": 1032000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     18360.0,
+     245.0,
+     4460.0
+    ],
+    "max": [
+     19440.0,
+     255.0,
+     5740.0
+    ]
+   }
+  },
+  {
+   "a": "D2",
+   "b": "D2.glass",
+   "volume_mm3": 4050000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     2300.0,
+     245.0,
+     50.0
+    ],
+    "max": [
+     5200.0,
+     255.0,
+     2550.0
+    ]
+   }
+  },
+  {
+   "a": "N6",
+   "b": "N6.glass",
+   "volume_mm3": 882000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     3310.0,
+     245.0,
+     4460.0
+    ],
+    "max": [
+     4190.0,
+     255.0,
+     5640.0
+    ]
+   }
+  },
+  {
+   "a": "N7",
+   "b": "N7.glass",
+   "volume_mm3": 468000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     3410.0,
+     245.0,
+     7560.0
+    ],
+    "max": [
+     4090.0,
+     255.0,
+     8440.0
+    ]
+   }
+  },
+  {
+   "a": "N8",
+   "b": "N8.glass",
+   "volume_mm3": 912000.000000018,
+   "depth_mm": 10.000000000000199,
+   "bbox": {
+    "min": [
+     245.0,
+     3560.0,
+     960.0
+    ],
+    "max": [
+     255.0000000000002,
+     4440.0,
+     2240.0
+    ]
+   }
+  },
+  {
+   "a": "N9",
+   "b": "N9.glass",
+   "volume_mm3": 882000.0000000176,
+   "depth_mm": 10.000000000000199,
+   "bbox": {
+    "min": [
+     245.0,
+     3310.0,
+     4460.0
+    ],
+    "max": [
+     255.0000000000002,
+     4190.0,
+     5640.0
+    ]
+   }
+  },
+  {
+   "a": "N10",
+   "b": "N10.glass",
+   "volume_mm3": 468000.00000000664,
+   "depth_mm": 10.000000000000142,
+   "bbox": {
+    "min": [
+     245.0,
+     3410.0,
+     7560.0
+    ],
+    "max": [
+     255.00000000000014,
+     4090.0,
+     8440.0
+    ]
+   }
+  },
+  {
+   "a": "N11",
+   "b": "N11.glass",
+   "volume_mm3": 882000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     3310.0,
+     7245.0,
+     4460.0
+    ],
+    "max": [
+     4190.0,
+     7255.0,
+     5640.0
+    ]
+   }
+  },
+  {
+   "a": "N12",
+   "b": "N12.glass",
+   "volume_mm3": 468000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     3410.0,
+     7245.0,
+     7560.0
+    ],
+    "max": [
+     4090.0,
+     7255.0,
+     8440.0
+    ]
+   }
+  },
+  {
+   "a": "N13",
+   "b": "N13.glass",
+   "volume_mm3": 1092000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     17860.0,
+     7745.0,
+     860.0
+    ],
+    "max": [
+     18940.0,
+     7755.0,
+     2340.0
+    ]
+   }
+  },
+  {
+   "a": "N14",
+   "b": "N14.glass",
+   "volume_mm3": 1092000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     9560.0,
+     7745.0,
+     860.0
+    ],
+    "max": [
+     10640.0,
+     7755.0,
+     2340.0
+    ]
+   }
+  },
+  {
+   "a": "N15",
+   "b": "N15.glass",
+   "volume_mm3": 468000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     16985.0,
+     7745.0,
+     4760.0
+    ],
+    "max": [
+     17665.0,
+     7755.0,
+     5640.0
+    ]
+   }
+  },
+  {
+   "a": "N16",
+   "b": "N16.glass",
+   "volume_mm3": 882000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     13810.0,
+     7745.0,
+     4460.0
+    ],
+    "max": [
+     14690.0,
+     7755.0,
+     5640.0
+    ]
+   }
+  },
+  {
+   "a": "N17",
+   "b": "N17.glass",
+   "volume_mm3": 468000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     10760.0,
+     7745.0,
+     4760.0
+    ],
+    "max": [
+     11440.0,
+     7755.0,
+     5640.0
+    ]
+   }
+  },
+  {
+   "a": "N18",
+   "b": "N18.glass",
+   "volume_mm3": 882000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     21245.0,
+     3560.0,
+     5060.0
+    ],
+    "max": [
+     21255.0,
+     4440.0,
+     6240.0
+    ]
+   }
+  },
+  {
+   "a": "D3",
+   "b": "D3.glass",
+   "volume_mm3": 1932000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     22760.0,
+     1245.0,
+     501.0
+    ],
+    "max": [
+     24490.0,
+     1255.0,
+     1899.0
+    ]
+   }
+  },
+  {
+   "a": "D4",
+   "b": "D4.glass",
+   "volume_mm3": 1932000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     26860.0,
+     1245.0,
+     501.0
+    ],
+    "max": [
+     28590.0,
+     1255.0,
+     1899.0
+    ]
+   }
+  },
+  {
+   "a": "N19",
+   "b": "N19.glass",
+   "volume_mm3": 912000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     30245.0,
+     3560.0,
+     960.0
+    ],
+    "max": [
+     30255.0,
+     4440.0,
+     2240.0
+    ]
+   }
+  },
+  {
+   "a": "N20",
+   "b": "N20.glass",
+   "volume_mm3": 1032000.0,
+   "depth_mm": 10.0,
+   "bbox": {
+    "min": [
+     25210.0,
+     6745.0,
+     1060.0
+    ],
+    "max": [
+     26290.0,
+     6755.0,
+     2340.0
+    ]
+   }
+  },
+  {
+   "a": "P1",
+   "b": "C0M",
+   "volume_mm3": 31500000.000000022,
+   "depth_mm": 30.00000024999963,
+   "bbox": {
+    "min": [
+     14500.0,
+     500.0,
+     3170.0
+    ],
+    "max": [
+     14650.000000000002,
+     7500.0,
+     3200.0
+    ]
+   }
+  },
+  {
+   "a": "FP",
+   "b": "C0M",
+   "volume_mm3": 36000000.0,
+   "depth_mm": 30.00000024999963,
+   "bbox": {
+    "min": [
+     9500.0,
+     6900.0,
+     3170.0
+    ],
+    "max": [
+     11500.0,
+     7500.0,
+     3200.0
+    ]
+   }
+  },
+  {
+   "a": "FP",
+   "b": "C0M.B4",
+   "volume_mm3": 2640000.0000002286,
+   "depth_mm": 20.000000300000465,
+   "bbox": {
+    "min": [
+     9500.0,
+     6900.0,
+     2950.0
+    ],
+    "max": [
+     9520.000000000002,
+     7500.0,
+     3170.0
+    ]
+   }
+  },
+  {
+   "a": "FP",
+   "b": "C0M.B5",
+   "volume_mm3": 18480000.0,
+   "depth_mm": 140.00000029999865,
+   "bbox": {
+    "min": [
+     9980.000000000002,
+     6900.0,
+     2950.0
+    ],
+    "max": [
+     10120.000000000002,
+     7500.0,
+     3170.0
+    ]
+   }
+  },
+  {
+   "a": "FP",
+   "b": "C0M.B6",
+   "volume_mm3": 18480000.0,
+   "depth_mm": 140.00000029999865,
+   "bbox": {
+    "min": [
+     10580.000000000002,
+     6900.0,
+     2950.0
+    ],
+    "max": [
+     10720.000000000002,
+     7500.0,
+     3170.0
+    ]
+   }
+  },
+  {
+   "a": "FP",
+   "b": "C0M.B7",
+   "volume_mm3": 18480000.0,
+   "depth_mm": 140.00000029999865,
+   "bbox": {
+    "min": [
+     11180.000000000002,
+     6900.0,
+     2950.0
+    ],
+    "max": [
+     11320.000000000002,
+     7500.0,
+     3170.0
+    ]
+   }
+  },
+  {
+   "a": "CH",
+   "b": "RM",
+   "volume_mm3": 140800000.00000018,
+   "depth_mm": 200.98000098137527,
+   "bbox": {
+    "min": [
+     10100.0,
+     6850.0,
+     6886.041784891291
+    ],
+    "max": [
+     10900.0,
+     7650.0,
+     7462.224733138122
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M",
+   "volume_mm3": 60750000.0,
+   "depth_mm": 30.000000250000085,
+   "bbox": {
+    "min": [
+     7500.0,
+     6050.0,
+     6370.0
+    ],
+    "max": [
+     21000.0,
+     6200.0,
+     6400.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B1",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     7590.000000000001,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     7710.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B2",
+   "volume_mm3": 3240000.0000000084,
+   "depth_mm": 120.0000003000032,
+   "bbox": {
+    "min": [
+     8190.000000000001,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     8310.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B3",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     8790.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     8910.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B4",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     9390.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     9510.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B5",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     9990.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     10110.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B6",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     10590.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     10710.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B7",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     11190.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     11310.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B8",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     11790.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     11910.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B9",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     12390.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     12510.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B10",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     12990.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     13110.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B11",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     13590.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     13710.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B12",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     14190.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     14310.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B13",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     14790.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     14910.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B14",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     15390.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     15510.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B15",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     15990.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     16110.000000000002,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B16",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     16590.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     16710.0,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B17",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     17190.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     17310.0,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B18",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     17790.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     17910.0,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B19",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     18390.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     18510.0,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B20",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     18990.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     19110.0,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B21",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     19590.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     19710.0,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B22",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     20190.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     20310.0,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PC",
+   "b": "C1M.B23",
+   "volume_mm3": 3240000.0,
+   "depth_mm": 120.00000030000228,
+   "bbox": {
+    "min": [
+     20790.0,
+     6050.0,
+     6190.0
+    ],
+    "max": [
+     20910.0,
+     6200.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PB1",
+   "b": "C1M",
+   "volume_mm3": 24975000.0,
+   "depth_mm": 30.000000250001904,
+   "bbox": {
+    "min": [
+     10200.0,
+     500.0,
+     6370.0
+    ],
+    "max": [
+     10350.000000000002,
+     6050.000000000001,
+     6400.0
+    ]
+   }
+  },
+  {
+   "a": "PB2",
+   "b": "C1M",
+   "volume_mm3": 24975000.000000305,
+   "depth_mm": 30.0,
+   "bbox": {
+    "min": [
+     11850.0,
+     500.0,
+     6370.0
+    ],
+    "max": [
+     12000.000000000002,
+     6050.0,
+     6400.0
+    ]
+   }
+  },
+  {
+   "a": "PB2",
+   "b": "C1M.B8",
+   "volume_mm3": 59940000.00000181,
+   "depth_mm": 60.00000000000182,
+   "bbox": {
+    "min": [
+     11850.0,
+     500.0,
+     6190.0
+    ],
+    "max": [
+     11910.000000000002,
+     6050.0,
+     6370.0
+    ]
+   }
+  },
+  {
+   "a": "PB3",
+   "b": "C1M",
+   "volume_mm3": 24975000.0,
+   "depth_mm": 30.000000250000085,
+   "bbox": {
+    "min": [
+     16425.0,
+     500.0,
+     6370.0
+    ],
+    "max": [
+     16575.0,
+     6050.0,
+     6400.0
+    ]
+   }
+  },
+  {
+   "a": "PB4",
+   "b": "C1M",
+   "volume_mm3": 24975000.0,
+   "depth_mm": 30.0,
+   "bbox": {
+    "min": [
+     18075.0,
+     500.0,
+     6370.0
+    ],
+    "max": [
+     18225.0,
+     6050.0,
+     6400.0
+    ]
+   }
+  },
+  {
+   "a": "C1M",
+   "b": "L6",
+   "volume_mm3": 47123.889803846876,
+   "depth_mm": 6.000000203434258,
+   "bbox": {
+    "min": [
+     10900.0,
+     2950.0,
+     6370.0
+    ],
+    "max": [
+     11000.0,
+     3050.0,
+     6376.0
+    ]
+   }
+  },
+  {
+   "a": "C1M",
+   "b": "L7",
+   "volume_mm3": 47123.88980384697,
+   "depth_mm": 6.000000206676442,
+   "bbox": {
+    "min": [
+     17500.0,
+     2950.0,
+     6370.0
+    ],
+    "max": [
+     17600.0,
+     3050.0,
+     6376.0
+    ]
+   }
+  },
+  {
+   "a": "C1M",
+   "b": "L8",
+   "volume_mm3": 47123.88980384682,
+   "depth_mm": 6.00000020083293,
+   "bbox": {
+    "min": [
+     10900.0,
+     4950.0,
+     6370.0
+    ],
+    "max": [
+     11000.0,
+     5050.0,
+     6376.0
+    ]
+   }
+  },
+  {
+   "a": "C1M",
+   "b": "L9",
+   "volume_mm3": 47123.88980384691,
+   "depth_mm": 6.000000203434258,
+   "bbox": {
+    "min": [
+     17500.0,
+     4950.0,
+     6370.0
+    ],
+    "max": [
+     17600.0,
+     5050.0,
+     6376.0
+    ]
+   }
+  },
+  {
+   "a": "TR",
+   "b": "RW1",
+   "volume_mm3": 1222500000.0000045,
+   "depth_mm": 150.0,
+   "bbox": {
+    "min": [
+     -3000.0,
+     -5000.0,
+     -150.0
+    ],
+    "max": [
+     13300.0,
+     -4499.999999999998,
+     0.0
+    ]
+   }
+  },
+  {
+   "a": "TR",
+   "b": "RW2",
+   "volume_mm3": 1297500000.0000048,
+   "depth_mm": 150.0,
+   "bbox": {
+    "min": [
+     15700.0,
+     -5000.0,
+     -150.0
+    ],
+    "max": [
+     33000.0,
+     -4499.999999999998,
+     0.0
+    ]
+   }
   }
  ]
 }
