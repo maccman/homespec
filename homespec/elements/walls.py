@@ -252,7 +252,7 @@ class Opening(Element):
         ctx.cut(self.host, self.void_solid(x, wall, z))
         members = self.frame_members(x, wall, z)
         panes, glass_area = self.panes_of(x, wall, z)
-        level = self.level or ctx.built(self.host).level
+        level = self.level or ctx.level_at(z).id          # the storey of the sill, not of the wall
         head = self.head_height()
         void_ex = Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=t + 200, height=head)
         geom = OpeningGeometry(host=self.host, from_start=x, from_end=wall.length - x - self.width, width=self.width, height=head,
@@ -426,7 +426,7 @@ class Arch(Opening):
         wall = ctx.derived(self.host, WallGeometry)
         x = self.position(wall)
         z = wall.elevation + self.sill
-        level = self.level or ctx.built(self.host).level
+        level = self.level or ctx.level_at(z).id          # the storey of the sill, not of the wall
         void = self.void_solid(x, wall, z)
         ctx.cut(self.host, void)
         void_entity = ArchVoid(f"{self.id}.void", opening=self.id, level=level)

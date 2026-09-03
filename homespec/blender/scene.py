@@ -226,6 +226,10 @@ class Scene:
         lo, hi = self.bbox(id)
         return (lo + hi) / 2
 
+    def rng(self, name: str) -> random.Random:
+        """A random generator seeded by ``name``: adding a shrub in one block never reshuffles another."""
+        return random.Random(f"homespec:{name}")
+
     def box(self, name, loc, size, m, rot_z=0.0, bevel=0.0):
         bpy.ops.mesh.primitive_cube_add(size=1, location=loc)
         o = bpy.context.object
@@ -304,7 +308,7 @@ class Scene:
         o.name = name
         o.location = loc
         o.scale = (1.0, 1.0, scale_z)
-        o.rotation_euler = (0.0, 0.0, self.random.uniform(0.0, 6.28))
+        o.rotation_euler = (0.0, 0.0, self.rng(name).uniform(0.0, 6.28))
         if core is not None:
             self.sphere(f"{name}_core", loc, r * 0.8, core).scale = (1.0, 1.0, scale_z)
         return o
@@ -349,7 +353,7 @@ class Scene:
             scn.collection.objects.link(o)
         o.name = name
         o.location = loc
-        o.rotation_euler = (0.0, 0.0, self.random.uniform(0.0, 6.28))
+        o.rotation_euler = (0.0, 0.0, self.rng(name).uniform(0.0, 6.28))
         return o
 
     def _spike_plant(self, name, r, stalks, height, seed, leaf_m, flower_m, leaf):
@@ -600,14 +604,60 @@ def timed(tag: str, fn) -> None:
     print(f"TIMING {tag}: {time.time() - t:.1f}s", flush=True)
 
 
+def check_camera(reach: float = 0.35) -> None:
+    """Report a camera that sits inside solid geometry, the usual cause of a black frame.
+
+    Six short rays leave the lens; a face hit from behind (its normal along
+    the ray) at short range means the camera is inside that mesh. Reported as
+    an ``ERROR`` line, which the pipeline turns into an exception.
+    """
+    cam = scn.camera
+    if cam is None:
+        return
+    dg = bpy.context.evaluated_depsgraph_get()
+    o = cam.matrix_world.translation
+    inside = set()
+    hits = 0
+    for d in ((1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)):
+        d = Vector(d)
+        ok, loc, nrm, _, obj, _ = scn.ray_cast(dg, o, d, distance=reach)
+        if ok:
+            hits += 1
+            if nrm.dot(d) > 0 and obj is not None:
+                inside.add(obj.name)
+    if inside or hits == 6:
+        print(f"ERROR camera at ({o.x:.2f}, {o.y:.2f}, {o.z:.2f}) at frame {scn.frame_current} is inside {', '.join(sorted(inside)) or 'geometry on every side'}", flush=True)
+
+
+def check_frame(path: str) -> None:
+    """Report a rendered frame that is black, so a bad camera never passes silently."""
+    import array
+    img = bpy.data.images.load(path)
+    try:
+        buf = array.array('f', [0.0]) * len(img.pixels)
+        img.pixels.foreach_get(buf)
+        rgb = [buf[i] for i in range(0, len(buf), 4 * 61)]      # every 61st pixel's red is plenty
+        mean = sum(rgb) / max(1, len(rgb))
+        if mean < 0.004:
+            print(f"ERROR black frame {os.path.basename(path)} (mean {mean:.4f})", flush=True)
+    finally:
+        bpy.data.images.remove(img)
+
+
 if MODE == "still":
     scn.render.engine = 'CYCLES'
     for fr in [int(v) for v in os.environ.get("FRAME", "1").split(",")]:
         scn.frame_set(fr)
+        check_camera()
         scn.render.filepath = os.path.join(OUT, "renders", f"still_f{fr:03d}.png")
         timed(f"still f{fr}", lambda: bpy.ops.render.render(write_still=True))
+        check_frame(scn.render.filepath)
 elif MODE == "anim":
     scn.render.engine = 'CYCLES'
+    for fr in range(scn.frame_start, scn.frame_end + 1, 12):       # walk the path before spending an hour on it
+        scn.frame_set(fr)
+        check_camera()
+    scn.frame_set(scn.frame_start)
     scn.render.filepath = os.path.join(OUT, "renders", "anim", "frame_####")
     timed("anim", lambda: bpy.ops.render.render(animation=True))
 elif MODE == "save":

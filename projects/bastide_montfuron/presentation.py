@@ -12,8 +12,7 @@ HDRI = os.path.join(os.path.dirname(__file__), "..", "..", "assets", "hdri", "qw
 
 
 def dress(scene):
-    R = scene.random
-    R.seed(21)
+    R = scene.rng("land")
     gravel = scene.pbr("p_gravel", "gravel", tile=2.5, value=1.45, tint=(1.0, 0.98, 0.9))
     earth = scene.flat("p_earth", (0.44, 0.42, 0.28), rough=1.0)
     rug_red = scene.pbr("p_rug_red", "quatrefoil_jacquard_fabric", tile=1.2, value=0.7, tint=(0.75, 0.3, 0.25))
@@ -52,10 +51,12 @@ def dress(scene):
         mound.scale = (rx, ry, h)
 
     # ---- the pool garden: gravel and travertine are in the spec; loungers, box balls, lavender, oleander, olives
+    R = scene.rng("loungers")
     for k, x in enumerate((7.0, 9.6, 12.2, 14.8, 17.4)):
         _lounger(scene, f"lounger_{k}", (x, -18.6, -2.0), math.pi, wicker, linen, grey_linen, iron)
         scene.box(f"lounger_table_{k}", (x + 1.3, -18.6, -1.75), (0.5, 0.5, 0.45), wicker)
     # the massed border between the pool and the retaining wall: clipped box, grey bushes, perovskia, small olives
+    R = scene.rng("border")
     shrubs = ("shrub_02",)                  # the only one shaped like a bush; 01, 03 and 04 are ground patches
     k = 0
     for x in [xx * 0.5 for xx in range(-8, 68)]:
@@ -75,8 +76,10 @@ def dress(scene):
         if R.random() < 0.5:
             scene.model(R.choice(("shrub_01", "shrub_03", "periwinkle_plant")), (x + 0.3, y + R.uniform(-1.2, 0.4), -2.0), rot_z=R.uniform(0, 6.28))
         k += 1
+    R = scene.rng("olives")
     for x, y in [(1.0, -7.4), (9.5, -7.8), (21.0, -7.6), (29.0, -7.2)]:
         scene.model("searsia_lucida", (x, y, -2.0), rot_z=R.uniform(0, 6.28), height=R.uniform(2.6, 3.4))
+    R = scene.rng("climbers")
     # the retaining wall wears its climbers
     for k in range(64):
         x = R.uniform(-3.5, 33.5)
@@ -84,6 +87,7 @@ def dress(scene):
             continue
         r = R.choice((0.5, 0.7, 0.9))
         scene.foliage(f"climber_{k}", (x, -5.75 - r * 0.3, R.uniform(-1.5, -0.35)), r, vine, leaf=0.07, seed=k % 3, cover=1.2).scale = (1.0, 0.45, 0.8)
+    R = scene.rng("pots")
     # box balls in pots at the pool corners and along the south deck, lavender rows beyond it
     for k, (x, y) in enumerate([(5.5, -9.4), (21.5, -9.4), (21.5, -17.6), (24.8, -13.0)]):
         scene.model("planter_pot_clay", (x, y, -2.0), rot_z=R.uniform(0, 6.28), scale=1.5)
@@ -94,14 +98,17 @@ def dress(scene):
             scene.spikes(f"lav_s_{k}", (x, y, -2.0), lavender_leaf, lavender, r=R.choice((0.35, 0.42, 0.5)), seed=k % 3)
         else:
             scene.model(R.choice(shrubs), (x, y, -2.0), rot_z=R.uniform(0, 6.28), height=R.uniform(0.6, 1.1))
+    R = scene.rng("oleanders")
     for k, (x, y) in enumerate([(-2.5, -7.5), (29.5, -8.0), (-3.5, -21.8), (31.5, -22.5)]):
         _oleander(scene, f"oleander_{k}", (x, y, -2.0), oleander, pink, R)
+    R = scene.rng("olive_grove")
     for x, y in [(-8, -12), (-6, -22), (33, -15), (36, -24), (10, -27), (18, -28), (-12, -4), (38, -6), (2, -30), (26, -31)]:
         scene.model("island_tree_02", (x, y, -2.4), rot_z=R.uniform(0, 6.28), height=R.uniform(4.0, 5.8))
     for k in range(7):
         x, y, h = 40.5 + R.uniform(-0.3, 0.3), -26 + k * 3.5, R.uniform(8.0, 10.5)
         scene.cyl(f"cypress_trunk_{k}", (x, y, -1.6), 0.12, 1.0, trunk)
         scene.foliage(f"cypress_{k}", (x, y, -1.4 + h / 2), 1.0, cypress, leaf=0.12, seed=k % 2, cover=1.6, core=cypress).scale = (0.42, 0.42, h / 2)
+    R = scene.rng("planes")
     for _k, (x, y, h) in enumerate([(-14, 6, 12), (-9, 16, 11), (36, 14, 10), (-16, -14, 11)]):
         scene.model("island_tree_01", (x, y, -0.05 if y > 0 else -2.4), rot_z=R.uniform(0, 6.28), height=h)
     for _k in range(34):                    # the oak wood on the slope behind
@@ -113,6 +120,7 @@ def dress(scene):
     for k, (x, y, h) in enumerate([(44, -40, 12), (52, -20, 11), (-30, -34, 12)]):
         _pine(scene, f"pine_{k}", (x, y, -2.4), h, trunk, pine, R)
     # a vine over the kitchen wing and along the pergola beam
+    R = scene.rng("vines")
     for k in range(70):          # a creeper on the kitchen wing's south wall, hugging the stone
         x, z = R.uniform(22.5, 29.5), R.uniform(1.6, 3.4)
         scene.foliage(f"vine_k_{k}", (x, -0.72 - R.uniform(0.0, 0.1), z), 0.2, vine, leaf=0.06, seed=k % 2, cover=1.2).scale = (1.0, 0.5, 1.0)
@@ -120,6 +128,7 @@ def dress(scene):
         x = R.uniform(-0.6, 14.6)
         scene.foliage(f"vine_p_{k}", (x, -3.4 + R.uniform(-0.14, 0.14), 2.86 + R.uniform(-0.1, 0.16)), 0.12, vine, leaf=0.05, seed=k % 2, cover=1.2)
 
+    R = scene.rng("terrace")
     # ---- terrace life: lantern posts, wicker seating under the pergola, pots along the walls
     for k, x in enumerate((-1.0, 9.0, 16.5, 25.0)):
         scene.cyl(f"lamp_post_{k}", (x, -4.3, 1.6), 0.03, 3.2, iron)
@@ -145,6 +154,7 @@ def dress(scene):
     scene.box("rail_top_a", (5.15, -4.75, 1.1), (16.3, 0.03, 0.03), iron)
     scene.box("rail_top_b", (24.35, -4.75, 1.1), (17.3, 0.03, 0.03), iron)
 
+    R = scene.rng("interior")
     # ---- shutters and surrounds come from the spec. Inside: hall, living room, dining room, kitchen, bedrooms
     scene.model("chinese_console_table", (0.2, 3.75, 0.0), rot_z=math.radians(90), scale=1.25)
     scene.model("ornate_mirror_01", (0.02, 3.75, 1.35), rot_z=math.radians(90), scale=1.5)

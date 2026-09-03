@@ -17,7 +17,7 @@ def _house():
 def test_hip_roof_meets_at_a_ridge_and_has_no_gables():
     house = _house()
     with house:
-        Roof("R", outline=[(0, 0), (12000, 0), (12000, 8000), (0, 8000)], level="L0", kind_="hip", pitch=25, overhang=400, genoise=3, material="tile")
+        Roof("R", outline=[(0, 0), (12000, 0), (12000, 8000), (0, 8000)], level="L0", shape="hip", pitch=25, overhang=400, genoise=3, material="tile")
     b = house.compile()
     roof = b["R"]
     bb = G.bbox(roof.solid)
@@ -30,7 +30,7 @@ def test_hip_roof_meets_at_a_ridge_and_has_no_gables():
 def test_flat_roof_is_a_slab_at_the_eave():
     house = _house()
     with house:
-        Roof("A", outline=[(0, 0), (6000, 0), (6000, 3000), (0, 3000)], level="L0", kind_="flat", eave=2600, thickness=60, overhang=200)
+        Roof("A", outline=[(0, 0), (6000, 0), (6000, 3000), (0, 3000)], level="L0", shape="flat", eave=2600, thickness=60, overhang=200)
     r = house.compile()["A"]
     bb = G.bbox(r.solid)
     assert math.isclose(bb.max[2], 2600) and math.isclose(bb.min[2], 2540) and math.isclose(bb.min[0], -200)
@@ -103,3 +103,19 @@ def test_pool_shell_rises_to_the_coping():
         Pool("P", outline=[(0, 0), (10000, 0), (10000, 4000), (0, 4000)], level="L0", depth=1400, coping=400, material="tile")
     b = house.compile()
     assert math.isclose(G.bbox(b["P"].solid).max[2], 0) and math.isclose(G.bbox(b["P"].solid).min[2], -1400 - 250)
+
+
+def test_an_opening_belongs_to_the_storey_of_its_sill():
+    house = House("t")
+    with house:
+        Level("L0", height=3000)
+        Level("L1", elevation=3300, height=2800)
+        Level("L2", elevation=6400, height=2600)
+        Assembly("stone", layers=[Layer(material="stone", thickness=450)])
+        w = Wall("T", (0, 0), (8000, 0), assembly="stone", level="L0", height=9000)
+        Window("G", host=w, width=1000, height=1200, sill=900, at=1000)
+        Window("F", host=w, width=1000, height=1200, sill=4400, at=3000)
+        Window("S", host=w, width=800, height=900, sill=7500, at=5000)
+    b = house.compile()
+    assert (b["G"].level, b["F"].level, b["S"].level) == ("L0", "L1", "L2")
+    assert b["F.glass"].level == "L1" and b["T"].level == "L0"

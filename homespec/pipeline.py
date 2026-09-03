@@ -105,15 +105,43 @@ def blender_binary() -> str:
     raise FileNotFoundError("Blender not found; set HOMESPEC_BLENDER to the executable")
 
 
+class RenderError(RuntimeError):
+    """Blender ran but the result is not usable; the message carries Blender's own words."""
+
+
 def render(project_dir: str, out_dir: str | None, mode: str, frame: str = "1", extra_env: dict[str, str] | None = None) -> int:
-    """Run the Blender consumer headless: ``still``, ``anim`` or ``save`` (the walk file)."""
+    """Run the Blender consumer headless: ``still``, ``anim`` or ``save`` (the walk file).
+
+    Blender's output is streamed through. A Python traceback inside Blender,
+    a camera inside solid geometry, or a black frame ends in ``RenderError``
+    rather than a quiet exit code of zero.
+    """
     import subprocess
 
     out = out_dir or os.path.join("out", os.path.basename(os.path.normpath(project_dir)))
     script = os.path.join(os.path.dirname(__file__), "blender", "scene.py")
     pres = os.path.join(project_dir, "presentation.py")
     env = {**os.environ, "FRAME": frame, **(extra_env or {})}
-    return subprocess.call([blender_binary(), "-b", "--python", script, "--", out, pres, mode], env=env)
+    proc = subprocess.Popen([blender_binary(), "-b", "--python", script, "--", out, pres, mode], env=env,
+                            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    lines: list[str] = []
+    assert proc.stdout is not None
+    for line in proc.stdout:
+        print(line, end="", flush=True)
+        lines.append(line)
+    code = proc.wait()
+    problems = [ln.strip() for ln in lines if ln.startswith("ERROR ")]
+    if any(ln.startswith("Traceback") for ln in lines):
+        start = next(i for i, ln in enumerate(lines) if ln.startswith("Traceback"))
+        end = start + 1
+        while end < len(lines) and (lines[end].startswith((" ", "\t")) or not lines[end].strip()):
+            end += 1                                           # the frames are indented; the exception line is not
+        raise RenderError("Blender raised:\n" + "".join(lines[start:end + 1]))
+    if problems:
+        raise RenderError("\n".join(problems))
+    if code != 0:
+        raise RenderError(f"Blender exited with {code}")
+    return 0
 
 
 def walk(project_dir: str, out_dir: str | None, engine: str = "cycles") -> Any:

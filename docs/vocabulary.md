@@ -32,9 +32,9 @@ millimetres. A `Ref` field accepts the object or its id.
 | `Pendant(id, at, drop, level, watts=None)` | hangs `drop` below the ceiling | `IfcLightFixture` |
 | `Outlet(id, on, from_start, height, variant="double")` | on a wall's inside face | `IfcOutlet` |
 | `Arch(id, host, width, height, at)` | an open round-headed passage; `height` is the springing line | a true arched void in the host, no product |
-| `Roof(id, outline, level, material, kind_="gable", ridge_along="x", pitch=22, overhang=600, thickness=250, eave=None, genoise=0)` | `gable`, `hip`, `shed` (`high_side`) or `flat`; eave at the level height unless `eave`; `genoise` courses of tiles under the eaves | `IfcRoof` + `Gable` infills (gable) + `Cornice` (génoise) |
+| `Roof(id, outline, level, material, shape="gable", ridge_along="x", pitch=22, overhang=600, thickness=250, eave=None, genoise=0)` | `gable`, `hip`, `shed` (`high_side`) or `flat`; eave at the level height unless `eave`; `genoise` courses of tiles under the eaves | `IfcRoof` + `Gable` infills (gable) + `Cornice` (génoise) |
 | `ArchedDoor(id, host, width, height, ...)` | a glazed door under a semicircular fanlight; `height` is the springing line | `IfcDoor` + arched void + `Glazing` |
-| `Stair(id, start, direction, width, rise, going=270, max_riser=180, level, to_level)` | a straight flight; risers sized from `rise` | `IfcStair`; give the floor above a `voids` entry |
+| `Stair(id, start, direction, width, rise, going=270, max_riser=180, align="left", level, to_level)` | a straight flight; risers sized from `rise`; `align` puts the width left of, right of or astride the line from `start` | `IfcStair`; give the floor above a `voids` entry |
 | `Landing(id, outline, top, thickness, level)` | a platform between flights | `IfcSlab` |
 | `Pool(id, outline, level, depth=1400, coping=400, material, coping_material, water_material)` | shell, coping and water | `IfcBuildingElementProxy` + `Coping` + `PoolWater` |
 | `Column(id, at, level, size=None, radius=None, height=None, base=0)` | square or round; height defaults to the level | `IfcColumn` |

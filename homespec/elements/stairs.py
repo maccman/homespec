@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import math
-from typing import ClassVar
+from typing import ClassVar, Literal
 
 from .. import geometry as G
 from ..geometry import Frame, Point
@@ -16,6 +16,11 @@ class Stair(Element):
     Risers are sized from ``rise`` and ``max_riser``; the going is fixed.
     The flight is a solid stepped mass, which is what a plan cuts and what a
     builder sets out from. Give the floor above a matching void.
+
+    ``align`` says where the flight sits relative to the line from ``start``
+    in ``direction``: ``"left"`` puts the width on the left of the line (the
+    default, as a wall's ``align="left"`` does), ``"right"`` on the right,
+    ``"center"`` astride it.
     """
 
     kind: ClassVar[str] = "stair"
@@ -27,6 +32,7 @@ class Stair(Element):
     rise: Positive
     going: Positive = 270.0
     max_riser: Positive = 180.0
+    align: Literal["left", "right", "center"] = "left"
     to_level: Ref | None = None
 
     def realize(self, ctx: Context) -> Realized:
@@ -34,11 +40,12 @@ class Stair(Element):
         n = max(2, math.ceil(self.rise / self.max_riser))
         riser = self.rise / n
         frame = Frame.along(self.start, G.add(self.start, self.direction))
-        steps = [G.frame_box(frame, i * self.going, 0.0, lv.elevation, (self.going, self.width, riser * (i + 1))) for i in range(n)]
+        off = {"left": 0.0, "right": -self.width, "center": -self.width / 2}[self.align]
+        steps = [G.frame_box(frame, i * self.going, off, lv.elevation, (self.going, self.width, riser * (i + 1))) for i in range(n)]
         run = n * self.going
         top = frame.point(run)
         derived = {"steps": n, "riser": riser, "going": self.going, "run": run, "top": list(top), "pitch": math.degrees(math.atan2(riser, self.going)),
-                   "outline": [list(frame.point(0, 0)), list(frame.point(run, 0)), list(frame.point(run, self.width)), list(frame.point(0, self.width))]}
+                   "outline": [list(frame.point(0, off)), list(frame.point(run, off)), list(frame.point(run, off + self.width)), list(frame.point(0, off + self.width))]}
         relations = [Relation(pred="rises_to", obj=self.to_level)] if self.to_level else []
         return Realized(solid=G.group(steps), derived=derived, relations=relations, tags={"circulation"})
 

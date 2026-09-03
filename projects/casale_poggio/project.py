@@ -93,7 +93,7 @@ def build() -> House:
         Ceiling("CL0", outline=[A & one, F & one, F & three, A & three], level=L0, material=pianelle, thickness=30,
                 beams=BeamGrid(width=120, depth=180, spacing=700, along="y", material=chestnut))
         Roof("R0", outline=[(-500, -500), (20500, -500), (20500, 8000), (-500, 8000)], level=L0, material=coppi,
-             kind_="gable", ridge_along="x", pitch=22, overhang=500, thickness=250, eave=3300, gable_thickness=500, gable_material=stone)
+             shape="gable", ridge_along="x", pitch=22, overhang=500, thickness=250, eave=3300, gable_thickness=500, gable_material=stone)
 
         # ---- the pergola: stone piers, a chestnut beam, a ledger on the wall, rafters between, vines to come
         for k, x in enumerate((4600, 8500, 12400, 16050), 1):

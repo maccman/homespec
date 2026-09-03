@@ -2670,7 +2670,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "frame_white",
    "params": {
     "host": "MS",
@@ -2757,7 +2757,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "glass_double",
    "params": {
     "opening": "N3"
@@ -2799,7 +2799,7 @@
     "external",
     "shutters"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "shutter_grey",
    "params": {
     "opening": "N3"
@@ -2845,7 +2845,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "cut_stone",
    "params": {
     "opening": "N3"
@@ -2891,7 +2891,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "frame_white",
    "params": {
     "host": "MS",
@@ -2978,7 +2978,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "glass_double",
    "params": {
     "opening": "N4"
@@ -3020,7 +3020,7 @@
     "external",
     "shutters"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "shutter_grey",
    "params": {
     "opening": "N4"
@@ -3066,7 +3066,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "cut_stone",
    "params": {
     "opening": "N4"
@@ -3112,7 +3112,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "frame_white",
    "params": {
     "host": "MS",
@@ -3199,7 +3199,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "glass_double",
    "params": {
     "opening": "N5"
@@ -3241,7 +3241,7 @@
     "external",
     "shutters"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "shutter_grey",
    "params": {
     "opening": "N5"
@@ -3287,7 +3287,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "cut_stone",
    "params": {
     "opening": "N5"
@@ -3463,7 +3463,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "frame_white",
    "params": {
     "host": "TS",
@@ -3550,7 +3550,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "glass_double",
    "params": {
     "opening": "N6"
@@ -3592,7 +3592,7 @@
     "external",
     "shutters"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "shutter_grey",
    "params": {
     "opening": "N6"
@@ -3638,7 +3638,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "cut_stone",
    "params": {
     "opening": "N6"
@@ -3684,7 +3684,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "frame_white",
    "params": {
     "host": "TS",
@@ -3770,7 +3770,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "glass_double",
    "params": {
     "opening": "N7"
@@ -3812,7 +3812,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "cut_stone",
    "params": {
     "opening": "N7"
@@ -3857,7 +3857,7 @@
     "external",
     "grille"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "iron",
    "params": {
     "opening": "N7"
@@ -4121,7 +4121,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "frame_white",
    "params": {
     "host": "TW",
@@ -4208,7 +4208,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "glass_double",
    "params": {
     "opening": "N9"
@@ -4250,7 +4250,7 @@
     "external",
     "shutters"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "shutter_grey",
    "params": {
     "opening": "N9"
@@ -4296,7 +4296,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "cut_stone",
    "params": {
     "opening": "N9"
@@ -4342,7 +4342,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "frame_white",
    "params": {
     "host": "TW",
@@ -4428,7 +4428,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "glass_double",
    "params": {
     "opening": "N10"
@@ -4470,7 +4470,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "cut_stone",
    "params": {
     "opening": "N10"
@@ -4515,7 +4515,7 @@
     "external",
     "grille"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "iron",
    "params": {
     "opening": "N10"
@@ -4558,7 +4558,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "frame_white",
    "params": {
     "host": "TN",
@@ -4645,7 +4645,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "glass_double",
    "params": {
     "opening": "N11"
@@ -4687,7 +4687,7 @@
     "external",
     "shutters"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "shutter_grey",
    "params": {
     "opening": "N11"
@@ -4733,7 +4733,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "cut_stone",
    "params": {
     "opening": "N11"
@@ -4779,7 +4779,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "frame_white",
    "params": {
     "host": "TN",
@@ -4865,7 +4865,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "glass_double",
    "params": {
     "opening": "N12"
@@ -4907,7 +4907,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "cut_stone",
    "params": {
     "opening": "N12"
@@ -4952,7 +4952,7 @@
     "external",
     "grille"
    ],
-   "level": "L0",
+   "level": "L2",
    "material": "iron",
    "params": {
     "opening": "N12"
@@ -5611,7 +5611,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "frame_white",
    "params": {
     "host": "MN",
@@ -5697,7 +5697,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "glass_double",
    "params": {
     "opening": "N15"
@@ -5739,7 +5739,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "cut_stone",
    "params": {
     "opening": "N15"
@@ -5785,7 +5785,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "frame_white",
    "params": {
     "host": "MN",
@@ -5872,7 +5872,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "glass_double",
    "params": {
     "opening": "N16"
@@ -5914,7 +5914,7 @@
     "external",
     "shutters"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "shutter_grey",
    "params": {
     "opening": "N16"
@@ -5960,7 +5960,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "cut_stone",
    "params": {
     "opening": "N16"
@@ -6006,7 +6006,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "frame_white",
    "params": {
     "host": "MN",
@@ -6092,7 +6092,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "glass_double",
    "params": {
     "opening": "N17"
@@ -6134,7 +6134,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "cut_stone",
    "params": {
     "opening": "N17"
@@ -6180,7 +6180,7 @@
     "opening",
     "window"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "frame_white",
    "params": {
     "host": "ME",
@@ -6267,7 +6267,7 @@
    "tags": [
     "glazing"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "glass_double",
    "params": {
     "opening": "N18"
@@ -6309,7 +6309,7 @@
     "external",
     "shutters"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "shutter_grey",
    "params": {
     "opening": "N18"
@@ -6355,7 +6355,7 @@
     "external",
     "surround"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": "cut_stone",
    "params": {
     "opening": "N18"
@@ -8045,6 +8045,7 @@
     "rise": 3500.0,
     "going": 270.0,
     "max_riser": 180.0,
+    "align": "left",
     "to_level": "L1"
    },
    "derived": {
@@ -8125,6 +8126,7 @@
     "rise": 3200.0,
     "going": 270.0,
     "max_riser": 180.0,
+    "align": "left",
     "to_level": "L2"
    },
    "derived": {
@@ -9442,7 +9444,7 @@
     "opening",
     "passage"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": null,
    "params": {
     "host": "TE",
@@ -9513,7 +9515,7 @@
    "tags": [
     "void"
    ],
-   "level": "L0",
+   "level": "L1",
    "material": null,
    "params": {
     "opening": "A2"
@@ -14938,7 +14940,7 @@
       7500.0
      ]
     ],
-    "kind_": "hip",
+    "shape": "hip",
     "ridge_along": "x",
     "high_side": "y1",
     "pitch": 28.0,
@@ -14951,7 +14953,7 @@
     "genoise_material": null
    },
    "derived": {
-    "kind": "hip",
+    "shape": "hip",
     "pitch": 28.0,
     "z_eave": 9300.0,
     "thickness": 220.0,
@@ -15057,7 +15059,7 @@
       8000.0
      ]
     ],
-    "kind_": "gable",
+    "shape": "gable",
     "ridge_along": "x",
     "high_side": "y1",
     "pitch": 24.0,
@@ -15070,7 +15072,7 @@
     "genoise_material": null
    },
    "derived": {
-    "kind": "gable",
+    "shape": "gable",
     "pitch": 24.0,
     "z_eave": 6400.0,
     "thickness": 220.0,
@@ -15262,7 +15264,7 @@
       7000.0
      ]
     ],
-    "kind_": "hip",
+    "shape": "hip",
     "ridge_along": "x",
     "high_side": "y1",
     "pitch": 22.0,
@@ -15275,7 +15277,7 @@
     "genoise_material": null
    },
    "derived": {
-    "kind": "hip",
+    "shape": "hip",
     "pitch": 22.0,
     "z_eave": 3200.0,
     "thickness": 220.0,
@@ -15381,7 +15383,7 @@
       -100.0
      ]
     ],
-    "kind_": "flat",
+    "shape": "flat",
     "ridge_along": "x",
     "high_side": "y1",
     "pitch": 22.0,
@@ -15394,7 +15396,7 @@
     "genoise_material": null
    },
    "derived": {
-    "kind": "flat",
+    "shape": "flat",
     "pitch": 22.0,
     "z_eave": 2950.0,
     "thickness": 70.0,
@@ -15989,7 +15991,7 @@
    "material": "cut_stone",
    "params": {
     "start": [
-     15700.0,
+     13300.0,
      -8600.0
     ],
     "direction": [
@@ -16000,6 +16002,7 @@
     "rise": 2000.0,
     "going": 300.0,
     "max_riser": 170.0,
+    "align": "right",
     "to_level": "L0"
    },
    "derived": {
@@ -16008,7 +16011,7 @@
     "going": 300.0,
     "run": 3600.0,
     "top": [
-     15700.0,
+     13300.0,
      -5000.0
     ],
     "pitch": 29.0546,

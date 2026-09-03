@@ -147,11 +147,11 @@ def build() -> House:
                 beams=BeamGrid(width=120, depth=180, spacing=600, along="x", material=limed))
 
         # ---- roofs: hipped tower, gabled main wing, hipped kitchen, all with génoise; the brush pergola along the terrace
-        Roof("RT", outline=[(0, 0), (7500, 0), (7500, 7500), (0, 7500)], level=L2, material=tiles, kind_="hip", pitch=28, overhang=450, thickness=220, genoise=2)
-        Roof("RM", outline=[(7500, 0), (21500, 0), (21500, 8000), (7500, 8000)], level=L1, material=tiles, kind_="gable", ridge_along="x", pitch=24, overhang=450,
+        Roof("RT", outline=[(0, 0), (7500, 0), (7500, 7500), (0, 7500)], level=L2, material=tiles, shape="hip", pitch=28, overhang=450, thickness=220, genoise=2)
+        Roof("RM", outline=[(7500, 0), (21500, 0), (21500, 8000), (7500, 8000)], level=L1, material=tiles, shape="gable", ridge_along="x", pitch=24, overhang=450,
              thickness=220, genoise=3, gable_thickness=550, gable_material=stone)
-        Roof("RK", outline=[(21500, 1000), (30500, 1000), (30500, 7000), (21500, 7000)], level=L0, material=tiles, kind_="hip", pitch=22, overhang=450, thickness=220, genoise=2)
-        Roof("RP", outline=[(-500, -3500), (14500, -3500), (14500, -100), (-500, -100)], level=L0, material=brande, kind_="flat", eave=2950, thickness=70, overhang=100)
+        Roof("RK", outline=[(21500, 1000), (30500, 1000), (30500, 7000), (21500, 7000)], level=L0, material=tiles, shape="hip", pitch=22, overhang=450, thickness=220, genoise=2)
+        Roof("RP", outline=[(-500, -3500), (14500, -3500), (14500, -100), (-500, -100)], level=L0, material=brande, shape="flat", eave=2950, thickness=70, overhang=100)
         for k, x in enumerate(range(0, 14001, 3500), 1):
             Column(f"PP{k}", at=(x, -3300), radius=40, height=2880, level=L0, material=iron)
         Beam("PB", (-500, -3300), (14500, -3300), width=80, depth=80, underside=2800, level=L0, material=iron)
@@ -160,7 +160,7 @@ def build() -> House:
         Slab("TR", outline=[(-3000, -5000), (33000, -5000), (33000, 0), (-3000, 0)], thickness=150, level=L0, material=cut)
         Wall("RW1", (13300, -5000), (-3000, -5000), assembly=garden, level=LP, height=2300, align="right")     # retaining walls either side of the steps
         Wall("RW2", (33000, -5000), (15700, -5000), assembly=garden, level=LP, height=2300, align="right")
-        Stair("ST0", (15700, -8600), (0, 1), width=2400, rise=2000, going=300, max_riser=170, level=LP, to_level=L0, material=cut)
+        Stair("ST0", (13300, -8600), (0, 1), width=2400, align="right", rise=2000, going=300, max_riser=170, level=LP, to_level=L0, material=cut)
         Slab("GD", outline=[(-6000, -22000), (36000, -22000), (36000, -5500), (-6000, -5500)], thickness=200, level=LP, material="gravel",
              voids=[[(6500, -16500), (20500, -16500), (20500, -10000), (6500, -10000)]])
         Slab("PD", outline=[(3500, -18000), (23500, -18000), (23500, -8000), (3500, -8000)], thickness=100, level=LP, material="travertine", top=20,

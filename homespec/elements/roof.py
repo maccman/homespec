@@ -47,7 +47,7 @@ class Roof(Element):
     ifc_class: ClassVar[str | None] = "IfcRoof"
 
     outline: Outline
-    kind_: Literal["gable", "hip", "shed", "flat"] = "gable"
+    shape: Literal["gable", "hip", "shed", "flat"] = "gable"
     ridge_along: Literal["x", "y"] = "x"
     high_side: Literal["x0", "x1", "y0", "y1"] = "y1"
     pitch: Positive = 22.0
@@ -67,14 +67,14 @@ class Roof(Element):
         z_eave = lv.elevation + (self.eave if self.eave is not None else lv.height)
         oh, t = self.overhang, self.thickness
         slope = math.tan(math.radians(self.pitch))
-        derived: dict = {"kind": self.kind_, "pitch": self.pitch, "z_eave": z_eave, "thickness": t, "overhang": oh, "plan_area_mm2": (x1 - x0) * (y1 - y0)}
+        derived: dict = {"shape": self.shape, "pitch": self.pitch, "z_eave": z_eave, "thickness": t, "overhang": oh, "plan_area_mm2": (x1 - x0) * (y1 - y0)}
 
-        if self.kind_ == "flat":
+        if self.shape == "flat":
             solid = G.prism([(x0 - oh, y0 - oh), (x1 + oh, y0 - oh), (x1 + oh, y1 + oh), (x0 - oh, y1 + oh)], z_eave - t, t)
             derived.update(z_top=z_eave)
-        elif self.kind_ in ("gable", "hip"):
+        elif self.shape in ("gable", "hip"):
             solid = self._gable_prism(x0, x1, y0, y1, oh, t, z_eave, slope, along_x=(self.ridge_along == "x"), derived=derived)
-            if self.kind_ == "hip":
+            if self.shape == "hip":
                 other = self._gable_prism(x0, x1, y0, y1, oh, t, z_eave, slope, along_x=(self.ridge_along != "x"), derived={})
                 solid = solid & other
                 derived["z_ridge"] = z_eave + (min(x1 - x0, y1 - y0) / 2 + oh) * slope
@@ -132,7 +132,7 @@ class Roof(Element):
     def _emit_genoise(self, ctx, x0, x1, y0, y1, z_wall_top):
         """Courses of tiles stepping out from the wall head, on the eave sides (gable) or all sides (hip, flat)."""
         course, step = 70.0, 90.0
-        sides = ["x", "y"] if self.kind_ in ("hip", "flat") else ["y" if self.ridge_along == "x" else "x"]
+        sides = ["x", "y"] if self.shape in ("hip", "flat") else ["y" if self.ridge_along == "x" else "x"]
         parts = []
         for k in range(self.genoise):
             proud = step * (k + 1)

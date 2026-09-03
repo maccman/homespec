@@ -31,7 +31,7 @@ def test_gable_roof_geometry_and_gables():
 def test_shed_roof_slopes_from_the_high_side():
     house = _house()
     with house:
-        Roof("S", outline=[(0, -3000), (12000, -3000), (12000, 0), (0, 0)], level="L0", kind_="shed", high_side="y1", pitch=9, eave=2700, overhang=0, thickness=200)
+        Roof("S", outline=[(0, -3000), (12000, -3000), (12000, 0), (0, 0)], level="L0", shape="shed", high_side="y1", pitch=9, eave=2700, overhang=0, thickness=200)
     r = house.compile()["S"]
     assert math.isclose(r.derived["z_high"], 2700 + 3000 * math.tan(math.radians(9)))
     bb = G.bbox(r.solid)

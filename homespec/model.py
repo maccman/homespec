@@ -281,6 +281,16 @@ class Context:
             raise KeyError(f"unknown material {id!r}") from None
 
     # ---- other entities
+    def level_at(self, z: float, tolerance: float = 1.0) -> Any:
+        """The storey whose floor is the highest at or below ``z``: where a sill, a fitting or a fixing actually sits.
+
+        An opening in a wall that spans three storeys belongs to the storey
+        of its sill, not to the storey its wall started on.
+        """
+        levels = sorted(self.house.levels.values(), key=lambda lv: lv.elevation)
+        below = [lv for lv in levels if lv.elevation <= z + tolerance]
+        return below[-1] if below else levels[0]
+
     def built(self, id: str) -> Built:
         if id not in self.build.entities:
             raise KeyError(f"{id!r} is not realized yet; declare it in deps() to order after it")
