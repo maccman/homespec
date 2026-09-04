@@ -1,7 +1,7 @@
 """Elements added for the Provençal bastide: hips, génoise, stairs, floor voids, dressed openings, pools."""
 import math
 
-from homespec import ArchedDoor, Assembly, House, Layer, Level, Pool, Roof, Slab, Stair, Wall, Window
+from homespec import ArchedDoor, Assembly, House, Layer, Level, Material, Pool, Roof, Slab, Stair, Wall, Window
 from homespec import geometry as G
 
 
@@ -10,6 +10,8 @@ def _house():
     with house:
         Level("L0", height=3000)
         Level("L1", elevation=3300, height=2800)
+        Material("stone")
+        Material("plaster")
         Assembly("stone", layers=[Layer(material="stone", thickness=450), Layer(material="plaster", thickness=50)])
     return house
 
@@ -61,9 +63,9 @@ def test_a_hip_roof_is_solid_through_the_middle():
     r = house.compile()["R"]
     slope = math.tan(math.radians(22))
     half = 3000 + 450
-    loops = G.section_loops(r.solid, 3000 + 100)
-    xs = [p[0] for loop in loops for p in loop]
-    assert len(loops) == 1 and min(xs) < 0 and max(xs) > 9000, "a slice just above the eave is one ring around the whole roof"
+    polygons = G.section_polygons(r.solid, 3000 + 100)
+    xs = [p[0] for polygon in polygons for p in polygon.outer]
+    assert len(polygons) == 1 and len(polygons[0].holes) == 1 and min(xs) < 0 and max(xs) > 9000, "a slice just above the eave is one ring around the whole roof"
     ridge = G.section_loops(r.solid, r.derived["z_ridge"] - 60)
     xs = [p[0] for loop in ridge for p in loop]
     assert max(xs) - min(xs) > 9000 - 2 * half - 60 / slope, "the ridge runs between the hips"

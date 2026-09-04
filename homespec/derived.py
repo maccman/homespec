@@ -13,9 +13,9 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
-from .geometry import Frame, Point
+from .geometry import Frame, Point, Point3
 from .model import Extrusion
 
 
@@ -43,6 +43,18 @@ class WallGeometry(BaseModel):
         return self.elevation + self.height
 
 
+class OpeningRoom(BaseModel):
+    """The portion of an opening actually adjoining a room on one wall face."""
+
+    room: str
+    side: Literal[0, 1]
+    z_range: tuple[float, float]
+    intervals: list[tuple[float, float]]
+    glass_area_mm2: float
+    clear_width: float
+    clear_height: float
+
+
 class OpeningGeometry(BaseModel):
     """Derived facts about an opening: where it is along the wall and what it clears."""
 
@@ -63,6 +75,8 @@ class OpeningGeometry(BaseModel):
     shutters: str | None = None
     surround: str | None = None
     grille: str | None = None
+    rooms: list[OpeningRoom] = Field(default_factory=list)
+    partition_conflicts: list[str] = Field(default_factory=list)
 
 
 class ArchGeometry(OpeningGeometry):
@@ -98,6 +112,21 @@ class WallToRoofInfillGeometry(BaseModel):
     body: Frame
 
 
+class HeadroomObstruction(BaseModel):
+    entity: str
+    clearance_mm: float
+    at: Point3
+    tread: int | None = None
+
+
+class StairRoom(BaseModel):
+    """A room's contiguous connection to the foot or arrival of a flight."""
+
+    room: str
+    end: Literal["foot", "arrival"]
+    clear_width: float = Field(gt=0)
+
+
 class StairGeometry(BaseModel):
     steps: int
     riser: float
@@ -107,6 +136,10 @@ class StairGeometry(BaseModel):
     pitch: float
     outline: list[list[float]]
     base: float = 0.0
+    headroom_mm: float = 2000.0
+    headroom_checked_mm: float = 2000.0
+    obstructions: list[HeadroomObstruction] = Field(default_factory=list)
+    rooms: list[StairRoom] = Field(default_factory=list)
 
 
 class SlabGeometry(BaseModel):
@@ -178,6 +211,6 @@ class PoolGeometry(BaseModel):
 
 
 __all__ = [
-    "WallGeometry", "OpeningGeometry", "ArchGeometry", "RoofGeometry", "StairGeometry", "SlabGeometry", "CeilingGeometry",
+    "WallGeometry", "OpeningGeometry", "OpeningRoom", "ArchGeometry", "RoofGeometry", "StairGeometry", "StairRoom", "HeadroomObstruction", "SlabGeometry", "CeilingGeometry",
     "BeamGeometry", "ColumnGeometry", "SpaceGeometry", "BookcaseGeometry", "KitchenGeometry", "LightGeometry", "OutletGeometry", "PoolGeometry",
 ]

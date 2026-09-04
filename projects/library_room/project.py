@@ -11,10 +11,15 @@ def build() -> House:
     with House("library-room") as house:
         # ---- site and setting out
         Site(parcel=[(-12000, -9000), (20000, -9000), (20000, 9000), (-12000, 9000)],
-             setbacks=Setbacks(front=6000, side=1500, rear=3000), north=12)
+             setbacks=[6000, 1500, 3000, 1500], north=12)
         L0 = Level("L0", elevation=0, height=3000)
         grid = Grid(x={"A": -4000, "B": 4000}, y={"1": -2500, "2": 2500})
         A, B, one, two = grid.lines("A", "B", "1", "2")
+
+        # Material definitions include concealed assembly layers.
+        Material('plaster', product='Plaster base coats')
+        Material('timber_frame_140', product='140 mm timber framing')
+        Material('sheathing', product='Structural sheathing')
 
         # ---- materials: one address for rendering, one for buying
         plaster = Material("plaster_warm", texture="polyhaven/painted_plaster_wall", product="Lime plaster, warm white", supplier="TBD",

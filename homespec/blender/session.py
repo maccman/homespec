@@ -11,6 +11,7 @@ import os
 import bpy
 
 OUT = ""
+DATA_DIR = ""
 PRES = ""
 MODE = ""
 ASSETS = ""
@@ -25,12 +26,16 @@ def configure(out: str, pres: str | None, mode: str, assets: str | None = None) 
     ``pres`` is the presentation module, or None for a run that dresses
     nothing (the diagnostic views).
     """
-    global OUT, PRES, MODE, ASSETS, IR, BY, scn
-    OUT, PRES, MODE = os.path.abspath(out), os.path.abspath(pres) if pres else "", mode
+    global OUT, DATA_DIR, PRES, MODE, ASSETS, IR, BY, scn
+    DATA_DIR = os.path.abspath(out)
+    OUT = os.path.abspath(os.environ.get("HOMESPEC_PRESENTATION_OUT", DATA_DIR))
+    PRES, MODE = os.path.abspath(pres) if pres else "", mode
     ASSETS = os.path.abspath(assets or os.path.join(os.path.dirname(PRES) if PRES else OUT, "..", "..", "assets"))
     bpy.ops.wm.read_factory_settings(use_empty=True)
     scn = bpy.context.scene
     scn.unit_settings.system = 'METRIC'
-    with open(os.path.join(OUT, "ir.json")) as f:
+    with open(os.path.join(DATA_DIR, "ir.json")) as f:
         IR = json.load(f)
+    if IR.get("homespec") != "0.3" or IR.get("units") != "mm":
+        raise ValueError("Blender requires homespec IR 0.3 in millimetres; rebuild this project")
     BY = {e["id"]: e for e in IR["entities"]}

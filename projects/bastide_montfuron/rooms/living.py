@@ -1,4 +1,4 @@
-"""The living room: the main wing's ground floor west of the partition P1, x 7.5..14.5 by y 0.5..7.5.
+"""The living room: the main wing's ground floor west of the partition P1, x 7.5..15.5 by y 0.5..7.5.
 
 The chimney breast FP (x 9.5..11.5) is on the north wall with its hearth
 arch (opening x 9.9..11.1, straight jambs to z 0.8, round arch to an apex
@@ -6,11 +6,11 @@ at z 1.4); the arched glazed door D1 is in the south wall at x 13.3..15.2
 (its glass is hidden globally so the camera can pass); the window N1 at
 x 9..10.2 (south, sill 0.8); the tower's old outside wall TE, in stone, is
 the west wall with the arch A0 to the hall at y 2.95..4.55; the arch A1 in
-P1 (x 14.575) leads east to the dining room at y 3..5. Ceiling C0M:
+P1 (x 15.575) leads east to the dining room at y 3..5. Ceiling C0M:
 lime-washed beams at 3.2 m. Pendant L1 at (11, 4) carries a chandelier.
 
-Layout: two sofas face each other across a low table on the fire's axis,
-a pair of armchairs set diagonally either side (clear of the hall and
+Layout: the south sofa faces the fire and an east sofa faces into the
+seating group, leaving the hearth open. A pair of armchairs sit to either side (clear of the hall and
 dining archways), the chimney breast dressed as a carved stone
 chimneypiece, a console vignette on the west wall, an open shelf on the
 partition wall, and the arched door dressed with a single swept-back
@@ -23,7 +23,7 @@ SHOTS = [
     ((13.9, 1.4, 1.55), (-0.66, 0.74, -0.04), 1.0),      # sofas, the fire, the lamps
     ((10.6, 6.3, 1.55), (0.25, -0.92, -0.06), 0.6),      # from the fireside, toward the terrace door
     ((8.3, 3.6, 1.55), (0.6, 0.78, -0.05), 0.85),        # from the hall arch, looking at the fire
-    ((14.0, 4.0, 1.55), (-1.0, 0.05, -0.05), 0.8),       # from the dining arch, looking back
+    ((15.0, 4.0, 1.55), (-1.0, 0.05, -0.05), 0.8),       # from the dining arch, looking back
 ]
 
 PENDANTS = {"L1": ("Chandelier_02", 220)}
@@ -46,34 +46,42 @@ def dress(scene, M):
     scene.rug("living_rug_border", (11.0, 4.0, 0.0), (4.4, 3.2), rug_border)
     scene.rug("living_rug_field", (11.0, 4.0, 0.006), (4.0, 2.8), rug_field)
 
-    # ---- two linen sofas facing each other across a low table, on the fire's axis (the model faces -y unrotated,
-    # so the north sofa keeps that and the south one turns about; the cushions below lean on each back)
-    for _name, cy, rot in (("living_sofa_south", 2.55, 180), ("living_sofa_north", 5.55, 0)):
-        scene.model("Sofa_01", (11.0, cy, 0.0), rot_z=math.radians(rot), scale=1.15, tint=(1.16, 1.11, 1.01))
-    # cushions tucked into each sofa's corners, leaning gently on the backrest (a moderate, consistent tilt this time)
-    for k, (cx, cy, mat, lean) in enumerate((
-        (10.15, 2.30, M.white_linen, 9), (11.85, 2.30, dusty_blue, 9),
-        (10.15, 5.80, M.taupe_linen, -9), (11.85, 5.80, M.white_linen, -9),
-    )):
-        w = 0.40 + 0.02 * (k % 2)
-        c = scene.box(f"living_cushion_{k}", (cx, cy, 0.40), (w, 0.16, 0.36), mat, rot_z=math.radians(R.uniform(-6, 6)), bevel=0.07)
-        c.rotation_euler[0] = math.radians(lean)
-    # a folded throw over the north sofa's east arm (sofa spans roughly x 10.1-11.9 at scale 1.15)
-    scene.box("living_throw_a", (11.68, 5.55, 0.56), (0.42, 0.62, 0.05), terracotta, rot_z=math.radians(92), bevel=0.03)
-    scene.box("living_throw_b", (11.74, 5.42, 0.61), (0.38, 0.26, 0.045), terracotta, rot_z=math.radians(78), bevel=0.03)
+    # ---- an L-shaped group leaves the entire fireplace and its approach open.
+    # Sofa_01 faces local -y; every cushion follows its sofa's assembly transform.
+    for name, cx, cy, degrees, fabrics in (
+        ("south", 11.0, 2.55, 180, (dusty_blue, M.white_linen)),
+        ("east", 13.3, 5.8, -90, (M.taupe_linen, M.white_linen)),
+    ):
+        angle = math.radians(degrees)
+        ca, sa = math.cos(angle), math.sin(angle)
+
+        def sofa_position(dx, dy, z, cx=cx, cy=cy, ca=ca, sa=sa):
+            return (cx + ca * dx - sa * dy, cy + sa * dx + ca * dy, z)
+
+        scene.model("Sofa_01", (cx, cy, 0.0), rot_z=angle, scale=1.15, tint=(1.16, 1.11, 1.01))
+        for k, (dx, mat) in enumerate(zip((-0.85, 0.85), fabrics, strict=True)):
+            c = scene.box(f"living_cushion_{name}_{k}", sofa_position(dx, 0.25, 0.40),
+                          (0.40 + 0.02 * k, 0.16, 0.36), mat,
+                          rot_z=angle + math.radians(R.uniform(-6, 6)), bevel=0.07)
+            c.rotation_euler[0] = math.radians(-9)
+        if name == "east":
+            scene.box("living_throw_a", sofa_position(0.68, 0.0, 0.56), (0.42, 0.62, 0.05),
+                      terracotta, rot_z=angle + math.radians(92), bevel=0.03)
+            scene.box("living_throw_b", sofa_position(0.74, -0.13, 0.61), (0.38, 0.26, 0.045),
+                      terracotta, rot_z=angle + math.radians(78), bevel=0.03)
 
     # ---- a low pale trestle coffee table (built in place of the dark carved one)
-    scene.box("living_table_top", (11.0, 4.0, 0.40), (1.3, 0.72, 0.05), pale_oak, bevel=0.012)
-    for lx, ly in ((10.47, 3.74), (11.53, 3.74), (10.47, 4.26), (11.53, 4.26)):
+    scene.box("living_table_top", (11.0, 4.8, 0.40), (1.3, 0.72, 0.05), pale_oak, bevel=0.012)
+    for lx, ly in ((10.47, 4.54), (11.53, 4.54), (10.47, 5.06), (11.53, 5.06)):
         scene.box(f"living_table_leg_{lx}_{ly}", (lx, ly, 0.18), (0.06, 0.06, 0.36), pale_oak)
-    scene.model("book_encyclopedia_set_01", (10.65, 4.0, 0.425))
-    scene.model("ceramic_vase_02", (11.35, 4.15, 0.425), scale=0.8)
-    scene.model("wooden_candlestick", (11.35, 3.83, 0.425))
+    scene.model("book_encyclopedia_set_01", (10.65, 4.8, 0.425))
+    scene.model("ceramic_vase_02", (11.35, 4.95, 0.425), scale=0.8)
+    scene.model("wooden_candlestick", (11.35, 4.63, 0.425))
 
     # ---- armchairs set diagonally, clear of the hall arch (west, y 2.95-4.55) and the dining arch (east, y 3-5)
     scene.model("ArmChair_01", (8.7, 2.45, 0.0), rot_z=math.radians(117))            # both armchairs sit just clear of the arches' approaches
-    scene.model("ArmChair_01", (13.55, 5.5, 0.0), rot_z=math.radians(-63))
-    scene.model("Ottoman_01", (13.0, 5.0, 0.0), rot_z=math.radians(-63))
+    scene.model("ArmChair_01", (8.75, 6.0, 0.0), rot_z=math.radians(45))
+    scene.model("Ottoman_01", (9.35, 5.55, 0.0), rot_z=math.radians(45))
 
     # ---- the chimney breast: a carved stone chimneypiece around the spec's arched hearth (opening x 9.9-11.1, apex z 1.4)
     for jx in (9.65, 11.35):
@@ -133,21 +141,26 @@ def dress(scene, M):
     scene.model("fancy_picture_frame_01", (11.3, 0.56, 1.7), rot_z=math.radians(180), scale=1.4)
     scene.model("hanging_picture_frame_01", (12.5, 0.56, 1.7), rot_z=math.radians(180), scale=1.3)
 
-    # ---- the arched glazed door D1 (x 13.3-15.2): a single curtain swept back on the living-room side,
-    # kept off D1's own east jamb (past x 14.5, the partition P1's line) and off the opening, so the route stays clear
-    scene.rod("living_curtain_pole", (12.55, 0.58, 2.55), (14.45, 0.58, 2.55), 0.015, M.iron)
-    scene.sphere("living_curtain_finial_l", (12.55, 0.58, 2.55), 0.025, M.iron)
-    scene.sphere("living_curtain_finial_r", (14.45, 0.58, 2.55), 0.025, M.iron)
+    # ---- a swept-back curtain beside D1; its rail follows the door's actual arch head
+    door_lo, door_hi = scene.bbox("D1")
+    pole_z = door_hi.z + 0.06
+    pole_l, pole_r = door_lo.x - 0.75, door_hi.x + 0.15
+    scene.rod("living_curtain_pole", (pole_l, 0.58, pole_z), (pole_r, 0.58, pole_z), 0.015, M.iron)
+    scene.sphere("living_curtain_finial_l", (pole_l, 0.58, pole_z), 0.025, M.iron)
+    scene.sphere("living_curtain_finial_r", (pole_r, 0.58, pole_z), 0.025, M.iron)
+    curtain_height = pole_z - 0.04
     for i, dx in enumerate((-0.16, 0.0, 0.16)):
         dy = 0.03 if i == 1 else 0.0
-        scene.box(f"living_curtain_panel_{i}", (12.90 + dx, 0.60 + dy, 1.225), (0.15, 0.13, 2.45), M.white_linen,
+        scene.box(f"living_curtain_panel_{i}", (door_lo.x - 0.40 + dx, 0.60 + dy, curtain_height / 2),
+                  (0.15, 0.13, curtain_height), M.white_linen,
                   rot_z=math.radians(R.uniform(-4, 4)), bevel=0.035)
     scene.model("potted_plant_01", (12.85, 1.15, 0.0), scale=1.1)
     scene.model("WoodenTable_02", (13.65, 1.85, 0.0), height=0.42)
     scene.table_lamp("living_lamp_door_table", (13.65, 1.85, 0.42), 0.14, 0.38, M.brass, lamp_shade, 30)
 
     # ---- east wall (partition P1, arch A1 to the dining room): an open shelf, a basket and books at its foot
-    scene.model("Shelf_01", (14.35, 5.5, 0.0), rot_z=math.radians(-90))
-    scene.model("wicker_basket_01", (14.15, 5.3, 0.0), scale=0.9, rot_z=math.radians(90))
-    scene.model("book_encyclopedia_set_01", (14.15, 6.25, 0.0), rot_z=math.radians(90))
-    scene.model("ceramic_vase_03", (14.20, 6.5, 0.0), scale=0.9)
+    east_wall = scene.bbox("P1")[0].x
+    scene.model("Shelf_01", (east_wall - 0.15, 5.55, 0.0), rot_z=math.radians(-90))
+    scene.model("wicker_basket_01", (east_wall - 0.35, 5.6, 0.0), scale=0.9, rot_z=math.radians(90))
+    scene.model("book_encyclopedia_set_01", (east_wall - 0.35, 6.25, 0.0), rot_z=math.radians(90))
+    scene.model("ceramic_vase_03", (east_wall - 0.30, 6.5, 0.0), scale=0.9)

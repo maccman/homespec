@@ -9,33 +9,41 @@ at the same time, so stay inside your file unless the brief says otherwise.
 
 ## The house
 
-Metres, z up, origin at the tower's south-west corner. Walls are 500 thick
-(450 of rubble stone outside, 50 of lime plaster inside), partitions 150.
+Presentation positions are metres, z up, with the origin at the tower's
+south-west corner. The spec and IR use millimetres. Read dimensions, wall faces,
+room outlines, opening positions and floor elevations from the current compiled
+IR rather than duplicating them in this brief.
 
-| Part | Plan | Floors |
+| Part | Rooms and levels | Entities to inspect before dressing |
 |---|---|---|
-| Tower | x 0.5..7.0, y 0.5..7.0 inside | hall (z 0), landing/bedroom (z 3.5), study (z 6.7), hip roof from 9.3 |
-| Main wing | x 7.5..21.0, y 0.5..7.5 inside | living + dining (z 0), three bedrooms + two bathrooms + corridor (z 3.5), gable roof from 6.4 |
-| Kitchen wing | x 21.5..30.0, y 1.5..6.5 inside | kitchen (z 0), hip roof from 3.2 |
-| Terrace | x -3..33, y -5..0 at z 0 | pergola of brande over x -0.5..14.5, y -3.5..0 at 2.95; iron railing at y -4.75 |
-| Pool garden | z -2.0, south of the retaining wall at y -5 | steps ST0 at x 13.3..15.7; pool x 6.5..20.5, y -16.5..-10; travertine deck x 3.5..23.5, y -18..-8; gravel beyond |
+| Tower ground floor | `hall`, `L0` | `ST1a`, `ST1L`, `ST1`, `A0`, `D2`, `N8`, `L3` |
+| Main wing ground floor | `living`, `dining`, `L0` | `P1`, `A1`, `FP`, `D0`, `D1`, `D5`, `N1`, `N2`, `N13`, `N14` |
+| Kitchen wing | `kitchen`, `L0` | `K1`, `D3`, `D4`, `N19`, `N20`, `L4` |
+| Main wing first floor | `bed1`, `bath1`, `bed2`, `bath2`, `bed3`, `corridor`, `L1` | room outlines, partitions `PC` and `PB1`–`PB4`, doors `D6`–`D10`, adjoining opening links |
+| Tower upper floors | `tower_bedroom`, `L1`; `study`, `L2` | `ST1`, `ST2`, floor voids, `A2`, windows `N6`, `N7`, `N9`–`N12`, `L5` |
+| Exterior | `terrace`, `L0`; pool garden, `LP` | `ST0`, terrace and pool slabs, retaining wall, pool, pergola and rails |
 
-Ceilings: ground floor 3.2 m with lime-washed oak beams every 600 (C0M, C0T,
-C0K); first floor 2.9 m; study 2.6 m to the eaves.
+The living/dining partition now clears the retained façade doors, glazing has
+been enlarged where room-level checks required it, and the furnished tower room
+is a bedroom. Stair and floor clearances have also been corrected. Do not reuse
+coordinates from older renders or previous versions of this brief.
 
-Rooms (inside faces):
+`homespec build projects/bastide_montfuron` publishes a generation under
+`out/bastide_montfuron/generations/<generation>/`; the root `manifest.json`
+identifies that attempt. Resolve the published root to find its IR and plans:
 
-- hall: x 0.5..7, y 0.5..7, z 0. Three steps ST1a (x 0.5..1.5, y 5.19..6) climb from the room to the quarter landing ST1L (x 0.5..1.5, y 6..7, at z 0.525), from which the flight ST1 climbs the north wall (x 1.5..5.92, y 6..7) to z 3.5, landing 1.08 m short of the east wall. Arch A0 to the living room in the east wall at y 2.95..4.55. Door D2 (steel screen, 3 m wide) in the south wall at x 2.25..5.25 to the terrace. Window N8 in the west wall at y 3.5..4.5. Pendant L3 at (3.75, 3.75).
-- living: x 7.5..14.5, y 0.5..7.5, z 0. Chimney breast FP x 9.5..11.5 on the north wall with an arched hearth 1.2 wide. Arched glazed door D1 in the south wall at x 13.3..15.2 (its glass is hidden so the camera can pass). Windows N1 (south, x 9..10.2) and N13 (north, x 9.5..10.7). Arch A1 to the dining room in the partition P1 (x 14.5) at y 3..5. Pendant L1 at (11, 4).
-- dining: x 14.7..21, y 0.5..7.5, z 0. Door D5 to the kitchen in the east wall at y 2.5..3.5. Door D0 north at x 13.65..14.85 (that is in the living room's part of the wall), window N14 north x 17.8..19, N2 south x 18.3..19.5. Pendant L2 at (17.8, 4) (unused; the room has straw pendants).
-- kitchen: x 21.5..30, y 1.5..6.5, z 0. Run K1 along the north wall (y 6.5): base units, stone counter at 0.9, splashback, upper cabinets. Doors D3 (x 22.7..24.55) and D4 (x 26.8..28.65) in the south wall to the terrace. Window N19 east at y 3.5..4.5, N20 north at x 25.15..26.35. Pendant L4 at (25.75, 4).
-- bedrooms (first floor, z 3.5): corridor y 6.2..7.5 along the north; bed1 x 7.5..10.2, bath1 x 10.35..11.85, bed2 (main) x 12..16.4, bath2 x 16.6..18.1, bed3 x 18.2..21; all y 0.5..6.0. Doors D6, D7, D8 in the corridor partition at x 8.7, 13.5, 19.0; D9 (bed1 to bath1) and D10 (bed2 to bath2) at y 4.5. Windows south: N3 x 9..10.2, N4 x 13.65..14.85, N5 x 18.3..19.5 (sill 0.9 above the floor); north: N15, N16, N17 into the corridor; N18 east in bed3. Downlights L6..L9 in bed1 and bed2/bath.
-- tower upper: landing/bedroom x 0.5..7, y 0.5..7 at z 3.5 with the void of ST1 at x 1.5..5.92, y 6..7 (the flight arrives at its east end) and stair ST2 rising along the south wall (y 0.5..1.5, from the east wall at x 7 down to 2.14) to the study at z 6.7, where the void follows it. Read both stairs from the IR (`scene.entity("ST1")["derived"]`), never from these numbers. Arch A2 in the east wall at z 3.5 connects to the main wing corridor. Windows N6/N9/N11 (first floor) and N7/N10/N12 (study, small and grilled). Pendant L5 at (3.75, 3.75, 5.6).
-- exterior: everything outside, the terrace and the pool garden, the planting and the woodland.
+```python
+from homespec.ir import IRDocument
 
-The full entity list with coordinates is `out/bastide_montfuron/ir.json`
-after a build; `homespec build projects/bastide_montfuron` writes it and the
-plans `out/bastide_montfuron/drawings/plan_L0.pdf` etc. Read the plan of your
+ir = IRDocument.read("out/bastide_montfuron")
+print(ir.path("ir.json"))
+print(ir.path("drawings/plan_L0.pdf"))
+print(ir.entity("living").params["outline"])  # millimetres
+```
+
+Inside Blender, use `scene.entity(id)` for parameters and derived facts, or
+`scene.bbox(id)` for metre coordinates. Opening `derived["rooms"]` and stair
+`derived["rooms"]` identify actual room connections. Read the plan of your
 level before placing anything.
 
 ## The style
@@ -57,7 +65,7 @@ showroom: a house someone would want to live in.
    diagnostic views (`homespec views`, seconds each, no materials): the
    plan of your storey and the two sections show where the walls, floors
    and openings really are before you spend a minute on a Cycles frame,
-   and `out/bastide_montfuron/checks.md` lists under `no_clash` every pair
+   and the resolved generation's `checks.md` lists under `no_clash` every pair
    of solids that share volume and whether construction allows it. Run
    `homespec audit projects/bastide_montfuron`: it lists every placed
    thing inside a wall, floating, in the way of a door, an arch or a stair,
@@ -88,16 +96,15 @@ showroom: a house someone would want to live in.
 ## How to work
 
 Work in your worktree (its path is in your prompt), on your branch. Every
-command runs from the worktree root with `PYTHONPATH=$PWD` so the library in
-your worktree is the one used:
+command runs from the worktree root in its locked environment:
 
 ```bash
-export PYTHONPATH=$PWD
-~/repos/homespec/.venv/bin/homespec build projects/bastide_montfuron          # only after a spec change
-~/repos/homespec/.venv/bin/homespec views projects/bastide_montfuron --only plan,section --focus <ids>   # Workbench, seconds
+uv sync --frozen --extra dev --python 3.13
+uv run --frozen homespec build projects/bastide_montfuron  # after any source or decisions change
+uv run --frozen homespec views projects/bastide_montfuron --only plan,section --focus <ids>   # Workbench, seconds
 HOMESPEC_ROOM=<room> HOMESPEC_RES=960x540 HOMESPEC_SAMPLES=48 \
-  ~/repos/homespec/.venv/bin/homespec render projects/bastide_montfuron --mode still --frame 1,97,193
-~/repos/homespec/.venv/bin/homespec audit projects/bastide_montfuron    # the dressed scene, judged; a minute, no render
+  uv run --frozen homespec render projects/bastide_montfuron --mode still --frame 1,97,193
+uv run --frozen homespec audit projects/bastide_montfuron    # the dressed scene, judged; a minute, no render
 ```
 
 `<room>` is your module name: exterior, hall, living, dining, kitchen,
@@ -105,9 +112,16 @@ bedrooms, tower. With `HOMESPEC_ROOM` set, the camera route is only your
 module's `SHOTS`, four seconds each, so shot k is frame `1 + 96 k`. Add or
 move shots in your `SHOTS` list freely; a shot is `(location, look_direction,
 exposure_in_stops)` in metres. Renders land in
-`out/bastide_montfuron/renders/still_fNNN.png`. Look at every render with
+`out/bastide_montfuron/presentation/<generation>/<presentation-fingerprint>/renders/still_fNNN.png`.
+Use the path printed by Blender and keep the accompanying `presentation.json`
+when identifying the source of published images. Look at every render with
 the Read tool. The final renders go at 1600x900 with 128 samples: drop the
 two `HOMESPEC_` overrides.
+
+Editing `project.py`, `presentation.py`, `rooms/`, package Python sources or
+`decisions.md` invalidates the compiled generation. Rebuild before the next
+audit or render after those edits; changing only render resolution or samples
+does not require a build.
 
 A black frame or a camera inside geometry raises an error naming the
 object; move the camera. Other Blender output is noise unless it says
@@ -165,8 +179,7 @@ Objects need unique names; prefix yours with your room (`living_`, `bed2_`).
 
 If the audit finds the spec wrong (a missing door, a wall that should be
 there, a window that should exist), fix `project.py` with the smallest
-change, rebuild, keep every check green (`checks 210 passed, 0 failed` or
-more), and say so in your report. Do not restructure the house. Do not
+change, rebuild, keep every check green, and say so in your report. Do not restructure the house. Do not
 touch another room's entities.
 
 ## Constraints

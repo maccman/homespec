@@ -29,7 +29,7 @@ def dress(scene):
     bulb = scene.flat("p_bulb", (1.0, 0.8, 0.55), emit=5.0)
 
     # ---- the land: gravel court and terrace near the house, dry earth beyond, a cobbled apron under the loggia edge
-    scene.box("ground", (12, -4, -0.65), (120, 100, 0.5), ground)
+    scene.box("ground", (12, -4, -1.2), (120, 100, 1.6), ground)
     scene.box("gravel_north", (10, 13, -0.24), (34, 12, 0.08), gravel)
     scene.box("gravel_south", (10, -5.5, -0.24), (30, 6, 0.08), gravel)
     scene.box("apron", (10.3, -3.4, -0.2), (12.4, 1.0, 0.06), cobble)
@@ -66,35 +66,37 @@ def dress(scene):
             scene.box(f"{e['id']}.shutter_{side}", centre, (leaf, 0.04, h), shutter, rot_z=angle)
 
     # ---- loggia life: table, bench, day bed, lanterns on the piers, pots
-    scene.model("outdoor_table_chair_set_01", (8.2, -1.6, 0.0), rot_z=math.radians(10))
-    scene.model("WoodenTable_02", (12.8, -1.7, 0.0), rot_z=math.radians(90))
-    for dx, dy, rz in [(-0.6, 0.55, 180), (0.4, 0.55, 180), (-0.6, -0.55, 0), (0.4, -0.55, 0)]:
-        scene.model("WoodenChair_01", (12.8 + dx, -1.7 + dy, 0.0), rot_z=math.radians(rz + R.uniform(-10, 10)))
-    scene.model("painted_wooden_bench", (5.3, -0.8, 0.0), rot_z=math.radians(0))
-    scene.model("vintage_day_bed", (14.9, -1.3, 0.0), rot_z=math.radians(90))
+    scene.model("outdoor_table_chair_set_01", (9.35, -1.65, 0.0), rot_z=math.radians(10))
+    scene.box("loggia_table_top", (12.8, -1.7, 0.73), (1.7, 0.8, 0.04), chestnut)
+    for dx, dy in ((-0.72, -0.30), (0.72, -0.30), (-0.72, 0.30), (0.72, 0.30)):
+        scene.box(f"loggia_table_leg_{dx}_{dy}", (12.8 + dx, -1.7 + dy, 0.355), (0.06, 0.06, 0.71), chestnut)
+    for dx, dy, rz in [(-0.5, 0.65, 0), (0.5, 0.65, 0), (-0.5, -0.65, 180), (0.5, -0.65, 180)]:
+        scene.model("painted_wooden_chair_01", (12.8 + dx, -1.7 + dy, 0.0), rot_z=math.radians(rz))
+    scene.model("painted_wooden_bench", (5.3, -2.35, 0.0), rot_z=math.radians(180))
+    scene.model("vintage_day_bed", (15.7, -1.65, 0.0), rot_z=math.radians(90))
     for x in (4.6, 8.5, 12.4, 16.05):
         scene.model("Lantern_01", (x, -2.75, 2.2), scale=0.7)
     for x, y in [(4.4, -3.4), (16.3, -3.4), (10.2, -3.5), (6.6, 8.6), (13.4, 8.6), (2.0, -3.5), (18.6, -3.5)]:
         scene.model("planter_pot_clay", (x, y, -0.2), rot_z=R.uniform(0, 6.28))
-        scene.model("potted_plant_02", (x, y, 0.15), rot_z=R.uniform(0, 6.28), scale=0.8)
+        scene.model("potted_plant_02", (x, y, -0.2), rot_z=R.uniform(0, 6.28), scale=0.8)
     scene.model("ceramic_pot", (5.0, 8.4, -0.2))
 
     # ---- inside: hall, living room around the fire, dining under the pendant, bedrooms
-    scene.model("wooden_bookshelf_worn", (6.62, 5.6, 0.0), rot_z=math.radians(90))
+    scene.model("wooden_bookshelf_worn", (6.82, 5.6, 0.0), rot_z=math.radians(90))
     scene.model("sofa_03", (9.0, 4.4, 0.0), rot_z=math.radians(180))
-    scene.model("coffee_table_round_01", (9.0, 3.0, 0.0), scale=0.7)
-    scene.model("mid_century_lounge_chair", (11.3, 4.6, 0.0), rot_z=math.radians(-120))
-    scene.model("dining_table", (14.4, 2.2, 0.0), rot_z=math.radians(0))
-    for dx, dy, rz in [(-0.7, 0.75, 180), (0.7, 0.75, 180), (-0.7, -0.75, 0), (0.7, -0.75, 0)]:
-        scene.model("gallinera_chair", (14.4 + dx, 2.2 + dy, 0.0), rot_z=math.radians(rz + R.uniform(-8, 8)))
-    scene.model("ceramic_vase_03", (14.4, 2.2, 0.78))
-    scene.model("wooden_bowl_01", (13.4, 6.4, 0.94))
-    scene.model("brass_pot_01", (15.2, 6.5, 0.94))
+    scene.model("coffee_table_round_01", (9.0, 5.8, 0.0), scale=0.7)
+    scene.model("mid_century_lounge_chair", (10.9, 5.5, 0.0), rot_z=math.radians(-120))
+    scene.model("dining_table", (14.8, 3.3, 0.0), rot_z=math.radians(90))
+    for dx, dy, rz in [(-1.0, -0.7, 90), (1.0, -0.7, -90), (-1.0, 0.7, 90), (1.0, 0.7, -90)]:
+        scene.model("gallinera_chair", (14.8 + dx, 3.3 + dy, 0.0), rot_z=math.radians(rz))
+    scene.model("ceramic_vase_03", (14.8, 3.3, 0.814))    # the tabletop surface, below the carved edge's bounding-box maximum
+    scene.model("wooden_bowl_01", (13.4, 7.05, 0.90))
+    scene.model("brass_pot_01", (15.2, 7.05, 0.90))
     # beds: a chestnut frame with a linen mattress in bedroom 1, the day bed in bedroom 2
     scene.box("bed1_frame", (2.1, 2.4, 0.2), (1.7, 2.1, 0.3), chestnut)
     scene.box("bed1_mattress", (2.1, 2.4, 0.5), (1.6, 2.0, 0.28), linen)
     scene.box("bed1_head", (2.1, 3.5, 0.6), (1.7, 0.08, 1.2), chestnut)
-    scene.model("vintage_day_bed", (18.2, 2.3, 0.0), rot_z=math.radians(0))
+    scene.model("vintage_day_bed", (19.55, 2.7, 0.0), rot_z=math.radians(-90))
     for eid in ("L1", "L2", "L3"):
         c = scene.center(eid)
         scene.rod(f"{eid}_cord", (c.x, c.y, 3.17), (c.x, c.y, c.z + 0.03), 0.004, iron)

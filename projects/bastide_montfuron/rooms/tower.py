@@ -147,11 +147,16 @@ def dress(scene, M):
 
     scene.rug("tower1_rug", (2.6, 3.75, 3.5), (2.4, 3.0), M.rug_jute)
 
-    for cx in (3.03, 4.47):                                                                    # full curtains on N6, the clear window
-        scene.box(f"tower1_curtain_{round(cx * 100)}", (cx, 0.62, 4.90), (0.34, 0.12, 2.70), M.linen, bevel=0.05)
-    scene.rod("tower1_curtain_rod_n6", (2.85, 0.62, 6.30), (4.65, 0.62, 6.30), 0.015, M.iron)
-    scene.box("tower1_valance_n9", (0.60, 3.75, 5.82), (0.10, 1.35, 0.16), M.linen, bevel=0.02)     # short pelmets: N9 is behind
-    scene.box("tower1_valance_n11", (3.75, 6.90, 5.82), (1.35, 0.10, 0.16), M.linen, bevel=0.02)    # the bed, N11 over the void
+    n6_lo, n6_hi = scene.bbox("N6")
+    for side, cx in (("l", n6_lo.x - 0.19), ("r", n6_hi.x + 0.19)):
+        scene.box(f"tower1_curtain_{side}", (cx, 0.62, 4.90), (0.34, 0.12, 2.70), M.linen, bevel=0.05)
+    scene.rod("tower1_curtain_rod_n6", (n6_lo.x - 0.4, 0.62, 6.30), (n6_hi.x + 0.4, 0.62, 6.30), 0.015, M.iron)
+    n9_lo, n9_hi = scene.bbox("N9")
+    n11_lo, n11_hi = scene.bbox("N11")
+    scene.box("tower1_valance_n9", (0.60, (n9_lo.y + n9_hi.y) / 2, n9_hi.z + 0.12),
+              (0.10, n9_hi.y - n9_lo.y + 0.3, 0.16), M.linen, bevel=0.02)
+    scene.box("tower1_valance_n11", ((n11_lo.x + n11_hi.x) / 2, 6.90, n11_hi.z + 0.12),
+              (n11_hi.x - n11_lo.x + 0.3, 0.10, 0.16), M.linen, bevel=0.02)
 
     # the F1 stairwell void, ST1's own outline: guarded along its open south edge and its west end (the floor over the
     # quarter landing) up to the top riser, where the flight arrives and the guard must stop

@@ -7,7 +7,7 @@ from typing import ClassVar, Literal
 from .. import geometry as G
 from ..derived import StairGeometry
 from ..geometry import Frame, Point
-from ..model import Context, Element, Positive, Realized, Ref, Relation, element, positional
+from ..model import Analysis, AnalysisContext, Context, Element, Outline, Positive, Realized, Ref, Relation, element, positional
 
 
 @element
@@ -39,6 +39,11 @@ class Stair(Element):
     base: float = 0.0
     to_level: Ref | None = None
 
+    def analyze(self, ctx: AnalysisContext) -> Analysis:
+        from ..spatial import analyze_stair
+
+        return analyze_stair(self, ctx)
+
     def realize(self, ctx: Context) -> Realized:
         lv = ctx.level(self)
         n = max(2, math.ceil(self.rise / self.max_riser))
@@ -50,7 +55,9 @@ class Stair(Element):
         top = frame.point(run)
         derived = StairGeometry(steps=n, riser=riser, going=self.going, run=run, top=list(top), pitch=math.degrees(math.atan2(riser, self.going)), base=self.base,
                                 outline=[list(frame.point(0, off)), list(frame.point(run, off)), list(frame.point(run, off + self.width)), list(frame.point(0, off + self.width))]).model_dump()
-        relations = [Relation(pred="rises_to", obj=self.to_level)] if self.to_level else []
+        if self.to_level:
+            ctx.level(self.to_level)
+        relations = [Relation(pred="rises_to", obj=self.to_level, target="level")] if self.to_level else []
         return Realized(solid=G.group(steps), derived=derived, relations=relations, tags={"circulation"})
 
 
@@ -61,7 +68,7 @@ class Landing(Element):
     kind: ClassVar[str] = "landing"
     ifc_class: ClassVar[str | None] = "IfcSlab"
 
-    outline: list[Point]
+    outline: Outline
     top: float
     thickness: Positive = 250.0
 

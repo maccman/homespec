@@ -3,10 +3,11 @@ from __future__ import annotations
 
 from typing import Annotated, ClassVar
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
 from ..geometry import Point, polygon_area
-from ..model import Definition, Outline, Positive, Ref, definition, positional
+from ..model import Definition, NonNegative, Outline, Positive, Ref, definition, positional
+from ..validation import FiniteModel
 
 
 @definition
@@ -18,7 +19,7 @@ class Level(Definition):
     height: Positive = 2700.0
 
 
-class Layer(BaseModel):
+class Layer(FiniteModel):
     """One layer of a build-up, outside to inside."""
 
     material: str
@@ -39,7 +40,7 @@ class Assembly(Definition):
         return sum(layer.thickness for layer in self.layers)
 
 
-class Render(BaseModel):
+class Render(FiniteModel):
     """How a material looks in the walkthrough. Ignored by every other export."""
 
     tile: float = 1.0
@@ -69,14 +70,6 @@ class Material(Definition):
     render: Render = Field(default_factory=Render)
 
 
-class Setbacks(BaseModel):
-    """Minimum distances from the parcel boundary. Front is toward -y, rear toward +y, sides along x."""
-
-    front: float = 0.0
-    side: float = 0.0
-    rear: float = 0.0
-
-
 @definition
 class Site(Definition):
     """The parcel the house stands on. Plan north is ``north`` degrees clockwise from +y."""
@@ -85,12 +78,12 @@ class Site(Definition):
     singleton: ClassVar[bool] = True
     id: str = positional(default="site")
     parcel: Outline
-    setbacks: Setbacks = Field(default_factory=Setbacks)
+    setbacks: NonNegative | list[NonNegative] = 0.0
     north: float = 0.0
 
     def __post_init__(self) -> None:
-        if len(self.parcel) > 3 and self.parcel[0] == self.parcel[-1]:
-            self.parcel = self.parcel[:-1]
+        if isinstance(self.setbacks, list) and len(self.setbacks) != len(self.parcel):
+            raise ValueError(f"{self.id}: supply one setback per parcel edge ({len(self.parcel)})")
         super().__post_init__()
 
     @property
@@ -98,4 +91,4 @@ class Site(Definition):
         return polygon_area(self.parcel)
 
 
-__all__ = ["Level", "Layer", "Assembly", "Render", "Material", "Setbacks", "Site", "Point"]
+__all__ = ["Level", "Layer", "Assembly", "Render", "Material", "Site", "Point"]

@@ -91,8 +91,8 @@ def save_walk() -> None:
             m.surface_render_method = 'BLENDED'
     timed("probe bake", lambda: bpy.ops.object.lightprobe_cache_bake(subset='ALL'))
     if scn.camera:
-        scn.camera.animation_data_clear()
         scn.frame_set(1)
+        scn.camera.animation_data_clear()
     bpy.ops.wm.save_as_mainfile(filepath=os.path.join(session.OUT, "house_walk.blend"))
     print("SAVED walk", flush=True)
 

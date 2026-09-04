@@ -19,15 +19,18 @@ import contextvars
 import dataclasses
 from collections import OrderedDict
 from collections.abc import Callable, Iterable, Iterator
-from typing import Annotated, Any, ClassVar, TypeVar, cast, dataclass_transform
+from contextlib import AbstractContextManager, nullcontext
+from functools import wraps
+from typing import Annotated, Any, ClassVar, Literal, TypeVar, cast, dataclass_transform
 
-from pydantic import BaseModel, BeforeValidator, ConfigDict, Field, TypeAdapter
+from pydantic import AfterValidator, BaseModel, BeforeValidator, ConfigDict, Field, TypeAdapter
 from pydantic.dataclasses import dataclass as _pydantic_dataclass
 
 from .geometry import Point, Point3
+from .validation import finite_tree, identifier, outline
 
 # --------------------------------------------------------------------------- declaring things
-CONFIG = ConfigDict(extra="forbid", arbitrary_types_allowed=True, validate_assignment=True)
+CONFIG = ConfigDict(extra="forbid", arbitrary_types_allowed=True, validate_assignment=True, allow_inf_nan=False)
 _MISSING: Any = dataclasses.MISSING
 T = TypeVar("T")
 
@@ -76,7 +79,8 @@ def ref_id(value: Any) -> str:
 
 Positive = Annotated[float, Field(gt=0)]
 NonNegative = Annotated[float, Field(ge=0)]
-Outline = Annotated[list[Point], Field(min_length=3)]
+Identifier = Annotated[str, AfterValidator(identifier)]
+Outline = Annotated[list[Point], Field(min_length=3), AfterValidator(outline)]
 
 _registration = contextvars.ContextVar("homespec_registration", default=True)
 _adapters: dict[type, TypeAdapter[Any]] = {}
@@ -96,6 +100,7 @@ class Relation(BaseModel):
 
     pred: str
     obj: str
+    target: Literal["entity", "level"] = "entity"
     note: str = ""
 
 
@@ -120,7 +125,7 @@ class Extrusion(BaseModel):
 class _Registered:
     """Base for anything that registers itself with the current :class:`House` on construction."""
 
-    id: str = positional()
+    id: Identifier = positional()
 
     def __post_init__(self) -> None:
         if _registration.get():
@@ -155,6 +160,17 @@ class Realized(BaseModel):
     tags: set[str] = Field(default_factory=set)
 
 
+class Analysis(BaseModel):
+    """Facts and outgoing relations computed against the completed geometry.
+
+    Analyses cannot emit geometry. The compiler collects every result before
+    applying any, so one analysis never depends on another's ordering.
+    """
+
+    derived: dict[str, Any] = Field(default_factory=dict)
+    relations: list[Relation] = Field(default_factory=list)
+
+
 @element
 class Element(_Registered):
     """Something that is realized into geometry and exported.
@@ -179,6 +195,10 @@ class Element(_Registered):
 
     def realize(self, ctx: Context) -> Realized:
         raise NotImplementedError(f"{type(self).__name__} does not implement realize()")
+
+    def analyze(self, ctx: AnalysisContext) -> Analysis:
+        """Inspect completed solids; override to publish cross-element facts."""
+        return Analysis()
 
     def all_tags(self) -> set[str]:
         return {self.kind} | set(self.tags)
@@ -330,16 +350,32 @@ class Context:
         self.build.relate(subject, pred, obj)
 
 
+class AnalysisContext:
+    """Completed model access, without realization's cut/emit operations."""
+
+    def __init__(self, build: Build) -> None:
+        self.build = build
+        self.house = build.house
+
+    def built(self, id: str) -> Built:
+        return self.build[id]
+
+    def derived(self, id: str, model: type[M]) -> M:
+        return model.model_validate(self.build[id].derived)
+
+
 class House:
     """The registry a project file fills in. ``with House(name) as house:`` makes it current."""
 
-    _stack: ClassVar[list[House]] = []
+    _stack: ClassVar[contextvars.ContextVar[tuple[House, ...]]] = contextvars.ContextVar("homespec_houses", default=())
 
-    def __init__(self, name: str, units: str = "mm") -> None:
+    def __init__(self, name: str, units: str = "mm", *, inputs: Iterable[str] = ()) -> None:
         if units != "mm":
             raise ValueError("homespec works in millimetres; convert at the boundary with homespec.units")
         self.name = name
         self.units = units
+        self.inputs = list(inputs)
+        self.execution_context: Callable[[], AbstractContextManager[None]] = nullcontext
         self.levels: dict[str, Any] = {}
         self.assemblies: dict[str, Any] = {}
         self.materials: dict[str, Any] = {}
@@ -351,21 +387,22 @@ class House:
 
     # ---- context
     def __enter__(self) -> House:
-        House._stack.append(self)
+        House._stack.set((*House._stack.get(), self))
         return self
 
     def __exit__(self, *exc: Any) -> None:
-        House._stack.pop()
+        House._stack.set(House._stack.get()[:-1])
 
     @classmethod
     def current(cls) -> House:
-        if not cls._stack:
+        if not cls._stack.get():
             raise RuntimeError("no active House: declare elements inside `with House(...) as house:` or pass them to house.add()")
-        return cls._stack[-1]
+        return cls._stack.get()[-1]
 
     @classmethod
     def current_or_none(cls) -> House | None:
-        return cls._stack[-1] if cls._stack else None
+        stack = cls._stack.get()
+        return stack[-1] if stack else None
 
     # ---- registration
     def _register(self, obj: Any) -> None:
@@ -392,8 +429,13 @@ class House:
 
     def check(self, fn: Callable[..., Any]) -> Callable[..., Any]:
         """Decorator: a project-specific rule. ``fn(ir)`` yields :class:`homespec.checks.Result` or tuples."""
-        self.checks.append(fn)
-        return fn
+        @wraps(fn)
+        def contextual(*args: Any, **kwargs: Any) -> Iterator[Any]:
+            with self.execution_context():
+                yield from fn(*args, **kwargs)
+
+        self.checks.append(contextual)
+        return contextual
 
     def allow(self, a: Any, b: Any, note: str) -> None:
         """Declare that two entities may share volume, and why.
@@ -410,6 +452,17 @@ class House:
     # ---- compile
     def compile(self) -> Build:
         """Realize every element, in dependency order, into a :class:`Build`."""
+        with self.execution_context():
+            return self._compile()
+
+    def _compile(self) -> Build:
+        # Mutable containers and nested BaseModels can bypass a dataclass's
+        # field validation. Reject bad inputs with their owning id before any
+        # value reaches a native geometry operation.
+        declarations = [*self.levels.values(), *self.materials.values(), *self.assemblies.values(), *self.elements.values()]
+        declarations += [value for value in (self.grid, self.site) if value is not None]
+        for declaration in declarations:
+            finite_tree(declaration, declaration.id)
         build = Build(self)
         ctx = Context(self, build)
         token = _registration.set(False)
@@ -426,6 +479,17 @@ class House:
             for a, b, note in self.allowances:
                 build[b]                                       # both must exist; the lookup raises otherwise
                 build[a].relations.append(Relation(pred="may_overlap", obj=b, note=note))
+            analyses = [(b, b.element.analyze(AnalysisContext(build))) for b in build]
+            for b, analysis in analyses:
+                b.derived.update(analysis.derived)
+                b.relations.extend(analysis.relations)
+            for b in build:
+                if b.level is not None and b.level not in self.levels:
+                    raise ValueError(f"{b.id}: unknown level {b.level!r}")
+                for relation in b.relations:
+                    targets = self.levels if relation.target == "level" else build.entities
+                    if relation.obj not in targets:
+                        raise ValueError(f"{b.id}: {relation.pred} refers to unknown {relation.target} {relation.obj!r}")
         finally:
             _registration.reset(token)
         return build

@@ -6,6 +6,7 @@ import os
 
 import bpy
 import session
+from devices import configure_cycles
 from mathutils import Vector
 
 
@@ -70,18 +71,12 @@ class Camera:
         if os.environ.get("HOMESPEC_SAMPLES"):
             samples = int(os.environ["HOMESPEC_SAMPLES"])
         scn.render.resolution_x, scn.render.resolution_y = rx, ry
-        scn.render.fps = 24
         scn.render.image_settings.file_format = 'PNG'
         scn.view_settings.view_transform = 'AgX'
         scn.view_settings.look = 'AgX - Medium High Contrast'
         if not (scn.animation_data and scn.animation_data.action):     # an animated exposure wins over the constant
             scn.view_settings.exposure = exposure
-        p = bpy.context.preferences.addons['cycles'].preferences
-        p.compute_device_type = 'METAL'
-        p.get_devices()
-        for d in p.devices:
-            d.use = (d.type == 'METAL')
-        scn.cycles.device = 'GPU'
+        configure_cycles(scn)
         scn.cycles.samples = samples
         scn.cycles.use_denoising = True
         scn.cycles.adaptive_threshold = adaptive

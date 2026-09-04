@@ -2,16 +2,17 @@
 from __future__ import annotations
 
 from dataclasses import field
-from typing import Any, ClassVar, Literal
+from typing import Any, ClassVar, Literal, Self
 
-from pydantic import BaseModel, field_validator
+from pydantic import field_validator, model_validator
 
 from .. import geometry as G
 from ..derived import BeamGeometry, CeilingGeometry, SlabGeometry
 from ..geometry import Point
-from ..model import Context, Element, Outline, Positive, Realized, Ref, Relation, element, positional, ref_id
+from ..model import Context, Element, NonNegative, Outline, Positive, Realized, Ref, Relation, element, positional, ref_id
+from ..validation import FiniteModel
 
-Void = list[Point] | str
+Void = Outline | str
 """A hole: a plan outline, or the id of an entity the hole follows."""
 
 
@@ -77,7 +78,9 @@ class Slab(Element):
         voids = self.void_outlines(ctx)
         for void in voids:
             solid = solid - _void_prism(void, z_top - self.thickness, self.thickness)
-        area = G.polygon_area(self.outline) - sum(G.polygon_area(v) for v in voids)
+        area = G.volume(solid) / self.thickness
+        if area <= 1e-6:
+            solid = None
         return Realized(solid=solid, derived=SlabGeometry(area_mm2=area, z_top=z_top, voids=len(voids), outline=[list(p) for p in self.outline]).model_dump(),
                         tags={"floor"})
 
@@ -103,7 +106,7 @@ class Beam(Element):
         return Realized(solid=solid, derived=BeamGeometry(span=span, clear_below=self.underside - lv.elevation, size=[self.width, self.depth]).model_dump())
 
 
-class BeamGrid(BaseModel):
+class BeamGrid(FiniteModel):
     """Exposed beams at regular centres under a ceiling."""
 
     width: Positive
@@ -128,9 +131,15 @@ class Ceiling(Element):
     outline: Outline
     plank: Positive | None = None
     thickness: Positive = 24.0
-    gap: float = 6.0
+    gap: NonNegative = 6.0
     beams: BeamGrid | None = None
     voids: list[Void] = field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _plank_gap(self) -> Self:
+        if self.plank is not None and self.gap >= self.plank:
+            raise ValueError(f"{self.id!r}: ceiling gap must be smaller than its plank pitch")
+        return self
 
     @field_validator("voids", mode="before")
     @classmethod
@@ -147,19 +156,26 @@ class Ceiling(Element):
         ys = [p[1] for p in self.outline]
         x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
         voids = _void_outlines(self.id, self.voids, ctx)
+        depth = self.thickness + (self.beams.depth if self.beams else 0.0)
+        envelope = G.prism(self.outline, z_top - depth, depth)
+        for void in voids:
+            envelope = envelope - _void_prism(void, z_top - depth, depth)
         derived: dict = {"z_underside": z_top - self.thickness, "voids": len(voids)}
         if self.plank:
-            planks = [G.box((x1 - x0, self.plank - self.gap, self.thickness), (x0, y0 + i * self.plank, z_top - self.thickness))
-                      for i in range(int((y1 - y0) / self.plank) + 1) if y0 + i * self.plank < y1]
-            solid = G.group(planks)
+            planks = []
+            for i in range(int((y1 - y0) / self.plank) + 1):
+                if y0 + i * self.plank >= y1:
+                    break
+                plank = G.box((x1 - x0, self.plank - self.gap, self.thickness), (x0, y0 + i * self.plank, z_top - self.thickness))
+                planks.extend(G.overlap(plank, envelope))
+            solid = G.group(planks) if planks else None
             derived.update(kind="planks", plank_width=self.plank, count=len(planks))
         else:
-            solid = G.prism(self.outline, z_top - self.thickness, self.thickness)
+            lining = G.prism(self.outline, z_top - self.thickness, self.thickness)
+            pieces = G.overlap(lining, envelope)
+            solid = G.group(pieces) if pieces else None
             derived.update(kind="flat")
-        depth = self.thickness + (self.beams.depth if self.beams else 0.0)
-        cuts = [_void_prism(v, z_top - depth, depth) for v in voids]
-        for cut in cuts:
-            solid = solid - cut
+        derived["area_mm2"] = G.volume(solid) / self.thickness if solid is not None else 0.0
         if self.beams:
             b = self.beams
             underside = z_top - self.thickness - b.depth
@@ -167,14 +183,20 @@ class Ceiling(Element):
                 lines = [((bx, y0), (bx, y1)) for bx in _centred(x0, x1, b.spacing)]
             else:
                 lines = [((x0, by), (x1, by)) for by in _centred(y0, y1, b.spacing)]
+            emitted, beam_pieces = 0, 0
             for k, (s, e) in enumerate(lines, 1):
                 beam = Beam(f"{self.id}.B{k}", s, e, width=b.width, depth=b.depth, underside=underside, level=self.level, material=b.material, tags={"exposed"})
                 r = beam.realize(ctx)
-                for cut in cuts:                           # a joist that meets the well is trimmed at it
-                    r.solid = r.solid - cut
+                pieces = G.overlap(r.solid, envelope)
+                if not pieces:
+                    continue
+                r.solid = G.group(pieces)
+                r.derived["span"] = sum(G.bbox(piece).size[1 if b.along == "y" else 0] for piece in pieces)
                 r.relations.append(Relation(pred="part_of", obj=self.id))
                 ctx.emit(beam, r)
-            derived.update(beams=len(lines), beam_spacing=b.spacing)
+                emitted += 1
+                beam_pieces += len(pieces)
+            derived.update(beams=emitted, beam_pieces=beam_pieces, beam_spacing=b.spacing)
         return Realized(solid=solid, derived=CeilingGeometry(**derived).model_dump(exclude_none=True), tags={"lining"})
 
 

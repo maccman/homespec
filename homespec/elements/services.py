@@ -7,7 +7,7 @@ from .. import geometry as G
 from ..derived import LightGeometry, OutletGeometry
 from ..geometry import Point
 from ..model import Context, Element, NonNegative, Positive, Realized, Ref, Relation, element
-from .walls import WallGeometry
+from .walls import hosted_placement
 
 
 @element
@@ -61,7 +61,8 @@ class Outlet(Element):
         return [self.on]
 
     def realize(self, ctx: Context) -> Realized:
-        wall = ctx.derived(self.on, WallGeometry)
-        solid = G.frame_box(wall.face, self.from_start, 0.0, wall.elevation + self.height, (86, 12, 86))
-        return Realized(solid=solid, derived=OutletGeometry(at=wall.face.point(self.from_start + 43), z=wall.elevation + self.height).model_dump(),
-                        relations=[Relation(pred="on_wall", obj=self.on)], tags={"service", "power"}, level=self.level or ctx.built(self.on).level)
+        wall, level, elevation = hosted_placement(ctx, self, self.on)
+        z = elevation + self.height
+        solid = G.frame_box(wall.face, self.from_start, 0.0, z, (86, 12, 86))
+        return Realized(solid=solid, derived=OutletGeometry(at=wall.face.point(self.from_start + 43), z=z).model_dump(),
+                        relations=[Relation(pred="on_wall", obj=self.on)], tags={"service", "power"}, level=level)

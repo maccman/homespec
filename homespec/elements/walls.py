@@ -1,14 +1,24 @@
 """Walls and the openings in them, with what dresses an opening: glazing bars, shutters, surrounds, grilles."""
 from __future__ import annotations
 
-from typing import Any, ClassVar, Literal
+from typing import Annotated, Any, ClassVar, Literal, Self
 
-from pydantic import BaseModel
+from pydantic import Field, model_validator
 
 from .. import geometry as G
 from ..derived import ArchGeometry, OpeningGeometry, WallGeometry
 from ..geometry import Frame, Point
-from ..model import Built, Context, Element, Extrusion, Positive, Realized, Ref, Relation, element, positional
+from ..model import Analysis, AnalysisContext, Built, Context, Element, Extrusion, NonNegative, Positive, Realized, Ref, Relation, element, positional
+from ..validation import FiniteModel
+
+
+def hosted_placement(ctx: Context, owner: Element, host: str) -> tuple[WallGeometry, str, float]:
+    """A fitting's wall frame and floor; an explicit level overrides its wall's base floor."""
+    wall = ctx.derived(host, WallGeometry)
+    level_id = owner.level or ctx.built(host).level
+    if level_id is None:
+        raise ValueError(f"{owner.id!r}: host {host!r} has no level")
+    return wall, level_id, ctx.level(level_id).elevation
 
 
 @element
@@ -54,10 +64,10 @@ class Wall(Element):
         )
 
 
-class FromEnd(BaseModel):
+class FromEnd(FiniteModel):
     """Position an opening by its distance from the wall's end instead of its start."""
 
-    from_end: float
+    from_end: NonNegative
 
 
 def from_end(distance: float) -> FromEnd:
@@ -234,22 +244,36 @@ class Opening(Element):
     host: Ref
     width: Positive
     height: Positive
-    sill: float = 0.0
+    sill: NonNegative = 0.0
     at: Position = "center"
     frame: Ref = "steel_black"
     frame_size: Positive = 60.0
     glazing: Ref = "glass_double"
-    panes: tuple[int, int] = (1, 1)
+    panes: tuple[Annotated[int, Field(ge=1)], Annotated[int, Field(ge=1)]] = (1, 1)
     bar_size: Positive = 30.0
     shutters: Ref | None = None
     surround: Ref | None = None
     grille: Ref | None = None
+    exact_void: ClassVar[bool] = False
+
+    @model_validator(mode="after")
+    def _usable_dimensions(self) -> Self:
+        if isinstance(self.at, (int, float)) and self.at < 0:
+            raise ValueError(f"{self.id!r}: opening position must be nonnegative")
+        if self.kind != "arch" and (self.clear_width() <= 0 or self.height <= 2 * self.frame_size):
+            raise ValueError(f"{self.id!r}: opening dimensions must leave space inside its frame")
+        return self
 
     def deps(self) -> list[str]:
         return [self.host]
 
     def all_tags(self) -> set[str]:
         return super().all_tags() | {"opening"}
+
+    def analyze(self, ctx: AnalysisContext) -> Analysis:
+        from ..spatial import analyze_opening
+
+        return analyze_opening(self, ctx)
 
     # ---- what subclasses vary
     def mullion_positions(self) -> list[float]:
@@ -304,20 +328,30 @@ class Opening(Element):
     def head_height(self) -> float:
         return self.height
 
+    def cut_void(self, ctx: Context, wall: WallGeometry, x: float, z: float, level: str) -> str | None:
+        """Cut once and retain a nonrectangular void for exporters using that exact geometry."""
+        void = self.void_solid(x, wall, z)
+        ctx.cut(self.host, void)
+        if not self.exact_void:
+            return None
+        entity = ArchVoid(f"{self.id}.void", opening=self.id, level=level)
+        ctx.emit(entity, Realized(solid=void, relations=[Relation(pred="part_of", obj=self.id)]))
+        return entity.id
+
     def realize(self, ctx: Context) -> Realized:
         wall = ctx.derived(self.host, WallGeometry)
         x = self.position(wall)
         z = wall.elevation + self.sill
         t, fs = wall.thickness, self.frame_size
-        ctx.cut(self.host, self.void_solid(x, wall, z))
+        level = self.level or ctx.level_at(z).id          # the storey of the sill, not of the wall
+        void_entity = self.cut_void(ctx, wall, x, z, level)
         members = self.frame_members(x, wall, z)
         panes, glass_area = self.panes_of(x, wall, z)
-        level = self.level or ctx.level_at(z).id          # the storey of the sill, not of the wall
         head = self.head_height()
         void_ex = Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=t + 200, height=head)
         geom = OpeningGeometry(host=self.host, from_start=x, from_end=wall.length - x - self.width, width=self.width, height=head,
                                sill=self.sill, head=self.sill + head, clear_width=self.clear_width(), clear_height=self.clear_height(),
-                               glass_area_mm2=glass_area, mullions=len(self.mullion_positions()), frame_size=fs, void=void_ex)
+                               glass_area_mm2=glass_area, mullions=len(self.mullion_positions()), frame_size=fs, void=void_ex, void_entity=void_entity)
         derived = geom.model_dump()
         part_of = [Relation(pred="part_of", obj=self.id)]
         if panes:
@@ -342,7 +376,7 @@ class Window(Opening):
     """A framed window, optionally with vertical mullions at equal spacing."""
 
     kind: ClassVar[str] = "window"
-    mullions: int = 0
+    mullions: Annotated[int, Field(ge=0)] = 0
 
     def mullion_positions(self) -> list[float]:
         return [k * self.width / (self.mullions + 1) for k in range(1, self.mullions + 1)]
@@ -378,7 +412,11 @@ class Door(Opening):
         return [self.width / 2] if self.leaves == 2 else []
 
     def clear_width(self) -> float:
-        return self.width / self.leaves - 2 * self.frame_size
+        return (self.width - (self.leaves + 1) * self.frame_size) / self.leaves
+
+    def leaf_starts(self) -> list[float]:
+        """Clear leaf openings between the jambs and, for a double door, the central mullion."""
+        return [self.frame_size + i * (self.clear_width() + self.frame_size) for i in range(self.leaves)]
 
     def panes_of(self, x: float, wall: WallGeometry, z: float) -> tuple[list[Any], float]:
         if not self.glazed:
@@ -386,17 +424,15 @@ class Door(Opening):
         fs = self.frame_size
         if self.leaves == 1:
             return super().panes_of(x, wall, z)
-        leaf_w = self.width / 2
-        panes = [G.frame_box(wall.body, x + gx + fs, (wall.thickness - 10) / 2, z + fs, (leaf_w - 2 * fs, 10, self.height - 2 * fs)) for gx in (0.0, leaf_w)]
-        return panes, 2 * (leaf_w - 2 * fs) * (self.height - 2 * fs)
+        panes = [G.frame_box(wall.body, x + gx, (wall.thickness - 10) / 2, z + fs, (self.clear_width(), 10, self.height - 2 * fs)) for gx in self.leaf_starts()]
+        return panes, self.leaves * self.clear_width() * (self.height - 2 * fs)
 
     def fill(self, ctx: Context, wall: WallGeometry, x: float, level: str | None) -> None:
         if self.glazed:
             return
         fs = self.frame_size
-        leaf_w = self.width / self.leaves
-        parts = [G.frame_box(wall.body, x + k * leaf_w + fs, (wall.thickness - 40) / 2, wall.elevation + self.sill + 10, (leaf_w - 2 * fs, 40, self.height - fs - 10))
-                 for k in range(self.leaves)]
+        parts = [G.frame_box(wall.body, x + start, (wall.thickness - 40) / 2, wall.elevation + self.sill + 10, (self.clear_width(), 40, self.height - fs - 10))
+                 for start in self.leaf_starts()]
         ctx.emit(Leaf(f"{self.id}.leaf", opening=self.id, level=level, material=self.leaf),
                  Realized(solid=G.group(parts), relations=[Relation(pred="part_of", obj=self.id)]))
 
@@ -414,21 +450,30 @@ class SlidingDoor(Door):
         fs = self.frame_size
         if self.leaves == 1:
             return Opening.panes_of(self, x, wall, z)
-        leaf_w = self.width / 2
-        gx = 0.0 if self.open_leaf == "end" else leaf_w
-        pane = G.frame_box(wall.body, x + gx + fs, (wall.thickness - 10) / 2, z + fs, (leaf_w - 2 * fs, 10, self.height - 2 * fs))
-        return [pane], self.width * self.height
+        gx = self.leaf_starts()[0 if self.open_leaf == "end" else 1]
+        pane = G.frame_box(wall.body, x + gx, (wall.thickness - 10) / 2, z + fs, (self.clear_width(), 10, self.height - 2 * fs))
+        return [pane], self.clear_width() * (self.height - 2 * fs)
+
+
+def _arched_void(opening: Opening, x: float, wall: WallGeometry, z: float) -> Any:
+    """A rectangular passage topped by exactly the upper semicircle, even for low springing lines."""
+    t, r = wall.thickness, opening.width / 2
+    centre = wall.body.point(x + r, t / 2)
+    crown = G.horizontal_cylinder(r, t + 200, (centre[0], centre[1], z + opening.height), wall.angle + 90)
+    upper = G.frame_box(wall.body, x - 1, -101, z + opening.height, (opening.width + 2, t + 202, r + 1))
+    return G.frame_box(wall.body, x, -100, z, (opening.width, t + 200, opening.height)) + (crown & upper)
 
 
 @element
 class Arch(Opening):
     """An open arched passage through a wall: no frame, no glass, a semicircular head above ``height``.
 
-    ``height`` is the springing line; the overall clear height is ``height + width / 2``.
+    ``height`` is the full-width rectangular clearance; the apex is ``height + width / 2``.
     """
 
     kind: ClassVar[str] = "arch"
     ifc_class: ClassVar[str | None] = None
+    exact_void: ClassVar[bool] = True
 
     def all_tags(self) -> set[str]:
         return super().all_tags() | {"passage"}
@@ -439,10 +484,11 @@ class Arch(Opening):
     def head_height(self) -> float:
         return self.height + self.width / 2
 
+    def clear_height(self) -> float:
+        return self.height
+
     def void_solid(self, x: float, wall: WallGeometry, z: float) -> Any:
-        t, r = wall.thickness, self.width / 2
-        centre = wall.body.point(x + r, t / 2)
-        return G.frame_box(wall.body, x, -100, z, (self.width, t + 200, self.height)) + G.horizontal_cylinder(r, t + 200, (centre[0], centre[1], z + self.height), wall.angle + 90)
+        return _arched_void(self, x, wall, z)
 
     def frame_members(self, x: float, wall: WallGeometry, z: float) -> list[Any]:
         return []
@@ -455,16 +501,13 @@ class Arch(Opening):
         x = self.position(wall)
         z = wall.elevation + self.sill
         level = self.level or ctx.level_at(z).id          # the storey of the sill, not of the wall
-        void = self.void_solid(x, wall, z)
-        ctx.cut(self.host, void)
-        void_entity = ArchVoid(f"{self.id}.void", opening=self.id, level=level)
-        ctx.emit(void_entity, Realized(solid=void, relations=[Relation(pred="part_of", obj=self.id)]))
+        void_entity = self.cut_void(ctx, wall, x, z, level)
         ctx.relate(self.host, "has_opening", self.id)
         head = self.head_height()
         geom = OpeningGeometry(host=self.host, from_start=x, from_end=wall.length - x - self.width, width=self.width, height=head,
-                               sill=self.sill, head=self.sill + head, clear_width=self.width, clear_height=head, glass_area_mm2=0.0, mullions=0,
+                               sill=self.sill, head=self.sill + head, clear_width=self.width, clear_height=self.clear_height(), glass_area_mm2=0.0, mullions=0, frame_size=0.0,
                                void=Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=wall.thickness + 200, height=head))
-        return Realized(derived=ArchGeometry(**{**geom.model_dump(), "springing": self.height, "radius": self.width / 2, "void_entity": void_entity.id}).model_dump(), level=level,
+        return Realized(derived=ArchGeometry(**{**geom.model_dump(), "springing": self.height, "radius": self.width / 2, "void_entity": void_entity}).model_dump(), level=level,
                         relations=[Relation(pred="hosted_in", obj=self.host)])
 
 
@@ -478,6 +521,7 @@ class ArchedDoor(Door):
     kind: ClassVar[str] = "arched_door"
     glazed: bool = True
     leaves: Literal[1, 2] = 2
+    exact_void: ClassVar[bool] = True
 
     def all_tags(self) -> set[str]:
         return super().all_tags() | {"door"}
@@ -485,10 +529,16 @@ class ArchedDoor(Door):
     def head_height(self) -> float:
         return self.height + self.width / 2
 
+    def clear_height(self) -> float:
+        return self.height - (2 if self.threshold else 1) * self.frame_size
+
     def void_solid(self, x: float, wall: WallGeometry, z: float) -> Any:
-        t, r = wall.thickness, self.width / 2
-        centre = wall.body.point(x + r, t / 2)
-        return G.frame_box(wall.body, x, -100, z, (self.width, t + 200, self.height)) + G.horizontal_cylinder(r, t + 200, (centre[0], centre[1], z + self.height), wall.angle + 90)
+        return _arched_void(self, x, wall, z)
+
+    def realize(self, ctx: Context) -> Realized:
+        result = super().realize(ctx)
+        result.derived = ArchGeometry(**result.derived, springing=self.height, radius=self.width / 2).model_dump()
+        return result
 
     def frame_members(self, x: float, wall: WallGeometry, z: float) -> list[Any]:
         fs, t, r = self.frame_size, wall.thickness, self.width / 2
@@ -498,6 +548,8 @@ class ArchedDoor(Door):
             G.frame_box(wall.body, x + self.width - fs, depth, z, (fs, fs, self.height)),
             G.frame_box(wall.body, x, depth, z + self.height - fs, (self.width, fs, fs)),              # transom under the springing line
         ]
+        if self.threshold:
+            members.append(G.frame_box(wall.body, x, depth, z, (self.width, fs, fs)))
         for mx in self.mullion_positions():
             members.append(G.frame_box(wall.body, x + mx - fs / 2, depth, z, (fs, fs, self.height)))
         cols, rows = self.panes
