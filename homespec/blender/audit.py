@@ -48,6 +48,7 @@ from typing import NamedTuple
 
 import bpy
 import session
+from audit_geometry import extrusion_prism, footprint_overlap, obb_overlap, prism_contains
 from mathutils import Vector
 
 WALL_KINDS = {"wall", "wall_infill", "gable", "chimney"}
@@ -86,6 +87,7 @@ class Box(NamedTuple):
     name: str
     lo: Vector
     hi: Vector
+    corners: tuple | None = None
 
 
 class Room(NamedTuple):
@@ -118,6 +120,8 @@ def run(before: set[str]) -> list[tuple[str, str, str]]:
             for w in walls:
                 depth = _overlap(lo, hi, w.lo, w.hi)
                 if depth > INTO_WALL:
+                    depth = _wall_overlap(o, w, depth)
+                if depth > INTO_WALL:
                     findings.append(("inside_wall", o.name, f"{_mm(depth)} into {w.name} {where}"))
                     break
         if tag == "part" or max(size) < MIN_PART or (tag == "primitive" and (size.x * size.y * size.z < MIN_VOLUME or size.x * size.y > TERRAIN)):
@@ -133,7 +137,7 @@ def run(before: set[str]) -> list[tuple[str, str, str]]:
                 findings.append(("hangs_low", o.name, f"{_mm(lo.z - room.lo.z)} over the floor of {room.name}, hung from {detail} {where}"))
         if size.z >= STEP and not canopy:
             for r in routes:
-                if _overlap_xy(lo, hi, r.lo, r.hi) >= 0.15 and min(hi.z, r.hi.z) - max(lo.z, r.lo.z) > 0.05 and hi.z - r.lo.z > STEP:
+                if _route_overlap(o, lo, hi, r) >= 0.15 and min(hi.z, r.hi.z) - max(lo.z, r.lo.z) > 0.05 and hi.z - r.lo.z > STEP:
                     findings.append(("in_the_way", o.name, f"{r.name} {where}"))
                     break
         if room is not None:
@@ -183,10 +187,17 @@ def _routes(walls: list[Box]) -> list[Box]:
     entered from the side, so the strips beside its first treads are the
     route instead.
     """
+    published: list[Box] = []
     zones: list[tuple[Box, Vector]] = []                                    # each with the point a step into it, to tell a route from a wall
     levels = session.IR["levels"]
     for e in session.IR["entities"]:
-        if e["kind"] in OPENING_KINDS:
+        if e["kind"] == "curved_stair":
+            # Custom stair geometry publishes its actual entry and landing
+            # clearances, since a rectangular flight cannot be inferred here.
+            for zone in (e.get("derived") or {}).get("approach_zones", []):
+                corners = [Vector((p[0] / 1000, p[1] / 1000, 0)) for p in zone["outline"]]
+                published.append(_box(f"{zone.get('name', 'the approach')} of {e['id']}", corners, zone["z0"] / 1000, zone["z1"] / 1000))
+        elif e["kind"] in OPENING_KINDS:
             d = e.get("derived") or {}
             v = d.get("void")
             if not v or d.get("clear_height", 0.0) < 1800:                  # a hearth is an arch nobody walks through
@@ -217,18 +228,60 @@ def _routes(walls: list[Box]) -> list[Box]:
                 for edge, out in ((a, -across), (dd, across)):
                     zones.append((_box(f"the approach beside the first treads of {e['id']}", [edge, edge + ahead * 3 * going, edge + out * ROUTE_DEPTH, edge + ahead * 3 * going + out * ROUTE_DEPTH], z0, z0 + ROUTE_HEIGHT),
                                   edge + (step3 - a) / 2 + out * 0.01))
-    return [z for z, anchor in zones if not _walled(walls, anchor, z.lo.z)]
+    return [z for z, anchor in zones if not _walled(walls, anchor, z.lo.z)] + published
 
 
 def _walled(walls: list[Box], p: Vector, z: float) -> bool:
-    return any(_contains(w, Vector((p.x, p.y, z + 0.5))) for w in walls)
+    return any(_wall_contains(w, Vector((p.x, p.y, z + 0.5))) for w in walls)
 
 
 def _box(name: str, corners, z0: float, z1: float) -> Box:
-    return Box(name, Vector((min(p.x for p in corners), min(p.y for p in corners), z0)), Vector((max(p.x for p in corners), max(p.y for p in corners), z1)))
+    return Box(name, Vector((min(p.x for p in corners), min(p.y for p in corners), z0)), Vector((max(p.x for p in corners), max(p.y for p in corners), z1)),
+               tuple((p.x, p.y, z) for p in corners for z in (z0, z1)))
 
 
 # ---- the placed objects ------------------------------------------------------------------------------------------
+
+def _route_overlap(o, lo: Vector, hi: Vector, route: Box) -> float:
+    broad = _overlap_xy(lo, hi, route.lo, route.hi)
+    if broad < 0.15 or route.corners is None:
+        return broad
+    return footprint_overlap([tuple(o.matrix_world @ Vector(c)) for c in o.bound_box], route.corners)
+
+
+def _wall_prism(w: Box):
+    """Read oriented IR/mesh bounds; uncommon wall kinds retain their broad box."""
+    entity = session.BY.get(w.name, {})
+    extrusion = entity.get("extrusion")
+    if extrusion is not None:
+        return extrusion_prism(extrusion)
+    # Boolean joins may remove a wall's simple extrusion. Read its imported
+    # mesh rather than treating the empty corners of a diagonal AABB as wall.
+    obj = bpy.data.objects.get(w.name)
+    if entity.get("kind") == "wall" and entity.get("derived", {}).get("body") and obj is not None and obj.type == 'MESH':
+        corners = [tuple(obj.matrix_world @ v.co) for v in obj.data.vertices]
+        normal_matrix = obj.matrix_world.to_3x3().inverted().transposed()
+        axes = {tuple(round(v, 8) for v in (normal_matrix @ p.normal).normalized()) for p in obj.data.polygons}
+        return corners, tuple(axes)
+    return None
+
+
+def _wall_overlap(o, w: Box, broad_depth: float) -> float:
+    prism = _wall_prism(w)
+    if prism is None:
+        return broad_depth
+    corners = [tuple(o.matrix_world @ Vector(c)) for c in o.bound_box]
+    matrix = o.matrix_world.to_3x3()
+    axes = [tuple(matrix.col[i].normalized()) for i in range(3)]
+    return obb_overlap(corners, axes, *prism)
+
+
+def _wall_contains(w: Box, p: Vector) -> bool:
+    if not _contains(w, p):
+        return False
+    prism = _wall_prism(w)
+    return prism_contains(tuple(p), *prism) if prism is not None else True
+
 
 def _world_bbox(o) -> tuple[Vector, Vector]:
     pts = [o.matrix_world @ Vector(c) for c in o.bound_box]

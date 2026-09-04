@@ -1,0 +1,17 @@
+{
+  "source": "https://polyhaven.com (CC0)",
+  "hdris": {"qwantani_puresky": {"resolution":"2k"}},
+  "textures": {
+    "rustic_stone_wall": {"resolution":"2k"},
+    "beige_wall_001": {"resolution":"2k"},
+    "painted_plaster_wall": {"resolution":"2k"},
+    "monastery_stone_floor": {"resolution":"2k"},
+    "oak_wood_planks": {"resolution":"2k"},
+    "dark_wooden_planks": {"resolution":"2k"},
+    "rough_linen": {"resolution":"2k"},
+    "clay_roof_tiles": {"resolution":"2k"},
+    "gravel": {"resolution":"2k"},
+    "quatrefoil_jacquard_fabric": {"resolution":"2k"}
+  },
+  "models": {}
+}
