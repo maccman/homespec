@@ -50,8 +50,8 @@ import bpy
 import session
 from mathutils import Vector
 
-WALL_KINDS = {"wall", "gable", "chimney"}
-OPENING_KINDS = {"door", "arched_door", "arch"}
+WALL_KINDS = {"wall", "wall_infill", "gable", "chimney"}
+OPENING_KINDS = {"door", "sliding_door", "arched_door", "arch"}
 OUTDOORS = {"terrace", "garden", "patio", "deck", "loggia", "porch", "pool"}
 CANOPIES = ("shrub_", "searsia_", "island_tree", "wild_rooibos", "jacaranda", "grass_", "periwinkle")
 """Library assets whose box is mostly leaves: judged for support only."""
@@ -88,12 +88,18 @@ class Box(NamedTuple):
     hi: Vector
 
 
+class Room(NamedTuple):
+    bounds: Box
+    outline: list[tuple[float, float]]
+
+
 def run(before: set[str]) -> list[tuple[str, str, str]]:
     """Audit every mesh the presentation added since ``before`` and print the findings. Returns them."""
     dg = bpy.context.evaluated_depsgraph_get()
     walls = list(_ir_boxes(WALL_KINDS))
     voids = _opening_voids()
-    spaces = [(e["params"].get("use", ""), b) for e, b in _ir_entities("space")]
+    spaces = [Room(b, [(p[0] / 1000, p[1] / 1000) for p in e["params"]["outline"]])
+              for e, b in _ir_entities("space") if e["params"].get("use", "") not in OUTDOORS]
     routes = _routes(walls)
     placed = [o for o in bpy.data.objects if o.name not in before and o.type == 'MESH' and not o.hide_render and o.get("homespec")]
     boxes = {o.name: _world_bbox(o) for o in placed}
@@ -116,7 +122,7 @@ def run(before: set[str]) -> list[tuple[str, str, str]]:
                     break
         if tag == "part" or max(size) < MIN_PART or (tag == "primitive" and (size.x * size.y * size.z < MIN_VOLUME or size.x * size.y > TERRAIN)):
             continue
-        room = next((s for use, s in spaces if use not in OUTDOORS and _contains(s, centre)), None)
+        room = _room_for(spaces, lo, hi)
         if size.z >= FLAT:
             held, detail = _support(o, lo, hi, dg, parts)
             if held is None:
@@ -133,7 +139,7 @@ def run(before: set[str]) -> list[tuple[str, str, str]]:
         if room is not None:
             if hi.z > room.hi.z + 0.02:
                 findings.append(("through_the_ceiling", o.name, f"{_mm(hi.z - room.hi.z)} above the ceiling of {room.name} {where}"))
-            elif lo.z < room.lo.z - 0.03:
+            if lo.z < room.lo.z - 0.03:
                 findings.append(("below_the_floor", o.name, f"{_mm(room.lo.z - lo.z)} under the floor of {room.name} {where}"))
     for rule, name, detail in findings:
         print(f"AUDIT {rule} {name}: {detail}", flush=True)
@@ -321,6 +327,43 @@ def _cast(o, origin: Vector, direction: Vector, distance: float, dg):
 
 
 # ---- geometry ---------------------------------------------------------------------------------------------------
+
+def _room_for(spaces: list[Room], lo: Vector, hi: Vector) -> Box | None:
+    """Choose an overlapping room, using its real footprint and the nearest floor.
+
+    The bottom point alone cannot tell a sunken object from an object on
+    the storey below. Its full height establishes the candidate storeys;
+    the floor nearest its underside resolves objects crossing a floor.
+    """
+    candidates = [r.bounds for r in spaces
+                  if min(hi.z, r.bounds.hi.z) - max(lo.z, r.bounds.lo.z) > 0.001
+                  and _footprint_overlaps(r.outline, lo, hi)]
+    return min(candidates, key=lambda b: (abs(lo.z - b.lo.z), -b.lo.z, b.name), default=None)
+
+
+def _footprint_overlaps(outline: list[tuple[float, float]], lo: Vector, hi: Vector) -> bool:
+    """Positive-area overlap of a room polygon and an object's plan bounds.
+
+    Clipping to the box preserves concave room boundaries; a centre-point
+    or room-bounding-box test would miss straddling objects or include
+    objects in the empty corner of an L-shaped room.
+    """
+    points = outline
+    for axis, boundary, side in ((0, lo.x, 1), (0, hi.x, -1), (1, lo.y, 1), (1, hi.y, -1)):
+        clipped: list[tuple[float, float]] = []
+        for a, b in zip(points, points[1:] + points[:1], strict=True):
+            a_in, b_in = (a[axis] - boundary) * side >= 0, (b[axis] - boundary) * side >= 0
+            if a_in != b_in:
+                fraction = (boundary - a[axis]) / (b[axis] - a[axis])
+                clipped.append((a[0] + fraction * (b[0] - a[0]), a[1] + fraction * (b[1] - a[1])))
+            if b_in:
+                clipped.append(b)
+        points = clipped
+        if not points:
+            return False
+    area2 = sum(a[0] * b[1] - b[0] * a[1] for a, b in zip(points, points[1:] + points[:1], strict=True))
+    return abs(area2) > 2e-6
+
 
 def _overlap(lo1: Vector, hi1: Vector, lo2: Vector, hi2: Vector) -> float:
     """The thinnest extent of two boxes' shared volume; negative when they are apart."""

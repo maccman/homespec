@@ -19,7 +19,7 @@ def import_building(materials: bool = True) -> int:
     for e in session.IR["entities"]:
         if not e.get("geometry") or not e["physical"]:
             continue
-        bpy.ops.wm.obj_import(filepath=os.path.join(session.OUT, e["geometry"]["obj"]), forward_axis='Y', up_axis='Z')
+        bpy.ops.wm.obj_import(filepath=os.path.join(session.DATA_DIR, e["geometry"]["obj"]), forward_axis='Y', up_axis='Z')
         o = bpy.context.selected_objects[0]
         o.name = e["id"]
         o.data.materials.clear()

@@ -1,0 +1,5 @@
+projects/**/deliverables/*.ifc linguist-generated=true
+projects/**/deliverables/drawings/** linguist-generated=true
+projects/**/deliverables/schedules/** linguist-generated=true whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+projects/**/deliverables/checks.* linguist-generated=true
+projects/**/gallery/*.jpg linguist-generated=true

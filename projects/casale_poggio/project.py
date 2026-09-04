@@ -15,11 +15,16 @@ def build() -> House:
     with House("casale-poggio") as house:
         # ---- site: a gentle south-facing slope, olive grove below, track from the north
         Site(parcel=[(-20000, -30000), (45000, -30000), (45000, 22000), (-20000, 22000)],
-             setbacks=Setbacks(front=8000, side=5000, rear=5000), north=20)
+             setbacks=[8000, 5000, 5000, 5000], north=20)
         L0 = Level("L0", elevation=0, height=3200)
         grid = Grid(x={"A": 0, "B": 4275, "C": 6425, "D": 12375, "E": 16375, "F": 20000}, y={"1": 0, "2": 4575, "3": 7500})
         A, B, C, D, E, F = grid.lines("A", "B", "C", "D", "E", "F")
         one, two, three = grid.lines("1", "2", "3")
+
+        # Material definitions include concealed assembly layers.
+        Material('rubble_stone', product='Rubble masonry core')
+        Material('brick_block', product='Clay partition blocks')
+        Material('steel_black', product='Black steel cabinet plinth', render=Render(color=(0.05, 0.05, 0.05), metal=0.8))
 
         # ---- materials
         stone = Material("stone_rubble", texture="polyhaven/rustic_stone_wall", product="Local limestone rubble, lime pointed flush", supplier="local quarry",
@@ -119,7 +124,7 @@ def build() -> House:
         KitchenRun("K1", on=W3, from_start=3700, length=3850, depth=650, counter_height=900, fronts=chestnut, counter=pietra, doors=5, pulls="iron", splash_height=0)
 
         # ---- services: pendants where people sit, downlights where they wash, sockets low on the walls
-        Pendant("L1", at=(14400, 2200), drop=1300, level=L0, watts=60)        # over the dining table
+        Pendant("L1", at=(14800, 3300), drop=895, level=L0, watts=60)        # over the dining table
         Pendant("L2", at=(9400, 3750), drop=900, level=L0, watts=60)          # living
         Pendant("L3", at=(5350, 3750), drop=800, level=L0, watts=40)          # hall
         for i, (x, y) in enumerate([(2100, 6075), (18225, 6075), (2100, 2250), (18225, 2250)], 4):
@@ -144,7 +149,10 @@ def build() -> House:
             for s in ir.of_kind("space"):
                 if s.params["use"] != "bedroom":
                     continue
-                shared = [b for b in baths if set(ir.entity(b).related("bounded_by")) & set(s.related("bounded_by"))]
+                from homespec.spatial import room_openings
+
+                ways = [o for o, link in room_openings(ir, s.id) if (o.has("door") or o.has("passage")) and link.clear_width > 0]
+                shared = sorted({b for o in ways for b in o.related("serves") if b in baths})
                 yield ("bedroom_has_bath", s.id, bool(shared), ", ".join(shared) or "none", "an adjoining bathroom", "holiday-let brief")
 
     return house

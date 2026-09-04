@@ -21,7 +21,7 @@ from ezdxf.filemanagement import new as new_dxf
 from pydantic import BaseModel, Field
 
 from ..derived import OpeningGeometry, SpaceGeometry, WallGeometry
-from ..geometry import Loop, Point, add, read_step, scale, section_loops
+from ..geometry import Point, SectionPolygon, add, read_step, scale, section_polygons
 from ..ir import IRDocument
 
 CUT_HEIGHT = 1200.0
@@ -65,7 +65,7 @@ class Label(BaseModel):
 
 
 class Shape2D(BaseModel):
-    loops: list[Loop]
+    polygons: list[SectionPolygon]
     layer: Literal["walls", "joinery", "openings", "below"]
     id: str
 
@@ -99,9 +99,9 @@ def plan_view(ir: IRDocument, level: str, cut: float = CUT_HEIGHT) -> PlanView:
         lo, hi = e.geometry.bbox.min, e.geometry.bbox.max
         if lo[2] <= cut_z <= hi[2]:
             layer = "walls" if e.kind in ("wall", "wall_infill", "gable") else "openings" if e.has("opening") or e.kind in ("glazing", "leaf") else "joinery"
-            view.shapes.append(Shape2D(loops=section_loops(read_step(ir.path(e.geometry.step)), cut_z), layer=layer, id=e.id))
+            view.shapes.append(Shape2D(polygons=section_polygons(read_step(ir.path(e.geometry.step)), cut_z), layer=layer, id=e.id))
         elif floor_z - 300 <= hi[2] < cut_z and e.level == level:
-            view.shapes.append(Shape2D(loops=section_loops(read_step(ir.path(e.geometry.step)), hi[2] - 0.5), layer="below", id=e.id))
+            view.shapes.append(Shape2D(polygons=section_polygons(read_step(ir.path(e.geometry.step)), hi[2] - 0.5), layer="below", id=e.id))
         else:
             continue
         if view.shapes[-1].layer != "below":     # what is cut sets the sheet; slabs and terraces below just draw
@@ -176,9 +176,10 @@ def write_svg(view: PlanView, path: str, title: str, sheet: Sheet | None = None)
     for layer in ("below", "joinery", "openings", "walls"):
         for s in view.shapes:
             if s.layer == layer:
-                for loop in s.loops:
-                    d = " ".join(("M" if i == 0 else "L") + f"{T(p)[0]:.2f},{T(p)[1]:.2f}" for i, p in enumerate(loop)) + " Z"
-                    out.append(f'<path d="{d}" {style[layer]}/>')
+                for polygon in s.polygons:
+                    d = " ".join(" ".join(("M" if i == 0 else "L") + f"{T(p)[0]:.2f},{T(p)[1]:.2f}" for i, p in enumerate(loop)) + " Z"
+                                 for loop in polygon.rings())
+                    out.append(f'<path d="{d}" fill-rule="evenodd" {style[layer]}/>')
     for dim in view.dimensions:
         out += _svg_dimension(dim, T, sc)
     label_scale = 50.0 / sc
@@ -223,8 +224,9 @@ def write_dxf(view: PlanView, path: str) -> str:
         doc.layers.add(name, color=color)
     msp = doc.modelspace()
     for s in view.shapes:
-        for loop in s.loops:
-            msp.add_lwpolyline(loop, close=True, dxfattribs={"layer": s.layer.upper()})
+        for polygon in s.polygons:
+            for loop in polygon.rings():
+                msp.add_lwpolyline(loop, close=True, dxfattribs={"layer": s.layer.upper()})
     minx, miny, maxx, maxy = view.bounds
     for lbl, x in view.grid_x.items():
         msp.add_line((x, miny), (x, maxy), dxfattribs={"layer": "GRID"})

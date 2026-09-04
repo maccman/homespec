@@ -252,6 +252,88 @@ by the same 60 mm limit as a wall or gable rather than waved through at any
 depth. CH now passes through MN.infill on its way through RM, so infill is
 also fabric under the existing chimney allowance.
 
+## D-031 Openings and daylight belong to the rooms they actually serve
+
+Entities: P1 A1 D0 D1 D1.surround F1 N2 N3 N4 N6 N7 N9 N10 N11 N12 N13 living dining bed1 bed2 tower_bedroom study L2
+
+The compiled room boundaries revealed that D0 and D1 straddled P1. Move
+P1 east by one metre to x 15575, retaining both facade door positions.
+The living room ends at x 15500; dining starts at x 15650. D1 now springs
+at 2100, giving 2040 clear below its transom; this supersedes D-021's
+2000 springing height. Its explicit 140 mm surround lintel finishes at
+3190, 10 mm below F1, instead of penetrating the slab. IFC carries the
+same curved void as the model.
+
+Glazing checks now count only glass on each room's own boundary and storey.
+Widen N2/N13 to 1450, N3 to 1300 (shifted left to remain inside bed1),
+N4 to 2050, and the first-floor tower windows to 1350. The study's three
+windows become 1300 by 1400. Preserve centers where room boundaries allow.
+The tower's furnished first-floor room is named tower_bedroom and classified
+as a bedroom; its stairs provide local access. This is a rule-of-thumb
+10% glazing target, not a daylight simulation or regulatory certification.
+
+Dining seats eight around a shorter table centered at x 18450, and L2
+follows that center. Curtains and wall furniture follow the revised openings
+and P1. The circulation space takes priority over the previous ten seats.
+
+## D-032 The garden stair arrives clear of the pergola post
+
+Entities: ST0 RW1 RW2 PP5
+
+The 2400 mm landing beyond ST0 previously contained PP5. Shift the stair
+and the retaining-wall opening 1000 mm east, to x 14300..16700. The pergola
+and its supports stay in place; every tread and the arrival area must
+clear the compiled 2000 mm vertical headroom envelope.
+
+## D-033 Concealed materials and parcel edges are explicit
+
+Entities: lime_plaster brick_block rubble_wall partition
+
+Declare the concealed assembly layers as materials so no BIM reference
+dangles. Parcel setbacks are ordered per edge: south 10000, east 8000,
+north 8000, west 8000. These preserve the existing rectangular site intent
+while allowing the same check to measure real nonrectangular boundaries.
+
+## D-034 Presentation follows the revised openings and garden stair
+
+Entities: ST0 RW1 RW2 P1 A0 A1 D1 D5 N3 L2 L4 FP C2T study
+
+Align the terrace rail gap and planting exclusions with the relocated ST0 and
+move the plant out of its arrival area. Anchor living-room wall furniture to
+P1. Fit eight dining chairs around a 2200 by 1000 mm tabletop at (18450, 4000),
+keeping A1 and D5 clear. The dining pendants retain 2050 mm clearance. Curtains
+follow the compiled window dimensions; N3 has only a west stack because the
+bedroom partition leaves no space to the east. Camera positions follow the
+revised stair and furniture, and the audited circulation envelopes remain
+unchanged. Move the sofa that previously stood across the hearth to the east
+side, facing west, and place the adjacent armchair and ottoman to the north.
+The south sofa still faces the fire; the hearth and the route between A0 and
+A1 remain clear.
+
+Raise the study pendant from 1600 to 2100 mm above its compiled floor: it
+hangs over open floor space. Its smaller 350 mm shade fits between C2T's
+beams, with the shade bottom at 8800 and top at 9150 mm. Retain the kitchen's
+authored 1850 mm copper shade bottoms over the fixed island; that footprint
+is outside the circulation routes. D-010 describes the chandeliers placed
+from the spec's pendants, while these island shades are separate presentation
+fittings. No circulation or stair-clearance threshold is relaxed.
+
+## D-035 Close the raised east gable at its wall head
+
+Entities: ME RM RM.G2 N18 N18.surround N18.shutters
+
+Extend RM.G2 down to ME's 6400 mm wall head, closing the 128.86 mm exterior
+gap visible in the cross-section after RM was lifted onto its génoise courses.
+The existing gable fills the band; its upper face still meets RM's underside
+without overlapping the roof. Roof pitch, eaves, massing, and openings stay
+at their authored positions.
+
+Set N18's dressed-stone lintel to 100 mm so it ends at the same 6400 mm wall
+head, removing its former 120 mm intrusion into the restored gable. The
+window's position, sill, dimensions, and glazing are unchanged. Declare its
+surround and shutters explicitly so the shutters retain their clearance
+outside the stone surround.
+
 ## Against the reference
 
 The listing's photographs are in `docs/agents/refs/` (contact sheets `refs_a.jpg`
@@ -261,17 +343,20 @@ and `refs_b.jpg`).
 |---|---|---|
 | Three blocks stepping down: a tower, a wing, a low kitchen (ref-3, ref-23) | three blocks with shared walls | kept (D-001) |
 | Low canal-tile roofs on two or three génoise courses (ref-5, ref-6) | hips and a gable at 22 to 28 degrees, each roof sitting on its courses with wall infill behind | changed: the roofs rose onto the courses (D-020), then the wall heads were filled to their unchanged undersides (D-030) |
-| The arched glazed door with a fanlight and no shutters (ref-14, ref-23) | D1, no shutters | changed (D-021) |
+| The arched glazed door with a fanlight and no shutters (ref-14, ref-23) | D1, no shutters, 2040 mm clear below the transom | changed (D-021, D-031) |
 | A black steel frame to that arch (ref-14) | painted oak, like every other window | kept: one joinery finish outside; the hall's screen D2 is the steel one |
-| Small-paned windows in stone surrounds with grey-blue louvred shutters (ref-5, ref-6) | every window | kept (D-004, D-015) |
+| Small-paned windows in stone surrounds with grey-blue louvred shutters (ref-5, ref-6) | same window types, enlarged where actual room glazing was insufficient | changed (D-031) |
 | A brush pergola before the tower and the hall, stopping short of the arched door (ref-19, ref-22, ref-23) | RP runs to x 14.5, over the door's west jamb | kept (D-024) |
-| The pool below the house terrace, a retaining wall and steps between (ref-3, ref-8, ref-20) | RW1, RW2, ST0, PL | kept (D-006) |
+| The pool below the house terrace, a retaining wall and steps between (ref-3, ref-8, ref-20) | RW1, RW2, ST0, PL; stair gap shifted east clear of PP5 | changed (D-032) |
 | Lime-washed oak joists at close centres over boards (ref-13, ref-14, ref-16) | joists at 600 under every ceiling | kept (D-007) |
 | A dressed-stone fireplace with a mantel and an iron screen (ref-15) | FP with an arched hearth; mantel and screen are presentation | kept (D-007, D-017) |
 | A glazed, steel-framed dining room (ref-11, ref-12) | the dining room is inside the wing; no conservatory | not modelled: the plan keeps one wing under one roof |
 | A kitchen with a marble island under copper pendants (ref-13) | the run along the north wall in the spec; the island is presentation | kept (D-017) |
 
 ## Considered and not changed
+
+- Moving the facade doors to clear P1: the interior partition moves instead (D-031).
+- Moving a pergola support: the garden stair and its wall gap move instead (D-032).
 
 - Shortening the pergola to stop before the arched door, as the photographs
   do. The terrace furniture and the wisteria are laid out along its length;
@@ -285,6 +370,8 @@ and `refs_b.jpg`).
   over the fanlight stands in for voussoirs until there is an arched part.
 
 ## Not verified
+
+- Daylight distribution and complete evacuation routes: glazing area and local access are checked, but neither is a simulation or code assessment.
 
 - Structure: spans of the joists and roof timbers, the bearing of F1 and F2
   in the rubble, the lintels over the openings, the retaining walls RW1 and

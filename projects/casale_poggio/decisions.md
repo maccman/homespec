@@ -61,6 +61,31 @@ The chimney breast (FP) is a 600 mm stone wall segment against the living
 room's north wall, and the firebox is an arch cut into it (FP.hearth). Both
 appear in the IFC and the plan; the flue and hearth stone are not yet modelled.
 
+## D-009 Material references and site edges are explicit
+
+Entities: rubble_stone brick_block steel_black rubble_wall
+
+Declare concealed assembly layers and generated component finishes so the
+compiled model contains no dangling material references. Setbacks now list
+one distance per parcel edge, preserving the original south/east/north/west
+values. Checks and schedules use actual room-opening relationships and net
+geometry quantities; no threshold is relaxed to preserve earlier results.
+
+## D-010 Furnish around the actual doors and floor surfaces
+
+Entities: A2 D8 P2 L1 K1 S0
+
+Move and rotate the dining group to (14800, 3300), with L1 above it, to keep
+the passage A2 and bedroom door D8 clear. Reduce L1's drop to 895 mm so the
+rendered shade clears the floor by 2050 mm; its previous 1645 mm underside
+was too low even over the table. Move the shelf off P2, put the second
+bedroom's daybed against its east wall, and place the loggia table and chairs
+between the doors. Use a 1700 by 800 mm loggia table with 960 mm high chairs.
+Place the coffee table in front of the sofa, and seat countertop objects and
+the vase on their actual support surfaces. Ground plants and extend the soil
+to support the pool and outside walls. These presentation changes preserve the
+building envelope and satisfy the same scene-audit tolerances.
+
 ## Considered and not changed
 
 - A tiled roof over the loggia. The pitch rule rejected it and the pergola

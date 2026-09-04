@@ -11,16 +11,19 @@ from __future__ import annotations
 
 import json
 import os
-from typing import Any, TypeVar
+from collections import Counter
+from pathlib import Path
+from typing import Any, Literal, TypeVar
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from . import geometry as G
 from .clashes import Clash, find_clashes
 from .geometry import BBox
-from .model import Build, Extrusion, Relation, dump
+from .model import Build, Extrusion, Identifier, Relation, dump
+from .validation import finite_tree, identifier, outline
 
-IR_VERSION = "0.2"
+IR_VERSION = "0.3"
 
 
 class Geometry(BaseModel):
@@ -36,7 +39,7 @@ M = TypeVar("M", bound=BaseModel)
 class IREntity(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    id: str
+    id: Identifier
     kind: str
     ifc_class: str | None
     physical: bool
@@ -91,9 +94,9 @@ class IRDocument(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    homespec: str = Field(default=IR_VERSION, description="IR format version.")
+    homespec: Literal["0.3"] = Field(default="0.3", description="IR format version.")
     project: str
-    units: str = "mm"
+    units: Literal["mm"] = "mm"
     levels: dict[str, IRLevel]
     assemblies: dict[str, IRAssembly]
     materials: dict[str, IRMaterial]
@@ -103,6 +106,98 @@ class IRDocument(BaseModel):
     clashes: list[Clash] = Field(default_factory=list, description="Pairs of physical entities whose solids share volume.")
 
     directory: str | None = Field(default=None, exclude=True, description="Where the geometry files live; set on read.")
+
+    @model_validator(mode="after")
+    def validate_references(self) -> IRDocument:
+        finite_tree(self.model_dump(exclude={"entities", "levels", "assemblies", "materials"}))
+        for e in self.entities:
+            finite_tree(e, e.id)
+        ids = {e.id for e in self.entities}
+        if len(ids) != len(self.entities):
+            duplicates = sorted(key for key, count in Counter(e.id for e in self.entities).items() if count > 1)
+            raise ValueError(f"duplicate entity id in IR: {', '.join(duplicates)}")
+        for registry in (self.levels, self.assemblies, self.materials):
+            for key, value in registry.items():
+                identifier(key)
+                finite_tree(value, key)
+        for key, level in self.levels.items():
+            if level.height <= 0:
+                raise ValueError(f"{key}: level height must be positive")
+        for key, assembly in self.assemblies.items():
+            for material in [layer.material for layer in assembly.layers] + [assembly.finish_in, assembly.finish_out]:
+                if material is not None and material not in self.materials:
+                    raise ValueError(f"{key}: unknown material {material!r}")
+        for e in self.entities:
+            # Validate the standard vocabulary's reference fields without
+            # assigning meaning to arbitrary extension parameters.
+            entity_fields = {
+                "wall_infill": ("wall", "roof"), "bookcase": ("on",), "kitchen": ("on",), "outlet": ("on",),
+                "glazing": ("opening",), "leaf": ("opening",), "void": ("opening",),
+                "surround": ("opening",), "shutters": ("opening",), "grille": ("opening",), "part": ("of",),
+            }.get(e.kind, ())
+            references: list[tuple[str, Any]] = [(key, ids) for key in entity_fields]
+            if e.has("opening"):
+                references.append(("host", ids))
+            if e.kind == "stair":
+                references.append(("to_level", self.levels))
+            if e.kind == "wall":
+                references.append(("assembly", self.assemblies))
+            for key, registry in references:
+                ref = e.params.get(key)
+                if ref is not None and (not isinstance(ref, str) or ref not in registry):
+                    raise ValueError(f"{e.id}: unknown {key} reference {ref!r}")
+            for value, registry, name in ((e.level, self.levels, "level"), (e.material, self.materials, "material")):
+                if value is not None and value not in registry:
+                    raise ValueError(f"{e.id}: unknown {name} {value!r}")
+            for r in e.relations:
+                if r.obj not in (self.levels if r.target == "level" else ids):
+                    raise ValueError(f"{e.id}: {r.pred} refers to unknown {r.target} {r.obj!r}")
+            if e.geometry:
+                for relative in (e.geometry.step, e.geometry.obj):
+                    path = Path(relative)
+                    if path.is_absolute() or ".." in path.parts or "\\" in relative:
+                        raise ValueError(f"{e.id}: unsafe geometry path {relative!r}")
+            if e.kind in {"space", "slab", "ceiling", "roof", "pool", "landing"} and "outline" in e.params:
+                try:
+                    outline(e.params["outline"])
+                except ValueError as exc:
+                    raise ValueError(f"{e.id}: {exc}") from exc
+            if e.has("opening"):
+                from .derived import OpeningGeometry
+
+                if not {"rooms", "partition_conflicts"} <= e.derived.keys():
+                    raise ValueError(f"{e.id}: missing compiled room analysis")
+                g = e.derived_as(OpeningGeometry)
+                if g.host not in ids or (g.void_entity is not None and g.void_entity not in ids):
+                    raise ValueError(f"{e.id}: unknown opening host or void entity")
+                if any(link.room not in ids or self.entity(link.room).kind != "space" for link in g.rooms):
+                    raise ValueError(f"{e.id}: unknown or non-space room in opening analysis")
+            if e.kind == "stair":
+                from .derived import StairGeometry
+
+                if not {"headroom_mm", "headroom_checked_mm", "obstructions", "rooms"} <= e.derived.keys():
+                    raise ValueError(f"{e.id}: missing compiled headroom analysis")
+                sg = e.derived_as(StairGeometry)
+                if any(o.entity not in ids for o in sg.obstructions):
+                    raise ValueError(f"{e.id}: unknown headroom obstruction")
+                if any(link.room not in ids or self.entity(link.room).kind != "space" for link in sg.rooms):
+                    raise ValueError(f"{e.id}: unknown or non-space room in stair analysis")
+                if any(link.clear_width > e.params["width"] + 1e-6 for link in sg.rooms):
+                    raise ValueError(f"{e.id}: room connection exceeds the stair width")
+        for clash in self.clashes:
+            if clash.a not in ids or clash.b not in ids:
+                raise ValueError(f"unknown clash entity {clash.a}/{clash.b}")
+        if self.site:
+            outline(self.site["parcel"])
+            distances = self.site["setbacks"]
+            if isinstance(distances, list):
+                if len(distances) != len(self.site["parcel"]):
+                    raise ValueError("site: one setback per parcel edge is required")
+            else:
+                distances = [distances]
+            if any(not isinstance(v, (int, float)) or v < 0 for v in distances):
+                raise ValueError("site: setbacks must be nonnegative distances")
+        return self
 
     # ---- access
     def entity(self, id: str) -> IREntity:
@@ -120,11 +215,18 @@ class IRDocument(BaseModel):
     def path(self, relative: str) -> str:
         if self.directory is None:
             raise ValueError("IR has no directory; read it from disk or write it first")
-        return os.path.join(self.directory, relative)
+        root = Path(self.directory).resolve()
+        path = (root / relative).resolve()
+        if not path.is_relative_to(root):
+            raise ValueError(f"geometry path escapes IR directory: {relative!r}")
+        return str(path)
 
     # ---- disk
     @classmethod
     def read(cls, directory: str) -> IRDocument:
+        from .buildstate import resolve_ir_root
+
+        directory = str(resolve_ir_root(directory))
         with open(os.path.join(directory, "ir.json")) as f:
             doc = cls.model_validate_json(f.read())
         doc.directory = directory
@@ -168,7 +270,7 @@ def write_ir(build: Build, out_dir: str, clashes: list[Clash] | None = None) -> 
             derived=_jsonable(b.derived), relations=b.relations, geometry=geometry, extrusion=b.extrusion,
         ))
     doc = IRDocument(
-        project=house.name, units=house.units,
+        project=house.name, units="mm",
         levels={k: IRLevel(elevation=v.elevation, height=v.height) for k, v in house.levels.items()},
         assemblies={k: IRAssembly(thickness=v.thickness, layers=[IRLayer(material=layer.material, thickness=layer.thickness) for layer in v.layers],
                                   finish_in=v.finish_in, finish_out=v.finish_out) for k, v in house.assemblies.items()},

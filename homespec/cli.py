@@ -22,10 +22,11 @@ def _main(version: bool = typer.Option(False, "--version", help="Print the versi
 @app.command()
 def build(project: str = typer.Argument(..., help="Project directory containing project.py"),
           out: str | None = typer.Option(None, help="Output directory (default out/<project>)"),
-          no_ifc: bool = typer.Option(False, "--no-ifc"), no_drawings: bool = typer.Option(False, "--no-drawings")) -> None:
+          no_ifc: bool = typer.Option(False, "--no-ifc"), no_drawings: bool = typer.Option(False, "--no-drawings"),
+          no_schedules: bool = typer.Option(False, "--no-schedules"), no_checks: bool = typer.Option(False, "--no-checks")) -> None:
     """Compile a project: IR, IFC, drawings, schedules and checks."""
-    report = build_project(project, out, ifc=not no_ifc, drawings=not no_drawings)
-    typer.echo(f"{report.project}: {report.entities} entities, {report.clashes} clashes -> {report.out_dir}")
+    report = build_project(project, out, ifc=not no_ifc, drawings=not no_drawings, schedules=not no_schedules, checks=not no_checks)
+    typer.echo(f"{report.project}: {report.entities} entities, {report.clashes} clashes [{report.status}] -> {report.out_dir}")
     for stage, files in report.files.items():
         typer.echo(f"  {stage:9s} {', '.join(files)}")
     fails = report.failures
@@ -39,11 +40,13 @@ def build(project: str = typer.Argument(..., help="Project directory containing 
 
 @app.command()
 def render(project: str, out: str | None = None, mode: str = typer.Option("still", help="still | anim | save"),
-           frame: str = typer.Option("1", help="Frame(s) for stills, e.g. 1,48")) -> None:
+           frame: str = typer.Option("1", help="Frame(s) for stills, e.g. 1,48"),
+           allow_failed_checks: bool = typer.Option(False, "--allow-failed-checks", help="Allow a complete build with failed or skipped checks."),
+           device: str = typer.Option("auto", help="auto | cpu | metal | cuda | optix | hip | oneapi")) -> None:
     """Render with Blender: a still, the animation frames, or the walk file."""
     from .pipeline import render as _render
 
-    raise typer.Exit(code=_render(project, out, mode, frame))
+    raise typer.Exit(code=_render(project, out, mode, frame, allow_failed_checks=allow_failed_checks, device=device))
 
 
 @app.command()
@@ -74,19 +77,23 @@ def views(project: str, out: str | None = None, only: str = typer.Option("", hel
 
 @app.command()
 def movie(project: str, out: str | None = None, fps: int = typer.Option(24, help="Frames per second"),
-          crf: int = typer.Option(18, help="H.264 quality, lower is better")) -> None:
+          crf: int = typer.Option(18, help="H.264 quality, lower is better"),
+          allow_failed_checks: bool = typer.Option(False, "--allow-failed-checks"),
+          device: str = typer.Option("auto", help="Render device, or auto to detect GPUs and fall back to CPU.")) -> None:
     """Render the camera path defined in presentation.py and encode it as renders/walkthrough.mp4."""
     from .pipeline import movie as _movie
 
-    typer.echo(_movie(project, out, fps, crf))
+    typer.echo(_movie(project, out, fps, crf, allow_failed_checks=allow_failed_checks, device=device))
 
 
 @app.command()
-def walk(project: str, out: str | None = None, engine: str = typer.Option("cycles", help="cycles | eevee")) -> None:
+def walk(project: str, out: str | None = None, engine: str = typer.Option("cycles", help="cycles | eevee"),
+         allow_failed_checks: bool = typer.Option(False, "--allow-failed-checks"),
+         device: str = typer.Option("auto", help="Render device, or auto to detect GPUs and fall back to CPU.")) -> None:
     """Open the walk file in Blender. Press W to walk."""
     from .pipeline import walk as _walk
 
-    _walk(project, out, engine)
+    _walk(project, out, engine, allow_failed_checks=allow_failed_checks, device=device)
 
 
 @app.command()

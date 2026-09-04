@@ -1,34 +1,14 @@
-"""The first floor of the main wing: three bedrooms and two bathrooms off a corridor along the north wall.
+"""The main wing's three bedrooms and two bathrooms, off the north corridor.
 
-Floor at z = 3.5, ceiling at 6.4. The corridor partition PC runs at
-y 6.05..6.2; the rooms lie between y 0.5 and 6.05, divided by PB1
-(x 10.2..10.35), PB2 (x 11.85..12.0), PB3 (x 16.425..16.575) and PB4
-(x 18.075..18.225): west bedroom 7.5..10.2, a bathroom 10.35..11.85, the
-main bedroom 12.0..16.425, a bathroom 16.575..18.075, east bedroom
-18.225..21. Windows N-series in the south wall MS (y = 0.5) and north wall
-MN (corridor, y = 7.5); N18 lights bed3 from the east wall ME (x = 21).
-Doors D6/D7/D8 (corridor -> bedroom) and D9/D10 (bedroom -> ensuite) are
-950/800 wide; coordinates below come from the built IR, not the nominal
-grid, so a door's "at" is its leading edge, not its centre.
+The floor is z 3.5 and the ceiling z 6.4. PC bounds the rooms at y 6.05;
+PB1 through PB4 divide bedrooms from bathrooms. Beds face across each
+room: bed1 and bed2 have their heads on the east partitions, bed3 on the
+west partition. Their benches and nightstands leave each room's doors
+and the bathroom approaches clear.
 
-Bed1 and bed3 are narrow (2.7 m) across the house, too tight for a bed's
-2.6 m head-to-bench length along that axis, so both beds run head-to-foot
-along y instead, using the room's 5.5 m depth, with the head against the
-corridor wall PC (blank but for the door) rather than the window wall MS
-(kept clear for curtains) or a partition. Bed2's room is wide enough to
-keep its head against the east partition PB3, as before.
-
-Spec fix: TE (bed1's west wall, x = 7.5) carried an arch (A2) whose
-comment said "tower landing -> corridor" but whose built geometry (at
-y 3.05..4.45) actually opened into the middle of bed1's floor -- the
-first bed1 render showed the tower's undressed stair straight through
-where a wall should be, from every camera angle a 2.7 m-wide room
-allows. TE only overlaps the corridor for 0.8 m (y 6.05..7.0), too
-narrow for the arch's original 1.4 m, so project.py now gives A2
-width=700, at=5750: it lands at y 6.25..6.95, inside that overlap,
-matching the comment and clearing bed1 entirely. Two numbers changed;
-no entity added, moved, or removed, and the tower module (which never
-references A2) is untouched.
+N3 and N4 have wider glazing. Curtains read those openings from the IR;
+N3 meets the east partition, so its curtain stacks to the west only.
+The tower arch A2 enters the corridor at y 6.25..6.95 above bed1.
 """
 import math
 
@@ -140,9 +120,10 @@ def dress(scene, M):
 
     _wardrobe(scene, "bed1_wardrobe", (7.9, 1.5, FLOOR), 0.95, 0.55, 1.9, bed1_paint, wardrobe_trim, front_axis="x", front_sign=1)
     scene.model("painted_wooden_chair_01", (9.55, 1.05, FLOOR), rot_z=math.radians(30))
-    _curtain_panel(scene, M, "bed1_curtain_l", 8.65, 0.62, FLOOR, 2.7, M.linen)
-    _curtain_panel(scene, M, "bed1_curtain_r", 9.97, 0.62, FLOOR, 2.7, M.linen)
-    scene.rod("bed1_curtain_pole", (8.4, 0.62, FLOOR + 2.8), (10.15, 0.62, FLOOR + 2.8), 0.014, M.iron)
+    n3_lo, n3_hi = scene.bbox("N3")
+    _curtain_panel(scene, M, "bed1_curtain_l", n3_lo.x - 0.19, 0.62, FLOOR, 2.7, M.linen)
+    # N3 meets the east partition: stack the curtain on its west side only.
+    scene.rod("bed1_curtain_pole", (n3_lo.x - 0.37, 0.62, FLOOR + 2.8), (n3_hi.x - 0.02, 0.62, FLOOR + 2.8), 0.014, M.iron)
     _panel(scene, "bed1_mirror", (10.15, 2.2, FLOOR + 1.55), 0.55, 0.8, frame_dark, mirror_glass, axis="x", sign=-1)
     _wall_light(scene, "bed1_sconce", (10.15, 2.65, FLOOR + 1.85), M.brass, M.shade, axis="x", sign=-1)
     _panel(scene, "bed1_art", (9.9, 6.0, FLOOR + 1.8), 0.45, 0.6, frame_dark, art_a, axis="y", sign=-1)
@@ -159,9 +140,10 @@ def dress(scene, M):
     _flush_light(scene, "bed2_ceiling", (14.2, 3.2, CEILING), M.shade)
 
     _wardrobe(scene, "bed2_wardrobe", (12.4, 1.6, FLOOR), 1.1, 0.58, 2.0, bed2_paint, wardrobe_trim, front_axis="x", front_sign=1)
-    _curtain_panel(scene, M, "bed2_curtain_l", 13.2, 0.62, FLOOR, 2.7, M.linen)
-    _curtain_panel(scene, M, "bed2_curtain_r", 15.2, 0.62, FLOOR, 2.7, M.linen)
-    scene.rod("bed2_curtain_pole", (12.95, 0.62, FLOOR + 2.8), (15.45, 0.62, FLOOR + 2.8), 0.014, M.iron)
+    n4_lo, n4_hi = scene.bbox("N4")
+    _curtain_panel(scene, M, "bed2_curtain_l", n4_lo.x - 0.20, 0.62, FLOOR, 2.7, M.linen)
+    _curtain_panel(scene, M, "bed2_curtain_r", n4_hi.x + 0.20, 0.62, FLOOR, 2.7, M.linen)
+    scene.rod("bed2_curtain_pole", (n4_lo.x - 0.40, 0.62, FLOOR + 2.8), (n4_hi.x + 0.40, 0.62, FLOOR + 2.8), 0.014, M.iron)
     scene.model("ornate_mirror_01", (16.40, 3.2, FLOOR + 1.75), rot_z=math.radians(-90), scale=1.3)    # on PB3, over the bed's head
     _wall_light(scene, "bed2_sconce_l", (16.25, 2.78, FLOOR + 1.85), M.brass, M.shade, axis="x", sign=-1)
     _wall_light(scene, "bed2_sconce_r", (16.25, 3.62, FLOOR + 1.85), M.brass, M.shade, axis="x", sign=-1)

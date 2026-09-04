@@ -91,14 +91,14 @@ class Furniture:
 
     def wicker_sofa(self, name, at, rot, wicker, cushion):
         """A two-seat wicker sofa with a seat cushion and two pillows, its back toward +y before ``rot``."""
-        x, y, z = at
-        self.box(f"{name}_seat", (x, y, z + 0.22), (2.2, 0.9, 0.44), wicker, rot_z=rot, bevel=0.04)
-        self.box(f"{name}_cushion", (x, y + 0.05, z + 0.5), (2.0, 0.8, 0.12), cushion, rot_z=rot, bevel=0.04)
-        self.box(f"{name}_back", (x, y + 0.38, z + 0.6), (2.2, 0.14, 0.4), wicker, rot_z=rot)
+        p = _turn(at, rot)
+        self.box(f"{name}_seat", p(0, 0, 0.22), (2.2, 0.9, 0.44), wicker, rot_z=rot, bevel=0.04)
+        self.box(f"{name}_cushion", p(0, 0.05, 0.5), (2.0, 0.8, 0.12), cushion, rot_z=rot, bevel=0.04)
+        self.box(f"{name}_back", p(0, 0.38, 0.6), (2.2, 0.14, 0.4), wicker, rot_z=rot)
         for dx in (-1.03, 1.03):
-            self.box(f"{name}_arm_{dx}", (x + dx, y, z + 0.5), (0.14, 0.9, 0.2), wicker, rot_z=rot)
-        self.box(f"{name}_pillow_a", (x - 0.6, y + 0.25, z + 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot, bevel=0.05)
-        self.box(f"{name}_pillow_b", (x + 0.6, y + 0.25, z + 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot, bevel=0.05)
+            self.box(f"{name}_arm_{dx}", p(dx, 0, 0.5), (0.14, 0.9, 0.2), wicker, rot_z=rot)
+        self.box(f"{name}_pillow_a", p(-0.6, 0.25, 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot, bevel=0.05)
+        self.box(f"{name}_pillow_b", p(0.6, 0.25, 0.72), (0.5, 0.15, 0.4), cushion, rot_z=rot, bevel=0.05)
 
     def wall_light(self, name, at, brass, shade, facing=(0.0, -1.0), watts=12):
         """A brass wall arm with a small linen drum shade, like ``sconce`` but for any wall.

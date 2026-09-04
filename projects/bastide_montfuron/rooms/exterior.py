@@ -12,8 +12,8 @@ import math
 SHOTS = [
     ((1.0, -19.9, -0.25), (0.6, 0.77, 0.06), 0.0),       # the pool corner, loungers, the border, the house
     ((3.2, -9.3, -0.55), (0.82, 0.55, 0.13), 0.0),       # round the pool's west end, the retaining wall
-    ((14.5, -9.4, -0.3), (0.0, 0.94, 0.33), 0.0),        # at the foot of the steps
-    ((15.3, -6.4, 1.55), (-0.14, 0.98, 0.15), 0.0),      # on the terrace, the arched door ahead
+    ((15.5, -9.4, -0.3), (0.0, 0.94, 0.33), 0.0),        # at the foot of the steps
+    ((15.5, -6.4, 1.55), (-0.14, 0.98, 0.15), 0.0),      # on the terrace, the arched door ahead
     ((-0.3, -1.9, 1.55), (1.0, 0.04, -0.06), 0.0),       # under the pergola, looking along it
     ((10.6, 15.8, 1.35), (0.32, -1.0, -0.16), 0.0),      # the north forecourt, box beds and steps to the door
     ((26.3, -4.2, 1.3), (-0.32, 1.0, -0.14), 0.0),       # the kitchen wing's terrace, the long table
@@ -111,6 +111,7 @@ def dress(scene, M):
     _lamp_post(scene, M, "fc_lamp_1", door_cx + 6.0, 12.5, watts=22)
 
     # ---- the pool garden: gravel and travertine are in the spec; loungers, box balls, lavender, oleander, olives
+    stair_lo, stair_hi = scene.bbox("ST0")
     R = scene.rng("loungers")
     lounger_x = (7.0, 9.6, 12.2, 14.8, 17.4)
     for k, x in enumerate(lounger_x):
@@ -127,7 +128,7 @@ def dress(scene, M):
     shrubs = ("shrub_02",)                  # the only one shaped like a bush; 01, 03 and 04 are ground patches
     k = 0
     for x in [xx * 0.5 for xx in range(-8, 68)]:
-        if 12.2 < x < 17.2:                      # the steps and the path to them stay open
+        if stair_lo.x - 1.0 < x < stair_hi.x + 1.0:                      # the steps and the path to them stay open
             continue
         y = R.uniform(-8.6, -6.2)
         kind = R.random()
@@ -150,7 +151,7 @@ def dress(scene, M):
     # the retaining wall wears its climbers: hugging its outer (south) face at y = -5.0, not floating clear of it
     for k in range(72):
         x = R.uniform(-3.5, 33.5)
-        if 12.6 < x < 16.4:
+        if stair_lo.x - 0.75 < x < stair_hi.x + 0.75:
             continue
         r = R.choice((0.5, 0.65, 0.8, 0.95))
         cy = -4.95 - r * 0.45
@@ -231,17 +232,21 @@ def dress(scene, M):
     for _k, (x, y) in enumerate([(1.4, -0.8), (7.2, -0.8), (28.0, -0.8)]):            # wide pots, turned at random: 0.15 off the wall, clear of the hall's door
         scene.model("ceramic_pot", (x, y, 0.0), rot_z=R.uniform(0, 6.28), scale=1.6)
     scene.model("potted_plant_02", (21.2, -0.8, 0.0), scale=1.2)
-    scene.model("potted_plant_04", (16.1, -3.2, 0.0), scale=1.4)                       # beside the head of the garden steps, not on their landing
+    scene.model("potted_plant_04", (stair_hi.x + 0.8, -4.0, 0.0), scale=1.4)                       # beside the head of the garden steps, not on their landing
     # the terrace's plain-slab paving reads as flagstones: joint lines scored across the cut-stone slab
     for i, x in enumerate([-2.6 + 0.9 * kk for kk in range(40)]):
         scene.box(f"tr_joint_x_{i}", (x, -2.5, 0.001), (0.02, 5.0, 0.004), joint)
     for i, y in enumerate([-4.5 + 1.1 * kk for kk in range(5)]):
         scene.box(f"tr_joint_y_{i}", (15.0, y, 0.001), (36.0, 0.02, 0.004), joint)
-    # iron railing along the retaining wall's parapet
-    for k, x in enumerate([xx / 2 for xx in range(-6, 27)] + [xx / 2 for xx in range(31, 67)]):
-        scene.cyl(f"rail_post_{k}", (x, -4.75, 0.6), 0.012, 1.0, M.iron, verts=6)
-    scene.box("rail_top_a", (5.15, -4.75, 1.1), (16.3, 0.03, 0.03), M.iron)
-    scene.box("rail_top_b", (24.35, -4.75, 1.1), (17.3, 0.03, 0.03), M.iron)
+    # The two railing runs follow the retaining walls, leaving ST0's shifted arrival open.
+    for side, wall in (("a", "RW1"), ("b", "RW2")):
+        lo, hi = scene.bbox(wall)
+        start, end = lo.x + 0.03, hi.x - 0.03
+        count = math.ceil((end - start) / 0.5)
+        for k in range(count + 1):
+            x = start + (end - start) * k / count
+            scene.cyl(f"rail_post_{side}_{k}", (x, -4.75, 0.6), 0.012, 1.0, M.iron, verts=6)
+        scene.box(f"rail_top_{side}", ((start + end) / 2, -4.75, 1.1), (end - start, 0.03, 0.03), M.iron)
 
     # ---- lanterns under the pergola and wall lamps on the façades
     for k, x in enumerate((1.75, 5.25, 8.75, 12.25)):

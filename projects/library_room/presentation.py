@@ -56,7 +56,7 @@ def dress(scene):
     scene.box("table_top", (TX, TY, 0.73), (2.0, 0.9, 0.04), walnut)
     for dx, dy in ((-0.9, -0.38), (0.9, -0.38), (-0.9, 0.38), (0.9, 0.38)):
         scene.box(f"table_leg_{dx}_{dy}", (TX + dx, TY + dy, 0.355), (0.05, 0.05, 0.71), walnut, rot_z=math.radians(45))
-    for dx, dy, rz in [(-0.5, 0.68, 180), (0.5, 0.68, 180), (-0.5, -0.68, 0), (0.5, -0.68, 0)]:
+    for dx, dy, rz in [(-0.5, 0.68, 0), (0.5, 0.68, 0), (-0.5, -0.68, 180), (0.5, -0.68, 180)]:
         scene.model("dining_chair_02", (TX + dx, TY + dy, 0.012), rot_z=math.radians(rz + R.uniform(-8, 8)))
     scene.model("ceramic_vase_02", (TX + 0.3, TY + 0.05, 0.75))
     scene.model("wooden_bowl_01", (TX - 0.45, TY - 0.1, 0.75))
@@ -75,11 +75,11 @@ def dress(scene):
             scene.point_light(f"{e['id']}_light", (c.x, c.y, c.z - 0.05), 12, radius=0.05)
 
     # ---- reading corner at the far end of the library wall
-    scene.model("mid_century_lounge_chair", (3.15, 1.55, 0.0), rot_z=math.radians(-125))
-    scene.model("coffee_table_round_01", (2.35, 1.75, 0.0), scale=0.5)
-    scene.model("brass_vase_03", (2.35, 1.75, 0.245))
-    scene.model("potted_plant_02", (3.55, 0.35, 0.0))
-    LX, LY = 3.55, 2.0
+    scene.model("mid_century_lounge_chair", (2.35, 0.60, 0.0), rot_z=math.radians(-170))
+    scene.model("coffee_table_round_01", (2.2, 1.55, 0.0), scale=0.5)
+    scene.model("brass_vase_03", (2.2, 1.55, 0.245))
+    scene.model("potted_plant_02", (3.55, 2.0, 0.0))
+    LX, LY = 2.95, 1.9
     for k in range(3):
         th = k * 2 * math.pi / 3
         scene.rod(f"lamp_leg_{k}", (LX + 0.28 * math.cos(th), LY + 0.28 * math.sin(th), 0.0), (LX, LY, 1.35), 0.012, walnut)
@@ -102,12 +102,12 @@ def dress(scene):
     scene.box("ground", (12, 0, -0.5), (30, 30, 0.6), paving)
     fx = 4.2 + 9.0
     for i in range(int(11 / 0.16)):
-        scene.box(f"slat_{i}", (fx, -5.5 + i * 0.16, 1.1), (0.03, 0.11, 2.2), fence)
+        scene.box(f"slat_{i}", (fx, -5.5 + i * 0.16, 1.075), (0.03, 0.11, 2.25), fence)
     scene.box("fence_rail_a", (fx - 0.03, 0, 0.5), (0.04, 11, 0.08), fence)
     scene.box("fence_rail_b", (fx - 0.03, 0, 1.8), (0.04, 11, 0.08), fence)
     for side in (1, -1):
-        scene.box(f"court_wall_{side}", (4.2 + 4.6, side * 5.55, 1.3), (9.2, 0.25, 2.6), plaster)
-    scene.box("neighbour", (4.2 + 14, 4, 2.5), (8, 10, 5), plaster)
+        scene.box(f"court_wall_{side}", (4.2 + 4.6, side * 5.55, 1.2), (9.2, 0.25, 2.8), plaster)
+    scene.box("neighbour", (4.2 + 14, 4, 2.4), (8, 10, 5.2), plaster)
     scene.model("jacaranda_tree", (4.2 + 6.5, 1.8, -0.04), rot_z=math.radians(40), height=6.5)
     scene.model("outdoor_table_chair_set_01", (4.2 + 4.8, -1.2, -0.04), rot_z=math.radians(15))
     scene.model("planter_box_02", (4.2 + 0.9, 3.1, 0.0), rot_z=math.radians(90))

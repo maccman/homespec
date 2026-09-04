@@ -11,7 +11,7 @@ from collections.abc import Iterable, Sequence
 from typing import Any
 
 from build123d import Align, Box, Compound, Cylinder, Location, Plane, Polygon, export_step, extrude, import_step, section
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from shapely.geometry import Polygon as _ShapelyPolygon
 
 Point = tuple[float, float]
@@ -247,21 +247,40 @@ def thickness(shape: Solid) -> float:
     return float(min(size.X, size.Y, size.Z))
 
 
-def section_loops(shape: Solid, z: float) -> list[Loop]:
-    """Outer loops of the horizontal section through ``shape`` at height ``z``, as ordered points."""
-    loops: list[Loop] = []
+class SectionPolygon(BaseModel):
+    """A section face with its void boundaries kept with the face they belong to."""
+
+    outer: Loop
+    holes: list[Loop] = Field(default_factory=list)
+
+    def rings(self) -> list[Loop]:
+        return [self.outer, *self.holes]
+
+
+def _wire_loop(wire: Any) -> Loop:
+    pts: Loop = []
+    for edge in wire.edges():
+        if edge.geom_type.name == "LINE":
+            p = edge.start_point()
+            pts.append((p.X, p.Y))
+        else:
+            for t in (i / 32 for i in range(32)):
+                q = edge.position_at(t)
+                pts.append((q.X, q.Y))
+    return _dedupe(pts)
+
+
+def section_polygons(shape: Solid, z: float) -> list[SectionPolygon]:
+    """Horizontal section faces, preserving inner wires as holes instead of filled islands."""
+    polygons: list[SectionPolygon] = []
     for face in section(shape, section_by=Plane.XY, height=z).faces():  # type: ignore[arg-type]
-        pts: Loop = []
-        for edge in face.outer_wire().edges():
-            if edge.geom_type.name == "LINE":
-                p = edge.start_point()
-                pts.append((p.X, p.Y))
-            else:
-                for t in (i / 8 for i in range(8)):
-                    q = edge.position_at(t)
-                    pts.append((q.X, q.Y))
-        loops.append(_dedupe(pts))
-    return loops
+        polygons.append(SectionPolygon(outer=_wire_loop(face.outer_wire()), holes=[_wire_loop(wire) for wire in face.inner_wires()]))
+    return polygons
+
+
+def section_loops(shape: Solid, z: float) -> list[Loop]:
+    """All section boundaries. Use :func:`section_polygons` when filling the faces."""
+    return [ring for polygon in section_polygons(shape, z) for ring in polygon.rings()]
 
 
 def _dedupe(pts: Loop, eps: float = 0.01) -> Loop:
@@ -306,9 +325,9 @@ def read_obj(path: str, scale_to: float = 1000.0) -> tuple[list[Point3], list[tu
 
 
 __all__ = [
-    "Point", "Point3", "Loop", "Solid", "Frame", "BBox",
+    "Point", "Point3", "Loop", "Solid", "Frame", "BBox", "SectionPolygon",
     "add", "sub", "scale", "length", "unit", "left", "dot", "angle_of",
     "box", "frame_box", "prism", "cylinder", "horizontal_cylinder", "prism_profile", "group", "volume_below",
-    "bbox", "volume", "polygon_area", "tessellate", "solids", "is_box", "overlap", "thickness", "section_loops",
+    "bbox", "volume", "polygon_area", "tessellate", "solids", "is_box", "overlap", "thickness", "section_loops", "section_polygons",
     "write_step", "read_step", "write_obj", "read_obj",
 ]

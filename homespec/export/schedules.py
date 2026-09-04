@@ -7,6 +7,7 @@ from typing import Any
 
 from ..derived import OpeningGeometry, SpaceGeometry, WallGeometry
 from ..ir import IRDocument
+from ..spatial import room_glazing
 
 
 def export_schedules(ir: IRDocument, out_dir: str) -> list[str]:
@@ -28,9 +29,9 @@ def export_schedules(ir: IRDocument, out_dir: str) -> list[str]:
            for w, g in walls])
 
     openings = [(o, o.derived_as(OpeningGeometry)) for o in ir.tagged("opening")]
-    write("openings", ["id", "kind", "host_wall", "width_mm", "height_mm", "sill_mm", "head_mm", "from_wall_start_mm", "clear_width_mm", "mullions", "frame", "frame_size_mm", "glazing", "glass_area_m2"],
+    write("openings", ["id", "kind", "host_wall", "width_mm", "height_mm", "sill_mm", "head_mm", "from_wall_start_mm", "clear_width_mm", "clear_height_mm", "rooms", "mullions", "frame", "frame_size_mm", "glazing", "glass_area_m2"],
           [[o.id, o.kind, g.host, _i(g.width), _i(g.height), _i(g.sill), _i(g.head), _i(g.from_start),
-            _i(g.clear_width), g.mullions, o.material, o.params.get("frame_size"), o.params.get("glazing"), round(g.glass_area_mm2 / 1e6, 2)]
+            _i(g.clear_width), _i(g.clear_height), " ".join(r.room for r in g.rooms), g.mullions, o.material, o.params.get("frame_size"), o.params.get("glazing"), round(g.glass_area_mm2 / 1e6, 2)]
            for o, g in openings])
 
     write("finishes", ["material", "used_by", "texture", "product", "supplier", "finish", "notes"],
@@ -50,7 +51,7 @@ def export_schedules(ir: IRDocument, out_dir: str) -> list[str]:
 
     write("spaces", ["id", "level", "use", "area_m2", "height_mm", "bounded_by", "glazing_m2"],
           [[s.id, s.level, s.params["use"], round(s.derived_as(SpaceGeometry).area_mm2 / 1e6, 2), _i(s.derived_as(SpaceGeometry).height), " ".join(s.related("bounded_by")),
-            round(sum(g.glass_area_mm2 for _, g in openings if g.host in s.related("bounded_by")) / 1e6, 2)]
+            round(room_glazing(ir, s.id) / 1e6, 2)]
            for s in ir.of_kind("space")])
     return written
 

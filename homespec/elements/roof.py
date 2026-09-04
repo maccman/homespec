@@ -220,7 +220,7 @@ class Roof(Element):
         """The wall between the wall head and the roof underside at each free end of the ridge."""
         along: Axis = self.ridge_along
         under = [(p, z - t) for p, z in top]
-        z_base = min(z for _, z in under) - 1
+        z_base = min(z_wall_top, min(z for _, z in under) - 1)
         apex = max(z for _, z in under)
         profile = under + [(under[-1][0], z_base), (under[0][0], z_base)]
         gt = self.gable_thickness

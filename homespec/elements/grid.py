@@ -3,13 +3,14 @@ from __future__ import annotations
 
 from typing import Annotated, ClassVar, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
 from ..geometry import Point
 from ..model import Definition, definition, positional
+from ..validation import FiniteModel
 
 
-class GridLine(BaseModel):
+class GridLine(FiniteModel):
     """One line of the grid. ``A & one`` is the point where an x line meets a y line."""
 
     axis: Literal["x", "y"]

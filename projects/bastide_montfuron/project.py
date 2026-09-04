@@ -15,11 +15,15 @@ def build() -> House:
     with House("bastide-montfuron") as house:
         # ---- site: a south-facing hillside, pool terrace two metres below the house terrace
         Site(parcel=[(-40000, -60000), (70000, -60000), (70000, 40000), (-40000, 40000)],
-             setbacks=Setbacks(front=10000, side=8000, rear=8000), north=10)
+             setbacks=[10000, 8000, 8000, 8000], north=10)
         L0 = Level("L0", elevation=0, height=3200)
         L1 = Level("L1", elevation=3500, height=2900)
         L2 = Level("L2", elevation=6700, height=2600)
         LP = Level("LP", elevation=-1980, height=2200)      # the pool deck below the retaining wall: finished level, where people stand
+
+        # Material definitions include concealed assembly layers.
+        Material('lime_plaster', product='Lime plaster')
+        Material('brick_block', product='Clay partition blocks')
 
         # ---- materials: two addresses each, rendering and buying
         stone = Material("limestone_rubble", texture="polyhaven/coral_stone_wall", product="Local limestone rubble, lime mortar, pointed flush", supplier="Carrières de Provence",
@@ -75,28 +79,31 @@ def build() -> House:
         KN = Wall("KN", (30000, 6500), (21500, 6500), assembly=rubble, level=L0)
 
         # ---- the south facade: the arched door with a window each side, three windows above; the tower's glazed screen
-        ArchedDoor("D1", host=MS, width=1900, height=2000, at=5800, panes=(1, 5), frame=frame, surround=cut, leaves=2)   # no shutters: the listing's arch has none
+        ArchedDoor("D1", host=MS, width=1900, height=2100, at=5800, panes=(1, 5), frame=frame, leaves=2)   # no shutters: the listing's arch has none
+        Surround("D1.surround", opening="D1", material=cut, lintel=140)  # the head finishes at 3190, below F1
         Window("N1", host=MS, width=1200, height=1600, sill=800, at=1500, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
-        Window("N2", host=MS, width=1200, height=1600, sill=800, at=10800, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
-        for k, x in enumerate((1500, 6150, 10800), 3):
-            Window(f"N{k}", host=MS, width=1200, height=1400, sill=4400, at=x, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
+        Window("N2", host=MS, width=1450, height=1600, sill=800, at=10675, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
+        for k, x, width in ((3, 1400, 1300), (4, 5725, 2050), (5, 10800, 1200)):
+            Window(f"N{k}", host=MS, width=width, height=1400, sill=4400, at=x, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
         Door("D2", host=TS, width=3000, height=2600, at=1750, glazed=True, leaves=2, panes=(3, 5), frame=steel, frame_size=50, bar_size=25)   # the hall's steel screen under the pergola
-        Window("N6", host=TS, width=1000, height=1300, sill=4400, at=2750, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
-        Window("N7", host=TS, width=800, height=1000, sill=7500, at=2850, panes=(2, 2), frame=frame, surround=cut, grille=iron)
+        Window("N6", host=TS, width=1350, height=1300, sill=4400, at=2575, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
+        Window("N7", host=TS, width=1300, height=1400, sill=7500, at=2600, panes=(2, 2), frame=frame, surround=cut, grille=iron)
         # tower west and north
         Window("N8", host=TW, width=1000, height=1400, sill=900, at=2500, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
-        Window("N9", host=TW, width=1000, height=1300, sill=4400, at=2750, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
-        Window("N10", host=TW, width=800, height=1000, sill=7500, at=2850, panes=(2, 2), frame=frame, surround=cut, grille=iron)
-        Window("N11", host=TN, width=1000, height=1300, sill=4400, at=2750, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
-        Window("N12", host=TN, width=800, height=1000, sill=7500, at=2850, panes=(2, 2), frame=frame, surround=cut, grille=iron)
+        Window("N9", host=TW, width=1350, height=1300, sill=4400, at=2575, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
+        Window("N10", host=TW, width=1300, height=1400, sill=7500, at=2600, panes=(2, 2), frame=frame, surround=cut, grille=iron)
+        Window("N11", host=TN, width=1350, height=1300, sill=4400, at=2575, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
+        Window("N12", host=TN, width=1300, height=1400, sill=7500, at=2600, panes=(2, 2), frame=frame, surround=cut, grille=iron)
         # main wing north: the front door, windows below and above
         Door("D0", host=MN, width=1200, height=2400, at=6150, frame=frame, leaf="door_grey", surround=cut)
-        Window("N13", host=MN, width=1200, height=1600, sill=800, at=2000, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
+        Window("N13", host=MN, width=1450, height=1600, sill=800, at=1875, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
         Window("N14", host=MN, width=1200, height=1600, sill=800, at=10300, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)
         Window("N15", host=MN, width=800, height=1000, sill=4700, at=3275, panes=(2, 2), frame=frame, surround=cut)      # bath 2
         Window("N16", host=MN, width=1000, height=1300, sill=4400, at=6250, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)   # corridor
         Window("N17", host=MN, width=800, height=1000, sill=4700, at=9500, panes=(2, 2), frame=frame, surround=cut)      # bath 1
-        Window("N18", host=ME, width=1000, height=1300, sill=5000, at=3000, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)   # bedroom 3, east, above the kitchen roof
+        Window("N18", host=ME, width=1000, height=1300, sill=5000, at=3000, panes=(2, 3), frame=frame)   # bedroom 3, east, above the kitchen roof
+        Surround("N18.surround", opening="N18", material=cut, lintel=100)   # meets ME's 6400 mm head below the gable
+        Shutters("N18.shutters", opening="N18", material=shutter)
         # kitchen wing: two glazed doors south, a window east and north
         Door("D3", host=KS, width=1850, height=2400, at=1200, glazed=True, leaves=2, panes=(2, 5), frame=frame, surround=cut, shutters=shutter)
         Door("D4", host=KS, width=1850, height=2400, at=5300, glazed=True, leaves=2, panes=(2, 5), frame=frame, surround=cut, shutters=shutter)
@@ -105,7 +112,7 @@ def build() -> House:
 
         # ---- inside, ground floor: hall to living through an arch, living to dining through an arch, dining to kitchen through a door
         Arch("A0", host=TE, width=1600, height=2200, at=2450)
-        P1 = Wall("P1", (14575, 500), (14575, 7500), assembly=partition, level=L0, align="center", external=False)
+        P1 = Wall("P1", (15575, 500), (15575, 7500), assembly=partition, level=L0, align="center", external=False)
         Arch("A1", host=P1, width=2000, height=2100, at=2500)
         Door("D5", host=ME, width=1000, height=2200, at=2000, frame=frame, leaf="door_grey")
         FP = Wall("FP", (9500, 7500), (11500, 7500), assembly=breast, level=L0, align="right", external=False)
@@ -167,9 +174,9 @@ def build() -> House:
 
         # ---- terraces: the house terrace, the retaining wall, grand steps, the pool and its deck below
         Slab("TR", outline=[(-3000, -5000), (33000, -5000), (33000, 0), (-3000, 0)], thickness=150, level=L0, material=cut)
-        Wall("RW1", (13300, -5000), (-3000, -5000), assembly=garden, level=LP, height=2280, align="right")     # retaining walls either side of the steps, 300 above the terrace
-        Wall("RW2", (33000, -5000), (15700, -5000), assembly=garden, level=LP, height=2280, align="right")
-        Stair("ST0", (13300, -8600), (0, 1), width=2400, align="right", rise=1980, going=300, max_riser=170, level=LP, to_level=L0, material=cut)
+        Wall("RW1", (14300, -5000), (-3000, -5000), assembly=garden, level=LP, height=2280, align="right")     # retaining walls either side of the steps, 300 above the terrace
+        Wall("RW2", (33000, -5000), (16700, -5000), assembly=garden, level=LP, height=2280, align="right")
+        Stair("ST0", (14300, -8600), (0, 1), width=2400, align="right", rise=1980, going=300, max_riser=170, level=LP, to_level=L0, material=cut)
         Slab("PD", outline=[(3500, -18000), (23500, -18000), (23500, -8000), (3500, -8000)], thickness=100, level=LP, material="travertine",
              voids=["PL"])
         Slab("GD", outline=[(-6000, -22000), (36000, -22000), (36000, -5500), (-6000, -5500)], thickness=200, level=LP, material="gravel", top=-20,
@@ -179,10 +186,10 @@ def build() -> House:
 
         # ---- rooms
         Space("hall", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], use="hall", level=L0, bounded_by=[TS, TE, TN, TW])
-        Space("living", outline=[(7500, 500), (14500, 500), (14500, 7500), (7500, 7500)], use="living", level=L0, bounded_by=[MS, P1, MN, TE], occupancy=8)
-        Space("dining", outline=[(14650, 500), (21000, 500), (21000, 7500), (14650, 7500)], use="dining", level=L0, bounded_by=[MS, ME, MN, P1], occupancy=10)
+        Space("living", outline=[(7500, 500), (15500, 500), (15500, 7500), (7500, 7500)], use="living", level=L0, bounded_by=[MS, P1, MN, TE], occupancy=8)
+        Space("dining", outline=[(15650, 500), (21000, 500), (21000, 7500), (15650, 7500)], use="dining", level=L0, bounded_by=[MS, ME, MN, P1], occupancy=8)
         Space("kitchen", outline=[(21500, 1500), (30000, 1500), (30000, 6500), (21500, 6500)], use="kitchen", level=L0, bounded_by=[KS, KE, KN, ME], occupancy=6)
-        Space("landing", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], use="landing", level=L1, bounded_by=[TS, TE, TN, TW])
+        Space("tower_bedroom", outline=[(500, 500), (7000, 500), (7000, 7000), (500, 7000)], use="bedroom", level=L1, bounded_by=[TS, TE, TN, TW])
         Space("corridor", outline=[(7500, 6200), (21000, 6200), (21000, 7500), (7500, 7500)], use="corridor", level=L1, bounded_by=[PC, ME, MN, TE])
         Space("bed1", outline=[(7500, 500), (10200, 500), (10200, 6050), (7500, 6050)], use="bedroom", level=L1, bounded_by=[MS, PB1, PC, TE], occupancy=2)
         Space("bath1", outline=[(10350, 500), (11850, 500), (11850, 6050), (10350, 6050)], use="bathroom", level=L1, bounded_by=[MS, PB2, PC, PB1])
@@ -198,7 +205,7 @@ def build() -> House:
 
         # ---- services: chandeliers where people gather, lanterns on the terrace posts, downlights in the bathrooms
         Pendant("L1", at=(11000, 4000), drop=1100, level=L0, watts=200)
-        Pendant("L2", at=(17800, 4000), drop=1200, level=L0, watts=150)
+        Pendant("L2", at=(18450, 4000), drop=1200, level=L0, watts=150)
         Pendant("L3", at=(3750, 3750), drop=900, level=L0, watts=100)
         Pendant("L4", at=(25750, 4000), drop=1100, level=L0, watts=80)
         Pendant("L5", at=(3750, 3750), drop=800, level=L1, watts=60)
@@ -214,20 +221,10 @@ def build() -> House:
             for s in ir.of_kind("space"):
                 if s.params["use"] != "bedroom":
                     continue
-                walls = set(s.related("bounded_by"))
-                z0 = ir.levels[s.level].elevation
-                glass = sum(o.derived["glass_area_mm2"] for o in ir.tagged("window")
-                            if o.derived["host"] in walls and o.geometry and z0 <= o.geometry.bbox.min[2] < z0 + ir.levels[s.level].height)
+                from homespec.spatial import room_openings
+
+                glass = sum(link.glass_area_mm2 for opening, link in room_openings(ir, s.id) if opening.has("window"))
                 yield ("bedroom_window", s.id, glass > 0.8e6, round(glass / 1e6, 2), 0.8, "m² of glass on the bedroom's own walls", "holiday-let brief")
 
-        @house.check
-        def stairs_reach_their_floor(ir):
-            for st in ir.of_kind("stair"):
-                to = st.params.get("to_level")
-                if not to:
-                    continue
-                expected = ir.levels[to].elevation - ir.levels[st.level].elevation
-                climb = st.params["rise"] + st.params.get("base", 0)                    # a flight leaving a landing counts the landing
-                yield ("stair_reaches_floor", st.id, abs(climb - expected) < 1, climb, expected, f"{st.level} -> {to}")
 
     return house

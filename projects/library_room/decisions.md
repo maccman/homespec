@@ -21,7 +21,7 @@ changes: `site.north` is 12 degrees and the sun study assumes it.
 Entities: D1
 Two 1700 leaves; only the end leaf slides. A fixed leaf halves the track
 hardware cost and the fixed pane can carry the structural glazing bead.
-Clear opening 1640 with a 60 frame, well over the 800 egress minimum.
+Clear opening 1640 with a 60 frame, well over the 800 local room-access minimum.
 
 ## D-004 Clerestory over the kitchen instead of a second window
 Entities: C1, W1, K1
@@ -51,6 +51,26 @@ The six downlights `L1..L6` are at x = -3200, 0 and 3200, midway between
 the walnut beams, which run at 1600 centres from -4000. The first draft had
 them on the beam lines, recessed into the beam soffits and hidden inside
 them: the clash check found it, the renders had not.
+
+## D-009 Material references and site edges are explicit
+
+Entities: plaster timber_frame_140 sheathing ext_wall
+
+Declare concealed assembly layers and generated component finishes so the
+compiled model contains no dangling material references. Setbacks now list
+one distance per parcel edge, preserving the original south/east/north/west
+values. Checks and schedules use actual room-opening relationships and net
+geometry quantities; no threshold is relaxed to preserve earlier results.
+
+## D-010 Keep the sliding-door approach clear and ground exterior pieces
+
+Entities: D1 S0
+
+Move the reading chair and plant out of the sliding-door approach and turn the
+dining chairs toward their table. Extend presentation fences, courtyard walls
+and neighbouring foundations down to the actual ground. The scene audit must
+find both blocked routes and unsupported objects, including objects below the
+room floor; its thresholds stay unchanged.
 
 ## Considered and not changed
 

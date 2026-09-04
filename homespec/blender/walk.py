@@ -6,9 +6,16 @@ W or backtick starts walk navigation from anywhere in the 3D view (W is also
 forward once walking). The viewport renders with Cycles by default so it
 matches the stills; pass ``eevee`` for a smooth but flatter preview.
 """
+import os
 import sys
 
 import bpy
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+
+from devices import configure_cycles  # noqa: E402
 
 engine = "cycles"
 if "--" in sys.argv and len(sys.argv) > sys.argv.index("--") + 1:
@@ -28,13 +35,8 @@ prefs.inputs.walk_navigation.view_height = 1.6
 
 scn = bpy.context.scene
 if engine == "cycles":
-    p = prefs.addons['cycles'].preferences
-    p.compute_device_type = 'METAL'
-    p.get_devices()
-    for d in p.devices:
-        d.use = (d.type == 'METAL')
     scn.render.engine = 'CYCLES'
-    scn.cycles.device = 'GPU'
+    configure_cycles(scn)
     scn.cycles.preview_samples = 48
     scn.cycles.use_preview_denoising = True
     scn.cycles.preview_denoiser = 'OPENIMAGEDENOISE'

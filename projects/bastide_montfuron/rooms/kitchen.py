@@ -10,8 +10,8 @@ counter, copper pans on an iron rail, and a small shelf of glass jars.
 
 No PENDANTS mapping: the spec's L4 industrial-lamp pendant point is not
 used (like L2 in the dining room). Two copper bell pendants are hand-built
-over the island instead, at the height the brief asks for, so nothing
-competes with them.
+over the fixed island instead, with their authored shade bottoms at 1.85 m;
+the island keeps the space beneath them outside the circulation routes.
 """
 import math
 
@@ -140,7 +140,7 @@ def dress(scene, M):
     scene.model("wooden_stool_01", (ix, 2.60, 0.0), rot_z=math.radians(R.uniform(-15, 15)), height=0.72)
     scene.model("gallinera_chair", (ix + 0.85, 2.65, 0.0), rot_z=math.radians(180 + R.uniform(-10, 10)), height=0.80)   # facing the island
 
-    # ---- two long-drop copper pendants over the island (bottom at 1.85, per the brief), not the spec's L4 lamp
+    # ---- authored 1.85 m shade bottoms over the fixed island, outside circulation.
     scene.pendant_bell("kitchen_island_pendant_a", (ix - 0.70, iy), 3.25, 1.85, M.copper, M.iron, 60)
     scene.pendant_bell("kitchen_island_pendant_b", (ix + 0.70, iy), 3.25, 1.85, M.copper, M.iron, 60)
 

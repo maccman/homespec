@@ -1,0 +1,125 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master, 'codex/**']
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    name: Python ${{ matrix.python }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-24.04, python: '3.11'}
+          - {os: ubuntu-24.04, python: '3.12'}
+          - {os: ubuntu-24.04, python: '3.13'}
+          - {os: macos-15, python: '3.13'}
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: astral-sh/setup-uv@94527f2e458b27549849d47d273a16bec83a01e9 # v7
+        with:
+          version: '0.10.12'
+          python-version: ${{ matrix.python }}
+          enable-cache: true
+      - name: Install Linux drawing dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin libgl1 libxrender1
+      - name: Install macOS drawing dependencies
+        if: runner.os == 'macOS'
+        run: brew install librsvg
+      - name: Install locked dependencies
+        run: uv sync --locked --extra dev
+      - name: Lint and typecheck
+        if: matrix.os == 'ubuntu-24.04' && matrix.python == '3.13'
+        run: |
+          uv run --frozen ruff check .
+          uv run --frozen pyright
+      - name: Test compiler and exporters
+        run: uv run --frozen pytest -m 'not blender' --junitxml=test-results.xml
+      - name: Build every example with checks
+        if: matrix.os == 'ubuntu-24.04' && matrix.python == '3.13'
+        run: |
+          uv run --frozen homespec build projects/library_room --out "$RUNNER_TEMP/examples/library_room"
+          uv run --frozen homespec build projects/casale_poggio --out "$RUNNER_TEMP/examples/casale_poggio"
+          uv run --frozen homespec build projects/bastide_montfuron --out "$RUNNER_TEMP/examples/bastide_montfuron"
+      - name: Preserve failure reports
+        if: failure()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: reports-${{ matrix.os }}-${{ matrix.python }}
+          path: |
+            test-results.xml
+            ${{ runner.temp }}/examples/**/checks.*
+            ${{ runner.temp }}/examples/**/build.json
+          retention-days: 7
+
+  blender:
+    name: Blender 5.2.1 / CPU
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      HOMESPEC_REQUIRE_BLENDER: '1'
+      HOMESPEC_DEVICE: cpu
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: astral-sh/setup-uv@94527f2e458b27549849d47d273a16bec83a01e9 # v7
+        with:
+          version: '0.10.12'
+          python-version: '3.13'
+          enable-cache: true
+      - name: Install headless rendering dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb xauth libgl1 libegl1 libxi6 libxrender1 libxkbcommon0 libxfixes3 libsm6 libxxf86vm1 librsvg2-bin
+      - name: Install verified Blender release
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl --fail --location --retry 3 --output blender.tar.xz https://download.blender.org/release/Blender5.2/blender-5.2.1-linux-x64.tar.xz
+          echo 'a31f524fa99a527d3d52b7f5aaa68c34e1a19d5a1c9473f79c5cc610fd5b10e9  blender.tar.xz' | sha256sum --check
+          tar -xf blender.tar.xz
+          echo "$RUNNER_TEMP/blender-5.2.1-linux-x64" >> "$GITHUB_PATH"
+      - name: Install locked dependencies
+        run: uv sync --locked --extra dev
+      - name: Verify Blender version
+        run: |
+          command -v blender
+          blender --background --factory-startup --python-exit-code 1 --python-expr 'import bpy; assert bpy.app.version == (5, 2, 1), bpy.app.version_string'
+      - name: Run required Blender integrations
+        run: xvfb-run -a uv run --frozen pytest -m blender --junitxml=blender-results.xml
+      - name: Preserve failure reports
+        if: failure()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: blender-reports
+          path: blender-results.xml
+          retention-days: 7
+
+  required:
+    name: Required checks
+    if: always()
+    needs: [python, blender]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Require Python and Blender to succeed
+        env:
+          PYTHON_RESULT: ${{ needs.python.result }}
+          BLENDER_RESULT: ${{ needs.blender.result }}
+        run: |
+          test "$PYTHON_RESULT" = success
+          test "$BLENDER_RESULT" = success

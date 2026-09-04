@@ -1,7 +1,7 @@
 """The core: registration, references, ordering, checks."""
 import pytest
 
-from homespec import Assembly, Door, House, Layer, Level, Space, Wall, Window
+from homespec import Assembly, Door, House, Layer, Level, Material, Space, Wall, Window
 from homespec.checks import run
 from homespec.ir import IRDocument
 
@@ -51,9 +51,11 @@ def test_no_active_house_is_a_clear_error():
         House.current()
 
 
-def test_a_bad_door_fails_the_egress_rule(tmp_path):
+def test_a_bad_door_fails_the_room_access_rule(tmp_path):
     with House("t") as house:
         Level("L0", height=2700)
+        for name in ("x", "steel_black", "door_leaf"):
+            Material(name)
         Assembly("a", layers=[Layer(material="x", thickness=100)])
         w = Wall("W", (0, 0), (5000, 0), assembly="a", level="L0")
         Wall("W2", (5000, 0), (5000, 4000), assembly="a", level="L0")
@@ -64,4 +66,4 @@ def test_a_bad_door_fails_the_egress_rule(tmp_path):
     house.compile().write(str(tmp_path))
     results = run(IRDocument.read(str(tmp_path)))
     failed = {r.rule for r in results if not r.ok}
-    assert {"egress_door", "door_clear_width", "glazing_ratio"} <= failed
+    assert {"room_access", "door_clear_width", "glazing_ratio"} <= failed

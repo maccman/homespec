@@ -16,5 +16,5 @@ PB1,L1,partition,150,5550,2900,False,lime_white,lime_plaster 15 / brick_block 12
 PB2,L1,partition,150,5550,2900,False,lime_white,lime_plaster 15 / brick_block 120 / lime_plaster 15,
 PB3,L1,partition,150,5550,2900,False,lime_white,lime_plaster 15 / brick_block 120 / lime_plaster 15,D10
 PB4,L1,partition,150,5550,2900,False,lime_white,lime_plaster 15 / brick_block 120 / lime_plaster 15,
-RW1,LP,garden_wall,500,16300,2280,True,limestone_rubble,limestone_rubble 500,
-RW2,LP,garden_wall,500,17300,2280,True,limestone_rubble,limestone_rubble 500,
+RW1,LP,garden_wall,500,17300,2280,True,limestone_rubble,limestone_rubble 500,
+RW2,LP,garden_wall,500,16300,2280,True,limestone_rubble,limestone_rubble 500,

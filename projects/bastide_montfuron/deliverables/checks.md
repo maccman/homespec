@@ -1,36 +1,35 @@
 # Checks: bastide-montfuron
 
-347 passed, 0 failed
+387 passed, 0 failed
 
 | result | rule | target | value | limit | note | clause |
 |---|---|---|---|---|---|---|
-| PASS | no_clash | TS/N6.surround | 60 mm deep, 46.4 L | any | a part of N6 bedded in its wall | solids share no volume except where construction requires it |
-| PASS | no_clash | TS/N7.surround | 60 mm deep, 37.5 L | any | a part of N7 bedded in its wall | solids share no volume except where construction requires it |
+| PASS | no_clash | TS/N6.surround | 60 mm deep, 53.1 L | any | a part of N6 bedded in its wall | solids share no volume except where construction requires it |
+| PASS | no_clash | TS/N7.surround | 60 mm deep, 53.9 L | any | a part of N7 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | TS/F1 | 300 mm deep, 975.0 L | any | slab bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | TS/F2 | 300 mm deep, 975.0 L | any | slab bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | TE/F1 | 300 mm deep, 975.0 L | any | slab bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | TE/F2 | 300 mm deep, 975.0 L | any | slab bears into wall | solids share no volume except where construction requires it |
-| PASS | no_clash | TN/N11.surround | 60 mm deep, 46.4 L | any | a part of N11 bedded in its wall | solids share no volume except where construction requires it |
-| PASS | no_clash | TN/N12.surround | 60 mm deep, 37.5 L | any | a part of N12 bedded in its wall | solids share no volume except where construction requires it |
+| PASS | no_clash | TN/N11.surround | 60 mm deep, 53.1 L | any | a part of N11 bedded in its wall | solids share no volume except where construction requires it |
+| PASS | no_clash | TN/N12.surround | 60 mm deep, 53.9 L | any | a part of N12 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | TN/F1 | 300 mm deep, 975.0 L | any | slab bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | TN/F2 | 300 mm deep, 975.0 L | any | slab bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | TW/N8.surround | 60 mm deep, 48.1 L | any | a part of N8 bedded in its wall | solids share no volume except where construction requires it |
-| PASS | no_clash | TW/N9.surround | 60 mm deep, 46.4 L | any | a part of N9 bedded in its wall | solids share no volume except where construction requires it |
-| PASS | no_clash | TW/N10.surround | 60 mm deep, 37.5 L | any | a part of N10 bedded in its wall | solids share no volume except where construction requires it |
+| PASS | no_clash | TW/N9.surround | 60 mm deep, 53.1 L | any | a part of N9 bedded in its wall | solids share no volume except where construction requires it |
+| PASS | no_clash | TW/N10.surround | 60 mm deep, 53.9 L | any | a part of N10 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | TW/F1 | 300 mm deep, 975.0 L | any | slab bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | TW/F2 | 300 mm deep, 975.0 L | any | slab bears into wall | solids share no volume except where construction requires it |
-| PASS | no_clash | MS/D1.surround | 60 mm deep, 78.3 L | any | a part of D1 bedded in its wall | solids share no volume except where construction requires it |
+| PASS | no_clash | MS/D1.surround | 60 mm deep, 69.6 L | any | a part of D1 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | MS/N1.surround | 60 mm deep, 55.3 L | any | a part of N1 bedded in its wall | solids share no volume except where construction requires it |
-| PASS | no_clash | MS/N2.surround | 60 mm deep, 55.3 L | any | a part of N2 bedded in its wall | solids share no volume except where construction requires it |
-| PASS | no_clash | MS/N3.surround | 60 mm deep, 51.9 L | any | a part of N3 bedded in its wall | solids share no volume except where construction requires it |
-| PASS | no_clash | MS/N4.surround | 60 mm deep, 51.9 L | any | a part of N4 bedded in its wall | solids share no volume except where construction requires it |
+| PASS | no_clash | MS/N2.surround | 60 mm deep, 60.1 L | any | a part of N2 bedded in its wall | solids share no volume except where construction requires it |
+| PASS | no_clash | MS/N3.surround | 60 mm deep, 53.9 L | any | a part of N3 bedded in its wall | solids share no volume except where construction requires it |
+| PASS | no_clash | MS/N4.surround | 60 mm deep, 68.3 L | any | a part of N4 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | MS/N5.surround | 60 mm deep, 51.9 L | any | a part of N5 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | MS/F1 | 300 mm deep, 2025.0 L | any | slab bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | ME/N18.surround | 60 mm deep, 37.2 L | any | a part of N18 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | ME/F1 | 300 mm deep, 1050.0 L | any | slab bears into wall | solids share no volume except where construction requires it |
-| PASS | no_clash | ME/C0K.B1 | 10 mm deep, 10.0 L | any | beam bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | MN/D0.surround | 60 mm deep, 59.9 L | any | a part of D0 bedded in its wall | solids share no volume except where construction requires it |
-| PASS | no_clash | MN/N13.surround | 60 mm deep, 55.3 L | any | a part of N13 bedded in its wall | solids share no volume except where construction requires it |
+| PASS | no_clash | MN/N13.surround | 60 mm deep, 60.1 L | any | a part of N13 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | MN/N14.surround | 60 mm deep, 55.3 L | any | a part of N14 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | MN/N15.surround | 60 mm deep, 37.5 L | any | a part of N15 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | MN/N16.surround | 60 mm deep, 46.4 L | any | a part of N16 bedded in its wall | solids share no volume except where construction requires it |
@@ -39,34 +38,34 @@
 | PASS | no_clash | KS/D3.surround | 60 mm deep, 68.4 L | any | a part of D3 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | KS/D4.surround | 60 mm deep, 68.4 L | any | a part of D4 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | KE/N19.surround | 60 mm deep, 48.1 L | any | a part of N19 bedded in its wall | solids share no volume except where construction requires it |
-| PASS | no_clash | KE/C0K.B15 | 10 mm deep, 10.0 L | any | beam bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | KN/N20.surround | 60 mm deep, 51.9 L | any | a part of N20 bedded in its wall | solids share no volume except where construction requires it |
 | PASS | no_clash | D1/D1.glass | 10 mm deep, 2.3 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
 | PASS | no_clash | D1.surround/RP | 25 mm deep, 245 cm³ | any | allowed by the project: the brush cover is cut around the stone surround where the pergola meets the arched door | solids share no volume except where construction requires it |
 | PASS | no_clash | N1/N1.glass | 10 mm deep, 1.1 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N2/N2.glass | 10 mm deep, 1.1 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N3/N3.glass | 10 mm deep, 1.0 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N4/N4.glass | 10 mm deep, 1.0 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N2/N2.glass | 10 mm deep, 1.2 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N3/N3.glass | 10 mm deep, 1.1 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N4/N4.glass | 41 mm deep, 1.5 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
 | PASS | no_clash | N5/N5.glass | 10 mm deep, 1.0 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | D2/D2.glass | 10 mm deep, 4.0 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N6/N6.glass | 10 mm deep, 882 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N7/N7.glass | 10 mm deep, 468 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N8/N8.glass | 10 mm deep, 912 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N9/N9.glass | 10 mm deep, 882 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N10/N10.glass | 10 mm deep, 468 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N11/N11.glass | 10 mm deep, 882 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N12/N12.glass | 10 mm deep, 468 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N13/N13.glass | 10 mm deep, 1.1 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | D2/D2.glass | 22 mm deep, 4.0 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N6/N6.glass | 41 mm deep, 1.1 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N7/N7.glass | 10 mm deep, 729 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N8/N8.glass | 10 mm deep, 894 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N9/N9.glass | 27 mm deep, 1.1 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N10/N10.glass | 10 mm deep, 729 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N11/N11.glass | 27 mm deep, 1.1 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N12/N12.glass | 10 mm deep, 729 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N13/N13.glass | 10 mm deep, 1.2 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
 | PASS | no_clash | N14/N14.glass | 10 mm deep, 1.1 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N15/N15.glass | 10 mm deep, 468 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N16/N16.glass | 10 mm deep, 882 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N17/N17.glass | 10 mm deep, 468 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N18/N18.glass | 10 mm deep, 882 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | D3/D3.glass | 10 mm deep, 1.9 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | D4/D4.glass | 10 mm deep, 1.9 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
-| PASS | no_clash | N19/N19.glass | 10 mm deep, 912 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N15/N15.glass | 10 mm deep, 459 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N16/N16.glass | 10 mm deep, 864 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N17/N17.glass | 10 mm deep, 459 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N18/N18.glass | 10 mm deep, 864 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | D3/D3.glass | 10 mm deep, 2.0 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | D4/D4.glass | 10 mm deep, 2.0 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
+| PASS | no_clash | N19/N19.glass | 10 mm deep, 894 cm³ | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
 | PASS | no_clash | N20/N20.glass | 10 mm deep, 1.0 L | any | glass sits in the rebate of its frame | solids share no volume except where construction requires it |
 | PASS | no_clash | P1/C0M | 30 mm deep, 31.5 L | any | ceiling bears into wall | solids share no volume except where construction requires it |
+| PASS | no_clash | P1/C0M.B14 | 20 mm deep, 28.7 L | any | beam bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | FP/C0M | 30 mm deep, 36.0 L | any | ceiling bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | FP/C0M.B4 | 20 mm deep, 2.6 L | any | beam bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | FP/C0M.B5 | 140 mm deep, 18.5 L | any | beam bears into wall | solids share no volume except where construction requires it |
@@ -107,13 +106,13 @@
 | PASS | no_clash | C1M/L7 | 6 mm deep, 47 cm³ | any | downlight recessed in a lining | solids share no volume except where construction requires it |
 | PASS | no_clash | C1M/L8 | 6 mm deep, 47 cm³ | any | downlight recessed in a lining | solids share no volume except where construction requires it |
 | PASS | no_clash | C1M/L9 | 6 mm deep, 47 cm³ | any | downlight recessed in a lining | solids share no volume except where construction requires it |
-| PASS | no_clash | TR/RW1 | 150 mm deep, 1222.5 L | any | slab bears into wall | solids share no volume except where construction requires it |
-| PASS | no_clash | TR/RW2 | 150 mm deep, 1297.5 L | any | slab bears into wall | solids share no volume except where construction requires it |
+| PASS | no_clash | TR/RW1 | 150 mm deep, 1297.5 L | any | slab bears into wall | solids share no volume except where construction requires it |
+| PASS | no_clash | TR/RW2 | 150 mm deep, 1222.5 L | any | slab bears into wall | solids share no volume except where construction requires it |
 | PASS | ceiling_height | hall | 3200.0 | 2100 | finished floor to ceiling lining | habitable rooms 2400 min, service rooms 2100 (rule of thumb) |
 | PASS | ceiling_height | living | 3200.0 | 2400 | finished floor to ceiling lining | habitable rooms 2400 min, service rooms 2100 (rule of thumb) |
 | PASS | ceiling_height | dining | 3200.0 | 2400 | finished floor to ceiling lining | habitable rooms 2400 min, service rooms 2100 (rule of thumb) |
 | PASS | ceiling_height | kitchen | 3200.0 | 2400 | finished floor to ceiling lining | habitable rooms 2400 min, service rooms 2100 (rule of thumb) |
-| PASS | ceiling_height | landing | 2900.0 | 2400 | finished floor to ceiling lining | habitable rooms 2400 min, service rooms 2100 (rule of thumb) |
+| PASS | ceiling_height | tower_bedroom | 2900.0 | 2400 | finished floor to ceiling lining | habitable rooms 2400 min, service rooms 2100 (rule of thumb) |
 | PASS | ceiling_height | corridor | 2900.0 | 2100 | finished floor to ceiling lining | habitable rooms 2400 min, service rooms 2100 (rule of thumb) |
 | PASS | ceiling_height | bed1 | 2900.0 | 2400 | finished floor to ceiling lining | habitable rooms 2400 min, service rooms 2100 (rule of thumb) |
 | PASS | ceiling_height | bath1 | 2900.0 | 2100 | finished floor to ceiling lining | habitable rooms 2400 min, service rooms 2100 (rule of thumb) |
@@ -206,32 +205,67 @@
 | PASS | headroom_under_beam | C2T.B10 | 2390.0 | 2100 |  | 2100 clear under projections (rule of thumb) |
 | PASS | headroom_under_beam | C2T.B11 | 2390.0 | 2100 |  | 2100 clear under projections (rule of thumb) |
 | PASS | headroom_under_beam | PB | 2800.0 | 2100 |  | 2100 clear under projections (rule of thumb) |
-| PASS | glazing_ratio | living | 0.35 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
-| PASS | glazing_ratio | dining | 0.409 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
-| PASS | glazing_ratio | kitchen | 0.256 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
-| PASS | glazing_ratio | landing | 0.309 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
-| PASS | glazing_ratio | bed1 | 0.781 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
-| PASS | glazing_ratio | bed2 | 0.477 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
-| PASS | glazing_ratio | bed3 | 0.828 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
-| PASS | glazing_ratio | study | 0.309 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
-| PASS | egress_door | hall | D2, A0, A2 | 1 door or passage >= 620 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | living | D1, D0, A0, A1 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | dining | D1, D0, A1, D5 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | kitchen | D3, D4, D5 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | landing | D2, A0 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | corridor | D0, A0, D5, D6, D7, D8, A2 | 1 door or passage >= 620 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | bed1 | D1, A0, D6, D7, D8 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | bath1 | D1, D6, D7, D8, D9 | 1 door or passage >= 620 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | bed2 | D1, D6, D7, D8 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | bath2 | D1, D6, D7, D8, D10 | 1 door or passage >= 620 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | bed3 | D1, D5, D6, D7, D8 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | study | D2, A0 | 1 door or passage >= 800 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | egress_door | terrace | D1, D2, D3, D4 | 1 door or passage >= 620 x 2000 clear |  | every room has a door or passage >= 800 x 2000 clear (rule of thumb) |
-| PASS | door_clear_width | D1 | 830.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
-| PASS | door_clear_width | D2 | 1400.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
+| PASS | glazing_ratio | living | 0.14 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
+| PASS | glazing_ratio | dining | 0.105 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
+| PASS | glazing_ratio | kitchen | 0.238 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
+| PASS | glazing_ratio | tower_bedroom | 0.103 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
+| PASS | glazing_ratio | bed1 | 0.101 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
+| PASS | glazing_ratio | bed2 | 0.101 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
+| PASS | glazing_ratio | bed3 | 0.157 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
+| PASS | glazing_ratio | study | 0.107 | 0.1 | glass area / floor area | habitable rooms: glass area >= 10% of floor area (rule of thumb) |
+| PASS | room_access | hall | D2, A0, ST1a | door/passage/stair >= 620 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | living | D1, D0, A0, A1 | door/passage/stair >= 800 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | dining | A1, D5 | door/passage/stair >= 800 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | kitchen | D3, D4, D5 | door/passage/stair >= 800 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | tower_bedroom | ST1, ST2 | door/passage/stair >= 800 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | corridor | D6, D7, D8, A2 | door/passage/stair >= 620 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | bed1 | D6 | door/passage/stair >= 800 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | bath1 | D9 | door/passage/stair >= 620 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | bed2 | D7 | door/passage/stair >= 800 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | bath2 | D10 | door/passage/stair >= 620 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | bed3 | D8 | door/passage/stair >= 800 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | study | ST2 | door/passage/stair >= 800 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | room_access | terrace | D1, D2, ST0 | door/passage/stair >= 620 x 2000 clear | local access; not an evacuation-route assessment | local room access through a door, passage or connected stair (rule of thumb) |
+| PASS | opening_room_boundary | D1 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N1 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N2 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N3 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N4 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N5 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | D2 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N6 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N7 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N8 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N9 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N10 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N11 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N12 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | D0 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N13 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N14 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N15 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N16 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N17 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N18 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | D3 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | D4 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N19 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | N20 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | A0 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | A1 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | D5 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | FP.hearth | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | D6 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | D7 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | D8 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | D9 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | D10 | clear | None |  | an opening must not straddle a room partition |
+| PASS | opening_room_boundary | A2 | clear | None |  | an opening must not straddle a room partition |
+| PASS | door_clear_width | D1 | 860.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
+| PASS | door_clear_width | D2 | 1425.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
 | PASS | door_clear_width | D0 | 1080.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
-| PASS | door_clear_width | D3 | 805.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
-| PASS | door_clear_width | D4 | 805.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
+| PASS | door_clear_width | D3 | 835.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
+| PASS | door_clear_width | D4 | 835.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
 | PASS | door_clear_width | D5 | 880.0 | 800 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
 | PASS | door_clear_width | D6 | 830.0 | 620 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
 | PASS | door_clear_width | D7 | 830.0 | 620 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
@@ -239,49 +273,43 @@
 | PASS | door_clear_width | D9 | 680.0 | 620 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
 | PASS | door_clear_width | D10 | 680.0 | 620 | inside the frame | external doors 800 clear per leaf, internal 620 (rule of thumb) |
 | PASS | opening_fits_wall | D2 | 1750+3000 of 6500; head 2600 of 9300 | None |  |  |
-| PASS | opening_fits_wall | N6 | 2750+1000 of 6500; head 5700 of 9300 | None |  |  |
-| PASS | opening_fits_wall | N7 | 2850+800 of 6500; head 8500 of 9300 | None |  |  |
+| PASS | opening_fits_wall | N6 | 2575+1350 of 6500; head 5700 of 9300 | None |  |  |
+| PASS | opening_fits_wall | N7 | 2600+1300 of 6500; head 8900 of 9300 | None |  |  |
 | PASS | openings_do_not_overlap | D2/N6 | None | None |  |  |
+| PASS | openings_do_not_overlap | D2/N7 | None | None |  |  |
 | PASS | openings_do_not_overlap | N6/N7 | None | None |  |  |
 | PASS | opening_fits_wall | A0 | 2450+1600 of 6500; head 3000 of 9300 | None |  |  |
 | PASS | opening_fits_wall | A2 | 5750+700 of 6500; head 5950 of 9300 | None |  |  |
-| PASS | openings_do_not_overlap | A0/A2 | None | None |  |  |
-| PASS | opening_fits_wall | N11 | 2750+1000 of 6500; head 5700 of 9300 | None |  |  |
-| PASS | opening_fits_wall | N12 | 2850+800 of 6500; head 8500 of 9300 | None |  |  |
+| PASS | opening_fits_wall | N11 | 2575+1350 of 6500; head 5700 of 9300 | None |  |  |
+| PASS | opening_fits_wall | N12 | 2600+1300 of 6500; head 8900 of 9300 | None |  |  |
 | PASS | openings_do_not_overlap | N11/N12 | None | None |  |  |
 | PASS | opening_fits_wall | N8 | 2500+1000 of 6500; head 2300 of 9300 | None |  |  |
-| PASS | opening_fits_wall | N9 | 2750+1000 of 6500; head 5700 of 9300 | None |  |  |
-| PASS | opening_fits_wall | N10 | 2850+800 of 6500; head 8500 of 9300 | None |  |  |
+| PASS | opening_fits_wall | N9 | 2575+1350 of 6500; head 5700 of 9300 | None |  |  |
+| PASS | opening_fits_wall | N10 | 2600+1300 of 6500; head 8900 of 9300 | None |  |  |
 | PASS | openings_do_not_overlap | N8/N9 | None | None |  |  |
+| PASS | openings_do_not_overlap | N8/N10 | None | None |  |  |
 | PASS | openings_do_not_overlap | N9/N10 | None | None |  |  |
+| PASS | opening_fits_wall | N3 | 1400+1300 of 13500; head 5800 of 6400 | None |  |  |
 | PASS | opening_fits_wall | N1 | 1500+1200 of 13500; head 2400 of 6400 | None |  |  |
-| PASS | opening_fits_wall | N3 | 1500+1200 of 13500; head 5800 of 6400 | None |  |  |
-| PASS | opening_fits_wall | D1 | 5800+1900 of 13500; head 2950 of 6400 | None |  |  |
-| PASS | opening_fits_wall | N4 | 6150+1200 of 13500; head 5800 of 6400 | None |  |  |
-| PASS | opening_fits_wall | N2 | 10800+1200 of 13500; head 2400 of 6400 | None |  |  |
+| PASS | opening_fits_wall | N4 | 5725+2050 of 13500; head 5800 of 6400 | None |  |  |
+| PASS | opening_fits_wall | D1 | 5800+1900 of 13500; head 3050 of 6400 | None |  |  |
+| PASS | opening_fits_wall | N2 | 10675+1450 of 13500; head 2400 of 6400 | None |  |  |
 | PASS | opening_fits_wall | N5 | 10800+1200 of 13500; head 5800 of 6400 | None |  |  |
-| PASS | openings_do_not_overlap | N1/N3 | None | None |  |  |
-| PASS | openings_do_not_overlap | N3/D1 | None | None |  |  |
-| PASS | openings_do_not_overlap | D1/N4 | None | None |  |  |
-| PASS | openings_do_not_overlap | N4/N2 | None | None |  |  |
+| PASS | openings_do_not_overlap | N3/N1 | None | None |  |  |
+| PASS | openings_do_not_overlap | N4/D1 | None | None |  |  |
 | PASS | openings_do_not_overlap | N2/N5 | None | None |  |  |
 | PASS | opening_fits_wall | D5 | 2000+1000 of 7000; head 2200 of 6400 | None |  |  |
 | PASS | opening_fits_wall | N18 | 3000+1000 of 7000; head 6300 of 6400 | None |  |  |
-| PASS | openings_do_not_overlap | D5/N18 | None | None |  |  |
-| PASS | opening_fits_wall | N13 | 2000+1200 of 13500; head 2400 of 6400 | None |  |  |
+| PASS | opening_fits_wall | N13 | 1875+1450 of 13500; head 2400 of 6400 | None |  |  |
 | PASS | opening_fits_wall | N15 | 3275+800 of 13500; head 5700 of 6400 | None |  |  |
 | PASS | opening_fits_wall | D0 | 6150+1200 of 13500; head 2400 of 6400 | None |  |  |
 | PASS | opening_fits_wall | N16 | 6250+1000 of 13500; head 5700 of 6400 | None |  |  |
 | PASS | opening_fits_wall | N17 | 9500+800 of 13500; head 5700 of 6400 | None |  |  |
 | PASS | opening_fits_wall | N14 | 10300+1200 of 13500; head 2400 of 6400 | None |  |  |
 | PASS | openings_do_not_overlap | N13/N15 | None | None |  |  |
-| PASS | openings_do_not_overlap | N15/D0 | None | None |  |  |
 | PASS | openings_do_not_overlap | D0/N16 | None | None |  |  |
-| PASS | openings_do_not_overlap | N16/N17 | None | None |  |  |
-| PASS | openings_do_not_overlap | N17/N14 | None | None |  |  |
 | PASS | opening_fits_wall | D3 | 1200+1850 of 8500; head 2400 of 3200 | None |  |  |
 | PASS | opening_fits_wall | D4 | 5300+1850 of 8500; head 2400 of 3200 | None |  |  |
-| PASS | openings_do_not_overlap | D3/D4 | None | None |  |  |
 | PASS | opening_fits_wall | N19 | 2000+1000 of 5000; head 2300 of 3200 | None |  |  |
 | PASS | opening_fits_wall | N20 | 3650+1200 of 8500; head 2400 of 3200 | None |  |  |
 | PASS | opening_fits_wall | A1 | 2500+2000 of 7000; head 3100 of 3200 | None |  |  |
@@ -289,12 +317,14 @@
 | PASS | opening_fits_wall | D6 | 1200+950 of 13500; head 2100 of 2900 | None |  |  |
 | PASS | opening_fits_wall | D7 | 6000+950 of 13500; head 2100 of 2900 | None |  |  |
 | PASS | opening_fits_wall | D8 | 11525+950 of 13500; head 2100 of 2900 | None |  |  |
-| PASS | openings_do_not_overlap | D6/D7 | None | None |  |  |
-| PASS | openings_do_not_overlap | D7/D8 | None | None |  |  |
 | PASS | opening_fits_wall | D9 | 4000+800 of 5550; head 2100 of 2900 | None |  |  |
 | PASS | opening_fits_wall | D10 | 4000+800 of 5550; head 2100 of 2900 | None |  |  |
 | PASS | kitchen_clearance | K1 | clear | 900 | fixed elements only | 900 clear in front of counters (rule of thumb) |
-| PASS | setbacks | building | x -3000..33000, y -5000..8000 | {'front': 10000.0, 'side': 8000.0, 'rear': 8000.0} | front = -y, rear = +y; parcel bounds used | footprint inside parcel less setbacks |
+| PASS | setbacks | building | inside | None | actual wall bodies, including concave and rotated footprints | wall footprint inside the actual parcel and clear of each boundary edge |
+| PASS | setbacks | building/edge-1 | 55000.0 | 10000.0 |  | wall footprint inside the actual parcel and clear of each boundary edge |
+| PASS | setbacks | building/edge-2 | 37000.0 | 8000.0 |  | wall footprint inside the actual parcel and clear of each boundary edge |
+| PASS | setbacks | building/edge-3 | 32000.0 | 8000.0 |  | wall footprint inside the actual parcel and clear of each boundary edge |
+| PASS | setbacks | building/edge-4 | 37000.0 | 8000.0 |  | wall footprint inside the actual parcel and clear of each boundary edge |
 | PASS | roof_pitch | RT | 28.0 | 18..35 | clay tiles | clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb) |
 | PASS | roof_pitch | RM | 24.0 | 18..35 | clay tiles | clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb) |
 | PASS | roof_pitch | RK | 22.0 | 18..35 | clay tiles | clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb) |
@@ -307,12 +337,17 @@
 | PASS | stair_proportions | ST1 | riser 175, going 260, 2R+G 610 | 150..190 / >=250 / 550..700 |  | risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb) |
 | PASS | stair_proportions | ST2 | riser 178, going 270, 2R+G 626 | 150..190 / >=250 / 550..700 |  | risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb) |
 | PASS | stair_proportions | ST0 | riser 165, going 300, 2R+G 630 | 150..190 / >=250 / 550..700 |  | risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb) |
-| PASS | bedroom_window | bed1 | 4.15 | 0.8 | m² of glass on the bedroom's own walls | holiday-let brief |
-| PASS | bedroom_window | bed2 | 4.15 | 0.8 | m² of glass on the bedroom's own walls | holiday-let brief |
-| PASS | bedroom_window | bed3 | 5.19 | 0.8 | m² of glass on the bedroom's own walls | holiday-let brief |
-| PASS | stair_reaches_floor | ST1 | 3500.0 | 3500.0 | L0 -> L1 |  |
-| PASS | stair_reaches_floor | ST2 | 3200.0 | 3200.0 | L1 -> L2 |  |
-| PASS | stair_reaches_floor | ST0 | 1980.0 | 1980.0 | LP -> L0 |  |
+| PASS | stair_headroom | ST1a | 2000.0 | 2000 | clear through the checked 2000 mm envelope | 2000 mm vertical clearance over every tread and arrival area (rule of thumb) |
+| PASS | stair_headroom | ST1 | 2000.0 | 2000 | clear through the checked 2000 mm envelope | 2000 mm vertical clearance over every tread and arrival area (rule of thumb) |
+| PASS | stair_headroom | ST2 | 2000.0 | 2000 | clear through the checked 2000 mm envelope | 2000 mm vertical clearance over every tread and arrival area (rule of thumb) |
+| PASS | stair_headroom | ST0 | 2000.0 | 2000 | clear through the checked 2000 mm envelope | 2000 mm vertical clearance over every tread and arrival area (rule of thumb) |
+| PASS | stair_reaches_floor | ST1 | 3500.0 | 3500.0 |  | a flight targeting a level must arrive at its finished floor |
+| PASS | stair_reaches_floor | ST2 | 6700.0 | 6700.0 |  | a flight targeting a level must arrive at its finished floor |
+| PASS | stair_reaches_floor | ST0 | 0.0 | 0.0 |  | a flight targeting a level must arrive at its finished floor |
+| PASS | bedroom_window | tower_bedroom | 4.35 | 0.8 | m² of glass on the bedroom's own walls | holiday-let brief |
+| PASS | bedroom_window | bed1 | 1.51 | 0.8 | m² of glass on the bedroom's own walls | holiday-let brief |
+| PASS | bedroom_window | bed2 | 2.47 | 0.8 | m² of glass on the bedroom's own walls | holiday-let brief |
+| PASS | bedroom_window | bed3 | 2.42 | 0.8 | m² of glass on the bedroom's own walls | holiday-let brief |
 | PASS | ids | Walls declare whether they are external | 29/29 pass | all |  | IDS 1.0 |
 | PASS | ids | Doors declare whether they are external | 11/11 pass | all |  | IDS 1.0 |
 | PASS | ids | Windows declare whether they are external | 20/20 pass | all |  | IDS 1.0 |
@@ -324,7 +359,7 @@
 | PASS | ids | Ifcfurniture carries its homespec id and tags | 5/5 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifclightfixture carries its homespec id and tags | 9/9 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcoutlet carries its homespec id and tags | 6/6 pass | all |  | IDS 1.0 |
-| PASS | decision_ids | decisions.md | 29 decisions | one entry per id |  |  |
+| PASS | decision_ids | decisions.md | 34 decisions | one entry per id |  |  |
 | PASS | decision_entities | D-001 | TE, ME | ids in the build | Three blocks, not one |  |
 | PASS | decision_entities | D-002 | ST1, ST2, F1, F2 | ids in the build | The tower holds the stairs |  |
 | PASS | decision_entities | D-003 | RT, RM, RK | ids in the build | Roofs are low and hipped where the reference hips |  |
@@ -349,5 +384,10 @@
 | PASS | decision_entities | D-027 | N18, ME, N5 | ids in the build | The east bedroom window sits above the kitchen roof |  |
 | PASS | decision_entities | D-028 | ST1, ST1a, ST1L, ST2, F1, F2, C0T, C1T | ids in the build | The flights land clear, and ST1 turns at its foot |  |
 | PASS | decision_entities | D-030 | TS.infill, TE.infill, TN.infill, TW.infill, MS.infill, MN.infill, KS.infill, KE.infill, KN.infill, RT, RM, RK, CH | ids in the build | Wall heads follow the roof underside behind the génoise |  |
+| PASS | decision_entities | D-031 | P1, A1, D0, D1, D1.surround, F1, N2, N3, N4, N6, N7, N9, N10, N11, N12, N13, living, dining, bed1, bed2, tower_bedroom, study, L2 | ids in the build | Openings and daylight belong to the rooms they actually serve |  |
+| PASS | decision_entities | D-032 | ST0, RW1, RW2, PP5 | ids in the build | The garden stair arrives clear of the pergola post |  |
+| PASS | decision_entities | D-033 | lime_plaster, brick_block, rubble_wall, partition | ids in the build | Concealed materials and parcel edges are explicit |  |
+| PASS | decision_entities | D-034 | ST0, RW1, RW2, P1, A0, A1, D1, D5, N3, L2, L4, FP, C2T, study | ids in the build | Presentation follows the revised openings and garden stair |  |
+| PASS | decision_entities | D-035 | ME, RM, RM.G2, N18, N18.surround, N18.shutters | ids in the build | Close the raised east gable at its wall head |  |
 | PASS | decision_ledgers | Considered and not changed | present | a '## Considered and not changed' section |  |  |
 | PASS | decision_ledgers | Not verified | present | a '## Not verified' section |  |  |

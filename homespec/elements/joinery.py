@@ -3,12 +3,13 @@ from __future__ import annotations
 
 from typing import Annotated, Any, ClassVar
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
 from .. import geometry as G
 from ..derived import BookcaseGeometry, KitchenGeometry
 from ..model import Context, Element, NonNegative, Positive, Realized, Ref, Relation, element
-from .walls import WallGeometry
+from ..validation import FiniteModel
+from .walls import hosted_placement
 
 
 @element
@@ -52,8 +53,8 @@ class Bookcase(Element):
         return [self.on]
 
     def realize(self, ctx: Context) -> Realized:
-        wall = ctx.derived(self.on, WallGeometry)
-        f, z = wall.face, wall.elevation
+        wall, level, z = hosted_placement(ctx, self, self.on)
+        f = wall.face
         pitch = (self.height - self.panel) / self.shelves
         parts = [G.frame_box(f, self.from_start, 0.0, z, (self.length, self.panel, self.height))]
         for i in range(self.shelves + 1):
@@ -63,11 +64,11 @@ class Bookcase(Element):
             parts.append(G.frame_box(f, x, 0.0, z, (self.panel, self.depth, self.height)))
         return Realized(
             solid=G.group(parts), derived=BookcaseGeometry(bay_width=self.length / self.bays, shelf_pitch=pitch).model_dump(),
-            relations=[Relation(pred="against", obj=self.on)], tags={"fixed", "joinery"}, level=self.level or ctx.built(self.on).level,
+            relations=[Relation(pred="against", obj=self.on)], tags={"fixed", "joinery"}, level=level,
         )
 
 
-class UpperCabinet(BaseModel):
+class UpperCabinet(FiniteModel):
     from_start: float
     length: Positive
     depth: Positive = 320.0
@@ -105,8 +106,8 @@ class KitchenRun(Element):
         return [self.on]
 
     def realize(self, ctx: Context) -> Realized:
-        wall = ctx.derived(self.on, WallGeometry)
-        f, z, lvl = wall.face, wall.elevation, self.level or ctx.built(self.on).level
+        wall, lvl, z = hosted_placement(ctx, self, self.on)
+        f = wall.face
         base_h = self.counter_height - self.counter_thickness
         x0, L, d = self.from_start, self.length, self.depth
 

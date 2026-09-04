@@ -1,0 +1,472 @@
+{
+  "format": 1,
+  "project": "bastide_montfuron",
+  "source_commit": "ecb4aa71e7444fed84bed854cd8b96117de2733e",
+  "build_generation": "fe8d745e68234d279e5a1564d688ec7c",
+  "build_fingerprint": "5fcb923e0e32e0a94bc3ebb8e70635c880263225e4de27fef8dc001a229a7a89",
+  "source_fingerprint": "99179e70796185399a8855b55d28c577b06d432c69727e368fb462651078718b",
+  "source_files": {
+    "homespec/__init__.py": "b2fea8c5dc14ccb4f11b9cf340ef7c0cf5f08bfc0c808e992cf5c5134ff77b6c",
+    "homespec/assets.py": "a933c6d01df74a19abd1a023d45750fdd83ee380c257f23377fb67e428787669",
+    "homespec/blender/__init__.py": "5aec780aa1a88ec207ca788d4902c9d81ce9da5a9dc103d5d7791a43652eb055",
+    "homespec/blender/audit.py": "2379aa8a23f5543c29101e586089fba1156fda8a4597df2651972b6f83131f3c",
+    "homespec/blender/building.py": "9b097414033dddd0944052c47efa1a93712c6e9766c517b04a910ba0946876b2",
+    "homespec/blender/camera.py": "88c999c0da244729ddc912865118be3da20a75cefd16b47cc3c85680433956ae",
+    "homespec/blender/devices.py": "b83fc842d3ad2d689b6be85e18b130aaceef2b9b5673bd1b4a7033db04d541a1",
+    "homespec/blender/frames.py": "db453431aff895bdea6a441a0e090dd3e5ecb0777ca0e573e317fca13177472c",
+    "homespec/blender/furniture.py": "49691c15554aa3c59f8d20a3e072c3e48b6e0d3ca2f6623a745372d8c6486ebe",
+    "homespec/blender/lighting.py": "8d9c0a7a3f6d29ea6b9d8203e11942f84bab1c2668fde0dfd40ae7f9b906c875",
+    "homespec/blender/materials.py": "18ca34ab96ecec5f3e77654735fb2fe1f51b90c8305319220d3b13d46ce76efd",
+    "homespec/blender/models.py": "8a918e79f50c1f3f4d881949e81031a3d8828d98bde3f9cb9c060bb642cc81c2",
+    "homespec/blender/plants.py": "bef93de047f98e5b757cd92630e3c561d6fb0ae1db87a17a2d872a4ccd483644",
+    "homespec/blender/primitives.py": "f3bd8d7e6a2b0ba7f42cc17631f608a27ce473ea1c5a7ca50486fa8c4e82d1ec",
+    "homespec/blender/scene.py": "e942ac70d484f2bf2ef9e2ee107adbfe8bc180383f199064b53abe09645714cf",
+    "homespec/blender/session.py": "5a4cca4166770ad838a18f1ed7a20388ba0921d52d87261d471b496401c71877",
+    "homespec/blender/views.py": "eac284c881ac5dc0fb08fa58858092b336ef8652938afc4348557d94099e943f",
+    "homespec/blender/walk.py": "b29c2ad58a24c7acdffb30445d7c11b217d1ecbb8afe7b9b0b0c1fe39963bca9",
+    "homespec/buildstate.py": "9d29ea268ff2ce8ac4ca56dc45b3b16e5c3d687bc6c597508718abb272488324",
+    "homespec/checks/__init__.py": "112265980dcb64eb09c490d40298a12aaf1798bf2ffda03cca5aa448dcedc4c3",
+    "homespec/checks/base.py": "aed3cd842c96fc893499b547f459583c58f24722e743effe38a24e2e61df40fa",
+    "homespec/checks/clashes.py": "2f677f2868d79d3fa6ad5242c279accabc5705bbcc9ce94d3b1a54a1a03878c3",
+    "homespec/checks/decisions.py": "fc0c33abeaddc03d1b811f0740e3a44cfb5ad26e340f4944166e843cdb1aa715",
+    "homespec/checks/ids.py": "ae24a7699ddde3a13974f4ab7aecb991b40be75a86b05db1eeda821675d679b5",
+    "homespec/checks/residential.py": "2e2ea145ea20a3a67b33f26bf9aa635311f800c18e53d63b1c0772d1c2ba6296",
+    "homespec/clashes.py": "7a2b525ea08d578288a320ff8a03ea4322acaf8dda2b2a01bfbd43c826587703",
+    "homespec/cli.py": "afdc837856280d45cd6f99f0c92c31c7f14fe53106b7f7bfe69185657f3efcbd",
+    "homespec/derived.py": "cd0f59ff7a95c78952055348d971d6450773cb180f2b5afc3f32f06713758763",
+    "homespec/elements/__init__.py": "3ff1859553beec3a005eb4faa1133cb9769dc1eeffc7ef72687be4c4023070cc",
+    "homespec/elements/columns.py": "c0df7de02b53c3e9375597255f2412d60db383ba22d4fba25cad1826b5ae9e75",
+    "homespec/elements/definitions.py": "b1c051480bb3cab944f7dd1cac55050d9ce909333308fa8115c75733a05574ba",
+    "homespec/elements/floors.py": "e182801a02f5a99075e62a93b7a96812a16b8eae5f376e2301134dc7d4176a99",
+    "homespec/elements/grid.py": "63509420e4b3203b52ed42e2abf02a2a2407a20a7442d872b98ae753eb0bb3c4",
+    "homespec/elements/joinery.py": "cde7ff084f790dcbdba8e53754c464e65fe995a7ae9533945a740489a7c1d2e7",
+    "homespec/elements/landscape.py": "8bfd3d926194558493d74febfd9ed0a0c891350cf7631d226dceae65883ffe34",
+    "homespec/elements/roof.py": "b46e756f11f59ba6bedac647ac5af3b8c8b8cfdee2dbd44d5eeee4045d5da492",
+    "homespec/elements/services.py": "1bbe41a065a269a2c14c194a2428f33abe1dcb7fb361d4e1817e8e359d2a7b18",
+    "homespec/elements/spaces.py": "d5f2f6b85e8b5f9def6a5202472b0e9b5ea0d3a64b23dc08052b8c7afbc7ccd3",
+    "homespec/elements/stairs.py": "58a5b4036cb7192640cb8c2a6ebc923edc79f52642fc05dd6e711637dae36dae",
+    "homespec/elements/walls.py": "5d2fdba16a57b2b154ab02564ddb1ede6f44d42c1a16d711ef6a14d6b7f0bcbf",
+    "homespec/export/__init__.py": "12af35c99134ba4c578bb12c49369d4e9bc5b860f1a430e8d1edf2d318b5527c",
+    "homespec/export/drawings.py": "db4c0b022d62b1026288dbee11c20ad1e81eaf1afdadab0cce3db13b7e250126",
+    "homespec/export/ifc.py": "5ceda48a9339b59832811e299b143fdbc1dc2f9a1d874ed4002b957b7cbd9198",
+    "homespec/export/schedules.py": "01545bbc13a359a86c64108bf778f57ef33d1a03111e5790fd8f5d1b9900ea3b",
+    "homespec/geometry.py": "aaec25653f1b1980bf654dcea32e0f08d5d8e2c0231b1b5b222aab3fc07ea766",
+    "homespec/ir.py": "32db9866216876538e16418f4d9db6aabee28661af90b8c653b1cbceb5882ec8",
+    "homespec/model.py": "479676fc5f8f7edb49ca01eec78191a2a65ec2194a698ad5a2f036e724b1be5d",
+    "homespec/pipeline.py": "86eaeb43d98c9930d19cf5f06cb1548290551ad33cce03548d45ca59702c4b79",
+    "homespec/spatial.py": "c1010c3063359e16cf44dbccefbc09b184804bbcabf8ff5c63efb13c6476a5a1",
+    "homespec/units.py": "e78434cd94b7598a2894defc880f8d84e494c362db86c57956e15abf0af7513e",
+    "homespec/validation.py": "63600407f8d877635258f6f5d49f4324a7422c6572265cce60e3c9bf6eebf43c",
+    "homespec/views.py": "a16523a105b3b9b9086c4639e5e9c19acd77edfe9f7e3c1ed0b0c7cb4e53e656",
+    "projects/bastide_montfuron/decisions.md": "a87dc40e75c402b4b4820f4616669f8af985d89e8e41b91e34dc4ec5a1bfe4aa",
+    "projects/bastide_montfuron/presentation.py": "351101d86ea46820f729d74810955aee9a9556ac777830c8113e316fa97e6f53",
+    "projects/bastide_montfuron/project.py": "9b4f84ccead7e4e91c60f4a0e56e4880276bf92dd458d8b8a3d1d65ea1ccdafd",
+    "projects/bastide_montfuron/rooms/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "projects/bastide_montfuron/rooms/bedrooms.py": "c30bd80db46d2b7699170b075cae5c82e2cff5d81dcc75fd079c9450ae0162a4",
+    "projects/bastide_montfuron/rooms/dining.py": "6712df812b99591f5df40beeb7558bb4536d06875be9a69058f7b1e71fa2cd84",
+    "projects/bastide_montfuron/rooms/exterior.py": "11dfa550c805e29773947400ad2aa42b626fc8177a33adb77963e932a4f0ff16",
+    "projects/bastide_montfuron/rooms/hall.py": "b047153240e6a97009ac90bafafdc9ebc4898ab1306f66f7f9e99fd3dd6a4be5",
+    "projects/bastide_montfuron/rooms/kitchen.py": "37d397015ab62d46c13676c05ad5dd958da34cfe6ea2808ba24474918bd4d04b",
+    "projects/bastide_montfuron/rooms/living.py": "50321d7f295a6d95a920d5cf5bb08341523fe666f56846a2dd708338cce96048",
+    "projects/bastide_montfuron/rooms/tower.py": "259c3d647dd8f3d6b5c8f2e43e30eb26b5cbe05baab1c9c323846bc71ac15c04",
+    "pyproject.toml": "7a0295a2947d96a5e13b36f6819ca3f0e499d17b018a270fef8c9d39314ea04a",
+    "uv.lock": "e5a231d06423067ad10df41b13e1ecdf38ae33a5e3cd089a62ad7708d1307364"
+  },
+  "ir_version": "0.3",
+  "ir_sha256": "224cab8d45b27d241b000d2e30fd1cad81ddd638bf84c106209d950f01276259",
+  "status": "passed",
+  "checks": {
+    "passed": 387,
+    "failed": 0
+  },
+  "python": "3.13.12",
+  "dependencies": [
+    [
+      "annotated-doc",
+      "0.0.5"
+    ],
+    [
+      "annotated-types",
+      "0.8.0"
+    ],
+    [
+      "anytree",
+      "2.13.0"
+    ],
+    [
+      "asttokens",
+      "3.0.2"
+    ],
+    [
+      "bcf-client",
+      "0.8.5"
+    ],
+    [
+      "blinker",
+      "1.9.0"
+    ],
+    [
+      "build123d",
+      "0.11.1"
+    ],
+    [
+      "cadquery-ocp-novtk",
+      "7.9.3.1.1"
+    ],
+    [
+      "cadquery-ocp-proxy",
+      "7.9.3.1.1"
+    ],
+    [
+      "certifi",
+      "2026.7.22"
+    ],
+    [
+      "charset-normalizer",
+      "3.5.1"
+    ],
+    [
+      "click",
+      "8.5.0"
+    ],
+    [
+      "cloudpickle",
+      "3.1.2"
+    ],
+    [
+      "defusedxml",
+      "0.7.1"
+    ],
+    [
+      "elementpath",
+      "5.1.4"
+    ],
+    [
+      "executing",
+      "2.2.1"
+    ],
+    [
+      "ezdxf",
+      "1.4.4"
+    ],
+    [
+      "flask",
+      "3.1.3"
+    ],
+    [
+      "fonttools",
+      "4.64.0"
+    ],
+    [
+      "homespec",
+      "0.1.0"
+    ],
+    [
+      "hypothesis",
+      "6.167.1"
+    ],
+    [
+      "idna",
+      "3.19"
+    ],
+    [
+      "ifcopenshell",
+      "0.8.5"
+    ],
+    [
+      "ifctester",
+      "0.8.5"
+    ],
+    [
+      "iniconfig",
+      "2.3.0"
+    ],
+    [
+      "ipython",
+      "9.17.1"
+    ],
+    [
+      "ipython_pygments_lexers",
+      "1.1.1"
+    ],
+    [
+      "isodate",
+      "0.7.2"
+    ],
+    [
+      "itsdangerous",
+      "2.2.0"
+    ],
+    [
+      "jedi",
+      "0.20.0"
+    ],
+    [
+      "jinja2",
+      "3.1.6"
+    ],
+    [
+      "joblib",
+      "1.6.0"
+    ],
+    [
+      "lark",
+      "1.3.1"
+    ],
+    [
+      "lib3mf",
+      "2.5.0"
+    ],
+    [
+      "markdown-it-py",
+      "4.2.0"
+    ],
+    [
+      "markupsafe",
+      "3.0.3"
+    ],
+    [
+      "matplotlib-inline",
+      "0.2.2"
+    ],
+    [
+      "mdurl",
+      "0.1.2"
+    ],
+    [
+      "mpmath",
+      "1.3.0"
+    ],
+    [
+      "narwhals",
+      "2.25.0"
+    ],
+    [
+      "nodeenv",
+      "1.10.0"
+    ],
+    [
+      "numpy",
+      "2.5.2"
+    ],
+    [
+      "ocp_gordon",
+      "0.2.2"
+    ],
+    [
+      "ocpsvg",
+      "0.6.0"
+    ],
+    [
+      "odfpy",
+      "1.4.1"
+    ],
+    [
+      "packaging",
+      "26.3"
+    ],
+    [
+      "parso",
+      "0.8.7"
+    ],
+    [
+      "pexpect",
+      "4.9.0"
+    ],
+    [
+      "pluggy",
+      "1.6.0"
+    ],
+    [
+      "prompt_toolkit",
+      "3.0.53"
+    ],
+    [
+      "psutil",
+      "7.2.2"
+    ],
+    [
+      "ptyprocess",
+      "0.7.0"
+    ],
+    [
+      "pure_eval",
+      "0.2.3"
+    ],
+    [
+      "pydantic",
+      "2.13.5"
+    ],
+    [
+      "pydantic_core",
+      "2.46.5"
+    ],
+    [
+      "pygments",
+      "2.21.0"
+    ],
+    [
+      "pyparsing",
+      "3.3.2"
+    ],
+    [
+      "pyright",
+      "1.1.411"
+    ],
+    [
+      "pystache",
+      "0.6.8"
+    ],
+    [
+      "pytest",
+      "9.1.1"
+    ],
+    [
+      "python-dateutil",
+      "2.9.0.post0"
+    ],
+    [
+      "requests",
+      "2.34.2"
+    ],
+    [
+      "rich",
+      "15.0.0"
+    ],
+    [
+      "ruff",
+      "0.16.6"
+    ],
+    [
+      "scikit-learn",
+      "1.9.0"
+    ],
+    [
+      "scipy",
+      "1.18.1"
+    ],
+    [
+      "shapely",
+      "2.1.2"
+    ],
+    [
+      "shellingham",
+      "1.5.4"
+    ],
+    [
+      "six",
+      "1.17.0"
+    ],
+    [
+      "sortedcontainers",
+      "2.4.0"
+    ],
+    [
+      "stack-data",
+      "0.6.3"
+    ],
+    [
+      "svgelements",
+      "1.9.6"
+    ],
+    [
+      "svgpathtools",
+      "1.7.4"
+    ],
+    [
+      "svgwrite",
+      "1.4.3"
+    ],
+    [
+      "sympy",
+      "1.14.0"
+    ],
+    [
+      "threadpoolctl",
+      "3.6.0"
+    ],
+    [
+      "traitlets",
+      "5.16.1"
+    ],
+    [
+      "trianglesolver",
+      "1.2"
+    ],
+    [
+      "typer",
+      "0.27.2"
+    ],
+    [
+      "typing-inspection",
+      "0.4.4"
+    ],
+    [
+      "typing_extensions",
+      "4.16.0"
+    ],
+    [
+      "urllib3",
+      "2.7.0"
+    ],
+    [
+      "wcwidth",
+      "0.8.3"
+    ],
+    [
+      "webcolors",
+      "24.8.0"
+    ],
+    [
+      "werkzeug",
+      "3.1.8"
+    ],
+    [
+      "xmlschema",
+      "4.3.2"
+    ],
+    [
+      "xsdata",
+      "26.2"
+    ]
+  ],
+  "build_options": {
+    "checks": true,
+    "drawings": true,
+    "ifc": true,
+    "schedules": true
+  },
+  "geometry_comparison": {
+    "method": "IfcOpenShell world-space triangulation versus compiled CAD quantities and bounds",
+    "products": 254,
+    "missing_products": [],
+    "unbalanced_meshes": [],
+    "max_volume_relative_error": 0.0037655354766490626,
+    "max_bbox_error_mm": 2.6599999999998545
+  },
+  "artifacts": {
+    "README.md": "7e1ef5ad2a5b9d19367c49c28dfef19fb8254fd58be6558df95fef48ef725bfb",
+    "checks.json": "2cb8b46adc127d3e3e589af0c69be8de5bee4507db52e9e072b30365789af0a0",
+    "checks.md": "b56e79552af81f8f66d2f2d491054c20c0ee6930630c98171c5b844c7530a63e",
+    "drawings/plan_L0.dxf": "ebd99e81a30143ac946a47a8822a29bc7674d7659f148e4f041dad7ceb246e40",
+    "drawings/plan_L0.pdf": "d14aeef9118e22bf0651efd17e6239e344d7e9f679059414bff567cfe2b0379d",
+    "drawings/plan_L0.svg": "c3655cc81c8b0aefc36d990204a3d136eaf247ad394a126322b2e2d81cbf5c43",
+    "drawings/plan_L1.dxf": "7a153b32ba4458d9b3e8fdc08b3a54304d26b02efbecf97dbea3a178eed70d39",
+    "drawings/plan_L1.pdf": "ef43aa959d6234d7d3dbc4859f18c0bacc363386263444fa6c43fbd5bb5f3249",
+    "drawings/plan_L1.svg": "e817c6a1e3b6b96e4e282ffaa57c6110a36dd5df22118d1b9f320ac35758c858",
+    "drawings/plan_L2.dxf": "fb18995e9868ef6d39e02bdfc092227c2a66668cadfa8631a38141c46d886004",
+    "drawings/plan_L2.pdf": "1ca6cbbea33ebcff2df903b79902ef7ffe50002cffab2d3541140344996558fe",
+    "drawings/plan_L2.svg": "47370f22aa4de0cffe13dd7f0568135747f850d6cb119a1e3b730f4d667d7072",
+    "drawings/plan_LP.dxf": "d7a712ded96548ea1653a2092cf0437404da0e555a0fecf12597cae36f9260d8",
+    "drawings/plan_LP.pdf": "d474a6653537ce00f72c74b64d8f9df7120456565996b85f15831739a0492482",
+    "drawings/plan_LP.svg": "49cb098ab189742f6d1de69a46576a416fdeedf44cdac19ea929dcc24dbd32b7",
+    "house.ifc": "2edcc3483f20ed564fb21b9fd627ab02cfa56f55710b9c264d7688c154d9605c",
+    "requirements.ids": "63306fb8792164b3b12e93435b0c991dcc28b79a8fb0a71bd50e109538209f0b",
+    "schedules/finishes.csv": "31a005e990499273a30d208a409e322558f1ceced7ef5c5324ccbec250d3ca62",
+    "schedules/joinery.csv": "f39e6cf230ab0b1ba1a63adf528256b11094c61b2fbf7ed8f4e770be4a31a344",
+    "schedules/openings.csv": "c631af730f7059c393ebcf9d23d3d165f62ebd8df28ed3380ae15b726900f85e",
+    "schedules/services.csv": "10977f1571658aeba315d465bc09d578741deb8dea31ddbe04873cf8324549ea",
+    "schedules/spaces.csv": "3d12514c2502fee77c066275e318fb20b941fe192748b9042358b7125609b045",
+    "schedules/walls.csv": "320b61aedd34384ccb996f96f13d2eac45752f4702147b7d54885605c57ccd28"
+  }
+}

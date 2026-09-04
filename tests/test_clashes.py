@@ -4,7 +4,7 @@ import math
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
-from homespec import Assembly, BeamGrid, Ceiling, Column, Downlight, House, Layer, Level, Roof, Wall, WallToRoofInfill, Window
+from homespec import Assembly, BeamGrid, Ceiling, Column, Downlight, House, Layer, Level, Material, Roof, Wall, WallToRoofInfill, Window
 from homespec import geometry as G
 from homespec.checks import run
 from homespec.checks.clashes import allowance
@@ -77,6 +77,8 @@ def test_a_sliver_along_a_slope_reads_as_thin():
 def _house(tmp_path):
     with House("t") as house:
         Level("L0", height=3000)
+        for name in ("x", "steel_black", "glass_double", "oak", "brass"):
+            Material(name)
         Assembly("a", layers=[Layer(material="x", thickness=200)])
         W1 = Wall("W1", (0, 0), (6000, 0), assembly="a", level="L0")
         Wall("W2", (6000, 0), (6000, 4000), assembly="a", level="L0")
@@ -110,6 +112,7 @@ def test_the_rule_allows_construction_and_rejects_mistakes(tmp_path):
 def test_a_wall_infill_head_gets_the_same_limited_roof_allowance(tmp_path):
     with House("t") as house:
         Level("L0", height=3000)
+        Material("x")
         Assembly("a", layers=[Layer(material="x", thickness=200)])
         Wall("W", (0, 200), (6000, 200), assembly="a", level="L0")
         Roof("R", outline=[(0, 0), (6000, 0), (6000, 4000), (0, 4000)], level="L0", genoise=2, overhang=400)
@@ -137,6 +140,7 @@ def test_an_allowance_needs_a_reason_and_both_entities():
 def test_a_clean_house_gets_one_passing_row(tmp_path):
     with House("t") as house:
         Level("L0", height=3000)
+        Material("x")
         Assembly("a", layers=[Layer(material="x", thickness=200)])
         Wall("W1", (0, 0), (6000, 0), assembly="a", level="L0")
     house.compile().write(str(tmp_path))

@@ -5,7 +5,7 @@ Every class here is an ordinary :class:`~homespec.model.Element` or
 project can add its own classes alongside these.
 """
 from .columns import Chimney, Column
-from .definitions import Assembly, Layer, Level, Material, Render, Setbacks, Site
+from .definitions import Assembly, Layer, Level, Material, Render, Site
 from .floors import Beam, BeamGrid, Ceiling, Slab
 from .grid import Grid, GridLine
 from .joinery import Bookcase, Covering, KitchenRun, Part, UpperCabinet
@@ -37,7 +37,7 @@ from .walls import (
 )
 
 __all__ = [
-    "Assembly", "Layer", "Level", "Material", "Render", "Setbacks", "Site",
+    "Assembly", "Layer", "Level", "Material", "Render", "Site",
     "Beam", "BeamGrid", "Ceiling", "Slab",
     "Grid", "GridLine",
     "Bookcase", "Covering", "KitchenRun", "Part", "UpperCabinet",

@@ -14,13 +14,22 @@ read as a table against it for a whole day).
 
 ## 1. The mechanical pass
 
-From the project root, with `PYTHONPATH=$PWD`:
+From the project root, using the locked environment:
 
 ```bash
-homespec build projects/<project>            # only after a spec change; every check must pass
-homespec views projects/<project> --only plan,section --focus <ids>   # Workbench, seconds: plans per storey, two sections
-homespec audit projects/<project>            # the dressed scene: one line per finding, with a position
+uv run --frozen homespec build projects/<project>            # after any source or decisions change; every check must pass
+uv run --frozen homespec views projects/<project> --only plan,section --focus <ids>   # Workbench, seconds: plans per storey, two sections
+uv run --frozen homespec audit projects/<project>            # the dressed scene: one line per finding, with a position
 ```
+
+Builds publish a complete generation through `out/<project>/manifest.json`.
+Views and audits resolve that generation and verify source freshness and artifact
+hashes. Presentation outputs live separately under
+`out/<project>/presentation/<generation>/<presentation-fingerprint>/`; record
+that provenance when publishing gallery images. Rebuild after changing source
+(including `presentation.py`, `rooms/` or package Python files) or decisions.
+Diagnostic views may inspect a complete build with failed checks, but finish
+this workflow with passing checks.
 
 `homespec audit` (and the first lines of every render) reports, per placed
 object:
@@ -40,7 +49,8 @@ loosen the audit to make a finding go away; move the thing, or the wall.
 
 The build's own rules that matter here: `stair_lands_clear` (a landing
 at least the flight's width beyond the top riser), `stair_proportions`,
-`headroom_under_beam`, `no_clash` (every pair of solids sharing volume, and
+`headroom_under_beam`, `stair_headroom` (2000 mm above every tread and
+arrival area against physical solids), `room_access` (local access only), `no_clash` (every pair of solids sharing volume, and
 whether construction allows it).
 
 ## 2. The principles, for the eye

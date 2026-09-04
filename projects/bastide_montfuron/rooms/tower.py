@@ -147,11 +147,16 @@ def dress(scene, M):
 
     scene.rug("tower1_rug", (2.6, 3.75, 3.5), (2.4, 3.0), M.rug_jute)
 
-    for cx in (3.03, 4.47):                                                                    # full curtains on N6, the clear window
-        scene.box(f"tower1_curtain_{round(cx * 100)}", (cx, 0.62, 4.90), (0.34, 0.12, 2.70), M.linen, bevel=0.05)
-    scene.rod("tower1_curtain_rod_n6", (2.85, 0.62, 6.30), (4.65, 0.62, 6.30), 0.015, M.iron)
-    scene.box("tower1_valance_n9", (0.60, 3.75, 5.82), (0.10, 1.35, 0.16), M.linen, bevel=0.02)     # short pelmets: N9 is behind
-    scene.box("tower1_valance_n11", (3.75, 6.90, 5.82), (1.35, 0.10, 0.16), M.linen, bevel=0.02)    # the bed, N11 over the void
+    n6_lo, n6_hi = scene.bbox("N6")
+    for side, cx in (("l", n6_lo.x - 0.19), ("r", n6_hi.x + 0.19)):
+        scene.box(f"tower1_curtain_{side}", (cx, 0.62, 4.90), (0.34, 0.12, 2.70), M.linen, bevel=0.05)
+    scene.rod("tower1_curtain_rod_n6", (n6_lo.x - 0.4, 0.62, 6.30), (n6_hi.x + 0.4, 0.62, 6.30), 0.015, M.iron)
+    n9_lo, n9_hi = scene.bbox("N9")
+    n11_lo, n11_hi = scene.bbox("N11")
+    scene.box("tower1_valance_n9", (0.60, (n9_lo.y + n9_hi.y) / 2, n9_hi.z + 0.12),
+              (0.10, n9_hi.y - n9_lo.y + 0.3, 0.16), M.linen, bevel=0.02)
+    scene.box("tower1_valance_n11", ((n11_lo.x + n11_hi.x) / 2, 6.90, n11_hi.z + 0.12),
+              (n11_hi.x - n11_lo.x + 0.3, 0.10, 0.16), M.linen, bevel=0.02)
 
     # the F1 stairwell void, ST1's own outline: guarded along its open south edge and its west end (the floor over the
     # quarter landing) up to the top riser, where the flight arrives and the guard must stop
@@ -195,7 +200,13 @@ def dress(scene, M):
 
     scene.sconce("study_sconce_a", (2.2, 7.0, 8.4), M.brass, M.shade, watts=22)                 # TN faces -y into the room
     scene.sconce("study_sconce_b", (5.3, 7.0, 8.4), M.brass, M.shade, watts=22)
-    scene.pendant_bell("study_pendant", (5.4, 4.6), 9.28, 8.30, M.straw, M.iron, 130)
+    # A compact shade leaves 2.1 m of standing height and fits between C2T's beams.
+    study_floor = scene.ir["levels"][scene.entity("study")["level"]]["elevation"] / 1000
+    shade_bottom = study_floor + 2.10
+    fixing = scene.bbox("C2T")[0].z + 0.01
+    scene.cone("study_pendant_shade", (5.4, 4.6, shade_bottom), 0.24, 0.065, 0.35, M.straw)
+    scene.rod("study_pendant_cord", (5.4, 4.6, shade_bottom + 0.35), (5.4, 4.6, fixing), 0.004, M.iron)
+    scene.point_light("study_pendant_light", (5.4, 4.6, shade_bottom + 0.12), 130, color=(1.0, 0.8, 0.55), radius=0.06)
 
     # the F2 void, ST2's own outline along the south wall: guarded along its open north edge; the wall closes its east
     # end and the south side, and the flight arrives at its west end
