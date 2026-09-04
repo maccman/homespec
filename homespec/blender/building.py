@@ -32,7 +32,7 @@ def import_building(materials: bool = True) -> int:
         if e["kind"] == "glazing":
             o.visible_shadow = False
         # external walls: the assembly's outside finish on the faces that look outward
-        if e["kind"] in ("wall", "gable") and "external" in e["tags"]:
+        if e["kind"] in ("wall", "wall_infill", "gable") and "external" in e["tags"]:
             asm = session.IR["assemblies"].get(e["derived"].get("assembly", ""), {})
             outside = asm.get("finish_out")
             if outside and outside != e["material"] and e["derived"].get("body"):

@@ -1,6 +1,6 @@
 # Checks: bastide-montfuron
 
-345 passed, 0 failed
+347 passed, 0 failed
 
 | result | rule | target | value | limit | note | clause |
 |---|---|---|---|---|---|---|
@@ -73,6 +73,7 @@
 | PASS | no_clash | FP/C0M.B6 | 140 mm deep, 18.5 L | any | beam bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | FP/C0M.B7 | 140 mm deep, 18.5 L | any | beam bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | CH/RM | 201 mm deep, 140.8 L | any | a chimney passes through the fabric | solids share no volume except where construction requires it |
+| PASS | no_clash | CH/MN.infill | 150 mm deep, 62.3 L | any | a chimney passes through the fabric | solids share no volume except where construction requires it |
 | PASS | no_clash | PC/C1M | 30 mm deep, 60.8 L | any | ceiling bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | PC/C1M.B1 | 120 mm deep, 3.2 L | any | beam bears into wall | solids share no volume except where construction requires it |
 | PASS | no_clash | PC/C1M.B2 | 120 mm deep, 3.2 L | any | beam bears into wall | solids share no volume except where construction requires it |
@@ -312,10 +313,10 @@
 | PASS | stair_reaches_floor | ST1 | 3500.0 | 3500.0 | L0 -> L1 |  |
 | PASS | stair_reaches_floor | ST2 | 3200.0 | 3200.0 | L1 -> L2 |  |
 | PASS | stair_reaches_floor | ST0 | 1980.0 | 1980.0 | LP -> L0 |  |
-| PASS | ids | Walls declare whether they are external | 20/20 pass | all |  | IDS 1.0 |
+| PASS | ids | Walls declare whether they are external | 29/29 pass | all |  | IDS 1.0 |
 | PASS | ids | Doors declare whether they are external | 11/11 pass | all |  | IDS 1.0 |
 | PASS | ids | Windows declare whether they are external | 20/20 pass | all |  | IDS 1.0 |
-| PASS | ids | Ifcwall carries its homespec id and tags | 20/20 pass | all |  | IDS 1.0 |
+| PASS | ids | Ifcwall carries its homespec id and tags | 29/29 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcdoor carries its homespec id and tags | 11/11 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcwindow carries its homespec id and tags | 20/20 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcslab carries its homespec id and tags | 7/7 pass | all |  | IDS 1.0 |
@@ -323,7 +324,7 @@
 | PASS | ids | Ifcfurniture carries its homespec id and tags | 5/5 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifclightfixture carries its homespec id and tags | 9/9 pass | all |  | IDS 1.0 |
 | PASS | ids | Ifcoutlet carries its homespec id and tags | 6/6 pass | all |  | IDS 1.0 |
-| PASS | decision_ids | decisions.md | 28 decisions | one entry per id |  |  |
+| PASS | decision_ids | decisions.md | 29 decisions | one entry per id |  |  |
 | PASS | decision_entities | D-001 | TE, ME | ids in the build | Three blocks, not one |  |
 | PASS | decision_entities | D-002 | ST1, ST2, F1, F2 | ids in the build | The tower holds the stairs |  |
 | PASS | decision_entities | D-003 | RT, RM, RK | ids in the build | Roofs are low and hipped where the reference hips |  |
@@ -347,5 +348,6 @@
 | PASS | decision_entities | D-026 | L6, L7, L8, L9, C1M, S6 | ids in the build | Fittings sit clear of joists and cabinets |  |
 | PASS | decision_entities | D-027 | N18, ME, N5 | ids in the build | The east bedroom window sits above the kitchen roof |  |
 | PASS | decision_entities | D-028 | ST1, ST1a, ST1L, ST2, F1, F2, C0T, C1T | ids in the build | The flights land clear, and ST1 turns at its foot |  |
+| PASS | decision_entities | D-030 | TS.infill, TE.infill, TN.infill, TW.infill, MS.infill, MN.infill, KS.infill, KE.infill, KN.infill, RT, RM, RK, CH | ids in the build | Wall heads follow the roof underside behind the génoise |  |
 | PASS | decision_ledgers | Considered and not changed | present | a '## Considered and not changed' section |  |  |
 | PASS | decision_ledgers | Not verified | present | a '## Not verified' section |  |  |

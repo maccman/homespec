@@ -10,7 +10,7 @@ from .floors import Beam, BeamGrid, Ceiling, Slab
 from .grid import Grid, GridLine
 from .joinery import Bookcase, Covering, KitchenRun, Part, UpperCabinet
 from .landscape import Coping, Pool, PoolWater
-from .roof import Cornice, Gable, Roof
+from .roof import Cornice, Gable, Roof, WallToRoofInfill, WallToRoofInfillGeometry
 from .services import Downlight, Outlet, Pendant
 from .spaces import Space
 from .stairs import Landing, Stair
@@ -43,7 +43,7 @@ __all__ = [
     "Bookcase", "Covering", "KitchenRun", "Part", "UpperCabinet",
     "Downlight", "Outlet", "Pendant",
     "Space",
-    "Column", "Chimney", "Roof", "Gable", "Cornice", "Arch", "ArchVoid", "ArchedDoor", "OpeningPart", "Shutters", "Surround", "Grille",
+    "Column", "Chimney", "Roof", "Gable", "Cornice", "WallToRoofInfill", "WallToRoofInfillGeometry", "Arch", "ArchVoid", "ArchedDoor", "OpeningPart", "Shutters", "Surround", "Grille",
     "Stair", "Landing", "Pool", "PoolWater", "Coping",
     "Clerestory", "Door", "FromEnd", "Glazing", "Leaf", "Opening", "OpeningGeometry", "SlidingDoor", "Wall", "WallGeometry", "Window", "from_end",
 ]

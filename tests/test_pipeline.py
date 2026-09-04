@@ -91,7 +91,25 @@ def test_the_bastide_builds_and_passes_every_rule(tmp_path):
     ir = IRDocument.read(report.out_dir)
     assert report.clashes == len(ir.clashes) > 50, "a stone house has plenty of beams bedded in walls"
     rows = {r.target: r for r in report.results if r.rule == "no_clash"}
+    assert [e.id for e in ir.of_kind("wall_infill")] == [
+        "TS.infill", "TE.infill", "TN.infill", "TW.infill", "MS.infill", "MN.infill", "KS.infill", "KE.infill", "KN.infill",
+    ]
+    for iid in [e.id for e in ir.of_kind("wall_infill")]:
+        infill = ir.entity(iid)
+        assert infill.derived["max_height"] > 0 and infill.related("meets")
+        assert infill.level == ir.entity(infill.related("meets")[0]).level
+    expected_roofs = {
+        "RT": ("hip", 28, 9516.4385, 11749.6181, (-450, -450, 9296.4385), (7950, 7950, 11749.6181)),
+        "RM": ("gable", 24, 6749.8588, 8731.1265, (7500, -450, 6529.8588), (21950, 8450, 8731.1265)),
+        "RK": ("hip", 22, 3450.9129, 4844.8034, (21500, 550, 3230.9129), (30950, 7450, 4844.8034)),
+    }
+    for rid, (shape, pitch, eave, ridge, bbox_min, bbox_max) in expected_roofs.items():
+        roof = ir.entity(rid)
+        assert roof.geometry is not None
+        assert roof.params["shape"] == shape and roof.params["pitch"] == pitch and roof.params["overhang"] == 450
+        assert roof.derived["z_eave"] == pytest.approx(eave, abs=0.01) and roof.derived["z_ridge"] == pytest.approx(ridge, abs=0.01)
+        assert roof.geometry.bbox.min == pytest.approx(bbox_min, abs=0.01) and roof.geometry.bbox.max == pytest.approx(bbox_max, abs=0.01)
     assert rows["D1.surround/RP"].note.startswith("allowed by the project")
     assert all(r.ok for r in report.results if r.rule.startswith("decision"))
     assert rows["CH/RM"].ok and rows["CH/RM"].note == "a chimney passes through the fabric", "the chimney stands on the wall head and rises through the roof"
-
+    assert rows["CH/MN.infill"].ok and rows["CH/MN.infill"].note == "a chimney passes through the fabric"

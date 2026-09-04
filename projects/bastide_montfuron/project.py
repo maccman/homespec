@@ -151,11 +151,13 @@ def build() -> House:
                 beams=BeamGrid(width=120, depth=180, spacing=600, along="x", material=limed))
 
         # ---- roofs: hipped tower, gabled main wing, hipped kitchen, all with génoise; the brush pergola along the terrace
-        Roof("RT", outline=[(0, 0), (7500, 0), (7500, 7500), (0, 7500)], level=L2, material=tiles, shape="hip", pitch=28, overhang=450, thickness=220, genoise=2)
-        Roof("RM", outline=[(7500, 0), (21500, 0), (21500, 8000), (7500, 8000)], level=L1, material=tiles, shape="gable", ridge_along="x", pitch=24, overhang=450,
-             thickness=220, genoise=3, gable_thickness=500, gable_material=stone, abuts=["x0"])                         # against the tower
-        Roof("RK", outline=[(21500, 1000), (30500, 1000), (30500, 7000), (21500, 7000)], level=L0, material=tiles, shape="hip", pitch=22, overhang=450, thickness=220, genoise=2,
-             abuts=["x0"])                                                                                                # against the main wing
+        RT = Roof("RT", outline=[(0, 0), (7500, 0), (7500, 7500), (0, 7500)], level=L2, material=tiles, shape="hip", pitch=28, overhang=450, thickness=220, genoise=2)
+        RM = Roof("RM", outline=[(7500, 0), (21500, 0), (21500, 8000), (7500, 8000)], level=L1, material=tiles, shape="gable", ridge_along="x", pitch=24, overhang=450,
+                  thickness=220, genoise=3, gable_thickness=500, gable_material=stone, abuts=["x0"])                    # against the tower
+        RK = Roof("RK", outline=[(21500, 1000), (30500, 1000), (30500, 7000), (21500, 7000)], level=L0, material=tiles, shape="hip", pitch=22, overhang=450, thickness=220, genoise=2,
+                  abuts=["x0"])                                                                                           # against the main wing
+        for wall, roof in ((TS, RT), (TE, RT), (TN, RT), (TW, RT), (MS, RM), (MN, RM), (KS, RK), (KE, RK), (KN, RK)):
+            WallToRoofInfill(f"{wall.id}.infill", wall=wall, roof=roof)                                                    # masonry behind the lifted génoise
         Roof("RP", outline=[(-500, -3500), (14500, -3500), (14500, 0), (-500, 0)], level=L0, material=brande, shape="flat", eave=2950, thickness=70, overhang=100,
              abuts=["y1"])                                                                                                # the brush runs to the house wall
         house.allow("D1.surround", "RP", "the brush cover is cut around the stone surround where the pergola meets the arched door")

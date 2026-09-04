@@ -7,7 +7,7 @@ from dataclasses import field
 from typing import Any, ClassVar, Literal
 
 from .. import geometry as G
-from ..derived import RoofGeometry
+from ..derived import RoofGeometry, WallGeometry, WallToRoofInfillGeometry
 from ..geometry import Point
 from ..model import Context, Element, NonNegative, Outline, Positive, Realized, Ref, Relation, element
 
@@ -41,6 +41,55 @@ class Cornice(Element):
 
     roof: Ref
     courses: int
+
+
+@element
+class WallToRoofInfill(Element):
+    """Masonry above a wall head, cut exactly to a roof's realized underside.
+
+    The wall supplies the plan, thickness, finish and external status. The
+    roof supplies the upper face. The two are references rather than repeated
+    dimensions, so lifting or reshaping the roof moves the infill while the
+    roof geometry itself remains untouched.
+    """
+
+    kind: ClassVar[str] = "wall_infill"
+    ifc_class: ClassVar[str | None] = "IfcWall"
+
+    wall: Ref
+    roof: Ref
+
+    def deps(self) -> list[str]:
+        return [self.wall, self.roof]
+
+    def realize(self, ctx: Context) -> Realized:
+        wall = ctx.built(self.wall)
+        roof = ctx.built(self.roof)
+        if not wall.has("wall"):
+            raise ValueError(f"{self.id!r} wall {self.wall!r} is not a wall")
+        if not roof.has("roof"):
+            raise ValueError(f"{self.id!r} roof {self.roof!r} is not a roof")
+        if wall.solid is None or roof.solid is None:
+            raise ValueError(f"{self.id!r} needs physical wall and roof geometry")
+
+        geom = WallGeometry.model_validate(wall.derived)
+        z_base = geom.z_top()
+        roof_top = G.bbox(roof.solid).max[2]
+        extension = G.frame_box(geom.body, 0, 0, z_base, (geom.length, geom.thickness, max(roof_top - z_base + 1.0, 1.0)))
+        solid = extension & G.volume_below(roof.solid, z_base)
+        if G.volume(solid) <= 1.0:
+            raise ValueError(f"{self.id!r} wall {self.wall!r} does not reach under roof {self.roof!r}")
+
+        bb = G.bbox(solid)
+        derived = WallToRoofInfillGeometry(
+            wall=self.wall, roof=self.roof, z_base=z_base,
+            max_height=bb.max[2] - z_base, thickness=geom.thickness,
+            assembly=geom.assembly, body=geom.body,
+        )
+        relations = [Relation(pred="extends", obj=self.wall), Relation(pred="meets", obj=self.roof)]
+        tags = {"external"} if wall.has("external") else {"internal"}
+        return Realized(solid=solid, derived=derived.model_dump(), relations=relations, material=self.material or wall.material,
+                        level=self.level or roof.level or wall.level, tags=tags)
 
 
 @element
@@ -220,4 +269,4 @@ class Roof(Element):
                                    relations=[Relation(pred="part_of", obj=self.id)]))
 
 
-__all__ = ["Roof", "Gable", "Cornice", "Point"]
+__all__ = ["Roof", "Gable", "Cornice", "WallToRoofInfill", "WallToRoofInfillGeometry", "Point"]

@@ -1,7 +1,7 @@
 """Roofs, gables, columns and arches: the elements added for the farmhouse."""
 import math
 
-from homespec import Arch, Assembly, Column, House, Layer, Level, Roof, Wall
+from homespec import Arch, Assembly, Column, House, Layer, Level, Roof, Wall, WallToRoofInfill
 from homespec import geometry as G
 
 
@@ -26,6 +26,31 @@ def test_gable_roof_geometry_and_gables():
     assert [e.id for e in b.tagged("gable")] == ["R.G1", "R.G2"]
     g1 = G.bbox(b["R.G1"].solid)
     assert math.isclose(g1.min[0], -500, abs_tol=1e-6) and math.isclose(g1.max[0], 0, abs_tol=1e-6), "gable sits in the end wall"
+
+
+def test_wall_to_roof_infill_follows_the_realized_underside_without_changing_the_roof():
+    def compiled(with_infill):
+        house = _house()
+        with house:
+            Wall("W", (0, 500), (12000, 500), assembly="stone", level="L0", material="lime")
+            if with_infill:
+                WallToRoofInfill("W.infill", wall="W", roof="R")       # dependency ordering works before the roof is declared
+            Roof("R", outline=[(0, 0), (12000, 0), (12000, 8000), (0, 8000)], level="L0", shape="hip", pitch=25,
+                 overhang=400, thickness=250, genoise=3, material="tile")
+        return house.compile()
+
+    bare, filled = compiled(False), compiled(True)
+    assert filled["R"].derived == bare["R"].derived
+    assert G.bbox(filled["R"].solid) == G.bbox(bare["R"].solid)
+    assert math.isclose(G.volume(filled["R"].solid), G.volume(bare["R"].solid), rel_tol=1e-9)
+
+    infill = filled["W.infill"]
+    wall_top = filled["W"].derived["elevation"] + filled["W"].derived["height"]
+    assert math.isclose(G.bbox(infill.solid).min[2], wall_top)
+    assert G.bbox(infill.solid).max[2] > wall_top
+    assert not G.overlap(infill.solid, filled["W"].solid) and not G.overlap(infill.solid, filled["R"].solid)
+    assert infill.material == "lime" and infill.tags >= {"wall_infill", "external"}
+    assert infill.related("extends") == ["W"] and infill.related("meets") == ["R"]
 
 
 def test_shed_roof_slopes_from_the_high_side():

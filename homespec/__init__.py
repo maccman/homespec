@@ -63,6 +63,8 @@ from .elements import (
     UpperCabinet,
     Wall,
     WallGeometry,
+    WallToRoofInfill,
+    WallToRoofInfillGeometry,
     Window,
     from_end,
 )
@@ -97,7 +99,7 @@ __all__ = [
     "Bookcase", "Covering", "KitchenRun", "Part", "UpperCabinet",
     "Downlight", "Outlet", "Pendant",
     "Space",
-    "Column", "Chimney", "Roof", "Gable", "Cornice", "Arch", "ArchVoid", "ArchedDoor", "OpeningPart", "Shutters", "Surround", "Grille",
+    "Column", "Chimney", "Roof", "Gable", "Cornice", "WallToRoofInfill", "WallToRoofInfillGeometry", "Arch", "ArchVoid", "ArchedDoor", "OpeningPart", "Shutters", "Surround", "Grille",
     "Stair", "Landing", "Pool", "PoolWater", "Coping",
     "Clerestory", "Door", "FromEnd", "Glazing", "Leaf", "Opening", "OpeningGeometry", "SlidingDoor", "Wall", "WallGeometry", "Window", "from_end",
 ]
