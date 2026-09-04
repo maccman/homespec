@@ -101,7 +101,9 @@ def build() -> House:
         Window("N15", host=MN, width=800, height=1000, sill=4700, at=3275, panes=(2, 2), frame=frame, surround=cut)      # bath 2
         Window("N16", host=MN, width=1000, height=1300, sill=4400, at=6250, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)   # corridor
         Window("N17", host=MN, width=800, height=1000, sill=4700, at=9500, panes=(2, 2), frame=frame, surround=cut)      # bath 1
-        Window("N18", host=ME, width=1000, height=1300, sill=5000, at=3000, panes=(2, 3), frame=frame, surround=cut, shutters=shutter)   # bedroom 3, east, above the kitchen roof
+        Window("N18", host=ME, width=1000, height=1300, sill=5000, at=3000, panes=(2, 3), frame=frame)   # bedroom 3, east, above the kitchen roof
+        Surround("N18.surround", opening="N18", material=cut, lintel=100)   # meets ME's 6400 mm head below the gable
+        Shutters("N18.shutters", opening="N18", material=shutter)
         # kitchen wing: two glazed doors south, a window east and north
         Door("D3", host=KS, width=1850, height=2400, at=1200, glazed=True, leaves=2, panes=(2, 5), frame=frame, surround=cut, shutters=shutter)
         Door("D4", host=KS, width=1850, height=2400, at=5300, glazed=True, leaves=2, panes=(2, 5), frame=frame, surround=cut, shutters=shutter)

@@ -320,13 +320,19 @@ fittings. No circulation or stair-clearance threshold is relaxed.
 
 ## D-035 Close the raised east gable at its wall head
 
-Entities: ME RM RM.G2
+Entities: ME RM RM.G2 N18 N18.surround N18.shutters
 
 Extend RM.G2 down to ME's 6400 mm wall head, closing the 128.86 mm exterior
 gap visible in the cross-section after RM was lifted onto its génoise courses.
 The existing gable fills the band; its upper face still meets RM's underside
 without overlapping the roof. Roof pitch, eaves, massing, and openings stay
 at their authored positions.
+
+Set N18's dressed-stone lintel to 100 mm so it ends at the same 6400 mm wall
+head, removing its former 120 mm intrusion into the restored gable. The
+window's position, sill, dimensions, and glazing are unchanged. Declare its
+surround and shutters explicitly so the shutters retain their clearance
+outside the stone surround.
 
 ## Against the reference
 
