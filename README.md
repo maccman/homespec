@@ -199,10 +199,13 @@ successful publication. See [the build API](docs/design.md#build-publication-and
 
 ```bash
 uv run --frozen pytest                 # unit, property and end-to-end tests
-uv run --frozen ruff check homespec    # lint
+uv run --frozen ruff check .           # lint
 uv run --frozen pyright                # types
 uv run --frozen homespec schema        # IR 0.3 JSON schema
 ```
+
+The [verification record](docs/verification.md) links the tested builds,
+reviewed scenes and published sample exports to their sources.
 
 ## Status
 

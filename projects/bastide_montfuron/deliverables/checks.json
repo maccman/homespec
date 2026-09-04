@@ -1,0 +1,3485 @@
+[
+ {
+  "rule": "no_clash",
+  "target": "TS/N6.surround",
+  "ok": true,
+  "value": "60 mm deep, 53.1 L",
+  "limit": "any",
+  "note": "a part of N6 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TS/N7.surround",
+  "ok": true,
+  "value": "60 mm deep, 53.9 L",
+  "limit": "any",
+  "note": "a part of N7 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TS/F1",
+  "ok": true,
+  "value": "300 mm deep, 975.0 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TS/F2",
+  "ok": true,
+  "value": "300 mm deep, 975.0 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TE/F1",
+  "ok": true,
+  "value": "300 mm deep, 975.0 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TE/F2",
+  "ok": true,
+  "value": "300 mm deep, 975.0 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TN/N11.surround",
+  "ok": true,
+  "value": "60 mm deep, 53.1 L",
+  "limit": "any",
+  "note": "a part of N11 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TN/N12.surround",
+  "ok": true,
+  "value": "60 mm deep, 53.9 L",
+  "limit": "any",
+  "note": "a part of N12 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TN/F1",
+  "ok": true,
+  "value": "300 mm deep, 975.0 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TN/F2",
+  "ok": true,
+  "value": "300 mm deep, 975.0 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TW/N8.surround",
+  "ok": true,
+  "value": "60 mm deep, 48.1 L",
+  "limit": "any",
+  "note": "a part of N8 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TW/N9.surround",
+  "ok": true,
+  "value": "60 mm deep, 53.1 L",
+  "limit": "any",
+  "note": "a part of N9 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TW/N10.surround",
+  "ok": true,
+  "value": "60 mm deep, 53.9 L",
+  "limit": "any",
+  "note": "a part of N10 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TW/F1",
+  "ok": true,
+  "value": "300 mm deep, 975.0 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TW/F2",
+  "ok": true,
+  "value": "300 mm deep, 975.0 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MS/D1.surround",
+  "ok": true,
+  "value": "60 mm deep, 69.6 L",
+  "limit": "any",
+  "note": "a part of D1 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MS/N1.surround",
+  "ok": true,
+  "value": "60 mm deep, 55.3 L",
+  "limit": "any",
+  "note": "a part of N1 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MS/N2.surround",
+  "ok": true,
+  "value": "60 mm deep, 60.1 L",
+  "limit": "any",
+  "note": "a part of N2 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MS/N3.surround",
+  "ok": true,
+  "value": "60 mm deep, 53.9 L",
+  "limit": "any",
+  "note": "a part of N3 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MS/N4.surround",
+  "ok": true,
+  "value": "60 mm deep, 68.3 L",
+  "limit": "any",
+  "note": "a part of N4 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MS/N5.surround",
+  "ok": true,
+  "value": "60 mm deep, 51.9 L",
+  "limit": "any",
+  "note": "a part of N5 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MS/F1",
+  "ok": true,
+  "value": "300 mm deep, 2025.0 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "ME/N18.surround",
+  "ok": true,
+  "value": "60 mm deep, 37.2 L",
+  "limit": "any",
+  "note": "a part of N18 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "ME/F1",
+  "ok": true,
+  "value": "300 mm deep, 1050.0 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MN/D0.surround",
+  "ok": true,
+  "value": "60 mm deep, 59.9 L",
+  "limit": "any",
+  "note": "a part of D0 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MN/N13.surround",
+  "ok": true,
+  "value": "60 mm deep, 60.1 L",
+  "limit": "any",
+  "note": "a part of N13 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MN/N14.surround",
+  "ok": true,
+  "value": "60 mm deep, 55.3 L",
+  "limit": "any",
+  "note": "a part of N14 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MN/N15.surround",
+  "ok": true,
+  "value": "60 mm deep, 37.5 L",
+  "limit": "any",
+  "note": "a part of N15 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MN/N16.surround",
+  "ok": true,
+  "value": "60 mm deep, 46.4 L",
+  "limit": "any",
+  "note": "a part of N16 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MN/N17.surround",
+  "ok": true,
+  "value": "60 mm deep, 37.5 L",
+  "limit": "any",
+  "note": "a part of N17 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "MN/F1",
+  "ok": true,
+  "value": "300 mm deep, 2025.0 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "KS/D3.surround",
+  "ok": true,
+  "value": "60 mm deep, 68.4 L",
+  "limit": "any",
+  "note": "a part of D3 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "KS/D4.surround",
+  "ok": true,
+  "value": "60 mm deep, 68.4 L",
+  "limit": "any",
+  "note": "a part of D4 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "KE/N19.surround",
+  "ok": true,
+  "value": "60 mm deep, 48.1 L",
+  "limit": "any",
+  "note": "a part of N19 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "KN/N20.surround",
+  "ok": true,
+  "value": "60 mm deep, 51.9 L",
+  "limit": "any",
+  "note": "a part of N20 bedded in its wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "D1/D1.glass",
+  "ok": true,
+  "value": "10 mm deep, 2.3 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "D1.surround/RP",
+  "ok": true,
+  "value": "25 mm deep, 245 cm\u00b3",
+  "limit": "any",
+  "note": "allowed by the project: the brush cover is cut around the stone surround where the pergola meets the arched door",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N1/N1.glass",
+  "ok": true,
+  "value": "10 mm deep, 1.1 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N2/N2.glass",
+  "ok": true,
+  "value": "10 mm deep, 1.2 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N3/N3.glass",
+  "ok": true,
+  "value": "10 mm deep, 1.1 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N4/N4.glass",
+  "ok": true,
+  "value": "41 mm deep, 1.5 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N5/N5.glass",
+  "ok": true,
+  "value": "10 mm deep, 1.0 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "D2/D2.glass",
+  "ok": true,
+  "value": "22 mm deep, 4.0 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N6/N6.glass",
+  "ok": true,
+  "value": "41 mm deep, 1.1 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N7/N7.glass",
+  "ok": true,
+  "value": "10 mm deep, 729 cm\u00b3",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N8/N8.glass",
+  "ok": true,
+  "value": "10 mm deep, 894 cm\u00b3",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N9/N9.glass",
+  "ok": true,
+  "value": "27 mm deep, 1.1 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N10/N10.glass",
+  "ok": true,
+  "value": "10 mm deep, 729 cm\u00b3",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N11/N11.glass",
+  "ok": true,
+  "value": "27 mm deep, 1.1 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N12/N12.glass",
+  "ok": true,
+  "value": "10 mm deep, 729 cm\u00b3",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N13/N13.glass",
+  "ok": true,
+  "value": "10 mm deep, 1.2 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N14/N14.glass",
+  "ok": true,
+  "value": "10 mm deep, 1.1 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N15/N15.glass",
+  "ok": true,
+  "value": "10 mm deep, 459 cm\u00b3",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N16/N16.glass",
+  "ok": true,
+  "value": "10 mm deep, 864 cm\u00b3",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N17/N17.glass",
+  "ok": true,
+  "value": "10 mm deep, 459 cm\u00b3",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N18/N18.glass",
+  "ok": true,
+  "value": "10 mm deep, 864 cm\u00b3",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "D3/D3.glass",
+  "ok": true,
+  "value": "10 mm deep, 2.0 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "D4/D4.glass",
+  "ok": true,
+  "value": "10 mm deep, 2.0 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N19/N19.glass",
+  "ok": true,
+  "value": "10 mm deep, 894 cm\u00b3",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "N20/N20.glass",
+  "ok": true,
+  "value": "10 mm deep, 1.0 L",
+  "limit": "any",
+  "note": "glass sits in the rebate of its frame",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "P1/C0M",
+  "ok": true,
+  "value": "30 mm deep, 31.5 L",
+  "limit": "any",
+  "note": "ceiling bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "P1/C0M.B14",
+  "ok": true,
+  "value": "20 mm deep, 28.7 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "FP/C0M",
+  "ok": true,
+  "value": "30 mm deep, 36.0 L",
+  "limit": "any",
+  "note": "ceiling bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "FP/C0M.B4",
+  "ok": true,
+  "value": "20 mm deep, 2.6 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "FP/C0M.B5",
+  "ok": true,
+  "value": "140 mm deep, 18.5 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "FP/C0M.B6",
+  "ok": true,
+  "value": "140 mm deep, 18.5 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "FP/C0M.B7",
+  "ok": true,
+  "value": "140 mm deep, 18.5 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "CH/RM",
+  "ok": true,
+  "value": "201 mm deep, 140.8 L",
+  "limit": "any",
+  "note": "a chimney passes through the fabric",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "CH/MN.infill",
+  "ok": true,
+  "value": "150 mm deep, 62.3 L",
+  "limit": "any",
+  "note": "a chimney passes through the fabric",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M",
+  "ok": true,
+  "value": "30 mm deep, 60.8 L",
+  "limit": "any",
+  "note": "ceiling bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B1",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B2",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B3",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B4",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B5",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B6",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B7",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B8",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B9",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B10",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B11",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B12",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B13",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B14",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B15",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B16",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B17",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B18",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B19",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B20",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B21",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B22",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PC/C1M.B23",
+  "ok": true,
+  "value": "120 mm deep, 3.2 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PB1/C1M",
+  "ok": true,
+  "value": "30 mm deep, 25.0 L",
+  "limit": "any",
+  "note": "ceiling bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PB2/C1M",
+  "ok": true,
+  "value": "30 mm deep, 25.0 L",
+  "limit": "any",
+  "note": "ceiling bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PB2/C1M.B8",
+  "ok": true,
+  "value": "60 mm deep, 59.9 L",
+  "limit": "any",
+  "note": "beam bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PB3/C1M",
+  "ok": true,
+  "value": "30 mm deep, 25.0 L",
+  "limit": "any",
+  "note": "ceiling bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "PB4/C1M",
+  "ok": true,
+  "value": "30 mm deep, 25.0 L",
+  "limit": "any",
+  "note": "ceiling bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "C1M/L6",
+  "ok": true,
+  "value": "6 mm deep, 47 cm\u00b3",
+  "limit": "any",
+  "note": "downlight recessed in a lining",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "C1M/L7",
+  "ok": true,
+  "value": "6 mm deep, 47 cm\u00b3",
+  "limit": "any",
+  "note": "downlight recessed in a lining",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "C1M/L8",
+  "ok": true,
+  "value": "6 mm deep, 47 cm\u00b3",
+  "limit": "any",
+  "note": "downlight recessed in a lining",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "C1M/L9",
+  "ok": true,
+  "value": "6 mm deep, 47 cm\u00b3",
+  "limit": "any",
+  "note": "downlight recessed in a lining",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TR/RW1",
+  "ok": true,
+  "value": "150 mm deep, 1297.5 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "no_clash",
+  "target": "TR/RW2",
+  "ok": true,
+  "value": "150 mm deep, 1222.5 L",
+  "limit": "any",
+  "note": "slab bears into wall",
+  "clause": "solids share no volume except where construction requires it"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "hall",
+  "ok": true,
+  "value": 3200.0,
+  "limit": 2100,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "living",
+  "ok": true,
+  "value": 3200.0,
+  "limit": 2400,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "dining",
+  "ok": true,
+  "value": 3200.0,
+  "limit": 2400,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "kitchen",
+  "ok": true,
+  "value": 3200.0,
+  "limit": 2400,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "tower_bedroom",
+  "ok": true,
+  "value": 2900.0,
+  "limit": 2400,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "corridor",
+  "ok": true,
+  "value": 2900.0,
+  "limit": 2100,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "bed1",
+  "ok": true,
+  "value": 2900.0,
+  "limit": 2400,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "bath1",
+  "ok": true,
+  "value": 2900.0,
+  "limit": 2100,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "bed2",
+  "ok": true,
+  "value": 2900.0,
+  "limit": 2400,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "bath2",
+  "ok": true,
+  "value": 2900.0,
+  "limit": 2100,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "bed3",
+  "ok": true,
+  "value": 2900.0,
+  "limit": 2400,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "study",
+  "ok": true,
+  "value": 2600.0,
+  "limit": 2400,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "ceiling_height",
+  "target": "terrace",
+  "ok": true,
+  "value": 3200.0,
+  "limit": 2100,
+  "note": "finished floor to ceiling lining",
+  "clause": "habitable rooms 2400 min, service rooms 2100 (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B1",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B2",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B3",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B4",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B5",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B6",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B7",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B8",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B9",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B10",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B11",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B12",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B13",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B14",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B15",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B16",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B17",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B18",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B19",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B20",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B21",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B22",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0M.B23",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0T.B1",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0T.B2",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0T.B3",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0T.B4",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0T.B5",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0T.B6",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0T.B7",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0T.B8",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0T.B9",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0T.B10",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0T.B11",
+  "ok": true,
+  "value": 2950.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B1",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B2",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B3",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B4",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B5",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B6",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B7",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B8",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B9",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B10",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B11",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B12",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B13",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B14",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C0K.B15",
+  "ok": true,
+  "value": 2970.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B1",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B2",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B3",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B4",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B5",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B6",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B7",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B8",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B9",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B10",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B11",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B12",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B13",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B14",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B15",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B16",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B17",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B18",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B19",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B20",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B21",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B22",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C1M.B23",
+  "ok": true,
+  "value": 2690.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C2T.B1",
+  "ok": true,
+  "value": 2390.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C2T.B2",
+  "ok": true,
+  "value": 2390.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C2T.B3",
+  "ok": true,
+  "value": 2390.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C2T.B4",
+  "ok": true,
+  "value": 2390.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C2T.B5",
+  "ok": true,
+  "value": 2390.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C2T.B6",
+  "ok": true,
+  "value": 2390.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C2T.B7",
+  "ok": true,
+  "value": 2390.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C2T.B8",
+  "ok": true,
+  "value": 2390.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C2T.B9",
+  "ok": true,
+  "value": 2390.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C2T.B10",
+  "ok": true,
+  "value": 2390.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "C2T.B11",
+  "ok": true,
+  "value": 2390.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "headroom_under_beam",
+  "target": "PB",
+  "ok": true,
+  "value": 2800.0,
+  "limit": 2100,
+  "note": "",
+  "clause": "2100 clear under projections (rule of thumb)"
+ },
+ {
+  "rule": "glazing_ratio",
+  "target": "living",
+  "ok": true,
+  "value": 0.14,
+  "limit": 0.1,
+  "note": "glass area / floor area",
+  "clause": "habitable rooms: glass area >= 10% of floor area (rule of thumb)"
+ },
+ {
+  "rule": "glazing_ratio",
+  "target": "dining",
+  "ok": true,
+  "value": 0.105,
+  "limit": 0.1,
+  "note": "glass area / floor area",
+  "clause": "habitable rooms: glass area >= 10% of floor area (rule of thumb)"
+ },
+ {
+  "rule": "glazing_ratio",
+  "target": "kitchen",
+  "ok": true,
+  "value": 0.238,
+  "limit": 0.1,
+  "note": "glass area / floor area",
+  "clause": "habitable rooms: glass area >= 10% of floor area (rule of thumb)"
+ },
+ {
+  "rule": "glazing_ratio",
+  "target": "tower_bedroom",
+  "ok": true,
+  "value": 0.103,
+  "limit": 0.1,
+  "note": "glass area / floor area",
+  "clause": "habitable rooms: glass area >= 10% of floor area (rule of thumb)"
+ },
+ {
+  "rule": "glazing_ratio",
+  "target": "bed1",
+  "ok": true,
+  "value": 0.101,
+  "limit": 0.1,
+  "note": "glass area / floor area",
+  "clause": "habitable rooms: glass area >= 10% of floor area (rule of thumb)"
+ },
+ {
+  "rule": "glazing_ratio",
+  "target": "bed2",
+  "ok": true,
+  "value": 0.101,
+  "limit": 0.1,
+  "note": "glass area / floor area",
+  "clause": "habitable rooms: glass area >= 10% of floor area (rule of thumb)"
+ },
+ {
+  "rule": "glazing_ratio",
+  "target": "bed3",
+  "ok": true,
+  "value": 0.157,
+  "limit": 0.1,
+  "note": "glass area / floor area",
+  "clause": "habitable rooms: glass area >= 10% of floor area (rule of thumb)"
+ },
+ {
+  "rule": "glazing_ratio",
+  "target": "study",
+  "ok": true,
+  "value": 0.107,
+  "limit": 0.1,
+  "note": "glass area / floor area",
+  "clause": "habitable rooms: glass area >= 10% of floor area (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "hall",
+  "ok": true,
+  "value": "D2, A0, ST1a",
+  "limit": "door/passage/stair >= 620 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "living",
+  "ok": true,
+  "value": "D1, D0, A0, A1",
+  "limit": "door/passage/stair >= 800 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "dining",
+  "ok": true,
+  "value": "A1, D5",
+  "limit": "door/passage/stair >= 800 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "kitchen",
+  "ok": true,
+  "value": "D3, D4, D5",
+  "limit": "door/passage/stair >= 800 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "tower_bedroom",
+  "ok": true,
+  "value": "ST1, ST2",
+  "limit": "door/passage/stair >= 800 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "corridor",
+  "ok": true,
+  "value": "D6, D7, D8, A2",
+  "limit": "door/passage/stair >= 620 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "bed1",
+  "ok": true,
+  "value": "D6",
+  "limit": "door/passage/stair >= 800 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "bath1",
+  "ok": true,
+  "value": "D9",
+  "limit": "door/passage/stair >= 620 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "bed2",
+  "ok": true,
+  "value": "D7",
+  "limit": "door/passage/stair >= 800 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "bath2",
+  "ok": true,
+  "value": "D10",
+  "limit": "door/passage/stair >= 620 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "bed3",
+  "ok": true,
+  "value": "D8",
+  "limit": "door/passage/stair >= 800 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "study",
+  "ok": true,
+  "value": "ST2",
+  "limit": "door/passage/stair >= 800 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "room_access",
+  "target": "terrace",
+  "ok": true,
+  "value": "D1, D2, ST0",
+  "limit": "door/passage/stair >= 620 x 2000 clear",
+  "note": "local access; not an evacuation-route assessment",
+  "clause": "local room access through a door, passage or connected stair (rule of thumb)"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "D1",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N1",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N2",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N3",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N4",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N5",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "D2",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N6",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N7",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N8",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N9",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N10",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N11",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N12",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "D0",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N13",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N14",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N15",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N16",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N17",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N18",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "D3",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "D4",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N19",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "N20",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "A0",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "A1",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "D5",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "FP.hearth",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "D6",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "D7",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "D8",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "D9",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "D10",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "opening_room_boundary",
+  "target": "A2",
+  "ok": true,
+  "value": "clear",
+  "limit": null,
+  "note": "",
+  "clause": "an opening must not straddle a room partition"
+ },
+ {
+  "rule": "door_clear_width",
+  "target": "D1",
+  "ok": true,
+  "value": 860.0,
+  "limit": 800,
+  "note": "inside the frame",
+  "clause": "external doors 800 clear per leaf, internal 620 (rule of thumb)"
+ },
+ {
+  "rule": "door_clear_width",
+  "target": "D2",
+  "ok": true,
+  "value": 1425.0,
+  "limit": 800,
+  "note": "inside the frame",
+  "clause": "external doors 800 clear per leaf, internal 620 (rule of thumb)"
+ },
+ {
+  "rule": "door_clear_width",
+  "target": "D0",
+  "ok": true,
+  "value": 1080.0,
+  "limit": 800,
+  "note": "inside the frame",
+  "clause": "external doors 800 clear per leaf, internal 620 (rule of thumb)"
+ },
+ {
+  "rule": "door_clear_width",
+  "target": "D3",
+  "ok": true,
+  "value": 835.0,
+  "limit": 800,
+  "note": "inside the frame",
+  "clause": "external doors 800 clear per leaf, internal 620 (rule of thumb)"
+ },
+ {
+  "rule": "door_clear_width",
+  "target": "D4",
+  "ok": true,
+  "value": 835.0,
+  "limit": 800,
+  "note": "inside the frame",
+  "clause": "external doors 800 clear per leaf, internal 620 (rule of thumb)"
+ },
+ {
+  "rule": "door_clear_width",
+  "target": "D5",
+  "ok": true,
+  "value": 880.0,
+  "limit": 800,
+  "note": "inside the frame",
+  "clause": "external doors 800 clear per leaf, internal 620 (rule of thumb)"
+ },
+ {
+  "rule": "door_clear_width",
+  "target": "D6",
+  "ok": true,
+  "value": 830.0,
+  "limit": 620,
+  "note": "inside the frame",
+  "clause": "external doors 800 clear per leaf, internal 620 (rule of thumb)"
+ },
+ {
+  "rule": "door_clear_width",
+  "target": "D7",
+  "ok": true,
+  "value": 830.0,
+  "limit": 620,
+  "note": "inside the frame",
+  "clause": "external doors 800 clear per leaf, internal 620 (rule of thumb)"
+ },
+ {
+  "rule": "door_clear_width",
+  "target": "D8",
+  "ok": true,
+  "value": 830.0,
+  "limit": 620,
+  "note": "inside the frame",
+  "clause": "external doors 800 clear per leaf, internal 620 (rule of thumb)"
+ },
+ {
+  "rule": "door_clear_width",
+  "target": "D9",
+  "ok": true,
+  "value": 680.0,
+  "limit": 620,
+  "note": "inside the frame",
+  "clause": "external doors 800 clear per leaf, internal 620 (rule of thumb)"
+ },
+ {
+  "rule": "door_clear_width",
+  "target": "D10",
+  "ok": true,
+  "value": 680.0,
+  "limit": 620,
+  "note": "inside the frame",
+  "clause": "external doors 800 clear per leaf, internal 620 (rule of thumb)"
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "D2",
+  "ok": true,
+  "value": "1750+3000 of 6500; head 2600 of 9300",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N6",
+  "ok": true,
+  "value": "2575+1350 of 6500; head 5700 of 9300",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N7",
+  "ok": true,
+  "value": "2600+1300 of 6500; head 8900 of 9300",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "D2/N6",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "D2/N7",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "N6/N7",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "A0",
+  "ok": true,
+  "value": "2450+1600 of 6500; head 3000 of 9300",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "A2",
+  "ok": true,
+  "value": "5750+700 of 6500; head 5950 of 9300",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N11",
+  "ok": true,
+  "value": "2575+1350 of 6500; head 5700 of 9300",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N12",
+  "ok": true,
+  "value": "2600+1300 of 6500; head 8900 of 9300",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "N11/N12",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N8",
+  "ok": true,
+  "value": "2500+1000 of 6500; head 2300 of 9300",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N9",
+  "ok": true,
+  "value": "2575+1350 of 6500; head 5700 of 9300",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N10",
+  "ok": true,
+  "value": "2600+1300 of 6500; head 8900 of 9300",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "N8/N9",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "N8/N10",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "N9/N10",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N3",
+  "ok": true,
+  "value": "1400+1300 of 13500; head 5800 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N1",
+  "ok": true,
+  "value": "1500+1200 of 13500; head 2400 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N4",
+  "ok": true,
+  "value": "5725+2050 of 13500; head 5800 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "D1",
+  "ok": true,
+  "value": "5800+1900 of 13500; head 3050 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N2",
+  "ok": true,
+  "value": "10675+1450 of 13500; head 2400 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N5",
+  "ok": true,
+  "value": "10800+1200 of 13500; head 5800 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "N3/N1",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "N4/D1",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "N2/N5",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "D5",
+  "ok": true,
+  "value": "2000+1000 of 7000; head 2200 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N18",
+  "ok": true,
+  "value": "3000+1000 of 7000; head 6300 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N13",
+  "ok": true,
+  "value": "1875+1450 of 13500; head 2400 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N15",
+  "ok": true,
+  "value": "3275+800 of 13500; head 5700 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "D0",
+  "ok": true,
+  "value": "6150+1200 of 13500; head 2400 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N16",
+  "ok": true,
+  "value": "6250+1000 of 13500; head 5700 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N17",
+  "ok": true,
+  "value": "9500+800 of 13500; head 5700 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N14",
+  "ok": true,
+  "value": "10300+1200 of 13500; head 2400 of 6400",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "N13/N15",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "openings_do_not_overlap",
+  "target": "D0/N16",
+  "ok": true,
+  "value": null,
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "D3",
+  "ok": true,
+  "value": "1200+1850 of 8500; head 2400 of 3200",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "D4",
+  "ok": true,
+  "value": "5300+1850 of 8500; head 2400 of 3200",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N19",
+  "ok": true,
+  "value": "2000+1000 of 5000; head 2300 of 3200",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "N20",
+  "ok": true,
+  "value": "3650+1200 of 8500; head 2400 of 3200",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "A1",
+  "ok": true,
+  "value": "2500+2000 of 7000; head 3100 of 3200",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "FP.hearth",
+  "ok": true,
+  "value": "400+1200 of 2000; head 1400 of 3200",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "D6",
+  "ok": true,
+  "value": "1200+950 of 13500; head 2100 of 2900",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "D7",
+  "ok": true,
+  "value": "6000+950 of 13500; head 2100 of 2900",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "D8",
+  "ok": true,
+  "value": "11525+950 of 13500; head 2100 of 2900",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "D9",
+  "ok": true,
+  "value": "4000+800 of 5550; head 2100 of 2900",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "opening_fits_wall",
+  "target": "D10",
+  "ok": true,
+  "value": "4000+800 of 5550; head 2100 of 2900",
+  "limit": null,
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "kitchen_clearance",
+  "target": "K1",
+  "ok": true,
+  "value": "clear",
+  "limit": 900,
+  "note": "fixed elements only",
+  "clause": "900 clear in front of counters (rule of thumb)"
+ },
+ {
+  "rule": "setbacks",
+  "target": "building",
+  "ok": true,
+  "value": "inside",
+  "limit": null,
+  "note": "actual wall bodies, including concave and rotated footprints",
+  "clause": "wall footprint inside the actual parcel and clear of each boundary edge"
+ },
+ {
+  "rule": "setbacks",
+  "target": "building/edge-1",
+  "ok": true,
+  "value": 55000.0,
+  "limit": 10000.0,
+  "note": "",
+  "clause": "wall footprint inside the actual parcel and clear of each boundary edge"
+ },
+ {
+  "rule": "setbacks",
+  "target": "building/edge-2",
+  "ok": true,
+  "value": 37000.0,
+  "limit": 8000.0,
+  "note": "",
+  "clause": "wall footprint inside the actual parcel and clear of each boundary edge"
+ },
+ {
+  "rule": "setbacks",
+  "target": "building/edge-3",
+  "ok": true,
+  "value": 32000.0,
+  "limit": 8000.0,
+  "note": "",
+  "clause": "wall footprint inside the actual parcel and clear of each boundary edge"
+ },
+ {
+  "rule": "setbacks",
+  "target": "building/edge-4",
+  "ok": true,
+  "value": 37000.0,
+  "limit": 8000.0,
+  "note": "",
+  "clause": "wall footprint inside the actual parcel and clear of each boundary edge"
+ },
+ {
+  "rule": "roof_pitch",
+  "target": "RT",
+  "ok": true,
+  "value": 28.0,
+  "limit": "18..35",
+  "note": "clay tiles",
+  "clause": "clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb)"
+ },
+ {
+  "rule": "roof_pitch",
+  "target": "RM",
+  "ok": true,
+  "value": 24.0,
+  "limit": "18..35",
+  "note": "clay tiles",
+  "clause": "clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb)"
+ },
+ {
+  "rule": "roof_pitch",
+  "target": "RK",
+  "ok": true,
+  "value": 22.0,
+  "limit": "18..35",
+  "note": "clay tiles",
+  "clause": "clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb)"
+ },
+ {
+  "rule": "roof_pitch",
+  "target": "RP",
+  "ok": true,
+  "value": 22.0,
+  "limit": ">= 3",
+  "note": "low-slope covering",
+  "clause": "clay tiles 18 to 35 degrees; sheet or membrane below (rule of thumb)"
+ },
+ {
+  "rule": "stair_lands_clear",
+  "target": "ST1a",
+  "ok": true,
+  "value": 1000,
+  "limit": 1000,
+  "note": "clear beyond the top riser",
+  "clause": "a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width)"
+ },
+ {
+  "rule": "stair_lands_clear",
+  "target": "ST1",
+  "ok": true,
+  "value": 1000,
+  "limit": 1000,
+  "note": "clear beyond the top riser",
+  "clause": "a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width)"
+ },
+ {
+  "rule": "stair_lands_clear",
+  "target": "ST2",
+  "ok": true,
+  "value": 1000,
+  "limit": 1000,
+  "note": "clear beyond the top riser",
+  "clause": "a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width)"
+ },
+ {
+  "rule": "stair_lands_clear",
+  "target": "ST0",
+  "ok": true,
+  "value": 2400,
+  "limit": 2400,
+  "note": "clear beyond the top riser",
+  "clause": "a landing at least the flight's width deep beyond the top riser, before any wall (rule of thumb; codes ask for the stair's width)"
+ },
+ {
+  "rule": "stair_proportions",
+  "target": "ST1a",
+  "ok": true,
+  "value": "riser 175, going 270, 2R+G 620",
+  "limit": "150..190 / >=250 / 550..700",
+  "note": "",
+  "clause": "risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb)"
+ },
+ {
+  "rule": "stair_proportions",
+  "target": "ST1",
+  "ok": true,
+  "value": "riser 175, going 260, 2R+G 610",
+  "limit": "150..190 / >=250 / 550..700",
+  "note": "",
+  "clause": "risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb)"
+ },
+ {
+  "rule": "stair_proportions",
+  "target": "ST2",
+  "ok": true,
+  "value": "riser 178, going 270, 2R+G 626",
+  "limit": "150..190 / >=250 / 550..700",
+  "note": "",
+  "clause": "risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb)"
+ },
+ {
+  "rule": "stair_proportions",
+  "target": "ST0",
+  "ok": true,
+  "value": "riser 165, going 300, 2R+G 630",
+  "limit": "150..190 / >=250 / 550..700",
+  "note": "",
+  "clause": "risers 150 to 190, going >= 250, 2R + G between 550 and 700 (rule of thumb)"
+ },
+ {
+  "rule": "stair_headroom",
+  "target": "ST1a",
+  "ok": true,
+  "value": 2000.0,
+  "limit": 2000,
+  "note": "clear through the checked 2000 mm envelope",
+  "clause": "2000 mm vertical clearance over every tread and arrival area (rule of thumb)"
+ },
+ {
+  "rule": "stair_headroom",
+  "target": "ST1",
+  "ok": true,
+  "value": 2000.0,
+  "limit": 2000,
+  "note": "clear through the checked 2000 mm envelope",
+  "clause": "2000 mm vertical clearance over every tread and arrival area (rule of thumb)"
+ },
+ {
+  "rule": "stair_headroom",
+  "target": "ST2",
+  "ok": true,
+  "value": 2000.0,
+  "limit": 2000,
+  "note": "clear through the checked 2000 mm envelope",
+  "clause": "2000 mm vertical clearance over every tread and arrival area (rule of thumb)"
+ },
+ {
+  "rule": "stair_headroom",
+  "target": "ST0",
+  "ok": true,
+  "value": 2000.0,
+  "limit": 2000,
+  "note": "clear through the checked 2000 mm envelope",
+  "clause": "2000 mm vertical clearance over every tread and arrival area (rule of thumb)"
+ },
+ {
+  "rule": "stair_reaches_floor",
+  "target": "ST1",
+  "ok": true,
+  "value": 3500.0,
+  "limit": 3500.0,
+  "note": "",
+  "clause": "a flight targeting a level must arrive at its finished floor"
+ },
+ {
+  "rule": "stair_reaches_floor",
+  "target": "ST2",
+  "ok": true,
+  "value": 6700.0,
+  "limit": 6700.0,
+  "note": "",
+  "clause": "a flight targeting a level must arrive at its finished floor"
+ },
+ {
+  "rule": "stair_reaches_floor",
+  "target": "ST0",
+  "ok": true,
+  "value": 0.0,
+  "limit": 0.0,
+  "note": "",
+  "clause": "a flight targeting a level must arrive at its finished floor"
+ },
+ {
+  "rule": "bedroom_window",
+  "target": "tower_bedroom",
+  "ok": true,
+  "value": 4.35,
+  "limit": 0.8,
+  "note": "m\u00b2 of glass on the bedroom's own walls",
+  "clause": "holiday-let brief"
+ },
+ {
+  "rule": "bedroom_window",
+  "target": "bed1",
+  "ok": true,
+  "value": 1.51,
+  "limit": 0.8,
+  "note": "m\u00b2 of glass on the bedroom's own walls",
+  "clause": "holiday-let brief"
+ },
+ {
+  "rule": "bedroom_window",
+  "target": "bed2",
+  "ok": true,
+  "value": 2.47,
+  "limit": 0.8,
+  "note": "m\u00b2 of glass on the bedroom's own walls",
+  "clause": "holiday-let brief"
+ },
+ {
+  "rule": "bedroom_window",
+  "target": "bed3",
+  "ok": true,
+  "value": 2.42,
+  "limit": 0.8,
+  "note": "m\u00b2 of glass on the bedroom's own walls",
+  "clause": "holiday-let brief"
+ },
+ {
+  "rule": "ids",
+  "target": "Walls declare whether they are external",
+  "ok": true,
+  "value": "29/29 pass",
+  "limit": "all",
+  "note": "",
+  "clause": "IDS 1.0"
+ },
+ {
+  "rule": "ids",
+  "target": "Doors declare whether they are external",
+  "ok": true,
+  "value": "11/11 pass",
+  "limit": "all",
+  "note": "",
+  "clause": "IDS 1.0"
+ },
+ {
+  "rule": "ids",
+  "target": "Windows declare whether they are external",
+  "ok": true,
+  "value": "20/20 pass",
+  "limit": "all",
+  "note": "",
+  "clause": "IDS 1.0"
+ },
+ {
+  "rule": "ids",
+  "target": "Ifcwall carries its homespec id and tags",
+  "ok": true,
+  "value": "29/29 pass",
+  "limit": "all",
+  "note": "",
+  "clause": "IDS 1.0"
+ },
+ {
+  "rule": "ids",
+  "target": "Ifcdoor carries its homespec id and tags",
+  "ok": true,
+  "value": "11/11 pass",
+  "limit": "all",
+  "note": "",
+  "clause": "IDS 1.0"
+ },
+ {
+  "rule": "ids",
+  "target": "Ifcwindow carries its homespec id and tags",
+  "ok": true,
+  "value": "20/20 pass",
+  "limit": "all",
+  "note": "",
+  "clause": "IDS 1.0"
+ },
+ {
+  "rule": "ids",
+  "target": "Ifcslab carries its homespec id and tags",
+  "ok": true,
+  "value": "7/7 pass",
+  "limit": "all",
+  "note": "",
+  "clause": "IDS 1.0"
+ },
+ {
+  "rule": "ids",
+  "target": "Ifcbeam carries its homespec id and tags",
+  "ok": true,
+  "value": "84/84 pass",
+  "limit": "all",
+  "note": "",
+  "clause": "IDS 1.0"
+ },
+ {
+  "rule": "ids",
+  "target": "Ifcfurniture carries its homespec id and tags",
+  "ok": true,
+  "value": "5/5 pass",
+  "limit": "all",
+  "note": "",
+  "clause": "IDS 1.0"
+ },
+ {
+  "rule": "ids",
+  "target": "Ifclightfixture carries its homespec id and tags",
+  "ok": true,
+  "value": "9/9 pass",
+  "limit": "all",
+  "note": "",
+  "clause": "IDS 1.0"
+ },
+ {
+  "rule": "ids",
+  "target": "Ifcoutlet carries its homespec id and tags",
+  "ok": true,
+  "value": "6/6 pass",
+  "limit": "all",
+  "note": "",
+  "clause": "IDS 1.0"
+ },
+ {
+  "rule": "decision_ids",
+  "target": "decisions.md",
+  "ok": true,
+  "value": "34 decisions",
+  "limit": "one entry per id",
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-001",
+  "ok": true,
+  "value": "TE, ME",
+  "limit": "ids in the build",
+  "note": "Three blocks, not one",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-002",
+  "ok": true,
+  "value": "ST1, ST2, F1, F2",
+  "limit": "ids in the build",
+  "note": "The tower holds the stairs",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-003",
+  "ok": true,
+  "value": "RT, RM, RK",
+  "limit": "ids in the build",
+  "note": "Roofs are low and hipped where the reference hips",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-004",
+  "ok": true,
+  "value": "cut_stone, D1, D2, N7, N10, N12",
+  "limit": "ids in the build",
+  "note": "Openings are dressed, small-paned and shuttered",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-005",
+  "ok": true,
+  "value": "RP, PB, PP1, PP2, PP3, PP4, PP5, brande",
+  "limit": "ids in the build",
+  "note": "The pergola is brush on iron",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-006",
+  "ok": true,
+  "value": "RW1, RW2, ST0, LP, PL, PD, GD",
+  "limit": "ids in the build",
+  "note": "The pool sits two metres below the house",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-007",
+  "ok": true,
+  "value": "rubble_wall, FP, lime_white, limestone_rubble",
+  "limit": "ids in the build",
+  "note": "Stone outside, lime inside",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-009",
+  "ok": true,
+  "value": "TE",
+  "limit": "ids in the build",
+  "note": "The old outside wall stays stone inside",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-010",
+  "ok": true,
+  "value": "L1, L2, L3, L4, L5",
+  "limit": "ids in the build",
+  "note": "Hanging lights clear 2.2 m",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-012",
+  "ok": true,
+  "value": "pool_water",
+  "limit": "ids in the build",
+  "note": "Water is coloured by depth, not by paint",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-013",
+  "ok": true,
+  "value": "PD, GD, PL",
+  "limit": "ids in the build",
+  "note": "Every slab knows where the pool is",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-015",
+  "ok": true,
+  "value": "shutter_grey",
+  "limit": "ids in the build",
+  "note": "Shutters are louvred, and painted models are tinted",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-018",
+  "ok": true,
+  "value": "K1, A2",
+  "limit": "ids in the build",
+  "note": "Each room is dressed by its own module, and was audited by its own agent",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-019",
+  "ok": true,
+  "value": "rubble_wall, KS, KN, ME, PC, TE",
+  "limit": "ids in the build",
+  "note": "Walls are 500 mm: 450 of rubble and 50 of lime",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-020",
+  "ok": true,
+  "value": "RM, RK, RT, TE, ME",
+  "limit": "ids in the build",
+  "note": "Roofs stop at the walls they meet, and sit on their g\u00e9noise",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-021",
+  "ok": true,
+  "value": "D1, F1",
+  "limit": "ids in the build",
+  "note": "The arched door springs at 2000 and has no shutters",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-022",
+  "ok": true,
+  "value": "CH",
+  "limit": "ids in the build",
+  "note": "The chimney starts at the wall head",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-023",
+  "ok": true,
+  "value": "LP, GD, PD, PL, ST0",
+  "limit": "ids in the build",
+  "note": "The pool deck is the finished level",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-024",
+  "ok": true,
+  "value": "PP1, PP2, PP3, PP4, PP5, PB, RP, D1.surround",
+  "limit": "ids in the build",
+  "note": "The pergola beam sits on its posts, and the brush runs to the wall",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-025",
+  "ok": true,
+  "value": "C0T, C1T, ST1, ST2, F1, F2",
+  "limit": "ids in the build",
+  "note": "Stair wells continue through the ceilings",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-026",
+  "ok": true,
+  "value": "L6, L7, L8, L9, C1M, S6",
+  "limit": "ids in the build",
+  "note": "Fittings sit clear of joists and cabinets",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-027",
+  "ok": true,
+  "value": "N18, ME, N5",
+  "limit": "ids in the build",
+  "note": "The east bedroom window sits above the kitchen roof",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-028",
+  "ok": true,
+  "value": "ST1, ST1a, ST1L, ST2, F1, F2, C0T, C1T",
+  "limit": "ids in the build",
+  "note": "The flights land clear, and ST1 turns at its foot",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-030",
+  "ok": true,
+  "value": "TS.infill, TE.infill, TN.infill, TW.infill, MS.infill, MN.infill, KS.infill, KE.infill, KN.infill, RT, RM, RK, CH",
+  "limit": "ids in the build",
+  "note": "Wall heads follow the roof underside behind the g\u00e9noise",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-031",
+  "ok": true,
+  "value": "P1, A1, D0, D1, D1.surround, F1, N2, N3, N4, N6, N7, N9, N10, N11, N12, N13, living, dining, bed1, bed2, tower_bedroom, study, L2",
+  "limit": "ids in the build",
+  "note": "Openings and daylight belong to the rooms they actually serve",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-032",
+  "ok": true,
+  "value": "ST0, RW1, RW2, PP5",
+  "limit": "ids in the build",
+  "note": "The garden stair arrives clear of the pergola post",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-033",
+  "ok": true,
+  "value": "lime_plaster, brick_block, rubble_wall, partition",
+  "limit": "ids in the build",
+  "note": "Concealed materials and parcel edges are explicit",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-034",
+  "ok": true,
+  "value": "ST0, RW1, RW2, P1, A0, A1, D1, D5, N3, L2, L4, FP, C2T, study",
+  "limit": "ids in the build",
+  "note": "Presentation follows the revised openings and garden stair",
+  "clause": ""
+ },
+ {
+  "rule": "decision_entities",
+  "target": "D-035",
+  "ok": true,
+  "value": "ME, RM, RM.G2, N18, N18.surround, N18.shutters",
+  "limit": "ids in the build",
+  "note": "Close the raised east gable at its wall head",
+  "clause": ""
+ },
+ {
+  "rule": "decision_ledgers",
+  "target": "Considered and not changed",
+  "ok": true,
+  "value": "present",
+  "limit": "a '## Considered and not changed' section",
+  "note": "",
+  "clause": ""
+ },
+ {
+  "rule": "decision_ledgers",
+  "target": "Not verified",
+  "ok": true,
+  "value": "present",
+  "limit": "a '## Not verified' section",
+  "note": "",
+  "clause": ""
+ }
+]

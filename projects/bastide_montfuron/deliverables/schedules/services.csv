@@ -1,6 +1,6 @@
 id,kind,on_wall,from_wall_start_mm,height_mm,x_mm,y_mm,z_mm
 L1,pendant,,,,11000,4000,2100
-L2,pendant,,,,17800,4000,2000
+L2,pendant,,,,18450,4000,2000
 L3,pendant,,,,3750,3750,2300
 L4,pendant,,,,25750,4000,2100
 L5,pendant,,,,3750,3750,5600

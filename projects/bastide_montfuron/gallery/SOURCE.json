@@ -1,0 +1,102 @@
+{
+  "format": 1,
+  "build_generation": "fe8d745e68234d279e5a1564d688ec7c",
+  "build_fingerprint": "5fcb923e0e32e0a94bc3ebb8e70635c880263225e4de27fef8dc001a229a7a89",
+  "source_commit": "ecb4aa71e7444fed84bed854cd8b96117de2733e",
+  "source_fingerprint": "99179e70796185399a8855b55d28c577b06d432c69727e368fb462651078718b",
+  "ir_sha256": "224cab8d45b27d241b000d2e30fd1cad81ddd638bf84c106209d950f01276259",
+  "presentation_fingerprint": "508da03dcbaa04659ce2d21e611c4177911b1d6b6df3d7b0a66ba686019f8b04",
+  "blender": "5.2.1",
+  "still_resolution": [
+    1600,
+    900
+  ],
+  "view_resolution": [
+    1600,
+    1200
+  ],
+  "samples": 48,
+  "scene_audit_findings": 0,
+  "images": {
+    "01_pool_deck.jpg": {
+      "frame": 1,
+      "source_sha256": "e99283f652a6e2d3397c41ae9a675457a9e48d837ba027b4517dfea63a096f4f",
+      "sha256": "a627a5f3d793e0c48e6b16e56be10564ab29d7de6e4de4dab9ee1b04e2153486"
+    },
+    "02_pergola.jpg": {
+      "frame": 385,
+      "source_sha256": "f4d97cbdc413ce77136e88408fc9830954d9f84d13e696bbfca52ae2913a9f85",
+      "sha256": "9bb026e8f80cf4157d84c547d5d06afca4f0285150f751cc8f9fe60204842904"
+    },
+    "03_living_room.jpg": {
+      "frame": 1153,
+      "source_sha256": "36359854e00c4bae589f06aa48f8b765129ee6285fda61e897f0d6f15c062f63",
+      "sha256": "bbff1d8439a40b07b9f93ea61def365371e4b6a89b937c32e443c8043c0fe27b"
+    },
+    "04_dining_room.jpg": {
+      "frame": 1633,
+      "source_sha256": "8fce7074ee1399b6ac2a23db7ec798eecd62c66616a743a470ba617bc6a105fc",
+      "sha256": "c79e4ba25bec4c9c116eb4fad47c3e146da69bdd25e26469ac49fe8de8bbd227"
+    },
+    "05_bedroom.jpg": {
+      "frame": 2209,
+      "source_sha256": "0e243457ef3270a163846aa7646efc23a918851eb4f9a55feb8025df606b6b58",
+      "sha256": "76d81d4060713e28579c53bcda64768aaf7c8dc2430a7b9c1bc7fbe06ebdac54"
+    },
+    "06_kitchen.jpg": {
+      "frame": 1921,
+      "source_sha256": "5ee95c9182dcc77ff98148993ac39f9285e0f1052592a6be345f117738aeae56",
+      "sha256": "79e3655056089ea1ad425fb46e3dc22908db61dc1dfa482ad82f5bbcae39d3cc"
+    },
+    "07_hall.jpg": {
+      "frame": 769,
+      "source_sha256": "c1e73ba613952b3ebb6c9c1a8c648687871e7e321a6cb40c3e67f3601ad94560",
+      "sha256": "e64014df939db5490583e516aab5e007a4d239a5b74ff5a62d3079e610bc93c7"
+    },
+    "08_tower.jpg": {
+      "frame": 2785,
+      "source_sha256": "21f804f984ea1cf24e6615cd513ee65501065c6221b0b22e3becc1f9d45fe426",
+      "sha256": "e95f2f4ce56793275eb86a59e71cf3d0758dfa919a4bbb6dfd3ca4f25f834080"
+    },
+    "09_forecourt.jpg": {
+      "frame": 481,
+      "source_sha256": "b8a7900fe5aaec94dfa111d18074d902d98e3b59c01ad6b75fefcb71adc0264f",
+      "sha256": "121768327be8d9dc08cc90e031bea81b11315743102e66b49ed37452f2d3ea84"
+    },
+    "10_study.jpg": {
+      "frame": 3169,
+      "source_sha256": "f0b213ae40c6cffa51ae5e64d883ae180b68e06f9622902de2449db68417341d",
+      "sha256": "5e5cdd494d815d9e00b1d7b794d846386f429a9d03f8b4b54cd6c16ccadb6a19"
+    },
+    "11_structure_view.jpg": {
+      "view": "structure",
+      "source_sha256": "de33dc5f9257760411d0dde3409e6050185c51acde371ed0045c4b84cc5d6405",
+      "sha256": "8985e284c7821112d6a178768058a020c2e25f320e343eba243b67781700b7dd"
+    },
+    "12_long_section.jpg": {
+      "view": "section_long",
+      "source_sha256": "c6ab335bae23f790f2c07c2384cde5484ce5b37b0eaab829565be88b2e440706",
+      "sha256": "43fb0b1dc4a516a76ba9198bd9313a4aa1a73737d3a3059671bc014646524ae0"
+    },
+    "plan_L0.jpg": {
+      "view": "plan_L0",
+      "source_sha256": "ecdb9ee3e22c4b7e900c62654463355fae36847a4d226ab02a8ac087578912b8",
+      "sha256": "c7d9cb5b8df6ec73884521a17080030c3cf006590017f6503f2a6355873ec8c6"
+    },
+    "plan_L1.jpg": {
+      "view": "plan_L1",
+      "source_sha256": "96223be3831227096520434ea0736ffd1df8df3423c877a05d1d9cffcc7749e6",
+      "sha256": "9625f9d40918fba19401adc3ec025a76094b0d5d02ccfbeb080d28863e9c757f"
+    },
+    "plan_L2.jpg": {
+      "view": "plan_L2",
+      "source_sha256": "f790e8527f7a2848d8971023f1929dbe095048030a4278a5746811780941b07c",
+      "sha256": "c9dad56289030a68cbbede5687b818b4f2b16b88670cc9958e4935f6e07c377d"
+    },
+    "plan_LP.jpg": {
+      "view": "plan_LP",
+      "source_sha256": "bfee0e9d14a80e3a30cd1fe8bca0bc74bb1d781e244ef09da4f2b14552dcb915",
+      "sha256": "cba4d9f2740156d84f3da8eb607bc9930beba7a749bfc303b09ea77a78955f38"
+    }
+  }
+}
