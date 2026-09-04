@@ -346,6 +346,11 @@ class Opening(Element):
         level = self.level or ctx.level_at(z).id          # the storey of the sill, not of the wall
         void_entity = self.cut_void(ctx, wall, x, z, level)
         members = self.frame_members(x, wall, z)
+        # Joined frame members occupy one material volume. A compound double-counts
+        # their intersections and gives IFC coincident faces at the arch springing.
+        frame = members[0]
+        for member in members[1:]:
+            frame = frame + member
         panes, glass_area = self.panes_of(x, wall, z)
         head = self.head_height()
         void_ex = Extrusion(origin=(*wall.body.point(x, -100), z), u=wall.body.u, n=wall.body.n, length=self.width, thickness=t + 200, height=head)
@@ -364,7 +369,7 @@ class Opening(Element):
                 derived[key] = material
         ctx.relate(self.host, "has_opening", self.id)
         host_tags = ctx.built(self.host).tags
-        return Realized(solid=G.group(members), derived=derived, material=self.frame, level=level,
+        return Realized(solid=frame, derived=derived, material=self.frame, level=level,
                         relations=[Relation(pred="hosted_in", obj=self.host)], tags={"external"} if "external" in host_tags else set())
 
     def fill(self, ctx: Context, wall: WallGeometry, x: float, level: str | None) -> None:

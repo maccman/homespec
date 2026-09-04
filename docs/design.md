@@ -62,7 +62,9 @@ shape is a simple extrusion, also records that extrusion parametrically. The
 IFC exporter uses the parametric form for walls and voids so BIM tools see
 real walls, not meshes; everything else carries its exact tessellation.
 Exact arched voids are emitted as geometry entities and reused in IFC; an
-arched door cannot become a rectangular wall opening during export. Slab areas
+arched door cannot become a rectangular wall opening during export. Opening
+frame members are joined before quantities and meshes are produced, removing
+double-counted material and internal coincident faces. Slab areas
 come from the resulting solid after clipped, overlapping holes are removed.
 Ceiling planks and beams are clipped to their real outlines and voids.
 

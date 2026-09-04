@@ -114,7 +114,9 @@ def input_snapshot(project_dir: str | Path, output_root: str | Path, inputs: lis
             raise ValueError(f"House.inputs must not include build outputs: {name}")
         if not path.exists():
             raise FileNotFoundError(f"House.inputs file or directory does not exist: {name}")
-        declarations.append(str(path))
+        # Replay the declaration, not its current target: resolving it here
+        # would hide a later symlink retarget from freshness checks.
+        declarations.append(name)
         if path.is_dir():
             paths.update(_data_files(path))
         else:

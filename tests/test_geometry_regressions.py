@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import math
 import xml.etree.ElementTree as ET
+from collections import Counter
 from typing import ClassVar
 
 import ezdxf
@@ -21,6 +22,7 @@ from homespec import (
     BeamGrid,
     Bookcase,
     Ceiling,
+    Clerestory,
     Door,
     House,
     KitchenRun,
@@ -102,6 +104,70 @@ def test_arch_height_is_usable_below_transom_and_at_full_passage_width():
     assert d["clear_width"] == (1900 - 3 * 60) / 2
     glass = sorted(G.solids(build["D.glass"].solid), key=lambda p: G.bbox(p).min[2])
     assert G.bbox(glass[0]).size[0] == pytest.approx(d["clear_width"])
+
+
+@pytest.mark.parametrize("cls", [Window, Door, SlidingDoor, Clerestory])
+def test_rectangular_frame_quantity_counts_joined_members_once(cls):
+    house = _house()
+    with house:
+        Wall("W", (0, 0), (5000, 0), assembly="a", level="L0")
+        opening = cls("F", host="W", at=1000, width=1900, height=2100)
+    frame = house.compile()["F"].solid
+    fs = opening.frame_size
+    rails = 1 + int(opening.threshold)
+    posts = 2 + len(opening.mullion_positions())
+    # Rails span the width; the upright material between them excludes their joints.
+    expected = (rails * opening.width * fs + posts * fs * (opening.height - rails * fs)) * fs
+    assert G.volume(frame) == pytest.approx(expected, rel=1e-9)
+    assert len(G.solids(frame)) == 1
+
+
+def test_arched_frame_quantity_and_ifc_shell_are_closed(tmp_path):
+    house = _house()
+    with house:
+        Wall("W", (7500, 0), (25000, 0), assembly="a", level="L0", height=4000)
+        ArchedDoor("D", host="W", at=5800, width=1900, height=2100, panes=(1, 5))
+    build = house.compile()
+    fs, bs, width, height = 60, 30, 1900, 2100
+    inner_radius, half_spoke = width / 2 - fs, bs / 2
+    # The spoke's two top corners slightly enter the curved frame. Integrate that
+    # circular segment instead of counting those corners as material twice.
+    spoke_overlap_area = bs * inner_radius - (
+        half_spoke * math.sqrt(inner_radius**2 - half_spoke**2)
+        + inner_radius**2 * math.asin(half_spoke / inner_radius)
+    )
+    expected = (
+        (width * fs + 3 * fs * (height - fs)) * fs
+        + math.pi / 2 * ((width / 2)**2 - inner_radius**2) * fs
+        + bs**2 * inner_radius - spoke_overlap_area * bs
+        + 4 * (width - 3 * fs) * bs**2
+    )
+    assert G.volume(build["D"].solid) == pytest.approx(expected, rel=1e-9)
+    assert len(G.solids(build["D"].solid)) == 1
+    ir = build.write(str(tmp_path))
+    geometry = ir.entity("D").geometry
+    assert geometry is not None
+    assert geometry.volume_mm3 == pytest.approx(expected, rel=1e-9)
+    assert G.volume(G.read_step(ir.path(geometry.step))) == pytest.approx(expected, rel=1e-9)
+    ifc = ifcopenshell.open(export_ifc(ir, str(tmp_path / "house.ifc")))
+    settings = ifcopenshell.geom.settings()
+    settings.set("use-world-coords", True)
+    iterator = ifcopenshell.geom.iterator(settings, ifc, 1, include=ifc.by_type("IfcDoor"))
+    assert iterator.initialize()
+    shape = iterator.get()
+    assert shape.name == "D"
+    vertices = np.asarray(shape.geometry.verts).reshape(-1, 3) * 1000
+    faces = np.asarray(shape.geometry.faces).reshape(-1, 3)
+    # Weld duplicated face-boundary vertices before counting oriented edges.
+    _, indices = np.unique(np.round(vertices, 4), axis=0, return_inverse=True)
+    edges = Counter((int(a), int(b)) for face in indices[faces] for a, b in zip(face, np.roll(face, -1), strict=True))
+    assert all(count == edges[b, a] == 1 for (a, b), count in edges.items())
+    volumes = []
+    for origin in [(0, 0, 0), vertices.mean(axis=0), (0, 0, 100000)]:
+        triangles = vertices[faces] - origin
+        volumes.append(np.einsum("ij,ij->i", triangles[:, 0], np.cross(triangles[:, 1], triangles[:, 2])).sum() / 6)
+    assert volumes == pytest.approx([expected] * 3, rel=1e-3)
+    assert volumes == pytest.approx([volumes[0]] * 3, abs=1e-3)
 
 
 def test_wide_low_arch_does_not_cut_below_its_sill():

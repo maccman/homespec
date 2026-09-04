@@ -200,7 +200,13 @@ def dress(scene, M):
 
     scene.sconce("study_sconce_a", (2.2, 7.0, 8.4), M.brass, M.shade, watts=22)                 # TN faces -y into the room
     scene.sconce("study_sconce_b", (5.3, 7.0, 8.4), M.brass, M.shade, watts=22)
-    scene.pendant_bell("study_pendant", (5.4, 4.6), 9.28, 8.30, M.straw, M.iron, 130)
+    # A compact shade leaves 2.1 m of standing height and fits between C2T's beams.
+    study_floor = scene.ir["levels"][scene.entity("study")["level"]]["elevation"] / 1000
+    shade_bottom = study_floor + 2.10
+    fixing = scene.bbox("C2T")[0].z + 0.01
+    scene.cone("study_pendant_shade", (5.4, 4.6, shade_bottom), 0.24, 0.065, 0.35, M.straw)
+    scene.rod("study_pendant_cord", (5.4, 4.6, shade_bottom + 0.35), (5.4, 4.6, fixing), 0.004, M.iron)
+    scene.point_light("study_pendant_light", (5.4, 4.6, shade_bottom + 0.12), 130, color=(1.0, 0.8, 0.55), radius=0.06)
 
     # the F2 void, ST2's own outline along the south wall: guarded along its open north edge; the wall closes its east
     # end and the south side, and the flight arrives at its west end

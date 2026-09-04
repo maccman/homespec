@@ -296,7 +296,7 @@ while allowing the same check to measure real nonrectangular boundaries.
 
 ## D-034 Presentation follows the revised openings and garden stair
 
-Entities: ST0 RW1 RW2 P1 A0 A1 D1 D5 N3 L2 FP
+Entities: ST0 RW1 RW2 P1 A0 A1 D1 D5 N3 L2 L4 FP C2T study
 
 Align the terrace rail gap and planting exclusions with the relocated ST0 and
 move the plant out of its arrival area. Anchor living-room wall furniture to
@@ -309,6 +309,14 @@ unchanged. Move the sofa that previously stood across the hearth to the east
 side, facing west, and place the adjacent armchair and ottoman to the north.
 The south sofa still faces the fire; the hearth and the route between A0 and
 A1 remain clear.
+
+Raise the study pendant from 1600 to 2100 mm above its compiled floor: it
+hangs over open floor space. Its smaller 350 mm shade fits between C2T's
+beams, with the shade bottom at 8800 and top at 9150 mm. Retain the kitchen's
+authored 1850 mm copper shade bottoms over the fixed island; that footprint
+is outside the circulation routes. D-010 describes the chandeliers placed
+from the spec's pendants, while these island shades are separate presentation
+fittings. No circulation or stair-clearance threshold is relaxed.
 
 ## Against the reference
 

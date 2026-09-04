@@ -173,7 +173,7 @@ a standalone IR needs all referenced geometry files. More renders are in
 
 ```bash
 homespec build  projects/bastide_montfuron
-homespec render projects/bastide_montfuron --mode still --frame 1,600,810,1056,1152
+homespec render projects/bastide_montfuron --mode still --frame 1,385,1153,1633,2209
 homespec render projects/bastide_montfuron --mode save
 homespec walk   projects/bastide_montfuron
 ```

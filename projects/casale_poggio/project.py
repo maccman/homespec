@@ -124,7 +124,7 @@ def build() -> House:
         KitchenRun("K1", on=W3, from_start=3700, length=3850, depth=650, counter_height=900, fronts=chestnut, counter=pietra, doors=5, pulls="iron", splash_height=0)
 
         # ---- services: pendants where people sit, downlights where they wash, sockets low on the walls
-        Pendant("L1", at=(14800, 3300), drop=1300, level=L0, watts=60)        # over the dining table
+        Pendant("L1", at=(14800, 3300), drop=895, level=L0, watts=60)        # over the dining table
         Pendant("L2", at=(9400, 3750), drop=900, level=L0, watts=60)          # living
         Pendant("L3", at=(5350, 3750), drop=800, level=L0, watts=40)          # hall
         for i, (x, y) in enumerate([(2100, 6075), (18225, 6075), (2100, 2250), (18225, 2250)], 4):

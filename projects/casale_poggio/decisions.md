@@ -76,7 +76,9 @@ geometry quantities; no threshold is relaxed to preserve earlier results.
 Entities: A2 D8 P2 L1 K1 S0
 
 Move and rotate the dining group to (14800, 3300), with L1 above it, to keep
-the passage A2 and bedroom door D8 clear. Move the shelf off P2, put the second
+the passage A2 and bedroom door D8 clear. Reduce L1's drop to 895 mm so the
+rendered shade clears the floor by 2050 mm; its previous 1645 mm underside
+was too low even over the table. Move the shelf off P2, put the second
 bedroom's daybed against its east wall, and place the loggia table and chairs
 between the doors. Use a 1700 by 800 mm loggia table with 960 mm high chairs.
 Place the coffee table in front of the sofa, and seat countertop objects and

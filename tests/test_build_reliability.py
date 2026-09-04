@@ -133,6 +133,55 @@ def test_declared_inputs_and_dependencies_invalidate_build(project, tmp_path, mo
         state.resolve_build(root)
 
 
+@pytest.mark.parametrize("directory", [False, True], ids=["file", "directory"])
+@pytest.mark.parametrize("absolute", [False, True], ids=["relative", "absolute"])
+def test_retargeting_declared_input_symlinks_invalidates_build(project, tmp_path, directory, absolute):
+    targets = [tmp_path / "first", tmp_path / "second"]
+    for target, name in zip(targets, ("original", "replacement"), strict=True):
+        if directory:
+            target.mkdir()
+        (target / "name.txt" if directory else target).write_text(name)
+    link = project / "data"
+    link.symlink_to(targets[0], target_is_directory=directory)
+    declaration = str(link) if absolute else "data"
+    reader = 'Path(__file__).with_name("data")' + (' / "name.txt"' if directory else "")
+    (project / "project.py").write_text(
+        f'from pathlib import Path\nfrom homespec import House\ndef build():\n'
+        f'    return House(({reader}).read_text(), inputs=[{declaration!r}])\n')
+    root = tmp_path / "out"
+    report = build(project, root)
+    assert report.project == "original"
+    assert metadata(root)[2]["inputs"]["inputs"] == [declaration]
+    link.unlink()
+    link.symlink_to(targets[1], target_is_directory=directory)
+    assert pipeline.load_house(str(project)).name == "replacement"
+    with pytest.raises(state.StaleBuildError, match="stale"):
+        state.resolve_build(root)
+
+
+def test_retargeting_declared_input_during_compile_records_error(project, tmp_path, monkeypatch):
+    first, second = tmp_path / "first", tmp_path / "second"
+    first.write_text("original")
+    second.write_text("replacement")
+    link = project / "data"
+    link.symlink_to(first)
+    (project / "project.py").write_text(
+        'from homespec import House\ndef build():\n    return House("example", inputs=["data"])\n')
+    original = House.compile
+
+    def retarget(self):
+        compiled = original(self)
+        link.unlink()
+        link.symlink_to(second)
+        return compiled
+
+    monkeypatch.setattr(House, "compile", retarget)
+    root = tmp_path / "out"
+    with pytest.raises(state.StaleBuildError, match="stale"):
+        build(project, root)
+    assert metadata(root)[2]["status"] == "error"
+
+
 def test_inputs_cannot_refer_to_outputs(project, tmp_path):
     root = tmp_path / "out"
     root.mkdir()
