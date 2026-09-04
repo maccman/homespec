@@ -1,7 +1,7 @@
 """Property tests: for any wall and any opening that fits, the geometry agrees with the numbers."""
 import math
 
-from hypothesis import assume, given, settings
+from hypothesis import assume, example, given, settings
 from hypothesis import strategies as st
 
 from homespec import Assembly, House, Layer, Level, Wall, Window, from_end
@@ -43,6 +43,7 @@ def test_wall_body_sits_on_the_expected_side(start, angle, length, thickness, he
     angle=st.floats(0, 360), length=st.floats(2000, 10000), thickness=st.floats(90, 400),
     width=st.floats(300, 3000), height=st.floats(300, 2500), sill=st.floats(0, 1500), at=st.floats(0, 8000),
 )
+@example(angle=0.0, length=2000.0, thickness=90.0, width=300.0, height=300.0, sill=math.ulp(1.0), at=0.0)
 def test_opening_cuts_exactly_its_volume_and_stays_inside(angle, length, thickness, width, height, sill, at):
     assume(at + width <= length and sill + height <= 3000)
     u = (math.cos(math.radians(angle)), math.sin(math.radians(angle)))
@@ -61,7 +62,10 @@ def test_opening_cuts_exactly_its_volume_and_stays_inside(angle, length, thickne
     wb, fb = G.bbox(wall.solid), G.bbox(win.solid)
     assert fb.min[0] >= wb.min[0] - 1e-6 and fb.max[0] <= wb.max[0] + 1e-6
     assert fb.min[1] >= wb.min[1] - 1e-6 and fb.max[1] <= wb.max[1] + 1e-6
-    assert math.isclose(fb.min[2], sill) and math.isclose(fb.max[2], sill + height)
+    # Boolean operations can snap negligible offsets to zero; use the same
+    # absolute CAD tolerance for vertical bounds as for the footprint above.
+    assert math.isclose(fb.min[2], sill, rel_tol=0, abs_tol=1e-6)
+    assert math.isclose(fb.max[2], sill + height, rel_tol=0, abs_tol=1e-6)
 
 
 def test_from_end_and_center_positions():

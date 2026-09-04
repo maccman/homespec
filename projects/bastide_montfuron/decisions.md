@@ -318,6 +318,16 @@ is outside the circulation routes. D-010 describes the chandeliers placed
 from the spec's pendants, while these island shades are separate presentation
 fittings. No circulation or stair-clearance threshold is relaxed.
 
+## D-035 Close the raised east gable at its wall head
+
+Entities: ME RM RM.G2
+
+Extend RM.G2 down to ME's 6400 mm wall head, closing the 128.86 mm exterior
+gap visible in the cross-section after RM was lifted onto its génoise courses.
+The existing gable fills the band; its upper face still meets RM's underside
+without overlapping the roof. Roof pitch, eaves, massing, and openings stay
+at their authored positions.
+
 ## Against the reference
 
 The listing's photographs are in `docs/agents/refs/` (contact sheets `refs_a.jpg`

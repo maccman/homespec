@@ -1,6 +1,8 @@
 """Roofs, gables, columns and arches: the elements added for the farmhouse."""
 import math
 
+import pytest
+
 from homespec import Arch, Assembly, Column, House, Layer, Level, Roof, Wall, WallToRoofInfill
 from homespec import geometry as G
 
@@ -26,6 +28,26 @@ def test_gable_roof_geometry_and_gables():
     assert [e.id for e in b.tagged("gable")] == ["R.G1", "R.G2"]
     g1 = G.bbox(b["R.G1"].solid)
     assert math.isclose(g1.min[0], -500, abs_tol=1e-6) and math.isclose(g1.max[0], 0, abs_tol=1e-6), "gable sits in the end wall"
+
+
+@pytest.mark.parametrize("ridge_along", ["x", "y"])
+@pytest.mark.parametrize("raised", [{"genoise": 3}, {"eave": 3700}])
+def test_raised_gables_fill_to_wall_head_without_overlapping_roof(ridge_along, raised):
+    house = _house()
+    with house:
+        Roof("R", outline=[(0, 0), (12000, 0), (12000, 8000), (0, 8000)], level="L0",
+             ridge_along=ridge_along, pitch=24, overhang=450, thickness=220, gable_thickness=500, **raised)
+    build = house.compile()
+    roof = build["R"]
+    span = 8000 if ridge_along == "x" else 12000
+    slope = math.tan(math.radians(24))
+    edge_height = roof.derived["z_eave"] + 450 * slope - 220 - 3000
+    # Rectangle from wall head to the underside at the edge, plus the roof triangle.
+    expected_volume = (span * edge_height + span**2 * slope / 4) * 500
+    for gable in build.tagged("gable"):
+        assert math.isclose(G.bbox(gable.solid).min[2], 3000, rel_tol=0, abs_tol=1e-6)
+        assert math.isclose(G.volume(gable.solid), expected_volume, rel_tol=1e-9)
+        assert not G.overlap(gable.solid, roof.solid)
 
 
 def test_wall_to_roof_infill_follows_the_realized_underside_without_changing_the_roof():
