@@ -430,8 +430,18 @@ def entry_panels(scene, mats, o):
                 paths = [[point(o, lo + inset, d, bottom + inset), point(o, hi - inset, d, bottom + inset),
                           point(o, hi - inset, d, top - inset), point(o, lo + inset, d, top - inset),
                           point(o, lo + inset, d, bottom + inset)]]
+                # Each molding has a real backing into the149mm leaf face;
+                # the round bead must not float in front of the panel.
+                a, b, c, e = lo + inset, hi - inset, bottom + inset, top - inset
+                half_strip = strip / 2
+                for side, bounds in enumerate(((a - half_strip, b + half_strip, c - half_strip, c + half_strip),
+                                                (a - half_strip, b + half_strip, e - half_strip, e + half_strip),
+                                                (a - half_strip, a + half_strip, c, e),
+                                                (b - half_strip, b + half_strip, c, e))):
+                    block(scene, f"exterior_entry_leaf_{i}_panel_backing_{j}_{k}_{side}", o,
+                          *bounds, d, -.153, wood, .002)
                 S.curves(scene, f"exterior_entry_leaf_{i}_raised_panel_{j}_{k}", paths, strip / 2, wood, resolution=2)
-            block(scene, f"exterior_entry_leaf_{i}_panel_{j}", o, lo + .07, hi - .07, bottom + .07, top -.07, -.145, -.153, wood, .004)
+            block(scene, f"exterior_entry_leaf_{i}_panel_{j}", o, lo + .07, hi - .07, bottom + .07, top -.07, -.118, -.153, wood, .004)
         xx = x0 + half + (-.025 if i == 0 else .025)
         block(scene, f"exterior_entry_handle_plate_{i}", o, xx -.018, xx + .018, .95, 1.14, -.127, -.145, _mat(mats, "iron"), .003)
         S.curves(scene, f"exterior_entry_handle_{i}", [[point(o, xx, -.10, .99), point(o, xx, -.085, 1.09)]], .008, _mat(mats, "iron"))
@@ -449,10 +459,10 @@ def front_frieze(scene, mats, o):
                     (hi2, t - c), (hi2 - c, t - c), (hi2 - c, t), (lo2 + c, t),
                     (lo2 + c, t - c), (lo2, t - c), (lo2, b + c), (lo2 + c, b + c), (lo2 + c, b)]
             S.curves(scene, f"exterior_front_frieze_panel_{i}_{layer}",
-                     [[point(o, x, -.101 + layer * .003, z) for x, z in poly]], .004 if not layer else .0025, mat)
+                     [[point(o, x, -.1325 if layer else -.131, z) for x, z in poly]], .004 if not layer else .0025, mat)
     for k, radius in enumerate((.079, .061)):
         S.curves(scene, f"exterior_front_frieze_medallion_{k}",
-                 [[point(o, w / 2 + radius * math.cos(a * math.tau / 64), -.101,
+                 [[point(o, w / 2 + radius * math.cos(a * math.tau / 64), -.130,
                          3.275 + radius * math.sin(a * math.tau / 64)) for a in range(65)]], .005, mat)
 
 
