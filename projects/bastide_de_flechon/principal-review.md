@@ -78,6 +78,24 @@ inspected: [ground plan](principal-review-evidence/11_plan_L0.png),
 [long section](principal-review-evidence/13_section_long.png) and
 [cross section](principal-review-evidence/14_section_cross.png).
 
+## Integration with the merged kitchen pass
+
+Main advanced to kitchen commit `594c83f` during this review. Merge source
+`f941d05` preserves both D-042 and D-043 and leaves the seven principal/shared
+implementation and camera files, plus the walk/principal lighting presets,
+unchanged. Its native generation `d7e4aef7bbc14ff290e3bb22a0843ab8` passes
+**368 checks and 208 native tests**. All 19 native CAD comparisons against the
+rendered source are zero, including the principal entities and upper kitchen
+wall regions; both standing spaces remain clear. The
+[integration geometry record](principal-integration-geometry.json) retains these
+proofs. The paired images retain their original5951576 provenance; they are not
+fresh renders of the combined scene and do not claim identical global lighting.
+
+The combined dressed audit reports **0 findings**, all **5 actual Blender tests
+pass** (213 tests total with the native suite), and Ruff/pyright pass. The
+[review status](principal-review-status.json) records the separate integration
+results and log hashes.
+
 ## Remaining photo differences
 
 - The pale upper gable and exposed rubble band above the tobacco finish remain

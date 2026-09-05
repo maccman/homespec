@@ -110,7 +110,8 @@ def load_pair(study: Path, camera_id: str, kind: str) -> dict:
             "camera_script_sha256": manifest["camera_script_sha256"],
             "camera_lock_sha256": manifest["camera_lock_sha256"],
             "quality": manifest["quality"], "camera": {key: row.get(key) for key in POSE_FIELDS},
-            "lighting_study": row.get("lighting_study"),
+            "lighting_study_sha256": hashlib.sha256(json.dumps(row.get("lighting_study"), sort_keys=True).encode()).hexdigest(),
+            "lighting_study_note": "Full light state is retained in the hashed camera-review manifest.",
         })
     if images[0].size != images[1].size:
         raise ValueError(f"Paired images must already have identical dimensions: {camera_id}/{kind}")

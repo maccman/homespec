@@ -92,6 +92,30 @@
       "sha256": "cafff05e0c09365d9f31dbcb7c53d7af30b771314209dfb981faa69cb7cb9012"
     },
     {
+      "file": "principal-review-evidence/integration-audit.txt",
+      "sha256": "7323389cdd73759cc00b3be1fff4e8b8bdee6b63604e10734e69f1cafcd66513"
+    },
+    {
+      "file": "principal-review-evidence/integration-blender-tests.log",
+      "sha256": "86a3d50c628ca3fcc7e092e9e4bd698ca3119a7397d5b4b8792db32c02a12cd5"
+    },
+    {
+      "file": "principal-review-evidence/integration-build.log",
+      "sha256": "0103ec01a34baae27bb4a9ef258cba4629545d9b7eddbea45c4fb57d1ae18f0d"
+    },
+    {
+      "file": "principal-review-evidence/integration-native-tests.log",
+      "sha256": "2f3196b98346467da1838b9f42acfd0fe43c6a3ec162fbb78363c4a5ec646436"
+    },
+    {
+      "file": "principal-review-evidence/integration-pyright.log",
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+    },
+    {
+      "file": "principal-review-evidence/integration-ruff.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
       "file": "principal-review-evidence/material-study-manifest.json",
       "sha256": "ed9c60f4e295c6a66eea5b06d74972f274543f882a357a57ccaaaab7a0c48d25"
     },
@@ -135,5 +159,28 @@
       "file": "principal-review-evidence/saved-scene.json",
       "sha256": "4f6153a69fd553dc270861a0cced121e408a4937dc1894f0cbea85f35e0f0b4c"
     }
-  ]
+  ],
+  "post_merge_integration": {
+    "source_commit": "f941d054f0206967f3af91d6f7ee0cc02c8f8b35",
+    "integrated_main_commit": "594c83fc2f9fd810d79799b44d3e403eb7ee5c33",
+    "native_generation": "d7e4aef7bbc14ff290e3bb22a0843ab8",
+    "native_checks_passed": 368,
+    "native_checks_failed": 0,
+    "native_tests_passed": 208,
+    "geometry_comparison_file": "principal-integration-geometry.json",
+    "cad_zero_difference_regions": 19,
+    "unchanged_implementation_camera_files": 7,
+    "unchanged_named_presets": [
+      "walk",
+      "principal06",
+      "principal33"
+    ],
+    "render_provenance_note": "Paired images remain frozen5951576 vs33b7db5. This validates mergedsource geometry and does not relabel old images as fresh combined renders or claim identical global illumination.",
+    "combined_blender_validation": "completed",
+    "actual_blender_tests_passed": 5,
+    "combined_dressed_audit_findings": 0,
+    "ruff": "passed",
+    "pyright": "0 errors, 0 warnings",
+    "geometry_report_sha256": "27f16c930e807b617ffed05b73a885857c7f4c66d63c4ece2e8aeb6c6dd2c4d0"
+  }
 }
