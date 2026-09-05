@@ -189,6 +189,7 @@ def verify_tour(require, source, lock):
     candidates = [Path(override)] if override else sorted(DEST.glob("*/tour-manifest.json"))
     require(len(candidates) == 1, "Exactly one delivery tour manifest (or FLECHON_TOUR_MANIFEST selects it)")
     path = candidates[0]
+    ReviewManifest.read(path.parent / "review.json").verify(path.parent, require_complete=True)
     tour = json.loads(path.read_text())
     identity = tour["identity"]
     require(tour.get("status") == "verified", "Tour render and encoding completed")
@@ -326,6 +327,7 @@ def main():
     require(digest(DEST / "baseline" / "house_walk.blend") == baseline["walk_sha256"], "Preserved baseline remains identical")
     light_controls = verify_light_controls(require, source, lock, tuned)
     study = json.loads((DEST / "material-studies" / "material-study-manifest.json").read_text())
+    ReviewManifest.read(DEST / "material-studies" / "review.json").verify(DEST / "material-studies", require_complete=True)
     require(study["scene_sha256"] == source["source_scene_sha256"], "Material studies from current scene")
     require(study["script_sha256"] == digest(HERE / "material_studies.py"), "Material studies use current assigned-material renderer")
     require(len(study["samples"]) == COVERAGE["material_sample_count"] and len(study["sample_sources"]) == COVERAGE["material_sample_count"]

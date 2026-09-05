@@ -32,9 +32,11 @@ sys.path.insert(0, str(HERE.parents[1] / "homespec" / "blender"))
 import frames  # noqa: E402
 import session  # noqa: E402
 from devices import configure_cycles  # noqa: E402
-from review_studies import preflight_route  # noqa: E402
+from photo_review import loaded_scene_source  # noqa: E402
+from review import Coverage, FileIdentity, fingerprint, open_review, png_size  # noqa: E402
+from review_studies import camera_settings, effective_settings, preflight_route, study_state  # noqa: E402
 
-TAKES = ("kitchen10", "principal06", "salon58")
+TAKES = tuple(json.loads((HERE / "delivery_coverage.json").read_text())["tour_takes"])
 
 
 def digest(path):
@@ -126,7 +128,7 @@ def run(command):
     return result.stdout
 
 
-def main():
+def render_tour():
     args = sys.argv[sys.argv.index("--") + 1:]
     output = Path(args[0]).resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -139,6 +141,8 @@ def main():
         raise RuntimeError("Load an actual saved blend before running the tour")
     lock_path = HERE / "photo_camera_lock.json"
     lock = json.loads(lock_path.read_text())
+    source = loaded_scene_source(tuple(FileIdentity.capture(path, "tour-input") for path in
+        (Path(__file__), lock_path, HERE / "delivery_coverage.json", HERE / "rooms" / "fidelity_lighting.py", HERE / "rooms" / "lighting_presets.py")))
     anchors = {row["id"]: row for row in lock["views"]}
     fps = int(os.environ.get("FLECHON_TOUR_FPS", "24"))
     seconds = float(os.environ.get("FLECHON_TOUR_SECONDS", "9"))
@@ -158,7 +162,7 @@ def main():
     session.scn = scn
     if camera is None:
         raise RuntimeError("Saved scene has no camera")
-    for item in (camera, camera.data, scn):
+    for item in (camera, camera.data):
         item.animation_data_clear()
     camera.data.type = "PERSP"
     camera.data.sensor_fit = "HORIZONTAL"
@@ -169,6 +173,8 @@ def main():
     scn.cycles.samples, scn.cycles.adaptive_threshold = samples, adaptive
     scn.cycles.use_denoising = True
     scn.cycles.seed = 173
+    scn.cycles.use_animated_seed = False
+    scn.render.pixel_aspect_x = scn.render.pixel_aspect_y = 1
     scn.render.resolution_x, scn.render.resolution_y = width, height
     scn.render.resolution_percentage = 100
     scn.render.fps = fps
@@ -182,13 +188,31 @@ def main():
     spec.loader.exec_module(lighting)
     state = lighting.apply_preset(scn, "walk", supplemental_windows=None)
     records, trajectories = preflight(scn, camera, anchors, count, travel)
+    ffmpeg = os.environ.get("FLECHON_TOUR_FFMPEG", shutil.which("ffmpeg") or "/opt/homebrew/bin/ffmpeg")
+    ffprobe = os.environ.get("FLECHON_TOUR_FFPROBE", shutil.which("ffprobe") or "/opt/homebrew/bin/ffprobe")
+    keep_frames = os.environ.get("FLECHON_TOUR_KEEP_FRAMES") == "1"
+    applied = effective_settings(scn)
     identity = {"saved_scene": str(saved_scene), "saved_scene_sha256": digest(saved_scene),
                 "camera_lock_sha256": digest(lock_path), "tour_script_sha256": digest(__file__),
                 "lighting_script_sha256": digest(HERE / "rooms" / "fidelity_lighting.py"),
                 "lighting_presets_sha256": digest(HERE / "rooms" / "lighting_presets.py"),
                 "fps": fps, "frames": len(records), "pixels": [width, height], "samples": samples,
                 "adaptive": adaptive, "travel_m": travel, "device": device_name,
-                "actual_route": json.loads(json.dumps(records)), "effective_lighting": state}
+                "actual_route": json.loads(json.dumps(records)), "effective_lighting": state,
+                "source_sha256": source.sha256, "effective_settings": applied, "frames_retained": keep_frames,
+                "encoder": {"ffmpeg": run([ffmpeg, "-version"]), "ffprobe": run([ffprobe, "-version"])}}
+    settings = {"samples": scn.cycles.samples, "seed": scn.cycles.seed,
+                "adaptive_threshold": scn.cycles.adaptive_threshold, "identity": identity}
+    required = ("tour-video", "tour-evidence", *("contact:" + name for name in TAKES))
+    if keep_frames:
+        required += tuple(f"frame:{row['frame']:05d}" for row in records)
+    review_path = output / "review.json"
+    review = open_review(review_path, source, Coverage(required,
+        "Declared rendered takes, decoded video, contact sheets and complete per-frame camera/hash evidence; raw PNG retention is explicit."), settings)
+    if review.status == "complete":
+        print("CYCLES MOTION REVIEW VERIFIED", output / "bastide-cycles-motion-review.mp4", flush=True)
+        return
+    review.write(review_path)
     manifest_path = output / "tour-manifest.json"
     cached = {}
     if manifest_path.exists():
@@ -206,7 +230,13 @@ def main():
         checked(frames.check_camera)
         path = frame_directory / f"frame_{record['frame']:05d}.png"
         previous = cached.get(record["frame"], {})
-        if path.is_file() and previous.get("sha256") == digest(path):
+        actual_camera, actual_settings = camera_settings(scn), effective_settings(scn)
+        if previous:
+            if (not path.is_file() or previous.get("sha256") != digest(path)
+                    or previous.get("camera_sha256") != fingerprint(actual_camera)
+                    or previous.get("effective_settings_sha256") != fingerprint(actual_settings)
+                    or previous.get("source_sha256") != source.sha256):
+                raise RuntimeError(f"Incompatible or damaged resumed tour frame: {record['frame']}")
             record["seconds"] = previous.get("seconds")
             record["resumed"] = True
         else:
@@ -216,11 +246,11 @@ def main():
             record["seconds"] = round(time.monotonic() - started, 3)
         record["frame_check"] = checked(frames.check_frame, str(path))
         record["render"], record["sha256"] = str(path), digest(path)
+        record.update({"pixels": list(png_size(path)), "camera": actual_camera, "camera_sha256": fingerprint(actual_camera),
+                       "effective_settings": actual_settings, "effective_settings_sha256": fingerprint(actual_settings), "source_sha256": source.sha256})
         manifest["frames"].append(record)
         save_json(manifest_path, manifest)
         print("TOUR FRAME VERIFIED", record["frame"], record["take"], flush=True)
-    ffmpeg = os.environ.get("FLECHON_TOUR_FFMPEG", shutil.which("ffmpeg") or "/opt/homebrew/bin/ffmpeg")
-    ffprobe = os.environ.get("FLECHON_TOUR_FFPROBE", shutil.which("ffprobe") or "/opt/homebrew/bin/ffprobe")
     video = output / "bastide-cycles-motion-review.mp4"
     run([ffmpeg, "-y", "-v", "error", "-framerate", str(fps), "-i", str(frame_directory / "frame_%05d.png"),
          "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(video)])
@@ -230,20 +260,33 @@ def main():
     run([ffmpeg, "-v", "error", "-i", str(video), "-f", "null", "-"])
     strips = []
     for index, identifier in enumerate(TAKES):
-        strip = output / f"{identifier}-motion-contact.jpg"
+        strip = output / f"{identifier}-motion-contact.png"
         selected = [1 + index * count, 1 + index * count + count // 2, (index + 1) * count]
         command = [ffmpeg, "-y", "-v", "error"]
         for frame in selected:
             command.extend(["-i", str(frame_directory / f"frame_{frame:05d}.png")])
-        command.extend(["-filter_complex", "[0:v][1:v][2:v]hstack=inputs=3[v]", "-map", "[v]", "-frames:v", "1", "-q:v", "2", str(strip)])
+        command.extend(["-filter_complex", "[0:v][1:v][2:v]hstack=inputs=3[v]", "-map", "[v]", "-frames:v", "1", str(strip)])
         run(command)
         checked(frames.check_frame, str(strip))
         strips.append({"take": identifier, "frames": selected, "path": str(strip), "sha256": digest(strip)})
     if digest(saved_scene) != identity["saved_scene_sha256"]:
         raise RuntimeError("Saved scene changed during rendering; provenance must be reviewed")
     manifest.update({"status": "verified", "video": str(video), "video_sha256": digest(video), "video_probe": metadata,
-                     "full_decode": "passed", "contact_strips": strips, "frames_retained": os.environ.get("FLECHON_TOUR_KEEP_FRAMES") == "1"})
+                     "full_decode": "passed", "contact_strips": strips, "frames_retained": keep_frames})
     save_json(manifest_path, manifest)
+    route_camera = {"route": identity["actual_route"], "sensor_fit": "HORIZONTAL", "sensor_dimension_mm": 36, "pixels": [width, height], "fps": fps}
+    review.capture("tour-video", video, output, camera=route_camera, effective_settings=applied, kind="video",
+                   pixels=(int(metadata["width"]), int(metadata["height"])), details={"probe": metadata, "full_decode": "passed", "encoder": identity["encoder"]})
+    review.capture("tour-evidence", manifest_path, output, camera=route_camera, effective_settings=applied, kind="report",
+                   details={"frame_count": len(records), "raw_frames_retained": keep_frames, "sampled_route_limitations": trajectories})
+    for strip in strips:
+        review.capture("contact:" + strip["take"], Path(strip["path"]), output, camera=route_camera,
+                       effective_settings=applied, details={"frames": strip["frames"], "take": strip["take"]})
+    if keep_frames:
+        for row in records:
+            review.capture(f"frame:{row['frame']:05d}", Path(row["render"]), output, camera=row["camera"],
+                           effective_settings=row["effective_settings"], details={"frame": row["frame"], "take": row["take"]})
+    source.verify()
     if not manifest["frames_retained"]:
         # Delete only our individually verified PNGs after video AND strips
         # passed; keep every frame's source camera and hash in the manifest.
@@ -253,7 +296,14 @@ def main():
                 path.unlink()
         if not any(frame_directory.iterdir()):
             frame_directory.rmdir()
+    review.complete(output)
+    review.write(review_path)
     print("CYCLES MOTION REVIEW VERIFIED", video, flush=True)
+
+
+def main():
+    with study_state(bpy.context.scene):
+        render_tour()
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ The request is produced by ``homespec photo-review``. No source scene is saved.
 from __future__ import annotations
 
 import json
+import shutil
 import sys
 from dataclasses import asdict
 from pathlib import Path
@@ -23,7 +24,7 @@ from review_studies import checked, effective_settings, material_control, study_
 
 sys.path.insert(0, str(HERE.parent))
 from photo import PhotoView  # noqa: E402
-from review import Coverage, FileIdentity, ReviewArtifact, ReviewManifest, ReviewSource, digest, fingerprint, png_size  # noqa: E402
+from review import Coverage, FileIdentity, ReviewArtifact, ReviewSource, digest, fingerprint, open_review, png_size  # noqa: E402
 
 
 def loaded_scene_source(dependencies=()):
@@ -108,15 +109,24 @@ def render_review(request, output, *, lighting=None, diagnostic=None):
     if settings["samples"] <= 0 or settings.get("scale", 1) <= 0:
         raise ValueError("Render samples and scale must be positive")
     path = output / "review.json"
-    manifest = ReviewManifest(source, Coverage(**request["coverage"]), settings)
-    if path.exists():
-        prior = ReviewManifest.read(path)
-        if prior.source != source or prior.settings != settings or prior.coverage != manifest.coverage:
-            raise ValueError("Incompatible existing review source, settings or coverage")
-        manifest = prior
+    manifest = open_review(path, source, Coverage(**request["coverage"]), settings)
     scene = bpy.context.scene
     session.scn = scene
     for view in views:
+        reference_id = view.id + ":reference"
+        if reference_id in manifest.coverage.required:
+            if view.reference is None:
+                raise ValueError(f"Declared comparison lacks its original reference: {view.id}")
+            reference = next((item for item in source.dependencies if item.role == "reference-original" and item.sha256 == view.reference.sha256), None)
+            if reference is None:
+                raise ValueError(f"Undeclared original reference dependency: {view.id}")
+            if not manifest.resume(reference_id, view.sha256, output):
+                destination = output / f"{view.id}-original{Path(reference.path).suffix.lower()}"
+                shutil.copy2(reference.path, destination)
+                manifest.add(ReviewArtifact(reference_id, destination.name, digest(destination), source.sha256, view.sha256,
+                    manifest.settings_sha256, view.reference.size, "reference",
+                    {"reference": asdict(view.reference), "comparison": {"view_id": view.id, "role": "original", "reference_sha256": view.reference.sha256}}), output)
+                manifest.write(path)
         for variant in variants:
             identifier = view.id + ":" + variant
             camera_hash = view.sha256
@@ -149,6 +159,8 @@ def render_review(request, output, *, lighting=None, diagnostic=None):
                 details = {"camera": asdict(view), "reprojection": view.residuals(), "projection_comparison": projection,
                            "variant": variant, "effective_settings": effective, "effective_settings_sha256": fingerprint(effective),
                            "lighting_study": lighting_record, "hidden_objects": hidden, "checks": checks, "frame_check": frame_check}
+                if view.reference:
+                    details["comparison"] = {"view_id": view.id, "role": variant, "reference_sha256": view.reference.sha256}
                 artifact = ReviewArtifact(identifier, name, digest(output / name), source.sha256, camera_hash, manifest.settings_sha256,
                                           png_size(output / name), details=details)
                 manifest.add(artifact, output)

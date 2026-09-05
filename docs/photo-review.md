@@ -58,7 +58,11 @@ homespec review-package review/color/review.json deliveries/review-v1
 `house.blend` hash. Older presentations without a scene hash need a fresh
 `homespec render`. Failed-check builds require `--allow-failed-checks`; this does
 not bypass freshness or artifact verification. The optional `--reference-root`
-checks and includes original photos as dependencies. Unpacked image files used
+checks and includes original photos as dependencies and required reference artifacts.
+The offline gallery groups each original with its camera's variants, preserving
+the full image with no cropping. The shared runner uses `PhotoView.reference`
+identity and comparison metadata; project captions and editorial selection stay
+with the project. Unpacked image files used
 by Blender must exist and be covered by the declared asset dependencies.
 
 Coverage comes from the complete camera declaration crossed with the requested
@@ -68,13 +72,17 @@ project may construct `Coverage(required=(...), purpose=...)` for other evidence
 including galleries, motion frames, reports and verified packed model artifacts.
 No view, bookmark, room or take counts are built into the library.
 
-A `ReviewManifest` records exact build generation, build and presentation
+The shared rendering producers record exact build generation, build and presentation
 fingerprints, saved scene hash, scripts/assets, frozen camera hash, requested
 settings, effective lighting and color management, output hash and measured PNG
 dimensions. Each artifact binds to that source and settings. Resume rejects a
 changed camera/route, source, settings, damaged file or mixed generation.
 Completion checks every required artifact and dependency. The source is checked
-again after rendering and before package publication. Build consistency and
+again after rendering and before package publication. Low-level custom manifest
+producers must supply their own camera and effective-setting evidence;
+`ReviewManifest.capture` records those payloads, hashes the output and measures
+PNG dimensions. It does not independently probe or decode videos: the producer
+must do that and attach its results. Build consistency and
 hash verification establish traceability; photographs still need visual review.
 
 Color, clay and neutral variants use the same camera, exposure, Cycles samples,
@@ -95,13 +103,15 @@ shader-network mutation. Source scenes are never saved by the review runner.
 Bastide's camera-review adapter uses this runner and retains its legacy manifest
 for existing project consumers. `verify_views.py` declares every navigation
 bookmark to the same runner and emits a coverage-verified gallery alongside its
-legacy index. Its material studio uses the restoration context
-and common render-device policy; its local swatch selection stays project data.
+legacy index. Its material studio uses the restoration context, common device
+policy and shared source/coverage manifest. It records actual studio lights,
+camera, render settings, declared sample assignments and a hashed studio report;
+its swatch geometry and selection stay project data.
 `package_model.py` uses shared verified source capture and a declared model
 subpackage coverage manifest, including independent packed-resource reload
 evidence. Publication retains a previous delivery directory instead of mixing
 its files into a new generation. `verify_delivery.py` consumes shared manifest
-validation for model and photograph packages, while retaining project-specific
+validation for model, photograph, material studio and tour packages, while retaining project-specific
 photographic-lighting, navigation and video-decode assertions.
 
 `preflight_route` checks the actual supplied camera poses, subdivides connecting
@@ -110,7 +120,13 @@ Curved animation must supply evaluated poses. The test can miss obstacles
 between rays and is **not a swept-volume collision guarantee** or walkability
 certification. Inside-solid camera checks remain separate. Bastide's tour now
 uses the shared preflight, preserves its project route choices, and includes the
-actual route and effective lighting in its resume identity.
+actual route and effective lighting in its shared resume identity. Every frame
+records its actual camera, effective settings, measured PNG dimensions and hash.
+The complete tour manifest covers the decoded video, PNG contact sheets and
+full frame-evidence report. If `FLECHON_TOUR_KEEP_FRAMES=1`, every raw PNG is
+also required coverage; otherwise their recorded hashes survive in the report
+and the files are removed after verification. Raw-frame omission is explicit,
+not missing declared coverage. Routes and movie encoding remain project code.
 
 The package command creates a new directory atomically with a local HTML gallery,
 artifacts, content-addressed source/dependency copies, portable manifest and the

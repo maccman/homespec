@@ -241,6 +241,22 @@ class ReviewManifest:
         self.artifacts.append(artifact)
         self.status = "partial"
 
+    def capture(self, identifier: str, path: Path, root: Path, *, camera: dict[str, Any],
+                effective_settings: dict[str, Any], kind: Literal["render", "reference", "video", "model", "report"] = "render",
+                pixels: tuple[int, int] | None = None, details: dict[str, Any] | None = None) -> ReviewArtifact:
+        """Capture a producer's actual camera/settings and hash its completed output.
+
+        Render dimensions are measured from PNG bytes. Video producers must probe
+        and decode their output before supplying dimensions and verification details.
+        """
+        recorded = {**(details or {}), "camera": camera, "effective_settings": effective_settings,
+                    "effective_settings_sha256": fingerprint(effective_settings)}
+        artifact = ReviewArtifact(identifier, path.resolve().relative_to(root.resolve()).as_posix(), digest(path),
+                                  self.source.sha256, fingerprint(camera), self.settings_sha256,
+                                  png_size(path) if kind == "render" else pixels, kind, recorded)
+        self.add(artifact, root)
+        return artifact
+
     def resume(self, identifier: str, camera_sha256: str, root: Path) -> ReviewArtifact | None:
         """Reject stale frames; do not reuse an image solely because it exists."""
         for artifact in self.artifacts:
@@ -307,6 +323,18 @@ def publish_review_directory(staged: Path, destination: Path) -> Path | None:
     return previous
 
 
+def open_review(path: Path, source: ReviewSource, coverage: Coverage, settings: dict[str, Any]) -> ReviewManifest:
+    """Start or resume only the same source, declared coverage and applied controls."""
+    source.verify()
+    if path.exists():
+        prior = ReviewManifest.read(path)
+        if prior.source != source or prior.settings != settings or prior.coverage != coverage:
+            raise ValueError("Incompatible existing review source, settings or coverage")
+        prior.verify(path.parent)
+        return prior
+    return ReviewManifest(source, coverage, settings)
+
+
 def package_review(manifest_path: Path, destination: Path) -> Path:
     """Publish a new portable evidence directory; originals and sources are untouched.
 
@@ -347,14 +375,24 @@ def package_review(manifest_path: Path, destination: Path) -> Path:
         portable.write(staged / "review.json")
         atomic_json(staged / "source-capture.json", {"original_source": asdict(manifest.source), "original_source_sha256": manifest.source.sha256})
         cards = []
+        comparisons: dict[str, list[tuple[str, str]]] = {}
         for artifact in artifacts:
             name = html.escape(artifact.id)
             path = html.escape(artifact.path, quote=True)
             media = f'<img src="{path}" alt="{name}" loading="lazy">' if artifact.kind in {"render", "reference"} else f'<a href="{path}">Open artifact</a>'
-            cards.append(f"<figure>{media}<figcaption>{name}</figcaption></figure>")
+            card = f"<figure>{media}<figcaption>{name}</figcaption></figure>"
+            comparison = artifact.details.get("comparison")
+            if isinstance(comparison, dict) and isinstance(comparison.get("view_id"), str):
+                comparisons.setdefault(comparison["view_id"], []).append((str(comparison.get("role", "")), card))
+            else:
+                cards.append(card)
         page = '<!doctype html><meta charset="utf-8"><title>HomeSpec review</title><style>body{font:16px system-ui;background:#eee;margin:2rem}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}figure{margin:0;background:white;padding:1rem}img{width:100%;height:auto;object-fit:contain}figcaption{margin-top:.5rem}</style>'
         page += f"<h1>{html.escape(manifest.coverage.purpose)}</h1><p>Generation {html.escape(manifest.source.generation)} · declared coverage complete</p>"
-        page += "".join(f"<p>{html.escape(v)}</p>" for v in manifest.limitations) + "<main>" + "".join(cards) + "</main>"
+        page += "".join(f"<p>{html.escape(v)}</p>" for v in manifest.limitations)
+        for view_id, group in comparisons.items():
+            group.sort(key=lambda item: (item[0] != "original", item[0]))
+            page += f'<section class="comparison"><h2>{html.escape(view_id)}</h2><main>' + "".join(card for _, card in group) + "</main></section>"
+        page += "<main>" + "".join(cards) + "</main>"
         (staged / "index.html").write_text(page)
         portable.verify(staged, require_complete=True)
         manifest.verify(root, require_complete=True)  # recheck sources before publication

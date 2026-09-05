@@ -176,7 +176,10 @@ def photo_review(project: str, cameras: str, destination: str, out: str | None =
             dependencies.append(FileIdentity.capture(candidate, "presentation-asset"))
     dependencies = list({v.path: v for v in dependencies}.values())
     source = verified_source(generation, project_path, dependencies=tuple(dependencies))
-    coverage = Coverage(tuple(v.id + ":" + mode for v in photo_views.views for mode in modes), photo_views.method)
+    required = tuple(v.id + ":" + mode for v in photo_views.views for mode in modes)
+    if reference_root:
+        required += tuple(v.id + ":reference" for v in photo_views.views if v.reference)
+    coverage = Coverage(required, photo_views.method)
     request = {"source": asdict(source), "coverage": asdict(coverage), "views": [asdict(v) for v in photo_views.views if v.id in selected],
                "settings": {"variants": modes, "samples": samples, "scale": scale, "seed": 0, "device": device, "adaptive_threshold": .05}}
     directory, _ = buildstate.presentation_directory(generation, project_path)

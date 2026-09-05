@@ -63,6 +63,20 @@ def effective_settings(scene):
                               ("use_white_balance", "white_balance_temperature", "white_balance_tint") if hasattr(scene.view_settings, key)}}
 
 
+def camera_settings(scene):
+    """Capture the actual perspective or orthographic camera and raster controls."""
+    camera = scene.camera
+    if camera is None:
+        raise ValueError("Review requires an active camera")
+    bpy.context.view_layer.update()
+    return {"matrix_world": [list(row) for row in camera.matrix_world],
+            "data": {key: getattr(camera.data, key) for key in
+                     ("type", "lens", "sensor_fit", "sensor_width", "sensor_height", "ortho_scale", "shift_x", "shift_y", "clip_start", "clip_end")},
+            "depth_of_field": camera.data.dof.use_dof,
+            "raster": [scene.render.resolution_x, scene.render.resolution_y, scene.render.resolution_percentage],
+            "pixel_aspect": [scene.render.pixel_aspect_x, scene.render.pixel_aspect_y]}
+
+
 @contextmanager
 def study_state(scene):
     """Restore study hiding, overrides, camera, lights and settings even on failure.
@@ -86,7 +100,7 @@ def study_state(scene):
     if world:
         scene.world = world.copy()
     overrides = [(layer, layer.material_override) for layer in scene.view_layers]
-    groups = [(scene.render, ("engine", "resolution_x", "resolution_y", "resolution_percentage", "filepath", "pixel_aspect_x", "pixel_aspect_y")),
+    groups = [(scene.render, ("engine", "resolution_x", "resolution_y", "resolution_percentage", "filepath", "pixel_aspect_x", "pixel_aspect_y", "fps", "fps_base", "use_persistent_data")),
               (scene.render.image_settings, ("file_format", "color_mode", "color_depth")),
               (scene.cycles, ("samples", "seed", "use_animated_seed", "adaptive_threshold", "use_denoising", "device")),
               (scene.view_settings, ("exposure", "gamma", "view_transform", "look", "use_white_balance", "white_balance_temperature", "white_balance_tint"))]

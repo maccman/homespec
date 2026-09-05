@@ -174,3 +174,64 @@ def test_recorded_effective_controls_must_match_request(tmp_path):
     wrong = replace(rendered, details={"effective_settings": effective, "effective_settings_sha256": fingerprint(effective)})
     with pytest.raises(ValueError, match="Applied render samples"):
         manifest.add(wrong, tmp_path)
+
+
+def test_shared_studio_capture_and_resume_records_effective_evidence(tmp_path):
+    from homespec.review import fingerprint, open_review
+
+    original = fixture(tmp_path)
+    coverage = Coverage(("studio", "report"), "Independent studio evidence")
+    path = tmp_path / "review.json"
+    manifest = open_review(path, original.source, coverage, original.settings)
+    rendered = artifact(tmp_path, original)
+    camera = {"type": "ORTHO", "ortho_scale": 2, "matrix_world": [[1, 0, 0, 0]]}
+    effective = {"samples": 16, "seed": 7, "lights": [{"energy": 950, "size": 4}]}
+    captured = manifest.capture("studio", tmp_path / rendered.path, tmp_path, camera=camera, effective_settings=effective)
+    assert captured.pixels == (64, 48)
+    assert captured.camera_sha256 == fingerprint(camera)
+    assert captured.details["effective_settings"] == effective
+    manifest.write(path)
+    resumed = open_review(path, original.source, coverage, original.settings)
+    assert resumed.status == "partial" and resumed.missing == ["report"]
+    with pytest.raises(ValueError, match="Incompatible"):
+        open_review(path, original.source, coverage, {"samples": 32})
+    report = tmp_path / "studio.json"
+    report.write_text(json.dumps({"sample_ids": ["oak"], "camera": camera}))
+    resumed.capture("report", report, tmp_path, camera=camera, effective_settings=effective, kind="report")
+    resumed.complete(tmp_path)
+    resumed.write(path)
+    report.write_text("changed sample declaration")
+    with pytest.raises(ValueError, match="Changed review"):
+        open_review(path, original.source, coverage, original.settings)
+
+
+def test_portable_reference_pairs_and_declared_tour_evidence(tmp_path):
+    from homespec.review import fingerprint
+
+    original = fixture(tmp_path)
+    manifest = ReviewManifest(original.source, Coverage(("entry:color", "entry:reference", "video", "route"), "Photo pairs and motion evidence"), original.settings)
+    image = artifact(tmp_path, manifest)
+    manifest.add(replace(image, details={"comparison": {"view_id": "Entry <one>", "role": "color"}}), tmp_path)
+    reference_path = tmp_path / "original.png"
+    reference_path.write_bytes((tmp_path / image.path).read_bytes())
+    manifest.add(replace(image, id="entry:reference", path="original.png", kind="reference",
+                         details={"comparison": {"view_id": "Entry <one>", "role": "original"}}), tmp_path)
+    video = tmp_path / "motion.mp4"
+    video.write_bytes(b"stand-in output; producer decode is separately evidenced")
+    route = {"route": [{"frame": 1, "location": [0, 0, 1]}, {"frame": 2, "location": [.1, 0, 1]}]}
+    manifest.capture("video", video, tmp_path, camera=route, effective_settings={}, kind="video", pixels=(64, 48), details={"probe": {"nb_read_frames": 2}})
+    report = tmp_path / "frames.json"
+    report.write_text(json.dumps({"frames": route["route"], "raw_frames_retained": False}))
+    manifest.capture("route", report, tmp_path, camera=route, effective_settings={}, kind="report")
+    assert manifest.resume("video", fingerprint(route), tmp_path) is not None
+    with pytest.raises(ValueError, match="camera/route"):
+        manifest.resume("video", fingerprint({"route": []}), tmp_path)
+    manifest.complete(tmp_path)
+    path = tmp_path / "review.json"
+    manifest.write(path)
+    index = package_review(path, tmp_path / "portable")
+    html = index.read_text()
+    assert '<section class="comparison"><h2>Entry &lt;one&gt;</h2>' in html
+    assert html.index('src="original.png"') < html.index('src="entry-color.png"')
+    assert 'object-fit:contain' in html
+    ReviewManifest.read(index.parent / "review.json").verify(index.parent, require_complete=True)
