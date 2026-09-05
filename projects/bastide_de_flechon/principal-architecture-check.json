@@ -1,0 +1,162 @@
+{
+  "baseline_generation": "out/bastide_de_flechon/generations/4e2310b0bc874594a8950bd82e012e5c",
+  "current_generation": "out/bastide_de_flechon/generations/2499ff23bd534ceca7b46035611042fb",
+  "checked_at_utc": "2026-09-05T21:22:27.408109+00:00",
+  "method": "SHA-256 comparison of every entity OBJ; native STEP Boolean subtraction in both directions for changed non-target geometry, the entire frieze, lower shared doorway/walls and the bathroom timber continuation. Empty native compounds are zero-volume.",
+  "volume_tolerance_mm3": 1e-05,
+  "baseline_ir_sha256": "5205f215283a6d523f2c7aa0b41cb15c7b45a88e86d271f7cbaefd7921f5cb40",
+  "current_ir_sha256": "a523d34c04895318875fae572379cf511a5d97b6aec982604fadd9ae736f883a",
+  "added_entities": [],
+  "removed_entities": [],
+  "unchanged_obj_count": 289,
+  "unapproved_changes": [],
+  "note": "Shared upper opening/surround, west upper window, their host wall cuts, and principal carpentry are authorized changes. Whole D_FRONT.frieze and lower salon glazing/frame/host-wall regions are independently preserved; northern bathroom timber solid is preserved. This checks compiled architecture, not dressed Blender props.",
+  "changed_obj_entities": [
+    {
+      "entity": "MS",
+      "classification": "authorized architectural change"
+    },
+    {
+      "entity": "MW",
+      "classification": "authorized architectural change"
+    },
+    {
+      "entity": "D_FRONT",
+      "classification": "authorized architectural change"
+    },
+    {
+      "entity": "D_FRONT.void",
+      "classification": "authorized architectural change"
+    },
+    {
+      "entity": "D_FRONT.glass",
+      "classification": "authorized architectural change"
+    },
+    {
+      "entity": "D_FRONT.surround",
+      "classification": "authorized architectural change"
+    },
+    {
+      "entity": "N_W2",
+      "classification": "authorized architectural change"
+    },
+    {
+      "entity": "N_W2.glass",
+      "classification": "authorized architectural change"
+    },
+    {
+      "entity": "C0_MAIN.B18",
+      "classification": "tessellation-only; native solids equivalent"
+    },
+    {
+      "entity": "C0_MAIN.B19",
+      "classification": "tessellation-only; native solids equivalent"
+    },
+    {
+      "entity": "MASTER_ROOF_TIMBERS",
+      "classification": "authorized architectural change"
+    },
+    {
+      "entity": "MASTER_TRUSS_BRACES",
+      "classification": "authorized architectural change"
+    }
+  ],
+  "cad_equivalence_checks": [
+    {
+      "entity": "C0_MAIN.B19",
+      "region": "whole",
+      "baseline_step_sha256": "7f1e654b9b2b2b018a049456adc8c8d78b634b786143d0fce12e36fd057a43af",
+      "current_step_sha256": "2e8ab5c7b944af6ab48426348de5d8df92c37e3c563a8f2b5122ecd4f2682a69",
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "C0_MAIN.B20",
+      "region": "whole",
+      "baseline_step_sha256": "d3d34cdc0616a15719a0f4165ba3b654e2999b2551966a463cbded05afdbe9e3",
+      "current_step_sha256": "a139f1807ce15e4c7036995b8cc9ce49817b1a9f2722c837b74d3d0fc7bbf233",
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "C0_MAIN.B21",
+      "region": "whole",
+      "baseline_step_sha256": "bed0ebca4a863498b8e5308dc81719a1ab58346d6df6f50721874594b89931f7",
+      "current_step_sha256": "a9511ae3585cda2bda7d76f8e1d6821ed2b37cf9884f6ac9d0217fbfa1ef98e8",
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "C0_MAIN.B22",
+      "region": "whole",
+      "baseline_step_sha256": "6a84209916e652ed5af6243d24baa0230e8ee210ccf79f5678e26ba8bd2b04cd",
+      "current_step_sha256": "e5c300892013d8650c70712d052349c08d4c6c3f8b5a86e5c70ed6f998be4088",
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "D_FRONT.frieze",
+      "region": "whole",
+      "baseline_step_sha256": "385c41860562baa6027d948ab2a989e2a9ce35187d5d934a0f61dd1018ce9ee9",
+      "current_step_sha256": "7be95bfc75546e8b219a4afff192285b2945c4f944936e6193a9fc272d49c2ed",
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "D_FRONT",
+      "region": "below 2999.9 mm",
+      "baseline_step_sha256": "450f16660009d5fe506f35586e6ad9e536cc1b82cb99a1d1d37bc3cfde4ff212",
+      "current_step_sha256": "d007f9b172969cc6169d31d863ab441d6ce0a0677960afb7d5e5428535f9b932",
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "D_FRONT.glass",
+      "region": "below 2999.9 mm",
+      "baseline_step_sha256": "9ecbb9e374b360aedc05d83ca1317feaa7eeb20a58c9adb7d54567f46d077a13",
+      "current_step_sha256": "f9a824ad41438f12e9df70f9895db5373f97885f8075fe9f12b93cda4f52d842",
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "MS",
+      "region": "below 2999.9 mm",
+      "baseline_step_sha256": "ababb2cedf5b6202c29a3b8b7c829599994449a7b8191c21acbfc9ede646b77d",
+      "current_step_sha256": "116c662380e40183af984f686b0a465b1df0d67a8a0b184192071278b86c2283",
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "MW",
+      "region": "below 2999.9 mm",
+      "baseline_step_sha256": "95b4a436301c4ebbfb3f811547b20799f749b1a6fdcf4ad9e088e1b3903d1ef1",
+      "current_step_sha256": "b2f83cc1f69bc0c50b4397006e1a9a3d94a2c5544cf9ae1e70403ccc9ff51238",
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "MASTER_ROOF_TIMBERS",
+      "region": "north of y=6940 mm; bathroom continuation",
+      "baseline_step_sha256": "4b6d09eb57e6cb89db074f74a1cfcaae5f962e9ff762fb1699c3131171ad4b6a",
+      "current_step_sha256": "5483b5bd0e3c9d8d219290afc7f74334176d56f6f6184c386eb7c861bb621850",
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "C0_MAIN.B18",
+      "region": "whole",
+      "baseline_step_sha256": "723781dde375908836567600729b9728c5155f74ee999474e17df1dadfda3351",
+      "current_step_sha256": "0c4301732d43929e0386842d70536a3285945e65f7cfa653908bc8345443f387",
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    }
+  ],
+  "refresh_comparison": {
+    "previous_generation": "out/bastide_de_flechon/generations/a162d655853341a489b0b1207230236f",
+    "changed_obj_entities_since_previous": [
+      "C0_MAIN.B20",
+      "C0_MAIN.B22"
+    ],
+    "note": "All native CAD proofs rerun from final STEP files. Furniture-only source changes are outside compiled architectural geometry; STEP serialization and OBJ tessellation may vary."
+  }
+}

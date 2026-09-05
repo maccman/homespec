@@ -89,3 +89,9 @@ continuation above y6.94m.
 - The shared daylight policy remains unchanged. Only the principal upper
   aperture light's physical rectangle follows the corrected semicircular
   opening, preserving its approximate power per area.
+
+Final color/clay review retains the pale upper gable and exposed rubble band in06,
+the broad foreground brace and high side member/far-chair back in33, and paler
+floor/cane/seat linen than the originals. The paired images and completed checks
+are in [principal-review.md](principal-review.md). These visible differences are
+recorded without treating a passed audit as photographic acceptance.

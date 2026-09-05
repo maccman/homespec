@@ -1,0 +1,709 @@
+{
+  "purpose": "Actual 3D scene renders using one committed camera lock; bounded fits and unresolved camera/geometry residuals are recorded separately from visual fidelity.",
+  "camera_lock_id": "flechon-exif-photo-cameras-2026-09-05-v5-principal-review",
+  "camera_lock_sha256": "68cf9c6ceb2a9ab37b22c259aa55a0f360e313f780c41a85a9360d3322662aa9",
+  "saved_scene": "/Users/cloud/.codex/worktrees/7f26/homespec/out/bastide_de_flechon/presentation/2499ff23bd534ceca7b46035611042fb/579e51094753a055/house.blend",
+  "saved_scene_sha256": "909696ed2df9b45065a78e4e2dbfa5c82b3e4a4a1e45cf33c5e6d0ca7de8cba2",
+  "camera_script_sha256": "8832bd126cfda1cf219eb59424f5f64d3e2b6ce92ad74a4d53721f998933c6eb",
+  "quality": "draft",
+  "geometry": "Unchanged from saved scene",
+  "materials": "Workbench uniform grey diagnostic",
+  "clay_study": {
+    "engine": "BLENDER_WORKBENCH",
+    "lighting": "Workbench studio, not photographic daylight",
+    "materials": "Uniform grey display; original shader data untouched",
+    "transparent_objects_hidden": [
+      "D_FRONT.glass",
+      "D_E1.glass",
+      "N_E1.glass",
+      "D_E2.glass",
+      "N_E2.glass",
+      "D_W1.glass",
+      "N_W1.glass",
+      "D_W2.glass",
+      "N_W2.glass",
+      "D_PERGOLA.glass",
+      "N_MASTER_N.glass",
+      "D_KITCHEN_GARDEN.glass",
+      "D_KITCHEN_TERRACE.glass",
+      "D_ENTRY.glass",
+      "N_HALL.glass",
+      "N_BED3_S.glass",
+      "N_BATH3_E.glass",
+      "N_GUEST_E0.glass",
+      "N_SUITE4_E0.glass",
+      "N_GUEST_E1.glass",
+      "N_SUITE4_E1.glass",
+      "N_GUEST_W.glass",
+      "N_BATH4_W.glass",
+      "POOL.water",
+      "RILL.water",
+      "FOUNTAIN.water",
+      "principal_shower_frameless_glass",
+      "bedroom3_shower_frameless_glass",
+      "bedroom4_shower_frameless_glass",
+      "garden1_shower_frameless_glass",
+      "garden2_shower_frameless_glass",
+      "kitchen_display_glazing",
+      "kitchen_crystal_glass",
+      "kitchen_crystal_glass.001",
+      "kitchen_crystal_glass.002",
+      "kitchen_crystal_glass.003",
+      "kitchen_crystal_glass.004",
+      "kitchen_crystal_glass.005",
+      "kitchen_crystal_glass.006",
+      "kitchen_crystal_glass.007",
+      "kitchen_crystal_glass.008",
+      "kitchen_crystal_glass.009",
+      "kitchen_crystal_glass.010",
+      "kitchen_crystal_glass.011",
+      "kitchen_crystal_glass.012",
+      "kitchen_crystal_glass.013",
+      "kitchen_crystal_glass.014",
+      "kitchen_glass_jug",
+      "kitchen_display_glazing.001",
+      "kitchen_crystal_glass.015",
+      "kitchen_crystal_glass.016",
+      "kitchen_crystal_glass.017",
+      "kitchen_crystal_glass.018",
+      "kitchen_crystal_glass.019",
+      "kitchen_crystal_glass.020",
+      "kitchen_crystal_glass.021",
+      "kitchen_crystal_glass.022",
+      "kitchen_crystal_glass.023",
+      "kitchen_crystal_glass.024",
+      "kitchen_crystal_glass.025",
+      "kitchen_crystal_glass.026",
+      "kitchen_crystal_glass.027",
+      "kitchen_crystal_glass.028",
+      "kitchen_crystal_glass.029",
+      "kitchen_glass_jug.001",
+      "kitchen_fine_wire_pendant_0_clear_bulb",
+      "kitchen_fine_wire_pendant_1_clear_bulb",
+      "dining_cut_glass",
+      "dining_cut_glass.001",
+      "guest_1_woven_sconce_clear_bulb",
+      "bedroom3_glass_brass_bedside_glass_top",
+      "bedroom3_glass_brass_bedside_glass_top.001",
+      "bedroom4_glass_brass_bedside_glass_top",
+      "bedroom4_glass_brass_bedside_glass_top.001",
+      "hall_photo21_blown_glass_pendant",
+      "hall_clear_filament_bulb",
+      "hall_antique_glass_display_cloche",
+      "principal_shower_niche_shampoo_amber_bottle",
+      "principal_shower_niche_conditioner_amber_bottle",
+      "bedroom3_shower_niche_shampoo_amber_bottle",
+      "bedroom3_shower_niche_conditioner_amber_bottle",
+      "bedroom4_shower_niche_shampoo_amber_bottle",
+      "bedroom4_shower_niche_conditioner_amber_bottle",
+      "garden1_shower_niche_shampoo_amber_bottle",
+      "garden1_shower_niche_conditioner_amber_bottle",
+      "garden2_shower_niche_shampoo_amber_bottle",
+      "principal_bath_counter_handwash_amber_bottle",
+      "principal_bath_counter_handwash_amber_bottle.001",
+      "bedroom3_bath_counter_handwash_amber_bottle",
+      "bedroom4_bath_counter_handwash_amber_bottle",
+      "garden_bath1_counter_handwash_amber_bottle",
+      "garden_bath2_counter_handwash_amber_bottle",
+      "laundry_washer_drum_glass",
+      "salon_photo_prop_lantern_clear_side",
+      "salon_photo_prop_lantern_clear_side.001",
+      "salon_photo_prop_lantern_clear_front",
+      "salon_photo_prop_lantern_clear_front.001",
+      "principal_amber_sconce_shade"
+    ]
+  },
+  "cycles_seed": 0,
+  "views": [
+    {
+      "id": "principal06",
+      "reference": "photo_06.jpg",
+      "room": "Principal suite · arched window",
+      "location": [
+        6.15,
+        4.2,
+        4.600000017934083
+      ],
+      "target": [
+        2.8392189625365676,
+        0.45317081761490563,
+        4.600000017934083
+      ],
+      "lens_mm": 24.657534246575345,
+      "size": [
+        1200,
+        900
+      ],
+      "note": "Camera on the east side of the bed faces southwest. The south arched glazing is left; the rectangular west window and paired cane chairs are right.",
+      "exposure": 0.800000011920929,
+      "shift_x": 0.07417837609041948,
+      "shift_y": 0.04808365505346383,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          5.3,
+          5.3,
+          4.45
+        ],
+        "target": [
+          2.6,
+          1.38,
+          4.45
+        ],
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0,
+        "shift_y": 0.12,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "landmarks": [
+        {
+          "name": "arch east spring",
+          "world_m": [
+            5.68,
+            0.35,
+            3.55
+          ],
+          "photo_uv": [
+            0.096,
+            0.791
+          ],
+          "weight": 1
+        },
+        {
+          "name": "arch west spring",
+          "world_m": [
+            2.32,
+            0.35,
+            3.55
+          ],
+          "photo_uv": [
+            0.427,
+            0.74
+          ],
+          "weight": 1
+        },
+        {
+          "name": "arch crown",
+          "world_m": [
+            4,
+            0.35,
+            5.23
+          ],
+          "photo_uv": [
+            0.289,
+            0.416
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window south head",
+          "world_m": [
+            0.35,
+            1.6749999999999998,
+            5.25
+          ],
+          "photo_uv": [
+            0.75,
+            0.495
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window north head",
+          "world_m": [
+            0.35,
+            3.125,
+            5.25
+          ],
+          "photo_uv": [
+            0.9,
+            0.489
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window south sill",
+          "world_m": [
+            0.35,
+            1.6749999999999998,
+            4.4
+          ],
+          "photo_uv": [
+            0.75,
+            0.599
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window north sill",
+          "world_m": [
+            0.35,
+            3.125,
+            4.4
+          ],
+          "photo_uv": [
+            0.9,
+            0.602
+          ],
+          "weight": 1
+        }
+      ],
+      "fit_status": "pending_actual_image_review",
+      "fit_note": "Practical review camera between tested x5.5 bedside and south-of-truss alternatives: x6.15,y4.20 stays inside the retained east brace and before corrected headboard. Native lens fixed; height/yaw/shifts fit updated architecture, yielding 84.34px RMS at1200x900. This is an identical-camera review position, not a matched or uniquely recovered photograph.",
+      "photo_lines": [
+        {
+          "name": "west window south jamb",
+          "photo_uv": [
+            [
+              0.75,
+              0.495
+            ],
+            [
+              0.75,
+              0.599
+            ]
+          ]
+        },
+        {
+          "name": "west window north jamb",
+          "photo_uv": [
+            [
+              0.9,
+              0.489
+            ],
+            [
+              0.9,
+              0.602
+            ]
+          ]
+        },
+        {
+          "name": "arch radial upright",
+          "photo_uv": [
+            [
+              0.29,
+              0.426
+            ],
+            [
+              0.292,
+              0.628
+            ]
+          ]
+        },
+        {
+          "name": "curtain rod depth",
+          "photo_uv": [
+            [
+              0.075,
+              0.251
+            ],
+            [
+              0.51,
+              0.362
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-16.jpg",
+      "reference_sha256": "b713335e429d0ac7e4831073e4932ba6f3c545788d451b1b99d00d3d6c1c7aa2",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "FUJIFILM",
+        "camera_model": "GFX100S",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.6,
+        "physical_focal_length_mm": 30.0,
+        "reported_35mm_equivalent_mm": 24,
+        "lens_model": "GF30mmF5.6 T/S",
+        "physical_sensor_long_mm": 43.8,
+        "long_axis_equivalent_for_blender_mm": 24.657534246575345,
+        "sensor_source": "https://www.fujifilm-x.com/global/products/cameras/gfx100s/specifications/",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit.",
+      "rejected_trials": [
+        {
+          "location": [
+            7.399999999981731,
+            4.268286170293558,
+            5.3999999999999995
+          ],
+          "target": [
+            3.466670038129365,
+            1.181392033593295,
+            5.3999999999999995
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0.052387280481657375,
+          "shift_y": -0.019681673648426882,
+          "reason": "Lower reprojection error alone does not resolve geometry uncertainty or observed foreground occlusion."
+        },
+        {
+          "location": [
+            7.3999999999999995,
+            3.1499999999999995,
+            4.928941145403446
+          ],
+          "target": [
+            3.142341552828772,
+            0.5284843034550599,
+            4.928941145403446
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0.08935364537352847,
+          "shift_y": 0.031922983959193255,
+          "reason": "Rejected after updated-scene Cycles and Workbench inspection: low architectural-point error removes essentially the entire bed from the frame.",
+          "landmark_rms_preview_px": 41.564378514713866
+        },
+        {
+          "location": [
+            5.7,
+            6.4,
+            4.55
+          ],
+          "target": [
+            2.6,
+            1.38,
+            4.55
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0,
+          "shift_y": 0.077,
+          "reason": "Actual Cycles render shows rear of headboard across lower-right half, obscuring room."
+        }
+      ],
+      "visual_review": {
+        "status": "pending_final_scene_images",
+        "purpose": "Practical identical-camera baseline/current review; not photographic calibration acceptance."
+      },
+      "trial_evidence": "principal-camera-trials.json",
+      "reprojection": {
+        "rms_preview_px": 84.34092010486047,
+        "fit_rms_preview_px": 84.34092010486047,
+        "holdout_rms_preview_px": null,
+        "landmarks": [
+          {
+            "role": "fit",
+            "name": "arch east spring",
+            "photo_uv": [
+              0.096,
+              0.791
+            ],
+            "projected_uv": [
+              -0.044996470934532504,
+              0.8641185981628882
+            ],
+            "error_preview_px": [
+              -169.195765121439,
+              65.80673834659932
+            ],
+            "distance_preview_px": 181.54264993892465
+          },
+          {
+            "role": "fit",
+            "name": "arch west spring",
+            "photo_uv": [
+              0.427,
+              0.74
+            ],
+            "projected_uv": [
+              0.4663493088640262,
+              0.7409946752349023
+            ],
+            "error_preview_px": [
+              47.21917063683145,
+              0.8952077114120383
+            ],
+            "distance_preview_px": 47.227655801201664
+          },
+          {
+            "role": "fit",
+            "name": "arch crown",
+            "photo_uv": [
+              0.289,
+              0.416
+            ],
+            "projected_uv": [
+              0.2766862670093411,
+              0.4305809604787861
+            ],
+            "error_preview_px": [
+              -14.776479588790625,
+              13.122864430907487
+            ],
+            "distance_preview_px": 19.762437094395086
+          },
+          {
+            "role": "fit",
+            "name": "west window south head",
+            "photo_uv": [
+              0.75,
+              0.495
+            ],
+            "projected_uv": [
+              0.7453534018207205,
+              0.46056312900829566
+            ],
+            "error_preview_px": [
+              -5.575917815135378,
+              -30.993183892533903
+            ],
+            "distance_preview_px": 31.490765428575518
+          },
+          {
+            "role": "fit",
+            "name": "west window north head",
+            "photo_uv": [
+              0.9,
+              0.489
+            ],
+            "projected_uv": [
+              0.9616258542400845,
+              0.436346193655954
+            ],
+            "error_preview_px": [
+              73.95102508810139,
+              -47.38842570964138
+            ],
+            "distance_preview_px": 87.83175395504294
+          },
+          {
+            "role": "fit",
+            "name": "west window south sill",
+            "photo_uv": [
+              0.75,
+              0.599
+            ],
+            "projected_uv": [
+              0.7453534018207205,
+              0.5959725933651965
+            ],
+            "error_preview_px": [
+              -5.575917815135378,
+              -2.724665971323148
+            ],
+            "distance_preview_px": 6.206018380284609
+          },
+          {
+            "role": "fit",
+            "name": "west window north sill",
+            "photo_uv": [
+              0.9,
+              0.602
+            ],
+            "projected_uv": [
+              0.9616258542400845,
+              0.6034239589627508
+            ],
+            "error_preview_px": [
+              73.95102508810139,
+              1.2815630664757438
+            ],
+            "distance_preview_px": 73.96212892740687
+          }
+        ]
+      },
+      "projection_implementation_check": [
+        {
+          "name": "arch east spring",
+          "maximum_uv_disagreement": 2.0933785281618267e-07
+        },
+        {
+          "name": "arch west spring",
+          "maximum_uv_disagreement": 1.4386996732840274e-07
+        },
+        {
+          "name": "arch crown",
+          "maximum_uv_disagreement": 1.6566753729962969e-07
+        },
+        {
+          "name": "west window south head",
+          "maximum_uv_disagreement": 1.7770045868115147e-07
+        },
+        {
+          "name": "west window north head",
+          "maximum_uv_disagreement": 1.986163608025393e-07
+        },
+        {
+          "name": "west window south sill",
+          "maximum_uv_disagreement": 1.7770045868115147e-07
+        },
+        {
+          "name": "west window north sill",
+          "maximum_uv_disagreement": 1.986163608025393e-07
+        }
+      ],
+      "lighting_study": {
+        "preset": "saved_scene",
+        "lights": "Unchanged",
+        "exposure": 0.800000011920929
+      },
+      "render": "/Users/cloud/.codex/worktrees/7f26/homespec/out/principal-study/final-review/current-clay/principal06.png",
+      "sha256": "9dfc69ad2cd4af02eb70c2427b5ab601a62b3652ab16dc467a0cf03448a3baac",
+      "sensor_fit": "HORIZONTAL",
+      "pixels": [
+        600,
+        450
+      ],
+      "seconds": 21.5,
+      "camera_check": "",
+      "frame_check": ""
+    },
+    {
+      "id": "principal33",
+      "reference": "photo_33.jpg",
+      "room": "Principal suite · arched window",
+      "location": [
+        2.6,
+        6.2,
+        4.813
+      ],
+      "target": [
+        1.2220487658774353,
+        1.3936239851235008,
+        4.813
+      ],
+      "lens_mm": 50,
+      "size": [
+        900,
+        1200
+      ],
+      "note": "Portrait of the west seating corner: gathered ikat, both raked cane chairs, patinated trumpet table and huge diagonal brace. Photo33's table staging differs from photo06.",
+      "exposure": 0.800000011920929,
+      "shift_x": 0.020496918683894638,
+      "shift_y": -0.0814891075547356,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          4.84375,
+          5.978125,
+          4.87
+        ],
+        "target": [
+          1.25,
+          2.15,
+          4.87
+        ],
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": -0.075,
+        "shift_y": 0.015,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_status": "review_composition_pending_final_images",
+      "fit_note": "Native50mm review camera atx2.6,y6.2 with yaw-1.85; actual clay exposes both chairs more than due-south trial. Conditional table-top framing only, with unresolved brace/window/staging discrepancy. Final plan-backed chair changes require new image inspection. No full-point calibration RMS or photographic match is claimed.",
+      "photo_lines": [
+        {
+          "name": "curtain rod",
+          "photo_uv": [
+            [
+              0.002,
+              0.25
+            ],
+            [
+              0.268,
+              0.25
+            ]
+          ]
+        },
+        {
+          "name": "window jamb",
+          "photo_uv": [
+            [
+              0.952,
+              0.488
+            ],
+            [
+              0.952,
+              0.628
+            ]
+          ]
+        },
+        {
+          "name": "brace centre",
+          "photo_uv": [
+            [
+              0.267,
+              0.117
+            ],
+            [
+              0.954,
+              0.872
+            ]
+          ]
+        },
+        {
+          "name": "horizontal tie underside",
+          "photo_uv": [
+            [
+              0.404,
+              0.344
+            ],
+            [
+              0.997,
+              0.349
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-7.jpg",
+      "reference_sha256": "88390c1a116c2f498e7961c1db4c774767d8e70f33856caed54142f1ecf8d4ee",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "Canon",
+        "camera_model": "Canon EOS 5DS R",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.5,
+        "physical_focal_length_mm": 50.0,
+        "lens_model": "TS-E50mm f/2.8L MACRO",
+        "physical_sensor_long_mm": 36,
+        "long_axis_equivalent_for_blender_mm": 50.0,
+        "sensor_source": "Full-frame 36mm convention; native EXIF focal length retained.",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit.",
+      "trial_evidence": "principal-camera-trials.json",
+      "visual_review": {
+        "status": "pending_final_scene_images",
+        "purpose": "Practical identical-camera baseline/current review; not photographic calibration acceptance."
+      },
+      "reprojection": {
+        "rms_preview_px": null,
+        "fit_rms_preview_px": null,
+        "holdout_rms_preview_px": null,
+        "landmarks": []
+      },
+      "projection_implementation_check": [],
+      "lighting_study": {
+        "preset": "saved_scene",
+        "lights": "Unchanged",
+        "exposure": 0.800000011920929
+      },
+      "render": "/Users/cloud/.codex/worktrees/7f26/homespec/out/principal-study/final-review/current-clay/principal33.png",
+      "sha256": "b3b8f07132edfe8c343087e2304f8b90719da977e64cbbcb9f5a39a01573c66b",
+      "sensor_fit": "VERTICAL",
+      "pixels": [
+        450,
+        600
+      ],
+      "seconds": 20.05,
+      "camera_check": "",
+      "frame_check": ""
+    }
+  ]
+}

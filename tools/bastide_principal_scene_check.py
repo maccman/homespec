@@ -142,7 +142,51 @@ def pigment_paths(mat):
 
 
 
-def surface_pairs(first, second):
+
+def sampled_surface_separation(points, triangles, target_tree, spacing=0.015, numeric_slack=0.00001):
+    """Conservative lower bound for separation of two evaluated surfaces.
+
+    Distance to any fixed closed triangle set is 1-Lipschitz. The barycentric
+    grid with n subdivisions triangulates each source face into triangles
+    with maximum edge L/n. Every point of a small triangle is at distance at
+    most L/n from one of its sampled vertices (the diameter bound). Therefore
+    d(source, target) >= min_sample_distance - max(L/n) - numeric_slack.
+    A positive result proves surface separation, never lack of containment.
+    """
+    queried = 0
+    failed = 0
+    minimum = math.inf
+    maximum_cover = 0.0
+    maximum_subdivisions = 0
+    for triangle in triangles:
+        a, b, c = [points[index] for index in triangle]
+        edge = max((b - a).length, (c - a).length, (c - b).length)
+        subdivisions = max(1, math.ceil(edge / spacing))
+        maximum_subdivisions = max(maximum_subdivisions, subdivisions)
+        maximum_cover = max(maximum_cover, edge / subdivisions)
+        for i in range(subdivisions + 1):
+            for j in range(subdivisions + 1 - i):
+                point = a + (b - a) * (i / subdivisions) + (c - a) * (j / subdivisions)
+                hit = target_tree.find_nearest(point)
+                queried += 1
+                if hit[0] is None or not math.isfinite(hit[3]):
+                    failed += 1
+                else:
+                    minimum = min(minimum, hit[3])
+    valid = queried > 0 and failed == 0 and math.isfinite(minimum)
+    bound = minimum - maximum_cover - numeric_slack if valid else None
+    return {'sample_spacing_limit_m': spacing, 'triangle_count': len(triangles),
+            'sample_query_count': queried, 'failed_queries': failed,
+            'maximum_barycentric_subdivisions': maximum_subdivisions,
+            'minimum_sample_to_target_distance_m': minimum if math.isfinite(minimum) else None,
+            'maximum_surface_cover_radius_m': maximum_cover,
+            'numeric_slack_m': numeric_slack, 'surface_separation_lower_bound_m': bound,
+            'positive_surface_separation_certified': bool(bound is not None and bound > 0),
+            'method': 'Every source triangle sampled on complete barycentric grid n=ceil(max_edge/0.015m); 1-Lipschitz target distance minus maximum grid-cell diameter and numerical slack.',
+            'limitation': 'Certifies distance between the evaluated surfaces only; solid containment is not tested.'}
+
+
+def surface_pairs(first, second, certify_spacing=None):
     """Broad-phase separation plus evaluated-triangle BVH for every close pair."""
     trees = {}
     overlapping_pairs = []
@@ -157,17 +201,24 @@ def surface_pairs(first, second):
             if other not in trees:
                 trees[other] = BVHTree.FromPolygons(other_points, other_triangles, all_triangles=True)
             hits = trees[name].overlap(trees[other])
-            overlapping_pairs.append({'first_object': name, 'second_object': other,
-                                      'first_bounds_m': bb, 'second_bounds_m': other_bounds,
-                                      'triangle_contact_pair_count': len(hits),
-                                      'sample_triangle_pairs': [list(pair) for pair in hits[:12]],
-                                      'status': 'surface_contact_or_intersection' if hits else 'overlapping_bounds_no_surface_crossings_not_certified'})
+            pair = {'first_object': name, 'second_object': other,
+                    'first_bounds_m': bb, 'second_bounds_m': other_bounds,
+                    'triangle_contact_pair_count': len(hits),
+                    'sample_triangle_pairs': [list(pair) for pair in hits[:12]],
+                    'status': 'surface_contact_or_intersection' if hits else 'overlapping_bounds_no_surface_crossings_not_certified'}
+            if certify_spacing is not None and not hits:
+                distance = sampled_surface_separation(points, triangles, trees[other], spacing=certify_spacing)
+                pair['sampled_surface_distance'] = distance
+                if distance['positive_surface_separation_certified']:
+                    pair['status'] = 'surfaces_separated_containment_not_tested'
+            overlapping_pairs.append(pair)
     return {'first_objects_measured': len(first), 'second_objects_measured': len(second),
             'object_pairs_measured': len(first) * len(second), 'bounds_separated_pair_count': separated,
             'bvh_tested_pair_count': len(overlapping_pairs),
             'total_triangle_contact_pair_count': sum(row['triangle_contact_pair_count'] for row in overlapping_pairs),
             'status': ('missing_geometry' if not first or not second else
-                       'bounds_separated' if not overlapping_pairs else 'review_contacts'),
+                       'bounds_separated' if not overlapping_pairs else
+                       'surfaces_separated_containment_not_tested' if all(row['status'] == 'surfaces_separated_containment_not_tested' for row in overlapping_pairs) else 'review_contacts'),
             'overlapping_pairs': overlapping_pairs,
             'limitation': 'Evaluated BVH pairs identify triangle touching/crossing, not penetration depth. Overlapping bounds with no surface pairs do not certify solid nonpenetration.'}
 
@@ -242,7 +293,7 @@ def measure():
     vessels = {n: row for n, row in meshes.items() if n.startswith('principal_cream_stoneware_vessel')
                and bpy.data.objects[n].type == 'MESH'}
     both_chairs = {n: row for n, row in meshes.items() if n.startswith('principal_raked_walnut_chair_')}
-    checks['chairs_stoneware'] = surface_pairs(both_chairs, vessels)
+    checks['chairs_stoneware'] = surface_pairs(both_chairs, vessels, certify_spacing=0.015)
     checks['chairs_stoneware']['chair_parts_by_index'] = {
         str(index): sum(name.startswith(f'principal_raked_walnut_chair_{index}') for name in both_chairs)
         for index in (0, 1)}
