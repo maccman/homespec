@@ -42,11 +42,11 @@ cam = scn.camera
 cam.animation_data_clear()
 scn.animation_data_clear()
 scn.render.engine = "CYCLES"
-scn.cycles.samples = 24 if quality == "preview" else 192
-scn.cycles.adaptive_threshold = 0.12 if quality == "preview" else 0.035
+scn.cycles.samples = 32 if quality == "preview" else 256
+scn.cycles.adaptive_threshold = 0.10 if quality == "preview" else 0.025
 scn.cycles.use_denoising = True
-scn.render.resolution_x = 960 if quality == "preview" else 1920
-scn.render.resolution_y = 600 if quality == "preview" else 1200
+scn.render.resolution_x = 960 if quality == "preview" else 2560
+scn.render.resolution_y = 600 if quality == "preview" else 1600
 scn.render.resolution_percentage = 100
 prefs = bpy.context.preferences.addons["cycles"].preferences
 prefs.compute_device_type = "METAL"

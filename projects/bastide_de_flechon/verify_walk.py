@@ -43,7 +43,7 @@ missing = [im.filepath for im in bpy.data.images if im.source == "FILE" and not 
 assert not missing, f"Unpacked textures: {missing}"
 assert len([o for o in scn.objects if o.type == "LIGHT_PROBE"]) == 3
 points = json.loads(scn["flechon_waypoints"])
-assert len(points) == 19
+assert len(points) == 26, "All rooms, including the laundry, WC and galleries, need room shortcuts"
 for i, p in enumerate(points):
     assert bpy.ops.flechon.view(index=i) == {"FINISHED"}
     assert (scn.camera.location - Vector(p["location"])).length < 0.0001
@@ -53,7 +53,8 @@ scn.render.resolution_x, scn.render.resolution_y = 800, 500
 scn.eevee.taa_render_samples = 32
 gallery = os.path.join(out, "walk-previews")
 os.makedirs(gallery, exist_ok=True)
-for index in (1, 4, 7, 11, 12):
+preview_indices = (1, 4, 7, 9, 11, 12, 19, 20, 22, 23)
+for index in preview_indices:
     bpy.ops.flechon.view(index=index)
     p = points[index]
     slug = "".join(c if c.isalnum() else "-" for c in p["name"].lower()).strip("-")
@@ -61,4 +62,4 @@ for index in (1, 4, 7, 11, 12):
     bpy.ops.render.render(write_still=True)
     checked(frames.check_frame, scn.render.filepath)
     print("INTERACTIVE VIEW", index, p["name"], flush=True)
-print("WALK VERIFIED: 19 working room shortcuts; textures packed; 3 light probes; 5 interactive previews.", flush=True)
+print(f"WALK VERIFIED: {len(points)} working room shortcuts; textures packed; 3 light probes; {len(preview_indices)} interactive previews.", flush=True)

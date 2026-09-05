@@ -32,6 +32,8 @@ Textures are CC0 Poly Haven surfaces listed in `assets.json`; they approximate t
 
 ## Fabric reconstruction
 
-`textures/paisley_coverlet.png` was generated with the built-in image tool from the supplied bedroom reference photos 09 and 06. It reproduces the palette and motif family; it is not a scan of the installed textile. The source file is retained in this project and packed into the final Blender model.
+The second fidelity pass uses 19 custom base-color textures generated with the built-in image tool, with exact prompts and source-photo references in `textures/generated-manifest.json`. They cover three distinct coverlets, ikat curtains, kilim, chenille and hemp, aged oak and walnut, floorboards, limestone, bronze travertine and room-specific plaster finishes. Grain direction, texture scale, roughness, shallow relief and fabric transmission are implemented separately in `rooms/fidelity_materials.py` and the room modules. These are reference-informed reconstructions of visible material families, not recovered scans of the installed finishes.
+
+The earlier `textures/paisley_coverlet.png` remains available for provenance. It was generated from reference photos 09 and 06, and is superseded on the refined beds by separate whole-coverlet textures.
 
 Prompt: Generate a square seamless PBR base-color texture based on the intricate woven paisley floral coverlets in the two supplied photographs; muted tobacco brown, dusty rose, pale sand and charcoal; dense antique Indian paisley and scrolling acanthus with tiny woven threads; flat orthographic cloth, even neutral illumination, no wrinkles, perspective, shadows, fringes, furniture or text; tile on all four edges.
