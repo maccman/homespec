@@ -232,6 +232,78 @@ exact guard-rail anchor lines; the north and south routes continue beyond
 the short returns. The size is proportioned from the plan raster, not a
 survey, and concealed support details remain unverified.
 
+## D-027 Photo-matched square-headed fireplace recess
+Entities: FP, FP_HEARTH
+Photos 7, 13, 26 and 58 show a flat lintel and concave quarter-circle stone
+brackets at the two upper corners, rather than a semicircular opening. The
+actual fireplace breast now has a 1390 mm wide rectangular void, from 230
+to 1470 mm above the floor. The presentation supplies the curved corbels.
+These dimensions are proportioned from the photographed mantel and existing
+plan placement. The exact void remains recorded for IFC and geometric checks.
+
+## D-028 Reference-informed material and furnishing reconstruction
+Entities: oak, oak_floor, stone_floor, limestone_rubble, lime_plaster, MASTER_ROOF_TIMBERS, MASTER_TRUSS_BRACES
+The second presentation pass replaces generic surface patterns with custom
+image-generated albedos informed by the photographs: hand-brushed ochre
+limewash, checked oak, worn boards, limestone, bronze travertine and the
+distinctive room textiles. Surface color, fine relief, roughness and fabric
+transmission are separate shader inputs. Timber grain follows the individual
+member rather than a combined truss bounding box. Furniture, cloth, joinery,
+fixtures and decorative objects receive room-specific geometric detail.
+These remain editable approximations of the photographed pieces, not recovered
+survey data or photogrammetric scans. The texture manifest records each prompt
+and its source reference. Only one bathroom is photographed in detail; the
+remaining bathroom fixtures and unseen room faces are interpretations.
+
+## D-029 Restore the full angled guest ceiling
+Entities: GUEST_CEILING_TIMBERS, C0_A
+Review of the OBJ and IR revealed that rotating a compound before a Boolean
+intersection lost the intended placement, exporting a single 0.344 by 1.505 m
+joist fragment. Each timber now rotates and clips against the inside footprint
+before grouping. The complete 23-member ceiling covers the guest wing, with
+the heavy members' original 2647 mm underside and 2972 mm joist tops retained.
+The restored geometry is checked against all walls, doors and headroom rules.
+
+## D-030 Furnished service rooms and actual bathroom practicals
+Entities: laundry, wc, guest_corridor, landing, bath1, bath2, bath3, bath4, master_bath
+The laundry receives a 600 mm washing machine and shallow oak storage; the WC
+has a compact pan and hand basin. Their fittings stay outside the published
+door approaches. Circulation receives shallow hooks and wall or ceiling lamps.
+Bathroom opal diffusers attach to the actual soffit or beam above each room.
+These fittings are inferred because the archive does not photograph these
+service spaces or every bathroom. New viewpoints make every room inspectable.
+Daylight comes from the real glazing and one south-east sky and sun state;
+warm practicals provide usable illumination in the windowless ground rooms.
+
+## D-031 Rectangular guest passage visible in the entrance photograph
+Entities: A_HALL_GUEST, A_GUEST_HALL
+Photo 21 clearly shows a flat lintel to the left of the north-wall mirror.
+The two overlapping host openings now publish rectangular voids with the
+existing 1000 mm width, 2100 mm clear head and unchanged plan positions.
+The other photographed arches retain their curved heads.
+
+## D-032 Place the principal shower beside its plan window
+Entities: master_bath, N_MASTER_N, ST_MASTER
+The first-floor plan locates the principal shower east of the north window,
+beside the spiral stair. The dressing follows this relation: the shower stays
+west of the stair opening, and the double vanity occupies the north wall west
+of the glazing. Photo 5's split-stone shower, dark rainfall fittings, niche
+and curtain are reconstructed here beside the actual side daylight source.
+The exact identity of that photographed bathroom remains inferred; adjacent
+photo numbering alone does not establish room identity.
+
+## D-033 Correct visible dressing conflicts and room-specific finishes
+Entities: R_MAIN, R_K, R_H, R_A, bed1, bed2, bed3, bed4, master
+Background woodland scatter now rejects crowns and trunks intersecting the
+actual building footprint. The second guest room loses unverified wall art
+that obstructed its existing window, and receives supported bedside reading
+lamps. The first guest bed uses an inferred 1500 mm mattress to fit the
+photographed pewter table while preserving its bathroom approach. Three further
+generated plaster maps distinguish the pale putty guest finish, brushed upper
+tobacco plaster and terracotta entrance. Curtain folds and fabric scale are
+calibrated against the principal-suite photograph. These are appearance and
+placement corrections; architectural clearances and policies remain unchanged.
+
 ## Against the reference
 
 - Retained: 8 x 11 m principal house block, attached kitchen, skew entrance hall,
@@ -240,11 +312,13 @@ survey, and concealed support details remain unverified.
   long reflecting channel, detached colonnaded pavilion, stone/oak/plaster palette.
 - Inferred: vertical dimensions, exact arch heights, wall thicknesses, pavilion
   dimensions, reflecting-channel depth and garden elevation.
-- Simplified: exact winder nosing profiles, invisible utility partitions,
-  carpentry joints, built-in wardrobes and architectural moulding profiles.
+- Simplified: exact winder nosing profiles, hidden utility connections,
+  concealed carpentry joints and fine sculpture anatomy.
 - Improved from the first reconstruction: exact room boundaries, connected
   partition ends, clear arched passages, actual vaulted plaster and oak roof
-  structure, fine kitchen beams, plastered upper rooms, and stair ironwork.
+  structure, complete guest ceiling, plastered upper rooms, stair ironwork,
+  room-specific upholstery, draped cloth, detailed kitchen cabinetry,
+  generated material textures, bathroom fittings and physical lighting.
 
 - Mechanical verification: The generated checks.md records the final architectural checks; it is
   authoritative after each documented visual correction. No check thresholds

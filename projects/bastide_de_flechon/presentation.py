@@ -105,9 +105,12 @@ def dress(scene):
         room.dress(scene, M)
         print(f"FLECHON dressed {room.__name__}: {time.monotonic() - started:.1f}s", flush=True)
     load_room("gallery_ironwork").dress(scene, M)
-
-    scene.world_hdri(os.path.join(scene.assets, "hdri", "qwantani_puresky_2k.hdr"), rotation_deg=115, strength=0.7)
-    scene.sun((-0.55, 0.65, -0.65), energy=3.0, angle=2.0)
+    for name in ("fidelity_living", "fidelity_bedrooms", "fidelity_hall_baths", "fidelity_service", "fidelity_upholstery", "fidelity_vegetation"):
+        load_room(name).apply(scene, M)
+        print(f"FLECHON refined {name}: {time.monotonic() - started:.1f}s", flush=True)
+    load_room("fidelity_materials").apply(scene, M)
+    load_room("fidelity_timbers").apply(scene, M)
+    load_room("fidelity_lighting").apply(scene, M)
     # A natural sky/ground bounce, present in both the still and the walk file.
     # Interior practicals are placed by the interiors module.
     only = os.environ.get("HOMESPEC_ROOM")
@@ -119,6 +122,11 @@ def dress(scene):
         for idx, (loc, look, ev) in enumerate(room.SHOTS):
             label = names[idx] if idx < len(names) else f"{name.title()} {idx + 1}"
             shots.append((name, label, loc, look, ev))
+    if not only or only == "interiors":
+        for name in ("fidelity_hall_baths", "fidelity_service"):
+            room = load_room(name)
+            for label, (loc, look, ev) in zip(room.SHOT_NAMES, room.SHOTS, strict=True):
+                shots.append(("interiors", label, loc, look, ev))
     if not shots:
         raise ValueError(f"No camera shots for HOMESPEC_ROOM={only!r}")
     scene.path([(i * 4, loc, look) for i, (_, _, loc, look, _) in enumerate(shots)], fps=24, lens=24, fstop=16, focus=6)

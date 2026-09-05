@@ -1,0 +1,120 @@
+{
+  "mode": "builtin image_gen",
+  "purpose": "Reference-informed albedos generated as material scans. Interpretations, not recovered scans. PBR relief and lighting are implemented separately in the model.",
+  "assets": [
+    {
+      "name": "reclaimed_oak",
+      "ref": "photo_10.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: physically based 3D material base-color texture. Input image is reference only: reproduce the old exposed oak beams in this photographed French kitchen. Generate a new seamless square 2048px texture of ONE continuous hand-hewn oak timber surface, grain flowing horizontally left to right, no plank divisions. Honey-brown medium-dark aged oak with long irregular black checking cracks, old ax/tool facets, large irregular knot eyes, worm holes, dark rubbed edges within grain, subtle silver and umber patina. Match photograph timber color and ancient roughness faithfully. Orthographic face-on scan, edge-to-edge surface only, neutral flat diffuse albedo lighting, no highlights, shadows, vignettes or perspective. Seamlessly tileable all edges. No room, objects, text, borders or watermarks.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-9ccb3141-78a2-4ed9-8169-1f683f531b5b.png"
+    },
+    {
+      "name": "ochre_limewash",
+      "ref": "photo_09.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless PBR albedo for 3D interior walls. Image reference only: replicate the golden ochre hand-brushed limewash behind bed and round mirror. Generate new square 2048px seamless color texture showing about 2 metres of wall: overlapping broad uneven VERTICAL brush and trowel strokes, mottled muted tobacco/ochre beige, translucent limewash layers and old mineral patches, small chalk pores. Match reference saturation and nonuniform rectangular handworking, not generic noise/concrete. Flat evenly lit material scan, no furniture, no light gradients, no shadows, no shiny spots, no perspective. Surface fills entire image; tileable left-right/top-bottom; no borders/text.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-2a9f05f3-4690-4ae2-867a-e31176a5ec08.png"
+    },
+    {
+      "name": "limestone_rubble",
+      "ref": "photo_58.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless square 2048px PBR albedo material for the salon stone walls. Image is reference only; reproduce the exposed irregular warm pale Baux limestone on the photographed salon wall around the great glazed doors. Texture scale 2m square: roughly coursed naturally split small-to-medium irregular stones, cream and pale buff with aged neutral tan mortar, irregular sizes and broken edges, deeply textured pits but REMOVE baked directional shading. Authentic ancient Proven\u00e7al interior rubble stone, not regular blocks and not brick. Orthographic neutral evenly illuminated color scan covering whole image, seamless all edges. No objects, no windows, no furniture, no writing, no gradient or directional shadows.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-3c2d26f7-b44e-4d85-b458-20f1fa50ad94.png"
+    },
+    {
+      "name": "limestone_floor",
+      "ref": "photo_10.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless physically based albedo texture for actual 3D limestone floor. Image reference only: reproduce pale honed warm grey-beige stone slabs in the kitchen. New square 2048px material scan about 2.4m square, long rectangular 80x45cm staggered slabs, hairline 2-3mm limestone-colored mortar joints, subtly varied beige/greige slabs, natural pores and faint fossils, softly worn edges, fine mineral veining, matte authentic old limestone. Entire surface flat orthographic top-down, uniform diffuse lighting without shadows, sheen or vignette. No furniture, borders, objects, text. Tile seamlessly in both axes.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-f6985cd1-3116-45b0-aabf-6525132b6a2a.png"
+    },
+    {
+      "name": "guest_chinoiserie",
+      "ref": "photo_02.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: single full bed coverlet albedo for an editable 3D textile mesh. Reference image only: faithfully reconstruct the photographed camel-bronze ground cloth with black/dark brown chinoiserie birds, peacocks and elegant twisting flowering branches. Output new 2048px square flat orthographic scan of the ENTIRE unfolded rectangular coverlet, edge-to-edge, about 2.5m square. Large detailed birds and organic branches at the reference scale, antique Japanese/Chinese nature motifs; warm camel/tobacco bronze woven linen, low contrast faded black/brown ink. Fine real weave visible. Border subtle and dark. No folds, no tassels outside image, no bed or other objects, no shadows, no light gradient, no perspective, no text or signatures. This texture will be draped on real 3D cloth, so completely flat albedo.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-07831bed-05f4-466e-8a5f-89c45cfeacdd.png"
+    },
+    {
+      "name": "principal_paisley",
+      "ref": "photo_06.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: entire unfolded bedthrow albedo map for 3D textile. Input photo reference only: reproduce the distinctive dark charcoal/plum/maroon antique woven floral coverlet across the bed, with intricate beige faded botanical ornament and ornate broad floral border. Generate a new square 2048px full cloth scan, orthographic and evenly lit, edge-to-edge rectangular tapestry design. Central field deep charcoal softened plum brown, abundant small finely detailed scrolling vines/leaves/flowers matching reference; wide dense lighter beige/pale cocoa floral border at all four edges, inner fine ornamental strip. Subtle antique faded rust areas, matte woven yarn. No bed, no draping, no wrinkles, no physical fringe outside design, no highlights/shadows, no vignette, no text. True flat albedo usable on actual cloth mesh.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-da244e69-b543-4804-979b-065d2b8fc0dc.png"
+    },
+    {
+      "name": "guest_taupe_paisley",
+      "ref": "photo_09.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: full bed coverlet color texture, square 2048px. Image is reference only: faithfully reproduce dusty mauve/taupe brown paisley coverlet on bed. New flat orthographic evenly illuminated scan of entire unfolded coverlet, edge to edge with ornate border: large elegant dense old Kashmiri paisley boteh motifs, fine intricate foliage and cream/dusty blush detailing against brown-taupe/mauve background; very detailed broad geometric/floral border along edges as shown. Subtle real worn jacquard weave, faded palette not bright, motifs beautifully intricate. Completely flat, no folds, no shadows, no perspective, no bed/objects, no fringe extending outside, no text, no room.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-854a7a30-59ef-45a0-9ad4-f382d3677157.png"
+    },
+    {
+      "name": "rust_ikat",
+      "ref": "photo_06.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless square 2048px textile albedo for 3D curtains. Reference only: extract the visual identity of the large rust-brown/ivory broken zigzag diamond ikat curtains flanking the arched window. New flat orthographic scan of about 1m square cloth: oversized tall interlocking diamonds/branching zigzags, warm ivory with muted deep rust/cocoa-brown shapes, authentic irregular feathered ikat dye edges and woven coarse linen threads. Strong match to photo pattern and colors, no generic chevron stripes. Seamless all edges; material fills frame. No room, folds, drape, shade gradients, highlights or baked lighting; evenly lit flat diffuse color. No labels.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-5137fe11-ab4d-438f-8720-563027717771.png"
+    },
+    {
+      "name": "hall_kilim",
+      "ref": "photo_21.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: full rug albedo texture for 3D house. Reference image only: reproduce the entrance hall's distinctive narrow striped tribal flatwoven kilim. Generate a new portrait 1536x2048 image, full rectangular rug viewed perfectly straight down; rug fills frame edge-to-edge, no floor or physical fringe outside. Field consists of many thin HORIZONTAL bands with intricate repeated angular diamond and zigzag motifs; muted rusty red/terracotta, ochre, ivory, faded sage and pale blue. Near-black wide outer border with small connected pale diamonds and geometric floral motifs. Faithful reference palette, authentic finely woven worn wool with naturally uneven handwoven lines. Perfectly flat fabric scan, uniform neutral diffuse albedo lighting without folds or shadows, no vignette, no objects, no labels/text.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-ca159103-4d46-459e-9f87-5fd648bfbca7.png"
+    },
+    {
+      "name": "stone_slips",
+      "ref": "photo_05.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless PBR color texture. Reference photo only: match the shower wall's tiny rough split-faced warm ivory limestone slips, long horizontal courses of very thin irregular stone, approximately 15cm long x3cm high each, in low contrast mortar. Generate square 2048px seamless scan covering about 1m square. Cream/Baux ivory/beige stones with subtle rough chisel texture and uneven crumbly edges, irregular offsets, matte mineral surface. Flat orthographic evenly illuminated albedo, remove all baked sun/windowshadows and directionality. No fixtures, niche, bottles, glass, curtains or text. Tile seamlessly at all edges. Fine stone rather than wide masonry blocks.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-5c3ba25b-4783-4338-8df7-87d27dc92975.png"
+    },
+    {
+      "name": "bath_ikat",
+      "ref": "photo_05.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless 2048px square curtain material albedo. Photo is reference only: reproduce the bathroom curtain's broad broken ivory/cream angular zigzag diamond ikat motif against dusty warm sand/taupe linen. Faded large irregular geometric branches, soft fuzzy dye edges and slightly transparent natural linen weave. Flat orthographic material scan fills image, evenly lit with no shadows, no drape or folds, no room or shower components. Seamless in both axes. Lowcontrast airy ivory and sandy taupe, not rust. No text or border.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-ce543e59-5dff-48ca-b1a5-9a5f0b2fe98f.png"
+    },
+    {
+      "name": "bronze_travertine",
+      "ref": "photo_10.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless PBR albedo scan for kitchen island countertop. Reference kitchen photograph only: faithful bronze/brown dark travertine stone slab surface as on the island. New square 2048px scan about 1.5m square, muted dark chocolate/olive-brown ground with subtle long horizontal pale taupe mineral veins and tiny irregular filled pores, organic variegation and worn matte/leathered texture. No plank joints, no tiles. Flat orthographic neutral uniform lighting, no highlights, no baked shadows, no gradient or perspective. Edge-to-edge seamless stone texture. No kitchen, fixtures, lettering or objects.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-ba97c235-3fe4-4f3b-a0f4-2ed4f724911d.png"
+    },
+    {
+      "name": "antique_walnut",
+      "ref": "photo_10.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless 2048px square wood PBR albedo. Reference photo only: reproduce dark richly aged oak/walnut of kitchen island panel, smooth but antique, fine grain, irregular rubbed patina. Generate one continuous wood surface with grain running vertically bottom to top, no boards/seams/frames/panels. Medium-dark chocolate brown, subtle warm umber and aged golden highlights in the wood COLOR, faint knots and tiny wormholes, very fine linear grain. Entire square is wood flat material scan, neutral evenly lit, no shadows/vignette/specular highlights. Seamlessly tileable, no object/furniture/handles/border/text.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-b84bdf37-b877-4cb6-9e46-0ec78091e76c.png"
+    },
+    {
+      "name": "weathered_floorboards",
+      "ref": "photo_06.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless 2048px square PBR albedo for principal suite floor. Input image is reference only: reconstruct the dark aged silver-brown wide oak floor planks visible beneath the bench and bed. Texture about1.8m square, boards run straight vertically bottom-to-top, widths varying 16-28cm, offset end joints rarely, weathered heavy pronounced grain, grey charcoal and desaturated brown pores, old dark knots, worn softened edges, fine hairline gaps. Authentic ancient Proven\u00e7al oak floor, not new parquet, not pale bleachedwood. Flat top-down uniformly lit diffuse color scan, absolutely no sun/shadows/reflections, no room/objects, no text. Tiles continuously in both directions.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-30613dd2-53fb-468b-bce3-797c734b32ae.png"
+    },
+    {
+      "name": "taupe_chenille",
+      "ref": "photo_58.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless square 2048px PBR textile albedo for quilted living-room sofa. Input photo is reference only; reproduce the aged taupe/mushroom chenille upholstery cloth, extremely close macro scanned swatch about12cm square. Fine warm-grey and brown woven threads, irregular soft pile, subtle micro herringbone/ribbed character, realistically nubby but not shaggy. Medium muted warm taupe, delicate thread-level color variation and directional weave. Image is flat fabric ONLY no seams, cushions, folds, objects or quilted indentations. Uniform neutral diffuse lighting without baked shadows, tileable all edges, no borders/text.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-c538e1ef-ff44-440e-8cb2-f6c6d39ec695.png"
+    },
+    {
+      "name": "hemp_linen",
+      "ref": "photo_02.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless square 2048px natural linen albedo texture. Image reference only: recreate photographed ecru chunky basket-weave lumbar pillow/hemp headboard material. Macro orthographic material scan about12cm square, ivory/ecru/greige loose but solid interlaced thick slubby linen threads with real knots/fibers, irregular warp and weft, matte soft raised crossings. Neutral flat even lighting, no directional shadows, no pillow/folds/seams/tassels/objects. The full frame is cloth, seamless at every edge. Not cableknit, no synthetic glitter, no text/borders.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-7e4e9abf-4fe1-4705-81e7-fb9079f9a9e8.png"
+    },
+    {
+      "name": "guest_putty_limewash",
+      "ref": "photo_02.jpg",
+      "prompt": "Use case: photorealistic-natural. Generate a new square seamless PBR BASE COLOR wall material scan, using only the plaster color and brushwork in the supplied photograph. Reconstruct the pale muted grey-beige/putty limewash wall behind the framed drawings and woven lamp. This is NOT yellow ochre: very low saturation, soft warm limestone greige. Broad translucent overlapping VERTICAL AND RECTANGULAR brush strokes 15\u201330cm wide, cloudy subtle pigment density at stroke edges; a smooth chalky fine mineral finish with almost imperceptible grain. It is maintained decorative limewash, NOT eroded concrete, not flaking paint, not cracked or peeling, no gravelly pitting. Image represents approximately 2m square of wall, viewed perfectly orthographically face on. Remove ALL illumination from the reference: no lamp glow, no shadows or occlusion, no top-to-bottom brightness gradient, no vignette, uniform neutral diffuse albedo. Texture fills the whole square and tiles seamlessly. No frames, lamp, ceiling, bed, furniture, architectural edges, room, text or watermark. Aim for extremely faithful photographed brushwork and subtle greyed warm-beige palette. 2048px or highest available.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-3d666524-b9e7-4a27-ba91-865882ca966a.png"
+    },
+    {
+      "name": "tobacco_brushed_limewash",
+      "ref": "photo_09.jpg",
+      "prompt": "Use case: photorealistic-natural. Create a NEW seamless square physically based albedo wall texture from the supplied room reference, matching the softly brushed plaster behind the round mirror. Muted dusty honey-tobacco beige, warm earth pigment with GREY/BROWN undertones; avoid saturated yellow or orange. Reproduce wide straight hand-brushed VERTICAL strokes with short horizontal connecting passes, soft layered rectangular transparency, slight natural variations of pigment density. The smooth chalky maintained finish is not rough concrete: NO chips, crumbling, flaking, obvious holes, dramatic cracks or scraped plaster. Surface area approx 2 metres square. Color texture viewed straight-on with uniform neutral lighting and without any cast shadows, highlights, light gradients, vignetting, furniture, mirrors, ceiling, frames, trim, objects or text. Seamless at every edge; material fills entire square. Very high detail subtle real brush marks and fine lime grain, not a procedural noise appearance. 2048px or highest available. Image is reference only, do not recreate the bedroom.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-9be5dff6-b27a-4f24-8b78-30f73e5e8d77.png"
+    },
+    {
+      "name": "hall_terracotta_limewash",
+      "ref": "photo_21.jpg",
+      "prompt": "Use case: photorealistic-natural. Use the supplied entrance photograph solely to generate a NEW seamless square PBR ALBEDO texture matching its reddish terracotta limewash walls. Exact identity is muted burnt-clay/red-ochre, warm dusty terracotta with brown and pale chalk undertones. Not bright orange, not yellow, not pink. Broad overlapped rectangular vertical lime brush strokes and gentle rubbed hand-applied pigment patches, subtle transitions, smooth finely chalked grain. This is a maintained interior decorative finish: no peeling, cracks, exposed aggregate, damage or coarse concrete texture. Generate an orthographic evenly lit base-color material scan of roughly 2m square, seamless on all edges. No shading from the photograph: exclude sunny rectangles, furniture shadows, vignettes, specular highlights, ceiling, mirrors, sculpture, furniture, lamps, carpet, doorframes or any room content. Only the wall's warm soft rusty earth pigment and brush marks, neutral diffuse light. 2048px or highest available.",
+      "source_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-8faaa48e-fe6b-4f43-8201-f98147e950bd.png"
+    }
+  ]
+}

@@ -42,6 +42,22 @@ class ExactArchedDoor(ArchedDoor):
 
 
 @element
+class SquareHeadedOpening(Arch):
+    """A clear rectangular opening beneath the photographed flat lintel."""
+
+    def head_height(self):
+        return self.height
+
+    def void_solid(self, x, wall, z):
+        return G.frame_box(wall.body, x, -100, z, (self.width, wall.thickness + 200, self.height))
+
+    def realize(self, ctx):
+        result = super().realize(ctx)
+        result.derived["radius"] = 0
+        return result
+
+
+@element
 class OcularWindow(Window):
     """The round clerestories visible above the principal side doors."""
 
@@ -683,10 +699,15 @@ class GuestCeilingTimbers(Element):
             x = x0 + (x1 - x0) * fraction
             pieces.append(G.box((270, y1 - y0, 240), (x - 135, y0, z + 2647)))
         clipping = G.prism(self.outline, z + 2647, 325)
-        rotated = Location((0, 0, 0), (0, 0, self.angle)) * G.group(pieces)
+        # Transform and clip each unparented timber before grouping it.
+        # Applying a Location to Compound(children=...) keeps an assembly
+        # placement that build123d's intersection drops; that previously
+        # retained only six small unrotated fragments at the western edge.
+        rotation = Location((0, 0, 0), (0, 0, self.angle))
+        clipped = [part for piece in pieces for part in G.overlap(rotation * piece, clipping)]
         return Realized(
-            solid=rotated & clipping,
-            derived={"span": x1 - x0, "clear_below": 2647, "size": [270, 240], "joist_spacing": 290, "angle": self.angle},
+            solid=G.group(clipped),
+            derived={"span": x1 - x0, "clear_below": 2647, "size": [270, 240], "joist_spacing": 290, "angle": self.angle, "timber_pieces": len(clipped)},
             tags={"exposed"},
         )
 
@@ -873,8 +894,8 @@ def build() -> House:
         Arch("A_HALL_BED3", host=HS, width=1000, height=2100, at=1300, sill=3300)
         Door("D_ENTRY", host=HE, width=2500, height=2850, at=1900, glazed=True, leaves=2, panes=(2, 4), frame=steel, frame_size=50)
         Window("N_HALL", host=HE, width=2500, height=2200, sill=3550, at=1900, panes=(3, 3), frame=steel, frame_size=50)
-        Arch("A_HALL_GUEST", host=HN, width=1000, height=2100, at=1800)
-        Arch("A_GUEST_HALL", host=AS, width=1000, height=2100, at=5600)
+        SquareHeadedOpening("A_HALL_GUEST", host=HN, width=1000, height=2100, at=1800)
+        SquareHeadedOpening("A_GUEST_HALL", host=AS, width=1000, height=2100, at=5600)
         Arch("A_HALL_SUITE4", host=HN, width=1000, height=2100, at=1800, sill=3300)
         Arch("A_SUITE4_HALL", host=AS, width=1000, height=2100, at=5600, sill=3300)
         Window("N_BED3_S", host=KS, width=1600, height=1400, sill=4200, at="center", panes=(2, 2), frame=oak, shutters=oak)
@@ -1043,7 +1064,7 @@ def build() -> House:
         # Fireplace breast with a real recessed fire opening; dressing adds the sculpted mantel.
         fpasm = Assembly("fireplace", layers=[Layer(material="cut_stone", thickness=500)], finish_in=cut)
         FP = JoinedWall("FP", (7150, 3550), (7150, 5350), assembly=fpasm, level=L0, height=2900, external=False)
-        Arch("FP_HEARTH", host=FP, width=1100, height=800, at=350)
+        SquareHeadedOpening("FP_HEARTH", host=FP, width=1390, height=1240, sill=230, at=155)
         # Site: the exact 15 x 5 m pool and the thin water channel shown beside the house.
         Pool("POOL", outline=mm(rect(-1, -9, 14, -4)), level=LP, depth=1450, coping=400, material="pool_tile", coping_material=cut, water_material="pool_water")
         Pool(
