@@ -90,6 +90,7 @@ def _box(scene, name, at, size, material, rot=0, bevel=0.003):
 def _fabric_uv(obj):
     """Physical, local weave coordinates, independent of cushion dimensions."""
     layer = obj.data.uv_layers.get("physical fabric") or obj.data.uv_layers.new(name="physical fabric")
+    layer.active_render = True
     for face in obj.data.polygons:
         major = max(range(3), key=lambda axis: abs(face.normal[axis]))
         across = [axis for axis in range(3) if axis != major]

@@ -75,6 +75,7 @@ def grain_uv(obj):
     extents = [max(v[d] for v in points) - min(v[d] for v in points) for d in range(3)]
     along = max(range(3), key=lambda d: extents[d])
     layer = obj.data.uv_layers.get("Walnut grain") or obj.data.uv_layers.new(name="Walnut grain")
+    layer.active_render = True
     for face in obj.data.polygons:
         normal_axis = max(range(3), key=lambda d: abs(face.normal[d]))
         across = next(d for d in range(3) if d != along and d != normal_axis) if normal_axis != along else min(range(3), key=lambda d: extents[d])

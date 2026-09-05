@@ -92,9 +92,6 @@ def dress(scene):
     import time
 
     started = time.monotonic()
-    # Direct mesh construction avoids a full dependency-graph rebuild per rod,
-    # cushion and leaf. Geometry and the audit's object tags remain identical.
-    load_room("fast_primitives").install(scene)
     flagstone_finish()
     details = load_room("material_details")
     details.main_upper_plaster(scene)

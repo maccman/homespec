@@ -57,6 +57,7 @@ def _box(scene, name, at, size, mat, bevel=0, rot=0):
     if "stone_skirting" in name or "stone_threshold" in name:
         obj.data = obj.data.copy()
         layer = obj.data.uv_layers.new(name="cut stone surface scale")
+        layer.active_render = True
         for face in obj.data.polygons:
             axis = max(range(3), key=lambda k: abs(face.normal[k]))
             axes = (1, 2) if axis == 0 else ((0, 2) if axis == 1 else (0, 1))
@@ -563,6 +564,7 @@ def timber_boards_and_checks(scene, mats, bounds):
         # UV follows longitudinal plank grain, in metres.
         obj.data = obj.data.copy()
         layer = obj.data.uv_layers.new(name="salon board grain metres")
+        layer.active_render = True
         for poly in obj.data.polygons:
             for loop in poly.loop_indices:
                 vertex = obj.data.vertices[obj.data.loops[loop].vertex_index].co
