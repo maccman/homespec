@@ -514,6 +514,59 @@ and openings; no wall, doorway approach or room footprint is narrowed by an
 inferred cabinet/camera adjustment. Shared salon shaders and the coherent
 whole-house lighting preset are preserved.
 
+## D-043 Trace the principal-suite layout from the original upper plan
+
+Entities: master, N_W2, MW, MASTER_ROOF_TIMBERS, MASTER_TRUSS_BRACES, F1_MAIN, D_FRONT, D_FRONT.frieze
+
+Independent tracing of `PLANS/Premier Étage.pdf`, rendered at 2400 pixels tall,
+uses the main block's approximately457-pixel 8000mm outside width. The 200/200cm
+bed outline spans x965..1078 and y1925..2038 against southwest(x792,y2190),
+placing its center near(4.02,3.65)m. Move the bed and its desk/bedside assembly
+83cm south and10cm west (nominal centerline4.00m, within the trace uncertainty); set the separately traced bench center to(4.00,2.42)m.
+The south-facing bed axis and plan mattress dimensions remain unchanged.
+
+The same trace places the west rectangular window near y2.40m and the front
+truss plane near y3.76m, correcting the former3.00m/3.40m estimates. Retain the
+1450x850mm rectangular opening and its inferred sill/head heights; the raster
+cannot reliably distinguish a proposed1550mm width from its trim. The truss
+and braces move together; grain coordinates read their actual IR plane. Keep
+the roof/floor levels, rear carpentry and room connections. Photo06/33/55 prove
+the west floor-reaching brace; the east continuation remains inferred.
+
+Exterior photo41 (`Bastide_de_Flechon_4.jpg`) independently aligns all upper
+semicircle feet with the frieze top. Remove the erroneous550mm rectangular
+upper-glass band by lowering the shared arch spring4100→3550mm; the clear
+3360mm width, lower salon doors and frieze3000..3550mm remain. Photo06/55 support
+this shallow sill. Lower the curtain pole6460→5910mm with shorter panels to
+retain the photographed wall band; that pole height is an inferred vertical
+fit. Photo33's free-ended horizontal member and short side strokes on the upper
+plan motivate380x300mm side ties fromx.35..2.10 and5.90..7.65m atz5.10..5.40m.
+The west is photographed; the matching east stub is plan-supported but its
+vertical detail is inferred. The central3.80m passage remains free of low ties.
+The tips follow the plan trace. Two900x500x2000mm standing prisms beside the
+nominal bed centerline do not intersect the actual brace/tie solids at the
+truss plane; the saved-scene review separately checks the dressed cloth envelope. The overhead roof tie is retained; exact historic load paths are unverified.
+
+Physical wide-board joints, an opening-derived folded Roman blind, an attached
+amber lantern, lower loose pillows, a linen valance and the split-plank bench's
+round pale pedestals refine the presentation. Nominal board widths220–260mm,
+3mm finishing arrises and furniture/joinery details are photographic estimates.
+The plan chair symbols suggest opposing northeast/southeast toe-in angles,
+with the south chair near(1.50,1.05)m and north chair near(1.18,3.05)m.
+Actual photo33 review showed the plan-staged south chair on the wrong side of
+the table. Use the photograph's movable arrangement: south chair(1.00,1.50)m,
+north chair(1.18,3.05)m, table(1.43,2.13)m, and tall/small vessels near
+(1.37,1.00)m/(1.70,0.96)m. The source's ordering is recovered; the far chair's
+roughly74-pixel vertical mismatch remains conditional on the inferred camera
+and chair height. An exact point fit would move it into the other chair's
+region and was rejected. Twig tips rise above the chair back as photographed.
+Saved-scene checks require chair/curtain and chair/vessel separation. The raked
+chair legs have horizontal sawn feet at the physical board surface, retaining
+the upper frame and seat height. The audited structural walking
+surface and route thresholds remain unchanged.
+Photo33's trumpet table differs from the cylindrical table in06/55; the source
+arrangements must not be represented as a single exact photographic match.
+
 ## Against the reference
 
 - Retained: 8 x 11 m principal house block, attached kitchen, skew entrance hall,
@@ -535,6 +588,10 @@ whole-house lighting preset are preserved.
   continuous shower stone and detailed salon stonework, ironwork and furniture.
   Generated pigment stays independent of inferred roughness and microrelief.
 
+- Principal focused pass: original-plan bed/bench/window/front-truss setting-out,
+  native-lens camera investigation, split-plank pedestal bench, low linen and
+  room-specific wood, curtain and patinated-metal appearance.
+
 - Mechanical verification: The generated checks.md records the final architectural checks; it is
   authoritative after each documented visual correction. No check thresholds
   or clash policies were loosened.
@@ -545,6 +602,8 @@ whole-house lighting preset are preserved.
   arrangement is preserved instead of replacing it with a generic bastide.
 - The site is represented at the ground-floor walking datum because the supplied site
   plan has no spot heights or contours around the building terraces.
+- Shared lower salon doors and frieze remain; only the upper fanlight spring
+  changes against exterior41 and interior06/55. No invented crop is used.
 - Furniture and planting are presentation objects; the architectural source
   remains a Homespec model with IFC, dimensioned drawings and schedules.
 

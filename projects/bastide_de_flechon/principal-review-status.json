@@ -1,0 +1,186 @@
+{
+  "schema": 1,
+  "review_status": "focused_model_improvement_reviewed_with_explicit_residuals",
+  "photographic_match_claimed": false,
+  "baseline_commit": "33b7db59cfd06b617d569086ab266f7f2e56c094",
+  "rendered_source_commit": "5951576c2683e61a34c5196d436f867fe3551e2f",
+  "native_generation": "2499ff23bd534ceca7b46035611042fb",
+  "build_fingerprint": "649cb5c5f830e74a2ffa8565ca298e837cc6d9e191813704a6cb6812d7940ceb",
+  "current_saved_scene_sha256": "909696ed2df9b45065a78e4e2dbfa5c82b3e4a4a1e45cf33c5e6d0ca7de8cba2",
+  "baseline_saved_scene_sha256": "cc272131dda6a53aedc774caa09c7438a5f91ceb7cb9efe6ff11571aa7fbc7b2",
+  "camera_lock_sha256": "68cf9c6ceb2a9ab37b22c259aa55a0f360e313f780c41a85a9360d3322662aa9",
+  "camera_status_note": "Final acceptance is recorded here to preserve the frozen lock/hash; its pending statuses describe the earlier source-freeze point. Cameras are practical review positions, not recovered photographs.",
+  "geometry_review": {
+    "native_checks_passed": 367,
+    "native_checks_failed": 0,
+    "build_expected_clashes": 54,
+    "dressed_audit_findings": 0,
+    "native_tests_passed": 204,
+    "actual_blender_tests_passed": 5,
+    "floorboards": 120,
+    "standing_prisms_clear": 2,
+    "chair_feet_at_board_datum": 8,
+    "chair_vessel_surface_separation_lower_bound_m": 0.03611139865640242,
+    "surface_distance_scope": "Evaluated surfaces, not a solid-containment proof. 75 other chair/vessel pairs are separated by object bounds.",
+    "nonprincipal_material_objects_compared": 13499,
+    "nonprincipal_material_changes": 0,
+    "native_cad_equivalence_checks": 11
+  },
+  "completed_review": [
+    "Two identical-camera baseline/current 32-sample color comparisons",
+    "Two identical-camera baseline/current Workbench geometry comparisons",
+    "Two current 12-sample aperture-lights-off controls",
+    "Twelve actual assigned material studio swatches and response spheres at64samples",
+    "Two native plans and two native sections at1000x750",
+    "Explicit dressed audit, CAD scope preservation and evaluated saved-scene clearance/material measurements"
+  ],
+  "retained_discrepancies": [
+    "Pale upper gable and exposed rubble band above tobacco wall remain visible in06.",
+    "06 crops the arch/left drape and most of the bench; window/seating framing still differs.",
+    "33 retains a broad brace masking the near-chair back, a side tie higher in the frame, and a high far-chair back; a cropped bedside-lamp fragment enters at lower left.",
+    "Cane/seat linen and floor are paler than the source; timber checks and cloth folds remain approximations.",
+    "06/55 use a different cylindrical scalloped table and staging; the model follows33 for the trumpet table.",
+    "East brace lower extent, short-tie height, hidden joints and exact camera shift/crop history remain inferred."
+  ],
+  "lighting_control_note": "Identical named principal photo presets used for each before/after pair; shared daylight policy unchanged. Upper aperture rectangle follows the corrected arch and preserves power per emitting area. Off controls are lower-resolution12sample diagnostics and not an equal-quality difference image.",
+  "original_reference_media_committed": false,
+  "deferred": [
+    "Full-house gallery",
+    "Animation",
+    "Full-resolution image queue",
+    "Portable model repack"
+  ],
+  "evidence_files": [
+    {
+      "file": "principal-review-evidence/11_plan_L0.png",
+      "sha256": "ae59453e039c36b1dc4b3c877015fce8c760872e8f57ab2c270e05fab0050416"
+    },
+    {
+      "file": "principal-review-evidence/12_plan_L1.png",
+      "sha256": "c51973b516b8ac5bc16fc3aff3608e4a2b6f66f1ca6d5056892efdfc4f03f5ae"
+    },
+    {
+      "file": "principal-review-evidence/13_section_long.png",
+      "sha256": "9d3bda8c15c7c82bbb35d5f0d5fe04839658f93c0178691ba7777f6a22d94475"
+    },
+    {
+      "file": "principal-review-evidence/14_section_cross.png",
+      "sha256": "f0644b9ab6cb567abaf262739915efbc825d19e50b52b454ef07a633b392ec8d"
+    },
+    {
+      "file": "principal-review-evidence/audit.txt",
+      "sha256": "82c26285ce90a8d1b2039a59e72d886997679e2e5d2d2807ab95aa038baa9b58"
+    },
+    {
+      "file": "principal-review-evidence/baseline-clay-manifest.json",
+      "sha256": "5c8f82162652c4ed6c0041eb609514b37c6d834bf86f87d864aafc90570c322f"
+    },
+    {
+      "file": "principal-review-evidence/baseline-photo-manifest.json",
+      "sha256": "9fb818a5f0f7afe7cb3f8705f98fb7c72032089b4493f509fcc41fed58f119db"
+    },
+    {
+      "file": "principal-review-evidence/current-apertures-off-manifest.json",
+      "sha256": "164d5005f7a0167b2b58b8379acbc8c17e9b0ff68b8403b87cc020e5b569df76"
+    },
+    {
+      "file": "principal-review-evidence/current-clay-manifest.json",
+      "sha256": "96793f83c12921509b5e95d19811dce54d37c0683ba15412ad46aa7703b8d5ac"
+    },
+    {
+      "file": "principal-review-evidence/current-photo-manifest.json",
+      "sha256": "cafff05e0c09365d9f31dbcb7c53d7af30b771314209dfb981faa69cb7cb9012"
+    },
+    {
+      "file": "principal-review-evidence/integration-audit.txt",
+      "sha256": "7323389cdd73759cc00b3be1fff4e8b8bdee6b63604e10734e69f1cafcd66513"
+    },
+    {
+      "file": "principal-review-evidence/integration-blender-tests.log",
+      "sha256": "86a3d50c628ca3fcc7e092e9e4bd698ca3119a7397d5b4b8792db32c02a12cd5"
+    },
+    {
+      "file": "principal-review-evidence/integration-build.log",
+      "sha256": "0103ec01a34baae27bb4a9ef258cba4629545d9b7eddbea45c4fb57d1ae18f0d"
+    },
+    {
+      "file": "principal-review-evidence/integration-native-tests.log",
+      "sha256": "2f3196b98346467da1838b9f42acfd0fe43c6a3ec162fbb78363c4a5ec646436"
+    },
+    {
+      "file": "principal-review-evidence/integration-pyright.log",
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+    },
+    {
+      "file": "principal-review-evidence/integration-ruff.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "file": "principal-review-evidence/material-study-manifest.json",
+      "sha256": "ed9c60f4e295c6a66eea5b06d74972f274543f882a357a57ccaaaab7a0c48d25"
+    },
+    {
+      "file": "principal-review-evidence/native-checks.json",
+      "sha256": "3b428e12bddb4aef8156c7ca253bb5f764227b99f00d05c468775b6337791f05"
+    },
+    {
+      "file": "principal-review-evidence/native-views-manifest.json",
+      "sha256": "e8b15ef03539381b0e26efb0f9f889ea08fe6348b17c0aca08f621031896186f"
+    },
+    {
+      "file": "principal-review-evidence/neutral-materials.png",
+      "sha256": "7c4d36e5a9532b485c92512095c373af72b7e5b5369b757a242c2da867ca10dd"
+    },
+    {
+      "file": "principal-review-evidence/principal06-apertures-off.png",
+      "sha256": "1b64b6b65476d8adf63af1e9506d6006005a113d0bec000b676aa7a45f6dfc51"
+    },
+    {
+      "file": "principal-review-evidence/principal33-apertures-off.png",
+      "sha256": "fd67668471095bb30e009eb86381a7944cd0c4ff0ad1c40727c54da678613e37"
+    },
+    {
+      "file": "principal-review-evidence/pyright.log",
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+    },
+    {
+      "file": "principal-review-evidence/pytest-blender.log",
+      "sha256": "900cf7eb431e0791b925d309cf4b9561cdcb284db01fe12d9813e16703456cb3"
+    },
+    {
+      "file": "principal-review-evidence/pytest-native-final.log",
+      "sha256": "1ab5e5f9a387f4dfd6f6ecdc3a0eb028d689a8968b4f20d527c328f7c5b84a66"
+    },
+    {
+      "file": "principal-review-evidence/ruff.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "file": "principal-review-evidence/saved-scene.json",
+      "sha256": "4f6153a69fd553dc270861a0cced121e408a4937dc1894f0cbea85f35e0f0b4c"
+    }
+  ],
+  "post_merge_integration": {
+    "source_commit": "f941d054f0206967f3af91d6f7ee0cc02c8f8b35",
+    "integrated_main_commit": "594c83fc2f9fd810d79799b44d3e403eb7ee5c33",
+    "native_generation": "d7e4aef7bbc14ff290e3bb22a0843ab8",
+    "native_checks_passed": 368,
+    "native_checks_failed": 0,
+    "native_tests_passed": 208,
+    "geometry_comparison_file": "principal-integration-geometry.json",
+    "cad_zero_difference_regions": 19,
+    "unchanged_implementation_camera_files": 7,
+    "unchanged_named_presets": [
+      "walk",
+      "principal06",
+      "principal33"
+    ],
+    "render_provenance_note": "Paired images remain frozen5951576 vs33b7db5. This validates mergedsource geometry and does not relabel old images as fresh combined renders or claim identical global illumination.",
+    "combined_blender_validation": "completed",
+    "actual_blender_tests_passed": 5,
+    "combined_dressed_audit_findings": 0,
+    "ruff": "passed",
+    "pyright": "0 errors, 0 warnings",
+    "geometry_report_sha256": "27f16c930e807b617ffed05b73a885857c7f4c66d63c4ece2e8aeb6c6dd2c4d0"
+  }
+}

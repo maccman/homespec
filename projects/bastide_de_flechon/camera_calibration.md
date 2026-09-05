@@ -50,28 +50,54 @@ direction and glazing verticals cross-check the solve. The fitted footprint
 exposes the old tall arch, high/light beams, vase and stool staging as separate
 geometry/staging mismatches. The old incorrect arch crown is excluded from fitting.
 
-Principal06 uses the corrected plan-supported 3.36m arch and four west-window
-corners. A bounded native-lens architectural fit reached 41.6 pixels RMS but actual
-updated-scene Cycles and Workbench images showed almost no bed. It was rejected.
-North/east trials introduced foreground brace occlusion; a farther-back camera
-looked into the rear of the headboard. The selected native 24.658mm compromise is
-`(5.3, 5.3, 4.45)`, looking level at `(2.6, 1.38, 4.45)`, with vertical shift 0.12.
-The 1.15m eye height brings the near bed into the lower frame while retaining the
-arch, west window and chairs. Actual final trial images are in
-`deliverables/calibration-principal-v4/`; their manifest explicitly records the
-+3EV diagnostic offset used to inspect the dark saved scene.
+Principal06 now uses a practical review camera at `(6.15, 4.20, 4.60)` m,
+looking level at `(2.839219, 0.453171, 4.60)` m with the native GFX-derived
+24.657534 mm lens, shift_x 0.074178376 and shift_y 0.048083655. Its seven-point
+architectural RMS is **84.34 pixels at 1200×900**. This is a comparison position,
+not a uniquely recovered or photographically matched camera. Final saved-scene
+clay and colour acceptance is pending; later image acceptance is recorded
+separately so the same lock hash can govern baseline/current renders.
 
-This compromise has a higher architectural landmark RMS of 122.3 pixels at
-1200×900. The reference shows more bed, a smaller apparent arch and less west-brace
-intrusion. Those are unresolved camera/geometry/image-field disagreements, not
-successful matches. The selected image remains suitable for transparent, identical
-before/after cameras. The floor-reaching eastern brace remains inferred: source06/55
-crop it and do not establish a lower termination. No timber was shortened for a
-camera fit. Rejected camera parameters and the selection rationale remain in the lock.
+The independent upper-plan trace moved the bed center to approximately y3.65 m,
+the bench to y2.42 m, the west window center to y2.40 m and the first truss plane
+to y3.76 m. Exterior photo41 independently shows the fanlight spring coinciding
+with the frieze top, supporting spring z3.55 m and crown z5.23 m while preserving
+the 3.36 m clear width, frieze and floor levels. The revised point set therefore
+uses these updated architectural positions. Window heights and curtain pole
+z5.91 m remain photographic estimates. Source41 is an exterior geometry holdout,
+not a point included in the interior camera objective.
 
-Principal33 uses the recorded 50mm lens, moved back along the prior subject axis
-with horizontal shift to retain seating scale. It independently checks the west
-seating group, diagonal brace and horizontal tie. It remains a composition estimate.
+Actual updated-model Workbench trials rejected the lower-error camera at
+`(6.158, 5.663, 4.818)` despite 35.51 px RMS because it looked into the rear of the
+corrected headboard. A camera at `(6.957, 4.60, 4.60)` reached 37.21 px but put the
+east brace across the left half of the view. A practical x5.5 m bedside trial
+made the bed very large and cropped the arch; a y3.45 m trial south of the truss
+cleared the brace but cropped most of the bed at the right. These are retained
+rejections and tradeoffs, not accepted matches. The intermediate x6.15 m review
+camera deliberately accepts a larger point residual. The original v4 camera
+and its 122.3 px residual remain in `principal-camera-trials.json` as historical
+evidence with their original world landmarks. The east brace's lower continuation
+remains inferred because photos06/55 crop it; no member was shortened to clear a
+camera.
+
+Principal33 retains the recorded native TS-E 50 mm lens. Its review camera is
+`(2.60, 6.20, 4.813)` m, looking at `(1.222049, 1.393624, 4.813)` m, with shift_x
+0.020496919 and shift_y -0.081489108. The table top supplies only a conditional
+framing anchor; **there is no complete point-fit RMS**. An exactly south-facing
+trial was rejected after actual clay showed the west brace masking both chairs.
+The modest southwest aim exposed the group more clearly, while brace/chair
+relationships and the final plan-backed chair changes still require final-image
+review. A free-ended west side member follows the photo33/plan evidence without
+lowering the retained full-span overhead tie across circulation.
+
+`principal-camera-evidence.md` and `principal-camera-trials.json` preserve exact
+poses, original EXIF/XMP, source hashes, annotation/geometry uncertainty and the
+rejected image/manifest hashes. The GFX06 raster agrees with its sensor ratio;
+the Canon33 final 3:4 crop differs from the native portrait 2:3 field. Final TIFF
+processing tags do not recover any earlier crop or stitch. Photo33's approximate
+4.59 m focus distance is a loose holdout for conditional table scale. Photo55's
+lens correction and substantial tonal edits also prevent treating its appearance
+as direct material or lighting measurement.
 
 Garden02 initially exposed a solid wall where the reference has a luminous curtain.
 The resulting plan review corrected the bed's head to the north exterior wall.
@@ -137,5 +163,8 @@ The final v4 lock incorporates the integrated salon's reviewed camera at
 Its slight downward aim is an explicit exception to the level-camera studies,
 selected to show the coffee table, complete fireplace and seating while leaving
 the dining geometry visible. This is a visual camera estimate, not a numerical
-point fit. The other seven cameras retain v3 poses. Final baseline/current
-delivery pairs use v4 throughout.
+point fit. The other seven cameras retained v3 poses for that merged pass, whose
+baseline/current delivery pairs used v4 throughout. The subsequent v5 principal
+review changes only principal06/principal33; the other six view records remain
+identical to v4. Keep v5 unchanged across the new bedroom baseline/current pairs.
+Final image acceptance is pending and belongs in separate review-status evidence.

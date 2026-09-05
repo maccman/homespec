@@ -1,0 +1,249 @@
+{
+  "schema": 2,
+  "purpose": "Final geometry, camera and visible material assessment of finished model-only paired colour and clay review artifacts against the previously inspected full original photographs06/33/55.",
+  "decision": "Accept as identical-camera baseline/current review evidence with explicit residuals; photographic equivalence is not established.",
+  "fatal_new_framing_issue_for_review": false,
+  "source_commit": "5951576",
+  "baseline_commit": "33b7db5",
+  "generation_id": "2499ff23bd534ceca7b46035611042fb",
+  "camera_lock_sha256": "68cf9c6ceb2a9ab37b22c259aa55a0f360e313f780c41a85a9360d3322662aa9",
+  "paired_camera_fields_equal": true,
+  "inputs": [
+    {
+      "kind": "baseline-photo",
+      "manifest_path": "out/principal-study/final-review/baseline-photo/camera-review-manifest.json",
+      "manifest_sha256": "9fb818a5f0f7afe7cb3f8705f98fb7c72032089b4493f509fcc41fed58f119db",
+      "scene_sha256": "cc272131dda6a53aedc774caa09c7438a5f91ceb7cb9efe6ff11571aa7fbc7b2",
+      "images": [
+        {
+          "id": "principal06",
+          "path": "out/principal-study/final-review/baseline-photo/principal06.png",
+          "sha256": "d86df13ba97180d22df528857c07665acb4a7e229fe6a7f1a39a0a75394fa325",
+          "pixels": [
+            1200,
+            900
+          ]
+        },
+        {
+          "id": "principal33",
+          "path": "out/principal-study/final-review/baseline-photo/principal33.png",
+          "sha256": "a2168a5146ad912bbb6e96886c6269d25fe92a49b1a366f62fb9ccd576bfc7c6",
+          "pixels": [
+            900,
+            1200
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "current-photo",
+      "manifest_path": "out/principal-study/final-review/current-photo/camera-review-manifest.json",
+      "manifest_sha256": "cafff05e0c09365d9f31dbcb7c53d7af30b771314209dfb981faa69cb7cb9012",
+      "scene_sha256": "909696ed2df9b45065a78e4e2dbfa5c82b3e4a4a1e45cf33c5e6d0ca7de8cba2",
+      "images": [
+        {
+          "id": "principal06",
+          "path": "out/principal-study/final-review/current-photo/principal06.png",
+          "sha256": "a35889c3c74e2289dccce81d53bb2aa9aa907089e432679fea74eabd3cb0e8cc",
+          "pixels": [
+            1200,
+            900
+          ]
+        },
+        {
+          "id": "principal33",
+          "path": "out/principal-study/final-review/current-photo/principal33.png",
+          "sha256": "41ee2ced693601b8eb9a14f48ec1b0e9a7b6bb0c28fcc0a371d0064c72860a37",
+          "pixels": [
+            900,
+            1200
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "baseline-clay",
+      "manifest_path": "out/principal-study/final-review/baseline-clay/camera-review-manifest.json",
+      "manifest_sha256": "5c8f82162652c4ed6c0041eb609514b37c6d834bf86f87d864aafc90570c322f",
+      "scene_sha256": "cc272131dda6a53aedc774caa09c7438a5f91ceb7cb9efe6ff11571aa7fbc7b2",
+      "images": [
+        {
+          "id": "principal06",
+          "path": "out/principal-study/final-review/baseline-clay/principal06.png",
+          "sha256": "9bfd88342a78c8c11b2fbcd38d0cc8c7ccc8653c54d640d2206248a638ce8789",
+          "pixels": [
+            600,
+            450
+          ]
+        },
+        {
+          "id": "principal33",
+          "path": "out/principal-study/final-review/baseline-clay/principal33.png",
+          "sha256": "62bbf2cb24c2c313df9bca5c4efbe8e076115e0d84a2536df2c5dc5ca20b2a4a",
+          "pixels": [
+            450,
+            600
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "current-clay",
+      "manifest_path": "out/principal-study/final-review/current-clay/camera-review-manifest.json",
+      "manifest_sha256": "96793f83c12921509b5e95d19811dce54d37c0683ba15412ad46aa7703b8d5ac",
+      "scene_sha256": "909696ed2df9b45065a78e4e2dbfa5c82b3e4a4a1e45cf33c5e6d0ca7de8cba2",
+      "images": [
+        {
+          "id": "principal06",
+          "path": "out/principal-study/final-review/current-clay/principal06.png",
+          "sha256": "9dfc69ad2cd4af02eb70c2427b5ab601a62b3652ab16dc467a0cf03448a3baac",
+          "pixels": [
+            600,
+            450
+          ]
+        },
+        {
+          "id": "principal33",
+          "path": "out/principal-study/final-review/current-clay/principal33.png",
+          "sha256": "b3b8f07132edfe8c343087e2304f8b90719da977e64cbbcb9f5a39a01573c66b",
+          "pixels": [
+            450,
+            600
+          ]
+        }
+      ]
+    }
+  ],
+  "figure_manifest": {
+    "path": "projects/bastide_de_flechon/principal-review-figures.json",
+    "sha256": "2618f88dc496d910d3f547d6fdc4dbbe0f6fdc3b745ae4b2805fb39edd4e255d"
+  },
+  "review_sheets": [
+    {
+      "path": "projects/bastide_de_flechon/principal-review-06.jpg",
+      "sha256": "42a8af287d58da6494f7debc661326e4c123f3055f24eb57c1dca2e49ec10202",
+      "pixels": [
+        2480,
+        1072
+      ]
+    },
+    {
+      "path": "projects/bastide_de_flechon/principal-review-33.jpg",
+      "sha256": "2ed929d28bb0dbf6e7a81150325954b3b83aa20017635cf618d0fbc01ce05411",
+      "pixels": [
+        1880,
+        1372
+      ]
+    },
+    {
+      "path": "projects/bastide_de_flechon/principal-review-clay.jpg",
+      "sha256": "d106f9ce5c2aa291b6cda745d7256b0e3b746967b398c9f69bfd3c2b7094e721",
+      "pixels": [
+        1280,
+        1322
+      ]
+    }
+  ],
+  "sheet_composition_qa": {
+    "visually_inspected_all_three_sheets": true,
+    "result": "Clean restrained labels; no clipping or image overlays. Each pair preserves equal-sized native full frames, with correct baseline/current labels.",
+    "original_photographs_included": false,
+    "crop": false,
+    "resize": false,
+    "tonal_adjustment": false,
+    "encoding": "JPEG quality94, 4:4:4; only final sheet encoding is lossy. Source PNGs remain unchanged.",
+    "colour_quality": "32-sample Cycles preview; clay uses Workbench studio rendering."
+  },
+  "final_staging": {
+    "southwest_far_chair": {
+      "center_m": [
+        1.0,
+        1.5,
+        3.3
+      ],
+      "yaw_degrees": 153
+    },
+    "northwest_near_chair": {
+      "center_m": [
+        1.18,
+        3.05,
+        3.3
+      ],
+      "yaw_degrees": 33
+    },
+    "table_center_m": [
+      1.43,
+      2.13,
+      3.3
+    ],
+    "tall_vessel_center_m": [
+      1.37,
+      1.0,
+      3.3
+    ],
+    "small_vessel_center_m": [
+      1.7,
+      0.96,
+      3.3
+    ],
+    "branch_tip_z_m": "4.35 +/- 0.14",
+    "basis": "Movable photo33 staging differs from the plan and later principal photographs. Final chair/table ordering supersedes the earlier assessment of the far chair left of the table."
+  },
+  "review_limits": [
+    "This is a bounded review of principal06/principal33 artifacts, not full-house or surveyed architectural acceptance.",
+    "Source photographs use different dates, furniture arrangements and processing. Camera, geometry, material and illumination differences are not uniquely separable.",
+    "Workbench cavity/shadow rendering exaggerates fold relief and edge contrast; colour previews have finite sampling.",
+    "No new fitting, Blender rendering, source edit or camera-lock mutation was performed for this final assessment. Existing rendered inputs were assembled with Pillow."
+  ],
+  "views": [
+    {
+      "id": "principal06",
+      "assessment": "Usable paired review. The corrected bed coverlet, south fanlight, west window and seating remain legible together; rear-headboard and close east-brace masks that invalidated earlier poses are absent.",
+      "new_fatal_framing_issue": false,
+      "improvements_visible": [
+        "The plan-positioned bed and lower fanlight relationship are apparent with the frozen camera.",
+        "New paisley and softer red/cream curtain pattern are legible; timber is less dark and coarse than the baseline."
+      ],
+      "remaining_geometry_camera_differences": [
+        "The pale upper gable infill and exposed rubble band over the west wall remain conspicuous. Original06 presents a more continuous warm plaster-to-roof relationship.",
+        "The fanlight is cropped at the left and its eastern curtain remains outside the frame. Original06 shows the inner arch between both curtain panels.",
+        "The bench is only a small fragment beside the bed. The coverlet dominates the lower foreground, with a different plain-linen, pillow and bench relationship.",
+        "The source foreground truss/timber framing is largely outside this camera; the model emphasizes the upper purlin/rafter band. Retained structure remains an unresolved camera/geometry relationship.",
+        "The west blind/window reads high relative to source seating and arch; its vertical dimensions remain inferred.",
+        "Coverlet folds remain larger and more regular than the source drape, although the colour pattern makes them less conspicuous than in clay."
+      ],
+      "remaining_material_light_differences": [
+        "Floor and blind remain much paler than the warmer, darker originals; rendered wood remains comparatively uniform.",
+        "Curtain repeat remains more regular than the photographed ikat, and exposed cane/cushions are brighter than source."
+      ],
+      "residual_note": "84.34px architectural-point RMS at1200x900 is conditional camera-plus-geometry disagreement, not a score for furniture, fabric or roof resemblance."
+    },
+    {
+      "id": "principal33",
+      "assessment": "Usable paired review. Both chairs and trumpet table are identifiable. Final movable staging puts the far chair back to the right/behind the table and the vessels left of it, correcting the earlier ordering discrepancy.",
+      "new_fatal_framing_issue": false,
+      "improvements_visible": [
+        "Far chair is more exposed than in the rejected due-south pose and its staging order now follows source33.",
+        "Darker trumpet table, two visible vessels and softer red/cream curtain make the intended group clearer."
+      ],
+      "remaining_geometry_camera_differences": [
+        "The retained foreground diagonal still has a broad projected face and masks much of the near chair back. Source33 leaves more of that back and surrounding floor visible.",
+        "The horizontal side member remains higher in the frame and has more perspective slope: underside approximatelyv0.25 against sourcev0.345.",
+        "The far chair back remains too high: the retained analytic back-top residual is approximately74px at900x1200. This was not resolved by moving the camera or changing chair height.",
+        "Less of the south fanlight appears at left, the right window is tightly cropped, and open floor around the near chair/brace remains narrower.",
+        "A cropped conical bedside-lamp fragment enters at lower left in the final colour frame; it is a remaining edge-staging difference without blocking the seating comparison.",
+        "Ceramic/branch and book arrangement remains approximate; branches are difficult to distinguish clearly at preview resolution."
+      ],
+      "remaining_material_light_differences": [
+        "Far cane and cushions are much brighter and whiter than the muted warm cane and olive upholstery in the source.",
+        "Floor remains pale and the source broad warm shadow pattern is not matched. The table has improved dark patina but still lacks the source irregularity."
+      ],
+      "residual_note": "No full two-dimensional landmark RMS exists. Table framing and prior vertical-only fits are conditional anchors, not proof of a recovered photographic camera."
+    }
+  ],
+  "acceptance_scope": "Final image review recorded here separately from the frozen lock. Keep the identical lock for any further paired comparisons.",
+  "assembly_tool": {
+    "path": "tools/bastide_principal_review_sheets.py",
+    "sha256": "6957c27dfd0cd724111aa619c8d51f628c8bb1c1afcfbb802c14084bbd23e658"
+  }
+}

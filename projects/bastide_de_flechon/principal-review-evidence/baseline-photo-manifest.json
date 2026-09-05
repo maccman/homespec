@@ -1,0 +1,4265 @@
+{
+  "purpose": "Actual 3D scene renders using one committed camera lock; bounded fits and unresolved camera/geometry residuals are recorded separately from visual fidelity.",
+  "camera_lock_id": "flechon-exif-photo-cameras-2026-09-05-v5-principal-review",
+  "camera_lock_sha256": "68cf9c6ceb2a9ab37b22c259aa55a0f360e313f780c41a85a9360d3322662aa9",
+  "saved_scene": "/Users/cloud/.codex/worktrees/7f26/homespec/out/principal-study/baseline/house.blend",
+  "saved_scene_sha256": "cc272131dda6a53aedc774caa09c7438a5f91ceb7cb9efe6ff11571aa7fbc7b2",
+  "camera_script_sha256": "8832bd126cfda1cf219eb59424f5f64d3e2b6ce92ad74a4d53721f998933c6eb",
+  "quality": "preview",
+  "geometry": "Unchanged from saved scene",
+  "materials": "Original shaders",
+  "clay_study": null,
+  "cycles_seed": 0,
+  "views": [
+    {
+      "id": "principal06",
+      "reference": "photo_06.jpg",
+      "room": "Principal suite · arched window",
+      "location": [
+        6.15,
+        4.2,
+        4.600000017934083
+      ],
+      "target": [
+        2.8392189625365676,
+        0.45317081761490563,
+        4.600000017934083
+      ],
+      "lens_mm": 24.657534246575345,
+      "size": [
+        1200,
+        900
+      ],
+      "note": "Camera on the east side of the bed faces southwest. The south arched glazing is left; the rectangular west window and paired cane chairs are right.",
+      "exposure": 1.7000000476837158,
+      "shift_x": 0.07417837609041948,
+      "shift_y": 0.04808365505346383,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          5.3,
+          5.3,
+          4.45
+        ],
+        "target": [
+          2.6,
+          1.38,
+          4.45
+        ],
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0,
+        "shift_y": 0.12,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "landmarks": [
+        {
+          "name": "arch east spring",
+          "world_m": [
+            5.68,
+            0.35,
+            3.55
+          ],
+          "photo_uv": [
+            0.096,
+            0.791
+          ],
+          "weight": 1
+        },
+        {
+          "name": "arch west spring",
+          "world_m": [
+            2.32,
+            0.35,
+            3.55
+          ],
+          "photo_uv": [
+            0.427,
+            0.74
+          ],
+          "weight": 1
+        },
+        {
+          "name": "arch crown",
+          "world_m": [
+            4,
+            0.35,
+            5.23
+          ],
+          "photo_uv": [
+            0.289,
+            0.416
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window south head",
+          "world_m": [
+            0.35,
+            1.6749999999999998,
+            5.25
+          ],
+          "photo_uv": [
+            0.75,
+            0.495
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window north head",
+          "world_m": [
+            0.35,
+            3.125,
+            5.25
+          ],
+          "photo_uv": [
+            0.9,
+            0.489
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window south sill",
+          "world_m": [
+            0.35,
+            1.6749999999999998,
+            4.4
+          ],
+          "photo_uv": [
+            0.75,
+            0.599
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window north sill",
+          "world_m": [
+            0.35,
+            3.125,
+            4.4
+          ],
+          "photo_uv": [
+            0.9,
+            0.602
+          ],
+          "weight": 1
+        }
+      ],
+      "fit_status": "pending_actual_image_review",
+      "fit_note": "Practical review camera between tested x5.5 bedside and south-of-truss alternatives: x6.15,y4.20 stays inside the retained east brace and before corrected headboard. Native lens fixed; height/yaw/shifts fit updated architecture, yielding 84.34px RMS at1200x900. This is an identical-camera review position, not a matched or uniquely recovered photograph.",
+      "photo_lines": [
+        {
+          "name": "west window south jamb",
+          "photo_uv": [
+            [
+              0.75,
+              0.495
+            ],
+            [
+              0.75,
+              0.599
+            ]
+          ]
+        },
+        {
+          "name": "west window north jamb",
+          "photo_uv": [
+            [
+              0.9,
+              0.489
+            ],
+            [
+              0.9,
+              0.602
+            ]
+          ]
+        },
+        {
+          "name": "arch radial upright",
+          "photo_uv": [
+            [
+              0.29,
+              0.426
+            ],
+            [
+              0.292,
+              0.628
+            ]
+          ]
+        },
+        {
+          "name": "curtain rod depth",
+          "photo_uv": [
+            [
+              0.075,
+              0.251
+            ],
+            [
+              0.51,
+              0.362
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-16.jpg",
+      "reference_sha256": "b713335e429d0ac7e4831073e4932ba6f3c545788d451b1b99d00d3d6c1c7aa2",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "FUJIFILM",
+        "camera_model": "GFX100S",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.6,
+        "physical_focal_length_mm": 30.0,
+        "reported_35mm_equivalent_mm": 24,
+        "lens_model": "GF30mmF5.6 T/S",
+        "physical_sensor_long_mm": 43.8,
+        "long_axis_equivalent_for_blender_mm": 24.657534246575345,
+        "sensor_source": "https://www.fujifilm-x.com/global/products/cameras/gfx100s/specifications/",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit.",
+      "rejected_trials": [
+        {
+          "location": [
+            7.399999999981731,
+            4.268286170293558,
+            5.3999999999999995
+          ],
+          "target": [
+            3.466670038129365,
+            1.181392033593295,
+            5.3999999999999995
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0.052387280481657375,
+          "shift_y": -0.019681673648426882,
+          "reason": "Lower reprojection error alone does not resolve geometry uncertainty or observed foreground occlusion."
+        },
+        {
+          "location": [
+            7.3999999999999995,
+            3.1499999999999995,
+            4.928941145403446
+          ],
+          "target": [
+            3.142341552828772,
+            0.5284843034550599,
+            4.928941145403446
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0.08935364537352847,
+          "shift_y": 0.031922983959193255,
+          "reason": "Rejected after updated-scene Cycles and Workbench inspection: low architectural-point error removes essentially the entire bed from the frame.",
+          "landmark_rms_preview_px": 41.564378514713866
+        },
+        {
+          "location": [
+            5.7,
+            6.4,
+            4.55
+          ],
+          "target": [
+            2.6,
+            1.38,
+            4.55
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0,
+          "shift_y": 0.077,
+          "reason": "Actual Cycles render shows rear of headboard across lower-right half, obscuring room."
+        }
+      ],
+      "visual_review": {
+        "status": "pending_final_scene_images",
+        "purpose": "Practical identical-camera baseline/current review; not photographic calibration acceptance."
+      },
+      "trial_evidence": "principal-camera-trials.json",
+      "reprojection": {
+        "rms_preview_px": 84.34092010486047,
+        "fit_rms_preview_px": 84.34092010486047,
+        "holdout_rms_preview_px": null,
+        "landmarks": [
+          {
+            "role": "fit",
+            "name": "arch east spring",
+            "photo_uv": [
+              0.096,
+              0.791
+            ],
+            "projected_uv": [
+              -0.044996470934532504,
+              0.8641185981628882
+            ],
+            "error_preview_px": [
+              -169.195765121439,
+              65.80673834659932
+            ],
+            "distance_preview_px": 181.54264993892465
+          },
+          {
+            "role": "fit",
+            "name": "arch west spring",
+            "photo_uv": [
+              0.427,
+              0.74
+            ],
+            "projected_uv": [
+              0.4663493088640262,
+              0.7409946752349023
+            ],
+            "error_preview_px": [
+              47.21917063683145,
+              0.8952077114120383
+            ],
+            "distance_preview_px": 47.227655801201664
+          },
+          {
+            "role": "fit",
+            "name": "arch crown",
+            "photo_uv": [
+              0.289,
+              0.416
+            ],
+            "projected_uv": [
+              0.2766862670093411,
+              0.4305809604787861
+            ],
+            "error_preview_px": [
+              -14.776479588790625,
+              13.122864430907487
+            ],
+            "distance_preview_px": 19.762437094395086
+          },
+          {
+            "role": "fit",
+            "name": "west window south head",
+            "photo_uv": [
+              0.75,
+              0.495
+            ],
+            "projected_uv": [
+              0.7453534018207205,
+              0.46056312900829566
+            ],
+            "error_preview_px": [
+              -5.575917815135378,
+              -30.993183892533903
+            ],
+            "distance_preview_px": 31.490765428575518
+          },
+          {
+            "role": "fit",
+            "name": "west window north head",
+            "photo_uv": [
+              0.9,
+              0.489
+            ],
+            "projected_uv": [
+              0.9616258542400845,
+              0.436346193655954
+            ],
+            "error_preview_px": [
+              73.95102508810139,
+              -47.38842570964138
+            ],
+            "distance_preview_px": 87.83175395504294
+          },
+          {
+            "role": "fit",
+            "name": "west window south sill",
+            "photo_uv": [
+              0.75,
+              0.599
+            ],
+            "projected_uv": [
+              0.7453534018207205,
+              0.5959725933651965
+            ],
+            "error_preview_px": [
+              -5.575917815135378,
+              -2.724665971323148
+            ],
+            "distance_preview_px": 6.206018380284609
+          },
+          {
+            "role": "fit",
+            "name": "west window north sill",
+            "photo_uv": [
+              0.9,
+              0.602
+            ],
+            "projected_uv": [
+              0.9616258542400845,
+              0.6034239589627508
+            ],
+            "error_preview_px": [
+              73.95102508810139,
+              1.2815630664757438
+            ],
+            "distance_preview_px": 73.96212892740687
+          }
+        ]
+      },
+      "projection_implementation_check": [
+        {
+          "name": "arch east spring",
+          "maximum_uv_disagreement": 2.0933785281618267e-07
+        },
+        {
+          "name": "arch west spring",
+          "maximum_uv_disagreement": 1.4386996732840274e-07
+        },
+        {
+          "name": "arch crown",
+          "maximum_uv_disagreement": 1.6566753729962969e-07
+        },
+        {
+          "name": "west window south head",
+          "maximum_uv_disagreement": 1.7770045868115147e-07
+        },
+        {
+          "name": "west window north head",
+          "maximum_uv_disagreement": 1.986163608025393e-07
+        },
+        {
+          "name": "west window south sill",
+          "maximum_uv_disagreement": 1.7770045868115147e-07
+        },
+        {
+          "name": "west window north sill",
+          "maximum_uv_disagreement": 1.986163608025393e-07
+        }
+      ],
+      "lighting_study": {
+        "preset": "principal06",
+        "config": {
+          "reference": "photo_06.jpg / Final Collection-16.jpg",
+          "sun_direction": [
+            -0.64,
+            0.61,
+            -0.48
+          ],
+          "sun_energy": 2.3,
+          "sun_angle": 0.85,
+          "sun_color": [
+            1.0,
+            0.91,
+            0.79
+          ],
+          "sky_rotation": 115,
+          "sky_strength": 2.25,
+          "supplemental_window_fraction": 0.2,
+          "window_color": [
+            1.0,
+            0.96,
+            0.9
+          ],
+          "exposure": 1.7,
+          "white_balance_kelvin": 5500,
+          "white_balance_tint": 0,
+          "practical_default": 0.0,
+          "fixture_multipliers": {
+            "principal_bedside": 0.4
+          },
+          "note": "Bright greenery beyond a shaded tobacco interior; small practical contribution."
+        },
+        "supplemental_windows": true,
+        "supplemental_window_fraction": 0.2,
+        "aperture_approximation": "Additional diffuse light at real openings, selected from off/full/reduced-power Cycles tests; not measured sky radiance or a zero-energy portal.",
+        "white_balance_applied": true,
+        "exposure": 1.7000000476837158,
+        "white_balance_actual": {
+          "enabled": true,
+          "temperature_kelvin": 5500.0,
+          "tint": 0.0
+        },
+        "lights": [
+          {
+            "name": "D_E1_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 14.399999618530273,
+            "base_energy": 72,
+            "location": [
+              7.625000476837158,
+              2.325000047683716,
+              1.024999976158142
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.4700000286102295,
+              1.909999966621399
+            ]
+          },
+          {
+            "name": "D_E2_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 14.399999618530273,
+            "base_energy": 72,
+            "location": [
+              7.625000476837158,
+              6.375,
+              1.024999976158142
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.4700000286102295,
+              1.909999966621399
+            ]
+          },
+          {
+            "name": "D_ENTRY_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 17.0,
+            "base_energy": 85,
+            "location": [
+              -0.5828723907470703,
+              19.519929885864258,
+              1.4249999523162842
+            ],
+            "rotation_euler": [
+              1.4513671398162842,
+              -8.703936771325971e-08,
+              1.4524198770523071
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              2.319999933242798,
+              2.7100000381469727
+            ]
+          },
+          {
+            "name": "D_FRONT_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 21.0,
+            "base_energy": 105,
+            "location": [
+              4.0,
+              0.375,
+              1.6299999952316284
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              3.180000066757202,
+              2.1600000858306885
+            ]
+          },
+          {
+            "name": "D_FRONT_physical_sky_aperture.001",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 38.0,
+            "base_energy": 190,
+            "location": [
+              4.0,
+              0.375,
+              4.715000152587891
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              2.0999999046325684,
+              1.1699999570846558
+            ]
+          },
+          {
+            "name": "D_KITCHEN_GARDEN_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 21.0,
+            "base_energy": 105,
+            "location": [
+              -2.736999988555908,
+              8.77500057220459,
+              1.0399999618530273
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              2.0199999809265137,
+              1.940000057220459
+            ]
+          },
+          {
+            "name": "D_KITCHEN_TERRACE_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 18.399999618530273,
+            "base_energy": 92,
+            "location": [
+              -0.375,
+              13.700000762939453,
+              1.25
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.7200000286102295,
+              2.359999895095825
+            ]
+          },
+          {
+            "name": "D_W1_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 14.399999618530273,
+            "base_energy": 72,
+            "location": [
+              0.375,
+              6.37000036239624,
+              1.2999999523162842
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.0199999809265137,
+              2.4600000381469727
+            ]
+          },
+          {
+            "name": "D_W2_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 14.399999618530273,
+            "base_energy": 72,
+            "location": [
+              0.375,
+              2.3299999237060547,
+              1.2999999523162842
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.0199999809265137,
+              2.4600000381469727
+            ]
+          },
+          {
+            "name": "N_BATH3_E_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 8.399999618530273,
+            "base_energy": 42,
+            "location": [
+              -0.375,
+              14.199999809265137,
+              4.875000476837158
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.1200000047683716,
+              1.2100000381469727
+            ]
+          },
+          {
+            "name": "N_BATH4_W_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 9.199999809265137,
+            "base_energy": 46,
+            "location": [
+              -8.886992454528809,
+              28.982872009277344,
+              4.800000190734863
+            ],
+            "rotation_euler": [
+              1.4513720273971558,
+              -4.6754653482139474e-08,
+              -1.701563835144043
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.1699999570846558,
+              1.559999942779541
+            ]
+          },
+          {
+            "name": "N_BED3_S_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 15.0,
+            "base_energy": 75,
+            "location": [
+              -2.7370002269744873,
+              8.77500057220459,
+              4.900000095367432
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.4199999570846558,
+              1.2599999904632568
+            ]
+          },
+          {
+            "name": "N_GUEST_E0_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 8.399999618530273,
+            "base_energy": 42,
+            "location": [
+              -1.2784268856048584,
+              24.6949520111084,
+              1.5
+            ],
+            "rotation_euler": [
+              1.451371192932129,
+              -2.5855666052621018e-08,
+              1.1935211420059204
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              0.9700000286102295,
+              1.4600000381469727
+            ]
+          },
+          {
+            "name": "N_GUEST_E1_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 14.800000190734863,
+            "base_energy": 74,
+            "location": [
+              -0.19156929850578308,
+              27.437440872192383,
+              1.5
+            ],
+            "rotation_euler": [
+              1.451371192932129,
+              -2.5855666052621018e-08,
+              1.1935211420059204
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              0.9700000286102295,
+              1.4600000381469727
+            ]
+          },
+          {
+            "name": "N_GUEST_W_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 17.200000762939453,
+            "base_energy": 86,
+            "location": [
+              -8.87395191192627,
+              29.082021713256836,
+              1.5
+            ],
+            "rotation_euler": [
+              1.4513720273971558,
+              -4.6754653482139474e-08,
+              -1.701563835144043
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              0.9700000286102295,
+              1.4600000381469727
+            ]
+          },
+          {
+            "name": "N_MASTER_N_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 7.0,
+            "base_energy": 35,
+            "location": [
+              4.150000095367432,
+              10.625,
+              4.450000286102295
+            ],
+            "rotation_euler": [
+              1.4513672590255737,
+              1.4992022556725715e-07,
+              3.141592502593994
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.6200000047683716,
+              1.659999966621399
+            ]
+          },
+          {
+            "name": "N_SUITE4_E0_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 11.0,
+            "base_energy": 55,
+            "location": [
+              -1.2692168951034546,
+              24.71819305419922,
+              4.800000190734863
+            ],
+            "rotation_euler": [
+              1.451371192932129,
+              -2.5855666052621018e-08,
+              1.1935211420059204
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.0199999809265137,
+              1.4600000381469727
+            ]
+          },
+          {
+            "name": "N_SUITE4_E1_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 13.0,
+            "base_energy": 65,
+            "location": [
+              -0.18235930800437927,
+              27.460681915283203,
+              4.800000190734863
+            ],
+            "rotation_euler": [
+              1.451371192932129,
+              -2.5855666052621018e-08,
+              1.1935211420059204
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.0199999809265137,
+              1.4600000381469727
+            ]
+          },
+          {
+            "name": "N_W2_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 15.600000381469727,
+            "base_energy": 78,
+            "location": [
+              0.375,
+              3.0,
+              4.825000286102295
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.2699999809265137,
+              0.7099999785423279
+            ]
+          },
+          {
+            "name": "bath1_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 55.0,
+            "location": [
+              -4.472857475280762,
+              28.43219757080078,
+              2.8969998359680176
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.3400000035762787,
+              0.3400000035762787
+            ]
+          },
+          {
+            "name": "bath2_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 38.0,
+            "location": [
+              -8.14380931854248,
+              25.89069938659668,
+              2.5749967098236084
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.3400000035762787,
+              0.3400000035762787
+            ]
+          },
+          {
+            "name": "bath3_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 30.0,
+            "location": [
+              -2.6889119148254395,
+              14.543749809265137,
+              7.506389617919922
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.3400000035762787,
+              0.3400000035762787
+            ]
+          },
+          {
+            "name": "bath4_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 30.0,
+            "location": [
+              -7.731276988983154,
+              28.08641242980957,
+              6.397000312805176
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.3400000035762787,
+              0.3400000035762787
+            ]
+          },
+          {
+            "name": "bedroom3_bath_vanity_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -3.6500000953674316,
+              15.65999984741211,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom3_bath_vanity_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -2.7899999618530273,
+              15.65999984741211,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom3_brass_lamp_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 24.0,
+            "location": [
+              -4.050000190734863,
+              10.994999885559082,
+              4.179999828338623
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom3_brass_lamp_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 24.0,
+            "location": [
+              -1.4700000286102295,
+              10.994999885559082,
+              4.179999828338623
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom4_bath_vanity_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -7.778781890869141,
+              29.836515426635742,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom4_bath_vanity_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -6.960873603820801,
+              29.57076072692871,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom4_lamp_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 24.0,
+            "location": [
+              -4.713383197784424,
+              26.2569637298584,
+              4.179999828338623
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom4_lamp_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 24.0,
+            "location": [
+              -3.9532015323638916,
+              28.596561431884766,
+              4.179999828338623
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "dining_lantern_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 33.0,
+            "location": [
+              3.3499999046325684,
+              8.449999809265137,
+              2.5369999408721924
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "flechon_daylight_sun",
+            "role": "sun",
+            "type": "SUN",
+            "energy": 2.299999952316284,
+            "base_energy": 2.299999952316284,
+            "location": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rotation_euler": [
+              1.073419213294983,
+              1.2020713313631859e-08,
+              0.809393584728241
+            ],
+            "color": [
+              1.0,
+              0.9100000262260437,
+              0.7900000214576721
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "garden_bath1_vanity_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -3.536118507385254,
+              28.937255859375,
+              1.7200000286102295
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              -1.5369371175765991
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "garden_bath1_vanity_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -3.7740318775177,
+              28.11081886291504,
+              1.7200000286102295
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              -1.5369371175765991
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "garden_bath2_vanity_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -7.831218242645264,
+              25.373483657836914,
+              1.7200000286102295
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              3.141592502593994
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "garden_bath2_vanity_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -8.649126052856445,
+              25.639238357543945,
+              1.7200000286102295
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              3.141592502593994
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "guest_1_sconce_glow",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 8.0,
+            "location": [
+              -0.27794361114501953,
+              28.373125076293945,
+              2.109999895095825
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "guest_2_portable_reading_lamp_0_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 8.0,
+            "location": [
+              -8.198285102844238,
+              30.759780883789062,
+              0.8259999752044678
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "guest_2_portable_reading_lamp_1_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 8.0,
+            "location": [
+              -6.09916877746582,
+              30.03721046447754,
+              0.8259999752044678
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "guest_corridor_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 32.0,
+            "location": [
+              -4.53000020980835,
+              26.040000915527344,
+              2.7710001468658447
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.1899999976158142,
+              0.25
+            ]
+          },
+          {
+            "name": "hall_glass_pendant_practical",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 5.0,
+            "location": [
+              -1.090000033378601,
+              19.5,
+              3.565000057220459
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "kitchen_fine_wire_pendant_0_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 28.0,
+            "location": [
+              -2.630000114440918,
+              11.199999809265137,
+              2.305000066757202
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "kitchen_fine_wire_pendant_1_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 28.0,
+            "location": [
+              -2.630000114440918,
+              13.199999809265137,
+              2.305000066757202
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "kitchen_undershelf_light",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 30.0,
+            "location": [
+              -4.420000076293945,
+              10.0,
+              1.0549999475479126
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8199999928474426,
+              0.5899999737739563
+            ],
+            "area_dimensions_m": [
+              0.1599999964237213,
+              1.0
+            ]
+          },
+          {
+            "name": "kitchen_undershelf_light.001",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 30.0,
+            "location": [
+              -4.420000076293945,
+              14.899999618530273,
+              1.0549999475479126
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8199999928474426,
+              0.5899999737739563
+            ],
+            "area_dimensions_m": [
+              0.1599999964237213,
+              1.0
+            ]
+          },
+          {
+            "name": "laundry_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 45.0,
+            "location": [
+              -5.67085075378418,
+              25.087736129760742,
+              2.855999708175659
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.1899999976158142,
+              0.25
+            ]
+          },
+          {
+            "name": "master_bath_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 35.0,
+            "location": [
+              4.0,
+              8.854999542236328,
+              7.856632232666016
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.3400000035762787,
+              0.3400000035762787
+            ]
+          },
+          {
+            "name": "principal_bath_vanity_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              1.4100000858306885,
+              10.430000305175781,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "principal_bath_vanity_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              2.2699999809265137,
+              10.430000305175781,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "principal_bath_vanity_light.002",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              2.3299999237060547,
+              10.430000305175781,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "principal_bath_vanity_light.003",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              3.190000057220459,
+              10.430000305175781,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "principal_bedside_lamp_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 8.0,
+            "base_energy": 20.0,
+            "location": [
+              2.6500000953674316,
+              5.045000076293945,
+              4.159999847412109
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "principal_bedside_lamp_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 8.0,
+            "base_energy": 20.0,
+            "location": [
+              5.309999942779541,
+              5.045000076293945,
+              4.159999847412109
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_black_ceramic_lamp_glow",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 23.0,
+            "location": [
+              2.1500000953674316,
+              1.9500000476837158,
+              1.1399999856948853
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_fp_fire_practical",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 24.0,
+            "location": [
+              7.119999885559082,
+              4.400000095367432,
+              0.7900000214576721
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.23999999463558197,
+              0.054999999701976776
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_fp_reading_lamp_glow",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 5.0,
+            "location": [
+              6.590000152587891,
+              5.489999771118164,
+              1.3600000143051147
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_photo_lighting_pendant_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 33.0,
+            "location": [
+              4.0,
+              2.75,
+              2.630000114440918
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_photo_lighting_pendant_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 33.0,
+            "location": [
+              4.0,
+              4.849999904632568,
+              2.630000114440918
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_photo_lighting_sconce_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 7.0,
+            "location": [
+              0.8999999761581421,
+              0.5149999856948853,
+              1.934999942779541
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_photo_lighting_sconce_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 7.0,
+            "location": [
+              7.0,
+              0.5149999856948853,
+              1.934999942779541
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "upper_gallery_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 42.0,
+            "location": [
+              -2.549999952316284,
+              20.010000228881836,
+              6.355999946594238
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.1899999976158142,
+              0.25
+            ]
+          },
+          {
+            "name": "upper_gallery_sconce_practical",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 9.0,
+            "location": [
+              -0.9393511414527893,
+              22.471729278564453,
+              4.986999988555908
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "wc_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 35.0,
+            "location": [
+              -4.012472152709961,
+              24.56088638305664,
+              2.855999708175659
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.1899999976158142,
+              0.25
+            ]
+          }
+        ],
+        "emitters": [
+          {
+            "material": "bedroom3_bath_vanity_light.001_physical_bulb_controlled_emitter",
+            "fixture": "bedroom3_bath_vanity_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "bedroom3_bath_vanity_light_physical_bulb_controlled_emitter",
+            "fixture": "bedroom3_bath_vanity_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "bedroom4_bath_vanity_light.001_physical_bulb_controlled_emitter",
+            "fixture": "bedroom4_bath_vanity_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "bedroom4_bath_vanity_light_physical_bulb_controlled_emitter",
+            "fixture": "bedroom4_bath_vanity_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "dining_lantern_warm_bulb.002_controlled_emitter",
+            "fixture": "dining_lantern_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "fidelity_opal_ceiling_diffuser.005",
+            "fixture": "master_bath_ceiling_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "garden_bath1_vanity_light.001_physical_bulb_controlled_emitter",
+            "fixture": "garden_bath1_vanity_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "garden_bath1_vanity_light_physical_bulb_controlled_emitter",
+            "fixture": "garden_bath1_vanity_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "garden_bath2_vanity_light.001_physical_bulb_controlled_emitter",
+            "fixture": "garden_bath2_vanity_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "garden_bath2_vanity_light_physical_bulb_controlled_emitter",
+            "fixture": "garden_bath2_vanity_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "guest_1_woven_sconce_glowing_filament_controlled_emitter",
+            "fixture": "guest_1_sconce_glow",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "hall_clear_filament_bulb_controlled_emitter",
+            "fixture": "hall_glass_pendant_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "hall_pendant_tungsten_filament.001_controlled_emitter",
+            "fixture": "hall_glass_pendant_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "hall_pendant_tungsten_filament_controlled_emitter",
+            "fixture": "hall_glass_pendant_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "kitchen_fine_wire_pendant_0_warm_filament_controlled_emitter",
+            "fixture": "kitchen_fine_wire_pendant_0_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "kitchen_fine_wire_pendant_1_warm_filament_controlled_emitter",
+            "fixture": "kitchen_fine_wire_pendant_1_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "principal_bath_vanity_light.001_physical_bulb_controlled_emitter",
+            "fixture": "principal_bath_vanity_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "principal_bath_vanity_light.002_physical_bulb_controlled_emitter",
+            "fixture": "principal_bath_vanity_light.002",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "principal_bath_vanity_light.003_physical_bulb_controlled_emitter",
+            "fixture": "principal_bath_vanity_light.003",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "principal_bath_vanity_light_physical_bulb_controlled_emitter",
+            "fixture": "principal_bath_vanity_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "principal_bedside_lamp_bulb.001_controlled_emitter",
+            "fixture": "principal_bedside_lamp_light.001",
+            "emission_strength": 1.0
+          },
+          {
+            "material": "salon_black_ceramic_lamp_glow_physical_bulb_controlled_emitter",
+            "fixture": "salon_black_ceramic_lamp_glow",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "salon_fp_glowing_ember",
+            "fixture": "salon_fp_fire_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "salon_fp_reading_lamp_glow_physical_bulb_controlled_emitter",
+            "fixture": "salon_fp_reading_lamp_glow",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "salon_photo_lighting_frosted_bulb.005_controlled_emitter",
+            "fixture": "salon_photo_lighting_pendant_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "salon_photo_lighting_sconce_bulb.001_controlled_emitter",
+            "fixture": "salon_photo_lighting_sconce_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "service_opal_lamp_diffuser.001",
+            "fixture": "guest_corridor_ceiling_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "service_opal_lamp_diffuser.002",
+            "fixture": "laundry_ceiling_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "service_opal_lamp_diffuser.003",
+            "fixture": "upper_gallery_ceiling_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "service_opal_lamp_diffuser.004",
+            "fixture": "wc_ceiling_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "upper_gallery_sconce_practical_physical_bulb_controlled_emitter",
+            "fixture": "upper_gallery_sconce_practical",
+            "emission_strength": 0.0
+          }
+        ],
+        "fixture_visibility": [
+          {
+            "object": "salon_fp_flame_tongue",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.001",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.002",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.003",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.004",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.005",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.006",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.007",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.008",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.009",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.010",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          }
+        ],
+        "status": "Visual estimates; compare rendered references before treating as validated.",
+        "implementation_sha256": "3908913b64a0de814a35336a997304daa2ef390d534c7bb6b169c751943e6052",
+        "preset_source_sha256": "1808f694ba5973e5f596a1c1bc9b6522ff37c4da75eb812bb5cba86cceafa2be"
+      },
+      "render": "/Users/cloud/.codex/worktrees/7f26/homespec/out/principal-study/final-review/baseline-photo/principal06.png",
+      "sha256": "d86df13ba97180d22df528857c07665acb4a7e229fe6a7f1a39a0a75394fa325",
+      "sensor_fit": "HORIZONTAL",
+      "pixels": [
+        1200,
+        900
+      ],
+      "seconds": 13.92,
+      "camera_check": "",
+      "frame_check": ""
+    },
+    {
+      "id": "principal33",
+      "reference": "photo_33.jpg",
+      "room": "Principal suite · arched window",
+      "location": [
+        2.6,
+        6.2,
+        4.813
+      ],
+      "target": [
+        1.2220487658774353,
+        1.3936239851235008,
+        4.813
+      ],
+      "lens_mm": 50,
+      "size": [
+        900,
+        1200
+      ],
+      "note": "Portrait of the west seating corner: gathered ikat, both raked cane chairs, patinated trumpet table and huge diagonal brace. Photo33's table staging differs from photo06.",
+      "exposure": 1.7999999523162842,
+      "shift_x": 0.020496918683894638,
+      "shift_y": -0.0814891075547356,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          4.84375,
+          5.978125,
+          4.87
+        ],
+        "target": [
+          1.25,
+          2.15,
+          4.87
+        ],
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": -0.075,
+        "shift_y": 0.015,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_status": "review_composition_pending_final_images",
+      "fit_note": "Native50mm review camera atx2.6,y6.2 with yaw-1.85; actual clay exposes both chairs more than due-south trial. Conditional table-top framing only, with unresolved brace/window/staging discrepancy. Final plan-backed chair changes require new image inspection. No full-point calibration RMS or photographic match is claimed.",
+      "photo_lines": [
+        {
+          "name": "curtain rod",
+          "photo_uv": [
+            [
+              0.002,
+              0.25
+            ],
+            [
+              0.268,
+              0.25
+            ]
+          ]
+        },
+        {
+          "name": "window jamb",
+          "photo_uv": [
+            [
+              0.952,
+              0.488
+            ],
+            [
+              0.952,
+              0.628
+            ]
+          ]
+        },
+        {
+          "name": "brace centre",
+          "photo_uv": [
+            [
+              0.267,
+              0.117
+            ],
+            [
+              0.954,
+              0.872
+            ]
+          ]
+        },
+        {
+          "name": "horizontal tie underside",
+          "photo_uv": [
+            [
+              0.404,
+              0.344
+            ],
+            [
+              0.997,
+              0.349
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-7.jpg",
+      "reference_sha256": "88390c1a116c2f498e7961c1db4c774767d8e70f33856caed54142f1ecf8d4ee",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "Canon",
+        "camera_model": "Canon EOS 5DS R",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.5,
+        "physical_focal_length_mm": 50.0,
+        "lens_model": "TS-E50mm f/2.8L MACRO",
+        "physical_sensor_long_mm": 36,
+        "long_axis_equivalent_for_blender_mm": 50.0,
+        "sensor_source": "Full-frame 36mm convention; native EXIF focal length retained.",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit.",
+      "trial_evidence": "principal-camera-trials.json",
+      "visual_review": {
+        "status": "pending_final_scene_images",
+        "purpose": "Practical identical-camera baseline/current review; not photographic calibration acceptance."
+      },
+      "reprojection": {
+        "rms_preview_px": null,
+        "fit_rms_preview_px": null,
+        "holdout_rms_preview_px": null,
+        "landmarks": []
+      },
+      "projection_implementation_check": [],
+      "lighting_study": {
+        "preset": "principal33",
+        "config": {
+          "reference": "photo_33.jpg / principal seating cross-view",
+          "sun_direction": [
+            -0.64,
+            0.61,
+            -0.48
+          ],
+          "sun_energy": 3.2,
+          "sun_angle": 0.6,
+          "sun_color": [
+            1.0,
+            0.88,
+            0.69
+          ],
+          "sky_rotation": 115,
+          "sky_strength": 1.95,
+          "supplemental_window_fraction": 0.2,
+          "window_color": [
+            1.0,
+            0.96,
+            0.9
+          ],
+          "exposure": 1.8,
+          "white_balance_kelvin": 5400,
+          "white_balance_tint": 0,
+          "practical_default": 0.0,
+          "fixture_multipliers": {},
+          "note": "Same sun azimuth as photo06 study, stronger direct light for the visible arch shadow."
+        },
+        "supplemental_windows": true,
+        "supplemental_window_fraction": 0.2,
+        "aperture_approximation": "Additional diffuse light at real openings, selected from off/full/reduced-power Cycles tests; not measured sky radiance or a zero-energy portal.",
+        "white_balance_applied": true,
+        "exposure": 1.7999999523162842,
+        "white_balance_actual": {
+          "enabled": true,
+          "temperature_kelvin": 5400.0,
+          "tint": 0.0
+        },
+        "lights": [
+          {
+            "name": "D_E1_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 14.399999618530273,
+            "base_energy": 72,
+            "location": [
+              7.625000476837158,
+              2.325000047683716,
+              1.024999976158142
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.4700000286102295,
+              1.909999966621399
+            ]
+          },
+          {
+            "name": "D_E2_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 14.399999618530273,
+            "base_energy": 72,
+            "location": [
+              7.625000476837158,
+              6.375,
+              1.024999976158142
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.4700000286102295,
+              1.909999966621399
+            ]
+          },
+          {
+            "name": "D_ENTRY_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 17.0,
+            "base_energy": 85,
+            "location": [
+              -0.5828723907470703,
+              19.519929885864258,
+              1.4249999523162842
+            ],
+            "rotation_euler": [
+              1.4513671398162842,
+              -8.703936771325971e-08,
+              1.4524198770523071
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              2.319999933242798,
+              2.7100000381469727
+            ]
+          },
+          {
+            "name": "D_FRONT_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 21.0,
+            "base_energy": 105,
+            "location": [
+              4.0,
+              0.375,
+              1.6299999952316284
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              3.180000066757202,
+              2.1600000858306885
+            ]
+          },
+          {
+            "name": "D_FRONT_physical_sky_aperture.001",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 38.0,
+            "base_energy": 190,
+            "location": [
+              4.0,
+              0.375,
+              4.715000152587891
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              2.0999999046325684,
+              1.1699999570846558
+            ]
+          },
+          {
+            "name": "D_KITCHEN_GARDEN_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 21.0,
+            "base_energy": 105,
+            "location": [
+              -2.736999988555908,
+              8.77500057220459,
+              1.0399999618530273
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              2.0199999809265137,
+              1.940000057220459
+            ]
+          },
+          {
+            "name": "D_KITCHEN_TERRACE_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 18.399999618530273,
+            "base_energy": 92,
+            "location": [
+              -0.375,
+              13.700000762939453,
+              1.25
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.7200000286102295,
+              2.359999895095825
+            ]
+          },
+          {
+            "name": "D_W1_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 14.399999618530273,
+            "base_energy": 72,
+            "location": [
+              0.375,
+              6.37000036239624,
+              1.2999999523162842
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.0199999809265137,
+              2.4600000381469727
+            ]
+          },
+          {
+            "name": "D_W2_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 14.399999618530273,
+            "base_energy": 72,
+            "location": [
+              0.375,
+              2.3299999237060547,
+              1.2999999523162842
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.0199999809265137,
+              2.4600000381469727
+            ]
+          },
+          {
+            "name": "N_BATH3_E_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 8.399999618530273,
+            "base_energy": 42,
+            "location": [
+              -0.375,
+              14.199999809265137,
+              4.875000476837158
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.1200000047683716,
+              1.2100000381469727
+            ]
+          },
+          {
+            "name": "N_BATH4_W_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 9.199999809265137,
+            "base_energy": 46,
+            "location": [
+              -8.886992454528809,
+              28.982872009277344,
+              4.800000190734863
+            ],
+            "rotation_euler": [
+              1.4513720273971558,
+              -4.6754653482139474e-08,
+              -1.701563835144043
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.1699999570846558,
+              1.559999942779541
+            ]
+          },
+          {
+            "name": "N_BED3_S_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 15.0,
+            "base_energy": 75,
+            "location": [
+              -2.7370002269744873,
+              8.77500057220459,
+              4.900000095367432
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.4199999570846558,
+              1.2599999904632568
+            ]
+          },
+          {
+            "name": "N_GUEST_E0_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 8.399999618530273,
+            "base_energy": 42,
+            "location": [
+              -1.2784268856048584,
+              24.6949520111084,
+              1.5
+            ],
+            "rotation_euler": [
+              1.451371192932129,
+              -2.5855666052621018e-08,
+              1.1935211420059204
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              0.9700000286102295,
+              1.4600000381469727
+            ]
+          },
+          {
+            "name": "N_GUEST_E1_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 14.800000190734863,
+            "base_energy": 74,
+            "location": [
+              -0.19156929850578308,
+              27.437440872192383,
+              1.5
+            ],
+            "rotation_euler": [
+              1.451371192932129,
+              -2.5855666052621018e-08,
+              1.1935211420059204
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              0.9700000286102295,
+              1.4600000381469727
+            ]
+          },
+          {
+            "name": "N_GUEST_W_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 17.200000762939453,
+            "base_energy": 86,
+            "location": [
+              -8.87395191192627,
+              29.082021713256836,
+              1.5
+            ],
+            "rotation_euler": [
+              1.4513720273971558,
+              -4.6754653482139474e-08,
+              -1.701563835144043
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              0.9700000286102295,
+              1.4600000381469727
+            ]
+          },
+          {
+            "name": "N_MASTER_N_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 7.0,
+            "base_energy": 35,
+            "location": [
+              4.150000095367432,
+              10.625,
+              4.450000286102295
+            ],
+            "rotation_euler": [
+              1.4513672590255737,
+              1.4992022556725715e-07,
+              3.141592502593994
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.6200000047683716,
+              1.659999966621399
+            ]
+          },
+          {
+            "name": "N_SUITE4_E0_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 11.0,
+            "base_energy": 55,
+            "location": [
+              -1.2692168951034546,
+              24.71819305419922,
+              4.800000190734863
+            ],
+            "rotation_euler": [
+              1.451371192932129,
+              -2.5855666052621018e-08,
+              1.1935211420059204
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.0199999809265137,
+              1.4600000381469727
+            ]
+          },
+          {
+            "name": "N_SUITE4_E1_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 13.0,
+            "base_energy": 65,
+            "location": [
+              -0.18235930800437927,
+              27.460681915283203,
+              4.800000190734863
+            ],
+            "rotation_euler": [
+              1.451371192932129,
+              -2.5855666052621018e-08,
+              1.1935211420059204
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.0199999809265137,
+              1.4600000381469727
+            ]
+          },
+          {
+            "name": "N_W2_physical_sky_aperture",
+            "role": "supplemental_window",
+            "type": "AREA",
+            "energy": 15.600000381469727,
+            "base_energy": 78,
+            "location": [
+              0.375,
+              3.0,
+              4.825000286102295
+            ],
+            "rotation_euler": [
+              1.4513674974441528,
+              -0.0,
+              -1.5707963705062866
+            ],
+            "color": [
+              1.0,
+              0.9599999785423279,
+              0.8999999761581421
+            ],
+            "area_dimensions_m": [
+              1.2699999809265137,
+              0.7099999785423279
+            ]
+          },
+          {
+            "name": "bath1_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 55.0,
+            "location": [
+              -4.472857475280762,
+              28.43219757080078,
+              2.8969998359680176
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.3400000035762787,
+              0.3400000035762787
+            ]
+          },
+          {
+            "name": "bath2_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 38.0,
+            "location": [
+              -8.14380931854248,
+              25.89069938659668,
+              2.5749967098236084
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.3400000035762787,
+              0.3400000035762787
+            ]
+          },
+          {
+            "name": "bath3_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 30.0,
+            "location": [
+              -2.6889119148254395,
+              14.543749809265137,
+              7.506389617919922
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.3400000035762787,
+              0.3400000035762787
+            ]
+          },
+          {
+            "name": "bath4_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 30.0,
+            "location": [
+              -7.731276988983154,
+              28.08641242980957,
+              6.397000312805176
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.3400000035762787,
+              0.3400000035762787
+            ]
+          },
+          {
+            "name": "bedroom3_bath_vanity_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -3.6500000953674316,
+              15.65999984741211,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom3_bath_vanity_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -2.7899999618530273,
+              15.65999984741211,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom3_brass_lamp_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 24.0,
+            "location": [
+              -4.050000190734863,
+              10.994999885559082,
+              4.179999828338623
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom3_brass_lamp_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 24.0,
+            "location": [
+              -1.4700000286102295,
+              10.994999885559082,
+              4.179999828338623
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom4_bath_vanity_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -7.778781890869141,
+              29.836515426635742,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom4_bath_vanity_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -6.960873603820801,
+              29.57076072692871,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom4_lamp_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 24.0,
+            "location": [
+              -4.713383197784424,
+              26.2569637298584,
+              4.179999828338623
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "bedroom4_lamp_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 24.0,
+            "location": [
+              -3.9532015323638916,
+              28.596561431884766,
+              4.179999828338623
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "dining_lantern_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 33.0,
+            "location": [
+              3.3499999046325684,
+              8.449999809265137,
+              2.5369999408721924
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "flechon_daylight_sun",
+            "role": "sun",
+            "type": "SUN",
+            "energy": 3.200000047683716,
+            "base_energy": 3.200000047683716,
+            "location": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rotation_euler": [
+              1.073419213294983,
+              1.2020713313631859e-08,
+              0.809393584728241
+            ],
+            "color": [
+              1.0,
+              0.8799999952316284,
+              0.6899999976158142
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "garden_bath1_vanity_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -3.536118507385254,
+              28.937255859375,
+              1.7200000286102295
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              -1.5369371175765991
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "garden_bath1_vanity_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -3.7740318775177,
+              28.11081886291504,
+              1.7200000286102295
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              -1.5369371175765991
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "garden_bath2_vanity_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -7.831218242645264,
+              25.373483657836914,
+              1.7200000286102295
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              3.141592502593994
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "garden_bath2_vanity_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              -8.649126052856445,
+              25.639238357543945,
+              1.7200000286102295
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              3.141592502593994
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "guest_1_sconce_glow",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 8.0,
+            "location": [
+              -0.27794361114501953,
+              28.373125076293945,
+              2.109999895095825
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "guest_2_portable_reading_lamp_0_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 8.0,
+            "location": [
+              -8.198285102844238,
+              30.759780883789062,
+              0.8259999752044678
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "guest_2_portable_reading_lamp_1_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 8.0,
+            "location": [
+              -6.09916877746582,
+              30.03721046447754,
+              0.8259999752044678
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "guest_corridor_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 32.0,
+            "location": [
+              -4.53000020980835,
+              26.040000915527344,
+              2.7710001468658447
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.1899999976158142,
+              0.25
+            ]
+          },
+          {
+            "name": "hall_glass_pendant_practical",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 5.0,
+            "location": [
+              -1.090000033378601,
+              19.5,
+              3.565000057220459
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "kitchen_fine_wire_pendant_0_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 28.0,
+            "location": [
+              -2.630000114440918,
+              11.199999809265137,
+              2.305000066757202
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "kitchen_fine_wire_pendant_1_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 28.0,
+            "location": [
+              -2.630000114440918,
+              13.199999809265137,
+              2.305000066757202
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "kitchen_undershelf_light",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 30.0,
+            "location": [
+              -4.420000076293945,
+              10.0,
+              1.0549999475479126
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8199999928474426,
+              0.5899999737739563
+            ],
+            "area_dimensions_m": [
+              0.1599999964237213,
+              1.0
+            ]
+          },
+          {
+            "name": "kitchen_undershelf_light.001",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 30.0,
+            "location": [
+              -4.420000076293945,
+              14.899999618530273,
+              1.0549999475479126
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8199999928474426,
+              0.5899999737739563
+            ],
+            "area_dimensions_m": [
+              0.1599999964237213,
+              1.0
+            ]
+          },
+          {
+            "name": "laundry_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 45.0,
+            "location": [
+              -5.67085075378418,
+              25.087736129760742,
+              2.855999708175659
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.1899999976158142,
+              0.25
+            ]
+          },
+          {
+            "name": "master_bath_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 35.0,
+            "location": [
+              4.0,
+              8.854999542236328,
+              7.856632232666016
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.3400000035762787,
+              0.3400000035762787
+            ]
+          },
+          {
+            "name": "principal_bath_vanity_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              1.4100000858306885,
+              10.430000305175781,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "principal_bath_vanity_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              2.2699999809265137,
+              10.430000305175781,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "principal_bath_vanity_light.002",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              2.3299999237060547,
+              10.430000305175781,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "principal_bath_vanity_light.003",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 12.0,
+            "location": [
+              3.190000057220459,
+              10.430000305175781,
+              5.019999980926514
+            ],
+            "rotation_euler": [
+              0.0,
+              -0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.7799999713897705,
+              0.550000011920929
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "principal_bedside_lamp_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 20.0,
+            "location": [
+              2.6500000953674316,
+              5.045000076293945,
+              4.159999847412109
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "principal_bedside_lamp_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 20.0,
+            "location": [
+              5.309999942779541,
+              5.045000076293945,
+              4.159999847412109
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_black_ceramic_lamp_glow",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 23.0,
+            "location": [
+              2.1500000953674316,
+              1.9500000476837158,
+              1.1399999856948853
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_fp_fire_practical",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 24.0,
+            "location": [
+              7.119999885559082,
+              4.400000095367432,
+              0.7900000214576721
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.23999999463558197,
+              0.054999999701976776
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_fp_reading_lamp_glow",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 5.0,
+            "location": [
+              6.590000152587891,
+              5.489999771118164,
+              1.3600000143051147
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_photo_lighting_pendant_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 33.0,
+            "location": [
+              4.0,
+              2.75,
+              2.630000114440918
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_photo_lighting_pendant_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 33.0,
+            "location": [
+              4.0,
+              4.849999904632568,
+              2.630000114440918
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_photo_lighting_sconce_light",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 7.0,
+            "location": [
+              0.8999999761581421,
+              0.5149999856948853,
+              1.934999942779541
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "salon_photo_lighting_sconce_light.001",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 7.0,
+            "location": [
+              7.0,
+              0.5149999856948853,
+              1.934999942779541
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "upper_gallery_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 42.0,
+            "location": [
+              -2.549999952316284,
+              20.010000228881836,
+              6.355999946594238
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.1899999976158142,
+              0.25
+            ]
+          },
+          {
+            "name": "upper_gallery_sconce_practical",
+            "role": "practical",
+            "type": "POINT",
+            "energy": 0.0,
+            "base_energy": 9.0,
+            "location": [
+              -0.9393511414527893,
+              22.471729278564453,
+              4.986999988555908
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.6800000071525574,
+              0.3700000047683716
+            ],
+            "area_dimensions_m": null
+          },
+          {
+            "name": "wc_ceiling_practical",
+            "role": "practical",
+            "type": "AREA",
+            "energy": 0.0,
+            "base_energy": 35.0,
+            "location": [
+              -4.012472152709961,
+              24.56088638305664,
+              2.855999708175659
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "color": [
+              1.0,
+              0.8399999737739563,
+              0.6600000262260437
+            ],
+            "area_dimensions_m": [
+              0.1899999976158142,
+              0.25
+            ]
+          }
+        ],
+        "emitters": [
+          {
+            "material": "bedroom3_bath_vanity_light.001_physical_bulb_controlled_emitter",
+            "fixture": "bedroom3_bath_vanity_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "bedroom3_bath_vanity_light_physical_bulb_controlled_emitter",
+            "fixture": "bedroom3_bath_vanity_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "bedroom4_bath_vanity_light.001_physical_bulb_controlled_emitter",
+            "fixture": "bedroom4_bath_vanity_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "bedroom4_bath_vanity_light_physical_bulb_controlled_emitter",
+            "fixture": "bedroom4_bath_vanity_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "dining_lantern_warm_bulb.002_controlled_emitter",
+            "fixture": "dining_lantern_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "fidelity_opal_ceiling_diffuser.005",
+            "fixture": "master_bath_ceiling_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "garden_bath1_vanity_light.001_physical_bulb_controlled_emitter",
+            "fixture": "garden_bath1_vanity_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "garden_bath1_vanity_light_physical_bulb_controlled_emitter",
+            "fixture": "garden_bath1_vanity_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "garden_bath2_vanity_light.001_physical_bulb_controlled_emitter",
+            "fixture": "garden_bath2_vanity_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "garden_bath2_vanity_light_physical_bulb_controlled_emitter",
+            "fixture": "garden_bath2_vanity_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "guest_1_woven_sconce_glowing_filament_controlled_emitter",
+            "fixture": "guest_1_sconce_glow",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "hall_clear_filament_bulb_controlled_emitter",
+            "fixture": "hall_glass_pendant_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "hall_pendant_tungsten_filament.001_controlled_emitter",
+            "fixture": "hall_glass_pendant_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "hall_pendant_tungsten_filament_controlled_emitter",
+            "fixture": "hall_glass_pendant_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "kitchen_fine_wire_pendant_0_warm_filament_controlled_emitter",
+            "fixture": "kitchen_fine_wire_pendant_0_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "kitchen_fine_wire_pendant_1_warm_filament_controlled_emitter",
+            "fixture": "kitchen_fine_wire_pendant_1_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "principal_bath_vanity_light.001_physical_bulb_controlled_emitter",
+            "fixture": "principal_bath_vanity_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "principal_bath_vanity_light.002_physical_bulb_controlled_emitter",
+            "fixture": "principal_bath_vanity_light.002",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "principal_bath_vanity_light.003_physical_bulb_controlled_emitter",
+            "fixture": "principal_bath_vanity_light.003",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "principal_bath_vanity_light_physical_bulb_controlled_emitter",
+            "fixture": "principal_bath_vanity_light",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "principal_bedside_lamp_bulb.001_controlled_emitter",
+            "fixture": "principal_bedside_lamp_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "salon_black_ceramic_lamp_glow_physical_bulb_controlled_emitter",
+            "fixture": "salon_black_ceramic_lamp_glow",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "salon_fp_glowing_ember",
+            "fixture": "salon_fp_fire_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "salon_fp_reading_lamp_glow_physical_bulb_controlled_emitter",
+            "fixture": "salon_fp_reading_lamp_glow",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "salon_photo_lighting_frosted_bulb.005_controlled_emitter",
+            "fixture": "salon_photo_lighting_pendant_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "salon_photo_lighting_sconce_bulb.001_controlled_emitter",
+            "fixture": "salon_photo_lighting_sconce_light.001",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "service_opal_lamp_diffuser.001",
+            "fixture": "guest_corridor_ceiling_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "service_opal_lamp_diffuser.002",
+            "fixture": "laundry_ceiling_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "service_opal_lamp_diffuser.003",
+            "fixture": "upper_gallery_ceiling_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "service_opal_lamp_diffuser.004",
+            "fixture": "wc_ceiling_practical",
+            "emission_strength": 0.0
+          },
+          {
+            "material": "upper_gallery_sconce_practical_physical_bulb_controlled_emitter",
+            "fixture": "upper_gallery_sconce_practical",
+            "emission_strength": 0.0
+          }
+        ],
+        "fixture_visibility": [
+          {
+            "object": "salon_fp_flame_tongue",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.001",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.002",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.003",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.004",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.005",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.006",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.007",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.008",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.009",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          },
+          {
+            "object": "salon_fp_flame_tongue.010",
+            "fixture": "salon_fp_fire_practical",
+            "hide_render": true,
+            "hide_viewport": true
+          }
+        ],
+        "status": "Visual estimates; compare rendered references before treating as validated.",
+        "implementation_sha256": "3908913b64a0de814a35336a997304daa2ef390d534c7bb6b169c751943e6052",
+        "preset_source_sha256": "1808f694ba5973e5f596a1c1bc9b6522ff37c4da75eb812bb5cba86cceafa2be"
+      },
+      "render": "/Users/cloud/.codex/worktrees/7f26/homespec/out/principal-study/final-review/baseline-photo/principal33.png",
+      "sha256": "a2168a5146ad912bbb6e96886c6269d25fe92a49b1a366f62fb9ccd576bfc7c6",
+      "sensor_fit": "VERTICAL",
+      "pixels": [
+        900,
+        1200
+      ],
+      "seconds": 13.51,
+      "camera_check": "",
+      "frame_check": ""
+    }
+  ]
+}

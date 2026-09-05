@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "lock_id": "flechon-exif-photo-cameras-2026-09-05-v4",
+  "lock_id": "flechon-exif-photo-cameras-2026-09-05-v5-principal-review",
   "method": "Original JPEG EXIF lens/sensor priors, parallel-line review and explicit landmark fits. Nonzero lens shift is supported and recorded. Edited crop/stitch field is unknown; camera height, furniture dimensions and room assignments remain inferred. Point residuals measure camera-plus-geometry disagreement, not photographic fidelity.",
   "baseline_commit": "f5920006f6e825efb556f0b83aeea5e3c11c8e24",
   "baseline_manifest_sha256": "26077c1987d0d91828840ddd4eddf6d585c7d026b372b276e36c6ee2670bb4bb",
@@ -9,7 +9,7 @@
     {
       "id": "kitchen10",
       "reference": "photo_10.jpg",
-      "room": "Kitchen · oak island",
+      "room": "Kitchen \u00b7 oak island",
       "location": [
         -2.509445680446759,
         15.856258822774247,
@@ -216,7 +216,7 @@
     {
       "id": "salon58",
       "reference": "photo_58.jpg",
-      "room": "Salon · fireplace and garden",
+      "room": "Salon \u00b7 fireplace and garden",
       "location": [
         0.65,
         8.8,
@@ -527,16 +527,16 @@
     {
       "id": "principal06",
       "reference": "photo_06.jpg",
-      "room": "Principal suite · arched window",
+      "room": "Principal suite \u00b7 arched window",
       "location": [
-        5.3,
-        5.3,
-        4.45
+        6.15,
+        4.2,
+        4.600000017934083
       ],
       "target": [
-        2.6,
-        1.38,
-        4.45
+        2.8392189625365676,
+        0.45317081761490563,
+        4.600000017934083
       ],
       "lens_mm": 24.657534246575345,
       "size": [
@@ -545,24 +545,31 @@
       ],
       "note": "Camera on the east side of the bed faces southwest. The south arched glazing is left; the rectangular west window and paired cane chairs are right.",
       "exposure": 0.800000011920929,
-      "shift_x": 0,
-      "shift_y": 0.12,
+      "shift_x": 0.07417837609041948,
+      "shift_y": 0.04808365505346383,
       "roll_degrees": 0.0,
       "sensor_dimension_mm": 36,
       "baseline_camera": {
         "location": [
-          5.9,
-          4.18,
-          4.86
+          5.3,
+          5.3,
+          4.45
         ],
         "target": [
           2.6,
           1.38,
-          4.76
+          4.45
         ],
-        "lens_mm": 25,
-        "shift_x": 0.0,
-        "shift_y": 0.0
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0,
+        "shift_y": 0.12,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
       },
       "landmarks": [
         {
@@ -570,7 +577,7 @@
           "world_m": [
             5.68,
             0.35,
-            4.1
+            3.55
           ],
           "photo_uv": [
             0.096,
@@ -583,7 +590,7 @@
           "world_m": [
             2.32,
             0.35,
-            4.1
+            3.55
           ],
           "photo_uv": [
             0.427,
@@ -596,7 +603,7 @@
           "world_m": [
             4,
             0.35,
-            5.78
+            5.23
           ],
           "photo_uv": [
             0.289,
@@ -608,7 +615,7 @@
           "name": "west window south head",
           "world_m": [
             0.35,
-            2.275,
+            1.6749999999999998,
             5.25
           ],
           "photo_uv": [
@@ -621,7 +628,7 @@
           "name": "west window north head",
           "world_m": [
             0.35,
-            3.725,
+            3.125,
             5.25
           ],
           "photo_uv": [
@@ -634,7 +641,7 @@
           "name": "west window south sill",
           "world_m": [
             0.35,
-            2.275,
+            1.6749999999999998,
             4.4
           ],
           "photo_uv": [
@@ -647,7 +654,7 @@
           "name": "west window north sill",
           "world_m": [
             0.35,
-            3.725,
+            3.125,
             4.4
           ],
           "photo_uv": [
@@ -657,8 +664,8 @@
           "weight": 1
         }
       ],
-      "fit_status": "exif_constrained_composition_compromise",
-      "fit_note": "Native GFX EXIF 30mm converted by physical long axis to 24.6575mm on the 36mm Blender sensor. Level camera on the east side of the bed, south of its headboard, at a low 1.15m eye height above the suite floor. Actual Cycles and untextured trials rejected lower-point-error cameras that lost the bed or introduced foreground headboard/brace occlusion. The selected compromise includes bed, arch, west window and seating. Architectural landmark RMS is 122.3px at 1200x900; source has more bed, a smaller apparent arch, and less west-brace intrusion. Edited image field, timber/layout and height uncertainty remain unresolved.",
+      "fit_status": "pending_actual_image_review",
+      "fit_note": "Practical review camera between tested x5.5 bedside and south-of-truss alternatives: x6.15,y4.20 stays inside the retained east brace and before corrected headboard. Native lens fixed; height/yaw/shifts fit updated architecture, yielding 84.34px RMS at1200x900. This is an identical-camera review position, not a matched or uniquely recovered photograph.",
       "photo_lines": [
         {
           "name": "west window south jamb",
@@ -783,26 +790,24 @@
         }
       ],
       "visual_review": {
-        "render": "deliverables/calibration-principal-v4/principal_low_nearhead.png",
-        "manifest": "deliverables/calibration-principal-v4/camera-review-manifest.json",
-        "diagnostic_exposure_offset_ev": 3,
-        "source_scene_sha256": "9839b01feadd3b1044d8e6344120a8a32af1b7ecc540ca1573e548c10e8ed08b",
-        "conclusion": "Selected as a transparent composition compromise, not a photographic match. No geometry changed to hide the remaining brace/bed disagreement."
-      }
+        "status": "pending_final_scene_images",
+        "purpose": "Practical identical-camera baseline/current review; not photographic calibration acceptance."
+      },
+      "trial_evidence": "principal-camera-trials.json"
     },
     {
       "id": "principal33",
       "reference": "photo_33.jpg",
-      "room": "Principal suite · arched window",
+      "room": "Principal suite \u00b7 arched window",
       "location": [
-        4.84375,
-        5.978125,
-        4.87
+        2.6,
+        6.2,
+        4.813
       ],
       "target": [
-        1.25,
-        2.15,
-        4.87
+        1.2220487658774353,
+        1.3936239851235008,
+        4.813
       ],
       "lens_mm": 50,
       "size": [
@@ -811,14 +816,14 @@
       ],
       "note": "Portrait of the west seating corner: gathered ikat, both raked cane chairs, patinated trumpet table and huge diagonal brace. Photo33's table staging differs from photo06.",
       "exposure": 0.800000011920929,
-      "shift_x": -0.075,
-      "shift_y": 0.015,
+      "shift_x": 0.020496918683894638,
+      "shift_y": -0.0814891075547356,
       "roll_degrees": 0.0,
       "sensor_dimension_mm": 36,
       "baseline_camera": {
         "location": [
-          3.55,
-          4.6,
+          4.84375,
+          5.978125,
           4.87
         ],
         "target": [
@@ -826,12 +831,19 @@
           2.15,
           4.87
         ],
-        "lens_mm": 32,
-        "shift_x": 0.0,
-        "shift_y": 0.0
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": -0.075,
+        "shift_y": 0.015,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
       },
-      "fit_status": "exif_constrained_composition_estimate",
-      "fit_note": "Native EXIF Canon TS-E 50mm fixes the lens at 50mm. Position moves along the prior subject axis by 50/32 to retain seating scale; horizontal shift recentres the chairs. This is a composition estimate with unresolved brace/window disagreement, not a recovered numerical calibration.",
+      "fit_status": "review_composition_pending_final_images",
+      "fit_note": "Native50mm review camera atx2.6,y6.2 with yaw-1.85; actual clay exposes both chairs more than due-south trial. Conditional table-top framing only, with unresolved brace/window/staging discrepancy. Final plan-backed chair changes require new image inspection. No full-point calibration RMS or photographic match is claimed.",
       "photo_lines": [
         {
           "name": "curtain rod",
@@ -902,7 +914,12 @@
         "sensor_source": "Full-frame 36mm convention; native EXIF focal length retained.",
         "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
       },
-      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit."
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit.",
+      "trial_evidence": "principal-camera-trials.json",
+      "visual_review": {
+        "status": "pending_final_scene_images",
+        "purpose": "Practical identical-camera baseline/current review; not photographic calibration acceptance."
+      }
     },
     {
       "id": "bedroom09",
@@ -1345,5 +1362,7 @@
       "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit."
     }
   ],
-  "review_status": "All eight views inspected as actual Cycles and Workbench renders; principal06 subsequently selected from actual native-lens low-eye trials. Lock is ready for identical-camera baseline/current comparisons. Numerical residuals and visual limitations are retained."
+  "review_status": "Principal06/principal33 poses are practical comparison cameras pending final-scene image review; residuals and rejected fits are preserved in principal-camera-trials.json. The other six view records are unchanged from v4.",
+  "previous_lock_id": "flechon-exif-photo-cameras-2026-09-05-v4",
+  "principal_baseline_commit": "33b7db59cfd06b617d569086ab266f7f2e56c094"
 }

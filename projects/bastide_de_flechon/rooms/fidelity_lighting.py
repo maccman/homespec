@@ -309,7 +309,7 @@ def apply(scene, _):
         if any(e["id"] == key for e in scene.ir["entities"]):
             opening_watts[key] = 72
     jobs = [(eid, watts, None) for eid, watts in opening_watts.items()]
-    jobs += [("D_FRONT", 105, (0.55, 2.71)), ("D_FRONT", 190, (4.13, 5.30))]
+    jobs += [("D_FRONT", 105, (0.55, 2.71)), ("D_FRONT", 190, "upper_fanlight")]
     for eid, watts, extent in jobs:
         opening = scene.entity(eid)
         void = opening["derived"]["void"]
@@ -318,17 +318,36 @@ def apply(scene, _):
         normal = Vector((*void["n"], 0))
         width = void["length"] / 1000
         # An area light is rectangular, so generic arched apertures stop below
-        # their spring instead of leaking beyond curved jambs. The upper front
-        # plane is inscribed within its semicircle (r=1.68 m, spring=4.10 m).
+        # their spring instead of leaking beyond curved jambs. The principal
+        # fanlight uses a rectangle inscribed in the actual clear glass circle;
+        # its upper corners remain inside the arch after a spring-height edit.
         clear_head = opening["params"]["height"] if opening["derived"].get("radius", 0) else void["height"]
-        low, high = extent if extent else (origin.z + 0.07, origin.z + clear_head / 1000 - 0.07)
-        plane_width = 2.10 if eid == "D_FRONT" and extent and extent[0] > 4 else max(0.12, width - 0.18)
+        upper_front = eid == "D_FRONT" and extent == "upper_fanlight"
+        if upper_front:
+            derived = opening["derived"]
+            spring = origin.z + derived["springing"] / 1000
+            radius = (derived["radius"] - derived["frame_size"]) / 1000
+            plane_width = min(2.10, 1.40 * radius)
+            low = spring + 0.07
+            high = spring + math.sqrt(radius ** 2 - (plane_width / 2) ** 2) - 0.035
+            if high <= low:
+                raise ValueError("D_FRONT fanlight cannot contain the supplemental light rectangle")
+            # Preserve the original inferred power per square metre rather
+            # than concentrating 190 W onto a changed emitting area. The lower
+            # salon source retains its original position, size and 105 W.
+            watts *= plane_width * (high - low) / (2.10 * (5.30 - 4.13))
+        else:
+            low, high = extent if extent else (origin.z + 0.07, origin.z + clear_head / 1000 - 0.07)
+            plane_width = max(0.12, width - 0.18)
         inset = void["thickness"] / 1000 - 0.075
         position = origin + u * width / 2 + normal * inset
         position.z = (low + high) / 2
         ob = area(scene, eid + "_physical_sky_aperture", position, (*normal[:2], -0.12),
                   watts, plane_width, max(0.12, high - low), (0.86, 0.92, 1.0), supplemental=True)
         ob["flechon_light_source"] = eid
+        if upper_front:
+            ob["flechon_aperture_bounds_m"] = [plane_width, low, high]
+            ob["flechon_aperture_policy"] = "Clear-circle inscribed rectangle; frame plus 35 mm top margin; original 190 W / 2.457 m2 emission power density"
     # Windowless ground bathrooms need actual ceiling luminaires. These are
     # explicitly inferred fittings, modelled with an opal glass diffuser.
     opal = scene.flat("fidelity_opal_ceiling_diffuser", (0.80, 0.77, 0.69), rough=0.52, emit=0.55)
