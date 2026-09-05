@@ -116,5 +116,104 @@ def main() -> None:
     app()
 
 
+@app.command("photo-residuals")
+def photo_residuals(cameras: str, output: str | None = None) -> None:
+    """Validate typed/legacy photo views and report fit and independent holdouts."""
+    from pathlib import Path
+
+    from .photo import PhotoViews
+
+    views = PhotoViews.read(cameras)
+    content = json.dumps({"id": views.id, "views": [{"id": v.id, **v.residuals()} for v in views.views]}, indent=2)
+    if output:
+        Path(output).write_text(content + "\n")
+    else:
+        typer.echo(content)
+
+
+@app.command("photo-review")
+def photo_review(project: str, cameras: str, destination: str, out: str | None = None,
+                 only: str = "", variants: str = "color", samples: int = 32, scale: float = 1,
+                 device: str = "auto", reference_root: str | None = None,
+                 allow_failed_checks: bool = typer.Option(False, "--allow-failed-checks")) -> None:
+    """Render hash-verified full-frame comparisons with declared view coverage."""
+    import math
+    import os
+    import subprocess
+    import tempfile
+    from dataclasses import asdict
+    from pathlib import Path
+
+    from . import buildstate
+    from .photo import PhotoViews
+    from .pipeline import blender_binary
+    from .review import Coverage, FileIdentity, atomic_json, verified_source
+
+    project_path = Path(project).resolve()
+    root = Path(out).resolve() if out else Path("out") / project_path.name
+    generation = buildstate.resolve_build(root, project_path, allow_failed_checks=allow_failed_checks)
+    photo_views = PhotoViews.read(cameras)
+    selected = set(only.split(",")) if only else {v.id for v in photo_views.views}
+    modes = variants.split(",")
+    if not selected or not selected <= {v.id for v in photo_views.views} or not modes or len(set(modes)) != len(modes) or not set(modes) <= {"color", "clay", "neutral"}:
+        raise typer.BadParameter("Unknown or duplicate camera/variant")
+    if samples <= 0 or not math.isfinite(scale) or scale <= 0:
+        raise typer.BadParameter("Samples and scale must be positive and finite")
+    package = Path(__file__).resolve().parent
+    dependencies = [FileIdentity.capture(cameras, "camera-views")]
+    for path in (package / "photo.py", package / "review.py", package / "blender" / "photo_review.py", package / "blender" / "review_studies.py", package / "blender" / "devices.py"):
+        dependencies.append(FileIdentity.capture(path, "review-script"))
+    if reference_root:
+        for view in photo_views.views:
+            if view.reference:
+                dependencies.append(FileIdentity.capture(view.reference.verify(reference_root), "reference-original"))
+    # Include asset content actually covered by the normal presentation snapshot.
+    build_record = json.loads((generation / "build.json").read_text())
+    asset_paths = set(buildstate.presentation_snapshot(project_path)) | set(build_record["inputs"]["files"])
+    for path in asset_paths:
+        candidate = Path(path)
+        if candidate.suffix.lower() not in {".py", ".md", ".toml", ".lock"}:
+            dependencies.append(FileIdentity.capture(candidate, "presentation-asset"))
+    dependencies = list({v.path: v for v in dependencies}.values())
+    source = verified_source(generation, project_path, dependencies=tuple(dependencies))
+    coverage = Coverage(tuple(v.id + ":" + mode for v in photo_views.views for mode in modes), photo_views.method)
+    request = {"source": asdict(source), "coverage": asdict(coverage), "views": [asdict(v) for v in photo_views.views if v.id in selected],
+               "settings": {"variants": modes, "samples": samples, "scale": scale, "seed": 0, "device": device, "adaptive_threshold": .05}}
+    directory, _ = buildstate.presentation_directory(generation, project_path)
+    with buildstate.build_lock(directory), tempfile.TemporaryDirectory(prefix="homespec-review-") as temporary:
+        request_path = Path(temporary) / "request.json"
+        atomic_json(request_path, request)
+        env = {**os.environ, "HOMESPEC_DEVICE": device}
+        subprocess.run([blender_binary(), "-b", source.scene.path, "--python-exit-code", "1", "--python", str(package / "blender" / "photo_review.py"),
+                        "--", str(request_path), str(Path(destination).resolve())], env=env, check=True)
+        current = verified_source(generation, project_path, dependencies=tuple(dependencies))
+        if current != source:
+            raise ValueError("Scene changed during review")
+    typer.echo(str(Path(destination).resolve() / "review.json"))
+
+
+@app.command("review-verify")
+def review_verify(manifest: str, require_complete: bool = typer.Option(False, "--require-complete")) -> None:
+    """Verify source, assets, outputs and declared coverage; partial is explicit."""
+    from pathlib import Path
+
+    from .review import ReviewManifest
+
+    path = Path(manifest)
+    review = ReviewManifest.read(path)
+    review.verify(path.parent, require_complete=require_complete)
+    typer.echo(f"{review.status}: {len(review.artifacts)} artifacts; missing {review.missing}")
+
+
+@app.command("review-package")
+def review_package(manifest: str, destination: str) -> None:
+    """Create a portable offline review from complete, compatible declared evidence."""
+    from pathlib import Path
+
+    from .review import package_review
+
+    typer.echo(str(package_review(Path(manifest), Path(destination))))
+
+
 if __name__ == "__main__":
     sys.exit(main())

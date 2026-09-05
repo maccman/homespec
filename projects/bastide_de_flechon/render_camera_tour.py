@@ -4,7 +4,7 @@ blender -b /path/house.blend --python-exit-code 1 --python this_file.py -- outpu
 
 Defaults: three 3-second takes, 24 fps, 640x400, 16 samples. Environment overrides:
 FLECHON_TOUR_SECONDS, _FPS, _SIZE (WIDTHxHEIGHT), _SAMPLES, _ADAPTIVE,
-_TRAVEL (metres, at most 0.3), _KEEP_FRAMES (1), _DEVICE (METAL|CPU),
+_TRAVEL (metres, at most 0.3), _KEEP_FRAMES (1), _DEVICE (auto|cpu|metal|cuda|optix|hip|oneapi),
 _FFMPEG and _FFPROBE (executable paths). Prefix every suffix with FLECHON_TOUR.
 
 Every displayed frame is rendered from 3D; no still-image pans, generated frames,
@@ -31,6 +31,8 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[1] / "homespec" / "blender"))
 import frames  # noqa: E402
 import session  # noqa: E402
+from devices import configure_cycles  # noqa: E402
+from review_studies import preflight_route  # noqa: E402
 
 TAKES = ("kitchen10", "principal06", "salon58")
 
@@ -87,43 +89,30 @@ def path_records(anchor, count, frame_start, distance, sign):
 
 
 def preflight(scn, camera, anchors, count, travel):
-    """Test every actual frame and the swept segments before rendering any."""
+    """Check actual frame poses and sampled route rays before rendering any."""
     records, decisions = [], []
     for take_index, identifier in enumerate(TAKES):
         anchor = anchors[identifier]
         rejected = []
         for sign in (1, -1):
             candidate = list(path_records(anchor, count, 1 + take_index * count, travel, sign))
-            previous = None
             try:
+                sampled = preflight_route(scn, candidate)
                 for record in candidate:
                     configure_camera(scn, camera, record)
                     record["camera_check"] = checked(frames.check_camera)
                     graph = bpy.context.evaluated_depsgraph_get()
                     position = camera.matrix_world.translation.copy()
-                    if previous is not None:
-                        delta = position - previous
-                        if delta.length > 0.000001:
-                            hit, location, _, _, obj, _ = scn.ray_cast(graph, previous, delta.normalized(), distance=delta.length)
-                            if hit:
-                                raise RuntimeError(f"Swept camera segment crosses {obj.name if obj else 'geometry'} at {tuple(location)}")
-                    # An 80 mm clear sphere around the camera complements the
-                    # unchanged core inside-solid test, without ignoring props.
-                    for direction in ((1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)):
-                        hit, _, _, _, obj, _ = scn.ray_cast(graph, position, Vector(direction), distance=0.08)
-                        if hit:
-                            raise RuntimeError(f"Camera clearance below 80 mm beside {obj.name if obj else 'geometry'}")
                     forward = (Vector(record["target"]) - position).normalized()
                     hit, at, _, _, obj, _ = scn.ray_cast(graph, position, forward, distance=100)
                     record["forward_ray"] = {"object": obj.name if hit and obj else None, "distance_m": (at - position).length if hit else None}
-                    record["swept_segment_check"] = "clear"
-                    previous = position
-            except RuntimeError as error:
+                    record["sampled_route_check"] = sampled
+            except (RuntimeError, ValueError) as error:
                 rejected.append({"direction": sign, "reason": str(error)})
                 continue
             records.extend(candidate)
             decisions.append({"take": identifier, "sideways_metres": sign * travel,
-                              "rejected_trajectories": rejected, "preflight": "all frames and connecting segments clear"})
+                              "rejected_trajectories": rejected, "preflight": sampled})
             break
         else:
             raise RuntimeError(f"Neither {travel}m trajectory passed for {identifier}: {rejected}")
@@ -187,18 +176,7 @@ def main():
     scn.render.image_settings.color_mode = "RGB"
     scn.render.image_settings.color_depth = "8"
     scn.render.use_persistent_data = True
-    device_name = os.environ.get("FLECHON_TOUR_DEVICE", "METAL")
-    if device_name == "CPU":
-        scn.cycles.device = "CPU"
-    else:
-        preferences = bpy.context.preferences.addons["cycles"].preferences
-        preferences.compute_device_type = device_name
-        preferences.get_devices()
-        if not any(device.type == device_name for device in preferences.devices):
-            raise RuntimeError(f"Requested Cycles device {device_name} unavailable")
-        for device in preferences.devices:
-            device.use = device.type == device_name
-        scn.cycles.device = "GPU"
+    device_name = configure_cycles(scn, os.environ.get("FLECHON_TOUR_DEVICE", "auto"))
     spec = importlib.util.spec_from_file_location("flechon_tour_lighting", HERE / "rooms" / "fidelity_lighting.py")
     lighting = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(lighting)
@@ -209,7 +187,8 @@ def main():
                 "lighting_script_sha256": digest(HERE / "rooms" / "fidelity_lighting.py"),
                 "lighting_presets_sha256": digest(HERE / "rooms" / "lighting_presets.py"),
                 "fps": fps, "frames": len(records), "pixels": [width, height], "samples": samples,
-                "adaptive": adaptive, "travel_m": travel, "device": device_name}
+                "adaptive": adaptive, "travel_m": travel, "device": device_name,
+                "actual_route": json.loads(json.dumps(records)), "effective_lighting": state}
     manifest_path = output / "tour-manifest.json"
     cached = {}
     if manifest_path.exists():

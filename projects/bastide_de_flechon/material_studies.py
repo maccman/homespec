@@ -12,6 +12,10 @@ from pathlib import Path
 import bpy
 from mathutils import Vector
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "homespec" / "blender"))
+from devices import configure_cycles  # noqa: E402
+from review_studies import study_state  # noqa: E402
+
 SAMPLES = [
     ('interior_bronze_travertine', 'Honed counter'),
     ('fidelity_reclaimed_oak', 'Reclaimed oak'),
@@ -47,7 +51,7 @@ def image_dependencies(socket, visited=None):
     return result
 
 
-def main():
+def render_studies():
     out = Path(sys.argv[sys.argv.index('--') + 1]).resolve()
     out.mkdir(parents=True, exist_ok=True)
     scene = bpy.context.scene
@@ -87,12 +91,7 @@ def main():
     scene.cycles.samples = 64
     scene.cycles.adaptive_threshold = .04
     scene.cycles.use_denoising = True
-    prefs = bpy.context.preferences.addons['cycles'].preferences
-    prefs.compute_device_type = 'METAL'
-    prefs.get_devices()
-    for device in prefs.devices:
-        device.use = device.type == 'METAL'
-    scene.cycles.device = 'GPU'
+    configure_cycles(scene)
     scene.render.resolution_x, scene.render.resolution_y = 1500, 1800
     scene.render.resolution_percentage = 100
     scene.render.image_settings.file_format = 'PNG'
@@ -154,6 +153,11 @@ def main():
                 'limitations': 'Procedural relief is inferred, not measured surface scanning. Swatches do not validate room exposure.'}
     (out / 'material-study-manifest.json').write_text(json.dumps(manifest, indent=2))
     print('MATERIAL STUDIES VERIFIED', len(shader_checks), flush=True)
+
+
+def main():
+    with study_state(bpy.context.scene):
+        render_studies()
 
 
 if __name__ == '__main__':

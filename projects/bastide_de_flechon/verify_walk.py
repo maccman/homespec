@@ -5,6 +5,7 @@ blender -b out/bastide_de_flechon/house_walk.blend --python \
 """
 
 import contextlib
+import hashlib
 import io
 import json
 import os
@@ -63,3 +64,11 @@ for index in preview_indices:
     checked(frames.check_frame, scn.render.filepath)
     print("INTERACTIVE VIEW", index, p["name"], flush=True)
 print(f"WALK VERIFIED: {len(points)} working room shortcuts; textures packed; 3 light probes; {len(preview_indices)} interactive previews.", flush=True)
+
+# Machine-readable independent reload result, consumed by shared package coverage.
+with open(bpy.data.filepath, "rb") as stream:
+    scene_hash = hashlib.file_digest(stream, "sha256").hexdigest()
+with open(os.path.join(out, "packed-model-verification.json"), "w") as stream:
+    json.dump({"packed_resources_verified": not missing, "scene_sha256": scene_hash,
+               "bookmark_count": len(points), "camera_checks": "passed", "preview_count": len(preview_indices),
+               "limitation": "Navigation smoke test and sampled views, not continuous-route collision certification."}, stream, indent=2)
