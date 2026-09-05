@@ -1,0 +1,294 @@
+{
+  "purpose": "Integration check after merging the kitchen task; distinguish existing principal render evidence from newly compiled merged geometry.",
+  "rendered_source_commit": "5951576c2683e61a34c5196d436f867fe3551e2f",
+  "rendered_generation": "out/bastide_de_flechon/generations/2499ff23bd534ceca7b46035611042fb",
+  "merged_source_commit": "f941d054f0206967f3af91d6f7ee0cc02c8f8b35",
+  "merged_generation": "out/bastide_de_flechon/generations/d7e4aef7bbc14ff290e3bb22a0843ab8",
+  "checked_at_utc": "2026-09-05T21:46:21.548735+00:00",
+  "method": "Native STEP bidirectional Boolean difference for every listed whole principal entity and upper kitchen-wall region; separate exact standing-prism intersections. Null and empty native compounds have zero volume.",
+  "volume_tolerance_mm3": 1e-05,
+  "rendered_ir_sha256": "a523d34c04895318875fae572379cf511a5d97b6aec982604fadd9ae736f883a",
+  "merged_ir_sha256": "978846fac5ae004ccad929401228f31c60f964c6a2b343b822a8e20ab4ca0b5f",
+  "geometry_checks": [
+    {
+      "entity": "MS",
+      "region": "whole",
+      "rendered_step_sha256": "116c662380e40183af984f686b0a465b1df0d67a8a0b184192071278b86c2283",
+      "merged_step_sha256": "05ad2cd6355fbe055fb73ee9631699c998c84cf670aefc7b79885dfe871b5e27",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "MW",
+      "region": "whole",
+      "rendered_step_sha256": "b2f83cc1f69bc0c50b4397006e1a9a3d94a2c5544cf9ae1e70403ccc9ff51238",
+      "merged_step_sha256": "a76eedf09d1b8cd51c34a4b7eba803f0f9f656a0d5973f3c7583c507228e54b3",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "ME",
+      "region": "whole",
+      "rendered_step_sha256": "0714caf5a4b5d3aa05f825514ea3a3f65f6490bfe5f457f23d4d04790dd07fc0",
+      "merged_step_sha256": "7a1592bc17da2dab7b876126d29cdbf535442cdbd8283e99572083d033a9fd75",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "MN",
+      "region": "whole",
+      "rendered_step_sha256": "13edfb87b02d60395b17107cd65543e8978131689f51612abecc997c6a604b90",
+      "merged_step_sha256": "662e0ab18906939622a1ba02a591b3a10dd4be20e800c6a1b37c96d6a8877dde",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "D_FRONT",
+      "region": "whole",
+      "rendered_step_sha256": "d007f9b172969cc6169d31d863ab441d6ce0a0677960afb7d5e5428535f9b932",
+      "merged_step_sha256": "ec4db4f32a05e5756ee99051bf2decd89d1dcfbcc1e53e041abae2a4dfc67323",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "D_FRONT.void",
+      "region": "whole",
+      "rendered_step_sha256": "8df1230d3455fc81ea52ef295cfb4ca0a79430f55c6a3d61d17f8162d2546586",
+      "merged_step_sha256": "40e020f6c5e501105b4e1e22d4e55464707a2438ca7f2a98a4bc54eeba56b2ee",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "D_FRONT.glass",
+      "region": "whole",
+      "rendered_step_sha256": "f9a824ad41438f12e9df70f9895db5373f97885f8075fe9f12b93cda4f52d842",
+      "merged_step_sha256": "4106cc2de544c66e6aea5962a0a0e854363c61932f8d9c6b9bf39944277b2f24",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "D_FRONT.surround",
+      "region": "whole",
+      "rendered_step_sha256": "c635b7b27b48614de24b5110245b736215430d7889dcdffdb2f58949c3aada0c",
+      "merged_step_sha256": "dff3e6a5c9f049b89ed99b39b7878bd04340eec99fd7997d7d014fe6555c8f10",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "D_FRONT.frieze",
+      "region": "whole",
+      "rendered_step_sha256": "7be95bfc75546e8b219a4afff192285b2945c4f944936e6193a9fc272d49c2ed",
+      "merged_step_sha256": "e6268e916a0968e8e6a2ec5a3619ea245d193605d8240e39a2ce2c40065cb009",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "N_W2",
+      "region": "whole",
+      "rendered_step_sha256": "77f825813af4cbb595eb15afecd87d5b65c8560f8047229c889737e000eb667f",
+      "merged_step_sha256": "e61e93d44c578aa7b469a16476698bb67f3fc73be1f2d344882f2114aeb9dea6",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "N_W2.glass",
+      "region": "whole",
+      "rendered_step_sha256": "2e9f171ba8b16f61c4065ec3493843fd31ea9c0f73b5b6a0782dfe6b8f771764",
+      "merged_step_sha256": "258ae90105704390981255b5dc9c6c4eefb7eb8a79365c596a64f77203ca9547",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "MASTER_ROOF_TIMBERS",
+      "region": "whole",
+      "rendered_step_sha256": "5483b5bd0e3c9d8d219290afc7f74334176d56f6f6184c386eb7c861bb621850",
+      "merged_step_sha256": "b69c49b5617636883eae7e33b70a80c1b8a2961a64fa973df5fabebb3ed12169",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "MASTER_TRUSS_BRACES",
+      "region": "whole",
+      "rendered_step_sha256": "81984e20ced74a2b2af5389a18864db3e8c7d48ced16733a35981b2b15f95122",
+      "merged_step_sha256": "e06440920ca10e2fd305cf862353022e2150e14b8ebde3ec627f4b708bda5acc",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "F1_MAIN",
+      "region": "whole",
+      "rendered_step_sha256": "2a37cdce583a09285bcefe090c9394b26a6997da90f95dbc0fa9c7c865bcd1fd",
+      "merged_step_sha256": "a30acb3d966becfdc82ab5aa2c5c802d7aae45883359fda09d1e22e6245445a2",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "P_DRESS",
+      "region": "whole",
+      "rendered_step_sha256": "0d8e66be49327907c3d70dfa8529f1a03a808661546fa7da0fc33a33eea8aa9a",
+      "merged_step_sha256": "c1b08813c6290915cba76e7df4762547e6c5e1429408501d83d5f235c46c5ebc",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "K1",
+      "region": "at or above z=3300 mm",
+      "rendered_step_sha256": "9b36785f868c27bb72a34167ac3db76d146e54c1362ae01a56ac0a644364782e",
+      "merged_step_sha256": "ca84661a81e57408a54aabf62bd2766ef7cd8440c0652b86332a6472a7c704f4",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "K2",
+      "region": "at or above z=3300 mm",
+      "rendered_step_sha256": "b4841f3354275f478ba2c882f35e6037221a0d014224770e3be09bbcc118920c",
+      "merged_step_sha256": "39a7d264f3b436f15eab372462bd8c31550fbfe423022ac6c768e434e9fda7f5",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "K3",
+      "region": "at or above z=3300 mm",
+      "rendered_step_sha256": "187b61a944dbcf33e84173a07242f9cae30b4dfcd6b394cca5f358e04ab46d83",
+      "merged_step_sha256": "6f40a6333407d0987f38f69b7278ada0349146755648ef48a0dcde816b9f7bdf",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    },
+    {
+      "entity": "K4",
+      "region": "at or above z=3300 mm",
+      "rendered_step_sha256": "0ec077d7be7790ee00db1a229387f388977efc22bdf1c1807ce211d56239a7fd",
+      "merged_step_sha256": "9d1306f5b8e94595f98fde7ff633074e6be9e56ffdb81dd8ddaa954db8d241e0",
+      "rendered_only_mm3": 0,
+      "merged_only_mm3": 0,
+      "symmetric_difference_mm3": 0,
+      "equivalent_within_tolerance": true
+    }
+  ],
+  "standing_prism_checks": [
+    {
+      "side": "west",
+      "origin_mm": [
+        2045,
+        3510,
+        3303
+      ],
+      "size_mm": [
+        900,
+        500,
+        2000
+      ],
+      "brace_intersection_mm3": 0.0,
+      "roof_timber_intersection_mm3": 0.0,
+      "clear_within_tolerance": true
+    },
+    {
+      "side": "east",
+      "origin_mm": [
+        5055,
+        3510,
+        3303
+      ],
+      "size_mm": [
+        900,
+        500,
+        2000
+      ],
+      "brace_intersection_mm3": 0.0,
+      "roof_timber_intersection_mm3": 0.0,
+      "clear_within_tolerance": true
+    }
+  ],
+  "principal_source_files": [
+    {
+      "file": "projects/bastide_de_flechon/rooms/principal_envelope.py",
+      "rendered_sha256": "d471ed4a01c5f6aea808053df7382151747b7e406afe8b5467ad29d565d4ec3c",
+      "merged_sha256": "d471ed4a01c5f6aea808053df7382151747b7e406afe8b5467ad29d565d4ec3c",
+      "identical": true
+    },
+    {
+      "file": "projects/bastide_de_flechon/rooms/principal_furniture.py",
+      "rendered_sha256": "4ff63686b3ef00b55f76dd1e76d60b05eaac522a251b2ba933a99961ea00d301",
+      "merged_sha256": "4ff63686b3ef00b55f76dd1e76d60b05eaac522a251b2ba933a99961ea00d301",
+      "identical": true
+    },
+    {
+      "file": "projects/bastide_de_flechon/rooms/principal_materials.py",
+      "rendered_sha256": "d123864af931efcb52274ded0f4045204e1ff4faaeae91362967ff0716cf3383",
+      "merged_sha256": "d123864af931efcb52274ded0f4045204e1ff4faaeae91362967ff0716cf3383",
+      "identical": true
+    },
+    {
+      "file": "projects/bastide_de_flechon/rooms/fidelity_timbers.py",
+      "rendered_sha256": "f0059b0bb25f238f659e9c19f777e7d5a067af7ebed887bcaa3939748395b449",
+      "merged_sha256": "f0059b0bb25f238f659e9c19f777e7d5a067af7ebed887bcaa3939748395b449",
+      "identical": true
+    },
+    {
+      "file": "projects/bastide_de_flechon/rooms/fidelity_lighting.py",
+      "rendered_sha256": "3908913b64a0de814a35336a997304daa2ef390d534c7bb6b169c751943e6052",
+      "merged_sha256": "3908913b64a0de814a35336a997304daa2ef390d534c7bb6b169c751943e6052",
+      "identical": true
+    },
+    {
+      "file": "projects/bastide_de_flechon/photo_camera_lock.json",
+      "rendered_sha256": "68cf9c6ceb2a9ab37b22c259aa55a0f360e313f780c41a85a9360d3322662aa9",
+      "merged_sha256": "68cf9c6ceb2a9ab37b22c259aa55a0f360e313f780c41a85a9360d3322662aa9",
+      "identical": true
+    },
+    {
+      "file": "projects/bastide_de_flechon/photo_camera_review.py",
+      "rendered_sha256": "8832bd126cfda1cf219eb59424f5f64d3e2b6ce92ad74a4d53721f998933c6eb",
+      "merged_sha256": "8832bd126cfda1cf219eb59424f5f64d3e2b6ce92ad74a4d53721f998933c6eb",
+      "identical": true
+    }
+  ],
+  "lighting_preset_equality": {
+    "walk": true,
+    "principal06": true,
+    "principal33": true
+  },
+  "result": "pass",
+  "limits": [
+    "Existing principal images retain source5951576/native2499 provenance and are not relabeled as fresh merged-scene renders.",
+    "Checks establish unchanged compiled principal geometry, source implementation, camera lock and principal lighting settings; they do not prove pixel-identical whole-house global illumination.",
+    "Standing prisms establish architectural headroom through the front truss only. Combined dressed-scene audit and full native tests are reported separately.",
+    "The source freeze and previous principal-architecture-check.json/principal-standing-check.json evidence are preserved unchanged."
+  ]
+}

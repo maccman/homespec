@@ -70,9 +70,13 @@ def members_for(entity, scene):
         a, b = params["start"], params["end"]
         return [Member((a[0] / 1000, a[1] / 1000, z), (b[0] / 1000, b[1] / 1000, z), params["width"] / 1000, params["depth"] / 1000, seed=seed)]
     if eid == "MASTER_TRUSS_BRACES":
+        plane = entity["derived"]["plane_y"] / 1000
         return [
-            Member((a[0], 3.4, a[1]), (b[0], 3.4, b[1]), 0.32, 0.34, side=(0, 1, 0), seed=seed + i)
+            Member((a[0], plane, a[1]), (b[0], plane, b[1]), 0.32, 0.34, side=(0, 1, 0), seed=seed + i)
             for i, (a, b) in enumerate((((0.630, 3.3), (3.2, 7.54)), ((7.37, 3.3), (4.8, 7.54))))
+        ] + [
+            Member((a, plane, 5.25), (b, plane, 5.25), .38, .30, side=(0, 1, 0), seed=seed + 7 + i)
+            for i, (a, b) in enumerate(((.35, 2.10), (5.90, 7.65)))
         ]
     if eid == "GUEST_CEILING_TIMBERS":
         angle = math.radians(params["angle"])
@@ -101,7 +105,8 @@ def members_for(entity, scene):
             return roof["z_ridge"] / 1000 - abs(x - 4) * slope - roof["thickness"] / 1000 - 0.026
 
         result = []
-        for yi, y in enumerate((3.4, 8.2)):
+        for yi, y_mm in enumerate(entity["derived"]["truss_planes"]):
+            y = y_mm / 1000
             result.append(Member((0.35, y, 5.84), (7.65, y, 5.84), 0.26, 0.28, side=(0, 1, 0), seed=seed + yi))
             for i, (a, b) in enumerate(
                 (

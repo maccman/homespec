@@ -922,6 +922,7 @@ class PrincipalCarpentry(Element):
     kind: ClassVar[str] = "beam"
     ifc_class: ClassVar[str | None] = "IfcBeam"
     roof: Ref
+    truss_planes: tuple[float, float] = (3760, 8200)
 
     def deps(self):
         return [self.roof]
@@ -944,7 +945,7 @@ class PrincipalCarpentry(Element):
             return [(ax + nx, az + nz), (bx + nx, bz + nz), (bx - nx, bz - nz), (ax - nx, az - nz)]
 
         parts = []
-        for y in [3400, 8200]:
+        for y in self.truss_planes:
             tie = G.box((7300, 260, 280), (350, y - 130, 5700))
             pieces = [tie]
             for a, b in [
@@ -973,7 +974,7 @@ class PrincipalCarpentry(Element):
                 rafters.append(shape - structure)
         return Realized(
             solid=G.group([structure, *rafters]),
-            derived={"span": 7300, "clear_below": 2400, "size": [260, 280], "trusses": 2, "purlins": 3, "rafter_pairs": 20},
+            derived={"span": 7300, "clear_below": 2400, "size": [260, 280], "trusses": 2, "truss_planes": list(self.truss_planes), "purlins": 3, "rafter_pairs": 20},
             relations=[Relation(pred="part_of", obj=self.roof)],
             tags={"exposed"},
         )
@@ -992,18 +993,31 @@ class PrimaryKneeBraces(Element):
 
     def realize(self, ctx):
         parts = []
+        plane = ctx.built(self.carpentry).derived["truss_planes"][0]
         for a, b in [((630, 3300), (3200, 7540)), ((7370, 3300), (4800, 7540))]:
             dx, dz = b[0] - a[0], b[1] - a[1]
             length = math.hypot(dx, dz)
             nx = -dz / length * 170
             nz = dx / length * 170
             profile = [(a[0] + nx, a[1] + nz), (b[0] + nx, b[1] + nz), (b[0] - nx, b[1] - nz), (a[0] - nx, a[1] - nz)]
-            brace = G.prism_profile(profile, 3240, 320, along="y")
+            brace = G.prism_profile(profile, plane - 160, 320, along="y")
             brace = brace & G.box((7300, 10300, 7000), (350, 350, 3300))
             parts.append(brace - ctx.built(self.carpentry).solid)
+        # The original plan has short side members, and photo33 resolves the
+        # west free end crossing the diagonal. They are not a low full-span
+        # beam across the bed/circulation. Vertical setting-out is inferred.
+        for profile in (
+            [(350, 5100), (1880, 5100), (2100, 5400), (350, 5400)],
+            [(7650, 5100), (6120, 5100), (5900, 5400), (7650, 5400)],
+        ):
+            parts.append(G.prism_profile(profile, plane - 190, 380, along="y"))
+        joined = parts[0]
+        for part in parts[1:]:
+            joined = joined + part
         return Realized(
-            solid=G.group(parts),
-            derived={"foot_elevation": 3300, "top_elevation": 7540, "width": 320, "depth": 340, "plane_y": 3400},
+            solid=joined,
+            derived={"foot_elevation": 3300, "top_elevation": 7540, "width": 320, "depth": 340, "plane_y": plane,
+                     "side_tie_underside": 5100, "side_tie_top": 5400, "side_tie_inner_ends": [2100, 5900]},
             relations=[Relation(pred="part_of", obj=self.carpentry)],
             tags={"exposed", "fixed"},
         )

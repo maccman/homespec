@@ -1,0 +1,6 @@
+uv run --frozen homespec audit projects/bastide_de_flechon
+Source: f941d05
+Generation: d7e4aef7bbc14ff290e3bb22a0843ab8
+Exit code: 0
+0 findings
+Full log SHA-256: 34906d35cecb5b7fe610ffdfe18290c1f2ebf3e68c7d08cff42a654f7a02888c

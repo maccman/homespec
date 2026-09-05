@@ -85,5 +85,11 @@
   ],
   "native_drawing_evidence": "exterior-review/native-drawings/drawing-provenance.json",
   "current_contact_evidence": "exterior-review/roof-contact-samples.json",
-  "current_contact_loaded_scene_sha256": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373"
+  "current_contact_loaded_scene_sha256": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373",
+  "post_review_integration": {
+    "upstream_commit": "c5c1e05",
+    "description": "Principal-suite PR #10 merged after exterior artifacts were rendered; both refinement passes retained before house lighting.",
+    "combined_source_rerendered": false,
+    "combined_source_full_validation_completed": false
+  }
 }

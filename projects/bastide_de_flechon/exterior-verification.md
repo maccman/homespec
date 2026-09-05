@@ -22,6 +22,14 @@ in the user's [architectural visualization reference](https://developers.openai.
 Photographs supply evidence for this house; that article does not supply its
 geometry or establish a quality score.
 
+## Merge integration
+
+Principal-suite PR #10 was incorporated after the exterior review was rendered.
+Its room refinements and the exterior refinements both run before house lighting.
+The artifacts and test results below describe the frozen exterior source
+`55a3069`; they have not been regenerated for this combined principal/exterior
+source. Whole-house integration rendering and validation remain deferred.
+
 ## Current source checks
 
 The final production source freeze is `55a3069`. Its exact native generation is
