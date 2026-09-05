@@ -98,7 +98,14 @@ centre of the starting cross-section, with orthonormal `longitudinal`, `across`
 and `normal` axes, millimetre origin and member sizes. Longitudinal faces unwrap
 continuously around the rectangular perimeter. Sawn ends receive metric
 across/normal UVs and the optional separate endgrain material. Existing material
-slots and other face assignments remain intact. The helper never reconstructs a
+slots and other face assignments remain intact. `RoomFinish` allocates a stable
+UV namespace per finish and a matching cached material variant, so member detail
+cannot overwrite an authored base UV layer on unselected faces. For direct
+presentation calls, pass the same `member_uv_layer` name to `surface_material`
+and `apply_mapping` to obtain that isolation. The override changes only member
+coordinates; ordinary named UV pigment and normal maps retain their own layers.
+The mesh's active edit and render UV selections are preserved. Endgrain lookup
+uses effective object material slots, including object-linked overrides. The helper never reconstructs a
 truss frame from a bounding box or house-specific coordinates. Curved members,
 complex compounds and new clipping faces need explicit modeling decisions.
 

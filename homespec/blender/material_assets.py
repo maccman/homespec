@@ -122,18 +122,29 @@ def validate_assets(render, root):
     return dependencies
 
 
-def _coordinates(nodes, mode, mapping):
+def needs_member_mapping(render):
+    mapping = (render.get("assets") or {}).get("mapping") or {}
+    return mapping.get("mode") == "member" or any(detail.get("coordinates") == "member" for detail in render.get("detail", []))
+
+
+def _validate_member_layer(name):
+    if name is not None and (not isinstance(name, str) or not name or len(name.encode("utf-8")) > 63):
+        raise ValueError("member_uv_layer must be a nonempty UV name of at most 63 UTF-8 bytes")
+
+
+def _coordinates(nodes, mode, mapping, member_uv_layer=None):
     if mode == "world":
         return nodes.new("ShaderNodeNewGeometry").outputs["Position"]
     if mode in {"uv", "member"}:
         uv = nodes.new("ShaderNodeUVMap")
-        uv.uv_map = mapping.get("uv_layer") or ("Member grain metres" if mode == "member" else "")
+        uv.uv_map = (member_uv_layer if mode == "member" else None) or mapping.get("uv_layer") or ("Member grain metres" if mode == "member" else "")
+        uv["homespec_coordinates"] = mode
         return uv.outputs["UV"]
     return nodes.new("ShaderNodeTexCoord").outputs["Object"]
 
 
-def _metric(nodes, links, mode, mapping):
-    coordinates = _coordinates(nodes, mode, mapping)
+def _metric(nodes, links, mode, mapping, member_uv_layer=None):
+    coordinates = _coordinates(nodes, mode, mapping, member_uv_layer)
     if mode == "uv" and mapping.get("uv_extent_m"):
         scale = nodes.new("ShaderNodeVectorMath")
         scale.operation = "MULTIPLY"
@@ -143,13 +154,16 @@ def _metric(nodes, links, mode, mapping):
     return coordinates
 
 
-def surface_material(name, render, *, root, material=None):
+def surface_material(name, render, *, root, material=None, member_uv_layer=None):
     """Build a material from serialized Render; reuse a material only explicitly.
 
     ``root`` is the directory relative to which assets were declared. Original
     hashes, image dimensions, mapping, response and provenance are persisted in
     ``homespec_material`` on the Blender material for portable review consumers.
+    ``member_uv_layer`` isolates generated member coordinates from authored UVs;
+    pass the same name to ``apply_mapping``. Ordinary UV channels are unchanged.
     """
+    _validate_member_layer(member_uv_layer)
     dependencies = validate_assets(render, root)
     material = material or bpy.data.materials.new(name)
     material.use_nodes = True
@@ -170,7 +184,7 @@ def surface_material(name, render, *, root, material=None):
     assets = render.get("assets") or {}
     mapping = assets.get("mapping") or {}
     mode = mapping.get("mode", "world")
-    coordinates = _metric(nodes, links, mode, mapping)
+    coordinates = _metric(nodes, links, mode, mapping, member_uv_layer)
     mapped = nodes.new("ShaderNodeMapping")
     mapped.name = "Physical repeat metres"
     mapped.inputs["Scale"].default_value = tuple(1 / v for v in mapping.get("repeat_m", (1, 1, 1)))
@@ -237,7 +251,8 @@ def surface_material(name, render, *, root, material=None):
     normal = None
     if "normal" in textures:
         node = nodes.new("ShaderNodeNormalMap")
-        node.uv_map = mapping.get("uv_layer") or ("Member grain metres" if mode == "member" else "")
+        node.uv_map = (member_uv_layer if mode == "member" else None) or mapping.get("uv_layer") or ("Member grain metres" if mode == "member" else "")
+        node["homespec_coordinates"] = mode
         node.inputs["Strength"].default_value = assets.get("normal_strength", .6)
         links.new(textures["normal"].outputs["Color"], node.inputs["Color"])
         normal = node.outputs["Normal"]
@@ -245,7 +260,7 @@ def surface_material(name, render, *, root, material=None):
     if "height" in textures:
         signals.append((textures["height"].outputs["Color"], assets["height_m"], 1, "Explicit height map bump"))
     for index, detail in enumerate(render.get("detail", [])):
-        coordinates = _metric(nodes, links, detail.get("coordinates", "world"), mapping)
+        coordinates = _metric(nodes, links, detail.get("coordinates", "world"), mapping, member_uv_layer)
         if detail.get("kind", "noise") == "weave":
             waves = []
             for axis_index, axis in enumerate(("X", "Y")):
@@ -291,21 +306,24 @@ def surface_material(name, render, *, root, material=None):
         absorption.inputs["Color"].default_value = (*color, 1)
         absorption.inputs["Density"].default_value = render["absorb"]
         links.new(absorption.outputs["Volume"], output.inputs["Volume"])
-    material["homespec_material"] = json.dumps({"version": 1, "render": render, "assets": dependencies,
+    material["homespec_material"] = json.dumps({"version": 1, "render": render, "assets": dependencies, "member_uv_layer": member_uv_layer,
         "pigment_drives_response": False, "relief": "shader bump only; no geometry displacement"}, sort_keys=True)
     return material
 
 
-def apply_mapping(obj, render, *, member=None, endgrain_material=None):
+def apply_mapping(obj, render, *, member=None, endgrain_material=None, member_uv_layer=None):
     """Write metre-based member UVs from the authoritative IR frame.
 
     Longitudinal faces unfold continuously around a rectangular member; sawn
     ends use across/normal coordinates. The optional endgrain material receives
     only end faces; all other slots and assignments are retained. This does not
     reconstruct a frame from object bounds or recognize project-specific trusses.
+    ``member_uv_layer`` overrides only the generated member layer; use the same
+    name in ``surface_material`` to keep other materials on their authored UVs.
     """
     mapping = ((render.get("assets") or {}).get("mapping") or {})
-    if mapping.get("mode") != "member" and not any(detail.get("coordinates") == "member" for detail in render.get("detail", [])):
+    _validate_member_layer(member_uv_layer)
+    if not needs_member_mapping(render):
         return
     if member is None:
         raise ValueError(f"{obj.name}: member mapping requires a published member frame")
@@ -318,12 +336,13 @@ def apply_mapping(obj, render, *, member=None, endgrain_material=None):
     if width <= 0 or depth <= 0 or member["length_mm"] <= 0:
         raise ValueError("member dimensions must be positive")
     data = ensure_unique_mesh(obj)
-    name = mapping.get("uv_layer") or "Member grain metres"
+    name = member_uv_layer or mapping.get("uv_layer") or "Member grain metres"
+    active_name = data.uv_layers.active.name if data.uv_layers.active is not None else None
+    render_names = [layer.name for layer in data.uv_layers if layer.active_render]
     uv = data.uv_layers.get(name) or data.uv_layers.new(name=name)
-    data.uv_layers.active = uv
     slot = None
     if endgrain_material is not None:
-        slot = data.materials.find(endgrain_material.name)
+        slot = next((i for i, current in enumerate(obj.material_slots) if current.material == endgrain_material), -1)
         if slot < 0:
             data.materials.append(endgrain_material)
             slot = len(data.materials) - 1
@@ -345,4 +364,10 @@ def apply_mapping(obj, render, *, member=None, endgrain_material=None):
             perimeter = {"-normal": a, "+across": width + n, "+normal": width + depth + width - a,
                          "-across": 2 * width + depth + depth - n}[side]
             uv.data[index].uv = (a, n) if is_end else (u, perimeter)
+    # Named member shaders need no change to the mesh's active/edit or render
+    # layer; leave ordinary UV-based materials on their authored coordinates.
+    if active_name is not None:
+        data.uv_layers.active = data.uv_layers[active_name]
+    for render_name in render_names:
+        data.uv_layers[render_name].active_render = True
     obj["homespec_member_frame"] = json.dumps(member, sort_keys=True)

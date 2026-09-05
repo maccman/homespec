@@ -11,6 +11,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "homespec" / "blender"))
 
 import bpy  # noqa: E402
+import materials as library_materials  # noqa: E402
 import session  # noqa: E402
 from material_assets import apply_mapping, surface_material  # noqa: E402
 from mathutils import Vector  # noqa: E402
@@ -108,6 +109,57 @@ def check(root):
         points = [uv.data[index].uv for index in face.loop_indices]
         assert abs(max(p.x for p in points) - min(p.x for p in points) - .2) < 1e-5
         assert abs(max(p.y for p in points) - min(p.y for p in points) - .3) < 1e-5
+    # A DATA slot named sawn_end can be hidden by an OBJECT material override.
+    # Endgrain must select the effective material, without clobbering that slot.
+    beam.material_slots[2].link = "OBJECT"
+    beam.material_slots[2].material = retained
+    apply_mapping(beam, settings, member=member, endgrain_material=end)
+    assert len(beam.material_slots) == 4
+    assert beam.material_slots[2].material == retained
+    assert beam.material_slots[3].material == end
+    assert all(face.material_index == 3 for face in end_faces)
+
+    # A room finish must not overwrite an identically named authored base UV
+    # layout. Mixed UV pigment/normal + member detail exercises both namespaces.
+    channel = image_asset(root)
+    authored = "Member grain metres"
+    mixed = {"assets": {"channels": [channel, {**channel, "role": "normal"}],
+                        "mapping": {"mode": "uv", "uv_layer": authored}},
+             "detail": [{"coordinates": "member", "amplitude_m": .0002}]}
+    pure_member = {"assets": {"channels": [channel, {**channel, "role": "normal"}], "mapping": {"mode": "member"}},
+                   "detail": [{"coordinates": "member", "amplitude_m": .0002}]}
+    session.IR["materials"] = {"mixed": {"render": mixed}, "pure_member": {"render": pure_member}}
+    session.PRES = str(root / "presentation.py")
+    finish_layer = library_materials.finish_member_layer("room finish " + "é" * 100)
+    second_layer = library_materials.finish_member_layer("other room finish")
+    assert finish_layer == library_materials.finish_member_layer("room finish " + "é" * 100)
+    assert len(finish_layer.encode()) <= 63 and finish_layer != second_layer
+    finish_material = library_materials.material_for("mixed", member_uv_layer=finish_layer)
+    assert finish_material == library_materials.material_for("mixed", member_uv_layer=finish_layer)
+    assert finish_material != library_materials.material_for("mixed", member_uv_layer=second_layer)
+    uv_nodes = [node for node in finish_material.node_tree.nodes if node.type == "UVMAP"]
+    assert {node.uv_map for node in uv_nodes} == {authored, finish_layer}
+    assert all(node.uv_map == authored for node in finish_material.node_tree.nodes if node.type == "NORMAL_MAP")
+    pure = library_materials.material_for("pure_member", member_uv_layer=finish_layer)
+    assert all(node.uv_map == finish_layer for node in pure.node_tree.nodes if node.type in {"UVMAP", "NORMAL_MAP"})
+    assert json.loads(finish_material["homespec_material"])["member_uv_layer"] == finish_layer
+    scoped = props.box("scoped material fixture", (5, 5, 6), (2, .2, .3), side, rot_z=.37)
+    scoped.data.uv_layers[0].name = authored
+    for index, item in enumerate(scoped.data.uv_layers[0].data):
+        item.uv = (index / 20, index / 30)
+    before = [tuple(item.uv) for item in scoped.data.uv_layers[0].data]
+    scoped.data.materials.append(finish_material)
+    scoped.data.polygons[0].material_index = 1
+    face_slots = [face.material_index for face in scoped.data.polygons]
+    sibling = props.instance(scoped, "scoped sibling")
+    bpy.context.view_layer.update()
+    apply_mapping(scoped, mixed, member=member, member_uv_layer=finish_layer)
+    assert scoped.data != sibling.data
+    assert [tuple(item.uv) for item in scoped.data.uv_layers[authored].data] == before
+    assert [tuple(item.uv) for item in sibling.data.uv_layers[authored].data] == before
+    assert scoped.data.uv_layers.active.name == authored and scoped.data.uv_layers[authored].active_render
+    assert finish_layer in scoped.data.uv_layers and finish_layer not in sibling.data.uv_layers
+    assert [face.material_index for face in scoped.data.polygons] == face_slots
     print("MATERIAL ASSETS PASSED", flush=True)
 
 
