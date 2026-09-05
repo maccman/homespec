@@ -1,0 +1,2055 @@
+{
+  "schema": 1,
+  "study_id": "principal-bedroom-independent-camera-evidence-2026-09-05",
+  "scope": [
+    "principal06",
+    "principal33"
+  ],
+  "source_baseline_commit": "33b7db5",
+  "includes_merged_pr7": "ec117ec97c3a5610c9f9bf8b8e4fb18b2a2fc5a8",
+  "original_lock_id": "flechon-exif-photo-cameras-2026-09-05-v4",
+  "original_lock_sha256": "477cd639301fecca34695a49f5ef5b2ddcba5b3c53f901a36088d9d718304a3f",
+  "status": "Original/proposed/rejected camera evidence and practical review-camera selection; final image acceptance pending. Selected camera lock is frozen for identical baseline/current comparisons.",
+  "original_media_preserved": true,
+  "coordinate_system": "World metres, z up. Photo UV normalized full raster: u right, v down. Camera sensor36mm on longer output axis; square pixels, perspective, zero roll.",
+  "metadata_extraction": "Original JPEG EXIF via camera_calibration.read_reference_exif. All crs/exif/aux/photoshop XMP XML attributes retained except device serial identifiers; no source metadata changed.",
+  "sources": [
+    {
+      "id": "photo06",
+      "original_path": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-16.jpg",
+      "sha256": "b713335e429d0ac7e4831073e4932ba6f3c545788d451b1b99d00d3d6c1c7aa2",
+      "file_bytes": 2304742,
+      "raster_px": [
+        2000,
+        1500
+      ],
+      "evidence_role": "interior_architecture_point_fit",
+      "exif": {
+        "make": "FUJIFILM",
+        "camera_model": "GFX100S",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.6,
+        "physical_focal_length_mm": 30.0,
+        "reported_35mm_equivalent_mm": 24,
+        "lens_model": "GF30mmF5.6 T/S"
+      },
+      "xmp_block_sha256": "7a6752e30ae7520fd860ac59dc1067813084fbbdfbd1065a47480ab40c8e7982",
+      "xmp_profile_refs": [
+        "all_sources",
+        "mark_elst_final_tiff_stage"
+      ],
+      "xmp_attribute_overrides": {
+        "aux:FujiRatingAlreadyApplied": "True",
+        "aux:LensInfo": "3000/100 3000/100 560/100 560/100",
+        "aux:Lens": "GF30mmF5.6 T/S",
+        "aux:LateralChromaticAberrationCorrectionAlreadyApplied": "True",
+        "photoshop:DateCreated": "2025-06-10T05:56:42+01:00",
+        "crs:RawFileName": "Bastide de Flechon 2025-16.tif",
+        "crs:WhiteBalance": "Custom",
+        "crs:IncrementalTemperature": "+2",
+        "crs:IncrementalTint": "-5",
+        "crs:HueAdjustmentGreen": "+3",
+        "crs:SaturationAdjustmentGreen": "+17",
+        "crs:LuminanceAdjustmentGreen": "-17"
+      }
+    },
+    {
+      "id": "photo33",
+      "original_path": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-7.jpg",
+      "sha256": "88390c1a116c2f498e7961c1db4c774767d8e70f33856caed54142f1ecf8d4ee",
+      "file_bytes": 2366075,
+      "raster_px": [
+        1500,
+        2000
+      ],
+      "evidence_role": "interior_parallel_line_and_conditional_height_fit",
+      "exif": {
+        "make": "Canon",
+        "camera_model": "Canon EOS 5DS R",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.5,
+        "physical_focal_length_mm": 50.0,
+        "lens_model": "TS-E50mm f/2.8L MACRO"
+      },
+      "xmp_block_sha256": "1c945fdd685e58a4f4102f765564999bb4b5eabc45b09eb33cd2214936d26da6",
+      "xmp_profile_refs": [
+        "all_sources",
+        "mark_elst_final_tiff_stage"
+      ],
+      "xmp_attribute_overrides": {
+        "aux:LensInfo": "50/1 50/1 0/0 0/0",
+        "aux:Lens": "TS-E50mm f/2.8L MACRO",
+        "aux:LensID": "80",
+        "aux:ImageNumber": "0",
+        "aux:ApproximateFocusDistance": "459/100",
+        "aux:FlashCompensation": "0/1",
+        "aux:Firmware": "1.0.1",
+        "photoshop:DateCreated": "2020-09-07T09:50:34.088",
+        "crs:RawFileName": "Bastide de Flechon 2025-7.tif",
+        "crs:WhiteBalance": "As Shot",
+        "crs:IncrementalTemperature": "0",
+        "crs:IncrementalTint": "0",
+        "crs:HueAdjustmentGreen": "0",
+        "crs:SaturationAdjustmentGreen": "0",
+        "crs:LuminanceAdjustmentGreen": "0"
+      }
+    },
+    {
+      "id": "photo55",
+      "original_path": "PHOTOS/VICTOR FITZ/DSC05311.jpg",
+      "sha256": "4dadf281dd0a1ed6ab2519552a88d5242a62482676911a1ad8f36c44715481fd",
+      "file_bytes": 12194710,
+      "raster_px": [
+        4672,
+        7008
+      ],
+      "evidence_role": "independent_visual_holdout_not_used_in_numerical_fit",
+      "exif": {
+        "make": "SONY",
+        "camera_model": "ILCE-7M4",
+        "editing_software": "Adobe Photoshop Lightroom Classic 13.0.2 (Macintosh)",
+        "exposure_seconds": 0.008,
+        "physical_focal_length_mm": 26.0,
+        "reported_35mm_equivalent_mm": 26,
+        "lens_model": "FE 24-105mm F4 G OSS"
+      },
+      "xmp_block_sha256": "8051aa3cc2ded33d1a32e6f94bc57b838282b3a6a524c6a51cb6e6a149553c0a",
+      "xmp_profile_refs": [
+        "all_sources"
+      ],
+      "xmp_attribute_overrides": {
+        "aux:LensInfo": "240/10 1050/10 40/10 40/10",
+        "aux:Lens": "FE 24-105mm F4 G OSS",
+        "aux:LensDistortInfo": "33439/32768 -86922439/1073741824 51786258/1073741824 -7179597/1073741824",
+        "aux:DistortionCorrectionAlreadyApplied": "True",
+        "aux:LateralChromaticAberrationCorrectionAlreadyApplied": "True",
+        "aux:VignetteCorrectionAlreadyApplied": "True",
+        "photoshop:DateCreated": "2023-10-12T11:21:41.291+01:00",
+        "crs:RawFileName": "DSC05311.ARW",
+        "crs:Version": "16.0",
+        "crs:ProcessVersion": "15.4",
+        "crs:WhiteBalance": "As Shot",
+        "crs:Temperature": "8200",
+        "crs:Tint": "+18",
+        "crs:Exposure2012": "+0.75",
+        "crs:Contrast2012": "+2",
+        "crs:Highlights2012": "-69",
+        "crs:Shadows2012": "+71",
+        "crs:Whites2012": "-55",
+        "crs:Blacks2012": "+15",
+        "crs:Clarity2012": "+8",
+        "crs:Dehaze": "+1",
+        "crs:Vibrance": "+30",
+        "crs:Sharpness": "40",
+        "crs:SharpenRadius": "+1.0",
+        "crs:SharpenDetail": "25",
+        "crs:SharpenEdgeMasking": "0",
+        "crs:LuminanceSmoothing": "23",
+        "crs:LuminanceNoiseReductionDetail": "50",
+        "crs:LuminanceNoiseReductionContrast": "0",
+        "crs:ColorNoiseReduction": "25",
+        "crs:ColorNoiseReductionDetail": "50",
+        "crs:ColorNoiseReductionSmoothness": "50",
+        "crs:HueAdjustmentGreen": "0",
+        "crs:SaturationAdjustmentGreen": "0",
+        "crs:SaturationAdjustmentBlue": "0",
+        "crs:LuminanceAdjustmentGreen": "0",
+        "crs:LuminanceAdjustmentBlue": "0",
+        "crs:AutoLateralCA": "1",
+        "crs:LensProfileEnable": "1",
+        "crs:PerspectiveUpright": "1",
+        "crs:HDREditMode": "0",
+        "crs:CameraProfile": "Adobe Standard",
+        "crs:CameraProfileDigest": "A4DC20C59DE4E2DF67946B80BFDA0801",
+        "crs:LensProfileSetup": "LensDefaults",
+        "crs:LensProfileName": "Adobe (Sony FE 24-105mm F4 G OSS)",
+        "crs:LensProfileFilename": "SONY (Sony FE 24-105mm F4 G OSS) - RAW.lcp",
+        "crs:LensProfileDigest": "E562EAFAD7911E636D0E40C847FA08F6",
+        "crs:LensProfileIsEmbedded": "False",
+        "crs:LensProfileDistortionScale": "100",
+        "crs:LensProfileVignettingScale": "100",
+        "crs:UprightVersion": "151388160",
+        "crs:UprightCenterMode": "0",
+        "crs:UprightCenterNormX": "0.512123",
+        "crs:UprightCenterNormY": "0.495933",
+        "crs:UprightFocalMode": "0",
+        "crs:UprightFocalLength35mm": "26.1591",
+        "crs:UprightPreview": "False",
+        "crs:UprightDependentDigest": "45B76CBBC53248539987CDB2BA13DF59",
+        "crs:UprightTransformCount": "6",
+        "crs:UprightTransform_0": "1.000000000,0.000000000,0.000000000,0.000000000,1.000000000,0.000000000,0.000000000,0.000000000,1.000000000",
+        "crs:UprightTransform_1": "1.000324128,0.000031159,-0.000177644,-0.000070047,1.000076779,-0.000003370,0.000000086,-0.000000000,0.999999914",
+        "crs:UprightTransform_2": "1.194576041,0.761171910,-0.100018626,0.000095441,2.667192870,-0.151882692,0.000210133,1.515405619,0.999789867",
+        "crs:UprightTransform_3": "1.000073241,0.000031151,-0.000052196,-0.000070090,1.000073241,-0.000001576,0.000000000,0.000000000,1.000000000",
+        "crs:UprightTransform_4": "1.000086373,0.000013135,-0.000049751,0.000043951,1.000014014,-0.000053740,0.000143529,0.000000000,0.999856471",
+        "crs:UprightTransform_5": "1.000000000,0.000000000,0.000000000,0.000000000,1.000000000,0.000000000,0.000000000,0.000000000,1.000000000",
+        "crs:CropTop": "0",
+        "crs:CropLeft": "0",
+        "crs:CropBottom": "1",
+        "crs:CropRight": "1",
+        "crs:HasCrop": "False",
+        "crs:Name": "Adobe Color",
+        "crs:Amount": "1",
+        "crs:UUID": "B952C231111CD8E0ECCF14B86BAA7077",
+        "crs:SupportsAmount": "false",
+        "crs:SupportsMonochrome": "false",
+        "crs:SupportsOutputReferred": "false",
+        "crs:LookTable": "E1095149FDB39D7A057BAB208837E2E1"
+      }
+    },
+    {
+      "id": "photo41",
+      "original_path": "PHOTOS/MARK ELST/Bastide_de_Flechon_4.jpg",
+      "sha256": "f04f98a00d9eec5c4ea8a3884ab3cd1c47dc36fa8aa8db21b4c4f8acae74aaca",
+      "file_bytes": 4509354,
+      "raster_px": [
+        1875,
+        2500
+      ],
+      "evidence_role": "independent_exterior_holdout_for_geometry_not_used_in_numerical_camera_fit",
+      "exif": {
+        "make": "Canon",
+        "camera_model": "Canon EOS R5",
+        "editing_software": "Adobe Photoshop 24.5 (Macintosh)",
+        "exposure_seconds": 0.003125,
+        "physical_focal_length_mm": 50.0,
+        "lens_model": "TS-E50mm f/2.8L MACRO"
+      },
+      "xmp_block_sha256": "f5d42cb00e112d3ecb2eddecfb1a8743e66a2453ed44bf32f31ff350940fe549",
+      "xmp_profile_refs": [
+        "all_sources"
+      ],
+      "xmp_attribute_overrides": {
+        "aux:LensInfo": "50/1 50/1 0/0 0/0",
+        "aux:Lens": "TS-E50mm f/2.8L MACRO",
+        "aux:LensID": "80",
+        "aux:ImageNumber": "0",
+        "aux:ApproximateFocusDistance": "159/10",
+        "aux:FlashCompensation": "0/1",
+        "aux:Firmware": "1.7.0",
+        "aux:LateralChromaticAberrationCorrectionAlreadyApplied": "True",
+        "photoshop:DateCreated": "2023-04-26T07:53:07.041+01:00",
+        "photoshop:LegacyIPTCDigest": "34D5036ADDD619B6C4D296843A9968CB",
+        "photoshop:ColorMode": "3",
+        "photoshop:ICCProfile": "sRGB IEC61966-2.1",
+        "crs:Version": "15.3.1",
+        "crs:ProcessVersion": "11.0",
+        "crs:WhiteBalance": "Custom",
+        "crs:IncrementalTemperature": "+6",
+        "crs:IncrementalTint": "+3",
+        "crs:Exposure2012": "-0.10",
+        "crs:Contrast2012": "0",
+        "crs:Highlights2012": "-23",
+        "crs:Shadows2012": "0",
+        "crs:Whites2012": "0",
+        "crs:Blacks2012": "0",
+        "crs:Clarity2012": "+3",
+        "crs:Dehaze": "0",
+        "crs:Vibrance": "0",
+        "crs:Sharpness": "0",
+        "crs:LuminanceSmoothing": "0",
+        "crs:ColorNoiseReduction": "0",
+        "crs:HueAdjustmentGreen": "0",
+        "crs:SaturationAdjustmentGreen": "0",
+        "crs:SaturationAdjustmentBlue": "+17",
+        "crs:LuminanceAdjustmentGreen": "0",
+        "crs:LuminanceAdjustmentBlue": "-5",
+        "crs:AutoLateralCA": "0",
+        "crs:LensProfileEnable": "0",
+        "crs:PerspectiveUpright": "0",
+        "crs:CameraProfile": "Embedded",
+        "crs:CameraProfileDigest": "54650A341B5B5CCAE8442D0B43A92BCE",
+        "crs:UprightVersion": "151388160",
+        "crs:UprightCenterMode": "0",
+        "crs:UprightCenterNormX": "0.526095",
+        "crs:UprightCenterNormY": "0.505767",
+        "crs:UprightFocalMode": "0",
+        "crs:UprightFocalLength35mm": "47.1972",
+        "crs:UprightPreview": "False",
+        "crs:UprightDependentDigest": "F7173540FD9FB419BD947A976070F4D2",
+        "crs:UprightTransformCount": "6",
+        "crs:UprightTransform_0": "1.000000000,0.000000000,0.000000000,0.000000000,1.000000000,0.000000000,0.000000000,0.000000000,1.000000000",
+        "crs:UprightTransform_1": "1.042231567,0.028339877,-0.027893258,-0.001106874,1.055792447,-0.007317421,0.008283254,0.032314408,1.000000000",
+        "crs:UprightTransform_2": "1.069373284,0.102531199,-0.039497383,0.019186674,1.190739797,-0.017755978,0.025250972,0.166919521,1.000000000",
+        "crs:UprightTransform_3": "1.010915458,0.011094684,-0.011005071,-0.006241406,1.010915459,-0.002337027,0.000000000,0.000000000,1.000000000",
+        "crs:UprightTransform_4": "1.037683387,0.100088142,-0.034704294,-0.007997744,1.172231610,0.000112773,0.000001316,0.164345323,1.000000000",
+        "crs:UprightTransform_5": "1.000000000,0.000000000,0.000000000,0.000000000,1.000000000,0.000000000,0.000000000,0.000000000,1.000000000",
+        "crs:CropTop": "0.040404",
+        "crs:CropLeft": "0.021036",
+        "crs:CropBottom": "0.974853",
+        "crs:CropRight": "0.955485",
+        "crs:HasCrop": "True"
+      }
+    },
+    {
+      "id": "photo03",
+      "original_path": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-13.jpg",
+      "sha256": "dedae2e79350b65dcc5808476364406ed5d26d10584599aa8c4ab768e0e1930a",
+      "file_bytes": 1560181,
+      "raster_px": [
+        1500,
+        2000
+      ],
+      "evidence_role": "independent_furniture_material_holdout_not_used_in_numerical_fit",
+      "exif": {
+        "make": "FUJIFILM",
+        "camera_model": "GFX100S",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.2,
+        "physical_focal_length_mm": 76.5,
+        "reported_35mm_equivalent_mm": 61,
+        "lens_model": "GF45-100mmF4 R LM OIS WR"
+      },
+      "xmp_block_sha256": "ec4637020cb7d8089b92a2f88de79ed1789936c8c5b7ae50848f465bb4abb930",
+      "xmp_profile_refs": [
+        "all_sources",
+        "mark_elst_final_tiff_stage"
+      ],
+      "xmp_attribute_overrides": {
+        "aux:FujiRatingAlreadyApplied": "True",
+        "aux:LensInfo": "4500/100 10000/100 400/100 400/100",
+        "aux:Lens": "GF45-100mmF4 R LM OIS WR",
+        "aux:DistortionCorrectionAlreadyApplied": "True",
+        "aux:LateralChromaticAberrationCorrectionAlreadyApplied": "True",
+        "aux:VignetteCorrectionAlreadyApplied": "True",
+        "photoshop:DateCreated": "2025-06-09T19:01:57+01:00",
+        "crs:RawFileName": "Bastide de Flechon 2025-13.tif",
+        "crs:WhiteBalance": "Custom",
+        "crs:IncrementalTemperature": "+3",
+        "crs:IncrementalTint": "-6",
+        "crs:HueAdjustmentGreen": "0",
+        "crs:SaturationAdjustmentGreen": "0",
+        "crs:LuminanceAdjustmentGreen": "0"
+      }
+    }
+  ],
+  "plan": {
+    "original_path": "PLANS/Premier \u00c9tage.pdf",
+    "sha256": "eab48e41d64bd8d633343f0d0c083529cd335e40eed6fa245f4273784620b932",
+    "render_long_edge_px": 2400,
+    "scale_basis": "Outer principal block approximately457px=8m; outer south y2190 at this render.",
+    "trace_estimates_m": {
+      "bed_center": [
+        4.02,
+        3.65
+      ],
+      "bed_head_y": 4.64,
+      "bed_foot_y": 2.66,
+      "bench_center": [
+        4.02,
+        2.42
+      ],
+      "west_window_center_y": 2.4,
+      "front_truss_plane_y": 3.76
+    },
+    "trace_uncertainty_m": [
+      0.05,
+      0.08
+    ],
+    "role": "Independent plan geometry support; not a camera fitting observation."
+  },
+  "sensor_and_editing_uncertainty": {
+    "principal06": "Native43.8x32.9mm sensor,30mm lens gives24.657534mm on36mm long-axis sensor;4:3 raster consistent to rounding.",
+    "principal33": "50mm physical lens; final3:4 differs from native portrait2:3 sensor. Full-height crop/stitched image field unknown. Hypothetical24x32mm crop would give56.25mm long-axis equivalent, but not adopted without evidence.",
+    "final_mark_elst_xmp": "HasCrop=False and zero perspective apply to final Camera Raw processing of an already-edited TIFF; do not establish uncropped RAW or absence of prior Photoshop transformations.",
+    "principal33_focus": "Approximate4.59m metadata is a loose independent consistency check of table-derived depth, not measured camera-to-landmark distance.",
+    "photo55": "Sony distortion correction and lens profile applied; Upright1 nearly identity. Large tonal edits and8200K white balance mean appearance is not direct physical radiometry.",
+    "photo41": "The exterior holdout explicitly records HasCrop=True with normalized bounds top0.040404,left0.021036,bottom0.974853,right0.955485 and zero perspective adjustment. It supports collinearity of arch spring and frieze top, not an uncropped camera FOV or a numerical fit."
+  },
+  "landmark_sets": {
+    "principal06_v4": [
+      {
+        "name": "arch east spring",
+        "world_m": [
+          5.68,
+          0.35,
+          4.1
+        ],
+        "photo_uv": [
+          0.096,
+          0.791
+        ],
+        "weight": 1
+      },
+      {
+        "name": "arch west spring",
+        "world_m": [
+          2.32,
+          0.35,
+          4.1
+        ],
+        "photo_uv": [
+          0.427,
+          0.74
+        ],
+        "weight": 1
+      },
+      {
+        "name": "arch crown",
+        "world_m": [
+          4,
+          0.35,
+          5.78
+        ],
+        "photo_uv": [
+          0.289,
+          0.416
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window south head",
+        "world_m": [
+          0.35,
+          2.275,
+          5.25
+        ],
+        "photo_uv": [
+          0.75,
+          0.495
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window north head",
+        "world_m": [
+          0.35,
+          3.725,
+          5.25
+        ],
+        "photo_uv": [
+          0.9,
+          0.489
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window south sill",
+        "world_m": [
+          0.35,
+          2.275,
+          4.4
+        ],
+        "photo_uv": [
+          0.75,
+          0.599
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window north sill",
+        "world_m": [
+          0.35,
+          3.725,
+          4.4
+        ],
+        "photo_uv": [
+          0.9,
+          0.602
+        ],
+        "weight": 1
+      }
+    ],
+    "principal06_plan_window": [
+      {
+        "name": "arch east spring",
+        "world_m": [
+          5.68,
+          0.35,
+          4.1
+        ],
+        "photo_uv": [
+          0.096,
+          0.791
+        ],
+        "weight": 1
+      },
+      {
+        "name": "arch west spring",
+        "world_m": [
+          2.32,
+          0.35,
+          4.1
+        ],
+        "photo_uv": [
+          0.427,
+          0.74
+        ],
+        "weight": 1
+      },
+      {
+        "name": "arch crown",
+        "world_m": [
+          4,
+          0.35,
+          5.78
+        ],
+        "photo_uv": [
+          0.289,
+          0.416
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window south head",
+        "world_m": [
+          0.35,
+          1.6749999999999998,
+          5.25
+        ],
+        "photo_uv": [
+          0.75,
+          0.495
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window north head",
+        "world_m": [
+          0.35,
+          3.125,
+          5.25
+        ],
+        "photo_uv": [
+          0.9,
+          0.489
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window south sill",
+        "world_m": [
+          0.35,
+          1.6749999999999998,
+          4.4
+        ],
+        "photo_uv": [
+          0.75,
+          0.599
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window north sill",
+        "world_m": [
+          0.35,
+          3.125,
+          4.4
+        ],
+        "photo_uv": [
+          0.9,
+          0.602
+        ],
+        "weight": 1
+      }
+    ],
+    "principal06_lower_arch_plan_window": [
+      {
+        "name": "arch east spring",
+        "world_m": [
+          5.68,
+          0.35,
+          3.55
+        ],
+        "photo_uv": [
+          0.096,
+          0.791
+        ],
+        "weight": 1
+      },
+      {
+        "name": "arch west spring",
+        "world_m": [
+          2.32,
+          0.35,
+          3.55
+        ],
+        "photo_uv": [
+          0.427,
+          0.74
+        ],
+        "weight": 1
+      },
+      {
+        "name": "arch crown",
+        "world_m": [
+          4,
+          0.35,
+          5.23
+        ],
+        "photo_uv": [
+          0.289,
+          0.416
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window south head",
+        "world_m": [
+          0.35,
+          1.6749999999999998,
+          5.25
+        ],
+        "photo_uv": [
+          0.75,
+          0.495
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window north head",
+        "world_m": [
+          0.35,
+          3.125,
+          5.25
+        ],
+        "photo_uv": [
+          0.9,
+          0.489
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window south sill",
+        "world_m": [
+          0.35,
+          1.6749999999999998,
+          4.4
+        ],
+        "photo_uv": [
+          0.75,
+          0.599
+        ],
+        "weight": 1
+      },
+      {
+        "name": "west window north sill",
+        "world_m": [
+          0.35,
+          3.125,
+          4.4
+        ],
+        "photo_uv": [
+          0.9,
+          0.602
+        ],
+        "weight": 1
+      }
+    ]
+  },
+  "original_v4_cameras": [
+    {
+      "id": "principal06",
+      "camera": {
+        "location": [
+          5.3,
+          5.3,
+          4.45
+        ],
+        "target": [
+          2.6,
+          1.38,
+          4.45
+        ],
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0,
+        "shift_y": 0.12,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_status": "exif_constrained_composition_compromise",
+      "fit_note": "Native GFX EXIF 30mm converted by physical long axis to 24.6575mm on the 36mm Blender sensor. Level camera on the east side of the bed, south of its headboard, at a low 1.15m eye height above the suite floor. Actual Cycles and untextured trials rejected lower-point-error cameras that lost the bed or introduced foreground headboard/brace occlusion. The selected compromise includes bed, arch, west window and seating. Architectural landmark RMS is 122.3px at 1200x900; source has more bed, a smaller apparent arch, and less west-brace intrusion. Edited image field, timber/layout and height uncertainty remain unresolved.",
+      "landmark_set": "principal06_v4",
+      "residuals": {
+        "full_point_rms_px": 122.26207792050565,
+        "point_errors_xy_px": [
+          [
+            -179.541074870639,
+            -43.39358978489243
+          ],
+          [
+            37.19502956808138,
+            -22.117347652704932
+          ],
+          [
+            -43.40636973746983,
+            -7.4777457600738675
+          ],
+          [
+            66.15309249711756,
+            24.4156273982821
+          ],
+          [
+            157.35542613403362,
+            -6.281182769493421
+          ],
+          [
+            66.15309249711756,
+            62.655273287607436
+          ],
+          [
+            157.35542613403362,
+            62.21132392309333
+          ]
+        ]
+      },
+      "previous_pass_rejected_trials": [
+        {
+          "location": [
+            7.399999999981731,
+            4.268286170293558,
+            5.3999999999999995
+          ],
+          "target": [
+            3.466670038129365,
+            1.181392033593295,
+            5.3999999999999995
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0.052387280481657375,
+          "shift_y": -0.019681673648426882,
+          "reason": "Lower reprojection error alone does not resolve geometry uncertainty or observed foreground occlusion."
+        },
+        {
+          "location": [
+            7.3999999999999995,
+            3.1499999999999995,
+            4.928941145403446
+          ],
+          "target": [
+            3.142341552828772,
+            0.5284843034550599,
+            4.928941145403446
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0.08935364537352847,
+          "shift_y": 0.031922983959193255,
+          "reason": "Rejected after updated-scene Cycles and Workbench inspection: low architectural-point error removes essentially the entire bed from the frame.",
+          "landmark_rms_preview_px": 41.564378514713866
+        },
+        {
+          "location": [
+            5.7,
+            6.4,
+            4.55
+          ],
+          "target": [
+            2.6,
+            1.38,
+            4.55
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0,
+          "shift_y": 0.077,
+          "reason": "Actual Cycles render shows rear of headboard across lower-right half, obscuring room."
+        }
+      ]
+    },
+    {
+      "id": "principal33",
+      "camera": {
+        "location": [
+          4.84375,
+          5.978125,
+          4.87
+        ],
+        "target": [
+          1.25,
+          2.15,
+          4.87
+        ],
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": -0.075,
+        "shift_y": 0.015,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_status": "exif_constrained_composition_estimate",
+      "fit_note": "Native EXIF Canon TS-E 50mm fixes the lens at 50mm. Position moves along the prior subject axis by 50/32 to retain seating scale; horizontal shift recentres the chairs. This is a composition estimate with unresolved brace/window disagreement, not a recovered numerical calibration.",
+      "landmark_set": null,
+      "residuals": {
+        "full_point_rms_px": null,
+        "point_errors_xy_px": []
+      },
+      "previous_pass_rejected_trials": []
+    }
+  ],
+  "trials": [
+    {
+      "id": "principal06_plan_window_high",
+      "stage": "plan_only_geometry",
+      "status": "superseded_by_independently_supported_vertical_geometry_pending_visual_review",
+      "camera": {
+        "location": [
+          6.92696210554212,
+          4.460932013920745,
+          5.386553027797465
+        ],
+        "target": [
+          3.683893253787503,
+          0.6553434362130881,
+          5.386553027797465
+        ],
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0.12615843060937057,
+        "shift_y": -0.015186901605533284,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Read-only trial using plan west-window center y2.40m. Native lens fixed, floor and arch unchanged; bed/brace visibility requires actual model review.",
+      "landmark_set": "principal06_plan_window",
+      "residuals": {
+        "full_point_rms_px": 44.42955172791703,
+        "point_errors_xy_px": [
+          [
+            -25.047510062618628,
+            -11.581515533679676
+          ],
+          [
+            49.08116167906746,
+            -61.35628420328159
+          ],
+          [
+            30.096529003175988,
+            -6.948372183565072
+          ],
+          [
+            -39.6997737233943,
+            3.850030441182317
+          ],
+          [
+            12.634671819974885,
+            12.921512646025446
+          ],
+          [
+            -39.6997737233943,
+            19.64464258266577
+          ],
+          [
+            12.634671819974885,
+            43.46995618512059
+          ]
+        ]
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 4.1,
+        "arch_crown_m": 5.78,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25
+      },
+      "visual_validation": null
+    },
+    {
+      "id": "principal06_plan_window_eye",
+      "stage": "plan_only_geometry",
+      "status": "superseded_by_independently_supported_vertical_geometry_pending_visual_review",
+      "camera": {
+        "location": [
+          6.963617557649458,
+          4.359314275141675,
+          4.8999999999999995
+        ],
+        "target": [
+          3.6945946653812736,
+          0.5759970362854681,
+          4.8999999999999995
+        ],
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0.1340850659464078,
+        "shift_y": 0.04682589111285826,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Read-only trial using plan west-window center y2.40m. Native lens fixed, floor and arch unchanged; bed/brace visibility requires actual model review.",
+      "landmark_set": "principal06_plan_window",
+      "residuals": {
+        "full_point_rms_px": 46.160995762936075,
+        "point_errors_xy_px": [
+          [
+            -26.275260052852623,
+            -35.93226900200616
+          ],
+          [
+            47.533218045524286,
+            -51.478686686050935
+          ],
+          [
+            29.662537118963982,
+            -13.700764828876805
+          ],
+          [
+            -40.6704160207,
+            15.425124455646522
+          ],
+          [
+            15.210169356336944,
+            11.379646938498878
+          ],
+          [
+            -40.6704160207,
+            31.75670487797739
+          ],
+          [
+            15.210169356336944,
+            42.550244188188245
+          ]
+        ]
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 4.1,
+        "arch_crown_m": 5.78,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25
+      },
+      "visual_validation": null
+    },
+    {
+      "id": "principal33_south_1p8",
+      "stage": "plan_only_geometry",
+      "status": "superseded_by_independently_supported_vertical_geometry_pending_visual_review",
+      "camera": {
+        "location": [
+          1.8,
+          6.687551563539587,
+          4.87
+        ],
+        "target": [
+          1.8,
+          5.687551563539587,
+          4.87
+        ],
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": 0.13225547445255478,
+        "shift_y": -0.07644890510948915,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Parallel rod and tie suggest near-due-south view; table top/base manually observed uv(.474,.735)/(.476,.902) fixes conditional depth4.56m, agreeing approximately with EXIF focus4.59m. X/shift degenerate; photographed furnishings differ. Not a unique solution.",
+      "landmark_set": null,
+      "residuals": {
+        "full_point_rms_px": null,
+        "point_errors_xy_px": []
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 4.1,
+        "arch_crown_m": 5.78,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25
+      },
+      "visual_validation": null
+    },
+    {
+      "id": "principal33_south_2p6",
+      "stage": "plan_only_geometry",
+      "status": "superseded_by_independently_supported_vertical_geometry_pending_visual_review",
+      "camera": {
+        "location": [
+          2.6,
+          6.687551563539587,
+          4.87
+        ],
+        "target": [
+          2.6,
+          5.687551563539587,
+          4.87
+        ],
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": 0.37605109489051114,
+        "shift_y": -0.07644890510948915,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Parallel rod and tie suggest near-due-south view; table top/base manually observed uv(.474,.735)/(.476,.902) fixes conditional depth4.56m, agreeing approximately with EXIF focus4.59m. X/shift degenerate; photographed furnishings differ. Not a unique solution.",
+      "landmark_set": null,
+      "residuals": {
+        "full_point_rms_px": null,
+        "point_errors_xy_px": []
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 4.1,
+        "arch_crown_m": 5.78,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25
+      },
+      "visual_validation": null
+    },
+    {
+      "id": "principal06_lower_arch_eye",
+      "stage": "lower_arch_plan_window_and_side_member",
+      "status": "rejected_after_actual_clay_review",
+      "camera": {
+        "location": [
+          6.157577396911981,
+          5.662774959479746,
+          4.81798493108691
+        ],
+        "target": [
+          3.778648736706089,
+          1.2649688667045087,
+          4.81798493108691
+        ],
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0.1254458205287974,
+        "shift_y": 0.030870812224069025,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Native24.657534mm fixed; arch spring3.55/crown5.23, window center2.40, z4.40..5.25. XYZ,yaw,shifts fit7 original annotations with eye capped1.6m abovefloor. Requires actual clay validation with corrected bed and truss.",
+      "landmark_set": "principal06_lower_arch_plan_window",
+      "residuals": {
+        "full_point_rms_px": 35.5126989501035,
+        "point_errors_xy_px": [
+          [
+            -19.264605681650202,
+            -12.171226718994676
+          ],
+          [
+            44.26857139220945,
+            -18.589520579798148
+          ],
+          [
+            11.809741551303588,
+            53.228328499414204
+          ],
+          [
+            -29.684461980653154,
+            -15.080831962117418
+          ],
+          [
+            11.277608295506303,
+            -24.13814856485173
+          ],
+          [
+            -29.684461980653154,
+            2.731799447813854
+          ],
+          [
+            11.277608295506303,
+            14.019599686122774
+          ]
+        ]
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 3.55,
+        "arch_crown_m": 5.23,
+        "curtain_pole_m": 5.91,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25,
+        "front_truss_plane_y_m": 3.76,
+        "west_side_member_underside_m": 5.1,
+        "west_side_member_top_m": 5.4,
+        "bed_center_y_m": 3.65,
+        "bench_center_y_m": 2.42
+      },
+      "visual_validation": {
+        "engine": "BLENDER_WORKBENCH",
+        "image_local_path": "out/principal-study/current-trial-clay/principal06_lower_arch_eye.png",
+        "image_sha256": "050664ff68e795a8b8edca6cb5d5117a22bdc7dfd1ec38fa1ca7eac3fc4bcec8",
+        "manifest_local_path": "out/principal-study/current-trial-clay/camera-review-manifest.json",
+        "manifest_sha256": "1f9314eae4efac121bd1450d3778854ee60d7e5905a403cea043428777bd32c2",
+        "scene_sha256": "170e98badaa4d78ca2605482cab2d42e961b579b41995cbcb502443d02a0faea",
+        "camera_lock_sha256": "9d90e0d56608c029553fbfcb033675cb46f728c35ca8d6b2804c5b22f4c1994b",
+        "reason": "Actual Workbench image places camera behind the corrected headboard; rear headboard dominates the lower-right image despite35.51px architectural RMS. Reject in favor of camera y<=4.60, before headboard y4.73.",
+        "opaque_architecture_hidden": false,
+        "transmissive_meshes_hidden_for_clay": true
+      }
+    },
+    {
+      "id": "principal33_south_lower_tie",
+      "stage": "lower_arch_plan_window_and_side_member",
+      "status": "rejected_after_actual_clay_review",
+      "camera": {
+        "location": [
+          1.8,
+          6.849999999999986,
+          4.812882533268894
+        ],
+        "target": [
+          1.8,
+          1.8499999999999863,
+          4.812882533268894
+        ],
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": 0.12837476459510394,
+        "shift_y": -0.03477432009637209,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Due-south native50mm trial; overdetermined vertical fit against table top/base, rod5.91 and free-ended side tie underside5.10 at y3.76. Table dimension/staging inferred; nonzero residuals retained. X1.8 and horizontal shift are degenerate estimate.",
+      "landmark_set": null,
+      "residuals": {
+        "full_point_rms_px": null,
+        "height_observations": [
+          {
+            "name": "table top",
+            "reference_v": 0.735,
+            "predicted_v": 0.7491482709078937,
+            "delta_px": 16.977925089472468
+          },
+          {
+            "name": "table foot",
+            "reference_v": 0.902,
+            "predicted_v": 0.9104006249568585,
+            "delta_px": 10.080749948230139
+          },
+          {
+            "name": "rod",
+            "reference_v": 0.25,
+            "predicted_v": 0.22861477006686365,
+            "delta_px": -25.662275919763623
+          },
+          {
+            "name": "side tie underside",
+            "reference_v": 0.347,
+            "predicted_v": 0.3361725215383336,
+            "delta_px": -12.992974153999647
+          }
+        ],
+        "height_only_not_full_point_fit": true,
+        "point_errors_xy_px": []
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 3.55,
+        "arch_crown_m": 5.23,
+        "curtain_pole_m": 5.91,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25,
+        "front_truss_plane_y_m": 3.76,
+        "west_side_member_underside_m": 5.1,
+        "west_side_member_top_m": 5.4,
+        "bed_center_y_m": 3.65,
+        "bench_center_y_m": 2.42
+      },
+      "visual_validation": {
+        "engine": "BLENDER_WORKBENCH",
+        "image_local_path": "out/principal-study/current-trial-clay/principal33_south_lower_tie.png",
+        "image_sha256": "74f1ab67bb54c1264d65e18a2d63290a5b27c48ef7df4f7bb23a5c65f58bbf5d",
+        "manifest_local_path": "out/principal-study/current-trial-clay/camera-review-manifest.json",
+        "manifest_sha256": "1f9314eae4efac121bd1450d3778854ee60d7e5905a403cea043428777bd32c2",
+        "scene_sha256": "170e98badaa4d78ca2605482cab2d42e961b579b41995cbcb502443d02a0faea",
+        "camera_lock_sha256": "9d90e0d56608c029553fbfcb033675cb46f728c35ca8d6b2804c5b22f4c1994b",
+        "reason": "Actual Workbench image places the west diagonal across both chairs; source seating is legible with more open floor. Reject exact due-south composition and test modest southwest yaw from farther east; furniture arrangement remains an independent uncertainty.",
+        "opaque_architecture_hidden": false,
+        "transmissive_meshes_hidden_for_clay": true
+      }
+    },
+    {
+      "id": "principal33_south_table_height",
+      "stage": "lower_arch_plan_window_and_side_member",
+      "status": "unreviewed_candidate",
+      "camera": {
+        "location": [
+          1.8,
+          6.687551563539587,
+          4.87
+        ],
+        "target": [
+          1.8,
+          5.687551563539587,
+          4.87
+        ],
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": 0.13225547445255478,
+        "shift_y": -0.07644890510948915,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Parallel rod and tie suggest near-due-south view; table top/base manually observed uv(.474,.735)/(.476,.902) fixes conditional depth4.56m, agreeing approximately with EXIF focus4.59m. X/shift degenerate; photographed furnishings differ. Not a unique solution. This does not fit the new rod/side member and is a useful independent holdout camera.",
+      "landmark_set": null,
+      "residuals": {
+        "full_point_rms_px": null,
+        "point_errors_xy_px": []
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 3.55,
+        "arch_crown_m": 5.23,
+        "curtain_pole_m": 5.91,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25,
+        "front_truss_plane_y_m": 3.76,
+        "west_side_member_underside_m": 5.1,
+        "west_side_member_top_m": 5.4,
+        "bed_center_y_m": 3.65,
+        "bench_center_y_m": 2.42
+      },
+      "visual_validation": null
+    },
+    {
+      "id": "principal06_beside_head",
+      "stage": "actual_clay_visibility_constrained",
+      "status": "rejected_after_actual_clay_review",
+      "camera": {
+        "location": [
+          6.957373163315494,
+          4.599999999999999,
+          4.6000000000000005
+        ],
+        "target": [
+          3.905423054688313,
+          0.6394949142248851,
+          4.6000000000000005
+        ],
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0.1568132949888409,
+        "shift_y": 0.053674806554601634,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Actual previous clay showed rear headboard dominating lower right. Constrain camera x>5.3 and y<=4.60 before inferred headboard y4.73; native lens and built landmarks retained. Larger residual is intentional and no architecture is hidden.",
+      "landmark_set": "principal06_lower_arch_plan_window",
+      "residuals": {
+        "full_point_rms_px": 37.21027579968294,
+        "point_errors_xy_px": [
+          [
+            -17.056989067855742,
+            10.659224574381977
+          ],
+          [
+            42.54732525271392,
+            -12.327889569035955
+          ],
+          [
+            25.03426162284339,
+            39.88404615238236
+          ],
+          [
+            -41.83802963343628,
+            -15.223946926793236
+          ],
+          [
+            16.57573072958911,
+            -28.401837916554452
+          ],
+          [
+            -41.83802963343628,
+            1.197064724695951
+          ],
+          [
+            16.57573072958911,
+            4.2133388753916705
+          ]
+        ]
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 3.55,
+        "arch_crown_m": 5.23,
+        "curtain_pole_m": 5.91,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25,
+        "front_truss_plane_y_m": 3.76,
+        "west_side_member_underside_m": 5.1,
+        "west_side_member_top_m": 5.4,
+        "bed_center_y_m": 3.65,
+        "bench_center_y_m": 2.42
+      },
+      "visual_validation": {
+        "engine": "BLENDER_WORKBENCH",
+        "image_local_path": "out/principal-study/visible-trial-clay/principal06_beside_head.png",
+        "image_sha256": "b5ccc9af201729983b778ddb3879d003119fa7449ea954facd58d88a281cf9e0",
+        "manifest_local_path": "out/principal-study/visible-trial-clay/camera-review-manifest.json",
+        "manifest_sha256": "5b55c9d2bd2e792c8bc5bca70a254c4e97fa1deb91e1d3448ff1cc543c4e7ee1",
+        "scene_sha256": "170e98badaa4d78ca2605482cab2d42e961b579b41995cbcb502443d02a0faea",
+        "camera_lock_sha256": "351924461d19804170202ab0ebf853f709b64ce511dd2e3725822a43328c447b",
+        "reason": "Rear headboard is gone but the east brace dominates the left half, masking the arch; no timber was hidden or shortened.",
+        "opaque_architecture_hidden": false,
+        "transmissive_meshes_hidden_for_clay": true
+      }
+    },
+    {
+      "id": "principal06_beside_midbed",
+      "stage": "actual_clay_visibility_constrained",
+      "status": "unreviewed_candidate",
+      "camera": {
+        "location": [
+          7.149910807424319,
+          4.199999999999999,
+          4.6000000000000005
+        ],
+        "target": [
+          3.919672619865563,
+          0.38351454193296686,
+          4.6000000000000005
+        ],
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0.17490202448592646,
+        "shift_y": 0.052141253256208935,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Actual previous clay showed rear headboard dominating lower right. Constrain camera x>5.3 and y<=4.20 before inferred headboard y4.73; native lens and built landmarks retained. Larger residual is intentional and no architecture is hidden.",
+      "landmark_set": "principal06_lower_arch_plan_window",
+      "residuals": {
+        "full_point_rms_px": 39.353537109413026,
+        "point_errors_xy_px": [
+          [
+            -13.68174853537062,
+            22.619425966936625
+          ],
+          [
+            40.414201068855206,
+            -10.996578231363186
+          ],
+          [
+            29.607228051038838,
+            34.059957310214855
+          ],
+          [
+            -47.05148381345925,
+            -17.45794632784994
+          ],
+          [
+            18.881643521217974,
+            -30.002009124033137
+          ],
+          [
+            -47.05148381345925,
+            -0.5220498663029094
+          ],
+          [
+            18.881643521217974,
+            2.299200224830389
+          ]
+        ]
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 3.55,
+        "arch_crown_m": 5.23,
+        "curtain_pole_m": 5.91,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25,
+        "front_truss_plane_y_m": 3.76,
+        "west_side_member_underside_m": 5.1,
+        "west_side_member_top_m": 5.4,
+        "bed_center_y_m": 3.65,
+        "bench_center_y_m": 2.42
+      },
+      "visual_validation": null
+    },
+    {
+      "id": "principal33_oblique_1",
+      "stage": "actual_clay_visibility_constrained",
+      "status": "selected_practical_review_camera_pending_final_images",
+      "camera": {
+        "location": [
+          2.6,
+          6.2,
+          4.813
+        ],
+        "target": [
+          1.2220487658774353,
+          1.3936239851235008,
+          4.813
+        ],
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": 0.020496918683894638,
+        "shift_y": -0.0814891075547356,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Actual due-south clay obscured both chairs with the west brace. Modest southwest yaw and eastward camera are visibility trials; table top(.474,.735) is only a conditional composition anchor. Rod straightness and brace/chair arrangement are independent holdouts, not fitted away.",
+      "landmark_set": null,
+      "residuals": {
+        "full_point_rms_px": null,
+        "point_errors_xy_px": []
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 3.55,
+        "arch_crown_m": 5.23,
+        "curtain_pole_m": 5.91,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25,
+        "front_truss_plane_y_m": 3.76,
+        "west_side_member_underside_m": 5.1,
+        "west_side_member_top_m": 5.4,
+        "bed_center_y_m": 3.65,
+        "bench_center_y_m": 2.42
+      },
+      "visual_validation": {
+        "engine": "BLENDER_WORKBENCH",
+        "image_local_path": "out/principal-study/visible-trial-clay/principal33_oblique_1.png",
+        "image_sha256": "1ebbac181346ccbb55e2e9d6d039fdb330d18dcc6e93c77d6755faffa6ebf1ca",
+        "manifest_local_path": "out/principal-study/visible-trial-clay/camera-review-manifest.json",
+        "manifest_sha256": "5b55c9d2bd2e792c8bc5bca70a254c4e97fa1deb91e1d3448ff1cc543c4e7ee1",
+        "scene_sha256": "170e98badaa4d78ca2605482cab2d42e961b579b41995cbcb502443d02a0faea",
+        "camera_lock_sha256": "351924461d19804170202ab0ebf853f709b64ce511dd2e3725822a43328c447b",
+        "reason": "Oblique clay exposes both chairs more than due-south view, but brace still crosses near-chair back. Plan-backed chair staging changed after this render; final scene requires fresh images.",
+        "opaque_architecture_hidden": false,
+        "transmissive_meshes_hidden_for_clay": true
+      }
+    },
+    {
+      "id": "principal33_oblique_2",
+      "stage": "actual_clay_visibility_constrained",
+      "status": "unreviewed_candidate",
+      "camera": {
+        "location": [
+          2.6,
+          6.2,
+          4.813
+        ],
+        "target": [
+          0.9835521656824833,
+          1.4684995615629282,
+          4.813
+        ],
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": -0.04900299350019233,
+        "shift_y": -0.08187374966233929,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Actual due-south clay obscured both chairs with the west brace. Modest southwest yaw and eastward camera are visibility trials; table top(.474,.735) is only a conditional composition anchor. Rod straightness and brace/chair arrangement are independent holdouts, not fitted away.",
+      "landmark_set": null,
+      "residuals": {
+        "full_point_rms_px": null,
+        "point_errors_xy_px": []
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 3.55,
+        "arch_crown_m": 5.23,
+        "curtain_pole_m": 5.91,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25,
+        "front_truss_plane_y_m": 3.76,
+        "west_side_member_underside_m": 5.1,
+        "west_side_member_top_m": 5.4,
+        "bed_center_y_m": 3.65,
+        "bench_center_y_m": 2.42
+      },
+      "visual_validation": null
+    },
+    {
+      "id": "principal33_oblique_far",
+      "stage": "actual_clay_visibility_constrained",
+      "status": "unreviewed_candidate",
+      "camera": {
+        "location": [
+          3.0,
+          6.75,
+          4.813
+        ],
+        "target": [
+          1.3835521656824832,
+          2.018499561562928,
+          4.813
+        ],
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": 0.017249454010859824,
+        "shift_y": -0.03967685961976375,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Actual due-south clay obscured both chairs with the west brace. Modest southwest yaw and eastward camera are visibility trials; table top(.474,.735) is only a conditional composition anchor. Rod straightness and brace/chair arrangement are independent holdouts, not fitted away.",
+      "landmark_set": null,
+      "residuals": {
+        "full_point_rms_px": null,
+        "point_errors_xy_px": []
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 3.55,
+        "arch_crown_m": 5.23,
+        "curtain_pole_m": 5.91,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25,
+        "front_truss_plane_y_m": 3.76,
+        "west_side_member_underside_m": 5.1,
+        "west_side_member_top_m": 5.4,
+        "bed_center_y_m": 3.65,
+        "bench_center_y_m": 2.42
+      },
+      "visual_validation": null
+    },
+    {
+      "id": "principal06_inside_east_brace",
+      "stage": "practical_bedside_and_south_of_truss",
+      "status": "not_selected_after_actual_clay_review",
+      "camera": {
+        "location": [
+          5.5,
+          4.2,
+          4.600000010392014
+        ],
+        "target": [
+          2.4667142955966015,
+          0.22518203744347876,
+          4.600000010392014
+        ],
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0.07299566367858404,
+        "shift_y": 0.047485823254840895,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Camera x5.5,y4.2 stands inside east brace and before corrected headboard. Only eye height,yaw and shifts fitted; native lens/real architecture retained. This intentionally prioritizes viewable bed and arch over architectural point RMS.",
+      "landmark_set": "principal06_lower_arch_plan_window",
+      "residuals": {
+        "full_point_rms_px": 145.5855969979425,
+        "point_errors_xy_px": [
+          [
+            -293.0770239442847,
+            87.49009337935927
+          ],
+          [
+            31.689843629982505,
+            13.939267917176235
+          ],
+          [
+            -71.03531387459655,
+            2.172271151707678
+          ],
+          [
+            22.798638771252698,
+            -42.62683482745279
+          ],
+          [
+            143.40199400550796,
+            -67.38793533139795
+          ],
+          [
+            22.798638771252698,
+            -0.08321830733135638
+          ],
+          [
+            143.40199400550796,
+            6.497120939845535
+          ]
+        ]
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 3.55,
+        "arch_crown_m": 5.23,
+        "curtain_pole_m": 5.91,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25,
+        "front_truss_plane_y_m": 3.76,
+        "west_side_member_underside_m": 5.1,
+        "west_side_member_top_m": 5.4,
+        "bed_center_y_m": 3.65,
+        "bench_center_y_m": 2.42
+      },
+      "visual_validation": {
+        "engine": "BLENDER_WORKBENCH",
+        "image_local_path": "out/principal-study/practical-clay/principal06_inside_east_brace.png",
+        "image_sha256": "03c12dd4d8f0f719a60d01924eef5915851cc34be73b4d939c1fd64593adaba4",
+        "manifest_local_path": "out/principal-study/practical-clay/camera-review-manifest.json",
+        "manifest_sha256": "4c6d9f777cb3f778f2ca9a48c43ec0714dbe23015ea556aa18c13187552792ff",
+        "scene_sha256": "170e98badaa4d78ca2605482cab2d42e961b579b41995cbcb502443d02a0faea",
+        "camera_lock_sha256": "ca7bca01c87e082f32a5b4bb52fe5901fbee42ca061d59d453e7c09567f28714",
+        "reason": "Clear of the east brace, but the bed is very large in the foreground and the arch crops at left; retain as a practical framing tradeoff, not a calibrated match.",
+        "opaque_architecture_hidden": false,
+        "transmissive_meshes_hidden_for_clay": true
+      }
+    },
+    {
+      "id": "principal06_south_of_truss",
+      "stage": "practical_bedside_and_south_of_truss",
+      "status": "not_selected_after_actual_clay_review",
+      "camera": {
+        "location": [
+          7.402448328838829,
+          3.4499999999996978,
+          4.600000000000474
+        ],
+        "target": [
+          3.904210756670424,
+          -0.12244088665879316,
+          4.600000000000474
+        ],
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0.21815657958932677,
+        "shift_y": 0.04890610061120036,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Actual clay at y4.60 rejected because east brace masks arch. Move camera south of existing front truss plane y3.76; retain photographed west brace and inferred eastern continuation, corrected bed and native lens. Arch/window residual accepted as conditional; head/pillow may be cropped at right like source.",
+      "landmark_set": "principal06_lower_arch_plan_window",
+      "residuals": {
+        "full_point_rms_px": 46.791396034619105,
+        "point_errors_xy_px": [
+          [
+            -2.4704308427921706,
+            49.129028705217415
+          ],
+          [
+            34.102055057863254,
+            -7.765240220522185
+          ],
+          [
+            38.290469608403676,
+            21.608320153320427
+          ],
+          [
+            -58.62569970004694,
+            -22.94752156926628
+          ],
+          [
+            23.664652930711448,
+            -34.81984682553833
+          ],
+          [
+            -58.62569970004694,
+            -3.9096508656446094
+          ],
+          [
+            23.664652930711448,
+            -1.29508924831373
+          ]
+        ]
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 3.55,
+        "arch_crown_m": 5.23,
+        "curtain_pole_m": 5.91,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25,
+        "front_truss_plane_y_m": 3.76,
+        "west_side_member_underside_m": 5.1,
+        "west_side_member_top_m": 5.4,
+        "bed_center_y_m": 3.65,
+        "bench_center_y_m": 2.42
+      },
+      "visual_validation": {
+        "engine": "BLENDER_WORKBENCH",
+        "image_local_path": "out/principal-study/practical-clay/principal06_south_of_truss.png",
+        "image_sha256": "a87a554323b6f0c068acc052b150c55ea05a21f7767785381fe6775ce35cd813",
+        "manifest_local_path": "out/principal-study/practical-clay/camera-review-manifest.json",
+        "manifest_sha256": "4c6d9f777cb3f778f2ca9a48c43ec0714dbe23015ea556aa18c13187552792ff",
+        "scene_sha256": "170e98badaa4d78ca2605482cab2d42e961b579b41995cbcb502443d02a0faea",
+        "camera_lock_sha256": "ca7bca01c87e082f32a5b4bb52fe5901fbee42ca061d59d453e7c09567f28714",
+        "reason": "Clear arch, window and seating, but most bed geometry crops at right and overhead framing differs. Intermediate bedside pose chosen for subsequent review.",
+        "opaque_architecture_hidden": false,
+        "transmissive_meshes_hidden_for_clay": true
+      }
+    },
+    {
+      "id": "principal06_intermediate_bedside",
+      "stage": "intermediate_review_camera_selection",
+      "status": "selected_practical_review_camera_pending_final_images",
+      "camera": {
+        "location": [
+          6.15,
+          4.2,
+          4.600000017934083
+        ],
+        "target": [
+          2.8392189625365676,
+          0.45317081761490563,
+          4.600000017934083
+        ],
+        "lens_mm": 24.657534246575345,
+        "sensor_dimension_mm": 36,
+        "size": [
+          1200,
+          900
+        ],
+        "shift_x": 0.07417837609041948,
+        "shift_y": 0.04808365505346383,
+        "roll_degrees": 0.0,
+        "exposure": 0.800000011920929
+      },
+      "fit_note": "Practical review camera between tested x5.5 bedside and south-of-truss alternatives: x6.15,y4.20 stays inside the retained east brace and before corrected headboard. Native lens fixed; height/yaw/shifts fit updated architecture, yielding 84.34px RMS at1200x900. This is an identical-camera review position, not a matched or uniquely recovered photograph.",
+      "landmark_set": "principal06_lower_arch_plan_window",
+      "residuals": {
+        "full_point_rms_px": 84.34092010486047,
+        "point_errors_xy_px": [
+          [
+            -169.195765121439,
+            65.80673834659932
+          ],
+          [
+            47.21917063683145,
+            0.8952077114120383
+          ],
+          [
+            -14.776479588790625,
+            13.122864430907487
+          ],
+          [
+            -5.575917815135378,
+            -30.993183892533903
+          ],
+          [
+            73.95102508810139,
+            -47.38842570964138
+          ],
+          [
+            -5.575917815135378,
+            -2.724665971323148
+          ],
+          [
+            73.95102508810139,
+            1.2815630664757438
+          ]
+        ]
+      },
+      "geometry_assumptions": {
+        "front_clear_width_m": 3.36,
+        "arch_spring_m": 3.55,
+        "arch_crown_m": 5.23,
+        "curtain_pole_m": 5.91,
+        "west_window_center_y_m": 2.4,
+        "west_window_width_m": 1.45,
+        "west_window_sill_m": 4.4,
+        "west_window_head_m": 5.25,
+        "front_truss_plane_y_m": 3.76,
+        "west_side_member_underside_m": 5.1,
+        "west_side_member_top_m": 5.4,
+        "bed_center_y_m": 3.65,
+        "bench_center_y_m": 2.42
+      },
+      "visual_validation": null
+    }
+  ],
+  "rejected_new_fits": [
+    {
+      "id": "principal33_unconstrained_northward_height_fit",
+      "status": "rejected_before_render",
+      "reason": "Camera at y7.09 crossed existing P_DRESS partition at y7.00; pose would see through a wall. No wall was moved or hidden. Retained candidate constrains y<=6.85.",
+      "camera": {
+        "location": [
+          1.8,
+          7.0903995887814135,
+          4.762804526259839
+        ],
+        "target": [
+          1.8,
+          2.0903995887814135,
+          4.762804526259839
+        ],
+        "lens_mm": 50,
+        "sensor_dimension_mm": 36,
+        "size": [
+          900,
+          1200
+        ],
+        "shift_x": 0.1230982847130129,
+        "shift_y": -0.013361404471666121,
+        "roll_degrees": 0
+      },
+      "height_only_errors_px": [
+        {
+          "name": "table top",
+          "error_px": 9.335546314713206
+        },
+        {
+          "name": "table foot",
+          "error_px": -6.9395022602130485
+        },
+        {
+          "name": "rod",
+          "error_px": -2.2429803076470245
+        },
+        {
+          "name": "side tie underside",
+          "error_px": -1.1799397574228099
+        }
+      ]
+    }
+  ],
+  "independent_holdouts": [
+    {
+      "source": "photo41",
+      "observation": "Exterior semicircle spring, concentric inner arc feet and opaque-frieze top coincide vertically.",
+      "used_to_support": "Shared upper spring/frieze geometry relationship",
+      "used_in_numerical_camera_objective": false
+    },
+    {
+      "source": "photo55",
+      "observation": "Upper fanlight spring close to upper-floor level; bed/bench proportions, ceiling structure and staging cross-check.",
+      "used_to_support": "Qualitative cross-view model validation; daylight/material comparison with known editing.",
+      "used_in_numerical_camera_objective": false
+    },
+    {
+      "source": "photo03",
+      "observation": "Chair cane, walnut frame, cushion compression and branching forms.",
+      "used_to_support": "Furniture/material evidence",
+      "used_in_numerical_camera_objective": false
+    }
+  ],
+  "limitations": [
+    "Point residuals combine camera, annotation and inferred world-geometry error; they are not a photographic likeness score.",
+    "principal33 has no complete 2D point RMS; reported vertical fit errors omit horizontal location and are conditional on table/rod/tie dimensions.",
+    "Original v4 eight-pixel annotation uncertainty at2000px long edge does not include current geometry uncertainty.",
+    "The photo06 apparent curve apex may differ from projection of the true centerline crown.",
+    "Side-member height/end interpretation remains inferred; preserve low-member walk clearance and verify actual joinery.",
+    "East brace lower continuation remains inferred and must not be shortened for camera visibility.",
+    "Use identical final camera poses for baseline/current; no unrelated room locks are changed by this file.",
+    "Actual clay rejected the initial lower-arch nearfinal06 pose and due-south33 pose: low residual and parallel-line agreement did not ensure bed/chair visibility."
+  ],
+  "reproduction": {
+    "projection_source": "projects/bastide_de_flechon/camera_calibration.py",
+    "projection_source_sha256": "db5739e87f65c0185b972138493cf7eaeed0da3f5f1c9ddff00fd80fd878fff8",
+    "script_records": [
+      {
+        "local_path": "out/principal-study/fit_camera_geometry.py",
+        "sha256": "86801f28c57f09a7e2e1d3c7d54f82b6ae1c0ac7e361c37e100eb130609a4935"
+      },
+      {
+        "local_path": "out/principal-study/fit_updated_trial_cameras.py",
+        "sha256": "73305ba3dc098b1002df1b21554689a8c8749502e4eaee5a9462e9541551f902"
+      },
+      {
+        "local_path": "out/principal-study/fit_visible_trial_cameras.py",
+        "sha256": "d20267d201e8eebf4dd568777f883fa3f0228ba1dc1311be0dddb25a8780924b"
+      },
+      {
+        "local_path": "out/principal-study/fit_south_truss_cameras.py",
+        "sha256": "d347f78651a1b50e5b1917469533362fa6a2dea9a097b59aac5087989fce21f6"
+      },
+      {
+        "local_path": "out/principal-study/fit_practical_cameras.py",
+        "sha256": "f5c996eeb3964dab3c415a1ffd3d5cd4faa5296aa7bd8fc6c48868c60ae62821"
+      },
+      {
+        "local_path": "out/principal-study/promote_review_cameras.py",
+        "sha256": "b5b4f1a7f4f4bbb809bca82a21f140ac329e1adb805a82bdac9b0a7e24f1c42d"
+      }
+    ],
+    "solver": "scipy.optimize.least_squares; native focal, level view and zero roll retained. Candidate camera numbers and fit observations are recorded here for independent reproduction."
+  },
+  "xmp_profiles": {
+    "all_sources": {
+      "crs:Texture": "0",
+      "crs:Saturation": "0",
+      "crs:ParametricShadows": "0",
+      "crs:ParametricDarks": "0",
+      "crs:ParametricLights": "0",
+      "crs:ParametricHighlights": "0",
+      "crs:ParametricShadowSplit": "25",
+      "crs:ParametricMidtoneSplit": "50",
+      "crs:ParametricHighlightSplit": "75",
+      "crs:HueAdjustmentRed": "0",
+      "crs:HueAdjustmentOrange": "0",
+      "crs:HueAdjustmentYellow": "0",
+      "crs:HueAdjustmentAqua": "0",
+      "crs:HueAdjustmentBlue": "0",
+      "crs:HueAdjustmentPurple": "0",
+      "crs:HueAdjustmentMagenta": "0",
+      "crs:SaturationAdjustmentRed": "0",
+      "crs:SaturationAdjustmentOrange": "0",
+      "crs:SaturationAdjustmentYellow": "0",
+      "crs:SaturationAdjustmentAqua": "0",
+      "crs:SaturationAdjustmentPurple": "0",
+      "crs:SaturationAdjustmentMagenta": "0",
+      "crs:LuminanceAdjustmentRed": "0",
+      "crs:LuminanceAdjustmentOrange": "0",
+      "crs:LuminanceAdjustmentYellow": "0",
+      "crs:LuminanceAdjustmentAqua": "0",
+      "crs:LuminanceAdjustmentPurple": "0",
+      "crs:LuminanceAdjustmentMagenta": "0",
+      "crs:SplitToningShadowHue": "0",
+      "crs:SplitToningShadowSaturation": "0",
+      "crs:SplitToningHighlightHue": "0",
+      "crs:SplitToningHighlightSaturation": "0",
+      "crs:SplitToningBalance": "0",
+      "crs:ColorGradeMidtoneHue": "0",
+      "crs:ColorGradeMidtoneSat": "0",
+      "crs:ColorGradeShadowLum": "0",
+      "crs:ColorGradeMidtoneLum": "0",
+      "crs:ColorGradeHighlightLum": "0",
+      "crs:ColorGradeBlending": "50",
+      "crs:ColorGradeGlobalHue": "0",
+      "crs:ColorGradeGlobalSat": "0",
+      "crs:ColorGradeGlobalLum": "0",
+      "crs:LensManualDistortionAmount": "0",
+      "crs:VignetteAmount": "0",
+      "crs:DefringePurpleAmount": "0",
+      "crs:DefringePurpleHueLo": "30",
+      "crs:DefringePurpleHueHi": "70",
+      "crs:DefringeGreenAmount": "0",
+      "crs:DefringeGreenHueLo": "40",
+      "crs:DefringeGreenHueHi": "60",
+      "crs:PerspectiveVertical": "0",
+      "crs:PerspectiveHorizontal": "0",
+      "crs:PerspectiveRotate": "0.0",
+      "crs:PerspectiveAspect": "0",
+      "crs:PerspectiveScale": "100",
+      "crs:PerspectiveX": "0.00",
+      "crs:PerspectiveY": "0.00",
+      "crs:GrainAmount": "0",
+      "crs:PostCropVignetteAmount": "0",
+      "crs:ShadowTint": "0",
+      "crs:RedHue": "0",
+      "crs:RedSaturation": "0",
+      "crs:GreenHue": "0",
+      "crs:GreenSaturation": "0",
+      "crs:BlueHue": "0",
+      "crs:BlueSaturation": "0",
+      "crs:ConvertToGrayscale": "False",
+      "crs:OverrideLookVignette": "False",
+      "crs:ToneCurveName2012": "Linear",
+      "crs:HasSettings": "True",
+      "crs:CropAngle": "0",
+      "crs:CropConstrainToWarp": "0",
+      "crs:AlreadyApplied": "True"
+    },
+    "mark_elst_final_tiff_stage": {
+      "photoshop:ColorMode": "3",
+      "photoshop:ICCProfile": "sRGB IEC61966-2.1",
+      "crs:Version": "17.5",
+      "crs:ProcessVersion": "15.4",
+      "crs:Exposure2012": "0.00",
+      "crs:Contrast2012": "0",
+      "crs:Highlights2012": "0",
+      "crs:Shadows2012": "0",
+      "crs:Whites2012": "0",
+      "crs:Blacks2012": "0",
+      "crs:Clarity2012": "0",
+      "crs:Dehaze": "0",
+      "crs:Vibrance": "0",
+      "crs:Sharpness": "0",
+      "crs:LuminanceSmoothing": "0",
+      "crs:ColorNoiseReduction": "0",
+      "crs:SaturationAdjustmentBlue": "0",
+      "crs:LuminanceAdjustmentBlue": "0",
+      "crs:AutoLateralCA": "0",
+      "crs:LensProfileEnable": "0",
+      "crs:PerspectiveUpright": "0",
+      "crs:HDREditMode": "0",
+      "crs:CameraProfile": "Embedded",
+      "crs:CameraProfileDigest": "54650A341B5B5CCAE8442D0B43A92BCE",
+      "crs:CropTop": "0",
+      "crs:CropLeft": "0",
+      "crs:CropBottom": "1",
+      "crs:CropRight": "1",
+      "crs:CropConstrainToUnitSquare": "1",
+      "crs:HasCrop": "False"
+    }
+  },
+  "xmp_expansion": "For each source, merge xmp_profiles in xmp_profile_refs order, then xmp_attribute_overrides. Exact extracted strings are retained. Profiles only deduplicate repeated metadata.",
+  "point_errors_order": "point_errors_xy_px entries follow the referenced landmark_set order; empty arrays mean no full point fit.",
+  "review_camera_selection": {
+    "lock_id": "flechon-exif-photo-cameras-2026-09-05-v5-principal-review",
+    "lock_sha256": "68cf9c6ceb2a9ab37b22c259aa55a0f360e313f780c41a85a9360d3322662aa9",
+    "status": "Locked for identical baseline/current comparisons; final image acceptance pending and will be recorded separately without changing this lock.",
+    "selected_trial_ids": {
+      "principal06": "principal06_intermediate_bedside",
+      "principal33": "principal33_oblique_1"
+    },
+    "other_six_view_records": "Unchanged from originalv4; dictionary equality independently asserted.",
+    "principal06_full_point_rms_px": 84.34092010486047,
+    "principal33_full_point_rms_px": null
+  }
+}

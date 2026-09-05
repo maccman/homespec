@@ -191,3 +191,19 @@ Pigment maps are distinct from inferred physical roughness and small surface rel
 The coherent walk uses 20% of the preserved full-power aperture lights, selected after off/full/reduced-power Cycles studies. Named photograph presets currently use 20%, except salon58 at 15%. These are documented diffuse-light approximations at real openings, not measured sky radiance. `apply_preset(..., supplemental_windows=None)` uses the configured fraction; explicit `False`/`True` or comparison environment values `0`/`1` select off/full for controlled studies. Effective fractions and actual/base light energies are recorded. The walk keeps one daylight state with room exposure adaptation; photograph presets have separate lighting, exposure and white balance. Exact optical values, solar directions and photographic processing remain inferred.
 
 This is a photo-led reconstruction. Heights, concealed construction, exact furniture dimensions and landscape contours are inferred where the source material does not measure them. It is not a photogrammetric or laser scan. `decisions.md` records these choices.
+
+## Principal-suite focused review
+
+The principal pass follows the original upper plan for the bed, bench, two
+chairs, west window and front truss. It corrects the shared upper arch spring,
+adds the photographed short side ties, and refines the floorboards, blind,
+curtains, linen, bench supports, cane frames and surface finishes. It preserves
+the floor-reaching braces and lower salon doors. See
+[the discrepancy inventory](principal-discrepancies.md),
+[camera evidence](principal-camera-evidence.md) and
+[material provenance](principal-material-provenance.json).
+
+The compact comparison uses identical recorded cameras on immutable main and
+updated saved scenes. Camera uncertainty and different table staging in the
+source photographs remain explicit. Full-house gallery, animation,
+full-resolution renders and portable repack are deferred.

@@ -2,6 +2,8 @@
 
 Read-only independent study of the merged source (task baseline `33b7db5`, including PR7). No source/camera-lock changes and no Blender processes were made by this investigator. Trial cameras require actual-model inspection by the root task. All photographs and PDFs are preserved unchanged.
 
+The portable structured record is [principal-camera-trials.json](principal-camera-trials.json). It preserves the original v4 principal cameras and their earlier rejected fits, plan-only candidates, revised lower-arch candidates, the rejected camera beyond `P_DRESS`, source hashes, independently read EXIF/XMP, and explicit uncertainty. Repeated XMP values use shared profiles with a documented expansion rule. Independent visual holdouts remain separate from numerical fitting observations. Trial status is unreviewed until actual Blender images are assessed; local `out/principal-study/` files are working copies.
+
 ## Evidence inspected
 
 - Original `PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-16.jpg` (photo06), full 2000×1500: principal bed, south fanlight and west window.
@@ -39,6 +41,7 @@ Embedded XMP adds evidence absent from the existing short EXIF report:
 - Both Mark Elst final JPEGs record Camera Raw `HasCrop=False`, full0..1 crop bounds, zero perspective adjustment and zero manual lens distortion. **However**, RawFileName points to an already-edited TIFF (`Bastide de Flechon2025-16.tif` / `...2025-7.tif`), so these tags only establish the final Camera Raw stage. Earlier Photoshop crop/stitching cannot be excluded. Mark Elst03 and06 were photographed in2025;33 retains a2020-09-07 capture date and different staging.
 - Photo33 records `aux:ApproximateFocusDistance=459/100` (4.59m). Useful as a loose subject-distance cross-check, not camera position.
 - Photo55 records distortion/CA/vignette correction already applied, Adobe Sony24–105mm lens profile, Upright auto (`PerspectiveUpright=1`). Its selected transform1 is nearly identity, including scale1.000324/1.000077 and extremely small perspective term. Thus source55 is not raw untreated projection, but it is not evidence for a large perspective warp either.
+- The exterior photo41 explicitly records a crop (top0.040404, left0.021036, bottom0.974853, right0.955485) with zero perspective adjustment. Its spring/frieze collinearity is a valid geometric holdout under cropping; no numerical camera fit uses this image.
 - Photo55 editing includes exposure+0.75EV, shadows+71, highlights−69, whites−55, blacks+15, WB8200K and vibrance+30. Warm appearance and shadow readability must not be attributed entirely to material pigment or physical lights.
 
 ## Conditional trial fits (not accepted camera locks)
@@ -80,3 +83,22 @@ The root task accepted photo41 as support for testing spring3550, curtain pole59
 An unconstrained principal33 solution at y7.090,z4.763 would have crossed the existing `P_DRESS` wall at y7.00. It was rejected before rendering. The retained y6.85 trial is constrained within the room; no wall is hidden or moved to enable its view. The in-room fit deliberately keeps larger residuals.
 
 These notes document proposal and rejection evidence only. Final selected poses, identical baseline/current comparisons and any remaining visual mismatches belong in the root task's final camera lock and verification notes after actual Blender review.
+
+## Actual clay review: initial revised poses rejected
+
+The root rendered the revised poses from the actual updated model. Both proposed principal poses were rejected after image inspection, and `principal-camera-trials.json` records the image/manifest/scene hashes and reasons:
+
+- `principal06_lower_arch_eye`: the low-error position at y5.66 looks directly at the back of the corrected headboard. The headboard dominates the lower-right image despite 35.51 px architectural RMS. The next fit explicitly places the camera east of the bed and south of its headboard, x>5.3 and y≤4.60. `principal06_beside_head` has only slightly higher 37.21 px RMS at (6.957,4.60,4.60), while `principal06_beside_midbed` gives 39.35 px at (7.150,4.20,4.60). These are still unreviewed candidates.
+- `principal33_south_lower_tie`: the west diagonal masks both chairs. Exact due-south framing is therefore rejected as a sufficient explanation of the original photograph. New candidates use x2.6, y6.2 and yaw−1.85/−1.90 radians, with a farther alternative x3.0, y6.75. They retain the conditional table-top framing anchor; rod slope and the visible brace/chair relationship remain independent checks. No full two-dimensional landmark RMS is claimed.
+
+An analytic cross-check shows the west brace center at normalized image v0.70 moving from u≈0.67 in the rejected due-south camera to u≈0.92 in the first oblique candidate or u≈0.88 in the farther candidate. The original source places the brace farther right than the rejected render. Actual rendering must still establish whether this exposes both chairs. Camera changes cannot resolve a different photographed furnishing arrangement by themselves.
+
+The working lock for this bounded iteration is `out/principal-study/camera-visible-trial-lock.json`; all five poses and the earlier rejected poses are preserved in the portable structured record. No geometry is hidden, cropped away, or moved by these camera trials.
+
+## Frozen practical review cameras; final image acceptance pending
+
+Further actual clay rejected `principal06_beside_head`: it removed the rear-headboard obstruction but placed the retained east brace across the left half of the image. Two practical alternatives then tested the visibility constraint. The x5.5, y4.2 view cleared the brace but enlarged the foreground bed and cropped the arch at left; the y3.45 view south of the truss showed arch/window/seating clearly but cropped most of the bed at right. Their actual images, manifests, scene hashes and selection tradeoffs are retained in `principal-camera-trials.json`.
+
+The frozen principal06 review pose is the intermediate `(6.15,4.20,4.60)` m, target `(2.839219,0.453171,4.60)` m, native equivalent 24.657534 mm, shifts `(0.074178376,0.048083655)`. Its updated architecture residual is **84.34 px at 1200×900**. The principal33 review pose retains the oblique trial `(2.60,6.20,4.813)` m with native 50 mm optics and yaw −1.85 radians; no complete point RMS is claimed. Its inspected clay precedes the subsequent plan-backed chair relocation/toe-in correction.
+
+Only these two view records were promoted into v5; equality of the other six v4 view records was asserted independently. The lock hash is `68cf9c6ceb2a9ab37b22c259aa55a0f360e313f780c41a85a9360d3322662aa9`. Keep it unchanged for the final baseline/current comparison. These are practical review positions with explicit residuals, not claims of recovered photographs. Final saved-scene image acceptance remains pending and will be recorded separately from the immutable camera lock.

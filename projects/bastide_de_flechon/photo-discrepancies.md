@@ -3,7 +3,10 @@
 Review ledger, 5 September 2026. These eight anchors compare specific photographs;
 they do not establish photographic equivalence for the whole house. Source paths
 below are relative to `reference/`. Camera evidence and rejected trials are in
-`camera_calibration.md` and `photo_camera_lock.json` (lock v4).
+`camera_calibration.md` and `photo_camera_lock.json`. The merged eight-view study
+used v4; the subsequent principal-only v5 review is described below, with its
+trials preserved in `principal-camera-trials.json`. Other-room discussion retains
+the prior reviewed evidence.
 
 Eight Cycles study previews were rendered and compared directly with the
 untouched originals using the integrated geometry and v4 camera lock. The
@@ -91,43 +94,72 @@ Reviewed: `deliverables/photo-comparison/garden02.png`, 900×1200 Cycles preview
 ## Principal06
 
 Source: `PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-16.jpg`.
-Cross-checks: photo33 and `PHOTOS/VICTOR FITZ/DSC05311.jpg` (photo55).
-Reviewed: `deliverables/photo-comparison/principal06.png`, 1200×900 Cycles preview.
+Cross-checks: photo33, `PHOTOS/VICTOR FITZ/DSC05311.jpg` (photo55), and exterior
+`PHOTOS/MARK ELST/Bastide_de_Flechon_4.jpg` (photo41).
+The prior `deliverables/photo-comparison/principal06.png` belongs to the merged
+v4 review. Final v5 saved-scene colour/clay acceptance is pending.
 
-- **Plan-backed:** the shared 3360 mm front opening replaces the oversized clear
-  arch. Curtain centers follow its actual jambs; the 6.46 m pole stays within the
-  audited room height. Roof envelope and floor levels are retained.
-- **Pass changes:** gathered patterned curtains, detailed cane chairs and bench,
-  softer bedding, member-aligned wood and separate end grain. The native 30 mm
-  GFX lens becomes 24.658 mm on the renderer's 36 mm sensor.
-- **Open:** the fresh view confirms the low-camera compromise. A large foreground
-  pillow and the west brace dominate the right side; the bed spread and bench
-  receive much less of the frame than in the source, and the west window is partly
-  cropped/obscured. The arch appears larger, the exposed timber is darker and more
-  regular, and the curtain repeat is more geometric. Architectural RMS remains
-  122.3 px at 1200×900. Lower-error trials lost the bed or hit the headboard visually.
-  The west brace's floor-reaching shape is photographed; the east brace's lower
-  continuation is inferred because photos06/55 crop it. It has not been shortened
-  to clear a shot.
+- **Plan and independent geometry evidence:** retain the 3360 mm clear front
+  opening, roof envelope and floor levels. The upper-plan trace supports bed
+  center y3.65 m, bench y2.42 m, west window center y2.40 m and front truss plane
+  y3.76 m. Exterior photo41 shows the fanlight spring at the frieze top; spring
+  z3.55 m removes the unsupported 550 mm rectangular-glass band beneath the arch.
+  The frieze and lower salon leaves remain fixed. Curtain pole z5.91 m and
+  resulting curtain height are inferred from the photographed relationship.
+- **Source changes for review:** scoped principal furniture follows the plan
+  positions, with refined linen/coverlet, bench supports, cane-chair profiles and
+  patinated table. Gathered cloth, finish variation, floorboards and member-aligned
+  timber/end-grain remain actual editable geometry/materials. Their final rendered
+  appearance is awaiting the same-camera comparison.
+- **Review camera:** `(6.15, 4.20, 4.60)` m with native 30 mm GFX optics converted
+  to 24.657534 mm on the 36 mm render sensor. The current seven-point
+  architectural residual is **84.34 px at 1200×900**; it is a practical comparison
+  camera, not a claimed photographic fit. Original v4's 122.3 px record is retained
+  with its earlier geometry and annotations in the scoped trial provenance.
+- **Actual rejected trials:** the 35.51 px fit looked at the rear headboard; the
+  37.21 px fit moved the east brace across the left half of the image. An x5.5 m
+  bedside view over-enlarged the bed/cropped the arch, while a y3.45 m view south
+  of the truss cleared the brace but cropped the bed at the right. The final
+  intermediate review pose still needs image assessment. No timber was removed,
+  hidden or shortened to clear these cameras.
+- **Open:** establish bedspread/bench coverage, complete west-window framing,
+  arch scale and overhead-truss relationships in the final render. Prior timber
+  darkness/regularity, curtain repeat contrast, floor shadows and practical-light
+  differences remain appearance checks until the new colour views are inspected.
+  The west floor-reaching brace is photographed; the east lower continuation
+  remains inferred because photos06/55 crop its foot. Changed camera landmarks
+  include inferred window heights, so residual alone cannot validate architecture.
 
 ## Principal33
 
 Source: `PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-7.jpg`.
-Reviewed: `deliverables/photo-comparison/principal33.png`, 900×1200 Cycles preview.
+The prior `deliverables/photo-comparison/principal33.png` belongs to the merged
+v4 review. Updated oblique clay was inspected; final images after chair staging
+changes are pending.
 
-- **Evidence:** this independently supports the west diagonal brace, horizontal
-  tie, raked cane chairs, trumpet table and gathered curtain. It does not supply
-  surveyed dimensions. Its table staging differs from photo06.
-- **Pass changes:** distinct chair-member grain, woven cane, aged table/bench
-  finishes, curtain folds and physical pattern scale. The camera now uses the
-  recorded TS-E 50 mm lens with a backward position adjustment and lens shift.
-- **Open:** the fresh image retains both cane chairs and the trumpet table, but
-  the horizontal tie is higher, the brace more upright, and the bed occupies the
-  lower edge where the source has open floor. The table is smoother and lighter
-  gold than the dark patinated reference; chair frames and cushions also read
-  lighter. The curtain has a more regular, high-contrast repeat, while the source's
-  broad floor shadow and plant/ceramic staging are not reproduced. Exact timber
-  angles, furniture proportions and camera pose remain estimates.
+- **Evidence:** the source establishes the west diagonal, a horizontal member
+  with a visible free end, raked cane chairs, trumpet table and gathered curtain.
+  The plan's side strokes support a front station around y3.76 m but do not survey
+  member heights. The added west side member is distinct from the retained
+  overhead full-span tie; its section/height remain inferred. Source33's table
+  and furnishing arrangement differ from photos06/55.
+- **Source changes for review:** plan-backed chairs move to approximately
+  `(1.50, 1.05)` and `(1.18, 3.05)` m, with opposing toe-in orientations. Refined
+  walnut frames, cane, cushions, dark table patina, curtains and ceramic/branch
+  staging remain subject to the final colour/neutral comparison.
+- **Review camera:** native TS-E 50 mm, position `(2.60, 6.20, 4.813)` m,
+  modest southwest aim with recorded shifts. The table top is a conditional
+  framing anchor; **no complete two-dimensional point-fit RMS is claimed**.
+  Exactly south-facing clay masked both chairs with the brace and was rejected.
+  The oblique trial made the group more legible, but still crossed the near chair
+  back and preceded the final plan-backed chair changes.
+- **Open:** final framing must show both chairs, the table and open floor while
+  retaining the actual brace and side member. Tie/brace/window relationships,
+  chair proportions, patina roughness, fabric contrast and floor-light pattern
+  remain unaccepted until final views are inspected. Photo33's final 3:4 raster
+  differs from its native portrait sensor ratio, and the retained 4.59 m focus
+  metadata is only a loose scale cross-check. The geometry and camera are
+  evidence-informed estimates, not a surveyed reconstruction.
 
 ## Bedroom09
 
