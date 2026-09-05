@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "tool": "built-in image_gen.imagegen",
+  "date": "2026-09-05",
+  "assets": [
+    {
+      "file": "kitchen-cleaned-oak.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless PBR base-color pigment texture for restored antique oak ceiling timbers in a French Provencal kitchen. Generate a square flat orthographic continuous wood surface, grain running horizontally left to right, pale medium warm honey/tobacco oak, subtle longitudinal fibres and irregular elongated grain, sparse small old knots, restrained weathered patina, a few very fine hairline checks. This represents a cleaned indoor reclaimed beam face, not rotten exterior timber. Broad even color field; medium low contrast, no giant black cavities, no deep cracks, no board seams or plank borders, no grain running vertically. Even neutral illumination across the whole image, no baked directional shadows, no specular highlights, no ambient occlusion, no vignette, no text, no frame. Seamless repeat on all four edges. Pigment only, not a normal or height map. High detail at subtle natural scale.",
+      "original_output": "/Users/cloud/.codex/generated_images/01a0732e-5b9e-71c2-8921-047fc15add91/exec-d9cda025-52e1-485a-82d5-610018afd258.png",
+      "purpose": "Kitchen timber pigment only",
+      "references": [
+        "photo10",
+        "photo00",
+        "photo35"
+      ],
+      "mapping": "Longitudinal member UV metres; .5 long-axis and1.25 transverse scale. Retained separate end-grain shader.",
+      "physical_response": "Independent procedural .0012m relief bound, .00015m fine noise; roughness .80 +/- .035. No image is connected upstream of Normal or Roughness.",
+      "limits": "Generated interpretation of restored indoor oak, not a recovered scan or measured albedo. Spatial grain and reduced check contrast must be judged in actual model renders.",
+      "sha256": "7c6c41fccb9df2bfdff8087259f7e7662a9e5813e8251a3b1643c7f7387e6b9c"
+    }
+  ]
+}

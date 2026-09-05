@@ -42,6 +42,10 @@ beam-placement error, with photographic projection evidence. Geometry remains
 unchanged pending a later correction and render review. [Material provenance](salon-materials-provenance.md)
 and the [discrepancy inventory](salon-discrepancies.md) retain the detailed limits.
 
+## Focused kitchen reconstruction
+
+The kitchen study adds a thin stone slab and hollow sink, a supported seating extension, corrected cabinet fronts, three wire pendants, dense fine joists, a flat hall lintel, and quieter room finishes. [Kitchen verification](kitchen-verification.md) records the frozen source, matched before/after previews, geometry and material checks, and remaining photographic differences. The [evidence review](kitchen-discrepancies.md) separates observed construction from inferred dimensions. This focused pass does not refresh the full-house delivery.
+
 ## Files
 
 Expected local outputs from the commands below. The full refresh is deferred, so some outputs are absent or belong to earlier diagnostic runs. `review-photo-pass.jpg` is the committed preview sheet; `review-gallery.jpg` retains the prior pass’s gallery.

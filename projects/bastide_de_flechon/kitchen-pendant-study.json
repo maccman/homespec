@@ -1,0 +1,136 @@
+{
+  "purpose": "Pendant-only conditional geometry projections at unchanged kitchen10 camera; no camera fit and no photographic likeness score",
+  "camera_lock_sha256": "46422221cb8658448f296cb85193dff81868ff0fca6b43dcbb379a7c916366ef",
+  "furniture_source_sha256": "4f871f1d01d4aa1fd1c1fb4e1c0a25c4381ebb76317683f80c7302d7b59fc78f",
+  "reference": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-2.jpg, original1500x2000",
+  "manual_observations": {
+    "crop_original_px": [
+      650,
+      450,
+      300,
+      580
+    ],
+    "fixture_count": 3,
+    "neck_top_original_px_approx": [
+      [
+        838,
+        657
+      ],
+      [
+        825,
+        719
+      ],
+      [
+        811,
+        758
+      ]
+    ],
+    "closest_bottom_original_v_approx": [
+      0.47,
+      0.495
+    ],
+    "closest_visible_width_original_px_approx": [
+      140,
+      165
+    ],
+    "uncertainty": "Overlapping bodies, hand-shaped necks, unmeasured height/diameter/spacing and lens shift/crop prevent exact fixture correspondence; no landmark residual claimed."
+  },
+  "inference": {
+    "height_m": 0.815,
+    "nominal_maximum_diameter_m": 0.47,
+    "bottom_height_m": 1.65,
+    "shade_height_to_diameter_ratio": 1.7340425531914894,
+    "photo00_photo35_observed_ratio_approx": [
+      1.75,
+      1.9
+    ],
+    "old_geometry": {
+      "count": 2,
+      "centres_y_m": [
+        11.2,
+        13.2
+      ],
+      "bottom_height_m": 2.1,
+      "nearest_bottom_projected_v": 0.3581731697781965
+    },
+    "notes": "Three bodies over the fixed island; current470mm diameter projects somewhat wider than closephoto10 outlines and remains an explicit residual. Actualfirsthitcordsupports are recorded in Blender objectprops duringconstruction."
+  },
+  "new_fixtures": [
+    {
+      "centre_m": [
+        -2.63,
+        10.65,
+        1.65
+      ],
+      "bottom_centre_uv": [
+        0.5426216456818458,
+        0.48584002832832435
+      ],
+      "neck_top_uv": [
+        0.5426216456818458,
+        0.38148009662215693
+      ],
+      "nominal_silhouette_uv_bounds": [
+        0.5024990113161987,
+        0.5828280958238132,
+        0.3809953110824234,
+        0.486413115355984
+      ],
+      "maximum_width_original_1500px": 120.49362676142184
+    },
+    {
+      "centre_m": [
+        -2.63,
+        11.55,
+        1.65
+      ],
+      "bottom_centre_uv": [
+        0.5469232634505204,
+        0.4826332617122799
+      ],
+      "neck_top_uv": [
+        0.5469232634505204,
+        0.3564627200679045
+      ],
+      "nominal_silhouette_uv_bounds": [
+        0.498410242005667,
+        0.5955876384877224,
+        0.3557535249089814,
+        0.4834644359181518
+      ],
+      "maximum_width_original_1500px": 145.76609472308314
+    },
+    {
+      "centre_m": [
+        -2.63,
+        12.45,
+        1.65
+      ],
+      "bottom_centre_uv": [
+        0.5534979685140745,
+        0.4777319557753186
+      ],
+      "neck_top_uv": [
+        0.5534979685140745,
+        0.31822550766240604
+      ],
+      "nominal_silhouette_uv_bounds": [
+        0.4921456695680611,
+        0.6151514771413268,
+        0.3170905778976791,
+        0.4790448251035124
+      ],
+      "maximum_width_original_1500px": 184.5087113598985
+    }
+  ],
+  "camera_lock_path": "kitchen_camera_lock.json",
+  "camera_lock_id": "kitchen-focus-v1",
+  "camera_view_id": "kitchen10",
+  "camera_view_canonical_sha256": "56d791b2c5132cf7b8aa805f28c962ecb4de0bf3911ef3b4ddf138dab8f56da2",
+  "camera_view_canonicalization": "SHA256 of UTF-8 JSON for the complete kitchen10 view object, sorted keys, compact separators, ensure_ascii=False, no trailing newline.",
+  "legacy_camera_snapshot": {
+    "path_at_time_of_study": "out/kitchen-study/camera-lock-initial.json",
+    "sha256": "64dde82afe6085a532055a92dae84422efdbbc0d19ce64b898ba9715ef7161ae",
+    "note": "Original calculation used this local intermediate snapshot. Its complete kitchen10 view object is identical to the committed focused lock view. Existing numerical projections are unchanged; the committed lock and canonical view hashes above now provide reproducible provenance."
+  }
+}

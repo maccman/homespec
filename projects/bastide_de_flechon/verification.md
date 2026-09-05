@@ -13,6 +13,8 @@ integration. Its scene, lighting and build counts are distinct from the
 current combined-model evidence below. It also documents a likely remaining
 outboard axial beam-placement discrepancy for a later geometric review.
 
+The later [focused kitchen verification](kitchen-verification.md) records the kitchen construction corrections, fresh matched previews and expanded cavity/material checks. Its evidence and hashes apply to that focused branch; the third-pass summary below remains the earlier integrated-house record.
+
 ## Source and geometry
 
 The architectural model contains **315 entities** and passes **366 HomeSpec checks**, with zero failures. The existing 54 permitted construction intersections, stair/door/headroom rules and audit thresholds are unchanged. All four diagnostic plans and sections were reviewed; the latest regenerated images have identical pixels. The integrated scene passed the explicit CLI audit, and the final saved-scene render repeated **AUDIT total 0**.

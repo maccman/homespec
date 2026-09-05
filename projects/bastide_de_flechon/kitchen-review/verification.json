@@ -1,0 +1,284 @@
+{
+  "schema": 1,
+  "verified_at_utc": "2026-09-05T21:18:57.655064+00:00",
+  "source_base_commit": "33b7db5",
+  "comparison_baseline_commit": "ec117ec97c3a5610c9f9bf8b8e4fb18b2a2fc5a8",
+  "generation": "bd73002f07a44a1f8904b1c9b32dc116",
+  "build_record": {
+    "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/generations/bd73002f07a44a1f8904b1c9b32dc116/build.json",
+    "sha256": "02709128177ca641436079cf0359260ad5af7a2b768dfe9ba4125f21beff0aea",
+    "bytes": 85624
+  },
+  "build_fingerprint": "7dea8b49dbd788a98b1ce2554ed5941875c57ae7854610209860859b5a55cfa2",
+  "presentation_fingerprint": "1ecb3ca4ed29de4892a97afdc0d58bfe3324e1182310839ab664881ab898415d",
+  "presentation_record": {
+    "build_fingerprint": "7dea8b49dbd788a98b1ce2554ed5941875c57ae7854610209860859b5a55cfa2",
+    "generation": "bd73002f07a44a1f8904b1c9b32dc116",
+    "presentation_fingerprint": "1ecb3ca4ed29de4892a97afdc0d58bfe3324e1182310839ab664881ab898415d"
+  },
+  "saved_scene_record": {
+    "build_fingerprint": "7dea8b49dbd788a98b1ce2554ed5941875c57ae7854610209860859b5a55cfa2",
+    "generation": "bd73002f07a44a1f8904b1c9b32dc116",
+    "presentation_fingerprint": "1ecb3ca4ed29de4892a97afdc0d58bfe3324e1182310839ab664881ab898415d",
+    "scene_hash": "157384fb65f8bdb7ac451a249cc58f8c5d306c799629bd59f1009f642d91a93f"
+  },
+  "scene": {
+    "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/presentation/bd73002f07a44a1f8904b1c9b32dc116/1ecb3ca4ed29de48/house.blend",
+    "sha256": "a50281334f04981eaf9ee7ccb449ab6afea09c329b0a9a85a053634b071ad007",
+    "bytes": 60200921
+  },
+  "walk_scene": {
+    "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/presentation/bd73002f07a44a1f8904b1c9b32dc116/1ecb3ca4ed29de48/house_walk.blend",
+    "sha256": "157384fb65f8bdb7ac451a249cc58f8c5d306c799629bd59f1009f642d91a93f",
+    "bytes": 60227267
+  },
+  "original_archive": {
+    "path": "/Users/cloud/LABASTIDEDEFLECHON.zip",
+    "sha256": "b7fe2f9451a9223dba133fe54dfa0eac7eab9e7540ae834beb9af15e419741a8",
+    "bytes": 354167296
+  },
+  "camera_lock": {
+    "path": "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/kitchen_camera_lock.json",
+    "sha256": "46422221cb8658448f296cb85193dff81868ff0fca6b43dcbb379a7c916366ef",
+    "bytes": 13963
+  },
+  "native_build_checks": {
+    "passed": 367,
+    "failed": 0,
+    "documented_construction_clashes": 54
+  },
+  "tests": {
+    "native_passed": 208,
+    "blender_passed": 5,
+    "skipped": 0
+  },
+  "saved_scene_audit_findings": 0,
+  "cli_audit_findings": 0,
+  "focused_scene_checks": {
+    "passed": 94,
+    "failed": 0,
+    "report": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/kitchen-review/scene-checks.json",
+      "sha256": "08b6526c01a23bbcd85e44630bd3315d498b24041690c67ba6e177471c498861",
+      "bytes": 50429
+    }
+  },
+  "matched_camera_and_aperture_settings_equal": true,
+  "camera_residuals_px": {
+    "kitchen10": 6.895748027417695,
+    "kitchen00": 10.342647747729774,
+    "kitchen_side": null
+  },
+  "scene_bytes_preserved_by_all_studies": true,
+  "render_sets": {
+    "baseline": {
+      "scene_sha256": "ace6a7b2bf1426c4f99576c263737f50353c392c1cc18a33a31d8f09328b9ab4",
+      "images": [
+        {
+          "id": "kitchen10",
+          "sha256": "dab0a6f07093bceadafd9efcf628a2fa98cb1c1070635ba822bab35fab4fe52c",
+          "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/baseline-final/kitchen10.png",
+          "pixels": [
+            900,
+            1200
+          ]
+        },
+        {
+          "id": "kitchen00",
+          "sha256": "616475950f98947338ad5a917c9761de2511b65ba826f2966222a9466eb7bd6c",
+          "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/baseline-final/kitchen00.png",
+          "pixels": [
+            1200,
+            900
+          ]
+        },
+        {
+          "id": "kitchen_side",
+          "sha256": "5d3feb4e970e6b7f86eb3083ee2aa9476e57e1be093d85ec2e960dc78f8edccd",
+          "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/baseline-final/kitchen_side.png",
+          "pixels": [
+            1000,
+            800
+          ]
+        }
+      ]
+    },
+    "current": {
+      "scene_sha256": "a50281334f04981eaf9ee7ccb449ab6afea09c329b0a9a85a053634b071ad007",
+      "images": [
+        {
+          "id": "kitchen10",
+          "sha256": "0085baef5b1a6d16a42b0bef75a3968645129a326279538f2b9a94d2aa4ef3c1",
+          "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/current-preview/kitchen10.png",
+          "pixels": [
+            900,
+            1200
+          ]
+        },
+        {
+          "id": "kitchen00",
+          "sha256": "fd23d4765cd78375eb575624cc978ee8083014da08a1c90b6a048ce6cbeb0502",
+          "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/current-preview/kitchen00.png",
+          "pixels": [
+            1200,
+            900
+          ]
+        },
+        {
+          "id": "kitchen_side",
+          "sha256": "76314578117f2064b4701f034f10e92905ac813473bd33b2cabcf38a783326e1",
+          "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/current-preview/kitchen_side.png",
+          "pixels": [
+            1000,
+            800
+          ]
+        }
+      ]
+    },
+    "clay": {
+      "scene_sha256": "a50281334f04981eaf9ee7ccb449ab6afea09c329b0a9a85a053634b071ad007",
+      "images": [
+        {
+          "id": "kitchen10",
+          "sha256": "6464edf962cf10618d60741a6e514f1458c2030215b9877681c7ec6decc3d6af",
+          "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/current-clay/kitchen10.png",
+          "pixels": [
+            900,
+            1200
+          ]
+        },
+        {
+          "id": "kitchen00",
+          "sha256": "f71d98a4c175553a257d705963c192ca6e0cb73f144a085cde8c50cabf39d28f",
+          "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/current-clay/kitchen00.png",
+          "pixels": [
+            1200,
+            900
+          ]
+        },
+        {
+          "id": "kitchen_side",
+          "sha256": "3569445dfaa87b36b1f6d1a407da1f658c7303b8d8c847c6668c5ff48182a626",
+          "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/current-clay/kitchen_side.png",
+          "pixels": [
+            1000,
+            800
+          ]
+        }
+      ]
+    },
+    "lights_off": {
+      "scene_sha256": "a50281334f04981eaf9ee7ccb449ab6afea09c329b0a9a85a053634b071ad007",
+      "images": [
+        {
+          "id": "kitchen10",
+          "sha256": "6d88482b704d27f7bfaf0f9a311f0b33f1a2ba612fa241bcc07b44c34f3ea30c",
+          "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/current-lights-off/kitchen10.png",
+          "pixels": [
+            900,
+            1200
+          ]
+        }
+      ]
+    }
+  },
+  "material_studio": {
+    "image": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/current-materials/neutral-materials.png",
+      "sha256": "f6b19363ff9ceebaa2127dff4c69b224817e627ee728c450e01fb862755a5aab",
+      "bytes": 2939123
+    },
+    "manifest": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/current-materials/material-study-manifest.json",
+      "sha256": "95bd490b518ff9272a0837291ef2cb63041e583791943c47d95afea23b461dcc",
+      "bytes": 44811
+    },
+    "sample_count": 12,
+    "shader_checks": 84
+  },
+  "native_views": [
+    {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/presentation/bd73002f07a44a1f8904b1c9b32dc116/1ecb3ca4ed29de48/views/11_plan_L0.png",
+      "sha256": "1068ec38610e2779ee1c57f1f4ea2cbc8fd9b534cac6829cc073c2d7518494a9",
+      "bytes": 1187510
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/presentation/bd73002f07a44a1f8904b1c9b32dc116/1ecb3ca4ed29de48/views/12_plan_L1.png",
+      "sha256": "915a20abc33e51093cc93621a8decfb162e5cd027449a72c4f65f7b91fbfdf80",
+      "bytes": 1023060
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/presentation/bd73002f07a44a1f8904b1c9b32dc116/1ecb3ca4ed29de48/views/13_section_long.png",
+      "sha256": "8a9cec33764aa2b1f4e4a3d3510ca7199eb1d14b3a9f25cdc4c061785060ddf1",
+      "bytes": 864386
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/presentation/bd73002f07a44a1f8904b1c9b32dc116/1ecb3ca4ed29de48/views/14_section_cross.png",
+      "sha256": "17d3bbfe72ed131ba1947e8560f093f50ffc2b1ae92237cb3e40d8b4512a94e0",
+      "bytes": 925133
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/native-kitchen-sections/views/kitchen_hall_section.png",
+      "sha256": "a30e228772e7c82b33d2d0cc0e98e30a537c80073dd7c0a6cae1f9f6c1dcb427",
+      "bytes": 1266868
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/native-kitchen-sections/views/kitchen_long_section.png",
+      "sha256": "95cb1aa92a2f8b75ee386ccbd2f84b1979a200a88cae9019b61851e1fe52875b",
+      "bytes": 1334346
+    }
+  ],
+  "logs": {
+    "final-save.log": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/final-save.log",
+      "sha256": "b7aaaddf34a2bf970e309277efbdd70519c7610e3e68570a8ad3c7504f3feb80",
+      "bytes": 14082
+    },
+    "final-check-preview.log": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/final-check-preview.log",
+      "sha256": "8fda0b4e86a50e47e1d20f1df7c8180e65490b217be95c1a825edc8543060671",
+      "bytes": 1207
+    },
+    "final-controls.log": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/final-controls.log",
+      "sha256": "da6bb8bb2a0702c617e9b591d2e674829f90092942a872be284cc480a54dc37d",
+      "bytes": 3200
+    },
+    "final-views.log": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/final-views.log",
+      "sha256": "f61ce08d56d56c6e9d116c87c2deb2ada34ddb21a9a45ca796bc85cda1800e97",
+      "bytes": 13621
+    },
+    "final-kitchen-sections.log": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/final-kitchen-sections.log",
+      "sha256": "ea4ced6e44bd99e6b9b899ab3bba78ddca881f422490c94c79e3c99ebdf6d52f",
+      "bytes": 12187
+    },
+    "final-audit.log": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/final-audit.log",
+      "sha256": "9b628b59efb8a689215472cd0824a3813664020aa442074f6accc051fe8569d8",
+      "bytes": 13903
+    },
+    "tests-native-final.log": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/tests-native-final.log",
+      "sha256": "9170f7308e39a9d0975a24793590c6ca662742ecb79a58688b88452416b5a4e2",
+      "bytes": 285
+    },
+    "tests-blender.log": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/tests-blender.log",
+      "sha256": "a32b06589396e280bb2529d6755d080e5e27863614fe1c4b4cae03afed680edd",
+      "bytes": 114
+    },
+    "lint.log": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/lint.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    "typecheck.log": {
+      "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/kitchen-study/typecheck.log",
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332",
+      "bytes": 37
+    }
+  },
+  "limits": "Focused source and targeted-render review, not exact photographic equivalence or refreshed full-house delivery. Original archive preserved; full gallery/video/portable repack deferred."
+}

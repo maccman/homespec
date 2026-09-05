@@ -1234,8 +1234,8 @@ def build() -> House:
         SegmentalGardenDoor("D_KITCHEN_TERRACE", host=KE, width=1900, height=2180, rise=320, at=4000, panes=(4, 3), frame=steel, frame_size=45, bar_size=22)
         Arch("A_DINING_K", host=KE, width=1100, height=2100, at=350)
         Arch("A_DRESSING_K", host=KE, width=1100, height=2100, at=350, sill=3300)
-        Arch("A_HALL_K", host=KN, width=1100, height=2100, at=1250)
-        Arch("A_K_HALL", host=HS, width=1100, height=2100, at=1250)
+        SquareHeadedOpening("A_HALL_K", host=KN, width=1100, height=2100, at=1250)
+        SquareHeadedOpening("A_K_HALL", host=HS, width=1100, height=2100, at=1250)
         Arch("A_BED3_HALL", host=KN, width=1000, height=2100, at=1300, sill=3300)
         Arch("A_HALL_BED3", host=HS, width=1000, height=2100, at=1300, sill=3300)
         CourtyardEntrance("D_ENTRY", host=HE, width=2500, height=3550, at=1900, frame=steel, leaf=oak, frame_size=50, bar_size=24)
@@ -1364,7 +1364,7 @@ def build() -> House:
                 material=lime,
                 thickness=28,
                 voids=voids,
-                beams=BeamGrid(width=92, depth=105, spacing=245, along="y", material=oak) if key == "K" else None,
+                beams=BeamGrid(width=150, depth=105, spacing=245, along="y", material=oak) if key == "K" else None,
             )
             if key == "A":
                 Ceiling("C1_" + key, outline=mm(inner[key]), level=L1, material=lime, thickness=28)
