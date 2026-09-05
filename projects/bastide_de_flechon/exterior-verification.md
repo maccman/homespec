@@ -130,8 +130,8 @@ points and their residuals were recomputed and are unchanged from generation
 | Front41 | 8.83 px | 8.83 px |
 
 The kitchen improvement follows the plan-supported 1350 mm upper-window width
-and photographically inferred 3950 mm sill /5400 mm head. The east oculi now
-follow the upper-plan centerlines at y2.325 m and y6.375 m, both within the master
+and photographically inferred 3950 mm sill / 5400 mm head. The east oculi now
+follow the upper-plan centerlines at y = 2.325 m and y = 6.375 m, both within the master
 bedroom. Their unchanged 5425 mm center elevation still produces substantial
 vertical disagreement: about 97 and 127 pixels in pool46. Correct horizontal
 setting-out does not resolve those heights.
@@ -149,8 +149,8 @@ output resolution, not a photographic fidelity percentage.
 
 The first saved diagnostic scene at `out/exterior-study/current-first/house.blend`
 was built from native generation `cc5f3633dcb04e339fc979864142c382`.
-That generation had365 passing checks and one failed generic roof-pitch check
-for the initial11.42° kitchen hypothesis. This was not a clean final build.
+That generation had 365 passing checks and one failed generic roof-pitch check
+for the initial 11.42° kitchen hypothesis. This was not a clean final build.
 The scene successfully rendered three actual Cycles drafts. Its independent
 saved-scene checks found all structural IDs, retained inward material slots,
 resolvable image files, finite exterior geometry and no albedo image upstream
@@ -159,19 +159,19 @@ of Roughness or Normal.
 Those drafts rejected the first broad foreground planting and near-flush stone
 faces. Complete rooted plant groups were subsequently corrected in the scene,
 without per-camera beauty visibility changes. Rubble was rebuilt with rounded
-shoulders, uneven24–39mm exposed faces and20mm lime joints. Native roof and
+shoulders, uneven 24–39 mm exposed faces and 20 mm lime joints. Native roof and
 window hypotheses were then cross-checked against unused photograph landmarks
 and the upper plan. Earlier diagnostics remain identified by their own scene
 and camera hashes; they are not evidence for the later changes.
 
-The next native generation `1828c4abf43d456bafce64d6eb5aa72f` passed365 checks
-and failed9. It exposed roof/wall junctions, insufficient beam clearance and
+The next native generation `1828c4abf43d456bafce64d6eb5aa72f` passed 365 checks
+and failed 9. It exposed roof/wall junctions, insufficient beam clearance and
 opening-to-infill relationships that required physical correction. Its smaller
-plan-supported upper kitchen window also failed the generic10% glazing-area
-rule at8.6%. The full non-Blender suite at that stage passed240 tests, with
+plan-supported upper kitchen window also failed the generic 10% glazing-area
+rule at 8.6%. The full non-Blender suite at that stage passed 240 tests, with
 5 Blender tests deselected. No failed generation is labeled as passing.
 
-The last independently checked integrated scene belongs to source `6a66186`,
+An earlier independently checked integrated scene belongs to source `6a66186`,
 native generation `c48bda1fad184c5080dbc425b1566a7a`. Its saved file is
 `out/bastide_de_flechon/presentation/c48bda1fad184c5080dbc425b1566a7a/eaeb650d163455ad/house.blend`,
 SHA-256 `6fdf3c9480017f2b03403577d1caf97dbc18dd6acc08b719223372ccda32b227`.
@@ -185,7 +185,7 @@ checks are recorded separately above.
 
 ## Remaining photographic limits
 
-- The main roof remains about1.3m higher than the proportional estimate from
+- The main roof remains about 1.3 m higher than the proportional estimate from
   two front photographs. Lowering it requires a coupled revision of the
   principal-room timbers, curtain attachments and upper opening heights.
   That shared envelope is retained, and the exterior images cannot be called
@@ -194,8 +194,8 @@ checks are recorded separately above.
   between the pergola paving and entry lawn. The existing common ground datum
   does not reproduce that transition. Correcting it requires coordinated
   kitchen/hall floor and approach levels; no floating decorative steps were added.
-- Main south leaves retain their78° open state used by the salon walkthrough;
-  photographs41/46 show them closed. Camera fitting uses fixed aperture edges.
+- Main south leaves retain their 78° open state used by the salon walkthrough;
+  photographs 41/46 show them closed. Camera fitting uses fixed aperture edges.
 - Absolute elevations, fine carving, individual stone placement, vegetation
   morphology and concealed roof junctions remain inferred. The annex roof
   height and partially obscured wing chimney/dish are not independently solved.
