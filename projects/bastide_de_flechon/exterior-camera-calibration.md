@@ -161,9 +161,9 @@ Vegetation/pergola frequently masks jambs and terraces. The fit is to architectu
 
 `uv run --frozen pytest tests/test_flechon_exterior_geometry.py` passed 16 tests. The tests exercise actual CAD solids at straight and oblique host angles, contiguous lower/upper courtyard cuts, curved upper shoulders, fixed sidelights versus central clear passage, the 2500 mm kitchen terrace crown, pure clipping and stone joint/bounds behavior. The previously found upper glazing seam gap and clear-height discrepancy were corrected by the geometry owner before this passing run. No geometry changes were made by the camera/evidence agent.
 
-## Exact current-generation reprojection — 2026-09-05T21:39:24.311001+00:00
+## Historical reprojection checkpoint — 2026-09-05T21:39:24.311001+00:00
 
-`exterior-current-landmarks.json` reprojects all 39 original opening annotations from **generation 0b912baa9c2845caba0228c7821025f2**, source commits `18365f0` and `7e2ccce`. Current IR SHA-256 is `85dfb294cfdaacefd2591047365cec96975d856aef21d807a8d7436bf6560def`. This is distinct from the historical camera-fit IR `cc5f3633dcb04e339fc979864142c382`. No camera was refitted or modified: camera-lock SHA-256 remains `4a9ae366bc5cba93a17174b39bbeddc80e6d7267566d671e61e5a74668f9fa97`. Original UV coordinates, annotation sizes, weights and original fit/holdout membership are retained. The report adds independent roof holdouts separately, so aggregate opening RMS comparisons use the same points.
+At this historical checkpoint, the landmark report reprojected all 39 original opening annotations from **generation 0b912baa9c2845caba0228c7821025f2**, source commits `18365f0` and `7e2ccce`. That checkpoint’s IR SHA-256 is `85dfb294cfdaacefd2591047365cec96975d856aef21d807a8d7436bf6560def`. This is distinct from the historical camera-fit IR `cc5f3633dcb04e339fc979864142c382`. No camera was refitted or modified: camera-lock SHA-256 remains `4a9ae366bc5cba93a17174b39bbeddc80e6d7267566d671e61e5a74668f9fa97`. Original UV coordinates, annotation sizes, weights and original fit/holdout membership are retained. The report adds independent roof holdouts separately, so aggregate opening RMS comparisons use the same points.
 
 | View | Original fit subset RMS, old → current px | Original holdout subset RMS, old → current px |
 |---|---|---|
@@ -186,3 +186,12 @@ detail poses remain unchanged. This is a detail framing correction, not a
 refit of photograph extrinsics or a change to the reported landmark errors.
 The resulting complete register SHA256 is
 `c120f2c07e4440c1cccde7022e654e98ee938f8489fb81304aed8c7f4d0ac8c7`.
+
+
+## Current integrated-generation reprojection — 2026-09-05T21:59:18.721165+00:00
+
+`exterior-current-landmarks.json` now records exact native generation **c48bda1fad184c5080dbc425b1566a7a**, source **6a66186**, with IR SHA-256 `b64784c34bc574168338935b48ba3df2ebec909deed4cb6632d79df5840f0524`. All 39 semantic opening points were re-derived from this IR, rather than relabeling the preceding result. Their coordinates, all reprojection results and the two independent roof holdouts are exactly unchanged from the earlier `0b912baa9c2845caba0228c7821025f2` checkpoint. The prior JSON is preserved under `out/exterior-study/exterior-landmarks-0b912baa9c2845caba0228c7821025f2.json`.
+
+The complete camera-register SHA-256 is `c120f2c07e4440c1cccde7022e654e98ee938f8489fb81304aed8c7f4d0ac8c7`. Its four primary camera objects were compared directly with the historical committed register at `7e2ccce` and are equal, including the original annotations. The only intervening register change is the `shutter-sill` detail lens correction described above. No camera/register or project Python file was edited during this reprojection.
+
+Current opening holdout RMS remains **pool46 83.23 px; courtyard08 103.91 px; kitchen12 4.30 px; front41 8.83 px**. The hall roof holdout remains **15.15 px** at native ridge 7379.93 mm. The unresolved main front roof holdout remains **125.83 px** at ridge 8508.83 mm. East oculus heights still produce approximately 97 and 127 pixels of vertical disagreement. These are measurements from the current native IR under the frozen cameras; saved-scene and rendered-image verification for the integrated source remains pending.

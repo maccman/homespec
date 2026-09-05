@@ -24,10 +24,10 @@ geometry or establish a quality score.
 
 ## Current source checks
 
-The current review source is `7e2ccce`. Its exact native generation is
-`0b912baa9c2845caba0228c7821025f2`, with IR SHA-256
-`85dfb294cfdaacefd2591047365cec96975d856aef21d807a8d7436bf6560def`.
-That generation completes with **370 passing checks and one failed
+The current review source is `6a66186`. Its exact native generation is
+`c48bda1fad184c5080dbc425b1566a7a`, with IR SHA-256
+`b64784c34bc574168338935b48ba3df2ebec909deed4cb6632d79df5840f0524`.
+That generation completes with **371 passing checks and one failed
 `glazing_ratio` check** for bedroom three: **0.086 against 0.1**.
 The roof junction solids, beam headroom and IFC property rules pass. The
 1350 mm window is independently supported by the upper plan; its smaller glass
@@ -40,18 +40,20 @@ they contain no solid. They are nonphysical and emit no IFC wall; actual wall
 and infill solids retain their IFC identity and properties. No core check,
 audit threshold or clash policy was modified.
 
-The completed regression runs report **243 non-Blender tests passed**
+Earlier completed regression runs recorded **243 non-Blender tests passed**
 (`out/exterior-study/pytest-final-v6.log`) and **5 actual Blender tests passed**
-(`out/exterior-study/blender-tests.log`). These are separate test runs; the
+(`out/exterior-study/blender-tests.log`). The full-suite rerun for the integrated
+source is **pending after a fixture correction**. These earlier results belong
+to separate test runs; the
 Blender regression result does not establish that the latest dressed scene or
 its renders have passed inspection. The exact native generation and its single
-failure are recorded in `out/exterior-study/current-build-v7.log` and the
+failure are recorded in `out/exterior-study/integrated-build.log` and the
 generation's `checks.json`.
 
 ## Current saved-scene and render status
 
-At this record update, the final saved-scene operation is being rerun with the
-Metal device selection. **Validation of that final saved scene and its new
+At this record update, the integrated saved-scene operation for source
+`6a66186` is underway with Metal. **Validation of that final saved scene and its new
 render outputs is pending.** There is no completed final-scene hash, raw-audit
 result or final-render acceptance recorded here yet. Earlier successful scene
 checks and draft renders below belong to their explicitly identified historical
@@ -61,12 +63,17 @@ generation and cannot validate the current source.
 
 [Current landmarks](exterior-current-landmarks.json) independently reprojects
 all 39 original opening annotations from exact generation
-`0b912baa9c2845caba0228c7821025f2`. The four camera poses, original UV positions,
+`c48bda1fad184c5080dbc425b1566a7a`. The four camera poses, original UV positions,
 weights and original fit/holdout membership remain unchanged. The older camera
 JSON deliberately retains the historical fit against generation
 `cc5f3633dcb04e339fc979864142c382`; the new report provides the current geometry
 comparison without overwriting that evidence. The [calibration appendix](exterior-camera-calibration.md)
-records both IR hashes and the unchanged camera-lock hash.
+records the current IR hash and complete camera-register hash
+`c120f2c07e4440c1cccde7022e654e98ee938f8489fb81304aed8c7f4d0ac8c7`.
+All four primary camera objects remain exactly equal to the historical register;
+only the separate `shutter-sill` detail lens changed. All 39 current semantic
+points and their residuals were recomputed and are unchanged from generation
+`0b912baa9c2845caba0228c7821025f2`.
 
 | Original opening holdout subset | Historical geometry RMS | Current geometry RMS |
 |---|---:|---:|
