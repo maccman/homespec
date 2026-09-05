@@ -212,6 +212,9 @@ def build_materials(mats=None, root=None):
     add("shutter", "exterior-weathered-shutter.png", patch=(1.2, 0.4),
         uv=True, gain=(0.94, 0.94, 0.92), roughness=(0.70, 0.87),
         relief=0.0007, micro=0.00013, micro_scale=850, fibres=True)
+    add("frieze", "exterior-weathered-shutter.png", patch=(1.2, 0.4),
+        gain=(0.27, 0.25, 0.245), roughness=(0.65, 0.83),
+        relief=0.00045, micro=0.00013, micro_scale=850, fibres=True)
     add("iron", "salon-forged-iron.png", patch=(0.7, 0.7),
         gain=(1.05, 1.03, 1.00), roughness=(0.48, 0.68), metal=0.68,
         relief=0.0003, relief_scale=105, micro=0.00012, micro_scale=700)

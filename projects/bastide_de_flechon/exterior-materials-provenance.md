@@ -163,3 +163,11 @@ compilation only. Scene assignment, shader construction in the locked Blender
 environment, and Cycles elevation/detail acceptance are part of the exterior
 integration task. No final house gallery, portable repack, or comparison-site
 publication is claimed here.
+
+The first complete exterior close-up showed that the inherited front-door
+frieze rendered almost white, unlike the grey painted oak in photographs41/46.
+A separate `exterior_frieze` material now reuses the generated weathered-shutter
+pigment at gain(0.27,0.25,0.245), with independent roughness0.65–0.83 and0.45mm
+procedural relief. It is assigned to the native frieze's outward faces and the
+added panel mouldings; its inward material slots remain intact. This brings
+the exterior material inventory to19 without generating another image.

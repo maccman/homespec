@@ -175,3 +175,14 @@ Vegetation/pergola frequently masks jambs and terraces. The fit is to architectu
 The kitchen upper window now derives from its native 1350 mm width, 3950 mm sill and 5400 mm head; its four corner holdouts improve from **40.22 to 4.30 px**. East oculi use the corrected plan centers **y2.325 /6.375 m**. Their center heights remain **5425 mm**; horizontal alignment improves, while their unresolved vertical disagreement remains explicit in the report. The pool opening holdout RMS improves from **117.19 to 83.23 px**, without changing the pool camera or deleting points.
 
 The separately held-out hall ridge, using original source point (630,260) at 900×1200, now reads native z**7379.93 mm** and improves from **123.83 to 15.15 px** under the frozen courtyard pose. That compares the native roof-bed crest with the photographed coping crest; additional cap/finish thickness remains an uncertainty. The main front native ridge remains **8508.83 mm**, and its independent roof holdout remains **125.83 px** from the reference. Thus the main roof-height disagreement is unresolved even though the frontal opening landmarks fit closely. The current JSON records actual IR values and residuals; none of these measurements is a photographic fidelity percentage.
+
+### Detail-frame correction after the first complete saved-scene review
+
+The four primary camera records remain byte-equivalent JSON objects to the
+calibrated register `4a9ae366bc5cba93a17174b39bbeddc80e6d7267566d671e61e5a74668f9fa97`.
+The `shutter-sill` construction close-up cropped the sill in its actual draft,
+so its lens changed from64mm to50mm at the same position and target. Five other
+detail poses remain unchanged. This is a detail framing correction, not a
+refit of photograph extrinsics or a change to the reported landmark errors.
+The resulting complete register SHA256 is
+`c120f2c07e4440c1cccde7022e654e98ee938f8489fb81304aed8c7f4d0ac8c7`.

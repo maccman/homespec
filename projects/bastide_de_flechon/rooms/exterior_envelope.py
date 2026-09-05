@@ -449,7 +449,8 @@ def entry_panels(scene, mats, o):
 
 def front_frieze(scene, mats, o):
     """Fine raised panel moldings on the outside of the retained opaque transom."""
-    mat = _mat(mats, "shutter")
+    mat = _mat(mats, "frieze")
+    plaster_face(scene, "D_FRONT.frieze", mat, o["n"])
     w = o["width"]
     for i, (lo, hi) in enumerate(((.10, w / 2 -.21), (w / 2 + .21, w -.10))):
         for layer, inset in enumerate((0, .018)):

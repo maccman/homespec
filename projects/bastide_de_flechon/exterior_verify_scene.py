@@ -139,6 +139,33 @@ def inspect_scene(ir_path):
             row['trim_planar_center_error_m'] = [(min(a) + max(a)) / 2 - expected.dot(u), (min(z) + max(z)) / 2 - expected.z]
             if max(abs(value) for value in row['trim_planar_center_error_m']) > .003:
                 errors.append('exterior oculus trim center disagrees with IR ' + name)
+    shower_fits = []
+    ceiling = by.get('C1_K')
+    if ceiling is None:
+        errors.append('missing kitchen-wing plaster ceiling')
+    else:
+        inverse = ceiling.matrix_world.inverted()
+        for name in ('bedroom3_shower_continuous_wet_wall_backing',
+                     'bedroom3_shower_stone_upper_support', 'bedroom3_shower_split_stone_upper'):
+            obj = by.get(name)
+            if obj is None or obj.get('physical_ceiling_fit') != 'C1_K':
+                errors.append('missing physical shower ceiling fit ' + name)
+                continue
+            clearances = []
+            missed = 0
+            for vertex in obj.data.vertices:
+                world = obj.matrix_world @ vertex.co
+                origin = inverse @ Vector((world.x, world.y, 4.0))
+                hit, point, _, _ = ceiling.ray_cast(origin, inverse.to_3x3() @ Vector((0, 0, 1)))
+                if not hit:
+                    missed += 1
+                else:
+                    clearances.append((ceiling.matrix_world @ point).z - world.z)
+            minimum = min(clearances) if clearances else None
+            shower_fits.append(dict(object=name, checked_vertices=len(clearances), missed_ceiling_rays=missed,
+                                    minimum_vertical_clearance_m=minimum))
+            if missed or minimum is None or minimum < .002:
+                errors.append('saved shower construction crosses ceiling ' + name)
     # The consumer modules use plain JSON and bpy, avoiding homespec/build123d imports.
     sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'homespec' / 'blender'))
     import audit
@@ -152,7 +179,8 @@ def inspect_scene(ir_path):
     return dict(schema=1, ir=str(ir_path), ir_sha256=sha256(ir_path), exterior_objects=len(exterior),
                 exterior_mesh_vertices=sum(len(obj.data.vertices) for obj in exterior if obj.type == 'MESH'),
                 exterior_object_names=sorted(obj.name for obj in exterior), exterior_materials=len(materials),
-                inward_material_checks=inward, missing_images=missing_images, oculus_checks=oculi, errors=errors,
+                inward_material_checks=inward, missing_images=missing_images, oculus_checks=oculi,
+                shower_ceiling_checks=shower_fits, errors=errors,
                 audit_findings=findings, audit_count=len(findings), audit_requires_review=bool(findings), audit_counts_by_rule=dict(Counter(row['rule'] for row in findings)),
                 audit_counts_by_scope=dict(Counter(row['scope'] for row in findings)),
                 audit_policy='Every raw finding retained; classification is not an exemption or a geometry fix')

@@ -2,7 +2,7 @@
   "schema": 1,
   "lock_id": "exterior-v2-landmark-fit",
   "sensor_dimension_mm": 36,
-  "notes": "Four primary camera fits with recorded original UV landmarks and explicit residuals; fixed architecture. Six detail views retained byte-equivalent as JSON objects. No visual render acceptance yet.",
+  "notes": "Four primary native-optics photo poses and all source landmarks are unchanged from calibration lock4a9ae366. Five detail poses retained; shutter-sill lens widened to50mm after actual draft clipping. Detail images are construction studies, not photo extrinsic fits.",
   "views": [
     {
       "id": "pool46",
@@ -1991,13 +1991,14 @@
         8.4,
         4.85
       ],
-      "lens_mm": 64,
+      "lens_mm": 50,
       "size": [
         1920,
         1600
       ],
       "exposure": 0.65,
-      "pose_status": "Initial multi-elevation fit; unsurveyed extrinsics, refine using actual render"
+      "pose_status": "Detail study; lens widened from64 to50mm after actual draft cropped the sill; primary photo cameras unchanged",
+      "previous_detail_lens_mm": 64
     },
     {
       "id": "courtyard-trim",
