@@ -319,7 +319,7 @@ def main():
                     and all(abs(row.get(key, 0) - anchor.get(key, 0)) < 0.00001 for key in ("lens_mm", "shift_x", "shift_y")), folder + "/" + row["id"] + " matches locked camera")
             require(outcome(row.get("camera_check")) and outcome(row.get("frame_check")), folder + "/" + row["id"] + " passed camera/frame checks")
             projected = row.get("projection_implementation_check", [])
-            require(len(projected) == len(anchor["landmarks"]) and all(0 <= p["maximum_uv_disagreement"] <= 0.0001 for p in projected), folder + "/" + row["id"] + " Blender projection agrees with calibration")
+            require(len(projected) == len(anchor.get("landmarks", [])) and all(0 <= p["maximum_uv_disagreement"] <= 0.0001 for p in projected), folder + "/" + row["id"] + " Blender projection agrees with calibration")
             require(digest(row["render"]) == row["sha256"] and png_size(row["render"]) == row["pixels"], folder + "/" + row["id"] + " image hash and dimensions")
     require(digest(DEST / "baseline" / "house_walk.blend") == baseline["walk_sha256"], "Preserved baseline remains identical")
     light_controls = verify_light_controls(require, source, lock, tuned)

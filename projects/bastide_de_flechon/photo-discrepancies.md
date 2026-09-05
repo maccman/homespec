@@ -5,17 +5,16 @@ they do not establish photographic equivalence for the whole house. Source paths
 below are relative to `reference/`. Camera evidence and rejected trials are in
 `camera_calibration.md` and `photo_camera_lock.json` (lock v4).
 
-This review inspected the originals, `deliverables/calibration-current-v2/`
-(actual Cycles drafts), `deliverables/calibration-clay-v2/` (Workbench geometry
-diagnostics), and the selected principal image in
-`deliverables/calibration-principal-v4/principal_low_nearhead.png`. The v2 folders
-precede the final principal camera, four-beam kitchen and integrated salon update.
-Source now includes all four salon modules from `ac42812`; reduced-aperture
-lighting has been selected from actual studies. **Final integrated-source
-comparisons, gallery, motion review and package verification are still pending.**
-The principal trial uses a recorded +3 EV diagnostic offset; it is not the final
-lighting treatment. Final delivery manifests must identify the scene and camera
-lock actually rendered.
+The eight fresh Cycles previews in `deliverables/photo-comparison/` now exist
+from the final integrated source and v4 lock. The four bedroom sections below
+were updated by directly comparing those images with the untouched originals;
+their manifest records the named photo presets and 20% aperture fraction.
+Earlier `calibration-current-v2/`, `calibration-clay-v2/` and principal-camera
+trials remain diagnostic history, not substitutes for the fresh comparisons.
+Source includes all four salon modules from `ac42812` and the selected reduced-
+aperture lighting. **Gallery, motion-review and portable-package completion and
+final artifact verification are not claimed here.** The comparison manifest
+identifies the actual scene, camera lock, render settings and image hashes.
 
 ## Kitchen10
 
@@ -31,11 +30,15 @@ Cross-checks: `Final Collection-10.jpg` (photo00, reverse interior) and
   physical wood grain and separate relief. Four distinct beams visible in photo10
   replace the three-member model. Centers 10.60/11.85/13.10/14.35 m are inferred;
   the retained 285×310 mm section meets the joists exactly at 2.867 m.
-- **Open:** final four-beam appearance requires the refreshed comparison. Their exposure and spacing
-  are not surveyed; four visible beams do not prove the room's total count. The
-  old clay render shows only two. Stools remain more exposed than in photo10,
-  and the earlier Cycles draft loses island/cabinet tonal separation in excessive
-  darkness. The new lighting treatment must be judged in the final scene.
+- **Final render:** all four heavy members are visible in the saved-scene
+  comparison, with the shallow door head, clear island staging and actual sink
+  opening. The warm image-left sun patch and reduced aperture fill restore
+  readable worktop reflections and cabinet/floor separation.
+- **Open:** beam spacing and exposure are inferred; four visible beams do not
+  prove the room's total count. The stools remain more exposed than in photo10,
+  the island front stays darker, and timber checks/grain and plaster variation
+  read more strongly than the photographed surfaces. The landscape remains an
+  approximate background.
 
 ## Salon58
 
@@ -52,15 +55,22 @@ Source: `PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg`.
   study; the coherent daylight walk leaves it off. V4 camera: position
   `(0.65, 8.8, 2.08)` m, target `(5.1, 3.0, 1.36)` m, native 30 mm lens, zero
   shifts, 1400×788 preview. It uses a higher eye with a slight downward aim.
-- **Open:** the earlier draft's fireplace, glazing, sofa and lighting differences
-  are the basis for these changes, not evidence of the final result. Final review
-  still needs to judge profile ratios, stone regularity, timber/floor response,
-  upholstery and source daylight; see `salon-discrepancies.md`. People and temporary
-  entertaining arrangements are omitted. Camera pose remains a visual estimate.
+- **Final render:** the complete fireplace, raised hearth, fireback, tools and
+  fire are visible, together with the carved table, channeled sofas and curved
+  walnut chair rails. The rear sofa reveals the table without hiding dining
+  geometry. Timber boards, stone joints, curtain translucency and warm practicals
+  remain visible under the recorded 15% aperture fill.
+- **Open:** stone outlines are still more regular and prominent than in the
+  original; hearth profiles and sofa/chair tailoring remain approximate. Ceiling
+  grain and the bright floor have stronger contrast, and garden glazing and
+  reflections differ. See `salon-discrepancies.md` for the detailed source limits.
+  People and temporary entertaining arrangements are omitted. Camera pose and
+  light response remain visual estimates.
 
 ## Garden02
 
 Source: `PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-12.jpg`.
+Reviewed: `deliverables/photo-comparison/garden02.png`, 900×1200 Cycles preview.
 
 - **Plan-backed:** both garden bed heads now face the north exterior wall, and
   bedroom one's doorway follows the plan's southwest position. This restores the
@@ -68,18 +78,21 @@ Source: `PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-12.jpg`.
 - **Pass changes:** asymmetric linen and pillow shapes, longer coverlet falls,
   measured fabric repeats and member grain. The EXIF 24 mm camera fits the four
   artwork corners at about 3.3 px RMS.
-- **Open:** the current view still lacks the photograph's dominant projecting
-  beam silhouette; bedside-table proportions and placement also differ. The
-  sconce is about 140 mm too far left and 120 mm high relative to the artwork
-  (approximately 74 px independent holdout error). In the earlier draft, its visible bulb and dark
-  curtain differ from the source's diffuse amber shade and bright filtered light.
-  Room assignment, furniture offsets and the 1500 mm mattress remain inferred;
-  the plan labels a 1600 mm bed.
+- **Open:** the fresh view has readable pale plaster and linen, but still lacks
+  the source's projecting heavy beam. Tall pillows dominate the bottom half;
+  the animal coverlet and most of the pedestal table are cropped out. The sconce
+  remains about 140 mm too far left and 120 mm high relative to the artwork
+  (approximately 74 px independent holdout error); its bright visible bulb differs
+  from the source's diffuse amber shade. The right edge exposes a broad brown
+  window frame beside a darker, narrow curtain instead of the source's luminous
+  fabric. Room assignment, furniture offsets and the 1500 mm mattress remain
+  inferred; the plan labels a 1600 mm bed.
 
 ## Principal06
 
 Source: `PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-16.jpg`.
 Cross-checks: photo33 and `PHOTOS/VICTOR FITZ/DSC05311.jpg` (photo55).
+Reviewed: `deliverables/photo-comparison/principal06.png`, 1200×900 Cycles preview.
 
 - **Plan-backed:** the shared 3360 mm front opening replaces the oversized clear
   arch. Curtain centers follow its actual jambs; the 6.46 m pole stays within the
@@ -87,16 +100,20 @@ Cross-checks: photo33 and `PHOTOS/VICTOR FITZ/DSC05311.jpg` (photo55).
 - **Pass changes:** gathered patterned curtains, detailed cane chairs and bench,
   softer bedding, member-aligned wood and separate end grain. The native 30 mm
   GFX lens becomes 24.658 mm on the renderer's 36 mm sensor.
-- **Open:** the selected low camera is a documented compromise: it retains bed,
-  arch and west seating but gives less bed, a larger apparent arch and more west
-  brace intrusion than the photograph. Architectural RMS is 122.3 px at 1200×900.
-  Lower-error trials lost the bed or hit the headboard visually. The west brace's
-  floor-reaching shape is photographed; the east brace's lower continuation is
-  inferred because photos06/55 crop it. It has not been shortened to clear a shot.
+- **Open:** the fresh view confirms the low-camera compromise. A large foreground
+  pillow and the west brace dominate the right side; the bed spread and bench
+  receive much less of the frame than in the source, and the west window is partly
+  cropped/obscured. The arch appears larger, the exposed timber is darker and more
+  regular, and the curtain repeat is more geometric. Architectural RMS remains
+  122.3 px at 1200×900. Lower-error trials lost the bed or hit the headboard visually.
+  The west brace's floor-reaching shape is photographed; the east brace's lower
+  continuation is inferred because photos06/55 crop it. It has not been shortened
+  to clear a shot.
 
 ## Principal33
 
 Source: `PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-7.jpg`.
+Reviewed: `deliverables/photo-comparison/principal33.png`, 900×1200 Cycles preview.
 
 - **Evidence:** this independently supports the west diagonal brace, horizontal
   tie, raked cane chairs, trumpet table and gathered curtain. It does not supply
@@ -104,28 +121,32 @@ Source: `PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-7.jpg`.
 - **Pass changes:** distinct chair-member grain, woven cane, aged table/bench
   finishes, curtain folds and physical pattern scale. The camera now uses the
   recorded TS-E 50 mm lens with a backward position adjustment and lens shift.
-- **Open:** the clay tie lies around 0.15 frame height versus about 0.29 in the
-  source; the brace appears more upright and the bed intrudes at lower left where
-  the photograph has open floor. Curtain width, chair/table overlap and plant/
-  ceramic staging also differ. Exact timber angles, furniture
-  proportions and camera pose remain estimates. Material warmth and the source's
-  strong side daylight await the refreshed lighting comparison.
+- **Open:** the fresh image retains both cane chairs and the trumpet table, but
+  the horizontal tie is higher, the brace more upright, and the bed occupies the
+  lower edge where the source has open floor. The table is smoother and lighter
+  gold than the dark patinated reference; chair frames and cushions also read
+  lighter. The curtain has a more regular, high-contrast repeat, while the source's
+  broad floor shadow and plant/ceramic staging are not reproduced. Exact timber
+  angles, furniture proportions and camera pose remain estimates.
 
 ## Bedroom09
 
 Source: `PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-19.jpg`.
+Reviewed: `deliverables/photo-comparison/bedroom09.png`, 1200×900 Cycles preview.
 
 - **Plan-backed:** retain the upper kitchen room footprint and sloping roof
   envelope. Photograph-to-room assignment and cabinet/bed dimensions are inferred.
 - **Pass changes:** light stripped-wood wardrobe with a genuine central recess,
   grain following rails and stiles, a lighter aged mirror annulus with grain
   following its circumference, and softer linen/olive pillows.
-- **Open:** the EXIF 50 mm GFX lens converts to 41.096 mm; the bounded camera fit
-  still has about 94 px RMS. Actual clay review crops most of the bed foot where
-  the original includes it. Wardrobe cropping, shelf visibility, mirror framing
-  and furniture scale remain substantially different. The earlier dark Cycles
-  draft cannot substantiate the pale wood/tobacco-plaster match; judge the selected
-  brighter lighting in the refreshed comparison.
+- **Open:** the brighter final preview reveals linen, olive pillows and tobacco
+  plaster, but still crops out the bed foot and most bedside furniture. The EXIF
+  50 mm GFX lens converts to 41.096 mm; the bounded camera fit retains about 94 px
+  RMS. The wardrobe reads as coarse gray wood rather than the source's warmer,
+  softly worn timber, and its central shelves are absent from this composition;
+  a broad plain brown panel appears behind the headboard instead. Mirror framing
+  and reflection also differ. The improved exposure does not resolve these
+  substantial furniture-layout, size and image-field discrepancies.
 
 ## Hall21
 
@@ -136,12 +157,18 @@ Source: `PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-3.jpg`.
   without changing its plan width or position.
 - **Pass changes:** distinct terracotta plaster and an east-glazing photograph
   lighting study, with a level EXIF 24 mm camera and explicit vertical shift.
-- **Open:** the draft contains the principal landmarks but their apparent scale
-  and overlap differ: the statue/console are smaller, and the mirror/gallery look
-  farther away than in the source. The crossing soffit also frames differently.
-  The simplified statue/commode and rug are interpretations; the mirror does not
-  reproduce the source reflection. Lateral daylight strength and the source's
-  warmer reflected light remain unresolved. This is a composition estimate.
+- **Final visual review:** `deliverables/photo-comparison/hall21.png`, 900×1200,
+  uses the combined scene, v4 camera, +1.30 EV and 20% aperture power. The hall is
+  legible, with actual side-light shadows and a visible terracotta wall. The
+  former near-black interior is no longer the dominant issue.
+- **Open:** the crossing soffit and gallery occupy different parts of the frame;
+  the pendant is cropped at the upper right while the original shows its complete
+  teardrop. The modeled left pier is pale where the source continues terracotta.
+  The mirror is narrower and reflects a different corridor; the simplified
+  statue, commode proportions and black gallery ironwork do not reproduce their
+  photographed detail. Broad light washes the rug pale, whereas the original
+  retains a darker, more saturated pattern and warmer reflected light. These
+  composition, geometry and surface differences remain visible in the final render.
 
 ## Shower05
 
@@ -153,12 +180,19 @@ Source: `PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-15.jpg`.
 - **Pass changes:** continuous chipped stone above/below a recessed shelf; head
   on the window wall; separate mixer plate and handset on the shelf wall; thin
   translucent patterned sheer; real relief independent of generated pigment.
-- **Open:** the draft has finer, more regular stone courses, different shelf/glass
-  framing and a smaller, less leftward head than the photograph. The old draft's
-  darkness requires reassessment with current lighting. Glass hidden for the clay
-  diagnostic is intentional; assess glass framing in Cycles. Curtain motif, transmission
-  and fixture dimensions remain approximate. Photo04's adjacent carved grille is
-  not reconstructed here. The EXIF-based camera is a composition estimate.
+- **Final visual review:** `deliverables/photo-comparison/shower05.png`, 900×1200,
+  uses the combined scene, v4 camera, +1.85 EV and 20% aperture power. Bright
+  filtered curtain light now reveals the continuous shelf and wet-wall relief;
+  the overhead and mixer occupy their intended separate walls.
+- **Open:** the stones still read as finer, more regular narrow courses with
+  stronger dark joints than the original's pale fractured faces. The head is
+  smaller and farther right in the image. The glass edge lies near the right
+  border instead of crossing near the source's center-left, and a conspicuous
+  circular reflection appears at the right. The curtain pattern is more uniform
+  and contrasty; its bright lower field sits beneath a much darker upper corner.
+  The source's narrow warm stone-wall sun patch and softer cream stone response
+  are not reproduced. Shelf framing, fixtures, curtain transmission and camera
+  pose remain estimates; photo04's adjacent carved grille is not reconstructed.
 
 ## Shared limits
 

@@ -179,7 +179,7 @@ def portable_zip(project, destination=None):
     points = json.loads((model / 'waypoints.json').read_text())
     if len(points) != 26:
         raise ValueError(f'Portable model must contain 26 bookmarks; found {len(points)}')
-    destination = Path(destination) if destination else deliverables / 'Bastide-de-Flechon-portable.zip'
+    destination = Path(destination) if destination else deliverables / 'La-Bastide-de-Flechon-Walkthrough.zip'
     destination.parent.mkdir(parents=True, exist_ok=True)
     entries = []
     with tempfile.NamedTemporaryFile(prefix='.portable-', suffix='.zip', dir=destination.parent, delete=False) as temporary:
