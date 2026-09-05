@@ -95,20 +95,18 @@ def horizontal_surface(host: str, solid, z: float, *, role: str = "top") -> Plan
     frame = SurfaceFrame(origin=(0, 0, z), u=(1, 0, 0), v=(0, 1, 0), normal=(0, 0, 1))
     vertices: list[G.Point] = []
     triangles: list[tuple[int, int, int]] = []
-    if solid is not None:
-        for face in solid.faces():
-            bb = G.bbox(face)
-            if abs(bb.min[2] - z) > 1e-5 or abs(bb.max[2] - z) > 1e-5:
-                continue
-            points, indices = G.tessellate(face)
-            offset = len(vertices)
-            vertices.extend((p[0], p[1]) for p in points)
-            for a, b, c in indices:
-                p, q, r = (points[i] for i in (a, b, c))
-                cross = (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
-                if abs(cross) > 1e-10:
-                    indices = (a, b, c) if cross > 0 else (a, c, b)
-                    triangles.append((indices[0] + offset, indices[1] + offset, indices[2] + offset))
+    for mesh in G.planar_face_meshes(solid, lambda n: abs(n[2]) > 1 - 1e-7):
+        points, indices = mesh.vertices, mesh.triangles
+        if any(abs(p[2] - z) > 1e-5 for p in points):
+            continue
+        offset = len(vertices)
+        vertices.extend((p[0], p[1]) for p in points)
+        for a, b, c in indices:
+            p, q, r = (points[i] for i in (a, b, c))
+            cross = (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
+            if abs(cross) > 1e-10:
+                triangle = (a, b, c) if cross > 0 else (a, c, b)
+                triangles.append((triangle[0] + offset, triangle[1] + offset, triangle[2] + offset))
     area = sum(abs((vertices[b][0] - vertices[a][0]) * (vertices[c][1] - vertices[a][1]) -
                    (vertices[b][1] - vertices[a][1]) * (vertices[c][0] - vertices[a][0])) / 2
                for a, b, c in triangles)
@@ -118,20 +116,12 @@ def horizontal_surface(host: str, solid, z: float, *, role: str = "top") -> Plan
 def planar_surfaces(host: str, solid, role_for_normal: Callable[[G.Point3], str | None]) -> list[PlanarSurface]:
     """Read completed planar CAD faces, with role selection by outward normal."""
     surfaces = []
-    if solid is None:
-        return surfaces
-    for face in solid.faces():
-        nv = face.normal_at()
-        normal = (float(nv.X), float(nv.Y), float(nv.Z))
+    for mesh in G.planar_face_meshes(solid, lambda n: role_for_normal(n) is not None):
+        normal = mesh.normal
         role = role_for_normal(normal)
-        if role is None:
-            continue
-        points, indices = G.tessellate(face)
-        if not points:
-            continue
+        assert role is not None
+        points, indices = mesh.vertices, mesh.triangles
         origin = points[0]
-        if any(abs(sum((p[i] - origin[i]) * normal[i] for i in range(3))) > 1e-5 for p in points):
-            continue  # this contract describes planar faces only
         base = (1, 0, 0) if abs(normal[0]) < .9 else (0, 1, 0)
         dot = sum(base[i] * normal[i] for i in range(3))
         tangent = tuple(base[i] - dot * normal[i] for i in range(3))

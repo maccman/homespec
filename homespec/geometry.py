@@ -7,7 +7,7 @@ models, so the IR stays a data format and the kernel stays replaceable.
 from __future__ import annotations
 
 import math
-from collections.abc import Iterable, Sequence
+from collections.abc import Callable, Iterable, Sequence
 from typing import Any
 
 from build123d import Align, Box, Compound, Cylinder, Location, Plane, Polygon, export_step, extrude, import_step, section
@@ -235,6 +235,31 @@ def skin_layer(shape: Solid, thickness: float, *, underside: bool = False, gap: 
     sign = -1 if underside else 1
     faces = [face for face in shape.faces() if face.normal_at().Z * sign > 1e-6]
     return group(placed(extrude(face, amount=thickness, dir=(0, 0, sign)), (0, 0, sign * gap)) for face in faces)
+
+
+class PlanarFaceMesh(BaseModel):
+    """Kernel-independent samples of one actual planar CAD face."""
+
+    normal: Point3
+    vertices: list[Point3]
+    triangles: list[tuple[int, int, int]]
+
+
+def planar_face_meshes(shape: Solid, select: Callable[[Point3], bool]) -> list[PlanarFaceMesh]:
+    """Keep face traversal, normals and planarity checks behind the CAD boundary."""
+    meshes = []
+    if shape is None:
+        return meshes
+    for face in shape.faces():
+        nv = face.normal_at()
+        normal = (float(nv.X), float(nv.Y), float(nv.Z))
+        if not select(normal):
+            continue
+        vertices, triangles = tessellate(face)
+        if not vertices or any(abs(sum((p[i] - vertices[0][i]) * normal[i] for i in range(3))) > 1e-5 for p in vertices):
+            continue
+        meshes.append(PlanarFaceMesh(normal=normal, vertices=vertices, triangles=triangles))
+    return meshes
 
 
 # --------------------------------------------------------------------------- measuring
