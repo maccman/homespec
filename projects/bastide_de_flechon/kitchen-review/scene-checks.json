@@ -1,0 +1,1634 @@
+{
+  "blender_version": "5.2.1 LTS",
+  "build_record": {
+    "fingerprint": "7dea8b49dbd788a98b1ce2554ed5941875c57ae7854610209860859b5a55cfa2",
+    "generation": "bd73002f07a44a1f8904b1c9b32dc116",
+    "path": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/generations/bd73002f07a44a1f8904b1c9b32dc116/build.json",
+    "sha256": "02709128177ca641436079cf0359260ad5af7a2b768dfe9ba4125f21beff0aea",
+    "status": "passed"
+  },
+  "checks": [
+    {
+      "check": "scene is loaded from a saved Blender file",
+      "passed": true
+    },
+    {
+      "check": "supplied build generation passed",
+      "passed": true
+    },
+    {
+      "check": "this verifier belongs to the supplied frozen build",
+      "current_verifier_sha256": "d44ce5bf9467b1274f73e36746c525ca6861df25d3955f388862c5c5f0d809e6",
+      "passed": true,
+      "verifier_build_sha256": "d44ce5bf9467b1274f73e36746c525ca6861df25d3955f388862c5c5f0d809e6"
+    },
+    {
+      "check": "build source inputs remain current",
+      "checked_files": 134,
+      "mismatches": [],
+      "passed": true
+    },
+    {
+      "bowl": "kitchen_sink_open_steel_shell",
+      "check": "new stone and hollow bowl are present",
+      "passed": true,
+      "stone": "kitchen_island_continuous_stone_with_sink_cutout"
+    },
+    {
+      "check": "unobstructed stone control is at locked top plane",
+      "expected_z_m": 0.9575,
+      "measured": {
+        "face": 801,
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "kitchen_island_continuous_stone_with_sink_cutout",
+        "point_m": [
+          -3.0399999618530273,
+          13.399999618530273,
+          0.9574999809265137
+        ]
+      },
+      "passed": true
+    },
+    {
+      "check": "evaluated stone is 25 mm thick",
+      "passed": true,
+      "thickness_m": 0.02499997615814209,
+      "top": {
+        "distance_m": 0.09249997138977051,
+        "face": 801,
+        "normal": [
+          4.0536669132507086e-08,
+          0.0,
+          1.0
+        ],
+        "object": "kitchen_island_continuous_stone_with_sink_cutout",
+        "point_m": [
+          -3.0399999618530273,
+          13.399999618530273,
+          0.9574999809265137
+        ]
+      },
+      "underside": {
+        "distance_m": 0.08249998092651367,
+        "face": 976,
+        "normal": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "object": "kitchen_island_continuous_stone_with_sink_cutout",
+        "point_m": [
+          -3.0399999618530273,
+          13.399999618530273,
+          0.9325000047683716
+        ]
+      }
+    },
+    {
+      "check": "source stone is a closed consistently oriented solid",
+      "edges": 512,
+      "faces": 256,
+      "inconsistently_oriented_edges": 0,
+      "nonmanifold_edges": 0,
+      "passed": true,
+      "signed_volume_m3": 0.08097346682037213,
+      "vertices": 256
+    },
+    {
+      "check": "evaluated stone is a closed consistently oriented solid",
+      "edges": 2048,
+      "faces": 1024,
+      "inconsistently_oriented_edges": 0,
+      "nonmanifold_edges": 0,
+      "passed": true,
+      "signed_volume_m3": 0.0809747034946139,
+      "vertices": 1024
+    },
+    {
+      "check": "counter opening reaches recessed bowl at (-2.6, 12.33)",
+      "measured": {
+        "face": 255,
+        "normal": [
+          -0.01025604922324419,
+          0.0,
+          0.9999474883079529
+        ],
+        "object": "kitchen_sink_open_steel_shell",
+        "point_m": [
+          -2.5999999046325684,
+          12.329999923706055,
+          0.7464615702629089
+        ]
+      },
+      "minimum_recess_m": 0.15,
+      "passed": true,
+      "recess_m": 0.21103842973709108
+    },
+    {
+      "check": "stone cutout is physically open at (-2.6, 12.33)",
+      "passed": true,
+      "unexpected_stone_hit": null
+    },
+    {
+      "check": "counter opening reaches recessed bowl at (-2.8, 12.38)",
+      "measured": {
+        "face": 223,
+        "normal": [
+          0.010256036184728146,
+          0.0,
+          0.9999474883079529
+        ],
+        "object": "kitchen_sink_open_steel_shell",
+        "point_m": [
+          -2.799999952316284,
+          12.380000114440918,
+          0.746871829032898
+        ]
+      },
+      "minimum_recess_m": 0.15,
+      "passed": true,
+      "recess_m": 0.21062817096710207
+    },
+    {
+      "check": "stone cutout is physically open at (-2.8, 12.38)",
+      "passed": true,
+      "unexpected_stone_hit": null
+    },
+    {
+      "check": "counter opening reaches recessed bowl at (-2.53, 12.25)",
+      "measured": {
+        "face": 255,
+        "normal": [
+          -0.01025604922324419,
+          0.0,
+          0.9999474883079529
+        ],
+        "object": "kitchen_sink_open_steel_shell",
+        "point_m": [
+          -2.5299999713897705,
+          12.25,
+          0.7471795082092285
+        ]
+      },
+      "minimum_recess_m": 0.15,
+      "passed": true,
+      "recess_m": 0.2103204917907715
+    },
+    {
+      "check": "stone cutout is physically open at (-2.53, 12.25)",
+      "passed": true,
+      "unexpected_stone_hit": null
+    },
+    {
+      "check": "bowl has an active 1.2 mm stainless shell",
+      "enabled_shells": [
+        {
+          "name": "1.2 mm stainless shell",
+          "thickness_m": 0.0012000000569969416
+        }
+      ],
+      "passed": true
+    },
+    {
+      "check": "evaluated bowl floor is physically thin",
+      "inside": {
+        "distance_m": 0.07353712618350983,
+        "face": 255,
+        "normal": [
+          -0.010251587256789207,
+          4.741760221804725e-06,
+          0.9999474287033081
+        ],
+        "object": "kitchen_sink_open_steel_shell",
+        "point_m": [
+          -2.5999999046325684,
+          12.329999923706055,
+          0.746462881565094
+        ]
+      },
+      "measured_vertical_thickness_m": 0.0011896491050720215,
+      "passed": true,
+      "underside": {
+        "distance_m": 0.04527326673269272,
+        "face": 511,
+        "normal": [
+          0.01048316154628992,
+          -4.8779870667203795e-06,
+          -0.9999449849128723
+        ],
+        "object": "kitchen_sink_open_steel_shell",
+        "point_m": [
+          -2.5999999046325684,
+          12.329999923706055,
+          0.745273232460022
+        ]
+      }
+    },
+    {
+      "check": "north finished walnut field is exposed ahead of its backing",
+      "expected_face_coordinate_m": 13.7585,
+      "measured": {
+        "face": 146,
+        "normal": [
+          -8.742277657347586e-08,
+          1.0,
+          0.0
+        ],
+        "object": "kitchen_island_framed_end_field.001",
+        "point_m": [
+          -2.630000114440918,
+          13.758499145507812,
+          0.5199999809265137
+        ]
+      },
+      "passed": true
+    },
+    {
+      "check": "north visible field uses vertical render-active grain",
+      "grain_layer": "Walnut grain",
+      "maximum_vertical_U_error_m": 0.0,
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "east finished walnut field is exposed ahead of its backing",
+      "expected_face_coordinate_m": -2.1365,
+      "measured": {
+        "face": 146,
+        "normal": [
+          1.0,
+          4.371138828673793e-08,
+          0.0
+        ],
+        "object": "kitchen_island_east_joined_panel_field.001",
+        "point_m": [
+          -2.1364998817443848,
+          12.510000228881836,
+          0.5199999809265137
+        ]
+      },
+      "passed": true
+    },
+    {
+      "check": "east visible field uses vertical render-active grain",
+      "grain_layer": "Walnut grain",
+      "maximum_vertical_U_error_m": 0.0,
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "south seating extension has a clear knee volume",
+      "collisions": [],
+      "lower_m": [
+        -2.950000047683716,
+        10.5,
+        0.7599999904632568
+      ],
+      "method": "Evaluated world BVH versus knee box, contained vertices, and odd-crossing centre containment",
+      "passed": true,
+      "tested_object_candidates": [
+        "rugged_forested_alpilles",
+        "kitchen_island_working_pull_pull",
+        "kitchen_island_working_pull_pull.001",
+        "kitchen_tap_cross_handle",
+        "kitchen_tractor_stool_0_turned_column_rings",
+        "kitchen_tractor_stool_0_curved_footrest_arms",
+        "kitchen_tractor_stool_0_footrest_crossbar",
+        "kitchen_tractor_stool_1_turned_column_rings",
+        "kitchen_tractor_stool_1_curved_footrest_arms",
+        "kitchen_tractor_stool_1_footrest_crossbar",
+        "kitchen_tractor_stool_2_turned_column_rings",
+        "kitchen_tractor_stool_2_curved_footrest_arms",
+        "kitchen_tractor_stool_2_footrest_crossbar",
+        "kitchen_fine_wire_pendant_0_coiled_wire_weft",
+        "kitchen_fine_wire_pendant_0_supporting_crossed_wire",
+        "kitchen_fine_wire_pendant_0_bound_edges",
+        "kitchen_fine_wire_pendant_0_warm_filament",
+        "kitchen_fine_wire_pendant_1_coiled_wire_weft",
+        "kitchen_fine_wire_pendant_1_supporting_crossed_wire",
+        "kitchen_fine_wire_pendant_1_bound_edges",
+        "kitchen_fine_wire_pendant_1_warm_filament"
+      ],
+      "upper_m": [
+        -2.299999952316284,
+        11.180000305175781,
+        0.8600000143051147
+      ]
+    },
+    {
+      "check": "thin stone extension has modeled structural support",
+      "passed": true,
+      "supports": [
+        "kitchen_island_table_support",
+        "kitchen_island_table_support.001"
+      ]
+    },
+    {
+      "check": "three actual stool bearing rims and kitchen floor are present",
+      "floor_objects": 123,
+      "passed": true,
+      "rims": [
+        "kitchen_tractor_stool_0_floor_bearing_rim",
+        "kitchen_tractor_stool_1_floor_bearing_rim",
+        "kitchen_tractor_stool_2_floor_bearing_rim"
+      ]
+    },
+    {
+      "check": "kitchen_tractor_stool_0_floor_bearing_rim bears on the finished floor",
+      "evaluated_bottom_m": 0.0020000000949949026,
+      "floor_probes": [
+        {
+          "floor_hit": {
+            "distance_m": 0.030000001192092896,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_06_01",
+            "point_m": [
+              -2.4240000247955322,
+              10.180000305175781,
+              0.0020000003278255463
+            ]
+          },
+          "gap_m": -2.3283064365386963e-10,
+          "rim_point_m": [
+            -2.4240000247955322,
+            10.180000305175781,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000001192092896,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_06_01",
+            "point_m": [
+              -2.4843361377716064,
+              10.325664520263672,
+              0.0020000003278255463
+            ]
+          },
+          "gap_m": -2.3283064365386963e-10,
+          "rim_point_m": [
+            -2.4843361377716064,
+            10.325664520263672,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.029999997466802597,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_06_02",
+            "point_m": [
+              -2.630000114440918,
+              10.386000633239746,
+              0.0020000040531158447
+            ]
+          },
+          "gap_m": -3.958120942115784e-09,
+          "rim_point_m": [
+            -2.630000114440918,
+            10.386000633239746,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.029999995604157448,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_05_02",
+            "point_m": [
+              -2.7756640911102295,
+              10.325664520263672,
+              0.002000005915760994
+            ]
+          },
+          "gap_m": -5.820766091346741e-09,
+          "rim_point_m": [
+            -2.7756640911102295,
+            10.325664520263672,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000001192092896,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_05_02",
+            "point_m": [
+              -2.8360002040863037,
+              10.180000305175781,
+              0.0020000003278255463
+            ]
+          },
+          "gap_m": -2.3283064365386963e-10,
+          "rim_point_m": [
+            -2.8360002040863037,
+            10.180000305175781,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.029999999329447746,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_05_02",
+            "point_m": [
+              -2.7756640911102295,
+              10.03433609008789,
+              0.0020000021904706955
+            ]
+          },
+          "gap_m": -2.0954757928848267e-09,
+          "rim_point_m": [
+            -2.7756640911102295,
+            10.03433609008789,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000001192092896,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_06_01",
+            "point_m": [
+              -2.630000114440918,
+              9.973999977111816,
+              0.0020000003278255463
+            ]
+          },
+          "gap_m": -2.3283064365386963e-10,
+          "rim_point_m": [
+            -2.630000114440918,
+            9.973999977111816,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.029999999329447746,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_06_01",
+            "point_m": [
+              -2.4843361377716064,
+              10.03433609008789,
+              0.0020000021904706955
+            ]
+          },
+          "gap_m": -2.0954757928848267e-09,
+          "rim_point_m": [
+            -2.4843361377716064,
+            10.03433609008789,
+            0.0020000000949949026
+          ]
+        }
+      ],
+      "passed": true,
+      "tolerances_m": {
+        "maximum_joint_gap": 0.002,
+        "maximum_penetration": 0.00025
+      }
+    },
+    {
+      "check": "kitchen_tractor_stool_1_floor_bearing_rim bears on the finished floor",
+      "evaluated_bottom_m": 0.0020000000949949026,
+      "floor_probes": [
+        {
+          "floor_hit": {
+            "distance_m": 0.030000003054738045,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_08_02",
+            "point_m": [
+              -1.8839999437332153,
+              10.770000457763672,
+              0.001999998465180397
+            ]
+          },
+          "gap_m": 1.6298145055770874e-09,
+          "rim_point_m": [
+            -1.8839999437332153,
+            10.770000457763672,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000003054738045,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_07_03",
+            "point_m": [
+              -1.9443359375,
+              10.915664672851562,
+              0.001999998465180397
+            ]
+          },
+          "gap_m": 1.6298145055770874e-09,
+          "rim_point_m": [
+            -1.9443359375,
+            10.915664672851562,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000003054738045,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_07_03",
+            "point_m": [
+              -2.0899999141693115,
+              10.976000785827637,
+              0.001999998465180397
+            ]
+          },
+          "gap_m": 1.6298145055770874e-09,
+          "rim_point_m": [
+            -2.0899999141693115,
+            10.976000785827637,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000003054738045,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_07_03",
+            "point_m": [
+              -2.235663890838623,
+              10.915664672851562,
+              0.001999998465180397
+            ]
+          },
+          "gap_m": 1.6298145055770874e-09,
+          "rim_point_m": [
+            -2.235663890838623,
+            10.915664672851562,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000001192092896,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_07_03",
+            "point_m": [
+              -2.2960000038146973,
+              10.770000457763672,
+              0.0020000003278255463
+            ]
+          },
+          "gap_m": -2.3283064365386963e-10,
+          "rim_point_m": [
+            -2.2960000038146973,
+            10.770000457763672,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000003054738045,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_07_02",
+            "point_m": [
+              -2.235663890838623,
+              10.624336242675781,
+              0.001999998465180397
+            ]
+          },
+          "gap_m": 1.6298145055770874e-09,
+          "rim_point_m": [
+            -2.235663890838623,
+            10.624336242675781,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000003054738045,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_07_02",
+            "point_m": [
+              -2.0899999141693115,
+              10.564000129699707,
+              0.001999998465180397
+            ]
+          },
+          "gap_m": 1.6298145055770874e-09,
+          "rim_point_m": [
+            -2.0899999141693115,
+            10.564000129699707,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000003054738045,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_07_02",
+            "point_m": [
+              -1.9443359375,
+              10.624336242675781,
+              0.001999998465180397
+            ]
+          },
+          "gap_m": 1.6298145055770874e-09,
+          "rim_point_m": [
+            -1.9443359375,
+            10.624336242675781,
+            0.0020000000949949026
+          ]
+        }
+      ],
+      "passed": true,
+      "tolerances_m": {
+        "maximum_joint_gap": 0.002,
+        "maximum_penetration": 0.00025
+      }
+    },
+    {
+      "check": "kitchen_tractor_stool_2_floor_bearing_rim bears on the finished floor",
+      "evaluated_bottom_m": 0.0020000000949949026,
+      "floor_probes": [
+        {
+          "floor_hit": {
+            "distance_m": 0.029999999329447746,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_05_03",
+            "point_m": [
+              -2.9639999866485596,
+              10.770000457763672,
+              0.0020000021904706955
+            ]
+          },
+          "gap_m": -2.0954757928848267e-09,
+          "rim_point_m": [
+            -2.9639999866485596,
+            10.770000457763672,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000001192092896,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_05_03",
+            "point_m": [
+              -3.024336099624634,
+              10.915664672851562,
+              0.0020000003278255463
+            ]
+          },
+          "gap_m": -2.3283064365386963e-10,
+          "rim_point_m": [
+            -3.024336099624634,
+            10.915664672851562,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000003054738045,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_04_02",
+            "point_m": [
+              -3.1700000762939453,
+              10.976000785827637,
+              0.001999998465180397
+            ]
+          },
+          "gap_m": 1.6298145055770874e-09,
+          "rim_point_m": [
+            -3.1700000762939453,
+            10.976000785827637,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000001192092896,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_04_02",
+            "point_m": [
+              -3.315664052963257,
+              10.915664672851562,
+              0.0020000003278255463
+            ]
+          },
+          "gap_m": -2.3283064365386963e-10,
+          "rim_point_m": [
+            -3.315664052963257,
+            10.915664672851562,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000001192092896,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_04_02",
+            "point_m": [
+              -3.376000165939331,
+              10.770000457763672,
+              0.0020000003278255463
+            ]
+          },
+          "gap_m": -2.3283064365386963e-10,
+          "rim_point_m": [
+            -3.376000165939331,
+            10.770000457763672,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000001192092896,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_04_02",
+            "point_m": [
+              -3.315664052963257,
+              10.624336242675781,
+              0.0020000003278255463
+            ]
+          },
+          "gap_m": -2.3283064365386963e-10,
+          "rim_point_m": [
+            -3.315664052963257,
+            10.624336242675781,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000001192092896,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_04_02",
+            "point_m": [
+              -3.1700000762939453,
+              10.564000129699707,
+              0.0020000003278255463
+            ]
+          },
+          "gap_m": -2.3283064365386963e-10,
+          "rim_point_m": [
+            -3.1700000762939453,
+            10.564000129699707,
+            0.0020000000949949026
+          ]
+        },
+        {
+          "floor_hit": {
+            "distance_m": 0.030000001192092896,
+            "face": 53,
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "object": "kitchen_envelope_flag_05_02",
+            "point_m": [
+              -3.024336099624634,
+              10.624336242675781,
+              0.0020000003278255463
+            ]
+          },
+          "gap_m": -2.3283064365386963e-10,
+          "rim_point_m": [
+            -3.024336099624634,
+            10.624336242675781,
+            0.0020000000949949026
+          ]
+        }
+      ],
+      "passed": true,
+      "tolerances_m": {
+        "maximum_joint_gap": 0.002,
+        "maximum_penetration": 0.00025
+      }
+    },
+    {
+      "check": "kitchen generated surfaces are present",
+      "materials": [
+        "kitchen_cleaned_oak",
+        "kitchen_floor_0",
+        "kitchen_floor_1",
+        "kitchen_floor_2",
+        "kitchen_floor_3",
+        "kitchen_honed_travertine",
+        "kitchen_waxed_walnut"
+      ],
+      "passed": true
+    },
+    {
+      "check": "kitchen_cleaned_oak has a physical shader",
+      "passed": true
+    },
+    {
+      "base_color_images": [
+        "kitchen-cleaned-oak.png"
+      ],
+      "check": "kitchen_cleaned_oak pigment is independent of relief and finish",
+      "passed": true,
+      "physical_response_images": {
+        "Normal": [],
+        "Roughness": []
+      },
+      "shader": "Principled BSDF"
+    },
+    {
+      "check": "kitchen_floor_0 has a physical shader",
+      "passed": true
+    },
+    {
+      "base_color_images": [
+        "salon-floor-stone-b.png"
+      ],
+      "check": "kitchen_floor_0 pigment is independent of relief and finish",
+      "passed": true,
+      "physical_response_images": {
+        "Normal": [],
+        "Roughness": []
+      },
+      "shader": "Principled BSDF"
+    },
+    {
+      "check": "kitchen_floor_1 has a physical shader",
+      "passed": true
+    },
+    {
+      "base_color_images": [
+        "salon-floor-stone-a.png"
+      ],
+      "check": "kitchen_floor_1 pigment is independent of relief and finish",
+      "passed": true,
+      "physical_response_images": {
+        "Normal": [],
+        "Roughness": []
+      },
+      "shader": "Principled BSDF"
+    },
+    {
+      "check": "kitchen_floor_2 has a physical shader",
+      "passed": true
+    },
+    {
+      "base_color_images": [
+        "salon-floor-stone-b.png"
+      ],
+      "check": "kitchen_floor_2 pigment is independent of relief and finish",
+      "passed": true,
+      "physical_response_images": {
+        "Normal": [],
+        "Roughness": []
+      },
+      "shader": "Principled BSDF"
+    },
+    {
+      "check": "kitchen_floor_3 has a physical shader",
+      "passed": true
+    },
+    {
+      "base_color_images": [
+        "salon-floor-stone-a.png"
+      ],
+      "check": "kitchen_floor_3 pigment is independent of relief and finish",
+      "passed": true,
+      "physical_response_images": {
+        "Normal": [],
+        "Roughness": []
+      },
+      "shader": "Principled BSDF"
+    },
+    {
+      "check": "kitchen_honed_travertine has a physical shader",
+      "passed": true
+    },
+    {
+      "base_color_images": [
+        "bronze_travertine.png"
+      ],
+      "check": "kitchen_honed_travertine pigment is independent of relief and finish",
+      "passed": true,
+      "physical_response_images": {
+        "Normal": [],
+        "Roughness": []
+      },
+      "shader": "Principled BSDF"
+    },
+    {
+      "check": "kitchen_waxed_walnut has a physical shader",
+      "passed": true
+    },
+    {
+      "base_color_images": [
+        "antique_walnut.png"
+      ],
+      "check": "kitchen_waxed_walnut pigment is independent of relief and finish",
+      "passed": true,
+      "physical_response_images": {
+        "Normal": [],
+        "Roughness": []
+      },
+      "shader": "Principled BSDF"
+    },
+    {
+      "actual_fine_ids": [
+        "C0_K.B1",
+        "C0_K.B10",
+        "C0_K.B11",
+        "C0_K.B12",
+        "C0_K.B13",
+        "C0_K.B14",
+        "C0_K.B15",
+        "C0_K.B16",
+        "C0_K.B17",
+        "C0_K.B18",
+        "C0_K.B19",
+        "C0_K.B2",
+        "C0_K.B20",
+        "C0_K.B3",
+        "C0_K.B4",
+        "C0_K.B5",
+        "C0_K.B6",
+        "C0_K.B7",
+        "C0_K.B8",
+        "C0_K.B9"
+      ],
+      "check": "all published fine kitchen joists are included in the material checks",
+      "expected_fine_ids": [
+        "C0_K.B1",
+        "C0_K.B10",
+        "C0_K.B11",
+        "C0_K.B12",
+        "C0_K.B13",
+        "C0_K.B14",
+        "C0_K.B15",
+        "C0_K.B16",
+        "C0_K.B17",
+        "C0_K.B18",
+        "C0_K.B19",
+        "C0_K.B2",
+        "C0_K.B20",
+        "C0_K.B3",
+        "C0_K.B4",
+        "C0_K.B5",
+        "C0_K.B6",
+        "C0_K.B7",
+        "C0_K.B8",
+        "C0_K.B9"
+      ],
+      "passed": true
+    },
+    {
+      "check": "kitchen heavy beams are retained",
+      "passed": true,
+      "timber_objects": [
+        "C0_K.B1",
+        "C0_K.B2",
+        "C0_K.B3",
+        "C0_K.B4",
+        "C0_K.B5",
+        "C0_K.B6",
+        "C0_K.B7",
+        "C0_K.B8",
+        "C0_K.B9",
+        "C0_K.B10",
+        "C0_K.B11",
+        "C0_K.B12",
+        "C0_K.B13",
+        "C0_K.B14",
+        "C0_K.B15",
+        "C0_K.B16",
+        "C0_K.B17",
+        "C0_K.B18",
+        "C0_K.B19",
+        "C0_K.B20",
+        "KITCHEN_BEAM0",
+        "KITCHEN_BEAM1",
+        "KITCHEN_BEAM2",
+        "KITCHEN_BEAM3"
+      ]
+    },
+    {
+      "check": "C0_K.B1 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B1 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 1989,
+        "1": 39
+      }
+    },
+    {
+      "check": "C0_K.B2 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B2 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B3 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B3 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B4 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B4 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B5 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B5 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B6 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B6 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B7 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B7 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B8 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B8 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B9 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B9 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B10 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B10 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B11 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B11 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B12 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B12 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B13 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B13 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B14 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B14 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B15 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B15 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B16 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B16 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B17 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B17 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B18 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B18 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B19 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B19 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2784,
+        "1": 64
+      }
+    },
+    {
+      "check": "C0_K.B20 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "C0_K.B20 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2712,
+        "1": 64
+      }
+    },
+    {
+      "check": "KITCHEN_BEAM0 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "KITCHEN_BEAM0 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2488,
+        "1": 16
+      }
+    },
+    {
+      "check": "KITCHEN_BEAM1 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "KITCHEN_BEAM1 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2488,
+        "1": 16
+      }
+    },
+    {
+      "check": "KITCHEN_BEAM2 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "KITCHEN_BEAM2 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2488,
+        "1": 16
+      }
+    },
+    {
+      "check": "KITCHEN_BEAM3 uses render-active longitudinal member UVs",
+      "grain_layer": "Member grain metres",
+      "passed": true,
+      "render_active": true
+    },
+    {
+      "check": "KITCHEN_BEAM3 retains assigned end grain",
+      "material_slots": [
+        "kitchen_cleaned_oak",
+        "fidelity_oak_endgrain"
+      ],
+      "passed": true,
+      "polygon_counts_by_slot": {
+        "0": 2488,
+        "1": 16
+      }
+    },
+    {
+      "check": "source inputs stayed frozen during verification",
+      "passed": true
+    },
+    {
+      "check": "saved scene bytes were not modified",
+      "passed": true
+    }
+  ],
+  "failed_checks": 0,
+  "passed": true,
+  "passed_checks": 94,
+  "purpose": "Evaluated kitchen geometry and shader regressions; no photographic-likeness claim",
+  "saved_scene": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/presentation/bd73002f07a44a1f8904b1c9b32dc116/1ecb3ca4ed29de48/house.blend",
+  "saved_scene_sha256": "a50281334f04981eaf9ee7ccb449ab6afea09c329b0a9a85a053634b071ad007",
+  "schema": 1,
+  "script_sha256": "d44ce5bf9467b1274f73e36746c525ca6861df25d3955f388862c5c5f0d809e6",
+  "seconds": 2.742,
+  "source_inputs": {
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/camera_calibration.py": "db5739e87f65c0185b972138493cf7eaeed0da3f5f1c9ddff00fd80fd878fff8",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/decisions.md": "7168f49e1197792b366f5f4b1bf2b73a538ec1e82aa61ab873ba178bb88e3fbe",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/floor_layout.json": "e6c5d8e23e442159ba72f344aa2cef5530c31be49ad4e7feab237e910e5206d7",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/kitchen_material_study.py": "b3bd479f07dddc6459667ec8f0848ee9222a107194a645688c3cb1895fea486a",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/kitchen_scene_checks.py": "d44ce5bf9467b1274f73e36746c525ca6861df25d3955f388862c5c5f0d809e6",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/material_studies.py": "18632c93ea3b706fe9a643d3f2ae833a5701b34c86cadb0eba10a00639604b0c",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/package_model.py": "fdca2a5ceaca24bc5942915052d927a75173762038ba0892a704df115445ca4c",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/photo_camera_lock.json": "477cd639301fecca34695a49f5ef5b2ddcba5b3c53f901a36088d9d718304a3f",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/photo_camera_review.py": "8832bd126cfda1cf219eb59424f5f64d3e2b6ce92ad74a4d53721f998933c6eb",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/prepare_walk.py": "ca515195bd58a3fac99e7ffc8f834a07acfb2532772e525a6caafe6f466d9761",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/presentation.py": "f1ed236c926190863166dc6440f2f3b497366c702bd4177dd0542dcbdc25bc10",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/project.py": "0befc59c85505a52ac4f6092093ce492c84e7b1950efd1d3f06914bf56b310c9",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/render_camera_tour.py": "49063baa990718e1aa927244223cb74451950571d8d1ee3feb1dddc3aca2bf22",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/review_assets.py": "15ad3e2445a440440a168f71d2b7c0368fb28e4c5b4cc2f64dde73c0c3229310",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/exterior.py": "d8485a91bfeadd435764bb0bf8b2d6155bc12684edbca8d7c15040b0e35777f7",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/fast_primitives.py": "13e99233efbe1aa3e116d5c7ce2cbf93931d14baf4efcf760f1067f9cbc5eb07",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/fidelity_bedrooms.py": "c08adda26e9fd93f33d8182bbdc768e090648bb94c1554a9703e4506e5761759",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/fidelity_hall_baths.py": "f5eb1f9881991f888c7f6f1e77d5f3b90fe60462319ad4783c3ba09ff32037e5",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/fidelity_lighting.py": "2a21ad24fd03ebbf9093c2284a3d2ca6e519f929fcf1d16538305dfc895f7125",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/fidelity_living.py": "5708077ff11f1fc82bd47fc2511308c7a33ac6c881ee610e8b3daf4e9677116c",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/fidelity_materials.py": "3bcf54f9ccba61d88a6829e83bca214e8bdbe095082be21bdac953f374291f9f",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/fidelity_service.py": "f8b741195dd4894f21a9f5363c8c237040d30c43adbc04a8e87d675b3e55bb9a",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/fidelity_timbers.py": "4f145165a386ea373cb4510db2ff415fb984f65d6a21d950ae7be85f5a7ed4e7",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/fidelity_upholstery.py": "40e2823119d03a2d88721df16834d842ef11a06d8593daad7036dc7f8aff2a31",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/fidelity_vegetation.py": "2a402feae95c72564173db7247c74409b3ef7230b598ef30740e964a1e43666d",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/furnishings.py": "134d2442f0c4edbca1f7d634d715c38b00c959b617f0f2e99e9863a75d8d9dab",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/gallery_ironwork.py": "f9b94faf7df70a9089d9abadf9b64663cc050a7732aa5930c1eaae54972321d7",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/interiors.py": "5af3f1874d92369828149179b5dcd63e9220a064d33fcf25381e5315101cee42",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/kitchen_envelope.py": "bf24cb9e144e7353aa58ae62924b9e40520345c1a12d61cd8aa7732b0c465895",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/kitchen_furniture.py": "4f871f1d01d4aa1fd1c1fb4e1c0a25c4381ebb76317683f80c7302d7b59fc78f",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/kitchen_joinery.py": "b723f8865d37646c2bb86cd037772a87d7d63de4c6a32b0f20c9a138b9e1666f",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/kitchen_surfaces.py": "30bfa5de3502de2af5f2d73cdd450854b182a708b0019f0d5fc1eb3dd2516805",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/lighting_presets.py": "05effeb505989eac311861e2c6810cee2d58e9c651838af0f278a9e42cac5ed7",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/living_shapes.py": "0d2c97b73c2038f526c758cc3900d834764760c25f0b9a99484681c7e5ef72fd",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/material_details.py": "b82342ae66019cc32627bc282987bb4909c7e49aa3758f56c862a0c0125bdea5",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/salon_envelope.py": "47e1c1333f4948827b92e623915ef7f8a61ffb94f3c20af793564e79c70fe69d",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/salon_fireplace.py": "73b8c7cdf553f101bb4f363eac581e38a40291c5c8122147ba5485e11d8e419c",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/salon_furniture.py": "989d6b952f909a0871981f6df05c0824d08432f03ef9d6c21606e36b46819d45",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/rooms/salon_materials.py": "cdcb296e1f2243533c86a98fa017069bd9efa5f234da963cf1a5bb619ccd2031",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/salon_review.py": "e0ef29fd45f10f9864554309583d18e48327c72bd4fbd31a5e1a7e5a6bb532c1",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/textures/antique_walnut.png": "24222e9358e9f08a9941776e9a267a290e02bccba23b24c8ca69aa5208e7107d",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/textures/bronze_travertine.png": "ae5daf579da014571d50d445e7def15a1a815c59568e1bda8f33b245bb871834",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/textures/generated-manifest.json": "0f632ff84515e23bb68ec02d72940902c2abfcf4d8927c3800a4179711ed40cc",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/textures/kitchen-cleaned-oak.png": "7c6c41fccb9df2bfdff8087259f7e7662a9e5813e8251a3b1643c7f7387e6b9c",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/textures/kitchen-generated-manifest.json": "b08fec7c41e02f557b4733f32a85af34339bd7a3fcd9db1febd04d97a0a0f4b2",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/textures/salon-floor-stone-a.png": "6d318ffb1452286d406517473b0e47a62e231512ac13c7d8733518ab6f9c13a9",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/textures/salon-floor-stone-b.png": "f03c900205c22d84d63cfb0e6977eb25c97a33956753322219c0ca78c1d75627",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/textures/salon-generated-manifest.json": "eb07077593595d410f1458b5aa10660ce2da13bf376579c136cc2833eb5a86a6",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/verify_delivery.py": "9cf8e68291ebda69678dfbd9ab7229e654585abbe10875c37fdbc9af8b66a259",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/verify_views.py": "9afa79aca3315437059453dc0160f0d59493e552a3a91dd17875fbd5bb336bab",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/verify_walk.py": "377d12c87c1a2773437a5e10678c7f277de89f5cd575367216553d3a364dabd3",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/walk_ui.py": "3deb68bf648d5a66dc007bc955677c66ea4a739fc743917b47d6fb3a567d176b",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/pyproject.toml": "7a0295a2947d96a5e13b36f6819ca3f0e499d17b018a270fef8c9d39314ea04a",
+    "/Users/cloud/.codex/worktrees/af1b/homespec/uv.lock": "e5a231d06423067ad10df41b13e1ecdf38ae33a5e3cd089a62ad7708d1307364"
+  }
+}
