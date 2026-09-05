@@ -28,7 +28,7 @@ The numbered previews and contact sheets in `reference/review/` refer to the exa
 
 This is a manually reconstructed, editable homespec model, not a photogrammetric scan. Floor-plan dimensions and topology are the primary evidence. Vertical dimensions, hidden construction, landscape levels and object dimensions are inferred where not specified. Furniture and planting are built to resemble the photographs; they are not manufacturer models. Photographs depict more than one furnishing and lighting arrangement; the daylight collection provides the principal target.
 
-Textures are CC0 Poly Haven surfaces listed in `assets.json`; they approximate the photographed material rather than reproduce the exact installed product. No user photographs are uploaded or published by this workflow.
+Base assets include CC0 Poly Haven surfaces listed in `assets.json`, supplemented by the generated maps below. The original archive photographs are not committed to this repository. Local comparison artifacts retain their exact source hashes and clearly distinguish supplied photographs from rendered model images.
 
 ## Fabric reconstruction
 
@@ -37,3 +37,19 @@ The second fidelity pass uses 19 custom base-color textures generated with the b
 The earlier `textures/paisley_coverlet.png` remains available for provenance. It was generated from reference photos 09 and 06, and is superseded on the refined beds by separate whole-coverlet textures.
 
 Prompt: Generate a square seamless PBR base-color texture based on the intricate woven paisley floral coverlets in the two supplied photographs; muted tobacco brown, dusty rose, pale sand and charcoal; dense antique Indian paisley and scrolling acanthus with tiny woven threads; flat orthographic cloth, even neutral illumination, no wrinkles, perspective, shadows, fringes, furniture or text; tile on all four edges.
+
+## Third-pass camera and surface evidence
+
+Original JPEG EXIF supplies the recorded lens and camera model for all eight
+comparison anchors. Fujifilm GFX sensor dimensions are normalized explicitly;
+lens shift, final crop/stitch processing, surveyed camera extrinsics and exact
+furniture dimensions remain unknown. `camera_calibration.md` and the committed
+camera lock record those limits and per-landmark reprojection errors.
+
+Color maps supply pigment only. Neutral studio checks trace the actual generated
+material graphs to confirm that roughness and normals use independent inferred
+physical response. The `salon-generated-manifest.json` records the additional
+salon maps and their reference provenance. Exact source paths remain in the
+manifests; source originals are unchanged.
+
+The review process follows the supplied [Architectural visualization with Astra](https://developers.openai.com/blog/architectural-visualization-with-astra) article: inspect actual scene renders, isolate geometry and surface/lighting studies, and verify camera motion through the editable model. It does not reuse that article's house geometry.

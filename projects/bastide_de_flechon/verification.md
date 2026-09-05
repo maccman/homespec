@@ -1,132 +1,33 @@
 # Verification — La Bastide de Fléchon
 
-Second reconstruction pass reviewed in Blender 5.2.1 LTS on 5 September 2026.
+Third photographic pass, Blender 5.2.1 LTS, 5 September 2026. The user requested that all source work be committed and the PR made ready while the full render is deferred.
 
-## Architecture and source evidence
+## Source and geometry
 
-The model contains 314 architectural entities and passes **357 HomeSpec checks**,
-with zero failures. The 54 permitted construction intersections remain governed
-by the existing clash policy. Door access, stair landings and stair headroom
-checks remain intact. Both floor plans, the site plan and 61 supplied photographs
-anchor the reconstruction.
+The architectural model contains **315 entities** and passes **366 HomeSpec checks**, with zero failures. The existing 54 permitted construction intersections, stair/door/headroom rules and audit thresholds are unchanged. All four diagnostic plans and sections were reviewed; the latest regenerated images have identical pixels. The integrated scene passed the explicit CLI audit, and the final saved-scene render repeated **AUDIT total 0**.
 
-Photo review corrected the fireplace to a flat lintel with concave stone
-corbels (D-027), restored all 23 angled guest-ceiling members after finding a
-compound-transform export defect (D-029), and corrected the entrance's north
-passage to a rectangular head (D-031). D-028 records material and furniture
-interpretation; D-030 the unphotographed service fittings and lighting; D-032
-the principal shower's relationship to its actual north window; and D-033 the
-remaining dressing conflicts and room-specific finishes.
+The full locked repository suite passes **209 tests** (66.73 seconds). Ruff and Pyright pass. The focused reconstruction/camera/salon suite passes all 17 tests, including physical opening geometry, clear height under fixed transoms, the segmental kitchen aperture and camera projection. The two subsequent verifier/archive-name fixes pass Ruff, AST checks and protocol tests. No dependency, core audit, clash-policy or other project source changed.
 
-Two independent geometry regressions cover the restored ceiling's extent,
-volume, footprint and STEP round trip, and the rectangular opening's actual
-subtracted wall volume. The full repository suite passed **194 tests**.
-Ruff and Pyright passed with no errors. No dependency, core audit threshold
-or clash-policy changes were made for this pass.
+The latest passing generation is `ea9ed2d4b6cc4ad1ae0fc9a8e713cb0b`; presentation fingerprint is `f8e99ca2787aeeec3d40bc2be3a9cc68f99626721c6060bb848f8b3b4257a045`. Its saved `house.blend` was produced successfully. The source starts at merged main `f5920006f6e825efb556f0b83aeea5e3c11c8e24` and integrates salon source from `297f492`, `e67a70d` and `ac42812`, with shared end-grain preservation and canonical lighting afterward.
 
-## Furnishings and visual corrections
+## Completed visual and tooling review
 
-The final furnished scene reports **zero audit findings**. Four diagnostic
-plans and sections were reviewed; the final files have identical image pixels
-to the reviewed geometry pass. Furnishing corrections include supported lamps,
-clear bed and bathroom approaches, ceiling lamps attached to the actual soffit,
-and a principal shower outside the spiral-stair opening.
+Eight actual Cycles photographic previews and eight baseline views used the same v4 camera lock, seed zero and 32-sample preview quality. The current views use named photograph lighting; the baseline retains its saved lighting. The pairs therefore compare the combined geometry/material/lighting change. Their originals and all eight rendered compositions were visually reviewed. `review-photo-pass.jpg` commits a render-only preview sheet; original photographs remain local.
 
-Visual review found defects that placement checks alone did not identify:
-window-filling light cards, vegetation intruding through bedroom walls,
-missing angled ceiling members, floating guest-room art across a window,
-opaque lamp envelopes, flat sofa cushions, incorrect fireplace brackets,
-overly glossy cloth/floors, mis-scaled curtain patterns and unusable service-room
-camera positions. The corresponding geometry, ray visibility, material mapping,
-roughness, lamp placement and camera compositions were corrected. Thirty-five
-background scatter objects intersecting the building were removed.
+Kitchen/salon off/full-power controls were rendered with identical cameras, resolution, exposure, practicals and color settings. Nineteen aperture lights total 1,463 W at full power; the selected kitchen state uses 292.6 W and salon58 uses 219.45 W. Off loses kitchen detail; full power flattens both rooms. These are explicit light approximations, not measured sky radiance. The salon fire is 24 W in its photo state and off in the coherent walk.
 
-Nineteen image-generated material maps now distinguish the photographed
-textiles, woods, stone and room-specific plaster. Their exact prompts and
-reference provenance are in `textures/generated-manifest.json`. The model uses
-separate relief, roughness and fabric transmission; timber grain follows each
-member. Still renders and the native walkthrough share one daylight state,
-real window apertures and warm practical lamps.
+The neutral studio rendered twelve materials actually assigned to visible scene objects. **73 generated-map shader checks** found no pigment image upstream of Normal or Roughness. The board shows distinct counter/walnut highlights and matte stone, timber and cloth; its thick swatches do not establish thin-curtain transmission. Twelve salon pigment maps supplement the earlier nineteen, with prompts, evidence and inferred physical response retained in the texture manifests.
 
-Potential future audit improvements are explicit vegetation/building overlap
-checks, semantic checks for art on glazing, and checks that an inferred ceiling
-light sits below its housing. Those checks would complement visual comparison;
-they would not establish photographic likeness.
+Independent checks passed 6,858 assertions on the available comparison/control images and 2,750 on the strict comparison/control/material verifier block. Temporary ZIP contract tests passed 13 assertions, and the archived 28-frame motion trial passed 227 schema/camera/light checks. These are completed subset checks, not a successful final delivery-verifier run.
 
-## Walkthrough and artifact integrity
+## Deferred artifact pass
 
-The passing generation is `14688daaa1004a95b1a81d8fd21fe4e3`, with presentation
-fingerprint `026231cfc0cda65e507580b254c08af5c7bcc4d34379770fa65da21d82a555aa`.
-`deliverables/SOURCE.json` records the complete provenance and artifact hashes.
+The completed study set used the same geometry before two tooling-only fixes: optional landmark handling and the documented ZIP filename. Regeneration from the latest source was stopped at the user’s request after four of eight photo views. The local photo directory is a partial latest-source refresh. The earlier incomplete 28-frame motion trial is retained under `deliverables/diagnostics/tour-before-verifier-fix/` and is not a completed video.
 
-The portable `deliverables/model/house_walk.blend` contains **42 packed images**
-and **three baked irradiance volumes** covering both floors. Every one of the
-**26 room operators** was invoked, with camera positions and camera checks
-verified. Ten actual Eevee renders cover exterior, living, kitchen, entrance,
-bedroom, bathroom, laundry and WC lighting; all passed frame checks and visual
-review. Eevee uses a 1 GB shadow pool to retain the room lights' shadows.
+The **26-view gallery, 216-frame motion video, refreshed portable model/ZIP, native UI recheck and final independent artifact verification remain deferred**. The PR does not claim that these outputs exist or pass. README commands and committed render/package/verifier scripts provide the continuation procedure.
 
-The desktop launcher opened the packaged file successfully. Native UI review
-verified the Flechon room panel, the salon shortcut, active walk controls,
-spatial movement and return to a bookmark. The original packaged file was not
-overwritten during the UI test.
+The preserved baseline hashes are `c49ce29b6f77d8c3447839d5f02364001ab4d50b5d162e25a6da98ead86536a8` for its raw scene and `ae363ef0e4df268f1bc6f46288bc42a49e32475f7072f9353a7a0c0043aeb002` for its packed walkthrough. Original photographs, plans, ZIP and the user’s open baseline Blender file were preserved.
 
-An independent artifact review passed 25 assertions covering current source
-freshness, model/scene/navigation/launcher hashes, IFC, drawings, schedules,
-room count, preview count, launcher permissions and ZIP integrity. The launcher
-also passes `zsh -n`. The portable ZIP preserves its executable permission and
-passes CRC checks. `deliverables/artifact-verification.json` records this review.
+## Reconstruction limits
 
-## Render review and room coverage
-
-The final review outputs are `deliverables/gallery/` and
-`deliverables/photo-comparison/`. The gallery uses 2560 × 1600 pixels, up to
-256 Cycles samples, adaptive sampling and denoising. Eight additional comparison
-cameras use the actual saved geometry, materials and lighting. Their framing
-is an estimate, not recovered camera calibration.
-
-All 26 final gallery renders passed their camera and frame checks and were
-visually reviewed. `deliverables/gallery-manifest.json` records their source
-generation, scene hash, settings and individual hashes. The tracked
-`review-gallery.jpg` and local `deliverables/gallery-overview.jpg` show those
-actual renders.
-
-All eight final photograph-comparison renders also passed camera and frame
-checks and were visually reviewed. Their manifest verifies the saved scene,
-camera script and image hashes. `deliverables/photo-comparison-overview.jpg`
-places the supplied photographs beside the actual model renders for local
-review. These comparisons still show differences in apparent room scale,
-furniture detail, framing and illumination; they do not establish an identical
-reproduction of the photographs.
-
-| Spaces | Gallery views |
-| --- | --- |
-| Pool, garden, main arch, summer-kitchen terrace | 01–04 |
-| Salon, fireplace, dining room | 05–07 |
-| Kitchen | 08–09 |
-| Entrance hall | 10 |
-| Garden bedrooms one and two | 11–12 |
-| Principal suite | 13–14 |
-| Bedroom above kitchen and upper guest suite | 15–16 |
-| Principal, bedroom-three and guest-suite bathrooms | 17–19 |
-| Both garden-bedroom bathrooms | 20–21 |
-| Limestone shower material detail | 22 |
-| Laundry and WC | 23–24 |
-| Upper gallery and guest corridor | 25–26 |
-
-## Not verified
-
-The archive does not establish exact storey heights, concealed construction,
-all opening/furniture dimensions, true north or landscape contours. Those
-details remain inferred and recorded in `decisions.md`. The laundry, WC and
-most bathrooms are not photographed; their fittings are plan-based
-interpretations. The photographed shower's room identity is also inferred.
-
-Furniture, botanical shapes, fine sculpture anatomy and textile motifs remain
-modeled or generated approximations. A single daylight state cannot reproduce
-the differing illumination in every source photograph. Interactive Eevee
-reflections and indirect light are approximations; Cycles provides the more
-accurate still-render result. Photographic identity has not been established.
-
-This is an editable visual reconstruction, not a measured scan or a substitute
-for an architectural survey.
+This is a plan-led photographic reconstruction, not a measured scan. True north, concealed construction, exact surface optics, unmeasured heights and camera extrinsics remain inferred. Principal-bedroom bed/arch framing and brace prominence, the upper-bedroom bed-foot crop, garden art/sconce alignment, regularity of stone and fine furniture/textile detail retain visible differences. The room-specific evidence is recorded in `photo-discrepancies.md`, `camera_calibration.md` and `salon-discrepancies.md`.

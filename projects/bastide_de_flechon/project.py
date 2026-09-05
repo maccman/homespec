@@ -42,6 +42,147 @@ class ExactArchedDoor(ArchedDoor):
 
 
 @element
+class SegmentalGardenDoor(ExactArchedDoor):
+    """Shallow circular kitchen head, shared by the void, steel and glass."""
+
+    rise: float = 360.0
+
+    def head_height(self):
+        return self.height + self.rise
+
+    def circle(self):
+        radius = ((self.width / 2) ** 2 + self.rise ** 2) / (2 * self.rise)
+        return radius, self.height + self.rise - radius
+
+    def profile_solid(self, x, wall, z, depth, thickness, inset=0):
+        radius, centre_z = self.circle()
+        c = wall.body.point(x + self.width / 2, depth + thickness / 2)
+        disc = G.horizontal_cylinder(radius - inset, thickness, (*c, z + centre_z), wall.angle + 90)
+        cap = G.frame_box(wall.body, x + inset, depth - 1, z + self.height - inset,
+                          (self.width - 2 * inset, thickness + 2, self.rise + inset + 1))
+        base = G.frame_box(wall.body, x + inset, depth, z + inset,
+                           (self.width - 2 * inset, thickness, self.height - 2 * inset))
+        return base + (disc & cap)
+
+    def void_solid(self, x, wall, z):
+        return self.profile_solid(x, wall, z, -100, wall.thickness + 200)
+
+    def frame_members(self, x, wall, z):
+        fs, bs, t = self.frame_size, self.bar_size, wall.thickness
+        outer = self.profile_solid(x, wall, z, (t - fs) / 2, fs)
+        inner = self.profile_solid(x, wall, z, (t - fs) / 2 - 1, fs + 2, inset=fs)
+        members = [outer - inner]
+        radius, centre_z = self.circle()
+        cols, rows = self.panes
+        for c in range(1, cols):
+            offset = self.width * c / cols
+            top = centre_z + math.sqrt((radius - fs) ** 2 - (offset - self.width / 2) ** 2)
+            size = fs if c == cols / 2 else bs
+            members.append(G.frame_box(wall.body, x + offset - size / 2, (t - size) / 2,
+                                       z + fs, (size, size, top - fs)))
+        for row in range(1, rows):
+            members.append(G.frame_box(wall.body, x + fs, (t - bs) / 2,
+                                       z + fs + (self.height - 2 * fs) * row / rows,
+                                       (self.width - 2 * fs, bs, bs)))
+        return members
+
+    def panes_of(self, x, wall, z):
+        pane = self.profile_solid(x, wall, z, (wall.thickness - 10) / 2, 10, inset=self.frame_size)
+        return [pane], G.volume(pane) / 10
+
+    def realize(self, ctx):
+        result = super().realize(ctx)
+        result.derived.update(radius=self.circle()[0], segment_rise=self.rise)
+        return result
+
+
+@element
+class SalonArchedDoor(ExactArchedDoor):
+    """Concentric salon fanlight with spokes outside its clear inner arch."""
+
+    def mullion_positions(self):
+        # French leaves meet at a movable astragal, not a fixed centre post.
+        return []
+
+    def clear_width(self):
+        """Opening with both operable leaves released, as drawn on the plan."""
+        return self.width - 2 * self.frame_size
+
+    def leaf_starts(self):
+        return [self.frame_size, self.width / 2 + self.bar_size / 2]
+
+    def panes_of(self, x, wall, z):
+        # Passage width describes both released leaves; individual closed
+        # panes stop at the thin meeting astragal, not at that full width.
+        fs, radius = self.frame_size, self.width / 2
+        leaf_width = (self.width - 2 * fs - self.bar_size) / 2
+        panes = [G.frame_box(wall.body, x + start, (wall.thickness - 10) / 2, z + fs,
+                             (leaf_width, 10, self.height - 2 * fs)) for start in self.leaf_starts()]
+        center = wall.body.point(x + radius, wall.thickness / 2)
+        disc = G.horizontal_cylinder(radius - fs, 10, (*center, z + self.height), wall.angle + 90)
+        upper = G.frame_box(wall.body, x, (wall.thickness - 20) / 2, z + self.height, (self.width, 20, radius))
+        panes.append(disc & upper)
+        return panes, 2 * leaf_width * (self.height - 2 * fs) + math.pi * (radius - fs) ** 2 / 2
+
+    def frame_members(self, x, wall, z):
+        from build123d import Location
+
+        members = super().frame_members(x, wall, z)[:-1]
+        radius, bar = self.width / 2, self.bar_size
+        inner_radius = radius * 0.60
+        depth = (wall.thickness - bar) / 2
+        center = wall.body.point(x + radius, wall.thickness / 2)
+        ring = G.horizontal_cylinder(inner_radius + bar / 2, bar, (*center, z + self.height), wall.angle + 90)
+        ring -= G.horizontal_cylinder(inner_radius - bar / 2, bar + 2, (*center, z + self.height), wall.angle + 90)
+        upper = G.frame_box(wall.body, x, depth - 1, z + self.height, (self.width, bar + 2, radius))
+        members.append(ring & upper)
+        for angle in (45, 90, 135):
+            a = math.radians(angle)
+            start, end = inner_radius, radius - self.frame_size + 1
+            normal = (-math.sin(a) * bar / 2, math.cos(a) * bar / 2)
+            points = [(x + radius + t * math.cos(a) + sign * normal[0], z + self.height + t * math.sin(a) + sign * normal[1])
+                      for t, sign in ((start, -1), (end, -1), (end, 1), (start, 1))]
+            member = G.prism_profile(points, depth, bar, along="y")
+            members.append(Location((*wall.body.origin, 0), (0, 0, wall.angle)) * member)
+        return members
+
+
+@element
+class SalonFrenchDoor(Door):
+    """Paired west leaves without a fixed central mullion."""
+
+    def mullion_positions(self):
+        return []
+
+    def clear_width(self):
+        return self.width - 2 * self.frame_size
+
+    def leaf_starts(self):
+        return [self.frame_size, self.width / 2 + self.bar_size / 2]
+
+    def panes_of(self, x, wall, z):
+        if not self.glazed:
+            return [], 0
+        fs = self.frame_size
+        leaf_width = (self.width - 2 * fs - self.bar_size) / 2
+        panes = [G.frame_box(wall.body, x + start, (wall.thickness - 10) / 2, z + fs,
+                             (leaf_width, 10, self.height - 2 * fs)) for start in self.leaf_starts()]
+        return panes, 2 * leaf_width * (self.height - 2 * fs)
+
+    def fill(self, ctx, wall, x, level):
+        if self.glazed:
+            return
+        from homespec.elements.walls import Leaf
+
+        fs = self.frame_size
+        leaf_width = (self.width - 2 * fs - self.bar_size) / 2
+        parts = [G.frame_box(wall.body, x + start, (wall.thickness - 40) / 2, wall.elevation + self.sill + 10,
+                             (leaf_width, 40, self.height - fs - 10)) for start in self.leaf_starts()]
+        ctx.emit(Leaf(f"{self.id}.leaf", opening=self.id, level=level, material=self.leaf),
+                 Realized(solid=G.group(parts), relations=[Relation(pred="part_of", obj=self.id)]))
+
+
+@element
 class SquareHeadedOpening(Arch):
     """A clear rectangular opening beneath the photographed flat lintel."""
 
@@ -83,6 +224,26 @@ class OcularWindow(Window):
 class BastideGableDoor(ExactArchedDoor):
     """Lower salon glazing grid and upper bedroom's concentric radial fanlight."""
 
+    ground_leaf_angle: float = 78
+    ground_leaf_head: float = 2780
+
+    def mullion_positions(self):
+        return []
+
+    def clear_width(self):
+        return self.width - 2 * self.frame_size
+
+    def clear_height(self):
+        """Passage ends at the fixed lower transom, below the shared fanlight."""
+        return self.ground_leaf_head
+
+    def ground_leaf_transform(self, shape, wall, x, left):
+        from build123d import Location
+
+        hinge = wall.body.point(x + (self.frame_size if left else self.width - self.frame_size), wall.thickness / 2)
+        pivot = (*hinge, 0)
+        return Location(pivot) * Location((0, 0, 0), (0, 0, self.ground_leaf_angle * (1 if left else -1))) * Location(tuple(-p for p in pivot)) * shape
+
     def frame_members(self, x, wall, z):
         from build123d import Location
 
@@ -91,20 +252,24 @@ class BastideGableDoor(ExactArchedDoor):
         r = self.width / 2
         depth = (t - fs) / 2
         bs = self.bar_size
-        ground_head = 3150
+        ground_head = self.ground_leaf_head
         members = [
             G.frame_box(wall.body, x, depth, z, (fs, fs, self.height)),
             G.frame_box(wall.body, x + self.width - fs, depth, z, (fs, fs, self.height)),
-            G.frame_box(wall.body, x, depth, z + ground_head - fs, (self.width, fs, fs)),
+            G.frame_box(wall.body, x, depth, z + ground_head, (self.width, fs, fs)),
             G.frame_box(wall.body, x, depth, z + self.height - fs, (self.width, fs, fs)),
         ]
-        for c in range(1, 4):
-            bx = x + self.width * c / 4 - bs / 2
-            members.append(G.frame_box(wall.body, bx, (t - bs) / 2, z, (bs, bs, ground_head)))
-        for h in [1050, 2100]:
-            members.append(G.frame_box(wall.body, x + fs, (t - bs) / 2, z + h, (self.width - 2 * fs, bs, bs)))
+        leaf_width = (self.width - 2 * fs) / 2
+        for left in (True, False):
+            lo = x + fs + (0 if left else leaf_width)
+            parts = []
+            for xx in (lo, lo + leaf_width - bs, lo + leaf_width / 2 - bs / 2):
+                parts.append(G.frame_box(wall.body, xx, (t - bs) / 2, z + 30, (bs, bs, ground_head - 30)))
+            for h in (30, ground_head / 4, ground_head / 2, ground_head * 3 / 4, ground_head - bs):
+                parts.append(G.frame_box(wall.body, lo, (t - bs) / 2, z + h, (leaf_width, bs, bs)))
+            members.extend(self.ground_leaf_transform(part, wall, x, left) for part in parts)
         centre = wall.body.point(x + r, t / 2)
-        for rad, th in [(r, fs), (1500, bs), (900, bs)]:
+        for rad, th in [(r, fs), (r * 0.682, bs), (r * 0.409, bs)]:
             ring = G.horizontal_cylinder(rad, th, (*centre, z + self.height), wall.angle + 90) - G.horizontal_cylinder(
                 rad - th, th + 2, (*centre, z + self.height), wall.angle + 90
             )
@@ -125,6 +290,25 @@ class BastideGableDoor(ExactArchedDoor):
             members.append(Location((*wall.body.origin, 0), (0, 0, wall.angle)) * spoke)
         return members
 
+    def panes_of(self, x, wall, z):
+        # Independent operable lower leaves, with the upper fanlight retained.
+        fs, radius = self.frame_size, self.width / 2
+        # The fixed glass stays in the facade plane. Only the two independent
+        # 8mm lower panes rotate into the room below its lowest joist.
+        upper = [G.frame_box(wall.body, x + fs, (wall.thickness - 10) / 2, z + self.ground_leaf_head + fs,
+                            (self.width - 2 * fs, 10, self.height - self.ground_leaf_head - 2 * fs))]
+        center = wall.body.point(x + radius, wall.thickness / 2)
+        disc = G.horizontal_cylinder(radius - fs, 10, (*center, z + self.height), wall.angle + 90)
+        clip = G.frame_box(wall.body, x, (wall.thickness - 20) / 2, z + self.height, (self.width, 20, radius))
+        upper.append(disc & clip)
+        width = (self.width - 2 * self.frame_size) / 2
+        for left in (True, False):
+            lo = x + self.frame_size + (0 if left else width)
+            pane = G.frame_box(wall.body, lo + self.bar_size, (wall.thickness - 8) / 2, z + 30 + self.bar_size,
+                               (width - 2 * self.bar_size, 8, self.ground_leaf_head - 30 - 2 * self.bar_size))
+            upper.append(self.ground_leaf_transform(pane, wall, x, left))
+        return upper, sum(G.volume(pane) / (8 if i >= len(upper) - 2 else 10) for i, pane in enumerate(upper))
+
 
 @element
 class ArchedStoneSurround(OpeningPart):
@@ -136,7 +320,7 @@ class ArchedStoneSurround(OpeningPart):
         spring = ctx.house.elements[self.opening].height
         z = wall.elevation + geom.sill
         r = geom.width / 2
-        jamb = 180
+        jamb = 500
         proud = 80
         depth = 100
         parts = [G.frame_box(wall.body, x - jamb, -proud, z, (jamb, depth, spring)), G.frame_box(wall.body, x + geom.width, -proud, z, (jamb, depth, spring))]
@@ -170,7 +354,9 @@ class GableFrieze(OpeningPart):
         ctx.cut(self.opening, cutter)
         ctx.cut(self.opening + ".glass", cutter)
         glass = ctx.built(self.opening + ".glass")
-        glass.derived["area_mm2"] = G.volume(glass.solid) / 10
+        leaf_head = getattr(ctx.house.elements[self.opening], "ground_leaf_head", 0)
+        glass.derived["area_mm2"] = sum(G.volume(part) / (8 if G.bbox(part).max[2] <= z + leaf_head + .01 else 10)
+                                          for part in G.solids(glass.solid))
         ctx.built(self.opening).derived["glass_area_mm2"] = glass.derived["area_mm2"]
         c = wall.body.point(x + geom.width / 2, offset - 6)
         medallion = G.horizontal_cylinder(75, 12, (*c, z + 3275), wall.angle + 90) - G.horizontal_cylinder(60, 14, (*c, z + 3275), wall.angle + 90)
@@ -238,6 +424,19 @@ class JoinedWall(Wall):
         if self.joins:
             r.extrusion = None
         return r
+
+
+@element
+class SalonChimneyBreast(JoinedWall):
+    """Solid backing follows the taper instead of protruding beside the hood."""
+
+    def realize(self, ctx):
+        result = super().realize(ctx)
+        profile = [(3430, 0), (5370, 0), (5370, 1980),
+                   (5090, 2980), (3710, 2980), (3430, 1980)]
+        result.solid = result.solid & G.prism_profile(profile, 7300, 350, along="x")
+        result.extrusion = None
+        return result
 
 
 @element
@@ -840,12 +1039,19 @@ def build() -> House:
         ME = JoinedWall("ME", (7650, 350), (7650, 10650), assembly=plaster, level=L0, height=6500)
         MN = JoinedWall("MN", (7650, 10650), (350, 10650), assembly=rubble, level=L0, height=6500)
         MW = JoinedWall("MW", (350, 10650), (350, 350), assembly=rubble, level=L0, height=6500)
-        BastideGableDoor("D_FRONT", host=MS, width=4400, height=4100, at=1450, panes=(4, 4), frame=steel, frame_size=65, bar_size=28)
+        BastideGableDoor("D_FRONT", host=MS, width=3360, height=4100, at=1970, panes=(4, 4), frame=steel, frame_size=48, bar_size=22)
         ArchedStoneSurround("D_FRONT.surround", opening="D_FRONT", material=cut)
         GableFrieze("D_FRONT.frieze", opening="D_FRONT", material=grey_frieze)
         for wall, prefix in [(ME, "E"), (MW, "W")]:
             for j, y in enumerate([750 if prefix == "E" else 1650, 6700]):
-                ExactArchedDoor(f"D_{prefix}{j + 1}", host=wall, width=1900, height=1900, at=y, panes=(2, 3), frame=steel, frame_size=45, bar_size=24)
+                # Ground-plan dimensions refer to clear openings, not the
+                # surrounding stone jambs. Upper windows keep their setting-out.
+                if prefix == "E":
+                    SalonArchedDoor(f"D_E{j + 1}", host=wall, width=1650, height=2050,
+                                    at=(1150, 5200)[j], panes=(2, 3), frame=steel, frame_size=38, bar_size=19)
+                else:
+                    SalonFrenchDoor(f"D_W{j + 1}", host=wall, width=1200, height=2600,
+                         at=(3680, 7720)[j], glazed=True, leaves=2, panes=(2, 3), frame=steel, frame_size=38, bar_size=19)
                 if prefix == "W" and j == 1:
                     # Looking south from the suite, photo-right is the WEST wall.
                     Window("N_W2", host=wall, width=1450, height=850, sill=4400, at=6925, frame=steel, frame_size=45, panes=(2, 1), bar_size=30)
@@ -884,7 +1090,7 @@ def build() -> House:
         AN = max(A, key=lambda w: (w.start[1] + w.end[1]) / 2)
         AE = max(A, key=lambda w: (w.start[0] + w.end[0]) / 2)
         AW = min(A, key=lambda w: (w.start[0] + w.end[0]) / 2)
-        ExactArchedDoor("D_KITCHEN_GARDEN", host=KS, width=2200, height=1800, at="center", panes=(3, 3), frame=steel, frame_size=55, bar_size=25)
+        SegmentalGardenDoor("D_KITCHEN_GARDEN", host=KS, width=2200, height=2080, rise=360, at="center", panes=(4, 3), frame=steel, frame_size=55, bar_size=25)
         Door("D_KITCHEN_TERRACE", host=KE, width=1900, height=2500, at=4000, glazed=True, leaves=2, panes=(2, 3), frame=steel, frame_size=45)
         Arch("A_DINING_K", host=KE, width=1100, height=2100, at=350)
         Arch("A_DRESSING_K", host=KE, width=1100, height=2100, at=350, sill=3300)
@@ -931,7 +1137,7 @@ def build() -> House:
         for id, host, at, width in [
             ("D_BED2", P_BED2, 3035, 1000),
             ("D_BATH2", P_BATH2, 1100, 900),
-            ("D_BED1", P_BED1, 1550, 1000),
+            ("D_BED1", P_BED1, 110, 1000),
             ("D_BATH1", P_BATH1, 1700, 900),
             ("D_LAUNDRY", P_SERV, 650, 900),
             ("D_WC", P_SERV, 2400, 900),
@@ -1017,16 +1223,23 @@ def build() -> House:
                 material=lime,
                 thickness=28,
                 voids=voids,
-                beams=BeamGrid(width=65, depth=85, spacing=260, along="y", material=oak) if key == "K" else None,
+                beams=BeamGrid(width=92, depth=105, spacing=245, along="y", material=oak) if key == "K" else None,
             )
             if key != "K":
                 Ceiling("C1_" + key, outline=mm(inner[key]), level=L1, material=lime, thickness=28)
         GuestCeilingTimbers("GUEST_CEILING_TIMBERS", outline=mm(inner["A"]), level=L0, material=oak)
-        # Three massive axial oak members below the finer salon joists.
+        # Two massive axial oak members and a transverse salon/dining joint.
         for i, x in enumerate([850, 4000, 7150]):
-            VoidBeam(f"MAIN_BEAM{i}", (x, 350), (x, 10650), width=230, depth=270, underside=2552, level=L0, material=oak, voids=["ST_MASTER"])
-        for i, y in enumerate([10200, 12600, 15000]):
-            Beam(f"KITCHEN_BEAM{i}", (-5080, y), (-350, y), width=240, depth=220, underside=2667, level=L0, material=oak)
+            # Photos26/57 show two flanking longitudinal beams, with no beam
+            # down the centre of the garden glazing. Retain the third ID at
+            # the transverse salon/dining structural line shown on the plan.
+            start, end = ((965, 7300), (7035, 7300)) if i == 1 else ((x, 350), (x, 10650))
+            VoidBeam(f"MAIN_BEAM{i}", start, end, width=230, depth=270, underside=2552, level=L0, material=oak, voids=["ST_MASTER"])
+        # Keep the baseline centre member north of the salon scope. Its end
+        # meets the transverse member without interpenetrating its solid.
+        VoidBeam("MAIN_BEAM1_DINING", (4000, 7415), (4000, 10650), width=230, depth=270, underside=2552, level=L0, material=oak, voids=["ST_MASTER"])
+        for i, y in enumerate([10600, 11850, 13100, 14350]):
+            Beam(f"KITCHEN_BEAM{i}", (-5080, y), (-350, y), width=285, depth=310, underside=2557, level=L0, material=oak)
         # Roofs and geometric wall infills preserve the oblique guest-wing footprint.
         RM = Roof(
             "R_MAIN",
@@ -1062,9 +1275,9 @@ def build() -> House:
         Beam("BED3_CROSS_BEAM", (-5050, 12200), (-350, 12200), width=270, depth=300, underside=6070, level=L1, material=oak)
         Chimney("CH_MAIN", at=(7600, 4500), size=600, base=3000, height=2100, level=L1, material=lime)
         # Fireplace breast with a real recessed fire opening; dressing adds the sculpted mantel.
-        fpasm = Assembly("fireplace", layers=[Layer(material="cut_stone", thickness=500)], finish_in=cut)
-        FP = JoinedWall("FP", (7150, 3550), (7150, 5350), assembly=fpasm, level=L0, height=2900, external=False)
-        SquareHeadedOpening("FP_HEARTH", host=FP, width=1390, height=1240, sill=230, at=155)
+        fpasm = Assembly("fireplace", layers=[Layer(material="cut_stone", thickness=300)], finish_in=cut)
+        FP = SalonChimneyBreast("FP", (7330, 3430), (7330, 5370), assembly=fpasm, level=L0, height=2980, external=False)
+        SquareHeadedOpening("FP_HEARTH", host=FP, width=1580, height=1180, sill=470, at=180)
         # Site: the exact 15 x 5 m pool and the thin water channel shown beside the house.
         Pool("POOL", outline=mm(rect(-1, -9, 14, -4)), level=LP, depth=1450, coping=400, material="pool_tile", coping_material=cut, water_material="pool_water")
         Pool(
@@ -1137,8 +1350,8 @@ def build() -> House:
         house.elements["A4_INFILL"].cut_against = ["H2_INFILL", "R_H"]
         house.elements["P_BATH4"].joins += ["A2_INFILL", "A4_INFILL"]
         # Room topology and names correspond to the supplied drawings.
-        Space("living", outline=mm(rect(0.35, 0.35, 7.65, 6.8)), use="living", level=L0, bounded_by=[MS, ME, MW], occupancy=10)
-        Space("dining", outline=mm(rect(0.35, 6.8, 7.65, 10.65)), use="dining", level=L0, bounded_by=[MN, ME, MW], occupancy=10)
+        Space("living", outline=mm(rect(0.35, 0.35, 7.65, 7.3)), use="living", level=L0, bounded_by=[MS, ME, MW], occupancy=10)
+        Space("dining", outline=mm(rect(0.35, 7.3, 7.65, 10.65)), use="dining", level=L0, bounded_by=[MN, ME, MW], occupancy=10)
         Space("kitchen", outline=mm(inner["K"]), use="kitchen", level=L0, bounded_by=K, occupancy=6)
         Space("hall", outline=mm(inner["H"]), use="hall", level=L0, bounded_by=H)
         Space(

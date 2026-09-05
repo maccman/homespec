@@ -43,6 +43,10 @@ def palette(scene, M):
         "burgundy_tassel": (0.13, 0.014, 0.018),
         "aged_bedside_pewter": (0.16, 0.17, 0.145),
         "sconce_cane": (0.28, 0.16, 0.067),
+        "bedroom_weathered_oak": (0.40, 0.30, 0.18),
+        "bedroom_mirror_oak": (0.23, 0.15, 0.085),
+        "bedroom_chair_walnut": (0.092, 0.055, 0.028),
+        "bedroom_bench_oak": (0.24, 0.17, 0.080),
     }.items():
         mat = scene.flat("fidelity_" + key, color, rough=0.9)
         mat["homespec_texture_role"] = key
@@ -159,7 +163,11 @@ def rumple_pillow(ob, width, height, seed):
         side = -1 if y < 0 else 1
         # A pillowcase is soft fabric stretched over loose stuffing, not a
         # symmetric rigid slab: upper corners lift while the middle collapses.
-        z -= 0.026 * max(0, 1 - a * a) * max(0, b) ** 2
+        z -= 0.038 * max(0, 1 - a * a) * max(0, b) ** 2
+        # Loose Oxford cases have collapsed, unequal corners in 02/06/09.
+        z -= 0.013 * math.exp(-((a - 0.62 * math.sin(phase)) / 0.30) ** 2) * max(0, b) ** 3
+        x += 0.012 * math.sin(phase) * max(0, b) ** 3
+        y += 0.016 * math.sin(phase + a * 2.7) * abs(b) ** 5
         z += 0.009 * math.sin(4 * a + phase) * (0.4 + 0.6 * b * b)
         x += 0.006 * math.sin(6 * b + phase) * abs(a) ** 3
         y += side * 0.013 * math.sin(4.2 * a + 2.1 * b + phase) * fill
@@ -195,7 +203,8 @@ def tassels(scene, name, at, width, height, mat, rot=0, lean=-0.22, short=False)
 
 def lumbar(scene, name, at, width, mat, fringe, rot, seed):
     h = 0.30
-    F.pillow_mesh(scene, name, at, width, h, 0.17, mat, rot, lean=-0.22, seed=seed, flange=0.008)
+    ob = F.pillow_mesh(scene, name, at, width, h, 0.17, mat, rot, lean=-0.22, seed=seed, flange=0.008)
+    rumple_pillow(ob, width, h, seed)
     if fringe.name == "fidelity_burgundy_tassel":
         tassels(scene, name, at, width, h, fringe, rot)
     else:
@@ -222,7 +231,7 @@ def bed(scene, name, at, width, M, cover, rot=0, garden=False, olive=False):
         scene.box(name + "_headboard_foot", p(x, 1.08, 0.06), (0.055, 0.09, 0.12), M.dark_oak, rot_z=rot, bevel=0.006)
     outline = [p(-width / 2 - 0.035, 0.999, 0.20), p(-width / 2 - 0.035, 0.999, 1.32), p(width / 2 + 0.035, 0.999, 1.32), p(width / 2 + 0.035, 0.999, 0.20)]
     F.curve(scene, name + "_headboard_piping", outline, 0.0030, M.pillow)
-    cloth(scene, name + "_white_duvet", at, width + 0.018, M.white, rot, top=0.681, seed=7, side=0.39, foot=0.39)
+    cloth(scene, name + "_white_duvet", at, width + 0.018, M.white, rot, top=0.681, seed=17 if garden else 9 if olive else 7, side=0.55, foot=0.50)
     # Narrow folded-back sheet, confined to the upper half rather than covering
     # the whole duvet with an extra rigid-looking rectangular layer.
     turned = cloth(scene, name + "_turned_sheet", at, width + 0.022, M.white, rot, upper=0.81, top=0.704, seed=14, side=0.08, foot=0)
@@ -232,10 +241,10 @@ def bed(scene, name, at, width, M, cover, rot=0, garden=False, olive=False):
         if ob.name.startswith(name + "_turned_sheet_rolled"):
             bpy.data.objects.remove(ob, do_unlink=True)
     for i, x in enumerate((-width * 0.25, width * 0.25)):
-        back = F.pillow_mesh(scene, name + "_square_linen_pillow_" + str(i), p(x, 0.73, 0.98), width * 0.47, 0.55, 0.25, M.white, rot + (-0.055 if i == 0 else 0.035), lean=-0.30 if i == 0 else -0.23, seed=22 + i, flange=0.035)
+        back = F.pillow_mesh(scene, name + "_square_linen_pillow_" + str(i), p(x + (-0.006 if i == 0 else 0.011), 0.73, 0.968 if i == 0 else 0.988), width * 0.47, 0.55, 0.25, M.white, rot + (-0.055 if i == 0 else 0.035), lean=-0.30 if i == 0 else -0.23, seed=22 + i, flange=0.035)
         rumple_pillow(back, width * 0.47, 0.55, 22 + i)
         if not garden:
-            front = F.pillow_mesh(scene, name + "_linen_pillow_" + str(i), p(x, 0.46, 0.91), width * 0.415, 0.39, 0.19, M.white, rot + (0.034 if i == 0 else -0.042), lean=-0.22, seed=30 + i, flange=0.030)
+            front = F.pillow_mesh(scene, name + "_linen_pillow_" + str(i), p(x + (0.015 if i == 0 else -0.012), 0.435 if i == 0 else 0.462, 0.883 if i == 0 else 0.902), width * 0.415, 0.39, 0.19, M.white, rot + (0.034 if i == 0 else -0.042), lean=-0.22, seed=30 + i, flange=0.030)
             rumple_pillow(front, width * 0.415, 0.39, 30 + i)
         if garden:
             lumbar(scene, name + "_ecru_tasselled_cushion_" + str(i), p(x, 0.44, 0.825), width * 0.36, M.guest_lumbar_weave, M.burgundy_tassel, rot, i + 40)
@@ -243,7 +252,7 @@ def bed(scene, name, at, width, M, cover, rot=0, garden=False, olive=False):
             lumbar(scene, name + "_olive_lumbar_" + str(i), p(x, 0.26, 0.825), 0.45, M.olive_lumbar, M.pillow, rot, i + 41)
         else:
             lumbar(scene, name + "_knotted_lumbar_" + str(i), p(x, 0.27, 0.827), 0.46, M.guest_lumbar_weave, M.pillow, rot, i + 42)
-    cloth(scene, name + "_woven_coverlet", at, width + 0.033, cover, rot, upper=-0.035 if garden else 0.08, top=0.724, seed=15, side=0.40, foot=0.49, fringe=True)
+    cloth(scene, name + "_woven_coverlet", at, width + 0.033, cover, rot, upper=-0.035 if garden else 0.08, top=0.724, seed=15 if garden else 23 if olive else 31, side=0.56, foot=0.60, fringe=True)
 
 
 def picture(scene, name, at, M, rot, which):
@@ -332,10 +341,35 @@ def glass_bedside(scene, name, at, M, rot=0):
         scene.rod(name + "_top_edge", p(x, -0.216, 0.55), p(x, 0.216, 0.55), 0.005, M.brass)
 
 
+def furniture_grain(ob, along=None):
+    """Longitudinal U / cross-grain V measured on each separate wood part."""
+    if ob.type != "MESH" or not ob.data.vertices:
+        return
+    extents = [max(v.co[d] for v in ob.data.vertices) - min(v.co[d] for v in ob.data.vertices) for d in range(3)]
+    along = max(range(3), key=lambda d: extents[d]) if along is None else along
+    layer = ob.data.uv_layers.get("Wood member metres") or ob.data.uv_layers.new(name="Wood member metres")
+    ob.data.uv_layers.active = layer
+    for face in ob.data.polygons:
+        normal_axis = max(range(3), key=lambda d: abs(face.normal[d]))
+        cross = [d for d in range(3) if d != along]
+        across = min(cross, key=lambda d: abs(face.normal[d]))
+        for index in face.loop_indices:
+            q = ob.data.vertices[ob.data.loops[index].vertex_index].co
+            layer.data[index].uv = (q[along], q[across]) if normal_axis != along else (q[cross[0]], q[cross[1]])
+    ob["flechon_grain_mapping"] = "U along furniture member, V across; metres; end faces cross section"
+
+
+def wood_box(scene, name, at, size, material, *, rot=0, bevel=0.003):
+    ob = scene.box(name, at, size, material, rot_z=rot, bevel=bevel)
+    furniture_grain(ob)
+    return ob
+
+
 def beam_between(scene, name, a, b, size, mat, bevel=0.003):
     d = Vector(b) - Vector(a)
     ob = scene.box(name, (Vector(a) + Vector(b)) / 2, (size[0], size[1], d.length), mat, bevel=bevel)
     ob.rotation_euler = d.to_track_quat("Z", "Y").to_euler()
+    furniture_grain(ob, along=2)
     return ob
 
 
@@ -343,19 +377,19 @@ def cane_chair(scene, name, at, M, rot):
     """Photo03/33: raked walnut A-frame chair and real perforated six-way cane."""
     p = F.transform(at, rot)
     for x in (-0.326, 0.326):
-        beam_between(scene, name + "_raked_front_leg", p(x, -0.35, 0), p(x, 0.05, 0.61), (0.060, 0.052), M.dark_oak)
-        beam_between(scene, name + "_raked_rear_leg", p(x, 0.335, 0), p(x, 0.035, 0.63), (0.060, 0.052), M.dark_oak)
-        beam_between(scene, name + "_arm", p(x, -0.37, 0.655), p(x, 0.31, 0.685), (0.066, 0.052), M.dark_oak)
-        beam_between(scene, name + "_back_stile", p(x, 0.20, 0.34), p(x, 0.405, 1.005), (0.041, 0.046), M.dark_oak)
+        beam_between(scene, name + "_raked_front_leg", p(x, -0.35, 0), p(x, 0.05, 0.61), (0.060, 0.052), M.bedroom_chair_walnut)
+        beam_between(scene, name + "_raked_rear_leg", p(x, 0.335, 0), p(x, 0.035, 0.63), (0.060, 0.052), M.bedroom_chair_walnut)
+        beam_between(scene, name + "_arm", p(x, -0.37, 0.655), p(x, 0.31, 0.685), (0.066, 0.052), M.bedroom_chair_walnut)
+        beam_between(scene, name + "_back_stile", p(x, 0.20, 0.34), p(x, 0.405, 1.005), (0.041, 0.046), M.bedroom_chair_walnut)
     for y in (-0.288, 0.252):
-        scene.box(name + "_seat_rail", p(0, y, 0.340), (0.69, 0.045, 0.072), M.dark_oak, rot_z=rot, bevel=0.005)
-    scene.box(name + "_seat_deck", p(0, -0.01, 0.365), (0.65, 0.59, 0.025), M.dark_oak, rot_z=rot, bevel=0.003)
+        scene.box(name + "_seat_rail", p(0, y, 0.340), (0.69, 0.045, 0.072), M.bedroom_chair_walnut, rot_z=rot, bevel=0.005)
+    scene.box(name + "_seat_deck", p(0, -0.01, 0.365), (0.65, 0.59, 0.025), M.bedroom_chair_walnut, rot_z=rot, bevel=0.003)
     F.soft(scene, name + "_olive_seat_pad", p(0, -0.035, 0.425), (0.645, 0.62, 0.112), M.olive_lumbar, rot, 0.037)
     seam = [p(-0.31, -0.325, 0.427), p(0.31, -0.325, 0.427), p(0.31, 0.254, 0.427), p(-0.31, 0.254, 0.427), p(-0.31, -0.325, 0.427)]
     F.curve(scene, name + "_seat_welt", seam, 0.0018, M.pillow)
     for z in (0.516, 0.985):
         y = 0.20 + (z - 0.34) * (0.205 / 0.665)
-        scene.box(name + "_back_rail", p(0, y, z), (0.69, 0.043, 0.040), M.dark_oak, rot_z=rot, bevel=0.004)
+        scene.box(name + "_back_rail", p(0, y, z), (0.69, 0.043, 0.040), M.bedroom_chair_walnut, rot_z=rot, bevel=0.004)
     # Open mesh uses skinny flat tapes, allowing bright daylight through the
     # tiny hexagons; it is not a solid brown rectangle masquerading as cane.
     x0, x1, z0, z1 = -0.295, 0.295, 0.537, 0.965
@@ -414,7 +448,7 @@ def antique_bench(scene, M):
             for j in range(4):
                 fs.append((i * 4 + j, i * 4 + (j + 1) % 4, (i + 1) * 4 + (j + 1) % 4, (i + 1) * 4 + j))
         fs += [(3, 2, 1, 0), tuple(range(len(vs) - 4, len(vs)))]
-        ob = local_mesh(scene, "principal_antique_bench_split_plank_" + str(n), vs, fs, M.oak, at)
+        ob = local_mesh(scene, "principal_antique_bench_split_plank_" + str(n), vs, fs, M.bedroom_bench_oak, at)
         mod = ob.modifiers.new("worn plank arris", "BEVEL")
         mod.width = 0.005
         mod.segments = 3
@@ -426,47 +460,54 @@ def wardrobe(scene, M):
     # Outer envelope remains 2.10 x .34 x 2.35 m.  Paired tall salvaged doors
     # flank the distinctive recessed open shelves in reference09.
     p = F.transform(at)
-    scene.box("bedroom3_wardrobe_carcase", p(0, 0, 1.175), (2.10, 0.34, 2.35), M.oak, bevel=0.003)
-    scene.box("bedroom3_wardrobe_recess_back", p(0, -0.175, 1.28), (0.245, 0.016, 2.13), M.dark_oak)
+    # Real side/back/top panels leave the central bay open to its back.
+    # The original 2.10 x .34 x 2.35 m audited envelope is unchanged.
+    for x in (-1.034, 1.034):
+        wood_box(scene, "bedroom3_wardrobe_carcase_side", p(x, 0, 1.175), (0.032, 0.34, 2.35), M.bedroom_weathered_oak)
+    wood_box(scene, "bedroom3_wardrobe_carcase_back", p(0, 0.154, 1.175), (2.036, 0.032, 2.35), M.bedroom_weathered_oak)
+    for z in (0.016, 2.334):
+        wood_box(scene, "bedroom3_wardrobe_carcase_horizontal", p(0, 0, z), (2.036, 0.34, 0.032), M.bedroom_weathered_oak)
+    scene.box("bedroom3_wardrobe_recess_back", p(0, 0.131, 1.28), (0.245, 0.016, 2.13), M.bedroom_weathered_oak)
     for z in (0.06, 2.30):
-        scene.box("bedroom3_wardrobe_continuous_rail", p(0, -0.196, z), (2.16, 0.078, 0.073), M.oak, bevel=0.004)
+        scene.box("bedroom3_wardrobe_continuous_rail", p(0, -0.196, z), (2.16, 0.078, 0.073), M.bedroom_weathered_oak, bevel=0.004)
     for center in (-0.60, 0.60):
         for d in (-1, 1):
             cx = center + d * 0.225
-            scene.box("bedroom3_wardrobe_door", p(cx, -0.188, 1.18), (0.44, 0.031, 2.20), M.oak, bevel=0.003)
+            scene.box("bedroom3_wardrobe_door", p(cx, -0.188, 1.18), (0.44, 0.031, 2.20), M.bedroom_weathered_oak, bevel=0.003)
             for xx in (-0.185, 0.185):
-                scene.box("bedroom3_wardrobe_stile", p(cx + xx, -0.222, 1.18), (0.049, 0.040, 2.20), M.oak, bevel=0.004)
+                scene.box("bedroom3_wardrobe_stile", p(cx + xx, -0.222, 1.18), (0.049, 0.040, 2.20), M.bedroom_weathered_oak, bevel=0.004)
             for zz in (0.11, 1.03, 2.255):
-                scene.box("bedroom3_wardrobe_panel_rail", p(cx, -0.224, zz), (0.395, 0.041, 0.075), M.oak, bevel=0.004)
+                scene.box("bedroom3_wardrobe_panel_rail", p(cx, -0.224, zz), (0.395, 0.041, 0.075), M.bedroom_weathered_oak, bevel=0.004)
             for zz, hh in ((0.563, 0.805), (1.641, 1.07)):
-                scene.box("bedroom3_wardrobe_recessed_field", p(cx, -0.212, zz), (0.292, 0.021, hh), M.oak, bevel=0.006)
+                scene.box("bedroom3_wardrobe_recessed_field", p(cx, -0.212, zz), (0.292, 0.021, hh), M.bedroom_weathered_oak, bevel=0.006)
                 for sx in (-1, 1):
-                    scene.box("bedroom3_wardrobe_field_moulding", p(cx + sx * 0.145, -0.231, zz), (0.015, 0.012, hh), M.oak, bevel=0.005)
+                    scene.box("bedroom3_wardrobe_field_moulding", p(cx + sx * 0.145, -0.231, zz), (0.015, 0.012, hh), M.bedroom_weathered_oak, bevel=0.005)
                 for sz in (-1, 1):
-                    scene.box("bedroom3_wardrobe_field_moulding", p(cx, -0.231, zz + sz * hh / 2), (0.30, 0.012, 0.016), M.oak, bevel=0.005)
+                    scene.box("bedroom3_wardrobe_field_moulding", p(cx, -0.231, zz + sz * hh / 2), (0.30, 0.012, 0.016), M.bedroom_weathered_oak, bevel=0.005)
             for zz in (0.51, 1.75):
                 scene.rod("bedroom3_wardrobe_iron_hinge", p(cx + d * 0.214, -0.241, zz - 0.052), p(cx + d * 0.214, -0.241, zz + 0.052), 0.0065, M.iron)
             scene.rod("bedroom3_wardrobe_key_escutcheon", p(cx - d * 0.175, -0.241, 1.06), p(cx - d * 0.175, -0.241, 1.13), 0.008, M.iron)
     for z in (0.50, 1.24, 1.87):
-        scene.box("bedroom3_wardrobe_open_shelf", p(0, -0.205, z), (0.245, 0.106, 0.027), M.dark_oak, bevel=0.002)
-        F.lathe(scene, "bedroom3_wardrobe_woven_basket", p(0, -0.19, z + 0.014), [(0, 0), (0, 0.080), (0.20, 0.075), (0.20, 0.068), (0.014, 0.068)], M.pillow, 48)
+        scene.box("bedroom3_wardrobe_open_shelf", p(0, -0.025, z), (0.245, 0.296, 0.027), M.bedroom_weathered_oak, bevel=0.002)
+        F.lathe(scene, "bedroom3_wardrobe_woven_basket", p(0, -0.035, z + 0.014), [(0, 0), (0, 0.080), (0.20, 0.075), (0.20, 0.068), (0.014, 0.068)], M.pillow, 48)
     # Broad flat timber annulus, visibly assembled from old curved segments.
     c = (-0.444, 11.13, 4.94)
     for i in range(16):
-        vs, fs = [], []
+        vs, fs, uv = [], [], []
         for j in range(9):
             a = (i + j / 8) * math.tau / 16
             for x, r in ((0.024, 0.490), (0.024, 0.630), (-0.011, 0.631), (-0.011, 0.489)):
                 vs.append((x, r * math.cos(a), r * math.sin(a)))
+                uv.append((0.56 * a, r - 0.490))
         for j in range(8):
             for k in range(4):
                 fs.append((j * 4 + k, j * 4 + (k + 1) % 4, (j + 1) * 4 + (k + 1) % 4, (j + 1) * 4 + k))
         fs += [(3, 2, 1, 0), tuple(range(len(vs) - 4, len(vs)))]
-        ob = local_mesh(scene, "bedroom3_round_aged_wood_segment", vs, fs, M.dark_oak, c)
+        ob = local_mesh(scene, "bedroom3_round_aged_wood_segment", vs, fs, M.bedroom_mirror_oak, c, uv=uv)
         b = ob.modifiers.new("worn mirror frame edges", "BEVEL")
         b.width = 0.004
         b.segments = 3
-    F.ring(scene, "bedroom3_mirror_inner_rebate", c, 0.496, M.oak, 0.0030, axis="X")
+    F.ring(scene, "bedroom3_mirror_inner_rebate", c, 0.496, M.bedroom_weathered_oak, 0.0030, axis="X")
 
 
 def gathered_curtain(scene, name, at, width, height, mat, rot=0, heavy=False, inward=1, seed=0):
@@ -496,7 +537,7 @@ def gathered_curtain(scene, name, at, width, height, mat, rot=0, heavy=False, in
         for i in range(nx + 1):
             u = i / nx
             verts.append(point(u, t))
-            uv.append((u, t))
+            uv.append((u * width * (2.35 if heavy else 2.0), t * height))
     for j in range(nz):
         for i in range(nx):
             k = j * (nx + 1) + i
@@ -518,13 +559,28 @@ def gathered_curtain(scene, name, at, width, height, mat, rot=0, heavy=False, in
 
 
 def curtains(scene, M):
-    remove("principal_patterned_curtain")
-    for i, x in enumerate((1.30, 6.68)):
+    remove("principal_patterned_curtain", "principal_curtain_brass_hook", "principal_curtain_rod", "principal_curtain_pole_support")
+    # The upper fanlight shares the surveyed south opening. Keep its paired
+    # panels attached to the actual jambs when a plan-supported width changes.
+    void = scene.entity("D_FRONT")["derived"]["void"]
+    first = Vector(void["origin"]) / 1000
+    last = first + Vector((*void["u"], 0)) * (void["length"] / 1000)
+    jambs = sorted((first.x, last.x))
+    centers = (jambs[0] - 0.42, jambs[1] + 0.42)
+    for i, x in enumerate(centers):
         gathered_curtain(scene, "principal_patterned_curtain", (x, 0.535, 3.303), 0.83, 3.12, M.curtain, heavy=True, seed=i + 3)
         # Header hooks join the original pole to the gathered panel's header.
         for j in range(9):
             xx = x + (j / 8 - 0.5) * 0.83 * 0.83
             F.curve(scene, "principal_curtain_brass_hook", [(xx, 0.41, 6.46), (xx, 0.45, 6.47), (xx, 0.535, 6.46), (xx, 0.535, 6.42)], 0.0018, M.brass)
+    # The supplied 06/33 views show a broad wall band above the arch.
+    # Retain the 6.46m rod inside the audited 6.50m room envelope; the
+    # narrower plan-supported fanlight now provides the reference wall band.
+    rod_ends = (centers[0] - 0.48, centers[1] + 0.48)
+    scene.rod("principal_curtain_rod", (rod_ends[0], 0.41, 6.46), (rod_ends[1], 0.41, 6.46), 0.014, M.iron)
+    for x in (rod_ends[0] + 0.10, (jambs[0] + jambs[1]) / 2, rod_ends[1] - 0.10):
+        scene.box("principal_curtain_pole_support_plate", (x, 0.365, 6.41), (0.045, 0.028, 0.105), M.iron, bevel=0.005)
+        F.curve(scene, "principal_curtain_pole_support_hook", [(x, 0.372, 6.395), (x, 0.411, 6.395), (x, 0.427, 6.450), (x, 0.41, 6.477), (x, 0.398, 6.463)], 0.006, M.iron)
     # Read each opening's actual normal, width and finished inner wall face.
     # Pulled panels extend just 60 mm onto glazing and leave its centre clear.
     for eid in ("N_GUEST_E0", "N_GUEST_E1", "N_GUEST_W", "N_SUITE4_E0", "N_SUITE4_E1"):
@@ -551,12 +607,20 @@ def curtains(scene, M):
 
 def apply(scene, M):
     M = palette(scene, M)
-    rot = math.radians(72)
-    # A 150cm mattress in bed1 makes the photographed spool possible. Its left
-    # edge remains where the previous 160cm bed passed the door-approach audit.
-    # Width is a furniture estimate: the source plan does not dimension beds.
-    first_at = (-2.0616 - 0.055 * math.cos(rot), 28.0789 - 0.055 * math.sin(rot), 0)
-    for i, at in enumerate((first_at, (-7.04, 29.12, 0)), 1):
+    # Both ground-floor plan beds have their heads on the north exterior wall.
+    # The former 72deg pose faced the bathroom partition, explaining the wrong
+    # ceiling direction and absence of the photograph02's right-hand curtain.
+    north = scene.entity("A2")["derived"]["face"]
+    rot = math.atan2(north["u"][1], north["u"][0]) - math.pi
+    axis = Vector((math.cos(rot), math.sin(rot), 0))
+    head = Vector((-math.sin(rot), math.cos(rot), 0))
+    positions = []
+    for room, sideways in (("bed1", 0.28), ("bed2", 0.0)):
+        outline = [Vector((x / 1000, y / 1000, 0)) for x, y in scene.entity(room)["params"]["outline"]]
+        north_corners = sorted(outline, key=lambda point: point.dot(head), reverse=True)[:2]
+        center = (north_corners[0] + north_corners[1]) / 2 - head * 1.185 + axis * sideways
+        positions.append(tuple(center))
+    for i, at in enumerate(positions, 1):
         bed(scene, f"guest_{i}_queen", at, 1.5 if i == 1 else 1.6, M, M.guest_chinoiserie, rot, garden=True)
         remove(f"guest_{i}_line_art", f"guest_{i}_sconce_shade", f"guest_{i}_sconce_arm", f"guest_{i}_nightstand", f"guest_{i}_bud_vase")
         p = F.transform(at, rot)
@@ -564,7 +628,7 @@ def apply(scene, M):
         # Duplicating them on bed2 hung the prints visibly in front of glazing.
         if i == 1:
             for j, dx in enumerate((-0.43, 0.43)):
-                picture(scene, f"guest_{i}_face_art_{j}", p(dx, 1.24, 1.81), M, rot, j)
+                picture(scene, f"guest_{i}_face_art_{j}", p(dx, 1.171, 1.81), M, rot, j)
         lamp_positions = (0.97,) if i == 1 else ()
         for dx in lamp_positions:
             woven_sconce(scene, f"guest_{i}_woven_sconce", p(dx, 1.01, 1.96), M, rot)
@@ -588,6 +652,8 @@ def apply(scene, M):
             for j, dx in enumerate((-1.11, 1.11)):
                 bedside_drum(scene, f"guest_{i}_fluted_pewter_drum_{j}", p(dx, 0.76, 0), M, diffuser=False)
                 F.reading_lamp(scene, f"guest_{i}_portable_reading_lamp_{j}", p(dx, 0.76, 0.506), M.brass, M.shade, 8)
+    # Upper bedroom4 retains the plan's west-facing headboard.
+    rot = math.radians(72)
     bed(scene, "bedroom3_king", (-2.64, 10.41, 3.3), 1.8, M, M.guest_taupe_paisley, olive=True)
     bed(scene, "bedroom4_king", (-3.5, 27.25, 3.3), 1.8, M, M.principal_paisley, rot, olive=True)
     bed(scene, "principal_superking", (4.10, 4.48, 3.3), 2.0, M, M.principal_paisley)
@@ -623,3 +689,9 @@ def apply(scene, M):
     antique_bench(scene, M)
     wardrobe(scene, M)
     curtains(scene, M)
+    for ob in bpy.data.objects:
+        if ob.type != "MESH" or "round_aged_wood_segment" in ob.name:
+            continue
+        if ob.name.startswith(("bedroom3_wardrobe", "principal_raked_walnut_chair", "principal_antique_bench_split_plank")) and any(mat in ob.data.materials.values() for mat in (M.bedroom_chair_walnut, M.bedroom_bench_oak, M.bedroom_weathered_oak)):
+            furniture_grain(ob)
+    print("FLECHON bedroom review: lower cloth falls, unequal collapsed pillowcases, hollow pale-oak wardrobe, segmented mirror grain and physical curtain repeats", flush=True)

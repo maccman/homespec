@@ -7,6 +7,7 @@ Whole coverlets keep their normalized UVs so borders do not repeat across beds.
 
 from __future__ import annotations
 
+import math
 import os
 
 import bpy
@@ -15,7 +16,7 @@ TEXTURES = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "textu
 
 
 def surface(name, texture, *, scale=1.0, uv=False, gain=(1, 1, 1), saturation=1.0,
-            roughness=0.8, relief=0.001, sheen=0, translucent=0, micro=0.0002):
+            roughness=0.8, relief=0.001, sheen=0, translucent=0, micro=0.0002, specular=0.5):
     """Replace a named material in place, retaining every object assignment."""
     material = bpy.data.materials.get(name) or bpy.data.materials.new(name)
     material.use_nodes = True
@@ -26,13 +27,16 @@ def surface(name, texture, *, scale=1.0, uv=False, gain=(1, 1, 1), saturation=1.
     bsdf.name = "Principled BSDF"
     links.new(bsdf.outputs["BSDF"], out.inputs["Surface"])
     bsdf.inputs["Roughness"].default_value = roughness
-    bsdf.inputs["Sheen Weight"].default_value = min(sheen, 0.055)
+    bsdf.inputs["Sheen Weight"].default_value = sheen
     bsdf.inputs["Sheen Roughness"].default_value = 0.8
-    bsdf.inputs["Specular IOR Level"].default_value = 0.055 if sheen else 0.13
+    bsdf.inputs["Specular IOR Level"].default_value = specular
     coord = nodes.new("ShaderNodeTexCoord")
     mapping = nodes.new("ShaderNodeMapping")
     mapping.inputs["Scale"].default_value = (scale,) * 3 if isinstance(scale, (int, float)) else scale
     links.new(coord.outputs["UV" if uv else "Object"], mapping.inputs["Vector"])
+    if uv and texture == "antique_walnut":
+        # Bitmap fibres run vertically; object UV U always follows the member.
+        mapping.inputs["Rotation"].default_value[2] = math.pi / 2
     image = nodes.new("ShaderNodeTexImage")
     image.image = bpy.data.images.load(os.path.join(TEXTURES, texture + ".png"), check_existing=True)
     image.image.colorspace_settings.name = "sRGB"
@@ -51,28 +55,45 @@ def surface(name, texture, *, scale=1.0, uv=False, gain=(1, 1, 1), saturation=1.
     tint.inputs[2].default_value = (*gain, 1)
     links.new(color, tint.inputs[1])
     links.new(tint.outputs[0], bsdf.inputs["Base Color"])
-    # Relief is intentionally shallow: the color image is not a measured
-    # displacement scan. Geometry carries seams, joints, holes and deep folds.
-    height = nodes.new("ShaderNodeRGBToBW")
-    links.new(image.outputs["Color"], height.inputs[0])
+    # Pigment is evidence-informed colour only. Dark printed motifs and limewash
+    # stains do not become dents, and bright veins do not become polished ridges.
+    # Physical relief below is an explicit inferred pore/fibre model, in metres.
+    is_wood = texture in {"antique_walnut", "reclaimed_oak", "weathered_floorboards"}
+    relief_map = nodes.new("ShaderNodeMapping")
+    relief_map.name = "Relief metres (independent of pigment)"
+    relief_map.inputs["Scale"].default_value = (2.5, 170, 85) if is_wood and uv else ((170, 2.5, 85) if is_wood else (1, 1, 1))
+    links.new(coord.outputs["UV" if uv and is_wood else "Object"], relief_map.inputs["Vector"])
+    pores = nodes.new("ShaderNodeTexNoise")
+    pores.name = "Unmeasured fibres / pores — no colour input"
+    pores.inputs["Scale"].default_value = 1 if is_wood else (420 if sheen else 65)
+    pores.inputs["Detail"].default_value = 2.5
+    pores.inputs["Roughness"].default_value = .68
+    links.new(relief_map.outputs["Vector"], pores.inputs["Vector"])
     coarse = nodes.new("ShaderNodeBump")
-    coarse.inputs["Strength"].default_value = 0.26
-    coarse.inputs["Distance"].default_value = relief
-    links.new(height.outputs[0], coarse.inputs["Height"])
+    coarse.name = "Physical relief, metres"
+    coarse.inputs["Strength"].default_value = .20
+    coarse.inputs["Distance"].default_value = min(relief, .003 if is_wood else .002)
+    links.new(pores.outputs["Fac"], coarse.inputs["Height"])
     grain = nodes.new("ShaderNodeTexNoise")
-    grain.inputs["Scale"].default_value = 650 if sheen else 140
+    grain.name = "Micro surface independent of pigment"
+    grain.inputs["Scale"].default_value = 900 if sheen else 280
     grain.inputs["Detail"].default_value = 2
     links.new(coord.outputs["Object"], grain.inputs["Vector"])
     fine = nodes.new("ShaderNodeBump")
-    fine.inputs["Strength"].default_value = 0.16
+    fine.inputs["Strength"].default_value = .12
     fine.inputs["Distance"].default_value = micro
     links.new(grain.outputs["Fac"], fine.inputs["Height"])
     links.new(coarse.outputs["Normal"], fine.inputs["Normal"])
     links.new(fine.outputs["Normal"], bsdf.inputs["Normal"])
+    rough_noise = nodes.new("ShaderNodeTexNoise")
+    rough_noise.name = "Finish variation, independent of colour and relief"
+    rough_noise.inputs["Scale"].default_value = 37
+    rough_noise.inputs["Detail"].default_value = 1
+    links.new(coord.outputs["Object"], rough_noise.inputs["Vector"])
     rough = nodes.new("ShaderNodeMapRange")
-    rough.inputs["To Min"].default_value = max(0.04, roughness - 0.09)
-    rough.inputs["To Max"].default_value = min(1, roughness + 0.05)
-    links.new(height.outputs[0], rough.inputs["Value"])
+    rough.inputs["To Min"].default_value = max(.04, roughness - .035)
+    rough.inputs["To Max"].default_value = min(1, roughness + .035)
+    links.new(rough_noise.outputs["Fac"], rough.inputs["Value"])
     links.new(rough.outputs[0], bsdf.inputs["Roughness"])
     if translucent:
         transmission = nodes.new("ShaderNodeBsdfTranslucent")
@@ -83,6 +104,8 @@ def surface(name, texture, *, scale=1.0, uv=False, gain=(1, 1, 1), saturation=1.
         links.new(transmission.outputs[0], mix.inputs[2])
         links.new(mix.outputs[0], out.inputs["Surface"])
     material["flechon_generated_texture"] = texture + ".png"
+    material["flechon_relief_source"] = "Procedural physical pores/fibres; not image luminance"
+    material["flechon_roughness_source"] = "Independent finish noise"
     material["flechon_mapping"] = "UV" if uv else "object metres"
     return material
 
@@ -162,8 +185,16 @@ def apply(scene, _):
                        ("fidelity_living_worn_carving", (0.55, 0.43, 0.32))):
         surface(name, "antique_walnut", scale=1.8, gain=gain,
                 saturation=0.6, roughness=0.72, relief=0.0015)
+    surface("fidelity_bedroom_weathered_oak", "reclaimed_oak", uv=True, scale=(.5, 1.25, 1),
+            gain=(1.65, 1.62, 1.48), saturation=.45, roughness=.77, relief=.002)
+    surface("fidelity_bedroom_mirror_oak", "antique_walnut", uv=True, scale=.8,
+            gain=(2.2, 1.85, 1.4), saturation=.65, roughness=.62, relief=.001)
+    surface("fidelity_bedroom_chair_walnut", "antique_walnut", uv=True, scale=.85,
+            gain=(1.25, 1.20, 1.12), saturation=.7, roughness=.56, relief=.001)
+    surface("fidelity_bedroom_bench_oak", "reclaimed_oak", uv=True, scale=(.5, 1.25, 1),
+            gain=(1.3, 1.2, 1.04), saturation=.65, roughness=.74, relief=.002)
     surface("interior_bronze_travertine", "bronze_travertine", scale=0.72,
-            roughness=0.36, relief=0.0018, saturation=0.72)
+            roughness=0.24, relief=0.0009, saturation=0.72)
     for name in ("interior_taupe_sofa", "fidelity_living_sofa"):
         surface(name, "taupe_chenille", scale=7.5, roughness=0.91,
                 gain=(0.76, 0.73, 0.69), relief=0.001, sheen=0.16)
@@ -205,7 +236,7 @@ def apply(scene, _):
     for name in ("fidelity_stone_slips",):
         surface(name, "stone_slips", scale=1.0, roughness=0.91, relief=0.005)
     tobacco = surface("fidelity_bedroom_tobacco_lime", "tobacco_brushed_limewash", scale=0.43,
-                      gain=(0.90, 0.79, 0.63), saturation=0.65, roughness=0.94, relief=0.0007)
+                      gain=(0.76, 0.65, 0.51), saturation=0.65, roughness=0.94, relief=0.0007)
     putty = surface("fidelity_guest_putty_lime", "guest_putty_limewash", scale=0.50,
                     gain=(0.90, 0.90, 0.87), saturation=0.65, roughness=0.94, relief=0.0007)
     ink = scene.flat("fidelity_carbon_drawing_ink", (0.004, 0.003, 0.002), rough=1)
@@ -216,7 +247,7 @@ def apply(scene, _):
         ("fidelity_living_cast_iron", (0.048, 0.039, 0.026), 0.69, 0.62),
         ("flechon_aged_brass", (0.34, 0.21, 0.080), 0.47, 0.82),
         ("flechon_bronze", (0.15, 0.10, 0.053), 0.58, 0.72),
-        ("interior_warm_grey_joinery", (0.235, 0.216, 0.183), 0.69, 0.0),
+        ("interior_warm_grey_joinery", (0.27, 0.275, 0.255), 0.46, 0.0),
     ):
         mat = bpy.data.materials.get(name)
         if mat:
@@ -261,7 +292,7 @@ def apply(scene, _):
             mat = bpy.data.materials["interior_rust_ivory_curtain"]
             for node in mat.node_tree.nodes:
                 if node.type == "MAPPING":
-                    node.inputs["Scale"].default_value = (1.2, 5.2, 1)
+                    node.inputs["Scale"].default_value = (0.8, 1.65, 1)
     # Mixed exterior/upper-room materials already carry physical height and
     # inward-normal masks created by material_details.
     for name in ("MS", "ME", "MN", "MW"):
@@ -272,7 +303,7 @@ def apply(scene, _):
                     # Reconnect its original stone shader to the new stone
                     # nodes through a node group to preserve the actual mask.
                     replace_masonry_branch(mat, stone)
-                    wall_finish(mat, (0.72, 0.64, 0.51))
+                    wall_finish(mat, (0.63, 0.54, 0.42))
     for name in ("H1", "H2", "H3", "H4"):
         ob = bpy.data.objects.get(name)
         if ob:
@@ -299,7 +330,7 @@ def upper_pigment(material):
     pigment = nodes.new("ShaderNodeMixRGB")
     pigment.blend_type = "MULTIPLY"
     pigment.inputs[0].default_value = 1
-    pigment.inputs[2].default_value = (0.90, 0.79, 0.63, 1)
+    pigment.inputs[2].default_value = (0.76, 0.65, 0.51, 1)
     hsv = nodes.new("ShaderNodeHueSaturation")
     hsv.inputs["Saturation"].default_value = 0.65
     links.new(image.outputs["Color"], hsv.inputs["Color"])
@@ -339,7 +370,10 @@ def replace_masonry_branch(material, stone):
     links.new(hsv.outputs["Color"], bsdf.inputs["Base Color"])
     bump = nodes.new("ShaderNodeBump")
     bump.inputs["Strength"].default_value = 0.28
-    bump.inputs["Distance"].default_value = 0.016
-    links.new(tex.outputs["Color"], bump.inputs["Height"])
+    bump.inputs["Distance"].default_value = 0.002
+    pores = nodes.new("ShaderNodeTexNoise")
+    pores.inputs["Scale"].default_value = 65
+    links.new(coord.outputs["Object"], pores.inputs["Vector"])
+    links.new(pores.outputs["Fac"], bump.inputs["Height"])
     links.new(bump.outputs["Normal"], bsdf.inputs["Normal"])
     bsdf.inputs["Roughness"].default_value = 0.89

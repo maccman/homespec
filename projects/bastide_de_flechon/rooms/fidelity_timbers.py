@@ -54,6 +54,10 @@ class Member:
         along, across, rise = self.coordinates(point)
         # U follows longitudinal grain; V wraps each long face in metres.
         # Different deterministic offsets avoid identical knots on every beam.
+        if abs(normal.dot(self.axis)) > 0.86:
+            # End faces need a real cross-section. Longitudinal U collapses
+            # on a cap and formerly stretched one vertical albedo stripe there.
+            return across + 0.021 * math.sin(self.seed), rise + 0.025 * math.cos(self.seed)
         cross = across if abs(normal.dot(self.up)) >= abs(normal.dot(self.side)) else rise + self.width / 2
         return along + self.seed * 0.137, cross + self.seed * 0.071
 
@@ -218,15 +222,60 @@ def grain(obj, members):
         centre = world @ face.center
         normal = (normal_matrix @ face.normal).normalized()
         member = min(members, key=lambda m: m.score(centre, normal))
+        face.material_index = 1 if abs(normal.dot(member.axis)) > 0.86 else 0
         for index in face.loop_indices:
             point = world @ obj.data.vertices[obj.data.loops[index].vertex_index].co
             layer.data[index].uv = member.uv(point, normal)
+
+
+
+def endgrain_material(scene):
+    """Saw-cut oak: cross-section growth colour and independent pore relief.
+
+    No photograph or generated pigment image is interpreted as surface height.
+    The rings are visible wood anatomy on a separate editable material slot.
+    """
+    material = scene.flat("fidelity_oak_endgrain", (0.21, 0.13, 0.066), rough=0.77)
+    nodes, links = material.node_tree.nodes, material.node_tree.links
+    bsdf = nodes.get("Principled BSDF")
+    bsdf.inputs["Specular IOR Level"].default_value = 0.30
+    uv = nodes.new("ShaderNodeTexCoord")
+    rings = nodes.new("ShaderNodeTexWave")
+    rings.name = "Growth rings in physical cross section"
+    rings.wave_type = "RINGS"
+    rings.rings_direction = "Z"
+    rings.inputs["Scale"].default_value = 43
+    rings.inputs["Distortion"].default_value = 2.9
+    rings.inputs["Detail Scale"].default_value = 0.9
+    rings.inputs["Detail Roughness"].default_value = 0.7
+    links.new(uv.outputs["UV"], rings.inputs["Vector"])
+    tint = nodes.new("ShaderNodeValToRGB")
+    tint.name = "Heartwood and growth-line pigment"
+    tint.color_ramp.elements[0].position = 0.22
+    tint.color_ramp.elements[0].color = (0.16, 0.094, 0.042, 1)
+    tint.color_ramp.elements[1].position = 0.71
+    tint.color_ramp.elements[1].color = (0.255, 0.166, 0.089, 1)
+    links.new(rings.outputs["Fac"], tint.inputs["Fac"])
+    links.new(tint.outputs["Color"], bsdf.inputs["Base Color"])
+    pore = nodes.new("ShaderNodeTexNoise")
+    pore.name = "Cut fibre relief independent from ring pigment"
+    pore.inputs["Scale"].default_value = 740
+    pore.inputs["Detail"].default_value = 2
+    links.new(uv.outputs["UV"], pore.inputs["Vector"])
+    bump = nodes.new("ShaderNodeBump")
+    bump.inputs["Strength"].default_value = 0.23
+    bump.inputs["Distance"].default_value = 0.0007
+    links.new(pore.outputs["Fac"], bump.inputs["Height"])
+    links.new(bump.outputs["Normal"], bsdf.inputs["Normal"])
+    material["flechon_provenance"] = "Procedural oak end section inferred from photographed sawn beam/bench ends; cross-section UV metres; no source photograph alteration"
+    return material
 
 
 def apply(scene, M):
     material = bpy.data.materials.get("fidelity_reclaimed_oak")
     if material is None:
         raise RuntimeError("Create fidelity_reclaimed_oak before the photographic timber pass")
+    endgrain = endgrain_material(scene)
     count, vertices = 0, 0
     maximum_removed = 0
     for entity in scene.ir["entities"]:
@@ -243,10 +292,11 @@ def apply(scene, M):
         high = Vector(tuple(max(p[k] for p in original) for k in range(3)))
         amplitude = 0.008 if any(min(m.width, m.depth) > 0.20 for m in members) else 0.003
         age_mesh(obj, members, amplitude)
-        grain(obj, members)
         # All physical metadata, names and storey membership remain intact.
         obj.data.materials.clear()
         obj.data.materials.append(material)
+        obj.data.materials.append(endgrain)
+        grain(obj, members)
         for face in obj.data.polygons:
             face.use_smooth = True
         for modifier in list(obj.modifiers):
@@ -264,7 +314,7 @@ def apply(scene, M):
             point = obj.matrix_world @ vertex.co
             if any(point[k] < low[k] - 0.000001 or point[k] > high[k] + 0.000001 for k in range(3)):
                 raise RuntimeError(f"Timber ageing exceeded its physical envelope: {obj.name}; {tuple(point)}, limits {tuple(low)}..{tuple(high)}")
-        obj["flechon_grain_mapping"] = "U along individual member, V across, metres"
+        obj["flechon_grain_mapping"] = "U along individual member, V across, metres; caps have cross-section UV and distinct end-grain material"
         obj["flechon_grain_members"] = len(members)
         obj["flechon_ageing_max_inward_mm"] = round(amplitude * 1000, 2)
         maximum_removed = max(maximum_removed, amplitude)
