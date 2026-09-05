@@ -53,7 +53,7 @@ def wood_grain(ob, endgrain, along=None):
     ob.data.materials.append(endgrain)
     end_index = len(ob.data.materials) - 1
     for face in ob.data.polygons:
-        if abs(face.normal[along]) > 0.90:
+        if abs(face.normal[along]) > (0.80 if "_raked_" in ob.name else 0.90):
             face.material_index = end_index
     ob["flechon_grain_mapping"] = "U along member in metres; caps use cross-section UV and a separate end-grain material"
 
@@ -188,13 +188,17 @@ def bench(scene, M, endgrain):
 
 
 def chairs(scene, M, endgrain):
-    """Upper-plan opposing chair poses, cross-checked against photo33."""
+    """Plan-backed opposing orientations with photo33's movable staging."""
     B.remove("principal_raked_walnut_chair")
     # Original plan, approximately 57 px/m: the southwest chair's back is
     # on the southwest edge of its symbol; the northwest chair's back is on
     # its northwest edge. Local -Y therefore faces NE/SE at153/33deg yaw.
     # The former almost-parallel east-facing pair was not supported by plan.
-    settings = [((1.50, 1.05, 3.30), math.radians(153)),
+    # Photo33 places the far chair behind/right of the trumpet table. Its
+    # movable pose differs from the coarse plan symbol. Keep the toe-in and
+    # plan architecture; the camera's roughly74px vertical back-top residual
+    # at900x1200 remains unresolved rather than changing the chair's height.
+    settings = [((1.00, 1.50, 3.30), math.radians(153)),
                 ((1.18, 3.05, 3.30), math.radians(33))]
     for index, (at, angle) in enumerate(settings):
         name = "principal_raked_walnut_chair_" + str(index)
@@ -206,6 +210,21 @@ def chairs(scene, M, endgrain):
         for ob in bpy.data.objects:
             if ob.name.startswith(name) and ob.type == "MESH":
                 ob.data = ob.data.copy()
+        # Raked rectangular legs need horizontal sawn feet, not inclined end
+        # faces extending through the physical boards. Trim only their four
+        # lower end vertices; all upper joinery and chair heights stay fixed.
+        bpy.context.view_layer.update()
+        floor_z = scene.bbox("F1_MAIN")[1].z + 0.003
+        for ob in bpy.data.objects:
+            if not ob.name.startswith((name + "_raked_front_leg", name + "_raked_rear_leg")):
+                continue
+            inverse = ob.matrix_world.inverted()
+            for vertex in ob.data.vertices:
+                if vertex.co.z < 0:
+                    point = ob.matrix_world @ vertex.co
+                    point.z = floor_z
+                    vertex.co = inverse @ point
+            ob.data.update()
         B.remove(name + "_arm", name + "_olive_seat_pad", name + "_seat_welt")
         for x in (-0.326, 0.326):
             arm = F.soft(scene, name + "_arm", p(x, -0.028, 0.664),
@@ -278,9 +297,10 @@ def trumpet(scene, M):
 
 def stoneware(scene, M):
     B.remove("principal_cream_stoneware_vessel", "principal_dry_branch")
-    # Two distinct stepped vessels in33; compact corner placement preserves
-    # the first cane chair's feet and avoids a third speculative urn.
-    for i, (x, y, h, r) in enumerate(((0.80, 0.90, 0.42, 0.15), (0.99, 0.66, 0.255, 0.125))):
+    # Photo33 puts both vessels left of the table in the image. These movable
+    # objects differ from the plan/other photo staging. The tall vessel sits
+    # 40mm east of its floor-point inversion to clear the chair's rear leg.
+    for i, (x, y, h, r) in enumerate(((1.37, 1.00, 0.42, 0.15), (1.70, 0.96, 0.255, 0.125))):
         profile = [(0, 0), (0.004, r * 0.53), (h * 0.05, r * 0.78),
                    (h * 0.15, r * 0.96), (h * 0.34, r), (h * 0.51, r * 0.97),
                    (h * 0.54, r * 0.65), (h * 0.94, r * 0.65),
@@ -294,7 +314,9 @@ def stoneware(scene, M):
         for k in range(16):
             a = k * 2.4
             start = Vector((x, y, 3.65))
-            end = Vector((x + 0.20 * math.cos(a), y + 0.16 * math.sin(a), 4.05 + rng.uniform(-0.10, 0.14)))
+            # Source33's twig tips stand above the far chair back. Keep the
+            # stems rooted inside the vessel while correcting that silhouette.
+            end = Vector((x + 0.20 * math.cos(a), y + 0.16 * math.sin(a), 4.35 + rng.uniform(-0.14, 0.14)))
             middle = start.lerp(end, 0.58) + Vector((0.011 * math.sin(k), 0.009 * math.cos(k), 0.01))
             F.curve(scene, "principal_dry_branch", [tuple(start), tuple(middle), tuple(end)], 0.0011, M.oak)
             for j in range(3):

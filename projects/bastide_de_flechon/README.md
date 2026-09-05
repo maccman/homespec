@@ -207,3 +207,16 @@ The compact comparison uses identical recorded cameras on immutable main and
 updated saved scenes. Camera uncertainty and different table staging in the
 source photographs remain explicit. Full-house gallery, animation,
 full-resolution renders and portable repack are deferred.
+
+The saved-scene checker and material studio run without redressing or saving
+over the house:
+
+```sh
+blender -b /absolute/path/to/house.blend --python-exit-code 1 \
+  --python tools/bastide_principal_scene_check.py -- \
+  --output /absolute/path/to/scene-check.json \
+  --baseline /absolute/path/to/baseline/house.blend
+blender -b /absolute/path/to/house.blend --python-exit-code 1 \
+  --python tools/bastide_principal_material_study.py -- \
+  /absolute/path/to/principal-studio
+```

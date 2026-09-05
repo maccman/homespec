@@ -505,9 +505,18 @@ Physical wide-board joints, an opening-derived folded Roman blind, an attached
 amber lantern, lower loose pillows, a linen valance and the split-plank bench's
 round pale pedestals refine the presentation. Nominal board widths220–260mm,
 3mm finishing arrises and furniture/joinery details are photographic estimates.
-The plan chair symbols place the south chair near(1.50,1.05)m facing mostly
-northeast and the north chair near(1.18,3.05)m facing southeast; toe-in angles
-are approximate readings of the raster symbols. The audited structural walking
+The plan chair symbols suggest opposing northeast/southeast toe-in angles,
+with the south chair near(1.50,1.05)m and north chair near(1.18,3.05)m.
+Actual photo33 review showed the plan-staged south chair on the wrong side of
+the table. Use the photograph's movable arrangement: south chair(1.00,1.50)m,
+north chair(1.18,3.05)m, table(1.43,2.13)m, and tall/small vessels near
+(1.37,1.00)m/(1.70,0.96)m. The source's ordering is recovered; the far chair's
+roughly74-pixel vertical mismatch remains conditional on the inferred camera
+and chair height. An exact point fit would move it into the other chair's
+region and was rejected. Twig tips rise above the chair back as photographed.
+Saved-scene checks require chair/curtain and chair/vessel separation. The raked
+chair legs have horizontal sawn feet at the physical board surface, retaining
+the upper frame and seat height. The audited structural walking
 surface and route thresholds remain unchanged.
 Photo33's trumpet table differs from the cylindrical table in06/55; the source
 arrangements must not be represented as a single exact photographic match.
