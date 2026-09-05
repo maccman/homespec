@@ -24,10 +24,13 @@ geometry or establish a quality score.
 
 ## Current source checks
 
-Native generation `13755cdc74424ba28a8e76557c568ec9` completes with370 passing
-checks and one failed `glazing_ratio` check for bedroom three:0.086 against0.1.
+The current review source is `7e2ccce`. Its exact native generation is
+`0b912baa9c2845caba0228c7821025f2`, with IR SHA-256
+`85dfb294cfdaacefd2591047365cec96975d856aef21d807a8d7436bf6560def`.
+That generation completes with **370 passing checks and one failed
+`glazing_ratio` check** for bedroom three: **0.086 against 0.1**.
 The roof junction solids, beam headroom and IFC property rules pass. The
-1350mm window is independently supported by the upper plan; its smaller glass
+1350 mm window is independently supported by the upper plan; its smaller glass
 area is retained instead of changing evidence or weakening the rule. Local
 review saves therefore explicitly use `--allow-failed-checks`. This is not
 construction-code approval.
@@ -36,6 +39,57 @@ The three empty roof-infill anchors retain their source IDs and assert that
 they contain no solid. They are nonphysical and emit no IFC wall; actual wall
 and infill solids retain their IFC identity and properties. No core check,
 audit threshold or clash policy was modified.
+
+The completed regression runs report **243 non-Blender tests passed**
+(`out/exterior-study/pytest-final-v6.log`) and **5 actual Blender tests passed**
+(`out/exterior-study/blender-tests.log`). These are separate test runs; the
+Blender regression result does not establish that the latest dressed scene or
+its renders have passed inspection. The exact native generation and its single
+failure are recorded in `out/exterior-study/current-build-v7.log` and the
+generation's `checks.json`.
+
+## Current saved-scene and render status
+
+At this record update, the final saved-scene operation is being rerun with the
+Metal device selection. **Validation of that final saved scene and its new
+render outputs is pending.** There is no completed final-scene hash, raw-audit
+result or final-render acceptance recorded here yet. Earlier successful scene
+checks and draft renders below belong to their explicitly identified historical
+generation and cannot validate the current source.
+
+## Current geometry under the frozen cameras
+
+[Current landmarks](exterior-current-landmarks.json) independently reprojects
+all 39 original opening annotations from exact generation
+`0b912baa9c2845caba0228c7821025f2`. The four camera poses, original UV positions,
+weights and original fit/holdout membership remain unchanged. The older camera
+JSON deliberately retains the historical fit against generation
+`cc5f3633dcb04e339fc979864142c382`; the new report provides the current geometry
+comparison without overwriting that evidence. The [calibration appendix](exterior-camera-calibration.md)
+records both IR hashes and the unchanged camera-lock hash.
+
+| Original opening holdout subset | Historical geometry RMS | Current geometry RMS |
+|---|---:|---:|
+| Pool46 | 117.19 px | 83.23 px |
+| Courtyard08 | 103.91 px | 103.91 px |
+| Kitchen12 | 40.22 px | 4.30 px |
+| Front41 | 8.83 px | 8.83 px |
+
+The kitchen improvement follows the plan-supported 1350 mm upper-window width
+and photographically inferred 3950 mm sill /5400 mm head. The east oculi now
+follow the upper-plan centerlines at y2.325 m and y6.375 m, both within the master
+bedroom. Their unchanged 5425 mm center elevation still produces substantial
+vertical disagreement: about 97 and 127 pixels in pool46. Correct horizontal
+setting-out does not resolve those heights.
+
+Separate roof landmarks were never camera-fit targets. The hall ridge now reads
+7379.93 mm in the exact IR; its residual against the original courtyard ridge
+annotation improves from **123.83 to 15.15 px**. This compares the native roof
+bed with a photographed coping crest, so finish thickness remains an uncertainty.
+The main ridge remains 8508.83 mm and its independent frontal roof residual
+remains **125.83 px**. Close agreement of the front opening does not establish
+agreement of the main roof. These are reprojection errors at each view's stated
+output resolution, not a photographic fidelity percentage.
 
 ## Verification history
 

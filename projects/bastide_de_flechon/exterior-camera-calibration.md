@@ -160,3 +160,18 @@ Vegetation/pergola frequently masks jambs and terraces. The fit is to architectu
 ## Native geometry regression status
 
 `uv run --frozen pytest tests/test_flechon_exterior_geometry.py` passed 16 tests. The tests exercise actual CAD solids at straight and oblique host angles, contiguous lower/upper courtyard cuts, curved upper shoulders, fixed sidelights versus central clear passage, the 2500 mm kitchen terrace crown, pure clipping and stone joint/bounds behavior. The previously found upper glazing seam gap and clear-height discrepancy were corrected by the geometry owner before this passing run. No geometry changes were made by the camera/evidence agent.
+
+## Exact current-generation reprojection — 2026-09-05T21:39:24.311001+00:00
+
+`exterior-current-landmarks.json` reprojects all 39 original opening annotations from **generation 0b912baa9c2845caba0228c7821025f2**, source commits `18365f0` and `7e2ccce`. Current IR SHA-256 is `85dfb294cfdaacefd2591047365cec96975d856aef21d807a8d7436bf6560def`. This is distinct from the historical camera-fit IR `cc5f3633dcb04e339fc979864142c382`. No camera was refitted or modified: camera-lock SHA-256 remains `4a9ae366bc5cba93a17174b39bbeddc80e6d7267566d671e61e5a74668f9fa97`. Original UV coordinates, annotation sizes, weights and original fit/holdout membership are retained. The report adds independent roof holdouts separately, so aggregate opening RMS comparisons use the same points.
+
+| View | Original fit subset RMS, old → current px | Original holdout subset RMS, old → current px |
+|---|---|---|
+| pool46 | 34.05 → 34.05 | 117.19 → 83.23 |
+| courtyard08 | 23.12 → 23.12 | 103.91 → 103.91 |
+| kitchen12 | 24.77 → 15.85 | 40.22 → 4.30 |
+| front41 | 3.97 → 3.97 | 8.83 → 8.83 |
+
+The kitchen upper window now derives from its native 1350 mm width, 3950 mm sill and 5400 mm head; its four corner holdouts improve from **40.22 to 4.30 px**. East oculi use the corrected plan centers **y2.325 /6.375 m**. Their center heights remain **5425 mm**; horizontal alignment improves, while their unresolved vertical disagreement remains explicit in the report. The pool opening holdout RMS improves from **117.19 to 83.23 px**, without changing the pool camera or deleting points.
+
+The separately held-out hall ridge, using original source point (630,260) at 900×1200, now reads native z**7379.93 mm** and improves from **123.83 to 15.15 px** under the frozen courtyard pose. That compares the native roof-bed crest with the photographed coping crest; additional cap/finish thickness remains an uncertainty. The main front native ridge remains **8508.83 mm**, and its independent roof holdout remains **125.83 px** from the reference. Thus the main roof-height disagreement is unresolved even though the frontal opening landmarks fit closely. The current JSON records actual IR values and residuals; none of these measurements is a photographic fidelity percentage.
