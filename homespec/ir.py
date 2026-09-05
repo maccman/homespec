@@ -88,6 +88,16 @@ class IRMaterial(BaseModel):
     notes: str | None = None
     render: dict[str, Any] = Field(default_factory=dict)
 
+    @model_validator(mode="after")
+    def render_contract(self) -> IRMaterial:
+        # Import lazily: the vocabulary depends on the generic model module.
+        # Preserve extension hints while validating the standard render fields.
+        from .elements.definitions import Render
+        render = Render.model_validate(self.render)
+        if self.texture and (render.assets or render.detail or render.rough_range):
+            raise ValueError("choose legacy texture hints or explicit local assets/detail for a material")
+        return self
+
 
 class IRDocument(BaseModel):
     """The whole compiled house."""
@@ -295,7 +305,10 @@ def _jsonable(value: Any) -> Any:
     if isinstance(value, set):
         return sorted(value)
     if isinstance(value, float):
-        return round(value, 4)
+        # Unit axes and projected surface coordinates share this generic path.
+        # Four decimals in a direction can move a distant endpoint by mm and
+        # no longer describe an orthonormal frame after an IR round trip.
+        return round(value, 9)
     return value
 
 

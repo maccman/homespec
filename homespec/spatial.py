@@ -10,7 +10,8 @@ from typing import TYPE_CHECKING, Any
 from shapely.geometry import LineString, Point, Polygon
 
 from . import geometry as G
-from .derived import HeadroomObstruction, OpeningGeometry, OpeningRoom, StairGeometry, StairRoom, WallGeometry
+from .clearance import TreadZone, tread_clearance
+from .derived import OpeningGeometry, OpeningRoom, StairGeometry, StairRoom, WallGeometry
 from .model import Analysis, AnalysisContext, Element, Relation
 
 if TYPE_CHECKING:
@@ -67,11 +68,16 @@ def analyze_opening(element: Element, ctx: AnalysisContext) -> Analysis:
                     clip = G.frame_box(wall.body, lo, -100, bottom, (hi - lo, wall.thickness + 200, top - bottom))
                     area += sum(G.volume(p) for p in G.overlap(glass.solid, clip)) / 10
             at_floor = abs(z0 - level.elevation) <= 1
+            passage_width = g.clear_width if full_width else 0.0
+            if g.passage_intervals:
+                passage_width = max((hi - lo for start, end in g.passage_intervals for lo, hi in intervals
+                                     if lo <= g.from_start + start + TOLERANCE and hi >= g.from_start + end - TOLERANCE), default=0.0)
+                passage_width = min(passage_width, g.clear_width)
             clear_bottom = z0 + (g.frame_size if getattr(element, "threshold", False) else 0)
             clear_height = max(0, min(g.clear_height, top - clear_bottom))
             rooms.append(OpeningRoom(room=room.id, side=side, z_range=(bottom, top), intervals=intervals, glass_area_mm2=area,
-                                     clear_width=g.clear_width if full_width and at_floor else 0,
-                                     clear_height=clear_height if full_width and at_floor else 0))
+                                     clear_width=passage_width if at_floor else 0,
+                                     clear_height=clear_height if passage_width > 0 and at_floor else 0))
     conflicts: set[str] = set()
     for side in (0, 1):
         neighbours = [r for r in rooms if r.side == side]
@@ -122,21 +128,11 @@ def analyze_stair(element: Element, ctx: AnalysisContext) -> Analysis:
     base = level.elevation + g.base
     zones = [(i * g.going, g.going, base + (i + 1) * g.riser, i + 1) for i in range(g.steps)]
     zones.append((g.run, width, base + element.rise, None))  # type: ignore[attr-defined]
-    candidates = [(b, G.bbox(b.solid)) for b in ctx.build if b.id != stair.id and b.element.physical and b.solid is not None]
-    obstructions: list[HeadroomObstruction] = []
-    for x, length, z, tread in zones:
-        zone = G.frame_box(frame, x + TOLERANCE, TOLERANCE, z + TOLERANCE,
-                           (length - 2 * TOLERANCE, width - 2 * TOLERANCE, STAIR_HEADROOM - TOLERANCE))
-        box = G.bbox(zone)
-        for other, bounds in candidates:
-            if any(box.min[k] >= bounds.max[k] - TOLERANCE or bounds.min[k] >= box.max[k] - TOLERANCE for k in range(3)):
-                continue
-            pieces = G.overlap(zone, other.solid)
-            if not pieces:
-                continue
-            hit = min((G.bbox(p) for p in pieces), key=lambda bb: bb.min[2])
-            obstructions.append(HeadroomObstruction(entity=other.id, clearance_mm=max(0, hit.min[2] - z),
-                                                    at=(hit.center[0], hit.center[1], hit.min[2]), tread=tread))
+    clearance = tread_clearance(ctx, stair.id, [
+        TreadZone(outline=[frame.point(a, b) for a, b in ((x, 0), (x + length, 0), (x + length, width), (x, width))],
+                  z=z, name=f"tread:{tread}" if tread is not None else "arrival", tread=tread)
+        for x, length, z, tread in zones
+    ], checked_mm=STAIR_HEADROOM, inset_mm=TOLERANCE)
     rooms: list[StairRoom] = []
     for room in ctx.build.tagged("space"):
         if room.level is None:
@@ -152,8 +148,8 @@ def analyze_stair(element: Element, ctx: AnalysisContext) -> Analysis:
             clear_width = max((hi - lo for lo, hi in intervals), default=0.0)
             if clear_width > TOLERANCE:
                 rooms.append(StairRoom(room=room.id, end="arrival", clear_width=clear_width))
-    return Analysis(derived={"headroom_mm": min((o.clearance_mm for o in obstructions), default=STAIR_HEADROOM),
-                             "headroom_checked_mm": STAIR_HEADROOM, "obstructions": [o.model_dump() for o in obstructions],
+    return Analysis(derived={"headroom_mm": clearance.minimum_mm,
+                             "headroom_checked_mm": STAIR_HEADROOM, "obstructions": [o.model_dump(exclude={"zone"}) for o in clearance.obstructions],
                              "rooms": [room.model_dump() for room in rooms]},
                     relations=[Relation(pred="serves", obj=room.room, note=room.end) for room in rooms])
 

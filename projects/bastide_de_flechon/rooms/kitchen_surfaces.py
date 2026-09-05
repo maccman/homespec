@@ -125,43 +125,7 @@ def apply(scene, mats):
                     slot.material = mats.travertine
                 elif slot.material and slot.material.name == "interior_warm_grey_joinery":
                     slot.material = mats.grey
-    # Replace the inner half of the ground-storey finish, including reveals,
-    # without painting the exterior or upper-room wall faces cream.
-    for eid in ("K1", "K2", "K3", "K4"):
-        obj = bpy.data.objects[eid]
-        mat = obj.data.materials[0].copy()
-        mat.name = eid + "_kitchen_inward_cream"
-        nodes, links = mat.node_tree.nodes, mat.node_tree.links
-        output = next(n for n in nodes if n.type == "OUTPUT_MATERIAL")
-        old = output.inputs["Surface"].links[0].from_socket
-        shader = plaster_shader(mat, (.60, .565, .50))
-        geo = nodes.new("ShaderNodeNewGeometry")
-        body = scene.entity(eid)["derived"]["body"]
-        delta = nodes.new("ShaderNodeVectorMath")
-        delta.operation = "SUBTRACT"
-        delta.inputs[1].default_value = (*[v / 1000 for v in body["origin"]], 0)
-        links.new(geo.outputs["Position"], delta.inputs[0])
-        dot = nodes.new("ShaderNodeVectorMath")
-        dot.operation = "DOT_PRODUCT"
-        dot.inputs[1].default_value = (*body["n"], 0)
-        links.new(delta.outputs["Vector"], dot.inputs[0])
-        inside = nodes.new("ShaderNodeMath")
-        inside.operation = "GREATER_THAN"
-        inside.inputs[1].default_value = .17
-        links.new(dot.outputs["Value"], inside.inputs[0])
-        xyz = nodes.new("ShaderNodeSeparateXYZ")
-        links.new(geo.outputs["Position"], xyz.inputs[0])
-        low = nodes.new("ShaderNodeMath")
-        low.operation = "LESS_THAN"
-        low.inputs[1].default_value = 3.25
-        links.new(xyz.outputs["Z"], low.inputs[0])
-        mask = nodes.new("ShaderNodeMath")
-        mask.operation = "MULTIPLY"
-        links.new(inside.outputs[0], mask.inputs[0])
-        links.new(low.outputs[0], mask.inputs[1])
-        mix = nodes.new("ShaderNodeMixShader")
-        links.new(mask.outputs[0], mix.inputs[0])
-        links.new(old, mix.inputs[1])
-        links.new(shader.outputs[0], mix.inputs[2])
-        links.new(mix.outputs[0], output.inputs["Surface"])
-        obj.data.materials[0] = mat
+    # The declared room supplies the boundary and storey; attached infill and
+    # the inward halves of real reveals follow the same scoped material rule.
+    from finishes import room_finish
+    room_finish(scene, ("K1", "K2", "K3", "K4"), "kitchen", mats.plaster)

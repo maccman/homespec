@@ -235,31 +235,11 @@ def apply(scene, mats):
     if _area(boundary) < 0:
         boundary.reverse()
     floor = slab["z_top"] / 1000
-    _prism(scene, "kitchen_envelope_grout_bed", boundary, floor + .00005,
-           floor + .0006, mats.grout)
-    x0, x1 = min(p[0] for p in boundary), max(p[0] for p in boundary)
-    y0, y1 = min(p[1] for p in boundary), max(p[1] for p in boundary)
-    count = 0
-    joint = .0025
-    for column in range(math.ceil((x1 - x0) / .4)):
-        x = x0 + column * .4
-        offset = .4 if column % 2 else 0
-        for row in range(math.ceil((y1 - y0 + offset) / .8)):
-            y = y0 + row * .8 - offset
-            polygon = [(x + joint / 2, y + joint / 2),
-                       (x + .4 - joint / 2, y + joint / 2),
-                       (x + .4 - joint / 2, y + .8 - joint / 2),
-                       (x + joint / 2, y + .8 - joint / 2)]
-            polygon = _clip(polygon, boundary)
-            if len(polygon) < 3 or abs(_area(polygon)) < .00002:
-                continue
-            obj = _prism(scene, f"kitchen_envelope_flag_{column:02d}_{row:02d}", polygon,
-                         floor + .0006, floor + .002,
-                         mats.flags[(column * 3 + row) % len(mats.flags)], bevel=.00025)
-            obj["kitchen_flag_module_mm"] = "400 x 800, long axis +y, half bond"
-            obj["kitchen_floor_finish_offset_mm"] = 2.0
-            obj["kitchen_joint_mm"] = 2.5
-            count += 1
+    from surfaces import floor_courses
+    pieces = floor_courses(scene, "F0_K", mats.flags, name="kitchen_envelope_flag",
+                           module=(.4, .8), joint=.0025, thickness=.002, bed=.0006,
+                           grout=mats.grout, bevel=.00025)
+    count = sum("homespec_course" in obj for obj in pieces)
     skirts = _skirting(scene, mats, boundary, floor)
     _wall_art(scene, mats, floor)
     scene.scene["kitchen_floor_finish"] = f"{count} clipped limestone flags; 2mm above F0_K; grout top 0.6mm above F0_K"

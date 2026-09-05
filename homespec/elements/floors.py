@@ -9,7 +9,8 @@ from pydantic import field_validator, model_validator
 from .. import geometry as G
 from ..derived import BeamGeometry, CeilingGeometry, SlabGeometry
 from ..geometry import Point
-from ..model import Context, Element, NonNegative, Outline, Positive, Realized, Ref, Relation, element, positional, ref_id
+from ..model import Analysis, AnalysisContext, Context, Element, NonNegative, Outline, Positive, Realized, Ref, Relation, element, positional, ref_id
+from ..surface import MemberFrame, horizontal_surface
 from ..validation import FiniteModel
 
 Void = Outline | str
@@ -84,6 +85,12 @@ class Slab(Element):
         return Realized(solid=solid, derived=SlabGeometry(area_mm2=area, z_top=z_top, voids=len(voids), outline=[list(p) for p in self.outline]).model_dump(),
                         tags={"floor"})
 
+    def analyze(self, ctx: AnalysisContext) -> Analysis:
+        built = ctx.built(self.id)
+        surface = horizontal_surface(self.id, built.solid, built.derived["z_top"])
+        return Analysis(derived={"top_surface": surface.model_dump(),
+                                 "area_mm2": G.volume(built.solid) / self.thickness if built.solid is not None else 0.0})
+
 
 @element
 class Beam(Element):
@@ -103,7 +110,10 @@ class Beam(Element):
         span = G.length(G.sub(self.end, self.start))
         solid = G.frame_box(frame, 0.0, -self.width / 2, self.underside, (span, self.width, self.depth))
         lv = ctx.level(self)
-        return Realized(solid=solid, derived=BeamGeometry(span=span, clear_below=self.underside - lv.elevation, size=[self.width, self.depth]).model_dump())
+        member = MemberFrame(origin=(*self.start, self.underside + self.depth / 2), longitudinal=(*frame.u, 0),
+                             across=(*frame.n, 0), normal=(0, 0, 1), length_mm=span, width_mm=self.width, depth_mm=self.depth)
+        return Realized(solid=solid, derived=BeamGeometry(span=span, clear_below=self.underside - lv.elevation,
+                                                       size=[self.width, self.depth], member=member).model_dump())
 
 
 class BeamGrid(FiniteModel):

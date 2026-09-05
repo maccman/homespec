@@ -7,6 +7,25 @@ short on purpose; the code is the long version.
 
 ## Three layers
 
+Reusable photographic reconstruction tools extend the same layers. See
+[opening and roof surfaces](opening-roof-surfaces.md),
+[host surfaces and finishes](surface-details.md),
+[local material assets](material-assets.md),
+[safe Blender primitives](blender-primitives.md) and
+[photo views and review packages](photo-review.md) for their contracts.
+
+Attach details to their hosts and retain one owner for shared openings, roofs
+and room envelopes. Geometry supplies silhouettes, joints and measurable
+relief; textures supply surface appearance at a declared physical scale.
+Freeze calibrated cameras for before/after reviews, retain complete original
+framing and include independent holdouts. Distinguish observed, plan-derived,
+inferred and unverified facts. Build and audit passes establish consistency;
+photographic fidelity still requires visual review. Existing-house guideline
+failures stay visible: evidence-backed geometry and check thresholds must not
+be changed merely to turn a report green. Use neutral material controls and
+explicit lighting experiments to diagnose a mismatch. Published artifacts
+must trace to one compatible source generation.
+
 ```
 source  ──compile──▶  IR  ──export──▶  IFC · drawings · schedules · checks · Blender
 ```

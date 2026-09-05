@@ -134,6 +134,37 @@ def frame_box(frame: Frame, along: float, offset: float, z: float, size: Point3)
     return box(size, (c[0], c[1], z), frame.angle)
 
 
+def placed(solid: Solid, origin: Point3 = (0, 0, 0), angle: float = 0) -> Solid:
+    """Place an existing solid in a translated frame rotated around world Z."""
+    return Location(origin, (0, 0, angle)) * solid
+
+
+def extend_caps(solid: Solid, direction: Point3, distance: float) -> Solid:
+    """Extend both planar end caps of a prismatic cutter by an exact distance.
+
+    The profile is taken from the existing CAD faces, retaining curved and
+    custom opening outlines when a covering extends past the host wall.
+    """
+    magnitude = math.sqrt(sum(v * v for v in direction))
+    if not math.isfinite(distance) or distance <= 0 or not math.isfinite(magnitude) or magnitude == 0:
+        raise ValueError("cap extension requires a positive distance and finite direction")
+    axis = tuple(v / magnitude for v in direction)
+    extensions = []
+    signs = set()
+    for face in solid.faces():
+        normal = face.normal_at()
+        alignment = sum(a * b for a, b in zip(axis, (normal.X, normal.Y, normal.Z), strict=True))
+        if abs(alignment) >= 1 - 1e-7:
+            sign = 1 if alignment > 0 else -1
+            signs.add(sign)
+            extensions.append(extrude(face, amount=distance, dir=tuple(sign * v for v in axis)))
+    if signs != {-1, 1}:
+        raise ValueError("cutter must have planar end caps perpendicular to its extrusion")
+    for extension in extensions:
+        solid = solid + extension
+    return solid
+
+
 def prism(outline: Sequence[Point], z0: float, height: float) -> Solid:
     """Extrude a closed plan polygon from ``z0`` by ``height`` (negative goes down).
 
@@ -197,6 +228,13 @@ def volume_below(shape: Solid, z: float) -> Solid:
         raise ValueError("shape has no downward-facing skin")
     distance = max(bbox(shape).max[2] - z + 1.0, 1.0)
     return group(extrude(face, amount=distance, dir=(0, 0, -1)) for face in downward)
+
+
+def skin_layer(shape: Solid, thickness: float, *, underside: bool = False, gap: float = 0) -> Solid:
+    """A vertical-thickness layer attached to actual upward/downward CAD faces."""
+    sign = -1 if underside else 1
+    faces = [face for face in shape.faces() if face.normal_at().Z * sign > 1e-6]
+    return group(placed(extrude(face, amount=thickness, dir=(0, 0, sign)), (0, 0, sign * gap)) for face in faces)
 
 
 # --------------------------------------------------------------------------- measuring

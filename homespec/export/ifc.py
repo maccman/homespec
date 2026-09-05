@@ -77,7 +77,7 @@ def export_ifc(ir: IRDocument, path: str) -> str:
 
     products: dict[str, Any] = {}
     for e in ir.entities:
-        if e.ifc_class is None:
+        if e.ifc_class is None or (e.extrusion is None and e.geometry is None):
             continue
         prod = ifcopenshell.api.root.create_entity(f, ifc_class=e.ifc_class, name=e.id)
         if e.extrusion is not None:

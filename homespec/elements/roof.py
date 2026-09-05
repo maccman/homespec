@@ -4,12 +4,17 @@ from __future__ import annotations
 import math
 from collections.abc import Sequence
 from dataclasses import field
-from typing import Any, ClassVar, Literal
+from typing import Any, ClassVar, Literal, Self
+
+from pydantic import model_validator
+from shapely.geometry import Polygon
 
 from .. import geometry as G
-from ..derived import RoofGeometry, WallGeometry, WallToRoofInfillGeometry
+from ..derived import OpeningGeometry, RoofCoveringGeometry, RoofGeometry, RoofSection, RoofSurfaceGeometry, WallGeometry, WallToRoofInfillGeometry
 from ..geometry import Point
-from ..model import Context, Element, NonNegative, Outline, Positive, Realized, Ref, Relation, element
+from ..model import Analysis, AnalysisContext, Context, Element, NonNegative, Outline, Positive, Realized, Ref, Relation, element
+from ..surface import SurfaceFrame, planar_surfaces
+from .roof_surfaces import roof_planar_surfaces, roof_shell, surface_areas
 
 Side = Literal["x0", "x1", "y0", "y1"]
 Axis = Literal["x", "y"]
@@ -20,6 +25,68 @@ GENOISE_COURSE = 70.0
 """Height of one corbelled tile course of a génoise."""
 GENOISE_STEP = 90.0
 """How far each course of a génoise steps out past the one below."""
+
+
+@element
+class RoofStructuralSurface(Element):
+    """Exact attachment geometry before roof junction cuts; not a physical product."""
+
+    kind: ClassVar[str] = "roof_surface"
+    ifc_class: ClassVar[str | None] = None
+    physical: ClassVar[bool] = False
+    roof: Ref
+
+
+def structural_roof_solid(ctx: Context, roof: str) -> Any:
+    """Public roof attachment contract; never infer structure from final junction holes."""
+    built = ctx.built(roof)
+    geom = RoofGeometry.model_validate(built.derived)
+    return ctx.built(geom.structural_surface_entity).solid if geom.structural_surface_entity else built.solid
+
+
+@element
+class RoofCovering(Element):
+    """A lining or covering attached to an actual roof skin in vertical thickness.
+
+    Structural attachment retains ceilings through roof-to-roof junctions.
+    Finished attachment follows the final shell, including those junction cuts.
+    Both retain intentional roof apertures; an optional plan clips the layer.
+    """
+
+    kind: ClassVar[str] = "roof_covering"
+    ifc_class: ClassVar[str | None] = "IfcCovering"
+    roof: Ref
+    side: Literal["top", "underside"] = "underside"
+    follow: Literal["structural", "finished"] = "structural"
+    thickness: Positive = 24
+    gap: NonNegative = 0
+    outline: Outline | None = None
+
+    def deps(self) -> list[str]:
+        return [self.roof]
+
+    def all_tags(self) -> set[str]:
+        return super().all_tags() | ({"ceiling"} if self.side == "underside" else {"roof_finish"})
+
+    def analyze(self, ctx: AnalysisContext) -> Analysis:
+        role = "roof_underside" if self.side == "underside" else "roof_top"
+        surfaces = [s for s in roof_planar_surfaces(self.id, ctx.built(self.id).solid) if s.role == role]
+        area, plan_area = surface_areas(surfaces)
+        return Analysis(derived={"area_mm2": area, "plan_area_mm2": plan_area, "surfaces": [s.model_dump() for s in surfaces]})
+
+    def realize(self, ctx: Context) -> Realized:
+        roof = ctx.built(self.roof)
+        source = structural_roof_solid(ctx, self.roof) if self.follow == "structural" else roof.solid
+        solid = G.skin_layer(source, self.thickness, underside=self.side == "underside", gap=self.gap)
+        if self.outline:
+            bb = G.bbox(solid)
+            solid = solid & G.prism(self.outline, bb.min[2] - 1, bb.size[2] + 2)
+        if G.volume(solid) <= 1:
+            raise ValueError(f"{self.id!r}: covering has no overlap with its roof")
+        geom = RoofCoveringGeometry(roof=self.roof, side=self.side, follow=self.follow, z_underside=G.bbox(solid).min[2],
+                                    thickness=self.thickness, gap=self.gap)
+        return Realized(solid=solid, derived=geom.model_dump(exclude_none=True),
+                        level=self.level or roof.level, relations=[Relation(pred="part_of", obj=self.roof)])
 
 
 @element
@@ -58,9 +125,18 @@ class WallToRoofInfill(Element):
 
     wall: Ref
     roof: Ref
+    cut_against: list[Ref] = field(default_factory=list)
+    opening_voids: list[Ref] = field(default_factory=list)
 
     def deps(self) -> list[str]:
-        return [self.wall, self.roof]
+        return [self.wall, self.roof, *self.cut_against, *self.opening_voids]
+
+    def analyze(self, ctx: AnalysisContext) -> Analysis:
+        from .walls import wall_face_role
+
+        wall = ctx.derived(self.wall, WallGeometry)
+        surfaces = planar_surfaces(self.id, ctx.built(self.id).solid, lambda n: wall_face_role(wall.body, n))
+        return Analysis(derived={"surfaces": [s.model_dump() for s in surfaces]})
 
     def realize(self, ctx: Context) -> Realized:
         wall = ctx.built(self.wall)
@@ -74,21 +150,34 @@ class WallToRoofInfill(Element):
 
         geom = WallGeometry.model_validate(wall.derived)
         z_base = geom.z_top()
-        roof_top = G.bbox(roof.solid).max[2]
+        structural = structural_roof_solid(ctx, self.roof)
+        roof_top = G.bbox(structural).max[2]
         extension = G.frame_box(geom.body, 0, 0, z_base, (geom.length, geom.thickness, max(roof_top - z_base + 1.0, 1.0)))
-        solid = extension & G.volume_below(roof.solid, z_base)
-        if G.volume(solid) <= 1.0:
-            raise ValueError(f"{self.id!r} wall {self.wall!r} does not reach under roof {self.roof!r}")
-
-        bb = G.bbox(solid)
+        solid = extension & G.volume_below(structural, z_base - 1)
+        for other in self.cut_against:
+            cutter = ctx.built(other).solid
+            if cutter is not None:
+                solid = solid - cutter
+        for opening in self.opening_voids:
+            aperture = ctx.derived(opening, OpeningGeometry)
+            if aperture.host != self.wall:
+                raise ValueError(f"{self.id!r}: opening {opening!r} is not hosted in {self.wall!r}")
+            if aperture.void_entity:
+                cutter = ctx.built(aperture.void_entity).solid
+            else:
+                ex = aperture.void
+                cutter = G.frame_box(G.Frame(origin=ex.origin[:2], u=ex.u, n=ex.n), 0, 0, ex.origin[2], (ex.length, ex.thickness, ex.height))
+            solid = solid - cutter
+        empty = G.volume(solid) <= 1.0
         derived = WallToRoofInfillGeometry(
             wall=self.wall, roof=self.roof, z_base=z_base,
-            max_height=bb.max[2] - z_base, thickness=geom.thickness,
+            max_height=0 if empty else G.bbox(solid).max[2] - z_base, thickness=geom.thickness,
             assembly=geom.assembly, body=geom.body,
+            empty=empty, opening_voids=self.opening_voids, junction_cuts=self.cut_against,
         )
         relations = [Relation(pred="extends", obj=self.wall), Relation(pred="meets", obj=self.roof)]
         tags = {"external"} if wall.has("external") else {"internal"}
-        return Realized(solid=solid, derived=derived.model_dump(), relations=relations, material=self.material or wall.material,
+        return Realized(solid=None if empty else solid, derived=derived.model_dump(), relations=relations, material=self.material or wall.material,
                         level=self.level or roof.level or wall.level, tags=tags)
 
 
@@ -124,8 +213,31 @@ class Roof(Element):
     genoise: int = 0
     genoise_material: Ref | None = None
     abuts: list[Side] = field(default_factory=list)
+    ridge_angle: float | None = None
+    """Counter-clockwise world angle of the ridge; enables a polygon roof frame."""
+    voids: list[Outline] = field(default_factory=list)
+    cut_against: list[Ref] = field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _roof_dimensions(self) -> Self:
+        if self.pitch >= 89:
+            raise ValueError("roof pitch must be less than 89 degrees")
+        if self.genoise < 0:
+            raise ValueError("genoise courses must be nonnegative")
+        return self
+
+    def deps(self) -> list[str]:
+        return list(self.cut_against)
+
+    def analyze(self, ctx: AnalysisContext) -> Analysis:
+        surfaces = roof_planar_surfaces(self.id, ctx.built(self.id).solid)
+        area, plan_area = surface_areas([s for s in surfaces if s.role == "roof_top"])
+        return Analysis(derived={"surfaces": [s.model_dump() for s in surfaces], "surface_area_mm2": area, "covered_plan_area_mm2": plan_area})
 
     def realize(self, ctx: Context) -> Realized:
+        polygon = Polygon(self.outline)
+        if self.ridge_angle is not None or not polygon.equals(polygon.envelope):
+            return self._realize_polygon(ctx)
         lv = ctx.level(self)
         xs = [p[0] for p in self.outline]
         ys = [p[1] for p in self.outline]
@@ -142,10 +254,11 @@ class Roof(Element):
         if self.shape == "flat":
             solid = G.prism([(ext["x0"], ext["y0"]), (ext["x1"], ext["y0"]), (ext["x1"], ext["y1"]), (ext["x0"], ext["y1"])], z_eave - t, t)
             derived.update(z_top=z_eave)
+            surfaces: list[tuple[Line, Axis]] = [([(ext["y0"], z_eave), (ext["y1"], z_eave)], "y")]
         elif self.shape in ("gable", "hip"):
             across: Axis = "y" if self.ridge_along == "x" else "x"
             top = self._surface(across, ext, free, z_eave, slope)
-            surfaces: list[tuple[Line, Axis]] = [(top, across)]
+            surfaces = [(top, across)]
             z_ridge = max(z for _, z in top)
             if self.shape == "hip":
                 other = self._surface(self.ridge_along, ext, free, z_eave, slope)
@@ -162,12 +275,69 @@ class Roof(Element):
             a, b = ext[axis + "0"], ext[axis + "1"]
             rise = (b - a) * slope
             z_a, z_b = (z_eave + rise, z_eave) if self.high_side.endswith("0") else (z_eave, z_eave + rise)
-            solid = self._shell([([(a, z_a), (b, z_b)], axis)], ext, t)
+            surfaces = [([(a, z_a), (b, z_b)], axis)]
+            solid = self._shell(surfaces, ext, t)
             derived.update(z_high=z_eave + rise, rise=rise, span=b - a, rafter_length=math.hypot(b - a, rise))
 
         if self.genoise:
             self._emit_genoise(ctx, bounds, free, z_wall_top)
+        surface = RoofSurfaceGeometry(frame=SurfaceFrame(origin=(0, 0, 0), u=(1, 0, 0), v=(0, 1, 0), normal=(0, 0, 1)),
+                                      outline=[(ext["x0"], ext["y0"]), (ext["x1"], ext["y0"]), (ext["x1"], ext["y1"]), (ext["x0"], ext["y1"])],
+                                      holes=self.voids, sections=[RoofSection(axis=axis, profile=top) for top, axis in surfaces], thickness=t)
+        if self.voids:
+            solid = roof_shell(surface)
+        return self._finish_surface(ctx, solid, surface, derived)
+
+    def _finish_surface(self, ctx: Context, solid: Any, surface: RoofSurfaceGeometry, derived: dict[str, Any]) -> Realized:
+        entity = RoofStructuralSurface(f"{self.id}.surface", roof=self.id, level=self.level)
+        ctx.emit(entity, Realized(solid=solid, derived=surface.model_dump(), relations=[Relation(pred="part_of", obj=self.id)]))
+        for other in self.cut_against:
+            cutter = ctx.built(other).solid
+            if cutter is not None:
+                solid = solid - cutter
+        if G.volume(solid) <= 1:
+            raise ValueError(f"{self.id!r}: junction cuts remove the entire roof")
+        derived.update(surface=surface, structural_surface_entity=entity.id, junction_cuts=self.cut_against)
         return Realized(solid=solid, derived=RoofGeometry(**derived).model_dump(exclude_none=True), tags={"external"})
+
+    def _realize_polygon(self, ctx: Context) -> Realized:
+        """A roof in a rotated local frame, clipped to its actual plan boundary."""
+        if self.abuts or self.genoise:
+            raise ValueError("polygon/rotated roofs use explicit host infills and attachments; axis-named abuts/genoise are unsupported")
+        angle = self.ridge_angle if self.ridge_angle is not None else (0 if self.ridge_along == "x" else 90)
+        a = math.radians(angle)
+        u, v = (math.cos(a), math.sin(a)), (-math.sin(a), math.cos(a))
+        frame = G.Frame(origin=(0, 0), u=u, n=v)
+        polygon = Polygon([frame.local(p) for p in self.outline]).buffer(self.overhang, join_style="mitre")
+        if polygon.geom_type != "Polygon" or polygon.is_empty:
+            raise ValueError("roof overhang must produce one connected polygon")
+        outline = [(p[0], p[1]) for p in polygon.exterior.coords][:-1]
+        holes = [[(p[0], p[1]) for p in ring.coords][:-1] for ring in polygon.interiors]
+        holes.extend([[frame.local(p) for p in hole] for hole in self.voids])
+        x0, y0, x1, y1 = polygon.bounds
+        ext = {"x0": x0, "x1": x1, "y0": y0, "y1": y1}
+        free = {side: True for side in ext}
+        lv = ctx.level(self)
+        eave = lv.elevation + (self.eave if self.eave is not None else lv.height)
+        slope = 0 if self.shape == "flat" else math.tan(math.radians(self.pitch))
+        top = self._surface("y", ext, free, eave, slope)
+        sections = [RoofSection(axis="y", profile=top)]
+        if self.shape == "hip":
+            sections.append(RoofSection(axis="x", profile=self._surface("x", ext, free, eave, slope)))
+        elif self.shape == "shed":
+            axis: Axis = "x" if self.high_side.startswith("x") else "y"
+            lo, hi = ext[axis + "0"], ext[axis + "1"]
+            high = eave + (hi - lo) * slope
+            sections = [RoofSection(axis=axis, profile=[(lo, high if self.high_side.endswith("0") else eave),
+                                                       (hi, high if self.high_side.endswith("1") else eave)])]
+        surface = RoofSurfaceGeometry(frame=SurfaceFrame(origin=(0, 0, 0), u=(*u, 0), v=(*v, 0), normal=(0, 0, 1)), outline=outline,
+                                      holes=holes, sections=sections, thickness=self.thickness)
+        solid = roof_shell(surface)
+        high = G.bbox(solid).max[2]
+        derived = {"shape": self.shape, "pitch": self.pitch, "z_eave": eave, "thickness": self.thickness, "overhang": self.overhang,
+                   "plan_area_mm2": G.polygon_area(self.outline), "rise": high - eave, "span": y1 - y0,
+                   "z_high" if self.shape == "shed" else "z_ridge": high}
+        return self._finish_surface(ctx, solid, surface, derived)
 
     # ---- pieces
     def _lift(self, slope: float) -> float:
@@ -222,6 +392,8 @@ class Roof(Element):
         under = [(p, z - t) for p, z in top]
         z_base = min(z_wall_top, min(z for _, z in under) - 1)
         apex = max(z for _, z in under)
+        if apex <= z_wall_top:
+            return
         profile = under + [(under[-1][0], z_base), (under[0][0], z_base)]
         gt = self.gable_thickness
         ends = ((1, bounds[along + "0"]), (2, bounds[along + "1"] - gt))
@@ -233,8 +405,10 @@ class Roof(Element):
                 clip = G.box((gt, bounds["y1"] - bounds["y0"], apex - z_wall_top + 1), (at, bounds["y0"], z_wall_top))
             else:
                 clip = G.box((bounds["x1"] - bounds["x0"], gt, apex - z_wall_top + 1), (bounds["x0"], at, z_wall_top))
-            gable = Gable(f"{self.id}.G{k}", roof=self.id, level=self.level, material=self.gable_material, tags={"external"})
-            ctx.emit(gable, Realized(solid=slab & clip, derived={"height": apex - z_wall_top, "thickness": gt}, relations=[Relation(pred="part_of", obj=self.id)]))
+            solid = slab & clip
+            if G.volume(solid) > 1:
+                gable = Gable(f"{self.id}.G{k}", roof=self.id, level=self.level, material=self.gable_material, tags={"external"})
+                ctx.emit(gable, Realized(solid=solid, derived={"height": apex - z_wall_top, "thickness": gt}, relations=[Relation(pred="part_of", obj=self.id)]))
 
     def _emit_genoise(self, ctx: Context, bounds: dict[str, float], free: dict[str, bool], z_wall_top: float) -> None:
         """Courses of tiles stepping out from the wall head under every free eave."""
@@ -269,4 +443,4 @@ class Roof(Element):
                                    relations=[Relation(pred="part_of", obj=self.id)]))
 
 
-__all__ = ["Roof", "Gable", "Cornice", "WallToRoofInfill", "WallToRoofInfillGeometry", "Point"]
+__all__ = ["Roof", "RoofCovering", "Gable", "Cornice", "WallToRoofInfill", "WallToRoofInfillGeometry", "Point"]

@@ -1,5 +1,28 @@
 # Vocabulary
 
+The constructor vocabulary also includes these reusable rendering and host
+contracts, documented with complete examples:
+
+- [OpeningProfile and DoorComposition](opening-roof-surfaces.md): exact shared
+  rectangular, semicircular, segmental and circular profiles; independent
+  central passage, fixed sidelights and transoms. Explicit profile height is
+  overall height; legacy arch defaults retain springing height.
+- [Roof and RoofCovering](opening-roof-surfaces.md): polygon footprints,
+  `ridge_angle`, `voids`, explicit `cut_against`, structural versus finished
+  attachment; `Wall.roof_limit/roof_clearance` and infill `opening_voids`.
+- [RoomFinish and Skirting](surface-details.md): room/face overrides after
+  assembly finishes, and one physical mitered, opening-cut trim covering.
+- [SurfaceFrame, PlanarSurface and MemberFrame](surface-details.md): finished
+  surfaces with holes and true member axes in typed IR.
+- [TextureAsset, TextureAssets, TextureMapping, AssetProvenance and SurfaceDetail](material-assets.md):
+  local channel assets, hashes, physical repeats and independently bounded
+  surface response within the existing Material/Render API.
+- [PhotoView and reference/review records](photo-review.md): immutable reference
+  identity, calibrated camera conventions, held-out evidence and declared
+  portable review coverage.
+- [TreadZone and tread_clearance](surface-details.md): shared checked vertical
+  envelopes for straight, winder and approach footprints.
+
 Everything below is an ordinary class in `homespec.elements`. Lengths are
 millimetres. A `Ref` field accepts the object or its id. Every referenced
 material, layer material, finish, assembly and level must be declared. Ids must
