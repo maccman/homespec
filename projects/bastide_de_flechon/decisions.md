@@ -468,6 +468,63 @@ Entities: FP, MAIN_BEAM0, MAIN_BEAM1, MAIN_BEAM2, C0_MAIN, D_FRONT
 
 The isolated salon reconstruction from source commits `297f492`, `e67a70d` and `ac42812` provides physical floor joints, irregular rubble and plaster returns, fireplace profiles and ironwork, timber checks, textile geometry and twelve generated pigment maps. It runs after shared material and timber work, preserving timber end-grain slots, and before the house lighting policy so fire and practicals have one owner. Its geometry is still subject to the combined house audit. The evidence and remaining limits are recorded in `salon-discrepancies.md` and `salon-materials-provenance.md`; the maps are inferred surface appearance, not measured reflectance.
 
+## D-044 Exterior envelope, roof construction and photographic review
+
+Entities: D_ENTRY, N_HALL, D_KITCHEN_TERRACE, D_PERGOLA, N_BED3_S,
+N_GUEST_E0, N_GUEST_E1, N_E1, N_E2, R_K, R_H, R_MAIN
+
+Original photographs08/11 establish one continuous monumental courtyard
+opening: central paneled wooden leaves, fixed glazed sidelights, a transom and
+an arched upper light. The retained two opening IDs now cut a contiguous void;
+the upper element retains its window identity. Both plans retain the oblique
+hall and guest-wing footprints. Kitchen terrace and main north garden heads
+are shallow circular segments; the guest wing's two ground east openings are
+full-height arched glazed doors. Their original plan widths and IDs remain.
+
+The upper plan independently supports a1350mm kitchen-south window rather
+than1600mm, and both east oculi within the master room at y≈2.31/6.40m.
+The model uses1350mm and door-aligned oculus centers2.325/6.375m. Window sill
+3950mm and head5400mm remain same-facade photographic inferences. These plan
+corrections do not certify the existing absolute upper-storey heights.
+
+The shared D_FRONT spring3550mm and N_W2 position7525mm are the exact two
+changes approved by the independent principal-bedroom owner (D-043).
+Exterior also terminates the three fanlight spokes at the inner curved arc,
+preserving the lower open leaves, opaque frieze and salon interior geometry.
+Kitchen approved the terrace's1900mm-wide segmental head with2180mm spring
+and320mm rise; its interior garden opening remains unchanged.
+
+External finish geometry reads the compiled outward wall and opening faces.
+Clipped rounded rubble, coursed cut stone, radial voussoirs, projecting sills,
+molded courtyard trim, boarded shutters and iron hardware have physical depth.
+Only outward material slots change. The roof finish has hollow lapped canal
+tiles, separate ridge caps, slender coping and two-course génoise. The hall
+roof ridge is perpendicular to its entrance gable. Kitchen is a native18.4°
+shed, with a shared roof/wall/infill/vault profile derived from three visible
+points along photograph12's coping. The hall's lower roof retains clearance
+over the existing paired upper link arches; its absolute height uses both
+the courtyard peak and these openings. The guest-room-three tie retains
+2100mm clear height below it. Exact construction thicknesses and concealed
+details remain inferred.
+
+Five generated exterior pigment images have exact prompts, source hashes and
+image hashes in `textures/exterior-generated-manifest.json`. Pigment images
+cannot feed Normal or Roughness; physical pores, finish response and masonry
+relief are independently authored. The walnut and iron maps are explicitly
+identified reused assets. Complete tree groups move in the scene to correct
+unsupported courtyard screens and overgrown foreground placements. They are
+not hidden selectively for a beauty camera.
+
+The four primary camera poses use native photographic optics and recorded
+landmarks. Holdout errors are retained. Two independent front photographs
+indicate that the main roof may be about1.3m too high relative to the corrected
+arch; changing it would require a coupled principal-room timber, curtain and
+oculus-height correction. This exterior pass retains that shared envelope and
+records the mismatch. The unmeasured courtyard terrace levels and stair
+transition also remain unresolved. Neither lighting nor camera shift is used
+to claim these discrepancies are solved. Actual dated render and audit status
+belongs to `exterior-verification.md`, separate from the preceding pass.
+
 ## Against the reference
 
 - Retained: 8 x 11 m principal house block, attached kitchen, skew entrance hall,

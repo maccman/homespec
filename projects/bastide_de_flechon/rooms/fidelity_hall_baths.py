@@ -404,9 +404,19 @@ def lanterns(scene, P):
     profile += [(z, max(0.001, r - 0.0032)) for z, r in reversed(profile[1:])]
     glass = F.lathe(scene, "hall_photo21_blown_glass_pendant", at, profile, P.glass, segments=96)
     glass["source_reference"] = "photo_21: clear teardrop glass, inferred unseen rear"
-    ceiling = scene.bbox("C1_H")[0].z
-    scene.rod("hall_glass_pendant_suspension", (at[0], at[1], 3.73), (at[0], at[1], ceiling - 0.025), 0.008, P.ebony)
-    scene.cyl("hall_glass_pendant_ceiling_rose", (at[0], at[1], ceiling - 0.020), 0.072, 0.040, P.ebony)
+    # Attach to the actual sloping plaster face, not its lowest bounding edge.
+    ceiling = bpy.data.objects["C1_H"]
+    inverse = ceiling.matrix_world.inverted()
+    hit, point, normal, _ = ceiling.ray_cast(inverse @ Vector((at[0], at[1], 4.0)),
+                                            inverse.to_3x3() @ Vector((0, 0, 1)))
+    if not hit:
+        raise ValueError("The hall pendant must meet its physical ceiling")
+    point = ceiling.matrix_world @ point
+    normal = (ceiling.matrix_world.to_3x3().inverted().transposed() @ normal).normalized()
+    scene.rod("hall_glass_pendant_suspension", (at[0], at[1], 3.73), point + normal * .025, .008, P.ebony)
+    rose = scene.cyl("hall_glass_pendant_ceiling_rose", point + normal * .020, .072, .040, P.ebony)
+    rose.rotation_mode = "QUATERNION"
+    rose.rotation_quaternion = Vector((0, 0, 1)).rotation_difference(normal)
     F.lathe(scene, "hall_clear_filament_bulb", (at[0], at[1], 3.52), [(0, 0.011), (0.01, 0.027), (0.045, 0.032), (0.09, 0.019), (0.12, 0.014)], P.glass, segments=48)
     for dx in (-0.010, 0.010):
         F.curve(scene, "hall_pendant_tungsten_filament", [(at[0] + dx, at[1], 3.53), (at[0] - dx, at[1], 3.61)], 0.0008, P.bulb)

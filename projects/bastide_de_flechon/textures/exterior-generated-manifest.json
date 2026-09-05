@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-09-05",
+  "generator": "builtin image_gen__imagegen; one call per new image",
+  "scope": "Exterior-specific materials; no global material override",
+  "source_archive": "/Users/cloud/LABASTIDEDEFLECHON.zip",
+  "reference_policy": "Original source photos inspected with view_image from read-only 54c7 cache before generation. Text descriptions guide new synthesis; source pixels were not passed to generator. Photographic color interpreted after removing scene illumination, not measured reflectance.",
+  "license_provenance": "AI-generated for this user project using OpenAI built-in image generation. No third-party texture library used. No claim of CC0/public-domain license or measured scan provenance. Source photographs remain unmodified; their existing rights apply.",
+  "assets": [
+    {
+      "name": "exterior-cream-plaster",
+      "file": "exterior-cream-plaster.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a0733d-961b-7d83-9312-6e1f79f45cc2/exec-6e0c10ae-4c27-46c0-9a4a-ccd2587d753b.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless 3D exterior material BASE COLOR, reference-informed new synthesis. Generate a NEW square 2048px flat orthographic texture of a continuous 2m square of old maintained lime plaster matching the pool-facing pale cream gable of La Bastide de Fl\u00e9chon. Material appearance: light warm chalky ivory, subdued pale sand-beige hand-trowel clouds and small softer patches, very fine lime aggregate and faint old rainwash mottling, low contrast, smooth enough for elegant Proven\u00e7al architecture. The inspected source photos DJI_20231012094055_0813_D.jpg and Bastide_de_Flechon_4.jpg show this facade in warm sunlight; remove that sunlight warmth and tree shadows from the material. This asset contains only neutral intrinsic base color, not measured scan data. No dramatic trowel ridges, no peeling paint, exposed masonry, cracks, stains, mortar joints, or surface damage. Uniform neutral diffuse lighting without highlights, cast shadows, occlusion, directional gradient or vignette. Seamless all edges. Surface only, no objects, walls in perspective, borders or text. Geometry and independently authored physical roughness/bump will supply relief.",
+      "reference_photographs": [
+        "PHOTOS/VICTOR FITZ/DJI_20231012094055_0813_D.jpg",
+        "PHOTOS/MARK ELST/Bastide_de_Flechon_4.jpg"
+      ],
+      "physical_patch_metres": [
+        2,
+        2
+      ],
+      "requested_dimensions_px": [
+        2048,
+        2048
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Reference-informed synthesis, not measured reflectance or photogrammetry. Requested seamless edges have not been proven mathematically; physical shading and object-level offset variation reduce visual repetition.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 2540506,
+      "sha256": "1f9f5bec90adee3914d386881bdd8771bdb9ea6a37ea2d635e5c33e4b1c608d1"
+    },
+    {
+      "name": "exterior-rubble-face",
+      "file": "exterior-rubble-face.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a0733d-961b-7d83-9312-6e1f79f45cc2/exec-6da4f35b-a9ae-4ef8-83bf-dda431f76813.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless 3D exterior stone BASE COLOR, reference-informed new synthesis. Generate a NEW square 2048px texture of ONE CONTINUOUS 55cm square of honey-cream limestone face, for real individually modeled rubble stones on La Bastide de Fl\u00e9chon's courtyard and kitchen facades. Inspected source photographs Bastide de Flechon - Final Collection-18.jpg and -21.jpg show varied softly weathered irregular honey/cream stones bedded in pale sandy mortar. Only reproduce the intrinsic stone face here: warm pale chalk ivory body, low-contrast oatmeal and soft honey buff mineral patches, tiny subdued pin pores and fine worn calcareous grain, a little pale grey-cream patina. Light natural stone rather than yellow sandstone, no marbling. Keep tonal variation soft and useful at 15-45cm modeled stone scale. NO drawn blocks, joints, mortar, outlines, chips at image edges or masonry pattern: true modeled geometry supplies outlines and shallow relief. Uniform neutral flat diffuse albedo ONLY: no shadows, dark crevice shading, highlights, directional light, vignette or perspective. Seamless all edges, material fills frame, no objects or text.",
+      "reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-18.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-21.jpg"
+      ],
+      "physical_patch_metres": [
+        0.55,
+        0.55
+      ],
+      "requested_dimensions_px": [
+        2048,
+        2048
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Reference-informed synthesis, not measured reflectance or photogrammetry. Requested seamless edges have not been proven mathematically; physical shading and object-level offset variation reduce visual repetition.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 3119974,
+      "sha256": "21e1e66a77e1f68fe8c0794a3980b2f2d7538ddaaeeae1d7f6882483d0d12571"
+    },
+    {
+      "name": "exterior-cut-limestone",
+      "file": "exterior-cut-limestone.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a0733d-961b-7d83-9312-6e1f79f45cc2/exec-9bdb3a17-cebc-4016-a036-d4fbda530c01.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless 3D exterior carved limestone BASE COLOR, reference-informed new synthesis. Generate a NEW square 2048px texture of one continuous 80cm patch of pale cream cut limestone matching the real molded arch surrounds, spring ledges, sills, and quoins of La Bastide de Fl\u00e9chon. Source photographs inspected: DJI_20231012094055_0813_D.jpg, Bastide de Flechon - Final Collection-18.jpg and -21.jpg. Fine chalky warm ivory limestone with soft uneven pale buff patches, very sparse pin pores, faint rubbed tool-grain in the stone, delicate naturally aged grey-beige weathering, elegant finely dressed old stone. Avoid pristine paper-white, coarse rubble, dark pitting, dramatic veins or orange sandstone. No voussoir divisions, joints, edges, outlines, moldings or decorations painted in image; separate editable geometry provides all of these. Neutral intrinsic base color only under perfectly even diffuse white light. No baked shadows, occlusion, highlights, scene-light color, gradient or vignette. Seamless all edges, surface only, no objects or text.",
+      "reference_photographs": [
+        "PHOTOS/VICTOR FITZ/DJI_20231012094055_0813_D.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-18.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-21.jpg"
+      ],
+      "physical_patch_metres": [
+        0.8,
+        0.8
+      ],
+      "requested_dimensions_px": [
+        2048,
+        2048
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Reference-informed synthesis, not measured reflectance or photogrammetry. Requested seamless edges have not been proven mathematically; physical shading and object-level offset variation reduce visual repetition.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 2759015,
+      "sha256": "f7f902638e6b23d2de7659269fc01fd7c7e5c1b84bfdcca0581be1e5c1552d29"
+    },
+    {
+      "name": "exterior-roof-terracotta",
+      "file": "exterior-roof-terracotta.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a0733d-961b-7d83-9312-6e1f79f45cc2/exec-0c8c13d4-99ab-4819-b4ca-ca7665567aa5.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless 3D roof ceramic BASE COLOR, reference-informed new synthesis. Generate a NEW square 2048px albedo texture of ONE CONTINUOUS 55cm square of aged matte southern French barrel-roof terracotta matching La Bastide de Fl\u00e9chon. Source photographs inspected: DJI_20231012094055_0813_D.jpg and Bastide de Flechon - Final Collection-18.jpg and -21.jpg. Their roofs contain slender overlapping ochre/tan tiles with some pale buff and toasted terra-cotta variation. Show a single ceramic surface, muted warm ochre-biscuit tan body with restrained pale cream calcified speckling and soft dusky umber mineral patches, fine fired-clay granules and gently worn old patina. Make it naturally aged, desaturated sun-bleached clay, not bright red-orange new tile and not uniformly dark brown. NO actual tile outline, rows, grooves, overlaps, joints or profile; true 3D roof tiles will supply all shape and shading. Perfectly neutral flat diffuse intrinsic color, no directional light, cast shadow, dark occlusion, reflections or vignette. Seamless all edges, material only, no objects/text.",
+      "reference_photographs": [
+        "PHOTOS/VICTOR FITZ/DJI_20231012094055_0813_D.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-18.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-21.jpg"
+      ],
+      "physical_patch_metres": [
+        0.55,
+        0.55
+      ],
+      "requested_dimensions_px": [
+        2048,
+        2048
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Reference-informed synthesis, not measured reflectance or photogrammetry. Requested seamless edges have not been proven mathematically; physical shading and object-level offset variation reduce visual repetition.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 3102163,
+      "sha256": "d4e1d0371e628910716b04a4e7a1381f45ad62b35148db0b6ec1ae4468b04962"
+    },
+    {
+      "name": "exterior-weathered-shutter",
+      "file": "exterior-weathered-shutter.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a0733d-961b-7d83-9312-6e1f79f45cc2/exec-afe06ff1-5e72-4eb1-9fe8-e020e0303142.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless 3D exterior shutter wood BASE COLOR, reference-informed new synthesis. Generate a NEW landscape 2048x1024 texture of one continuous weathered timber board face 1.2m wide, 0.4m tall. Grain runs HORIZONTALLY left to right. Match the opened shutters on La Bastide de Fl\u00e9chon kitchen and courtyard upper windows in inspected original photographs Bastide de Flechon - Final Collection-18.jpg and -21.jpg: pale weathered greige wood, faded grey-olive/putty tint, old sandy oak showing through, subtle grey-green residual finish, faint longitudinal grain and sparse small nail discolorations, soft slightly darker checking along grain. Predominantly muted warm stone-grey/putty, NOT green painted louvres or orange varnished wood, not flaking theatrical decay. Texture is continuous single board, no board divisions, gaps, planks, screws, hinges, handles, edges, frame or shutter object; editable actual boards/hardware supply these. Flat neutral intrinsic diffuse base color, no directional light, cast shadows, highlights, occlusion, gradients or vignette. Seamless all edges, material only, no text.",
+      "reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-18.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-21.jpg"
+      ],
+      "physical_patch_metres": [
+        1.2,
+        0.4
+      ],
+      "requested_dimensions_px": [
+        2048,
+        1024
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Reference-informed synthesis, not measured reflectance or photogrammetry. Requested seamless edges have not been proven mathematically; physical shading and object-level offset variation reduce visual repetition.",
+      "actual_dimensions_px": [
+        1774,
+        887
+      ],
+      "bytes": 2811182,
+      "sha256": "5d93914003c8fc1c74ce8a7b5ad58cf040a393fd5ffa6a065e0f2d0b11c74c8b"
+    }
+  ],
+  "reused_assets": [
+    {
+      "file": "salon-forged-iron.png",
+      "sha256": "d00ed1cf405003fad0ea7fcadefabf2b6dad36ed11722c0d86c465c8bc3154c7",
+      "provenance_manifest": "salon-generated-manifest.json",
+      "reference_photographs": [
+        "PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg"
+      ],
+      "original_prompt": "Use case: photorealistic-natural. Asset type: seamless physically based metal BASE COLOR scan. Reference is La Bastide de Fl\u00e9chon's fireplace, reference ONLY. Generate new 2048px square of 70cm of continuous old charcoal-black forged/cast iron surface matching the dark fireback plates and andirons. Very dark warm charcoal with restrained brown-black oxidized patina, irregular soft grey smoke staining, minute warm umber rubbed patches and very fine hammered surface character. Metal is old and sooty but not orange rusty, not silver, not shiny chrome. Keep the albedo appropriately dark. NO embossed/cast ornament, no plate borders, no rivets, no seams, no fire or logs; editable geometry supplies all those. Neutral evenly lit flat orthographic scan, no specular highlights, reflections, baked flame orange light or shadows, no vignette. Seamless edge-to-edge single surface only, no objects or text.",
+      "inspection": "Opened in view_image after viewing exterior originals; compatible dark brown-charcoal pergola/hardware patina. New exterior-only shader uses own roughness and physical pitting. No file edit."
+    },
+    {
+      "file": "antique_walnut.png",
+      "sha256": "24222e9358e9f08a9941776e9a267a290e02bccba23b24c8ca69aa5208e7107d",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 2362679,
+      "provenance_manifest": "generated-manifest.json",
+      "original_prompt": "Use case: photorealistic-natural. Asset type: seamless 2048px square wood PBR albedo. Reference photo only: reproduce dark richly aged oak/walnut of kitchen island panel, smooth but antique, fine grain, irregular rubbed patina. Generate one continuous wood surface with grain running vertically bottom to top, no boards/seams/frames/panels. Medium-dark chocolate brown, subtle warm umber and aged golden highlights in the wood COLOR, faint knots and tiny wormholes, very fine linear grain. Entire square is wood flat material scan, neutral evenly lit, no shadows/vignette/specular highlights. Seamlessly tileable, no object/furniture/handles/border/text.",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a07140-874d-79c3-999e-48d22cb4c4c4/exec-b84bdf37-b877-4cb6-9e46-0ec78091e76c.png",
+      "original_reference_label": "photo_10.jpg",
+      "inspection": "Existing PNG opened with view_image and compared to the dark paneled entrance leaves of Photo08/11. Reused unchanged in exterior_entry_wood; no claim this was originally generated from exterior photos.",
+      "current_reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-18.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-20.jpg"
+      ]
+    }
+  ],
+  "inspected_source_sha256": {
+    "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-18.jpg": "b418d42ab5253b208d5d5142d0042109efe0cc471bb242f249f0fe8b82a99b9f",
+    "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-21.jpg": "fa2099c9ef048bde63d79746601a7cc31ec7efb5d52c8925ee7b3d882990a8a4",
+    "PHOTOS/MARK ELST/Bastide_de_Flechon_4.jpg": "f04f98a00d9eec5c4ea8a3884ab3cd1c47dc36fa8aa8db21b4c4f8acae74aaca",
+    "PHOTOS/VICTOR FITZ/DJI_20231012094055_0813_D.jpg": "7826463492e70c2aea7eb0a1edc3e0135438927999c544400504315d58cb5cee"
+  },
+  "additional_reused_assets": [
+    {
+      "file": "antique_walnut.png",
+      "sha256": "24222e9358e9f08a9941776e9a267a290e02bccba23b24c8ca69aa5208e7107d",
+      "inspection": "Inspected original generated asset; vertical fine old walnut grain reused for dark courtyard paneled leaves only",
+      "source_manifest": "generated-manifest.json",
+      "mapping": "World-metre box projection, no luminance-derived relief",
+      "new_material": "exterior_entry_wood"
+    }
+  ]
+}
