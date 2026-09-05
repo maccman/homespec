@@ -144,7 +144,7 @@ Render the actual scene materials in the neutral studio, then all 26 bookmarks a
   "$FLECHON_PROJECT/deliverables" final
 ```
 
-The motion review is nine seconds: 216 actual rendered frames at 24 fps, three takes with 0.20 m camera travel each, 640 × 400, 16 samples and adaptive threshold 0.12. This is a motion-review resolution. Every frame and swept path segment is checked; ffmpeg encodes the MP4 and independently decodes it. PNGs are removed only after the video and three contact strips pass. A mismatched existing tour manifest is rejected; use a fresh output directory when inputs change.
+The motion review is nine seconds: 216 actual rendered frames at 24 fps, three takes with 0.20 m camera travel each, 640 × 400, 16 samples and adaptive threshold 0.12. This is a motion-review resolution. Every rendered frame is checked; route preflight samples actual camera poses with radial rays and connecting center segments, not a swept volume. ffmpeg encodes the MP4 and independently decodes it. PNGs are removed only after the video and three contact strips pass. A mismatched existing tour manifest is rejected; use a fresh output directory when inputs change.
 
 ```sh
 FLECHON_TOUR_SECONDS=9 FLECHON_TOUR_FPS=24 FLECHON_TOUR_SIZE=640x400 \
