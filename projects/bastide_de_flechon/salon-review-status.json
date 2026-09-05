@@ -1,0 +1,3195 @@
+{
+  "schema": "homespec.salon.review-status/1",
+  "status": "remaining_rendering_deferred_at_user_request",
+  "note": "The broader house task relayed the user priority to commit and mark the PR ready; remaining full renders may follow later. The render process was intentionally interrupted after two completed views. This is not a completed six-view or diagnostic final suite.",
+  "generation": "cd727b1eb17041eba0b9a3703b793e30",
+  "presentation_directory": "72043c9cafb50486",
+  "saved_blend": "/Users/cloud/.codex/worktrees/f687/homespec/out/bastide_de_flechon/presentation/cd727b1eb17041eba0b9a3703b793e30/72043c9cafb50486/house.blend",
+  "saved_blend_sha256": "3e6738d49e14f41d6ca3874f4ac72cbbe0d8d19b1ac80e76c425e584d0dc5086",
+  "camera_script_sha256": "17fa8b690dce938e40108cf30b30b2313cb59e95dffb82a4b3c3cb0c237debf8",
+  "camera_configuration_sha256": "1bbbe18f5445d85b0a2cc0ea22b48192dc4aab0439e5bb454d159b4dec009b91",
+  "execution_manifest": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/deliverables/salon-review/final/beauty/walk/salon-review-manifest.json",
+  "execution_manifest_sha256": "2da7d3f73f65aaab35f57f147668c2242a62e9caa77fba1532febce030f17f43",
+  "execution_status": "failed",
+  "execution_error_after_intentional_interrupt": "[Errno 2] No such file or directory: '/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/deliverables/salon-review/final/beauty/walk/photo57.png'",
+  "saved_blend_unchanged": true,
+  "geometry_structure_unchanged": true,
+  "restored_lighting_state_matches_saved": true,
+  "sources": {
+    "07": {
+      "path": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-17.jpg",
+      "focal_mm": 50,
+      "focal_35mm_equivalent": 40,
+      "camera": "FUJIFILM GFX100S",
+      "lens": "Canon TS-E 50mm f/2.8L",
+      "f_number": 11,
+      "absolute_path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-17.jpg",
+      "sha256": "57a95d02e5615e284b0b9f057299679c800c6ba39d38efa919f1ededa1af4e68",
+      "pixels": [
+        1500,
+        2000
+      ],
+      "file_bytes": 2779232,
+      "exif_provenance": "Values read from the original JPEG EXIF for this reconstruction; camera hash includes this static source mapping.",
+      "original_modified": false
+    },
+    "13": {
+      "path": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-22.jpg",
+      "focal_mm": 90.1,
+      "focal_35mm_equivalent": 71,
+      "camera": "FUJIFILM GFX100S",
+      "lens": "GF45-100mmF4 R LM OIS WR",
+      "f_number": 4,
+      "absolute_path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-22.jpg",
+      "sha256": "e9287c4e58ff694add947eafc804dd2df692a70f9fcdec1e1080d8cad304a598",
+      "pixels": [
+        1500,
+        2000
+      ],
+      "file_bytes": 2302044,
+      "exif_provenance": "Values read from the original JPEG EXIF for this reconstruction; camera hash includes this static source mapping.",
+      "original_modified": false
+    },
+    "23": {
+      "path": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-30.jpg",
+      "focal_mm": 50,
+      "focal_35mm_equivalent": 40,
+      "camera": "FUJIFILM GFX100S",
+      "lens": "Canon TS-E 50mm f/2.8L",
+      "f_number": 13,
+      "note": "This supplied mapping is an exterior gable photograph, used for architectural cross-checking.",
+      "absolute_path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-30.jpg",
+      "sha256": "f7e7650e671c92c3b41ad064d246a9045cd8cb78fbeb4b2063343731513b0439",
+      "pixels": [
+        1500,
+        2000
+      ],
+      "file_bytes": 2550888,
+      "exif_provenance": "Values read from the original JPEG EXIF for this reconstruction; camera hash includes this static source mapping.",
+      "original_modified": false
+    },
+    "26": {
+      "path": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-34.jpg",
+      "focal_mm": 50,
+      "focal_35mm_equivalent": 40,
+      "camera": "FUJIFILM GFX100S",
+      "lens": "Canon TS-E 50mm f/2.8L",
+      "f_number": 3.5,
+      "absolute_path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-34.jpg",
+      "sha256": "a96ee6b145e8523b76962278c1a150acd6e79279b58b5712f77c338922d93624",
+      "pixels": [
+        2000,
+        1500
+      ],
+      "file_bytes": 2626359,
+      "exif_provenance": "Values read from the original JPEG EXIF for this reconstruction; camera hash includes this static source mapping.",
+      "original_modified": false
+    },
+    "31": {
+      "path": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-5.jpg",
+      "focal_mm": 50,
+      "focal_35mm_equivalent": null,
+      "camera": "Canon EOS 5DS R",
+      "lens": "TS-E50mm f/2.8L MACRO",
+      "f_number": 8,
+      "absolute_path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-5.jpg",
+      "sha256": "19d447629a3b7555619bed76cea1ea3f8fde605dc8eac2130cfd1b7a5633fc0d",
+      "pixels": [
+        1500,
+        2000
+      ],
+      "file_bytes": 2627428,
+      "exif_provenance": "Values read from the original JPEG EXIF for this reconstruction; camera hash includes this static source mapping.",
+      "original_modified": false
+    },
+    "56": {
+      "path": "PHOTOS/VICTOR FITZ/DSC05427.jpg",
+      "focal_mm": 52,
+      "focal_35mm_equivalent": 52,
+      "camera": "SONY ILCE-7M4",
+      "lens": "FE 24-105mm F4 G OSS",
+      "f_number": 8,
+      "absolute_path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PHOTOS/VICTOR FITZ/DSC05427.jpg",
+      "sha256": "b19787d95fe4aa8ea0b1c27d79aaceb474cbf6fb3a3e6f205e33aa79fc48590c",
+      "pixels": [
+        4672,
+        7008
+      ],
+      "file_bytes": 16019022,
+      "exif_provenance": "Values read from the original JPEG EXIF for this reconstruction; camera hash includes this static source mapping.",
+      "original_modified": false
+    },
+    "57": {
+      "path": "PHOTOS/VICTOR FITZ/DSC05430.jpg",
+      "focal_mm": 24,
+      "focal_35mm_equivalent": 24,
+      "camera": "SONY ILCE-7M4",
+      "lens": "FE 24-105mm F4 G OSS",
+      "f_number": 8,
+      "absolute_path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PHOTOS/VICTOR FITZ/DSC05430.jpg",
+      "sha256": "2c6e2fbd72c491f163d7b8997f6c82b9cb814f88856152a9a504245e01f1bb50",
+      "pixels": [
+        4672,
+        7008
+      ],
+      "file_bytes": 15254236,
+      "exif_provenance": "Values read from the original JPEG EXIF for this reconstruction; camera hash includes this static source mapping.",
+      "original_modified": false
+    },
+    "58": {
+      "path": "PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg",
+      "focal_mm": 30,
+      "focal_35mm_equivalent": 30,
+      "camera": "SONY ILCE-7M4",
+      "lens": "FE 24-105mm F4 G OSS",
+      "f_number": 4,
+      "absolute_path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg",
+      "sha256": "c86b5dd62a664577ebb2be0c580075e66546743ca089be85998c4ff6eb1a14e3",
+      "pixels": [
+        7008,
+        3942
+      ],
+      "file_bytes": 15882470,
+      "exif_provenance": "Values read from the original JPEG EXIF for this reconstruction; camera hash includes this static source mapping.",
+      "original_modified": false
+    },
+    "60": {
+      "path": "PHOTOS/VICTOR FITZ/DSC05572-3.jpg",
+      "focal_mm": 24,
+      "focal_35mm_equivalent": 24,
+      "camera": "SONY ILCE-7M4",
+      "lens": "FE 24-105mm F4 G OSS",
+      "f_number": 7.1,
+      "absolute_path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PHOTOS/VICTOR FITZ/DSC05572-3.jpg",
+      "sha256": "4d60659a62c7a9563d8862623b7ea9e5854679900c7737aaaa3419d540e76b0d",
+      "pixels": [
+        4672,
+        7008
+      ],
+      "file_bytes": 12353999,
+      "exif_provenance": "Values read from the original JPEG EXIF for this reconstruction; camera hash includes this static source mapping.",
+      "original_modified": false
+    }
+  },
+  "saved_lighting_state": {
+    "lights": [
+      {
+        "name": "D_E1_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          7.625000476837158,
+          2.325000047683716,
+          1.4375
+        ],
+        "rotation_euler": [
+          1.4513674974441528,
+          -0.0,
+          1.5707963705062866
+        ],
+        "energy": 72.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": true,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.4700000286102295,
+        "size_y": 2.734999895095825,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "D_E2_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          7.625000476837158,
+          6.375,
+          1.4375
+        ],
+        "rotation_euler": [
+          1.4513674974441528,
+          -0.0,
+          1.5707963705062866
+        ],
+        "energy": 72.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": true,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.4700000286102295,
+        "size_y": 2.734999895095825,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "D_ENTRY_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          -0.5828723907470703,
+          19.519929885864258,
+          1.4249999523162842
+        ],
+        "rotation_euler": [
+          1.4513671398162842,
+          -8.703936771325971e-08,
+          1.4524198770523071
+        ],
+        "energy": 85.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 2.319999933242798,
+        "size_y": 2.7100000381469727,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "D_FRONT_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          4.0,
+          0.375,
+          1.7100000381469727
+        ],
+        "rotation_euler": [
+          1.4513674974441528,
+          -0.0,
+          0.0
+        ],
+        "energy": 105.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": true,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 3.180000066757202,
+        "size_y": 2.319999933242798,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "D_FRONT_physical_sky_aperture.001",
+        "type": "AREA",
+        "location": [
+          4.0,
+          0.375,
+          5.15500020980835
+        ],
+        "rotation_euler": [
+          1.4513674974441528,
+          -0.0,
+          0.0
+        ],
+        "energy": 190.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": true,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 3.180000066757202,
+        "size_y": 2.049999952316284,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "D_KITCHEN_GARDEN_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          -2.736999988555908,
+          8.77500057220459,
+          1.4500000476837158
+        ],
+        "rotation_euler": [
+          1.4513674974441528,
+          -0.0,
+          0.0
+        ],
+        "energy": 105.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 2.0199999809265137,
+        "size_y": 2.759999990463257,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "D_KITCHEN_TERRACE_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          -0.375,
+          13.700000762939453,
+          1.25
+        ],
+        "rotation_euler": [
+          1.4513674974441528,
+          -0.0,
+          1.5707963705062866
+        ],
+        "energy": 92.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.7200000286102295,
+        "size_y": 2.359999895095825,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "D_W1_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          0.375,
+          6.37000036239624,
+          1.2999999523162842
+        ],
+        "rotation_euler": [
+          1.4513674974441528,
+          -0.0,
+          -1.5707963705062866
+        ],
+        "energy": 72.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": true,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.0199999809265137,
+        "size_y": 2.4600000381469727,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "D_W2_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          0.375,
+          2.3299999237060547,
+          1.2999999523162842
+        ],
+        "rotation_euler": [
+          1.4513674974441528,
+          -0.0,
+          -1.5707963705062866
+        ],
+        "energy": 72.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": true,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.0199999809265137,
+        "size_y": 2.4600000381469727,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "N_BATH3_E_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          -0.375,
+          14.199999809265137,
+          4.875000476837158
+        ],
+        "rotation_euler": [
+          1.4513674974441528,
+          -0.0,
+          1.5707963705062866
+        ],
+        "energy": 42.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.1200000047683716,
+        "size_y": 1.2100000381469727,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "N_BATH4_W_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          -8.886992454528809,
+          28.982872009277344,
+          4.800000190734863
+        ],
+        "rotation_euler": [
+          1.4513720273971558,
+          -4.6754653482139474e-08,
+          -1.701563835144043
+        ],
+        "energy": 46.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.1699999570846558,
+        "size_y": 1.559999942779541,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "N_BED3_S_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          -2.7370002269744873,
+          8.77500057220459,
+          4.900000095367432
+        ],
+        "rotation_euler": [
+          1.4513674974441528,
+          -0.0,
+          0.0
+        ],
+        "energy": 75.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.4199999570846558,
+        "size_y": 1.2599999904632568,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "N_GUEST_E0_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          -1.2784268856048584,
+          24.6949520111084,
+          1.5
+        ],
+        "rotation_euler": [
+          1.451371192932129,
+          -2.5855666052621018e-08,
+          1.1935211420059204
+        ],
+        "energy": 42.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.9700000286102295,
+        "size_y": 1.4600000381469727,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "N_GUEST_E1_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          -0.19156929850578308,
+          27.437440872192383,
+          1.5
+        ],
+        "rotation_euler": [
+          1.451371192932129,
+          -2.5855666052621018e-08,
+          1.1935211420059204
+        ],
+        "energy": 74.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.9700000286102295,
+        "size_y": 1.4600000381469727,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "N_GUEST_W_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          -8.87395191192627,
+          29.082021713256836,
+          1.5
+        ],
+        "rotation_euler": [
+          1.4513720273971558,
+          -4.6754653482139474e-08,
+          -1.701563835144043
+        ],
+        "energy": 86.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.9700000286102295,
+        "size_y": 1.4600000381469727,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "N_MASTER_N_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          4.150000095367432,
+          10.625,
+          4.450000286102295
+        ],
+        "rotation_euler": [
+          1.4513672590255737,
+          1.4992022556725715e-07,
+          3.141592502593994
+        ],
+        "energy": 35.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.6200000047683716,
+        "size_y": 1.659999966621399,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "N_SUITE4_E0_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          -1.2692168951034546,
+          24.71819305419922,
+          4.800000190734863
+        ],
+        "rotation_euler": [
+          1.451371192932129,
+          -2.5855666052621018e-08,
+          1.1935211420059204
+        ],
+        "energy": 55.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.0199999809265137,
+        "size_y": 1.4600000381469727,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "N_SUITE4_E1_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          -0.18235930800437927,
+          27.460681915283203,
+          4.800000190734863
+        ],
+        "rotation_euler": [
+          1.451371192932129,
+          -2.5855666052621018e-08,
+          1.1935211420059204
+        ],
+        "energy": 65.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.0199999809265137,
+        "size_y": 1.4600000381469727,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "N_W2_physical_sky_aperture",
+        "type": "AREA",
+        "location": [
+          0.375,
+          3.0,
+          4.825000286102295
+        ],
+        "rotation_euler": [
+          1.4513674974441528,
+          -0.0,
+          -1.5707963705062866
+        ],
+        "energy": 78.0,
+        "color": [
+          0.8600000143051147,
+          0.9200000166893005,
+          1.0
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 1.2699999809265137,
+        "size_y": 0.7099999785423279,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bath1_ceiling_practical",
+        "type": "AREA",
+        "location": [
+          -4.472857475280762,
+          28.43219757080078,
+          2.8969998359680176
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "energy": 55.0,
+        "color": [
+          1.0,
+          0.8399999737739563,
+          0.6600000262260437
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.3400000035762787,
+        "size_y": 0.3400000035762787,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bath2_ceiling_practical",
+        "type": "AREA",
+        "location": [
+          -8.14380931854248,
+          25.89069938659668,
+          2.5757710933685303
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "energy": 38.0,
+        "color": [
+          1.0,
+          0.8399999737739563,
+          0.6600000262260437
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.3400000035762787,
+        "size_y": 0.3400000035762787,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bath3_ceiling_practical",
+        "type": "AREA",
+        "location": [
+          -2.6889119148254395,
+          14.543749809265137,
+          7.506389617919922
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "energy": 30.0,
+        "color": [
+          1.0,
+          0.8399999737739563,
+          0.6600000262260437
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.3400000035762787,
+        "size_y": 0.3400000035762787,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bath4_ceiling_practical",
+        "type": "AREA",
+        "location": [
+          -7.731276988983154,
+          28.08641242980957,
+          6.397000312805176
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "energy": 30.0,
+        "color": [
+          1.0,
+          0.8399999737739563,
+          0.6600000262260437
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.3400000035762787,
+        "size_y": 0.3400000035762787,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bedroom3_bath_vanity_light",
+        "type": "POINT",
+        "location": [
+          -3.6500000953674316,
+          15.65999984741211,
+          5.019999980926514
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bedroom3_bath_vanity_light.001",
+        "type": "POINT",
+        "location": [
+          -2.7899999618530273,
+          15.65999984741211,
+          5.019999980926514
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bedroom3_brass_lamp_light",
+        "type": "POINT",
+        "location": [
+          -4.050000190734863,
+          10.994999885559082,
+          4.179999828338623
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 24.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.054999999701976776,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bedroom3_brass_lamp_light.001",
+        "type": "POINT",
+        "location": [
+          -1.4700000286102295,
+          10.994999885559082,
+          4.179999828338623
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 24.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.054999999701976776,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bedroom4_bath_vanity_light",
+        "type": "POINT",
+        "location": [
+          -7.778781890869141,
+          29.836515426635742,
+          5.019999980926514
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bedroom4_bath_vanity_light.001",
+        "type": "POINT",
+        "location": [
+          -6.960873603820801,
+          29.57076072692871,
+          5.019999980926514
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bedroom4_lamp_light",
+        "type": "POINT",
+        "location": [
+          -4.713383197784424,
+          26.2569637298584,
+          4.179999828338623
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 24.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.054999999701976776,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "bedroom4_lamp_light.001",
+        "type": "POINT",
+        "location": [
+          -3.9532015323638916,
+          28.596561431884766,
+          4.179999828338623
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 24.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.054999999701976776,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "dining_lantern_light",
+        "type": "POINT",
+        "location": [
+          3.3499999046325684,
+          8.449999809265137,
+          2.5369999408721924
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 33.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "garden_bath1_vanity_light",
+        "type": "POINT",
+        "location": [
+          -3.536118507385254,
+          28.937255859375,
+          1.7200000286102295
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          -1.5369371175765991
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "garden_bath1_vanity_light.001",
+        "type": "POINT",
+        "location": [
+          -3.7740318775177,
+          28.11081886291504,
+          1.7200000286102295
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          -1.5369371175765991
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "garden_bath2_vanity_light",
+        "type": "POINT",
+        "location": [
+          -7.831218242645264,
+          25.373483657836914,
+          1.7200000286102295
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          3.141592502593994
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "garden_bath2_vanity_light.001",
+        "type": "POINT",
+        "location": [
+          -8.649126052856445,
+          25.639238357543945,
+          1.7200000286102295
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          3.141592502593994
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "guest_1_sconce_glow",
+        "type": "POINT",
+        "location": [
+          -2.72039532661438,
+          29.255043029785156,
+          2.109999895095825
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 8.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.024000000208616257,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "guest_2_portable_reading_lamp_0_light",
+        "type": "POINT",
+        "location": [
+          -8.225811958312988,
+          28.24418067932129,
+          0.8259999752044678
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 8.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.054999999701976776,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "guest_2_portable_reading_lamp_1_light",
+        "type": "POINT",
+        "location": [
+          -7.539793968200684,
+          30.355525970458984,
+          0.8259999752044678
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 8.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.054999999701976776,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "guest_corridor_ceiling_practical",
+        "type": "AREA",
+        "location": [
+          -4.53000020980835,
+          26.040000915527344,
+          2.7710001468658447
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 32.0,
+        "color": [
+          1.0,
+          0.8399999737739563,
+          0.6600000262260437
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.1899999976158142,
+        "size_y": 0.25,
+        "shape": "DISK",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "hall_glass_pendant_practical",
+        "type": "POINT",
+        "location": [
+          -1.090000033378601,
+          19.5,
+          3.565000057220459
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 5.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.02500000037252903,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "kitchen_fine_wire_pendant_0_light",
+        "type": "POINT",
+        "location": [
+          -2.630000114440918,
+          11.199999809265137,
+          2.305000066757202
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 28.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.05999999865889549,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "kitchen_fine_wire_pendant_1_light",
+        "type": "POINT",
+        "location": [
+          -2.630000114440918,
+          13.199999809265137,
+          2.305000066757202
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 28.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.05999999865889549,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "kitchen_undershelf_light",
+        "type": "AREA",
+        "location": [
+          -4.420000076293945,
+          10.0,
+          1.0549999475479126
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "energy": 30.0,
+        "color": [
+          1.0,
+          0.8199999928474426,
+          0.5899999737739563
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": true,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "size": 0.1599999964237213,
+        "size_y": 1.0,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "kitchen_undershelf_light.001",
+        "type": "AREA",
+        "location": [
+          -4.420000076293945,
+          14.899999618530273,
+          1.0549999475479126
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "energy": 30.0,
+        "color": [
+          1.0,
+          0.8199999928474426,
+          0.5899999737739563
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": true,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "size": 0.1599999964237213,
+        "size_y": 1.0,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "laundry_ceiling_practical",
+        "type": "AREA",
+        "location": [
+          -5.67085075378418,
+          25.087736129760742,
+          2.855999708175659
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 45.0,
+        "color": [
+          1.0,
+          0.8399999737739563,
+          0.6600000262260437
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.1899999976158142,
+        "size_y": 0.25,
+        "shape": "DISK",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "master_bath_ceiling_practical",
+        "type": "AREA",
+        "location": [
+          4.0,
+          8.854999542236328,
+          7.855712890625
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "energy": 35.0,
+        "color": [
+          1.0,
+          0.8399999737739563,
+          0.6600000262260437
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.3400000035762787,
+        "size_y": 0.3400000035762787,
+        "shape": "RECTANGLE",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "principal_bath_vanity_light",
+        "type": "POINT",
+        "location": [
+          1.4100000858306885,
+          10.430000305175781,
+          5.019999980926514
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "principal_bath_vanity_light.001",
+        "type": "POINT",
+        "location": [
+          2.2699999809265137,
+          10.430000305175781,
+          5.019999980926514
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "principal_bath_vanity_light.002",
+        "type": "POINT",
+        "location": [
+          2.3299999237060547,
+          10.430000305175781,
+          5.019999980926514
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "principal_bath_vanity_light.003",
+        "type": "POINT",
+        "location": [
+          3.190000057220459,
+          10.430000305175781,
+          5.019999980926514
+        ],
+        "rotation_euler": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "energy": 12.0,
+        "color": [
+          1.0,
+          0.7799999713897705,
+          0.550000011920929
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "principal_bedside_lamp_light",
+        "type": "POINT",
+        "location": [
+          2.6500000953674316,
+          5.045000076293945,
+          4.159999847412109
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 20.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.054999999701976776,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "principal_bedside_lamp_light.001",
+        "type": "POINT",
+        "location": [
+          5.309999942779541,
+          5.045000076293945,
+          4.159999847412109
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 20.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.054999999701976776,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "salon_black_ceramic_lamp_glow",
+        "type": "POINT",
+        "location": [
+          2.1500000953674316,
+          1.9500000476837158,
+          1.1399999856948853
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 23.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.06499999761581421,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "salon_fp_fire_practical",
+        "type": "POINT",
+        "location": [
+          7.119999885559082,
+          4.400000095367432,
+          0.7900000214576721
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 24.0,
+        "color": [
+          1.0,
+          0.23000000417232513,
+          0.03500000014901161
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.10999999940395355,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "salon_fp_reading_lamp_glow",
+        "type": "POINT",
+        "location": [
+          6.590000152587891,
+          5.489999771118164,
+          1.3600000143051147
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 5.0,
+        "color": [
+          1.0,
+          0.5199999809265137,
+          0.1899999976158142
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.026000000536441803,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "salon_photo_lighting_pendant_light",
+        "type": "POINT",
+        "location": [
+          4.0,
+          2.75,
+          2.630000114440918
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 33.0,
+        "color": [
+          1.0,
+          0.7300000190734863,
+          0.4099999964237213
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.0949999988079071,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "salon_photo_lighting_pendant_light.001",
+        "type": "POINT",
+        "location": [
+          4.0,
+          4.849999904632568,
+          2.630000114440918
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 33.0,
+        "color": [
+          1.0,
+          0.7300000190734863,
+          0.4099999964237213
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.0949999988079071,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "salon_photo_lighting_sconce_light",
+        "type": "POINT",
+        "location": [
+          0.8999999761581421,
+          0.5149999856948853,
+          1.934999942779541
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 7.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3400000035762787
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.03500000014901161,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "salon_photo_lighting_sconce_light.001",
+        "type": "POINT",
+        "location": [
+          7.0,
+          0.5149999856948853,
+          1.934999942779541
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 7.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3400000035762787
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.03500000014901161,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "sun",
+        "type": "SUN",
+        "location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_euler": [
+          1.0178741216659546,
+          -2.791952091740768e-08,
+          0.6518691182136536
+        ],
+        "energy": 2.5999999046325684,
+        "color": [
+          1.0,
+          0.9100000262260437,
+          0.7699999809265137
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": true,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "angle": 0.011344640515744686,
+        "shadow_soft_size": 0.0,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "upper_gallery_ceiling_practical",
+        "type": "AREA",
+        "location": [
+          -2.549999952316284,
+          20.010000228881836,
+          6.355999946594238
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 42.0,
+        "color": [
+          1.0,
+          0.8399999737739563,
+          0.6600000262260437
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.1899999976158142,
+        "size_y": 0.25,
+        "shape": "DISK",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "upper_gallery_sconce_practical",
+        "type": "POINT",
+        "location": [
+          -0.9393511414527893,
+          22.471729278564453,
+          4.986999988555908
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 9.0,
+        "color": [
+          1.0,
+          0.6800000071525574,
+          0.3700000047683716
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": true,
+        "visible_camera": false,
+        "shadow_soft_size": 0.019999999552965164,
+        "specular_factor": 1.0,
+        "diffuse_factor": 1.0
+      },
+      {
+        "name": "wc_ceiling_practical",
+        "type": "AREA",
+        "location": [
+          -4.012472152709961,
+          24.56088638305664,
+          2.855999708175659
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 35.0,
+        "color": [
+          1.0,
+          0.8399999737739563,
+          0.6600000262260437
+        ],
+        "hide_render": false,
+        "salon_aperture": false,
+        "visible_glossy": false,
+        "visible_transmission": false,
+        "visible_camera": false,
+        "size": 0.1899999976158142,
+        "size_y": 0.25,
+        "shape": "DISK",
+        "shadow_soft_size": 0.0,
+        "specular_factor": 0.0,
+        "diffuse_factor": 1.0
+      }
+    ],
+    "world": {
+      "name": "world",
+      "nodes": [
+        {
+          "type": "BACKGROUND",
+          "name": "Background",
+          "strength": 0.550000011920929,
+          "color": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806,
+            1.0
+          ],
+          "color_linked": true
+        },
+        {
+          "type": "TEX_ENVIRONMENT",
+          "image": "//../../../../../assets/hdri/qwantani_puresky_2k.hdr"
+        },
+        {
+          "type": "MAPPING",
+          "rotation": [
+            0.0,
+            0.0,
+            2.0071287155151367
+          ]
+        }
+      ]
+    },
+    "exposure": 0.0,
+    "white_balance": {
+      "use_white_balance": false,
+      "white_balance_temperature": 6500.0,
+      "white_balance_tint": 10.0
+    }
+  },
+  "completed_final_views": [
+    {
+      "id": "salon58",
+      "source": "58",
+      "supporting_sources": [
+        "57",
+        "31"
+      ],
+      "location": [
+        0.65,
+        8.8,
+        2.08
+      ],
+      "target": [
+        5.1,
+        3.0,
+        1.36
+      ],
+      "lens_mm": 30,
+      "aspect": [
+        16,
+        9
+      ],
+      "sensor_fit": "HORIZONTAL",
+      "sensor_width_mm": 36,
+      "note": "Main fireplace/garden composition. Physical camera stands at the west dining edge, with a 0.35m northward rear-sofa placement correction supported by the plan. One rendered placement trial verified fireplace and tabletop visibility while naturally excluding most dining chairs; no geometry was hidden or optics widened. Actual 30mm EXIF prior. Editorial crop and true camera extrinsics remain unknown.",
+      "camera": {
+        "location": [
+          0.6499999761581421,
+          8.800000190734863,
+          2.0799999237060547
+        ],
+        "target": [
+          5.1,
+          3.0,
+          1.36
+        ],
+        "lens_mm": 30.0,
+        "sensor_fit": "HORIZONTAL",
+        "sensor_width_mm": 36.0,
+        "sensor_height_mm": 24.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0,
+        "world_matrix": [
+          [
+            -0.793386102,
+            0.059663691,
+            -0.605787694,
+            0.649999976
+          ],
+          [
+            -0.608718693,
+            -0.077763796,
+            0.789565921,
+            8.800000191
+          ],
+          [
+            7e-08,
+            0.995184898,
+            0.098015122,
+            2.079999924
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "view_matrix": [
+          [
+            -0.793386102,
+            -0.608718693,
+            6.3e-08,
+            5.872425556
+          ],
+          [
+            0.059663694,
+            -0.077763788,
+            0.995184898,
+            -1.424444556
+          ],
+          [
+            -0.605787635,
+            0.789565861,
+            0.098015115,
+            -6.758289814
+          ],
+          [
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ]
+        ],
+        "projection_matrix": [
+          [
+            1.666666746,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.962963104,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.000116587,
+            -0.070004083
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0,
+            0.0
+          ]
+        ],
+        "clip_start": 0.03500000014901161,
+        "clip_end": 600.0,
+        "depth_of_field": false
+      },
+      "camera_sha256": "bfc8bd56c4dd7b9dc6702406925432b8d133f7b60055a385d83ae77afa2ace73",
+      "source_sha256": "c86b5dd62a664577ebb2be0c580075e66546743ca089be85998c4ff6eb1a14e3",
+      "source_path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg",
+      "source_pixels": [
+        7008,
+        3942
+      ],
+      "source_crop_pixels": null,
+      "source_original_modified": false,
+      "projected_architectural_anchors": {
+        "garden_lower_left": {
+          "world_metres": [
+            2.319999933242798,
+            0.3499999940395355,
+            0.019999999552965164
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.9035637974739075,
+            0.25701236724853516,
+            7.885409355163574
+          ],
+          "pixel_top_left_origin": [
+            3469.6849822998047,
+            1604.853286743164
+          ],
+          "in_frame": true,
+          "occluded_by": "salon_photo_walnut_armchair_0_continuous_bent_walnut_rail"
+        },
+        "garden_lower_right": {
+          "world_metres": [
+            5.679999828338623,
+            0.3499999940395355,
+            0.019999999552965164
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.5968448519706726,
+            0.3368019759654999,
+            9.920856475830078
+          ],
+          "pixel_top_left_origin": [
+            2291.884231567383,
+            1432.5077319145203
+          ],
+          "in_frame": true,
+          "occluded_by": "salon_three_seat_continuous_quilted_body"
+        },
+        "garden_lower_header_left": {
+          "world_metres": [
+            2.319999933242798,
+            0.3499999940395355,
+            2.7799999713897705
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.9179005026817322,
+            0.7827544808387756,
+            7.614887714385986
+          ],
+          "pixel_top_left_origin": [
+            3524.7379302978516,
+            469.25032138824463
+          ],
+          "in_frame": true,
+          "occluded_by": null
+        },
+        "garden_lower_header_right": {
+          "world_metres": [
+            5.679999828338623,
+            0.3499999940395355,
+            2.7799999713897705
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.5995596647262573,
+            0.7538912892341614,
+            9.650334358215332
+          ],
+          "pixel_top_left_origin": [
+            2302.309112548828,
+            531.5948152542114
+          ],
+          "in_frame": true,
+          "occluded_by": "salon_photo_lighting_glass_rods_0.001"
+        },
+        "east_near_arch_apex": {
+          "world_metres": [
+            7.650000095367432,
+            2.325000047683716,
+            2.875
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.35514435172080994,
+            0.7735081911087036,
+            9.275032043457031
+          ],
+          "pixel_top_left_origin": [
+            1363.7543106079102,
+            489.2223072052002
+          ],
+          "in_frame": true,
+          "occluded_by": "MAIN_BEAM2"
+        },
+        "east_far_arch_apex": {
+          "world_metres": [
+            7.650000095367432,
+            6.375,
+            2.875
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            -0.05912530794739723,
+            0.8406476974487305,
+            6.077289581298828
+          ],
+          "pixel_top_left_origin": [
+            -227.04118251800537,
+            344.2009735107422
+          ],
+          "in_frame": false,
+          "occluded_by": "MAIN_BEAM1"
+        },
+        "east_near_door_threshold_south": {
+          "world_metres": [
+            7.650000095367432,
+            1.5,
+            0.019999999552965164
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.4093647301197052,
+            0.3454456925392151,
+            10.206256866455078
+          ],
+          "pixel_top_left_origin": [
+            1571.960563659668,
+            1413.8373041152954
+          ],
+          "in_frame": true,
+          "occluded_by": "salon_envelope_D_E1_gathered_linen_0"
+        },
+        "east_near_door_threshold_north": {
+          "world_metres": [
+            7.650000095367432,
+            3.1500000953674316,
+            0.019999999552965164
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.30209577083587646,
+            0.301480770111084,
+            8.903472900390625
+          ],
+          "pixel_top_left_origin": [
+            1160.0477600097656,
+            1508.8015365600586
+          ],
+          "in_frame": true,
+          "occluded_by": "salon_fp_base_stile.001"
+        },
+        "hearth_south_front": {
+          "world_metres": [
+            6.728000164031982,
+            3.299999952316284,
+            0.4699999988079071
+          ],
+          "resolved_from": "actual scene union bounds: salon_fp_hearth_slab_",
+          "normalized_camera": [
+            0.3498557209968567,
+            0.35299772024154663,
+            8.182394981384277
+          ],
+          "pixel_top_left_origin": [
+            1343.4459686279297,
+            1397.5249242782593
+          ],
+          "in_frame": true,
+          "occluded_by": null
+        },
+        "hearth_north_front": {
+          "world_metres": [
+            6.728000164031982,
+            5.5,
+            0.4699999988079071
+          ],
+          "resolved_from": "actual scene union bounds: salon_fp_hearth_slab_",
+          "normalized_camera": [
+            0.13624563813209534,
+            0.2740567624568939,
+            6.445350170135498
+          ],
+          "pixel_top_left_origin": [
+            523.1832504272461,
+            1568.0373930931091
+          ],
+          "in_frame": true,
+          "occluded_by": "salon_six_seat_continuous_quilted_body"
+        },
+        "mantel_south_front": {
+          "world_metres": [
+            6.76800012588501,
+            3.2920000553131104,
+            1.9800000190734863
+          ],
+          "resolved_from": "actual scene union bounds: salon_fp_mantel_profile_",
+          "normalized_camera": [
+            0.34489309787750244,
+            0.6274518966674805,
+            8.064940452575684
+          ],
+          "pixel_top_left_origin": [
+            1324.3894958496094,
+            804.7039031982422
+          ],
+          "in_frame": true,
+          "occluded_by": null
+        },
+        "mantel_north_front": {
+          "world_metres": [
+            6.76800012588501,
+            5.507999897003174,
+            1.9800000190734863
+          ],
+          "resolved_from": "actual scene union bounds: salon_fp_mantel_profile_",
+          "normalized_camera": [
+            0.12392245978116989,
+            0.6223379373550415,
+            6.315262317657471
+          ],
+          "pixel_top_left_origin": [
+            475.8622455596924,
+            815.7500553131104
+          ],
+          "in_frame": true,
+          "occluded_by": null
+        },
+        "hood_top_front_centre": {
+          "world_metres": [
+            7.176000118255615,
+            4.400000095367432,
+            2.9749999046325684
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.21623922884464264,
+            0.8274345397949219,
+            7.339737415313721
+          ],
+          "pixel_top_left_origin": [
+            830.3586387634277,
+            372.74139404296875
+          ],
+          "in_frame": true,
+          "occluded_by": "C0_MAIN.B10"
+        },
+        "lintel_lower_centre": {
+          "world_metres": [
+            6.835999965667725,
+            4.400000095367432,
+            1.6480000019073486
+          ],
+          "resolved_from": "actual scene union bounds: salon_fp_lintel_",
+          "normalized_camera": [
+            0.24422097206115723,
+            0.5573761463165283,
+            7.263835906982422
+          ],
+          "pixel_top_left_origin": [
+            937.8085327148438,
+            956.0675239562988
+          ],
+          "in_frame": true,
+          "occluded_by": null
+        }
+      },
+      "camera_check": "Passed",
+      "settings": {
+        "engine": "CYCLES",
+        "pixels": [
+          3840,
+          2160
+        ],
+        "samples": 256,
+        "adaptive_threshold": 0.017999999225139618,
+        "denoising": true,
+        "view_transform": "AgX",
+        "look": "AgX - Medium High Contrast",
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "color_depth": "16"
+      },
+      "lighting_state_sha256": "94345db378b3bb6dde3c637ec4c3b11dea421e4319ff2f084fdfe61d3d0ad6db",
+      "inferred_manual_source_anchor_calibration": {
+        "measurement_display_pixels": [
+          2048,
+          1152
+        ],
+        "uncertainty_display_pixels": 10,
+        "observations": {
+          "mantel_north_front": [
+            0.19677734375,
+            0.3689236111111111
+          ],
+          "mantel_south_front": [
+            0.36083984375,
+            0.3715277777777778
+          ],
+          "hearth_north_front": [
+            0.19189453125,
+            0.6467013888888888
+          ],
+          "hearth_south_front": [
+            0.36474609375,
+            0.6111111111111112
+          ],
+          "garden_lower_header_right": [
+            0.58935546875,
+            0.1796875
+          ],
+          "garden_lower_header_left": [
+            0.92041015625,
+            0.12586805555555555
+          ]
+        },
+        "method": "CPU least-squares pose exploration at fixed 30mm followed by a rendered physical camera/sofa-placement trial. The selected pose keeps west-wall clearance, exposes the tabletop and naturally excludes the dining-chair row. Earlier header prior was 3.12m; the corrected native 2.78m header leaves visible residuals. This is an inferred manual-anchor framing fit, not camera recovery.",
+        "current_rms_normalized_image_units": 0.0494954085106437,
+        "residuals": {
+          "mantel_north_front": {
+            "manual_source_normalized_top_left": [
+              0.19677734375,
+              0.3689236111111111
+            ],
+            "projected_normalized_top_left": [
+              0.12392245978116989,
+              0.3776620626449585
+            ],
+            "error_normalized": [
+              -0.07285488396883011,
+              0.008738451533847391
+            ],
+            "error_original_pixels": [
+              -510.5670268535614,
+              34.44697594642641
+            ]
+          },
+          "mantel_south_front": {
+            "manual_source_normalized_top_left": [
+              0.36083984375,
+              0.3715277777777778
+            ],
+            "projected_normalized_top_left": [
+              0.34489309787750244,
+              0.37254810333251953
+            ],
+            "error_normalized": [
+              -0.01594674587249756,
+              0.0010203255547417411
+            ],
+            "error_original_pixels": [
+              -111.75479507446289,
+              4.022123336791943
+            ]
+          },
+          "hearth_north_front": {
+            "manual_source_normalized_top_left": [
+              0.19189453125,
+              0.6467013888888888
+            ],
+            "projected_normalized_top_left": [
+              0.13624563813209534,
+              0.7259432375431061
+            ],
+            "error_normalized": [
+              -0.05564889311790466,
+              0.07924184865421724
+            ],
+            "error_original_pixels": [
+              -389.9874429702759,
+              312.37136739492433
+            ]
+          },
+          "hearth_south_front": {
+            "manual_source_normalized_top_left": [
+              0.36474609375,
+              0.6111111111111112
+            ],
+            "projected_normalized_top_left": [
+              0.3498557209968567,
+              0.6470022797584534
+            ],
+            "error_normalized": [
+              -0.01489037275314331,
+              0.03589116864734221
+            ],
+            "error_original_pixels": [
+              -104.35173225402832,
+              141.48298680782298
+            ]
+          },
+          "garden_lower_header_right": {
+            "manual_source_normalized_top_left": [
+              0.58935546875,
+              0.1796875
+            ],
+            "projected_normalized_top_left": [
+              0.5995596647262573,
+              0.24610871076583862
+            ],
+            "error_normalized": [
+              0.010204195976257324,
+              0.06642121076583862
+            ],
+            "error_original_pixels": [
+              71.51100540161133,
+              261.83241283893585
+            ]
+          },
+          "garden_lower_header_left": {
+            "manual_source_normalized_top_left": [
+              0.92041015625,
+              0.12586805555555555
+            ],
+            "projected_normalized_top_left": [
+              0.9179005026817322,
+              0.21724551916122437
+            ],
+            "error_normalized": [
+              -0.0025096535682678223,
+              0.09137746360566881
+            ],
+            "error_original_pixels": [
+              -17.5876522064209,
+              360.20996153354645
+            ]
+          }
+        },
+        "interpretation": "Approximate manual source correspondences; residual includes camera, geometry and identification errors. No geometry was distorted to reduce this value."
+      },
+      "render": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/deliverables/salon-review/final/beauty/walk/salon58.png",
+      "render_sha256": "d9b259f4178ced43885047be67c5763aae8f73649de51990f7fd09278aff8abb",
+      "file_bytes": 40801771,
+      "render_seconds": 272.83,
+      "frame_check": "Passed",
+      "committed_preview": "salon-review-wide.jpg",
+      "committed_preview_sha256": "c2e47f8cecfe6d8cb9d7c3e62f62e4a8fa04ed45480c1f0e60cb532a32a6f1ca",
+      "preview_method": "Aspect-preserving downsample of the actual final PNG; no image content edits."
+    },
+    {
+      "id": "photo26",
+      "source": "26",
+      "supporting_sources": [
+        "07",
+        "60"
+      ],
+      "location": [
+        4.0,
+        7.85,
+        1.67
+      ],
+      "target": [
+        4.0,
+        0.35,
+        1.67
+      ],
+      "lens_mm": 40,
+      "shift_y": -0.055,
+      "aspect": [
+        4,
+        3
+      ],
+      "sensor_fit": "HORIZONTAL",
+      "sensor_width_mm": 36,
+      "note": "Frontal garden opening from north, centred on x=4m. EXIF actual 50mm on GFX100S, reported 35mm-equivalent 40mm. The 36mm sensor model uses that equivalent prior. Camera setback fits opening width; vertical shift -0.055 is inferred to fit the source header while keeping verticals parallel, not recovered EXIF.",
+      "camera": {
+        "location": [
+          4.0,
+          7.849999904632568,
+          1.6699999570846558
+        ],
+        "target": [
+          4.0,
+          0.35,
+          1.67
+        ],
+        "lens_mm": 40.0,
+        "sensor_fit": "HORIZONTAL",
+        "sensor_width_mm": 36.0,
+        "sensor_height_mm": 24.0,
+        "shift_x": 0.0,
+        "shift_y": -0.054999999701976776,
+        "world_matrix": [
+          [
+            -1.0,
+            1.51e-07,
+            1.51e-07,
+            4.0
+          ],
+          [
+            1.51e-07,
+            1.63e-07,
+            1.0,
+            7.849999905
+          ],
+          [
+            1.51e-07,
+            1.0,
+            -1.63e-07,
+            1.669999957
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "view_matrix": [
+          [
+            -1.0,
+            1.51e-07,
+            1.51e-07,
+            3.999998569
+          ],
+          [
+            1.51e-07,
+            1.63e-07,
+            1.0,
+            -1.670001864
+          ],
+          [
+            1.51e-07,
+            1.0,
+            -1.63e-07,
+            -7.849999905
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        ],
+        "projection_matrix": [
+          [
+            2.22222209,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.962963104,
+            -0.146666616,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.000116587,
+            -0.070004083
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0,
+            0.0
+          ]
+        ],
+        "clip_start": 0.03500000014901161,
+        "clip_end": 600.0,
+        "depth_of_field": false
+      },
+      "camera_sha256": "dc81ec8b2a3aee99e570cd9f2e1fad0b44415518441a842497fd5c6685e0dd93",
+      "source_sha256": "a96ee6b145e8523b76962278c1a150acd6e79279b58b5712f77c338922d93624",
+      "source_path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-34.jpg",
+      "source_pixels": [
+        2000,
+        1500
+      ],
+      "source_crop_pixels": null,
+      "source_original_modified": false,
+      "projected_architectural_anchors": {
+        "garden_lower_left": {
+          "world_metres": [
+            2.319999933242798,
+            0.3499999940395355,
+            0.019999999552965164
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.7488887310028076,
+            0.24740709364414215,
+            7.499999523162842
+          ],
+          "pixel_top_left_origin": [
+            2875.7327270507812,
+            2167.4675703048706
+          ],
+          "in_frame": true,
+          "occluded_by": "salon_three_seat_rolled_full_height_arm.001"
+        },
+        "garden_lower_right": {
+          "world_metres": [
+            5.679999828338623,
+            0.3499999940395355,
+            0.019999999552965164
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.25111088156700134,
+            0.24740715324878693,
+            7.499999046325684
+          ],
+          "pixel_top_left_origin": [
+            964.2657852172852,
+            2167.4673986434937
+          ],
+          "in_frame": true,
+          "occluded_by": "salon_three_seat_rolled_full_height_arm"
+        },
+        "garden_lower_header_left": {
+          "world_metres": [
+            2.319999933242798,
+            0.3499999940395355,
+            2.7799999713897705
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.7488887310028076,
+            0.7925923466682434,
+            7.5
+          ],
+          "pixel_top_left_origin": [
+            2875.7327270507812,
+            597.334041595459
+          ],
+          "in_frame": true,
+          "occluded_by": null
+        },
+        "garden_lower_header_right": {
+          "world_metres": [
+            5.679999828338623,
+            0.3499999940395355,
+            2.7799999713897705
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            0.2511109709739685,
+            0.792592465877533,
+            7.499999523162842
+          ],
+          "pixel_top_left_origin": [
+            964.2661285400391,
+            597.3336982727051
+          ],
+          "in_frame": true,
+          "occluded_by": null
+        },
+        "east_near_arch_apex": {
+          "world_metres": [
+            7.650000095367432,
+            2.325000047683716,
+            2.875
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            -0.23403753340244293,
+            0.896443784236908,
+            5.524999141693115
+          ],
+          "pixel_top_left_origin": [
+            -898.7041282653809,
+            298.2419013977051
+          ],
+          "in_frame": false,
+          "occluded_by": "MAIN_BEAM2"
+        },
+        "east_far_arch_apex": {
+          "world_metres": [
+            7.650000095367432,
+            6.375,
+            2.875
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            -2.2495310306549072,
+            1.7836294174194336,
+            1.474999189376831
+          ],
+          "pixel_top_left_origin": [
+            -8638.199157714844,
+            -2256.8527221679688
+          ],
+          "in_frame": false,
+          "occluded_by": "MAIN_BEAM2"
+        },
+        "east_near_door_threshold_south": {
+          "world_metres": [
+            7.650000095367432,
+            1.5,
+            0.019999999552965164
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            -0.13867053389549255,
+            0.18838125467300415,
+            6.349998950958252
+          ],
+          "pixel_top_left_origin": [
+            -532.4948501586914,
+            2337.461986541748
+          ],
+          "in_frame": false,
+          "occluded_by": "salon_envelope_D_E1_gathered_linen_0"
+        },
+        "east_near_door_threshold_north": {
+          "world_metres": [
+            7.650000095367432,
+            3.1500000953674316,
+            0.019999999552965164
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            -0.36288461089134216,
+            0.05323860049247742,
+            4.69999885559082
+          ],
+          "pixel_top_left_origin": [
+            -1393.476905822754,
+            2726.672830581665
+          ],
+          "in_frame": false,
+          "occluded_by": "salon_six_seat_large_hemp_pillow_1"
+        },
+        "hearth_south_front": {
+          "world_metres": [
+            6.728000164031982,
+            3.299999952316284,
+            0.4699999988079071
+          ],
+          "resolved_from": "actual scene union bounds: salon_fp_hearth_slab_",
+          "normalized_camera": [
+            -0.16617873311042786,
+            0.18261273205280304,
+            4.549999237060547
+          ],
+          "pixel_top_left_origin": [
+            -638.126335144043,
+            2354.0753316879272
+          ],
+          "in_frame": false,
+          "occluded_by": null
+        },
+        "hearth_north_front": {
+          "world_metres": [
+            6.728000164031982,
+            5.5,
+            0.4699999988079071
+          ],
+          "resolved_from": "actual scene union bounds: salon_fp_hearth_slab_",
+          "normalized_camera": [
+            -0.789835512638092,
+            -0.1831682026386261,
+            2.349998950958252
+          ],
+          "pixel_top_left_origin": [
+            -3032.9683685302734,
+            3407.524423599243
+          ],
+          "in_frame": false,
+          "occluded_by": "salon_six_seat_continuous_quilted_body"
+        },
+        "mantel_south_front": {
+          "world_metres": [
+            6.76800012588501,
+            3.2920000553131104,
+            1.9800000190734863
+          ],
+          "resolved_from": "actual scene union bounds: salon_fp_mantel_profile_",
+          "normalized_camera": [
+            -0.17476023733615875,
+            0.674092173576355,
+            4.557999134063721
+          ],
+          "pixel_top_left_origin": [
+            -671.0793113708496,
+            938.6145401000977
+          ],
+          "in_frame": false,
+          "occluded_by": null
+        },
+        "mantel_north_front": {
+          "world_metres": [
+            6.76800012588501,
+            5.507999897003174,
+            1.9800000190734863
+          ],
+          "resolved_from": "actual scene union bounds: salon_fp_mantel_profile_",
+          "normalized_camera": [
+            -0.8132181763648987,
+            0.7694304585456848,
+            2.3419992923736572
+          ],
+          "pixel_top_left_origin": [
+            -3122.757797241211,
+            664.0402793884277
+          ],
+          "in_frame": false,
+          "occluded_by": null
+        },
+        "hood_top_front_centre": {
+          "world_metres": [
+            7.176000118255615,
+            4.400000095367432,
+            2.9749999046325684
+          ],
+          "resolved_from": "declared plan/geometry anchor",
+          "normalized_camera": [
+            -0.5228667855262756,
+            1.1337199211120605,
+            3.4499990940093994
+          ],
+          "pixel_top_left_origin": [
+            -2007.8084564208984,
+            -385.1133728027344
+          ],
+          "in_frame": false,
+          "occluded_by": "C0_MAIN.B10"
+        },
+        "lintel_lower_centre": {
+          "world_metres": [
+            6.835999965667725,
+            4.400000095367432,
+            1.6480000019073486
+          ],
+          "resolved_from": "actual scene union bounds: salon_fp_lintel_",
+          "normalized_camera": [
+            -0.4133659601211548,
+            0.5638861656188965,
+            3.4499990940093994
+          ],
+          "pixel_top_left_origin": [
+            -1587.3252868652344,
+            1256.0078430175781
+          ],
+          "in_frame": false,
+          "occluded_by": null
+        }
+      },
+      "camera_check": "Passed",
+      "settings": {
+        "engine": "CYCLES",
+        "pixels": [
+          3840,
+          2880
+        ],
+        "samples": 256,
+        "adaptive_threshold": 0.017999999225139618,
+        "denoising": true,
+        "view_transform": "AgX",
+        "look": "AgX - Medium High Contrast",
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "color_depth": "16"
+      },
+      "lighting_state_sha256": "94345db378b3bb6dde3c637ec4c3b11dea421e4319ff2f084fdfe61d3d0ad6db",
+      "inferred_manual_source_anchor_calibration": {
+        "measurement_display_pixels": [
+          2000,
+          1500
+        ],
+        "uncertainty_display_pixels": 12,
+        "observations": {
+          "garden_lower_header_right": [
+            0.25,
+            0.21
+          ],
+          "garden_lower_header_left": [
+            0.75,
+            0.21
+          ]
+        },
+        "method": "Opening-width setback plus inferred TS vertical shift at fixed 40mm equivalent and x=4m. Furniture placement/scale was excluded from this two-anchor structural fit.",
+        "current_rms_normalized_image_units": 0.00199438686465583,
+        "residuals": {
+          "garden_lower_header_right": {
+            "manual_source_normalized_top_left": [
+              0.25,
+              0.21
+            ],
+            "projected_normalized_top_left": [
+              0.2511109709739685,
+              0.20740753412246704
+            ],
+            "error_normalized": [
+              0.0011109709739685059,
+              -0.002592465877532951
+            ],
+            "error_original_pixels": [
+              2.2219419479370117,
+              -3.888698816299427
+            ]
+          },
+          "garden_lower_header_left": {
+            "manual_source_normalized_top_left": [
+              0.75,
+              0.21
+            ],
+            "projected_normalized_top_left": [
+              0.7488887310028076,
+              0.2074076533317566
+            ],
+            "error_normalized": [
+              -0.0011112689971923828,
+              -0.0025923466682434004
+            ],
+            "error_original_pixels": [
+              -2.2225379943847656,
+              -3.8885200023651008
+            ]
+          }
+        },
+        "interpretation": "Approximate manual source correspondences; residual includes camera, geometry and identification errors. No geometry was distorted to reduce this value."
+      },
+      "render": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/deliverables/salon-review/final/beauty/walk/photo26.png",
+      "render_sha256": "7d09512f3973bd82a22216474598fa81690aa6b8971864a5f8c4ebc62a427bd3",
+      "file_bytes": 53839517,
+      "render_seconds": 300.25,
+      "frame_check": "Passed",
+      "committed_preview": "salon-review-front.jpg",
+      "committed_preview_sha256": "aaedeb2cc8e7974c90ba5a0667bbbe8de9be22a33add6fd2c071f1eb2a099bb8",
+      "preview_method": "Aspect-preserving downsample of the actual final PNG; no image content edits."
+    }
+  ],
+  "deferred": [
+    "beauty/walk: photo57, fireplace58, floor13, trim31",
+    "beauty/reference58: salon58",
+    "beauty/apertures-off: salon58",
+    "beauty/apertures-reflective: salon58",
+    "neutral/walk: fireplace58, floor13, trim31",
+    "clay/walk: salon58, fireplace58",
+    "Complete comparison PDF and its visual QA",
+    "Portable model repack and Eevee/navigation verification"
+  ],
+  "known_geometric_discrepancy": "Main axial beams likely sit too far outboard: current 6.3m axis spacing projects near 3.3%/96.7% of frontal image width versus manually estimated source bearings near 21-24%/76-79%. A 3.5-3.9m spacing estimate assumes the same facade bearing depth and is not surveyed. Source geometry was retained for immediate delivery; see salon-verification.md.",
+  "original_archive_and_plans": {
+    "archive": {
+      "path": "/Users/cloud/LABASTIDEDEFLECHON.zip",
+      "sha256": "b7fe2f9451a9223dba133fe54dfa0eac7eab9e7540ae834beb9af15e419741a8",
+      "bytes": 354167296
+    },
+    "plans": [
+      {
+        "path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PLANS/Plan de Situation.pdf",
+        "sha256": "6467b17c68d1b355ec08f9e6521fa82a86083c4d67196ec9108e2b75c07311b1",
+        "bytes": 523831
+      },
+      {
+        "path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PLANS/Premier Étage.pdf",
+        "sha256": "eab48e41d64bd8d633343f0d0c083529cd335e40eed6fa245f4273784620b932",
+        "bytes": 329103
+      },
+      {
+        "path": "/Users/cloud/.codex/worktrees/f687/homespec/projects/bastide_de_flechon/reference/PLANS/Rez-de-chaussée.pdf",
+        "sha256": "c8c6def5fe0043ac3c7227fc2a77999ad159d03b7da19e51cd8c6a5da2e8e44e",
+        "bytes": 489550
+      }
+    ]
+  },
+  "source_commit": "6f4bd822624e96c9a03007213036b7dd175c7720",
+  "integrated_main_commit": "ec117ec97c3a5610c9f9bf8b8e4fb18b2a2fc5a8",
+  "integration_scope": "These two images preserve the isolated salon branch scene and lighting before combined house integration. They are not renders of the later integrated main scene; current house checks and deferred artifacts are documented separately in verification.md."
+}

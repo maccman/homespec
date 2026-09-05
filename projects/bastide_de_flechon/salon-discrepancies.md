@@ -18,7 +18,7 @@ the salon/dining division. The plan's 71 m² label describes the open main
 space; it does not justify stretching the salon independently. The original
 main footprint and open room topology are retained. Opening positions and
 clear widths have been revised against the enlarged plan, as recorded in
-[decision D-034](decisions.md#d-034-rebuild-the-salon-hearth-and-its-flanking-fanlights).
+[decision D-039](decisions.md#d-039-rebuild-the-salon-hearth-and-its-flanking-fanlights).
 These revisions must not be described as preserving every baseline opening.
 
 | Priority | Observed source | Baseline discrepancy | Required correction |
@@ -43,7 +43,8 @@ be recorded with the delivered comparisons.
 
 This records mechanisms present in source, not a claim that each discrepancy
 has passed photographic acceptance. The final rendered evidence and checks
-belong in [verification.md](verification.md).
+belong in [standalone salon verification](salon-verification.md) and the
+[current combined-house verification](verification.md).
 
 | Area | Implemented in the salon update | Still requires direct comparison |
 |---|---|---|

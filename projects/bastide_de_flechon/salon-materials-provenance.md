@@ -70,7 +70,8 @@ Final appearance remains dependent on geometry, light direction and exposure.
 
 Room-only gains were adjusted after draft inspection: main beams to
 `(0.58, 0.56, 0.53)`, a floor multiplier of `(0.80, 0.79, 0.78)`, and distinct
-darker buff/grey rubble variants. Plaster/mortar did not receive that darkening.
+darker buff/grey rubble variants. Plaster/mortar did not receive the earlier
+beam/floor adjustment; mortar received its separate later calibration below.
 The saved frame-385 comparison held camera and lighting fixed for the beam and
 floor adjustment; final source lighting still requires separate evaluation.
 Bark subsequently received a linear gain of `(0.28, 0.27, 0.25)` after an
@@ -104,7 +105,8 @@ the salon, retaining the far room's material. Standalone graph checks confirmed
 asset loading, idempotent construction, an untouched shared-material sentinel
 and no image upstream of Roughness/Normal; those checks do not establish
 photographic fidelity. Final model/render verification is recorded separately
-in [verification.md](verification.md).
+in [standalone salon verification](salon-verification.md), with the integrated
+house recorded in [verification.md](verification.md).
 
 The final integrated frontal comparison also reduced the mortar gain to
 (0.46, 0.43, 0.38). Its prior near-white appearance outlined each stone too

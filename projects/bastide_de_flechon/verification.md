@@ -2,6 +2,12 @@
 
 Third photographic pass, Blender 5.2.1 LTS, 5 September 2026. The user requested that all source work be committed and the PR made ready while the full render is deferred.
 
+Separate [standalone salon evidence](salon-verification.md) adds two
+full-resolution wide renders from the salon branch before this combined
+integration. Its scene, lighting and build counts are distinct from the
+current combined-model evidence below. It also documents a likely remaining
+outboard axial beam-placement discrepancy for a later geometric review.
+
 ## Source and geometry
 
 The architectural model contains **315 entities** and passes **366 HomeSpec checks**, with zero failures. The existing 54 permitted construction intersections, stair/door/headroom rules and audit thresholds are unchanged. All four diagnostic plans and sections were reviewed; the latest regenerated images have identical pixels. The integrated scene passed the explicit CLI audit, and the final saved-scene render repeated **AUDIT total 0**.
