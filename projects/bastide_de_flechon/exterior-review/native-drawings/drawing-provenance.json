@@ -1,0 +1,183 @@
+{
+  "production_generation": "e3b0760284354eac9ea110ca7e12ec92",
+  "production_source_commit": "55a3069",
+  "created_utc": "2026-09-05T22:25:04.659762+00:00",
+  "scope": "Read-only native horizontal drawing validation and raster previews; no Blender or geometry/source edits.",
+  "sources": [
+    {
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/e3b0760284354eac9ea110ca7e12ec92/ir.json",
+      "sha256": "c5ae2d0418beefc946656622791043ea0ceb73c1bfe6e262ee174ed5369f1171",
+      "bytes": 448595
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/e3b0760284354eac9ea110ca7e12ec92/drawings/plan_L0.svg",
+      "sha256": "fe2a4d4101fb6544de17b931da13013696245293716d418a9bade860751dfc24",
+      "bytes": 78625
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/e3b0760284354eac9ea110ca7e12ec92/drawings/plan_L1.svg",
+      "sha256": "3283bd2dc78ad0adf4d167ec79c3d3e3fe69c8862883382cf0b4f69fa3b0b395",
+      "bytes": 49629
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/homespec/export/drawings.py",
+      "sha256": "db4c0b022d62b1026288dbee11c20ad1e81eaf1afdadab0cce3db13b7e250126",
+      "bytes": 14953
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-drawings/plan_L0.png",
+      "sha256": "10e33612f90db3b2bb2f090e1cbd69d48c92f2fcbc4adb3deb5e9af6c9e09da5",
+      "bytes": 755518,
+      "pixels": [
+        3968,
+        2806
+      ],
+      "mode": "RGB",
+      "extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-drawings/plan_L1.png",
+      "sha256": "736e2f20691f1a14a2145208949770509c0db827804ec6c495b44825dbbcc7d9",
+      "bytes": 603359,
+      "pixels": [
+        3968,
+        2806
+      ],
+      "mode": "RGB",
+      "extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-drawings/plan_L1_oculus_cut_5425mm.svg",
+      "sha256": "13a61e711e6411c279bc39f1c30b9109a294cb489969f97df43d8d03c5f2f12f",
+      "bytes": 46956
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-drawings/plan_L1-oculus-5425mm.png",
+      "sha256": "32401404f537370b7b1fdc8fdd0ef5e0d2e00a0ec0470477ca308e6d7768e27f",
+      "bytes": 588713,
+      "pixels": [
+        3968,
+        2806
+      ],
+      "mode": "RGB",
+      "extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-drawings/ground-section-data.json",
+      "sha256": "ec2cb84988aae03ddc3e41f4565fc95dd8ed432b06c02cdf1f43d5ca4534c455",
+      "bytes": 15996
+    },
+    {
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-drawings/oculus-section-data.json",
+      "sha256": "a491225c5df0ead2f7837e5a2900e92a0ad3f8ffe3b90197b1e184ee58595280",
+      "bytes": 4087
+    }
+  ],
+  "rasterizer": {
+    "package": "bundled sharp",
+    "version": "0.35.4",
+    "librsvg": "2.62.91",
+    "libvips": "8.18.6",
+    "procedure": "sharp(originalSvg, {density:96}).resize({width:3968}).flatten({background:\"#fff\"}).png()",
+    "source_svg_mutated": false,
+    "canonical_pngs_visually_reviewed": true
+  },
+  "cut_planes": {
+    "plan_L0": {
+      "relative_mm": 1200,
+      "absolute_mm": 1200
+    },
+    "plan_L1": {
+      "relative_mm": 1200,
+      "absolute_mm": 4500
+    },
+    "supplemental_oculus": {
+      "relative_mm": 2125,
+      "absolute_mm": 5425,
+      "derived_using": "homespec.export.drawings.plan_view(exact_ir, \"L1\", cut=2125)"
+    }
+  },
+  "native_section_checks": {
+    "ground_D_E1_y_span_mm": [
+      1500,
+      3150
+    ],
+    "ground_D_E2_y_span_mm": [
+      5550,
+      7200
+    ],
+    "upper_N_E1_y_span_mm": [
+      2000,
+      2650
+    ],
+    "upper_N_E2_y_span_mm": [
+      6050,
+      6700
+    ],
+    "matched_ground_upper_y_centers_mm": [
+      2325,
+      6375
+    ],
+    "oculus_centers_align_with_ground_doors": true,
+    "oculi_on_master_side_of_partition": true,
+    "standard_L1_omits_oculi_because_cut_below_sill": true,
+    "oculus_z_span_mm": [
+      5100,
+      5750
+    ]
+  },
+  "observations": [
+    "Ground sections show real cut openings at D_FRONT, D_E1/D_E2, D_ENTRY, both guest east doors, kitchen garden and terrace doors. D_FRONT leaves reflect the actual open pose.",
+    "L1 shows corrected 1350 mm kitchen south opening and hall opening. The oculi do not intersect its 4500 mm plane.",
+    "Supplementary actual CAD section through z5425 shows two 650 mm east oculi on the master side of P_DRESS, centered exactly over the corresponding ground doors."
+  ],
+  "limits": [
+    "The A3 export clips the ground pool underlay at the bottom page edge; principal building is fully framed. Below-plane objects are excluded from fit bounds.",
+    "Many internal dimension and label strings overlap around compact guest rooms and the stair/corridor junction.",
+    "Dimension strings report structural opening widths and wall reference lines; curved apertures can have narrower actual section chords. The main 7300 mm reference-line width is not its 8000 mm exterior footprint width.",
+    "Horizontal section geometry is authoritative at the stated cut plane only. It does not independently validate heights, arch crowns, facade materials, roof elevations or photograph match.",
+    "The supplementary oculus sheet is explicitly diagnostic, not an original production drawing.",
+    "Quick Look square previews cropped the landscape sheet and ImageMagick internal SVG rendering lost text/hatch fidelity; those trial outputs were discarded."
+  ]
+}

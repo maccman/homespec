@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "source_commit": "55a3069a899f42e7ad019103dc5c5114bb3fef37",
+  "saved_scene": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/house.blend",
+  "saved_scene_sha256": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373",
+  "draft_manifest_sha256": "e790d41b4e1bc0332eceeca6a6f0569740bc5c3111807c2e2ec16600181b646e",
+  "mode": "read-only visual assessment",
+  "scope": "Four actual production drafts inspected against previously inspected original Photos08/12/45. No Blender process, image edits or source edits.",
+  "limits": "12-sample drafts at504x672/672x560/672x504 support broad colour/construction observations, not pore-scale, exact BRDF or beauty acceptance. Lighting differs from the photographs. Source grey material assignment is visually evident; recessed timber remains deliberately native.",
+  "views": [
+    {
+      "id": "kitchen12",
+      "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/kitchen12.png",
+      "sha256": "e7e1015c9b5788609b62ca51c7dc249af4d3ae5f1c773523f9d422000c4d44c2",
+      "pixels": [
+        504,
+        672
+      ],
+      "reference": "Photo12 \u2014 PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-21.jpg",
+      "observed_change": "Upper outward frame and crossbars now read painted grey instead of orange wood. Shutters read warmer greige, distinguishable from the pale cut stone. No obvious missing-texture or gross colour failure.",
+      "remaining": "Still substantially cleaner/paler than the reference. Rubble has flat polygon centres, even rolled borders and regular mortar grooves; the original has fractured, stratified faces and varied aggregate. Foliage remains faceted; the source terrace table/chairs and steps are absent from this composition."
+    },
+    {
+      "id": "shutter-sill",
+      "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/shutter-sill.png",
+      "sha256": "f2ba9bc5e79b1284f918a3f4795bc227eae6dae5c8559d08eea07408f3520549",
+      "pixels": [
+        672,
+        560
+      ],
+      "reference": "Photo12 detail",
+      "observed_change": "Grey front-facing mullions, horizontal wood grain, warmer shutter boards and dark hinge straps are visible. The wider detail now includes the projecting sill.",
+      "remaining": "Brown timber remains visible on recessed jamb/rebate surfaces, consistent with the explicit outward-faces-only assignment; the full reveal does not read uniformly painted. Shutters remain comparatively pale and even, with less staining/edge wear than the original. Sill and cut-stone surfaces are very clean. Outer shutter edges remain cropped."
+    },
+    {
+      "id": "courtyard08",
+      "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/courtyard08.png",
+      "sha256": "3762939b4749eb469c0652f5aa9616e3fcd982298ec207f5420e34a388e6db4d",
+      "pixels": [
+        504,
+        672
+      ],
+      "reference": "Photo08 \u2014 PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-18.jpg",
+      "observed_change": "Entrance, courtyard lawn, pergola, cypresses and near planting remain visible and in the same arrangement as the previous draft. No new courtyard obstruction or obvious discontinuity from the distant scatter move is visible.",
+      "remaining": "The large regular stone plaques and pale surface treatment remain unlike the photographed rough limestone. The view is still a more distant composition than Photo08, with simplified pergola planting/furniture and no photographed sunken-paving/raised-lawn stair relationship. This view cannot validate relocated western grove geometry outside its frame."
+    },
+    {
+      "id": "rear45",
+      "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/rear45.png",
+      "sha256": "f401027a795acfb6f380bdaf487c3fa08ebdc17ca7beba213c0e3befcd3037fe",
+      "pixels": [
+        672,
+        504
+      ],
+      "reference": "Photo45 \u2014 PHOTOS/VICTOR FITZ/DJI_20231012092709_0763_D.jpg; inspection oblique, not matched viewpoint",
+      "observed_change": "Roof courses now have visible ochre, brown and grey tile-to-tile variation rather than nearly uniform cream. The courtyard/pergola footprint and background remain coherent in this frame; no new near-courtyard scatter intrusion is visible.",
+      "remaining": "The pigment mix remains regular at tile scale, and cleaner/brighter than the reference roof with accumulated weathering. Paving, plaster and lawn retain a simplified appearance. The relocated west grove lies outside much of this view, so its support/overlaps are not visually certified here."
+    }
+  ],
+  "conclusion": "Requested roof/shutter/front-facing frame pigment changes are visible without gross colour failure. No new courtyard disturbance is visible in these selected frames. Regular rubble construction and clean/even surface ageing remain material fidelity limitations; no photographic or beauty acceptance claimed."
+}

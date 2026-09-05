@@ -17,6 +17,7 @@ import os
 import random
 from types import SimpleNamespace
 
+import bmesh
 import bpy
 from mathutils import Matrix, Vector
 
@@ -404,9 +405,19 @@ def lanterns(scene, P):
     profile += [(z, max(0.001, r - 0.0032)) for z, r in reversed(profile[1:])]
     glass = F.lathe(scene, "hall_photo21_blown_glass_pendant", at, profile, P.glass, segments=96)
     glass["source_reference"] = "photo_21: clear teardrop glass, inferred unseen rear"
-    ceiling = scene.bbox("C1_H")[0].z
-    scene.rod("hall_glass_pendant_suspension", (at[0], at[1], 3.73), (at[0], at[1], ceiling - 0.025), 0.008, P.ebony)
-    scene.cyl("hall_glass_pendant_ceiling_rose", (at[0], at[1], ceiling - 0.020), 0.072, 0.040, P.ebony)
+    # Attach to the actual sloping plaster face, not its lowest bounding edge.
+    ceiling = bpy.data.objects["C1_H"]
+    inverse = ceiling.matrix_world.inverted()
+    hit, point, normal, _ = ceiling.ray_cast(inverse @ Vector((at[0], at[1], 4.0)),
+                                            inverse.to_3x3() @ Vector((0, 0, 1)))
+    if not hit:
+        raise ValueError("The hall pendant must meet its physical ceiling")
+    point = ceiling.matrix_world @ point
+    normal = (ceiling.matrix_world.to_3x3().inverted().transposed() @ normal).normalized()
+    scene.rod("hall_glass_pendant_suspension", (at[0], at[1], 3.73), point + normal * .025, .008, P.ebony)
+    rose = scene.cyl("hall_glass_pendant_ceiling_rose", point + normal * .020, .072, .040, P.ebony)
+    rose.rotation_mode = "QUATERNION"
+    rose.rotation_quaternion = Vector((0, 0, 1)).rotation_difference(normal)
     F.lathe(scene, "hall_clear_filament_bulb", (at[0], at[1], 3.52), [(0, 0.011), (0.01, 0.027), (0.045, 0.032), (0.09, 0.019), (0.12, 0.014)], P.glass, segments=48)
     for dx in (-0.010, 0.010):
         F.curve(scene, "hall_pendant_tungsten_filament", [(at[0] + dx, at[1], 3.53), (at[0] - dx, at[1], 3.61)], 0.0008, P.bulb)
@@ -503,6 +514,52 @@ def slip_panel(scene, name, p, x0, x1, y, z0, z1, P, seed=0):
     return ob
 
 
+def clip_shower_construction_to_ceiling(objects, at, ceiling_id):
+    """Bisect upper construction at the actual planar plaster underside."""
+    ceiling = bpy.data.objects[ceiling_id]
+    inverse = ceiling.matrix_world.inverted()
+    hit, point, normal, _ = ceiling.ray_cast(inverse @ Vector((at[0], at[1], at[2] + 2.0)),
+                                            inverse.to_3x3() @ Vector((0, 0, 1)))
+    if not hit:
+        raise ValueError(f"The shower construction must meet {ceiling_id}")
+    point = ceiling.matrix_world @ point
+    normal = (ceiling.matrix_world.to_3x3().inverted().transposed() @ normal).normalized()
+    if normal.z < 0:
+        normal.negate()
+    # Three millimetres also clear the retained one-millimetre stone bevels.
+    point -= normal * .003
+    for ob in objects:
+        # Fast primitives can share cube data; trim only this shower's copy.
+        ob.data = ob.data.copy()
+        world, inverse = ob.matrix_world.copy(), ob.matrix_world.inverted()
+        bm = bmesh.new()
+        try:
+            bm.from_mesh(ob.data)
+            closed = all(edge.is_manifold for edge in bm.edges)
+            for vertex in bm.verts:
+                vertex.co = world @ vertex.co
+            result = bmesh.ops.bisect_plane(
+                bm, geom=list(bm.verts) + list(bm.edges) + list(bm.faces),
+                dist=1e-7, plane_co=point, plane_no=normal,
+                clear_outer=True, clear_inner=False,
+            )
+            cut = [edge for edge in result["geom_cut"]
+                   if isinstance(edge, bmesh.types.BMEdge) and edge.is_boundary]
+            if closed and cut:
+                bmesh.ops.holes_fill(bm, edges=cut, sides=0)
+                bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
+            if any((vertex.co - point).dot(normal) > 1e-5 for vertex in bm.verts):
+                raise ValueError(f"{ob.name} still crosses its plaster clipping plane")
+            for vertex in bm.verts:
+                vertex.co = inverse @ vertex.co
+            bm.to_mesh(ob.data)
+        finally:
+            bm.free()
+        ob.data.update()
+        ob["physical_ceiling_fit"] = ceiling_id
+        ob["ceiling_fit_clearance_m"] = .003
+
+
 def detailed_shower(scene, name, at, w, d, rot, P, seed):
     """Continuous recessed shelf and separate window-wall overhead fitting.
 
@@ -523,14 +580,19 @@ def detailed_shower(scene, name, at, w, d, rot, P, seed):
         top = 6.48 - at[2]
     niche_bottom, niche_top, front = 1.08, 1.40, back - 0.085
     backing = scene.box(name + "_continuous_wet_wall_backing", p(0, back + 0.007, top / 2), (w, 0.028, top), P.basin, rot_z=rot, bevel=0.001)
+    upper_construction = [backing]
     backing["source_reference"] = "photo05 uninterrupted stone elevation / long open shelf; concealed support and room assignment inferred"
     if principal:
         soffit = scene.box(name + "_flat_wet_room_soffit", p(0, 0, top - 0.011),
                            (w, d, 0.022), P.white, rot_z=rot)
         soffit["source_reference"] = "photo05 flat soffit; 6.48 m model height and concealed construction inferred"
     for z0, z1, label in [(0.05, niche_bottom, "lower"), (niche_top, top, "upper")]:
-        scene.box(name + "_stone_" + label + "_support", p(0, (back + front) / 2, (z0 + z1) / 2), (w, back - front, z1 - z0), P.grout, rot_z=rot, bevel=0.001)
-        slip_panel(scene, name + "_split_stone_" + label, p, x0, x1, front - 0.002, z0, z1, P, seed + int(z0 * 200))
+        support = scene.box(name + "_stone_" + label + "_support", p(0, (back + front) / 2, (z0 + z1) / 2), (w, back - front, z1 - z0), P.grout, rot_z=rot, bevel=0.001)
+        stone = slip_panel(scene, name + "_split_stone_" + label, p, x0, x1, front - 0.002, z0, z1, P, seed + int(z0 * 200))
+        if label == "upper":
+            upper_construction.extend((support, stone))
+    if name == "bedroom3_shower":
+        clip_shower_construction_to_ceiling(upper_construction, at, "C1_K")
     # No projecting side piers: the reference shelf continues across the wall.
     for z in (niche_bottom, niche_top):
         tagged(scene.box(name + "_honed_continuous_shelf_lip", p(0, (front + back) / 2 - 0.002, z), (w, back - front + 0.017, 0.018), P.basin, rot_z=rot, bevel=0.0015))

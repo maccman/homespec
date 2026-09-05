@@ -45,7 +45,12 @@ def test_both_skew_kitchen_hall_walls_share_clear_passage_and_flat_lintel(declar
         # Preserve each actual skew wall axis, joins and world-space cut. A
         # correct cut in only one host can leave a solid lip across the route.
         for portal in portals:
-            replace(declarations.elements[portal.host], assembly="test_wall")
+            wall = declarations.elements[portal.host]
+            # This isolated ground-floor lintel fixture has no upper storey.
+            # Keep masonry butt joins; roof profiles are checked in the roof
+            # solid tests and the complete native house build.
+            joins = [eid for eid in wall.joins if declarations.elements[eid].kind != "roof"]
+            replace(wall, assembly="test_wall", joins=joins, roof_limit=None)
         for portal in portals:
             replace(portal)
     compiled = house.compile()

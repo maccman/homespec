@@ -1,0 +1,556 @@
+{
+  "source": {
+    "generation": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/e3b0760284354eac9ea110ca7e12ec92",
+    "ir": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/e3b0760284354eac9ea110ca7e12ec92/ir.json",
+    "ir_sha256": "c5ae2d0418beefc946656622791043ea0ceb73c1bfe6e262ee174ed5369f1171",
+    "presentation_directory": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a",
+    "presentation_fingerprint": "272c952e5d565d7a50660e1944f53d2cbd1afbd5ca6dc1312fe1b3a238d4c000",
+    "source_commit": "55a3069a899f42e7ad019103dc5c5114bb3fef37",
+    "native_checks": {
+      "passed": 371,
+      "failed": [
+        {
+          "rule": "glazing_ratio",
+          "target": "bed3",
+          "ok": false,
+          "value": 0.086,
+          "limit": 0.1,
+          "note": "glass area / floor area",
+          "clause": "habitable rooms: glass area >= 10% of floor area (rule of thumb)"
+        }
+      ]
+    }
+  },
+  "saved_scene": {
+    "build_fingerprint": "5f186bdcb3592cd3012390976a43972a1209b9285f6b9237c9e63519bca19226",
+    "generation": "e3b0760284354eac9ea110ca7e12ec92",
+    "presentation_fingerprint": "272c952e5d565d7a50660e1944f53d2cbd1afbd5ca6dc1312fe1b3a238d4c000",
+    "scene_hash": "daeafa38dcd837c8cd8e0aa8973d42bf9c8d6d317f90c8085e116937d334efff"
+  },
+  "loaded_blend": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/house.blend",
+  "audit_log": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-save.log",
+  "audit_sha256": "e726d8844ea08580a08ce5f6142b4bb35cc145f51632623415bd4204eeccd7c3",
+  "method": "Actual evaluated Blender mesh world vertices and polygon centroids; no scene mutation",
+  "source_hashes": {
+    "projects/bastide_de_flechon/rooms/exterior_roofs.py": "a030a7086671662f5442650aad3144e1e1a5661ff09dd712e9c2907c24016f45",
+    "projects/bastide_de_flechon/rooms/exterior_envelope.py": "995f4363eafa3be709558f38e333afba7b229947321d2c81df2a926634d53833"
+  },
+  "pairs": [
+    {
+      "object": "exterior_A1_INFILL_individual_rubble",
+      "wall": "A1_INFILL",
+      "audit_depth_mm": 1538
+    },
+    {
+      "object": "exterior_A2_INFILL_individual_rubble",
+      "wall": "A2_INFILL",
+      "audit_depth_mm": 226
+    },
+    {
+      "object": "exterior_A3_INFILL_individual_rubble",
+      "wall": "A3_INFILL",
+      "audit_depth_mm": 783
+    },
+    {
+      "object": "exterior_A4_INFILL_individual_rubble",
+      "wall": "A4_INFILL",
+      "audit_depth_mm": 299
+    },
+    {
+      "object": "exterior_H1_INFILL_individual_rubble",
+      "wall": "H1_INFILL",
+      "audit_depth_mm": 532
+    },
+    {
+      "object": "exterior_H3_INFILL_individual_rubble",
+      "wall": "H3_INFILL",
+      "audit_depth_mm": 507
+    },
+    {
+      "object": "exterior_K2_INFILL_individual_rubble",
+      "wall": "K2_INFILL",
+      "audit_depth_mm": 119
+    },
+    {
+      "object": "exterior_N_BATH3_E_projecting_sill",
+      "wall": "K1",
+      "audit_depth_mm": 84
+    },
+    {
+      "object": "exterior_N_BATH4_W_projecting_sill",
+      "wall": "A3",
+      "audit_depth_mm": 84
+    },
+    {
+      "object": "exterior_N_BED3_S_projecting_sill",
+      "wall": "K4",
+      "audit_depth_mm": 84
+    },
+    {
+      "object": "exterior_N_E1_oculus_reveal_5",
+      "wall": "ME",
+      "audit_depth_mm": 116
+    },
+    {
+      "object": "exterior_N_E1_oculus_reveal_6",
+      "wall": "ME",
+      "audit_depth_mm": 116
+    },
+    {
+      "object": "exterior_N_E2_oculus_reveal_5",
+      "wall": "ME",
+      "audit_depth_mm": 116
+    },
+    {
+      "object": "exterior_N_E2_oculus_reveal_6",
+      "wall": "ME",
+      "audit_depth_mm": 116
+    },
+    {
+      "object": "exterior_N_GUEST_W_projecting_sill",
+      "wall": "A3",
+      "audit_depth_mm": 84
+    },
+    {
+      "object": "exterior_N_MASTER_N_projecting_sill",
+      "wall": "MN",
+      "audit_depth_mm": 84
+    },
+    {
+      "object": "exterior_N_SUITE4_E0_projecting_sill",
+      "wall": "A1",
+      "audit_depth_mm": 84
+    },
+    {
+      "object": "exterior_N_SUITE4_E1_projecting_sill",
+      "wall": "A1",
+      "audit_depth_mm": 84
+    },
+    {
+      "object": "exterior_N_W1_oculus_reveal_5",
+      "wall": "MW",
+      "audit_depth_mm": 116
+    },
+    {
+      "object": "exterior_N_W1_oculus_reveal_6",
+      "wall": "MW",
+      "audit_depth_mm": 116
+    },
+    {
+      "object": "exterior_N_W2_projecting_sill",
+      "wall": "MW",
+      "audit_depth_mm": 84
+    },
+    {
+      "object": "R_A_exterior_canal_covers",
+      "wall": "A1_INFILL",
+      "audit_depth_mm": 1103
+    },
+    {
+      "object": "R_A_exterior_canal_pans",
+      "wall": "A1_INFILL",
+      "audit_depth_mm": 1136
+    },
+    {
+      "object": "R_A_exterior_gable_bedding",
+      "wall": "A1_INFILL",
+      "audit_depth_mm": 1136
+    },
+    {
+      "object": "R_A_exterior_gable_coping",
+      "wall": "A1_INFILL",
+      "audit_depth_mm": 1119
+    },
+    {
+      "object": "R_H_exterior_canal_covers",
+      "wall": "A1",
+      "audit_depth_mm": 350
+    },
+    {
+      "object": "R_H_exterior_canal_pans",
+      "wall": "A1",
+      "audit_depth_mm": 350
+    },
+    {
+      "object": "R_H_exterior_gable_bedding",
+      "wall": "A1",
+      "audit_depth_mm": 350
+    },
+    {
+      "object": "R_H_exterior_gable_coping",
+      "wall": "A1",
+      "audit_depth_mm": 350
+    },
+    {
+      "object": "R_K_exterior_canal_covers",
+      "wall": "K1",
+      "audit_depth_mm": 350
+    },
+    {
+      "object": "R_K_exterior_canal_pans",
+      "wall": "K1",
+      "audit_depth_mm": 350
+    },
+    {
+      "object": "R_K_exterior_gable_bedding",
+      "wall": "K1",
+      "audit_depth_mm": 350
+    },
+    {
+      "object": "R_K_exterior_gable_coping",
+      "wall": "K1",
+      "audit_depth_mm": 346
+    },
+    {
+      "object": "R_MAIN_exterior_canal_covers",
+      "wall": "CH_MAIN",
+      "audit_depth_mm": 600
+    },
+    {
+      "object": "R_MAIN_exterior_canal_pans",
+      "wall": "CH_MAIN",
+      "audit_depth_mm": 600
+    },
+    {
+      "object": "R_MAIN_exterior_gable_bedding",
+      "wall": "CH_MAIN",
+      "audit_depth_mm": 600
+    },
+    {
+      "object": "R_MAIN_exterior_gable_coping",
+      "wall": "CH_MAIN",
+      "audit_depth_mm": 600
+    },
+    {
+      "object": "R_MAIN_exterior_genoise_beds",
+      "wall": "CH_MAIN",
+      "audit_depth_mm": 86
+    },
+    {
+      "object": "R_MAIN_exterior_genoise_tiles",
+      "wall": "CH_MAIN",
+      "audit_depth_mm": 119
+    },
+    {
+      "object": "R_POOLHOUSE_exterior_canal_covers",
+      "wall": "R_POOLHOUSE.G1",
+      "audit_depth_mm": 500
+    },
+    {
+      "object": "R_POOLHOUSE_exterior_canal_pans",
+      "wall": "PH_E_INFILL",
+      "audit_depth_mm": 72
+    },
+    {
+      "object": "R_POOLHOUSE_exterior_gable_bedding",
+      "wall": "PH_E_INFILL",
+      "audit_depth_mm": 71
+    },
+    {
+      "object": "R_POOLHOUSE_exterior_gable_coping",
+      "wall": "R_POOLHOUSE.G1",
+      "audit_depth_mm": 500
+    }
+  ],
+  "objects": [
+    {
+      "object": "exterior_A1_INFILL_individual_rubble",
+      "vertices": 10806,
+      "polygons": 17212,
+      "modifiers": []
+    },
+    {
+      "object": "exterior_A2_INFILL_individual_rubble",
+      "vertices": 5757,
+      "polygons": 8686,
+      "modifiers": []
+    },
+    {
+      "object": "exterior_A3_INFILL_individual_rubble",
+      "vertices": 10499,
+      "polygons": 16636,
+      "modifiers": []
+    },
+    {
+      "object": "exterior_A4_INFILL_individual_rubble",
+      "vertices": 3585,
+      "polygons": 5178,
+      "modifiers": []
+    },
+    {
+      "object": "exterior_H1_INFILL_individual_rubble",
+      "vertices": 4116,
+      "polygons": 6421,
+      "modifiers": []
+    },
+    {
+      "object": "exterior_H3_INFILL_individual_rubble",
+      "vertices": 3908,
+      "polygons": 6062,
+      "modifiers": []
+    },
+    {
+      "object": "exterior_K2_INFILL_individual_rubble",
+      "vertices": 871,
+      "polygons": 1378,
+      "modifiers": []
+    },
+    {
+      "object": "exterior_N_BATH3_E_projecting_sill",
+      "vertices": 56,
+      "polygons": 54,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_BATH4_W_projecting_sill",
+      "vertices": 56,
+      "polygons": 54,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_BED3_S_projecting_sill",
+      "vertices": 56,
+      "polygons": 54,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_E1_oculus_reveal_5",
+      "vertices": 140,
+      "polygons": 124,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_E1_oculus_reveal_6",
+      "vertices": 140,
+      "polygons": 124,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_E2_oculus_reveal_5",
+      "vertices": 140,
+      "polygons": 124,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_E2_oculus_reveal_6",
+      "vertices": 140,
+      "polygons": 124,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_GUEST_W_projecting_sill",
+      "vertices": 56,
+      "polygons": 54,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_MASTER_N_projecting_sill",
+      "vertices": 56,
+      "polygons": 54,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_SUITE4_E0_projecting_sill",
+      "vertices": 56,
+      "polygons": 54,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_SUITE4_E1_projecting_sill",
+      "vertices": 56,
+      "polygons": 54,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_W1_oculus_reveal_5",
+      "vertices": 140,
+      "polygons": 124,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_W1_oculus_reveal_6",
+      "vertices": 140,
+      "polygons": 124,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "exterior_N_W2_projecting_sill",
+      "vertices": 56,
+      "polygons": 54,
+      "modifiers": [
+        "BEVEL"
+      ]
+    },
+    {
+      "object": "R_A_exterior_canal_covers",
+      "vertices": 72447,
+      "polygons": 40252,
+      "modifiers": []
+    },
+    {
+      "object": "R_A_exterior_canal_pans",
+      "vertices": 73415,
+      "polygons": 40229,
+      "modifiers": []
+    },
+    {
+      "object": "R_A_exterior_gable_bedding",
+      "vertices": 898,
+      "polygons": 224,
+      "modifiers": []
+    },
+    {
+      "object": "R_A_exterior_gable_coping",
+      "vertices": 896,
+      "polygons": 223,
+      "modifiers": []
+    },
+    {
+      "object": "R_H_exterior_canal_covers",
+      "vertices": 47012,
+      "polygons": 24750,
+      "modifiers": []
+    },
+    {
+      "object": "R_H_exterior_canal_pans",
+      "vertices": 49745,
+      "polygons": 24539,
+      "modifiers": []
+    },
+    {
+      "object": "R_H_exterior_gable_bedding",
+      "vertices": 994,
+      "polygons": 248,
+      "modifiers": []
+    },
+    {
+      "object": "R_H_exterior_gable_coping",
+      "vertices": 966,
+      "polygons": 241,
+      "modifiers": []
+    },
+    {
+      "object": "R_K_exterior_canal_covers",
+      "vertices": 54152,
+      "polygons": 28843,
+      "modifiers": []
+    },
+    {
+      "object": "R_K_exterior_canal_pans",
+      "vertices": 54933,
+      "polygons": 28711,
+      "modifiers": []
+    },
+    {
+      "object": "R_K_exterior_gable_bedding",
+      "vertices": 324,
+      "polygons": 208,
+      "modifiers": []
+    },
+    {
+      "object": "R_K_exterior_gable_coping",
+      "vertices": 290,
+      "polygons": 204,
+      "modifiers": []
+    },
+    {
+      "object": "R_MAIN_exterior_canal_covers",
+      "vertices": 103424,
+      "polygons": 68038,
+      "modifiers": []
+    },
+    {
+      "object": "R_MAIN_exterior_canal_pans",
+      "vertices": 106140,
+      "polygons": 67622,
+      "modifiers": []
+    },
+    {
+      "object": "R_MAIN_exterior_gable_bedding",
+      "vertices": 416,
+      "polygons": 312,
+      "modifiers": []
+    },
+    {
+      "object": "R_MAIN_exterior_gable_coping",
+      "vertices": 416,
+      "polygons": 312,
+      "modifiers": []
+    },
+    {
+      "object": "R_MAIN_exterior_genoise_beds",
+      "vertices": 32,
+      "polygons": 24,
+      "modifiers": []
+    },
+    {
+      "object": "R_MAIN_exterior_genoise_tiles",
+      "vertices": 10824,
+      "polygons": 7544,
+      "modifiers": []
+    },
+    {
+      "object": "R_POOLHOUSE_exterior_canal_covers",
+      "vertices": 51944,
+      "polygons": 32670,
+      "modifiers": []
+    },
+    {
+      "object": "R_POOLHOUSE_exterior_canal_pans",
+      "vertices": 54340,
+      "polygons": 32320,
+      "modifiers": []
+    },
+    {
+      "object": "R_POOLHOUSE_exterior_gable_bedding",
+      "vertices": 368,
+      "polygons": 276,
+      "modifiers": []
+    },
+    {
+      "object": "R_POOLHOUSE_exterior_gable_coping",
+      "vertices": 368,
+      "polygons": 276,
+      "modifiers": []
+    }
+  ],
+  "seconds": 4.402418040903285,
+  "geometry_dump": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/current-roof-contact-geometry.jsonl.gz",
+  "geometry_dump_sha256": "6d0b0449ec20cbf1a5240b269293023af0dc435df13588d2f0c8f074f2e90781",
+  "loaded_blend_sha256": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373",
+  "sidecar_scene_hash_scope": "house_walk.blend",
+  "sidecar_scene_path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/house_walk.blend",
+  "provenance_correction": {
+    "verified_at_utc": "2026-09-05T22:22:43.173835+00:00",
+    "reason": "The pipeline sidecar hashes house_walk.blend; the geometry export loaded house.blend.",
+    "loaded_file_matches_production_checker": true,
+    "geometry_resampled": false,
+    "geometry_dump_unchanged": true
+  }
+}

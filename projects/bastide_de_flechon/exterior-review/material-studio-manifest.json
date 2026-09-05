@@ -1,0 +1,3915 @@
+{
+  "schema": 1,
+  "quality": "preview",
+  "mode": "material_studio",
+  "saved_scene": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/house.blend",
+  "saved_scene_sha256": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373",
+  "script_sha256": "3f9b0a1d9079e8a896446dfdfd5b2298a51afc0174f67dce1704a0474f95be75",
+  "image_sha256": "65b081a019ec26bebebebfba05d5499076bd6e19377f461775509dc08a90e24d",
+  "image_path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/material-studio/materials.png",
+  "views": [
+    {
+      "id": "materials",
+      "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/material-studio/materials.png",
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/material-studio/materials.png",
+      "sha256": "65b081a019ec26bebebebfba05d5499076bd6e19377f461775509dc08a90e24d",
+      "size": [
+        2400,
+        1600
+      ],
+      "pixels": [
+        2400,
+        1600
+      ],
+      "location": [
+        0.0,
+        -5.699999809265137,
+        6.099999904632568
+      ],
+      "target": [
+        0,
+        0,
+        0.18
+      ],
+      "projection": "ORTHO",
+      "ortho_scale_metres": 5.4,
+      "lens_mm": 50.0,
+      "lens_note": "Lens does not control the orthographic studio projection"
+    }
+  ],
+  "actual_source_materials": [
+    {
+      "material": "exterior_plaster",
+      "source_users": [
+        {
+          "object": "MS",
+          "assigned_faces": 26
+        },
+        {
+          "object": "ME",
+          "assigned_faces": 138
+        },
+        {
+          "object": "MN",
+          "assigned_faces": 19
+        },
+        {
+          "object": "R_MAIN.G1",
+          "assigned_faces": 3
+        },
+        {
+          "object": "R_MAIN.G2",
+          "assigned_faces": 3
+        },
+        {
+          "object": "ME_INFILL",
+          "assigned_faces": 2
+        }
+      ],
+      "image_inputs": [
+        {
+          "image": "exterior-cream-plaster.png",
+          "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/../../../../../projects/bastide_de_flechon/textures/exterior-cream-plaster.png",
+          "color_space": "sRGB"
+        }
+      ],
+      "row": 0,
+      "column": 0,
+      "mapping": "saved shader world-metric coordinates"
+    },
+    {
+      "material": "exterior_cut",
+      "source_users": [
+        {
+          "object": "exterior_main_quoin_0_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_11",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_12",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_13",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_14",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_0_15",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_11",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_12",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_13",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_14",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_0_1_15",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_11",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_12",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_13",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_14",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_0_15",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_11",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_12",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_13",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_14",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_1_1_15",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_11",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_12",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_13",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_14",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_0_15",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_11",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_12",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_13",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_14",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_2_1_15",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_11",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_12",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_13",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_14",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_0_15",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_11",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_12",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_13",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_14",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_main_quoin_3_1_15",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_0_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_0_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_0_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_0_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_1_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_1_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_1_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_jamb_1_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_00",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_01",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_02",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_03",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_04",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_05",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_06",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_07",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_08",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_09",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_10",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_11",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_12",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_13",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_14",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_15",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_16",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_voussoir_17",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_FRONT_spring_ledge_0_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_spring_ledge_0_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_spring_ledge_1_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_spring_ledge_1_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_FRONT_threshold",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_jamb_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_jamb_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_voussoir_00",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E1_voussoir_01",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E1_voussoir_02",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E1_voussoir_03",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E1_voussoir_04",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E1_voussoir_05",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E1_voussoir_06",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E1_voussoir_07",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E1_voussoir_08",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E1_spring_ledge_0_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_spring_ledge_0_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_spring_ledge_1_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_spring_ledge_1_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E1_threshold",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_jamb_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_jamb_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_voussoir_00",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E2_voussoir_01",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E2_voussoir_02",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E2_voussoir_03",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E2_voussoir_04",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E2_voussoir_05",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E2_voussoir_06",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E2_voussoir_07",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E2_voussoir_08",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_E2_spring_ledge_0_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_spring_ledge_0_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_spring_ledge_1_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_spring_ledge_1_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_E2_threshold",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_0_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_jamb_1_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_lintel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_lintel_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W1_threshold",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_0_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_jamb_1_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_lintel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_lintel_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_W2_threshold",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_jamb_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_jamb_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_voussoir_00",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_voussoir_01",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_voussoir_02",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_voussoir_03",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_voussoir_04",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_voussoir_05",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_voussoir_06",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_voussoir_07",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_GARDEN_threshold",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_jamb_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_jamb_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_voussoir_00",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_voussoir_01",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_voussoir_02",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_voussoir_03",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_voussoir_04",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_voussoir_05",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_voussoir_06",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_KITCHEN_TERRACE_threshold",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_0_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_jamb_1_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_voussoir_00",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_PERGOLA_voussoir_01",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_PERGOLA_voussoir_02",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_PERGOLA_voussoir_03",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_PERGOLA_voussoir_04",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_PERGOLA_voussoir_05",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_PERGOLA_voussoir_06",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_PERGOLA_voussoir_07",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_PERGOLA_voussoir_08",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_PERGOLA_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_PERGOLA_threshold",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_jamb_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_jamb_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_voussoir_00",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E0_voussoir_01",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E0_voussoir_02",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E0_voussoir_03",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E0_voussoir_04",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E0_voussoir_05",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E0_voussoir_06",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E0_spring_ledge_0_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_spring_ledge_0_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_spring_ledge_1_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_spring_ledge_1_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E0_threshold",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_jamb_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_jamb_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_voussoir_00",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E1_voussoir_01",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E1_voussoir_02",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E1_voussoir_03",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E1_voussoir_04",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E1_voussoir_05",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E1_voussoir_06",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_GUEST_E1_spring_ledge_0_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_spring_ledge_0_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_spring_ledge_1_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_spring_ledge_1_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_E1_threshold",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_0_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_0_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_0_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_0_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_0_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_0_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_0_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_1_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_1_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_1_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_1_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_1_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_1_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_jamb_1_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_00",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_01",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_02",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_03",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_04",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_05",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_06",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_07",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_08",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_09",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_10",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_11",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_12",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_voussoir_13",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_spring_ledge_0_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_spring_ledge_0_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_spring_ledge_1_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_spring_ledge_1_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_continuous_arch_molding_0",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_molding_return_0_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_molding_return_1_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_continuous_arch_molding_1",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_molding_return_0_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_molding_return_1_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_continuous_arch_molding_2",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_D_ENTRY_molding_return_0_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_molding_return_1_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_D_ENTRY_threshold",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_E1_oculus_stone_0",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_stone_1",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_stone_2",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_stone_3",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_stone_4",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_stone_5",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_stone_6",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_stone_7",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_reveal_0",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_reveal_1",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_reveal_2",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_reveal_3",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_reveal_4",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_reveal_5",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_reveal_6",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E1_oculus_reveal_7",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_stone_0",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_stone_1",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_stone_2",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_stone_3",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_stone_4",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_stone_5",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_stone_6",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_stone_7",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_reveal_0",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_reveal_1",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_reveal_2",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_reveal_3",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_reveal_4",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_reveal_5",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_reveal_6",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_E2_oculus_reveal_7",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_stone_0",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_stone_1",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_stone_2",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_stone_3",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_stone_4",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_stone_5",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_stone_6",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_stone_7",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_reveal_0",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_reveal_1",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_reveal_2",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_reveal_3",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_reveal_4",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_reveal_5",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_reveal_6",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W1_oculus_reveal_7",
+          "assigned_faces": 20
+        },
+        {
+          "object": "exterior_N_W2_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_W2_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_W2_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_W2_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_W2_lintel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_W2_lintel_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_W2_lintel_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_W2_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_W2_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_W2_projecting_sill",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_W2_sill_drip",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_lintel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_lintel_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_lintel_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_lintel_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_projecting_sill",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_sill_drip",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_lintel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_lintel_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_projecting_sill",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E0_sill_drip",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_lintel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_lintel_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_projecting_sill",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_SUITE4_E1_sill_drip",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_lintel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_lintel_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_projecting_sill",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_GUEST_W_sill_drip",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_lintel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_lintel_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_lintel_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_projecting_sill",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH4_W_sill_drip",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_jamb_0_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_jamb_1_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_lintel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_lintel_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_lintel_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_projecting_sill",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_sill_drip",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_jamb_0_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_jamb_0_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_jamb_0_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_jamb_1_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_jamb_1_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_jamb_1_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_lintel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_lintel_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_lintel_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_stone_reveal_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_stone_reveal_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_projecting_sill",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_sill_drip",
+          "assigned_faces": 6
+        }
+      ],
+      "image_inputs": [
+        {
+          "image": "exterior-cut-limestone.png",
+          "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/../../../../../projects/bastide_de_flechon/textures/exterior-cut-limestone.png",
+          "color_space": "sRGB"
+        }
+      ],
+      "row": 0,
+      "column": 1,
+      "mapping": "saved shader world-metric coordinates"
+    },
+    {
+      "material": "exterior_rubble_0",
+      "source_users": [
+        {
+          "object": "exterior_MW_individual_rubble",
+          "assigned_faces": 26663
+        },
+        {
+          "object": "exterior_MW_INFILL_individual_rubble",
+          "assigned_faces": 1760
+        },
+        {
+          "object": "exterior_K1_individual_rubble",
+          "assigned_faces": 18331
+        },
+        {
+          "object": "exterior_K1_INFILL_individual_rubble",
+          "assigned_faces": 2449
+        },
+        {
+          "object": "exterior_K2_individual_rubble",
+          "assigned_faces": 12476
+        },
+        {
+          "object": "exterior_K2_INFILL_individual_rubble",
+          "assigned_faces": 262
+        },
+        {
+          "object": "exterior_K3_individual_rubble",
+          "assigned_faces": 20596
+        },
+        {
+          "object": "exterior_K4_individual_rubble",
+          "assigned_faces": 11127
+        },
+        {
+          "object": "exterior_K4_INFILL_individual_rubble",
+          "assigned_faces": 562
+        },
+        {
+          "object": "exterior_H1_individual_rubble",
+          "assigned_faces": 11936
+        },
+        {
+          "object": "exterior_H1_INFILL_individual_rubble",
+          "assigned_faces": 1089
+        },
+        {
+          "object": "exterior_H2_individual_rubble",
+          "assigned_faces": 10016
+        },
+        {
+          "object": "exterior_H3_individual_rubble",
+          "assigned_faces": 17943
+        },
+        {
+          "object": "exterior_H3_INFILL_individual_rubble",
+          "assigned_faces": 943
+        },
+        {
+          "object": "exterior_H4_individual_rubble",
+          "assigned_faces": 1301
+        },
+        {
+          "object": "exterior_A1_individual_rubble",
+          "assigned_faces": 12025
+        },
+        {
+          "object": "exterior_A1_INFILL_individual_rubble",
+          "assigned_faces": 2642
+        },
+        {
+          "object": "exterior_A2_individual_rubble",
+          "assigned_faces": 26152
+        },
+        {
+          "object": "exterior_A2_INFILL_individual_rubble",
+          "assigned_faces": 1467
+        },
+        {
+          "object": "exterior_A3_individual_rubble",
+          "assigned_faces": 15749
+        },
+        {
+          "object": "exterior_A3_INFILL_individual_rubble",
+          "assigned_faces": 2575
+        },
+        {
+          "object": "exterior_A4_individual_rubble",
+          "assigned_faces": 16298
+        },
+        {
+          "object": "exterior_A4_INFILL_individual_rubble",
+          "assigned_faces": 989
+        }
+      ],
+      "image_inputs": [
+        {
+          "image": "exterior-rubble-face.png",
+          "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/../../../../../projects/bastide_de_flechon/textures/exterior-rubble-face.png",
+          "color_space": "sRGB"
+        }
+      ],
+      "row": 0,
+      "column": 2,
+      "mapping": "saved shader world-metric coordinates"
+    },
+    {
+      "material": "exterior_roof_0",
+      "source_users": [
+        {
+          "object": "R_MAIN_exterior_canal_covers",
+          "assigned_faces": 11497
+        },
+        {
+          "object": "R_MAIN_exterior_canal_pans",
+          "assigned_faces": 11024
+        },
+        {
+          "object": "R_MAIN_exterior_ridge_caps",
+          "assigned_faces": 276
+        },
+        {
+          "object": "R_MAIN_exterior_gable_coping",
+          "assigned_faces": 60
+        },
+        {
+          "object": "R_MAIN_exterior_genoise_tiles",
+          "assigned_faces": 1242
+        },
+        {
+          "object": "R_MAIN_exterior_clay_breather_pots",
+          "assigned_faces": 258
+        },
+        {
+          "object": "R_K_exterior_canal_covers",
+          "assigned_faces": 4731
+        },
+        {
+          "object": "R_K_exterior_canal_pans",
+          "assigned_faces": 4905
+        },
+        {
+          "object": "R_K_exterior_gable_coping",
+          "assigned_faces": 36
+        },
+        {
+          "object": "R_H_exterior_canal_covers",
+          "assigned_faces": 4288
+        },
+        {
+          "object": "R_H_exterior_canal_pans",
+          "assigned_faces": 3913
+        },
+        {
+          "object": "R_H_exterior_ridge_caps",
+          "assigned_faces": 196
+        },
+        {
+          "object": "R_H_exterior_gable_coping",
+          "assigned_faces": 50
+        },
+        {
+          "object": "R_A_exterior_canal_covers",
+          "assigned_faces": 6596
+        },
+        {
+          "object": "R_A_exterior_canal_pans",
+          "assigned_faces": 6664
+        },
+        {
+          "object": "R_A_exterior_ridge_caps",
+          "assigned_faces": 184
+        },
+        {
+          "object": "R_A_exterior_gable_coping",
+          "assigned_faces": 45
+        },
+        {
+          "object": "R_POOLHOUSE_exterior_canal_covers",
+          "assigned_faces": 5652
+        },
+        {
+          "object": "R_POOLHOUSE_exterior_canal_pans",
+          "assigned_faces": 5904
+        },
+        {
+          "object": "R_POOLHOUSE_exterior_ridge_caps",
+          "assigned_faces": 138
+        },
+        {
+          "object": "R_POOLHOUSE_exterior_gable_coping",
+          "assigned_faces": 48
+        },
+        {
+          "object": "R_POOLHOUSE_exterior_genoise_tiles",
+          "assigned_faces": 368
+        }
+      ],
+      "image_inputs": [
+        {
+          "image": "exterior-roof-terracotta.png",
+          "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/../../../../../projects/bastide_de_flechon/textures/exterior-roof-terracotta.png",
+          "color_space": "sRGB"
+        }
+      ],
+      "row": 0,
+      "column": 3,
+      "mapping": "saved shader world-metric coordinates"
+    },
+    {
+      "material": "exterior_shutter",
+      "source_users": [
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_board_11",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_board_11",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_board_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_board_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_board_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_board_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_board_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_board_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_board_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_board_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_board_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_board_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_board_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_board_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_board_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_board_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_board_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_board_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_board_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_board_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_board_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_board_09",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_0_board_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_0_board_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_0_board_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_0_board_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_0_board_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_0_board_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_0_board_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_0_board_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_0_board_08",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_1_board_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_1_board_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_1_board_02",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_1_board_03",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_1_board_04",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_1_board_05",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_1_board_06",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_1_board_07",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_1_board_08",
+          "assigned_faces": 6
+        }
+      ],
+      "image_inputs": [
+        {
+          "image": "exterior-weathered-shutter.png",
+          "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/../../../../../projects/bastide_de_flechon/textures/exterior-weathered-shutter.png",
+          "color_space": "sRGB"
+        }
+      ],
+      "row": 1,
+      "column": 0,
+      "mapping": "physical metric UV"
+    },
+    {
+      "material": "exterior_iron",
+      "source_users": [
+        {
+          "object": "exterior_entry_handle_plate_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_handle_plate_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_iron_strap_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet.001",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet.002",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_0_iron_strap_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet.003",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet.004",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet.005",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_hinge",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_hinge.001",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_iron_strap_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet.006",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet.007",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet.008",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_1_iron_strap_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet.009",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet.010",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_rivet.011",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_hinge.002",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_N_MASTER_N_shutter_hinge.003",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_iron_strap_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet.001",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet.002",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_0_iron_strap_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet.003",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet.004",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet.005",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_hinge",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_hinge.001",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_iron_strap_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet.006",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet.007",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet.008",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_1_iron_strap_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet.009",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet.010",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_rivet.011",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_hinge.002",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_N_BED3_S_shutter_hinge.003",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_0_iron_strap_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet.001",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet.002",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_0_iron_strap_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet.003",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet.004",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet.005",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_hinge",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_hinge.001",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_1_iron_strap_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet.006",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet.007",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet.008",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_1_iron_strap_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet.009",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet.010",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_rivet.011",
+          "assigned_faces": 288
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_hinge.002",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_N_BATH3_E_shutter_hinge.003",
+          "assigned_faces": 18
+        },
+        {
+          "object": "exterior_setting_pergola_post_00_square_foot",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_00_turned_cast_post",
+          "assigned_faces": 602
+        },
+        {
+          "object": "exterior_setting_pergola_post_00_capital_plate",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_00_anchor_bolt0",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_00_anchor_bolt1",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_00_anchor_bolt2",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_00_anchor_bolt3",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_01_square_foot",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_01_turned_cast_post",
+          "assigned_faces": 602
+        },
+        {
+          "object": "exterior_setting_pergola_post_01_capital_plate",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_01_anchor_bolt0",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_01_anchor_bolt1",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_01_anchor_bolt2",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_01_anchor_bolt3",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_10_square_foot",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_10_turned_cast_post",
+          "assigned_faces": 602
+        },
+        {
+          "object": "exterior_setting_pergola_post_10_capital_plate",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_10_anchor_bolt0",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_10_anchor_bolt1",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_10_anchor_bolt2",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_10_anchor_bolt3",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_11_square_foot",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_11_turned_cast_post",
+          "assigned_faces": 602
+        },
+        {
+          "object": "exterior_setting_pergola_post_11_capital_plate",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_11_anchor_bolt0",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_11_anchor_bolt1",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_11_anchor_bolt2",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_11_anchor_bolt3",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_20_square_foot",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_20_turned_cast_post",
+          "assigned_faces": 602
+        },
+        {
+          "object": "exterior_setting_pergola_post_20_capital_plate",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_20_anchor_bolt0",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_20_anchor_bolt1",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_20_anchor_bolt2",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_20_anchor_bolt3",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_21_square_foot",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_21_turned_cast_post",
+          "assigned_faces": 602
+        },
+        {
+          "object": "exterior_setting_pergola_post_21_capital_plate",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_21_anchor_bolt0",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_21_anchor_bolt1",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_21_anchor_bolt2",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_21_anchor_bolt3",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_30_square_foot",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_30_turned_cast_post",
+          "assigned_faces": 602
+        },
+        {
+          "object": "exterior_setting_pergola_post_30_capital_plate",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_30_anchor_bolt0",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_30_anchor_bolt1",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_30_anchor_bolt2",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_30_anchor_bolt3",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_31_square_foot",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_31_turned_cast_post",
+          "assigned_faces": 602
+        },
+        {
+          "object": "exterior_setting_pergola_post_31_capital_plate",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_post_31_anchor_bolt0",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_31_anchor_bolt1",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_31_anchor_bolt2",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_post_31_anchor_bolt3",
+          "assigned_faces": 8
+        },
+        {
+          "object": "exterior_setting_pergola_bowed_flat_rib0",
+          "assigned_faces": 226
+        },
+        {
+          "object": "exterior_setting_pergola_rib_bearing_00",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_rib_bearing_01",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_bowed_flat_rib1",
+          "assigned_faces": 226
+        },
+        {
+          "object": "exterior_setting_pergola_rib_bearing_10",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_rib_bearing_11",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_bowed_flat_rib2",
+          "assigned_faces": 226
+        },
+        {
+          "object": "exterior_setting_pergola_rib_bearing_20",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_rib_bearing_21",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_bowed_flat_rib3",
+          "assigned_faces": 226
+        },
+        {
+          "object": "exterior_setting_pergola_rib_bearing_30",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_rib_bearing_31",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_longitudinal_flat_rail0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_longitudinal_flat_rail1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_longitudinal_flat_rail2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_longitudinal_flat_rail3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_longitudinal_flat_rail4",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_scroll_fascia_lower_rail0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_scroll_fascia0",
+          "assigned_faces": 17138
+        },
+        {
+          "object": "exterior_setting_pergola_scroll_fascia_lower_rail1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_pergola_scroll_fascia1",
+          "assigned_faces": 17138
+        },
+        {
+          "object": "exterior_setting_pergola_tension_wires",
+          "assigned_faces": 2100
+        },
+        {
+          "object": "exterior_setting_pergola_curved_knee_scroll_braces",
+          "assigned_faces": 4640
+        },
+        {
+          "object": "exterior_setting_kitchen_hall_downpipe_wall_clamps",
+          "assigned_faces": 40
+        },
+        {
+          "object": "exterior_setting_entry_lantern_backplate",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_entry_lantern_wall_arm",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_entry_lantern_slender_frame",
+          "assigned_faces": 108
+        },
+        {
+          "object": "exterior_setting_entry_lantern_slim_roof",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_entry_lantern_base_tray",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_setting_entry_lantern_candle_holder",
+          "assigned_faces": 10
+        }
+      ],
+      "image_inputs": [
+        {
+          "image": "salon-forged-iron.png",
+          "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/../../../../../projects/bastide_de_flechon/textures/salon-forged-iron.png",
+          "color_space": "sRGB"
+        }
+      ],
+      "row": 1,
+      "column": 1,
+      "mapping": "saved shader world-metric coordinates"
+    },
+    {
+      "material": "exterior_entry_wood",
+      "source_users": [
+        {
+          "object": "D_ENTRY.leaf",
+          "assigned_faces": 24
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_0_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_0_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_0_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_0_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_1_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_1_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_1_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_1_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_2_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_2_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_2_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_0_2_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_0_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_0_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_0_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_0_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_1_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_1_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_1_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_1_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_2_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_2_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_2_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_backing_1_2_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_0_panel_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_0_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_0_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_0_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_0_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_1_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_1_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_1_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_1_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_2_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_2_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_2_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_0_2_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_0_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_0_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_0_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_0_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_1_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_1_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_1_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_1_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_2_0",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_2_1",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_2_2",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_backing_1_2_3",
+          "assigned_faces": 6
+        },
+        {
+          "object": "exterior_entry_leaf_1_panel_1",
+          "assigned_faces": 6
+        }
+      ],
+      "image_inputs": [
+        {
+          "image": "antique_walnut.png",
+          "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/../../../../../projects/bastide_de_flechon/textures/antique_walnut.png",
+          "color_space": "sRGB"
+        }
+      ],
+      "row": 1,
+      "column": 2,
+      "mapping": "saved shader world-metric coordinates"
+    },
+    {
+      "material": "exterior_mortar",
+      "source_users": [
+        {
+          "object": "MW",
+          "assigned_faces": 110
+        },
+        {
+          "object": "A1",
+          "assigned_faces": 62
+        },
+        {
+          "object": "A2",
+          "assigned_faces": 2
+        },
+        {
+          "object": "A3",
+          "assigned_faces": 14
+        },
+        {
+          "object": "R_MAIN",
+          "assigned_faces": 20
+        },
+        {
+          "object": "MW_INFILL",
+          "assigned_faces": 2
+        },
+        {
+          "object": "R_K",
+          "assigned_faces": 12
+        },
+        {
+          "object": "R_H",
+          "assigned_faces": 36
+        },
+        {
+          "object": "R_A",
+          "assigned_faces": 20
+        },
+        {
+          "object": "A1_INFILL",
+          "assigned_faces": 6
+        },
+        {
+          "object": "A2_INFILL",
+          "assigned_faces": 4
+        },
+        {
+          "object": "A3_INFILL",
+          "assigned_faces": 6
+        },
+        {
+          "object": "R_POOLHOUSE",
+          "assigned_faces": 20
+        },
+        {
+          "object": "K1",
+          "assigned_faces": 70
+        },
+        {
+          "object": "K2",
+          "assigned_faces": 48
+        },
+        {
+          "object": "K3",
+          "assigned_faces": 4
+        },
+        {
+          "object": "K4",
+          "assigned_faces": 21
+        },
+        {
+          "object": "H1",
+          "assigned_faces": 32
+        },
+        {
+          "object": "H2",
+          "assigned_faces": 29
+        },
+        {
+          "object": "H3",
+          "assigned_faces": 8
+        },
+        {
+          "object": "H4",
+          "assigned_faces": 39
+        },
+        {
+          "object": "A4",
+          "assigned_faces": 49
+        },
+        {
+          "object": "K1_INFILL",
+          "assigned_faces": 4
+        },
+        {
+          "object": "K2_INFILL",
+          "assigned_faces": 3
+        },
+        {
+          "object": "K4_INFILL",
+          "assigned_faces": 1
+        },
+        {
+          "object": "H1_INFILL",
+          "assigned_faces": 2
+        },
+        {
+          "object": "H3_INFILL",
+          "assigned_faces": 2
+        },
+        {
+          "object": "A4_INFILL",
+          "assigned_faces": 8
+        },
+        {
+          "object": "R_MAIN_exterior_gable_bedding",
+          "assigned_faces": 312
+        },
+        {
+          "object": "R_MAIN_exterior_genoise_beds",
+          "assigned_faces": 24
+        },
+        {
+          "object": "R_K_exterior_gable_bedding",
+          "assigned_faces": 208
+        },
+        {
+          "object": "R_H_exterior_gable_bedding",
+          "assigned_faces": 248
+        },
+        {
+          "object": "R_A_exterior_gable_bedding",
+          "assigned_faces": 224
+        },
+        {
+          "object": "R_POOLHOUSE_exterior_gable_bedding",
+          "assigned_faces": 276
+        },
+        {
+          "object": "R_POOLHOUSE_exterior_genoise_beds",
+          "assigned_faces": 12
+        }
+      ],
+      "image_inputs": [
+        {
+          "image": "exterior-cream-plaster.png",
+          "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/../../../../../projects/bastide_de_flechon/textures/exterior-cream-plaster.png",
+          "color_space": "sRGB"
+        }
+      ],
+      "row": 1,
+      "column": 3,
+      "mapping": "saved shader world-metric coordinates"
+    }
+  ],
+  "samples_max": 96,
+  "size": [
+    2400,
+    1600
+  ],
+  "adaptive_threshold": 0.02500000037252903,
+  "pixel_aspect": [
+    1,
+    1
+  ],
+  "color_management": {
+    "view_transform": "AgX",
+    "look": "AgX - Medium High Contrast",
+    "white_balance_enabled": false,
+    "exposure": 0
+  },
+  "light": {
+    "watts": 1200,
+    "disk_metres": 4,
+    "color": [
+      1,
+      1,
+      1
+    ],
+    "exposure": 0
+  },
+  "visibility": "All original scene objects temporarily hidden; common studio geometry only. Not a beauty elevation.",
+  "scope": "Actual saved shader response on common swatch geometry; not facade relief or measured BRDF verification",
+  "saved_model_bytes_unchanged": true
+}

@@ -4,6 +4,23 @@ A detailed, editable HomeSpec reconstruction of the house in `LABASTIDEDEFLECHON
 
 The integrated source is ready for review. At the user’s request, the full 26-view render, completed motion video, portable-package refresh and final artifact-verification pass are deferred. The eight study previews below show the reviewed geometry and lighting; they are not a completed delivery set.
 
+The later focused exterior work has its own [verification record](exterior-verification.md),
+[photographic discrepancy register](exterior-discrepancies.md),
+[camera calibration](exterior-camera-calibration.md),
+[roof construction notes](exterior-roof-notes.md) and
+[material provenance](exterior-materials-provenance.md).
+Its local Cycles studies are separate from the earlier images below. Main
+roof height and courtyard terrace levels retain documented discrepancies.
+The source improves the facade and roof construction but is not an accepted
+photogrammetric match or a refreshed portable delivery.
+
+The focused exterior pass has now completed four high-resolution Cycles views,
+six detail views and the matched material/clay controls from source `55a3069`.
+[Review evidence and exact saved-model provenance](exterior-review-status.json)
+retain all native/audit limits; [browse the review](exterior-review/README.md).
+
+![Actual exterior review renders; documented height and construction limits remain](exterior-review/exterior-views.jpg)
+
 After packaging, double-click **Walk Bastide.command** to open the furnished, textured house in Blender. In the **Flechon** sidebar, choose a room and click **Walk from here**.
 
 - Mouse: look around. **W A S D**: move. **Q / E**: down / up.
