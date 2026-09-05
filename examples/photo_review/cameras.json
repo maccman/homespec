@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "id": "independent-entry-study",
+  "method": "A compact camera fixture: inferred cube geometry with an independent centre holdout. Replace it with project evidence before claiming fidelity.",
+  "views": [
+    {
+      "id": "entry",
+      "location": [0, -6, 1.5],
+      "target": [0, 0, 0.5],
+      "lens_mm": 36,
+      "sensor_dimension_mm": 36,
+      "size": [640, 480],
+      "shift_x": 0.07,
+      "shift_y": -0.03,
+      "camera_evidence": "inferred",
+      "uncertainty": "Synthetic fixture, not an observed photograph. No original image is claimed.",
+      "landmarks": [
+        {"name": "cube top", "world_m": [1, 0, 1], "photo_uv": [0.5, 0.5], "role": "fit", "evidence": "inferred"},
+        {"name": "centre", "world_m": [0, 0, 0.5], "photo_uv": [0.43, 0.46], "role": "holdout", "evidence": "inferred"}
+      ]
+    }
+  ]
+}
