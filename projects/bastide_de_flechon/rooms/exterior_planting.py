@@ -6,11 +6,13 @@ framing the kitchen on its west side. The former cypress at y6.3m stood directly
 in front of D_E2; the former three west bushes occupied the kitchen approach.
 Groups move as whole plants, including every trunk, core and blossom.
 Photographic foreground trees and the courtyard planting border are corrected
-scene-wide. All render visibility flags and the wider grove are retained.
+scene-wide. An inferred open foreground approach also relocates unsurveyed
+woodland scatter to the west grove. Render visibility flags are retained.
 """
 from __future__ import annotations
 
 import json
+import re
 
 SOURCE = "PHOTOS/VICTOR FITZ/DJI_20231012094055_0813_D.jpg; PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-21.jpg; Final Collection-18.jpg"
 
@@ -77,15 +79,66 @@ def _transform(scene, prefix, source, target, scale):
             "objects": [obj.name for obj in objects], "world_bbox_m": [minimum, maximum]}
 
 
+def _clear_foreground_scatter(scene):
+    """Move complete inferred scatter plants, recording the wider-grove change."""
+    import bpy
+    from mathutils import Matrix, Vector
+
+    bpy.context.view_layer.update()
+    groups = {}
+    for obj in bpy.data.objects:
+        match = re.match(r"^(wild_woodland\d+)(?:[_.].*)?$", obj.name)
+        if match:
+            groups.setdefault(match[1], set()).update((obj, *obj.children_recursive))
+    delta = Matrix.Translation(Vector((-40, 0, 0)))
+    changes = []
+    for group, members in sorted(groups.items()):
+        objects = sorted(members, key=lambda ob: ob.name)
+        source_bounds = {}
+        for obj in objects:
+            if obj.type != "MESH":
+                continue
+            corners = [obj.matrix_world @ Vector(c) for c in obj.bound_box]
+            source_bounds[obj.name] = [[min(p[k] for p in corners) for k in range(3)],
+                                       [max(p[k] for p in corners) for k in range(3)]]
+        if not any(lo[0] <= 16 and hi[0] >= -7 and lo[1] <= -8 and hi[1] >= -34
+                   for lo, hi in source_bounds.values()):
+            continue
+        # Snapshot every world matrix before moving parents and children.
+        worlds = {obj: obj.matrix_world.copy() for obj in objects}
+        def depth(obj, members=members):
+            value = 0
+            while obj.parent in members:
+                value += 1
+                obj = obj.parent
+            return value
+        for obj in sorted(objects, key=depth):
+            obj.matrix_world = delta @ worlds[obj]
+            obj["exterior_planting_group"] = group
+            obj["exterior_planting_inference"] = "Unsurveyed foreground scatter moved intact to west grove; inferred open approach"
+            obj["exterior_planting_translation_m"] = (-40, 0, 0)
+        changes.append({"group": group, "objects": [obj.name for obj in objects],
+                        "source_world_bounds_m": source_bounds, "translation_m": [-40, 0, 0],
+                        "wider_grove_changed": True})
+    bpy.context.view_layer.update()
+    scene.scene["exterior_open_approach_scatter"] = json.dumps({
+        "scope": "Inferred open approach x[-7,16], y[-34,-8]; changes wider unsurveyed grove",
+        "visibility": "No hiding or deletion; meshes, groups, dimensions and world Z retained",
+        "changes": changes})
+    return changes
+
+
 def apply(scene):
     """Apply after exterior/fidelity_vegetation; never hide plants for a camera."""
     if scene.scene.get("exterior_facade_planting"):
         return
     changes = [_transform(scene, *item) for item in (*CYPRESSES, *OLEANDERS, *TREES)]
+    scatter = _clear_foreground_scatter(scene)
     scene.scene["exterior_facade_planting"] = json.dumps(changes)
     scene.scene["exterior_planting_observation"] = (
         "Slender principal corner cypresses; former side-door cypress moved to kitchen west flank; "
         "three kitchen-garden oleanders rooted along west border. Photo46/12. "
-        "Old olive retained at west terrace edge, inferred east pine moved to garden boundary, courtyard screen moved to north parking boundary; no per-camera visibility changes."
+        "Old olive retained at west terrace edge, inferred east pine moved to garden boundary, courtyard screen moved to north parking boundary. "
+        "Unsurveyed foreground woodland moved intact 40m west to establish inferred open approach; wider grove changed; no per-camera visibility changes."
     )
-    print("FLECHON facade planting: corrected complete rooted facade, courtyard and foreground groups; broader grove retained", flush=True)
+    print(f"FLECHON facade planting: corrected complete facade groups; moved {len(scatter)} inferred foreground scatter groups intact to west grove", flush=True)

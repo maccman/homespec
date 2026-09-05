@@ -507,6 +507,10 @@ def apply(scene, mats):
             continue
         o = opening(scene, eid)
         surround(scene, mats, o, jamb=.18, projection=.035)
+        if eid == "N_BED3_S":
+            # Photo12's painted grey outer frame; its separate glass object and
+            # the inward wood faces keep their native materials.
+            plaster_face(scene, eid, _mat(mats, "frieze"), o["n"])
         if ent["derived"].get("shutters") or eid == "N_MASTER_N":
             shutters(scene, mats, o)
     scene.scene["exterior_fidelity_version"] = 1

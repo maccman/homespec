@@ -199,9 +199,11 @@ def build_materials(mats=None, root=None):
     ]
     result["rubble"] = result["rubble_variants"]
     result["rubble_primary"] = result["rubble_variants"][0]
-    roof_gains = ((1.0, 1.0, 1.0), (0.88, 0.865, 0.84),
-                  (1.13, 1.14, 1.12), (1.03, 0.925, 0.84),
-                  (0.94, 0.98, 1.0), (1.08, 1.025, 0.93))
+    # Photos45/46: aged ochre, brown and grey clay, with real pigment variation.
+    # Colour gains do not feed the independent pore/roughness construction.
+    roof_gains = ((0.64, 0.44, 0.27), (0.38, 0.29, 0.21),
+                  (0.79, 0.62, 0.40), (0.57, 0.34, 0.20),
+                  (0.40, 0.40, 0.37), (0.70, 0.53, 0.32))
     result["roof_variants"] = [
         add(f"roof_{i}", "exterior-roof-terracotta.png", patch=(0.55, 0.55),
             gain=gain, roughness=(0.76, 0.91), relief=0.00085,
@@ -210,7 +212,7 @@ def build_materials(mats=None, root=None):
     ]
     result["roof"] = result["roof_variants"][0]
     add("shutter", "exterior-weathered-shutter.png", patch=(1.2, 0.4),
-        uv=True, gain=(0.94, 0.94, 0.92), roughness=(0.70, 0.87),
+        uv=True, gain=(0.56, 0.50, 0.42), roughness=(0.70, 0.87),
         relief=0.0007, micro=0.00013, micro_scale=850, fibres=True)
     add("frieze", "exterior-weathered-shutter.png", patch=(1.2, 0.4),
         gain=(0.27, 0.25, 0.245), roughness=(0.65, 0.83),
