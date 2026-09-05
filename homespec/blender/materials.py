@@ -2,20 +2,21 @@
 from __future__ import annotations
 
 import glob
+import json
 import os
+from pathlib import Path
 
 import bpy
 import session
+from material_assets import apply_mapping, image_for, surface_material  # noqa: F401
 
 
 def _image(path: str, colorspace: str):
-    im = bpy.data.images.load(path, check_existing=True)
-    im.colorspace_settings.name = colorspace
-    return im
+    return image_for(path, colorspace)
 
 
 def pbr(name: str, texture: str, tile: float = 1.0, rough_mul: float = 1.0, tint=(1, 1, 1), value: float = 1.0, wash: float = 0.0):
-    """A Principled material driven by a Poly Haven texture set, box-projected in world metres (no UVs needed)."""
+    """A Principled material driven by a Poly Haven texture set, box-projected in object coordinates (no UVs needed)."""
     d = os.path.join(session.ASSETS, "textures", texture.split("/")[-1])
     m = bpy.data.materials.new(name)
     m.use_nodes = True
@@ -139,7 +140,16 @@ def material_for(key: str):
         return _MATERIALS[key]
     spec = session.IR["materials"].get(key, {})
     r = spec.get("render", {})
-    if spec.get("texture"):
+    if r.get("assets") or r.get("detail") or r.get("rough_range"):
+        if spec.get("texture"):
+            raise ValueError(f"{key}: choose legacy texture or explicit local assets/detail")
+        if session.PRES:
+            root = Path(session.PRES).parent
+        else:
+            record = Path(session.DATA_DIR) / "build.json"
+            root = Path(json.loads(record.read_text())["inputs"]["project_dir"]) if record.is_file() else Path(session.DATA_DIR)
+        _MATERIALS[key] = surface_material(key, r, root=root)
+    elif spec.get("texture"):
         _MATERIALS[key] = pbr(key, spec["texture"], tile=r.get("tile", 1.0), rough_mul=r.get("rough_mul", 1.0), tint=tuple(r.get("tint", (1, 1, 1))),
                               value=r.get("value", 1.0), wash=r.get("wash", 0.0))
     else:

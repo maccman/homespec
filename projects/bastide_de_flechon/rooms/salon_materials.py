@@ -14,41 +14,40 @@ Other finishes use object coordinates for color and world metres for detail.
 
 from __future__ import annotations
 
+import hashlib
+import json
+import math
 from pathlib import Path
 
 import bpy
+from material_assets import surface_material
 
 TEXTURES = Path(__file__).resolve().parent.parent / "textures"
 
 
-def _material(name, *, roughness, color=(0.5, 0.5, 0.5), metal=0,
-              ior=1.46, sheen=0):
-    if not name.startswith("salon_"):
-        raise ValueError("Salon finishes must have room-specific material names")
-    material = bpy.data.materials.get(name) or bpy.data.materials.new(name)
-    material.use_nodes = True
-    material.diffuse_color = (*color, 1)
-    nodes, links = material.node_tree.nodes, material.node_tree.links
-    nodes.clear()
-    out = nodes.new("ShaderNodeOutputMaterial")
-    out.location = (820, 150)
-    bsdf = nodes.new("ShaderNodeBsdfPrincipled")
-    bsdf.name = "Principled BSDF"
-    bsdf.location = (550, 150)
-    bsdf.inputs["Base Color"].default_value = (*color, 1)
-    bsdf.inputs["Roughness"].default_value = sum(roughness) / 2
-    bsdf.inputs["Metallic"].default_value = metal
-    bsdf.inputs["IOR"].default_value = ior
-    # Keep physical Fresnel. Individual roughness/metal/coat produce the
-    # observed reflectance rather than suppressing all specular globally.
-    bsdf.inputs["Specular IOR Level"].default_value = 0.5
-    bsdf.inputs["Sheen Weight"].default_value = sheen
-    bsdf.inputs["Sheen Roughness"].default_value = 0.8
-    links.new(bsdf.outputs["BSDF"], out.inputs["Surface"])
-    material["salon_surface_version"] = 1
-    material["salon_color_drives_relief"] = False
-    material["salon_roughness_range"] = list(roughness)
-    return material, nodes, links, bsdf, out
+def _provenance(texture, root):
+    """Keep house photograph identities and generation prompts in project data."""
+    result = {"sources": [], "assumptions": ["Photographic pigment; independently inferred surface response."],
+              "limitations": ["Not a measured reflectance or displacement scan. Legacy caller UV framing retained; normalized whole-object images are not metric scans."]}
+    if not texture:
+        return result
+    for filename in ("salon-generated-manifest.json", "generated-manifest.json"):
+        path = root / filename
+        if not path.is_file():
+            continue
+        manifest = json.loads(path.read_text())
+        for asset in manifest.get("assets", []):
+            if asset.get("file", asset.get("name", "") + ".png") != texture:
+                continue
+            result["generation_prompt"] = asset.get("prompt")
+            # The original records identify the generation tool, not its model.
+            result["generation_model"] = asset.get("model")
+            references = asset.get("reference_photographs", [asset["ref"]] if asset.get("ref") else [])
+            result["sources"] = [{"identity": ref, "kind": "photo", "evidence": "observed"} for ref in references]
+            if asset.get("limitations"):
+                result["limitations"].append(asset["limitations"])
+            return result
+    return result
 
 
 def surface(name, texture=None, *, root=None, uv=False, scale=1,
@@ -56,120 +55,36 @@ def surface(name, texture=None, *, root=None, uv=False, scale=1,
             roughness=(0.65, 0.75), rough_scale=45, metal=0, ior=1.46,
             micro=0.00015, micro_scale=220, relief=0, relief_scale=24,
             sheen=0, weave=False, weave_uv=False, random_color_offset=False):
-    """Build a room-specific shader without an albedo-to-height path."""
-    material, nodes, links, bsdf, out = _material(
-        name, roughness=roughness, color=color, metal=metal, ior=ior, sheen=sheen,
-    )
-    coord = nodes.new("ShaderNodeTexCoord")
-    coord.location = (-950, 500)
-    geometry = nodes.new("ShaderNodeNewGeometry")
-    geometry.location = (-950, -150)
-    # Position is always metric even when a mesh retains object scaling.
-    metric = geometry.outputs["Position"]
+    """Adapt the salon palette to the reusable, pigment-only material builder."""
+    if not name.startswith("salon_"):
+        raise ValueError("Salon finishes must have room-specific material names")
+    root = Path(root or TEXTURES)
+    settings = {"color": color, "tint": gain, "saturation": saturation,
+                "rough": sum(roughness) / 2, "rough_range": roughness, "rough_repeat_m": 1 / rough_scale,
+                "metal": metal, "ior": ior, "sheen": sheen, "detail": []}
     if texture:
-        mapping = nodes.new("ShaderNodeMapping")
-        mapping.name = "Albedo physical scale"
-        mapping.location = (-720, 520)
-        mapping.inputs["Scale"].default_value = (scale,) * 3 if isinstance(scale, (int, float)) else scale
-        links.new(coord.outputs["UV" if uv else "Object"], mapping.inputs["Vector"])
-        if random_color_offset:
-            # Translation decorrelates repeated tile textures while leaving
-            # the installation bond and edge positions solely in geometry.
-            info = nodes.new("ShaderNodeObjectInfo")
-            offset = nodes.new("ShaderNodeCombineXYZ")
-            links.new(info.outputs["Random"], offset.inputs["X"])
-            links.new(info.outputs["Random"], offset.inputs["Y"])
-            links.new(offset.outputs[0], mapping.inputs["Location"])
-        im = nodes.new("ShaderNodeTexImage")
-        im.name = "Generated albedo only"
-        im.label = "COLOR ONLY — never height / roughness"
-        im.location = (-460, 530)
-        image_path = Path(root or TEXTURES) / texture
-        im.image = bpy.data.images.load(str(image_path), check_existing=True)
-        im.image.colorspace_settings.name = "sRGB"
-        im.interpolation = "Linear"
-        im.extension = "REPEAT"
-        im.projection = "FLAT" if uv else "BOX"
-        im.projection_blend = 0.15
-        links.new(mapping.outputs["Vector"], im.inputs["Vector"])
-        albedo = im.outputs["Color"]
-        if saturation != 1:
-            hsv = nodes.new("ShaderNodeHueSaturation")
-            hsv.inputs["Saturation"].default_value = saturation
-            links.new(albedo, hsv.inputs["Color"])
-            albedo = hsv.outputs["Color"]
-        tint = nodes.new("ShaderNodeMixRGB")
-        tint.name = "Albedo neutral calibration"
-        tint.blend_type = "MULTIPLY"
-        tint.inputs[0].default_value = 1
-        tint.inputs[2].default_value = (*gain, 1)
-        links.new(albedo, tint.inputs[1])
-        links.new(tint.outputs[0], bsdf.inputs["Base Color"])
+        scales = (scale,) * 3 if isinstance(scale, (int, float)) else scale
+        settings["assets"] = {
+            "channels": [{"path": texture, "sha256": hashlib.sha256((root / texture).read_bytes()).hexdigest(), "role": "base_color"}],
+            "mapping": {"mode": "uv" if uv else "object", "repeat_m": [1 / value for value in scales],
+                        "random_offset": random_color_offset, "blend": .15},
+            "provenance": _provenance(texture, root),
+        }
+    for distance, frequency, strength in ((relief, relief_scale, .22), (micro, micro_scale, .18)):
+        if distance > 0:
+            settings["detail"].append({"kind": "noise", "wavelength_m": [1 / frequency] * 3,
+                                       "amplitude_m": distance, "strength": strength, "detail": 2.2, "coordinates": "world"})
+    if weave:
+        settings["detail"].append({"kind": "weave", "wavelength_m": [math.tau / (20 * 380), math.tau / (20 * 470), 1],
+                                   "amplitude_m": .00022, "strength": .16, "coordinates": "uv" if weave_uv else "world"})
+    material = surface_material(name, settings, root=root, material=bpy.data.materials.get(name))
+    material["salon_surface_version"] = 2
+    material["salon_color_drives_relief"] = False
+    material["salon_roughness_range"] = list(roughness)
+    material["salon_microrelief_m"], material["salon_shallow_relief_m"] = micro, relief
+    if texture:
         material["flechon_generated_texture"] = texture
         material["salon_albedo_mapping"] = "UV" if uv else "object metres"
-
-    rough_noise = nodes.new("ShaderNodeTexNoise")
-    rough_noise.name = "Independent reflectance variation"
-    rough_noise.location = (-700, -150)
-    rough_noise.inputs["Scale"].default_value = rough_scale
-    rough_noise.inputs["Detail"].default_value = 2
-    links.new(metric, rough_noise.inputs["Vector"])
-    rough = nodes.new("ShaderNodeMapRange")
-    rough.name = "Material-specific measured-range interpretation"
-    rough.inputs["To Min"].default_value = roughness[0]
-    rough.inputs["To Max"].default_value = roughness[1]
-    links.new(rough_noise.outputs["Fac"], rough.inputs["Value"])
-    links.new(rough.outputs[0], bsdf.inputs["Roughness"])
-
-    previous_normal = None
-    for label, scale_value, distance, strength in (
-        ("Independent shallow surface", relief_scale, relief, 0.22),
-        ("Independent metric micrograin", micro_scale, micro, 0.18),
-    ):
-        if distance <= 0:
-            continue
-        noise = nodes.new("ShaderNodeTexNoise")
-        noise.name = label
-        noise.inputs["Scale"].default_value = scale_value
-        noise.inputs["Detail"].default_value = 2.2
-        links.new(metric, noise.inputs["Vector"])
-        bump = nodes.new("ShaderNodeBump")
-        bump.name = label + " bump"
-        bump.inputs["Strength"].default_value = strength
-        bump.inputs["Distance"].default_value = distance
-        links.new(noise.outputs["Fac"], bump.inputs["Height"])
-        if previous_normal:
-            links.new(previous_normal, bump.inputs["Normal"])
-        previous_normal = bump.outputs["Normal"]
-    if weave:
-        # Two independent crossing yarn signals. Thread color stays in the
-        # scan; yarn crossings are a separate very shallow normal layer.
-        waves = []
-        for axis in ("X", "Y"):
-            wave = nodes.new("ShaderNodeTexWave")
-            wave.name = "Independent " + axis + " yarn"
-            wave.wave_type = "BANDS"
-            wave.bands_direction = axis
-            wave.inputs["Scale"].default_value = 380 if axis == "X" else 470
-            wave.inputs["Distortion"].default_value = 0.15
-            links.new(coord.outputs["UV"] if weave_uv else metric, wave.inputs["Vector"])
-            waves.append(wave)
-        crossings = nodes.new("ShaderNodeMath")
-        crossings.operation = "MULTIPLY"
-        for i, wave in enumerate(waves):
-            links.new(wave.outputs["Fac"], crossings.inputs[i])
-        bump = nodes.new("ShaderNodeBump")
-        bump.name = "Yarn crossings (not pigment)"
-        bump.inputs["Distance"].default_value = 0.00022
-        bump.inputs["Strength"].default_value = 0.16
-        links.new(crossings.outputs[0], bump.inputs["Height"])
-        if previous_normal:
-            links.new(previous_normal, bump.inputs["Normal"])
-        previous_normal = bump.outputs["Normal"]
-    if previous_normal:
-        links.new(previous_normal, bsdf.inputs["Normal"])
-    material["salon_microrelief_m"] = micro
-    material["salon_shallow_relief_m"] = relief
     return material
 
 

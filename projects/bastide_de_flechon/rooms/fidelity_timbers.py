@@ -65,10 +65,16 @@ class Member:
 def members_for(entity, scene):
     eid, params = entity["id"], entity["params"]
     seed = int(hashlib.sha256(eid.encode()).hexdigest()[:5], 16) % 101
-    if "start" in params and "end" in params and "width" in params and "depth" in params:
-        z = (params["underside"] + params["depth"] / 2) / 1000
-        a, b = params["start"], params["end"]
-        return [Member((a[0] / 1000, a[1] / 1000, z), (b[0] / 1000, b[1] / 1000, z), params["width"] / 1000, params["depth"] / 1000, seed=seed)]
+    frame = entity.get("derived", {}).get("member")
+    if frame:
+        # Standard beams publish their realized cross-section frame; do not
+        # position the same member again from constructor parameters.
+        a = Vector(frame["origin"]) / 1000
+        b = a + Vector(frame["longitudinal"]) * (frame["length_mm"] / 1000)
+        member = Member(a, b, frame["width_mm"] / 1000, frame["depth_mm"] / 1000,
+                        side=frame["across"], seed=seed)
+        member.up = Vector(frame["normal"])
+        return [member]
     if eid == "MASTER_TRUSS_BRACES":
         return [
             Member((a[0], 3.4, a[1]), (b[0], 3.4, b[1]), 0.32, 0.34, side=(0, 1, 0), seed=seed + i)
@@ -215,6 +221,7 @@ def age_mesh(obj, members, amplitude):
 
 def grain(obj, members):
     layer = obj.data.uv_layers.get("Member grain metres") or obj.data.uv_layers.new(name="Member grain metres")
+    layer.active_render = True
     obj.data.uv_layers.active = layer
     world = obj.matrix_world
     normal_matrix = world.to_3x3().inverted().transposed()

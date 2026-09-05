@@ -49,6 +49,8 @@ class Scene(Primitives, Plants, Models, Lighting, Camera, Furniture):
     random = random
     pbr = staticmethod(materials.pbr)
     flat = staticmethod(materials.flat)
+    surface_material = staticmethod(materials.surface_material)
+    apply_mapping = staticmethod(materials.apply_mapping)
 
     def __init__(self) -> None:
         self.scene = session.scn
