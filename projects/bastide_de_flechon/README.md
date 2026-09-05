@@ -15,6 +15,23 @@ The 26 bookmarks cover the garden, pool house, living and dining rooms, kitchen,
 
 ![Eight reviewed photographic study previews; full delivery deferred](review-photo-pass.jpg)
 
+## Standalone salon review evidence
+
+The salon implementation is integrated in the merged house source. An
+independent salon study completed two full-resolution views before the user
+deferred further rendering: [fireplace/garden](salon-review-wide.jpg) and
+[frontal garden](salon-review-front.jpg). These committed JPEGs are downscales
+of the actual PNGs, with [source/camera/render provenance](salon-review-status.json).
+Their standalone lighting precedes the combined house calibration; they do
+not replace the current integrated study previews above.
+
+[Salon verification](salon-verification.md) records the two completed views,
+reviewed controls, twelve deferred final views, unproduced comparison PDF and
+unrefreshed portable model. It also records a likely remaining outboard axial
+beam-placement error, with photographic projection evidence. Geometry remains
+unchanged pending a later correction and render review. [Material provenance](salon-materials-provenance.md)
+and the [discrepancy inventory](salon-discrepancies.md) retain the detailed limits.
+
 ## Files
 
 Expected local outputs from the commands below. The full refresh is deferred, so some outputs are absent or belong to earlier diagnostic runs. `review-photo-pass.jpg` is the committed preview sheet; `review-gallery.jpg` retains the prior pass’s gallery.
@@ -36,6 +53,7 @@ Expected local outputs from the commands below. The full refresh is deferred, so
 - `deliverables/SOURCE.json`: generation, material/source fingerprints and exported model hash.
 - `deliverables/artifact-verification.json`: final independent delivery checks, written only when verification passes.
 - `verification.md`: checks, visual review and remaining reconstruction limits.
+- `salon-verification.md`: standalone salon evidence and explicit deferred work.
 
 The source is `project.py`, `presentation.py`, `rooms/`, `textures/` and `floor_layout.json`. Geometry uses millimetres; presentation coordinates use metres. The original photos and full-resolution plan reviews are retained locally in `reference/`.
 
@@ -142,6 +160,23 @@ uv run --frozen python "$FLECHON_PROJECT/verify_delivery.py"
 ```
 
 `--with pillow` supplies the review tool's image dependency for that command without changing project dependencies. These commands are the reproduction procedure for the deferred artifact pass. `verification.md` distinguishes completed source/study checks from the unfinished final delivery.
+
+For the current salon comparison suite, pass the freshly built `house.blend`
+path to Blender:
+
+```sh
+blender -b /absolute/path/to/house.blend --python-exit-code 1 \
+  --python projects/bastide_de_flechon/salon_review.py -- \
+  projects/bastide_de_flechon/deliverables/salon-review/final final \
+  salon58,photo26,photo57,fireplace58,floor13,trim31 --mode beauty --preset walk
+```
+
+Use `--preset reference58`, `apertures-off` or `apertures-reflective` for the
+separate lighting comparisons, and `--mode neutral` or `clay` for inspection.
+Final output is 3840 pixels wide, with each view's stated aspect ratio, up to
+256 Cycles samples and 16-bit PNG output. Every manifest records the exact
+source images, camera, lighting, render and saved-scene hashes. Review modes
+restore the loaded scene and never overwrite the saved model.
 
 ## Fidelity
 

@@ -388,10 +388,12 @@ individual stone courses, profiles, firebrick, crowned riveted iron fireback,
 andirons and logs are editable Blender geometry in rooms/salon_fireplace.py.
 The unsurveyed vertical proportions are photographic estimates. The 800 x
 1100 cm main block is confirmed by the ground plan. The northern east garden
-door moves south to flank the fireplace as drawn. Both east clear widths are
-1650 mm; west rectangular doors are 1200 mm, repositioned from the enlarged plan.
-The gable clear opening is 3360 mm, surrounded by 500 mm stone jambs; the earlier
-4400 mm clear opening had conflated the stone surround with the glazing. This
+door moves south to flank the fireplace as drawn. Both east structural opening
+widths are 1650 mm; west rectangular openings are 1200 mm, repositioned from the
+enlarged plan. The gable structural opening is 3360 mm, surrounded by 500 mm
+stone jambs; the earlier 4400 mm opening had conflated the stone surround with
+the glazing. After their outer frames, paired clear passage widths are
+1574 mm east, 1124 mm west and 3264 mm at the gable. This
 shared gable opening also corrects the upper fanlight width. Side upper openings
 retain their positions. The open living/dining bookkeeping boundary moves to
 y=7.30 m without introducing a partition or modifying the continuous slab.

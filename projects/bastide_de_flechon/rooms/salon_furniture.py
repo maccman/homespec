@@ -1,7 +1,7 @@
 """Salon-only furniture reconstruction from the nine original photographs.
 
-Run ``build(scene, mats)`` after the other fidelity passes.  Measured furniture
-centres are retained; each replacement is editable geometry, uses a salon-only
+Run ``build(scene, mats)`` after the other fidelity passes. Furniture placement
+is inferred from the plan and photographs; each replacement is editable geometry, uses a salon-only
 material and has stable names.  No adjacent room is changed.
 
 Photo evidence: Collection-22 supplies chair, table, rug and fabric close-ups;
