@@ -69,10 +69,16 @@ def texture(scene, name, filename, color, rough=0.8, tile=1.0, uv=True, bump=0.0
         tex.inputs["Scale"].default_value = 80
         tex.inputs["Detail"].default_value = 3
         links.new(mapping.outputs["Vector"], tex.inputs["Vector"])
+    # Pigment in a generated photograph-informed image is not measured relief.
+    # Stone chips are geometry; cloth and surface tooth use independent noise.
+    tooth = n.new("ShaderNodeTexNoise")
+    tooth.inputs["Scale"].default_value = 600 if "ikat" in name or "terry" in name or "kilim" in name else 105
+    tooth.inputs["Detail"].default_value = 3
+    links.new(coord.outputs["Object"], tooth.inputs["Vector"])
     grain = n.new("ShaderNodeBump")
     grain.inputs["Strength"].default_value = 0.18
     grain.inputs["Distance"].default_value = bump
-    links.new(tex.outputs["Color" if tex.type == "TEX_IMAGE" else "Fac"], grain.inputs["Height"])
+    links.new(tooth.outputs["Fac"], grain.inputs["Height"])
     links.new(grain.outputs["Normal"], bs.inputs["Normal"])
     return mat
 
@@ -158,7 +164,7 @@ def palette(scene, M):
     else:
         scatter.inputs["Color"].default_value = (0.72, 0.62, 0.46, 1)
     mix = nodes.new("ShaderNodeMixShader")
-    mix.inputs[0].default_value = 0.39
+    mix.inputs[0].default_value = 0.62
     links.new(bsdf.outputs[0], mix.inputs[1])
     links.new(scatter.outputs[0], mix.inputs[2])
     links.new(mix.outputs[0], nodes["Material Output"].inputs["Surface"])
@@ -447,7 +453,7 @@ def slip_panel(scene, name, p, x0, x1, y, z0, z1, P, seed=0):
     """Small split-face stones with narrow mortar joints and real chipped edges."""
     R = random.Random(seed)
     vs, fs, uv = [], [], []
-    row_h = 0.039
+    row_h = 0.031
     row = 0
     z = z0
     while z < z1 - 0.002:
@@ -461,14 +467,14 @@ def slip_panel(scene, name, p, x0, x1, y, z0, z1, P, seed=0):
             bevel = min(0.0017, hh * 0.12)
             contour = [(xx + bevel, zz), (xx + ww - bevel, zz), (xx + ww, zz + bevel), (xx + ww, zz + hh - bevel), (xx + ww - bevel, zz + hh), (xx + bevel, zz + hh), (xx, zz + hh - bevel), (xx, zz + bevel)]
             start = len(vs)
-            depth = R.uniform(0.001, 0.006)
+            depth = R.uniform(0.002, 0.010)
             for px, pz in contour:
                 vs.append(p(px, y + 0.009, pz))
                 uv.append((px, pz))
             for px, pz in contour:
-                vs.append(p(px, y - depth + R.uniform(-0.0006, 0.0006), pz))
+                vs.append(p(px, y - depth + R.uniform(-0.0012, 0.0012), pz))
                 uv.append((px, pz))
-            vs.append(p(xx + ww * R.uniform(0.4, 0.6), y - depth - R.uniform(0.000, 0.002), zz + hh * 0.52))
+            vs.append(p(xx + ww * R.uniform(0.3, 0.7), y - depth - R.uniform(0.001, 0.005), zz + hh * R.uniform(0.3, 0.7)))
             uv.append((xx + ww / 2, zz + hh / 2))
             for i in range(8):
                 fs.append((start + i, start + (i + 1) % 8, start + (i + 1) % 8 + 8, start + i + 8))
@@ -483,54 +489,92 @@ def slip_panel(scene, name, p, x0, x1, y, z0, z1, P, seed=0):
     for poly in ob.data.polygons:
         for li in poly.loop_indices:
             layer.data[li].uv = uv[ob.data.loops[li].vertex_index]
+    # Keep the panel's own rotated frame. Baking world coordinates into an
+    # identity object creates a loose axis-aligned bound across the oblique
+    # annex wall, although every stone vertex is inside the room. This is the
+    # same tight oriented representation used by its backing boxes; geometry
+    # and the audit's thresholds remain unchanged.
+    origin = Vector(p(0, 0, 0))
+    basis = Matrix(tuple(Vector(p(*axis)) - origin for axis in ((1, 0, 0), (0, 1, 0), (0, 0, 1)))).transposed()
+    frame = basis.to_4x4()
+    frame.translation = origin
+    ob.data.transform(frame.inverted())
+    ob.matrix_world = frame
     return ob
 
 
 def detailed_shower(scene, name, at, w, d, rot, P, seed):
-    """A niche formed by actual projecting stonework, with usable shelf depth."""
+    """Continuous recessed shelf and separate window-wall overhead fitting.
+
+    Photo05 supplies the exposed construction. The principal-room assignment
+    is inferred from the plan; other bathrooms retain compact interpreted
+    versions of this finish family rather than claiming identical surveys.
+    """
     p = F.transform(at, rot)
-    back = d * 0.5 - 0.065
-    # The existing tray, glazing and drain stay in their surveyed/inferred footprint.
+    principal = name == "principal_shower"
+    back = d * 0.5 - 0.047
     remove(name + "_riser", name + "_head_arm", name + "_rain_head", name + "_hand_shower_hose", name + "_handset", name + "_mixer")
-    # Rear finish is a self-supporting wet-room panel inside the tray footprint.
-    scene.box(name + "_niche_backing", p(0, back + 0.008, 1.275), (w - 0.035, 0.037, 2.55), P.basin, rot_z=rot, bevel=0.001)
-    niche_bottom, niche_top, front = 1.08, 1.40, back - 0.105
-    side = min(0.13, w * 0.14)
-    for z0, z1, label in [(0.05, niche_bottom, "lower"), (niche_top, 2.55, "upper")]:
-        scene.box(name + "_stone_" + label + "_support", p(0, (back + front) / 2, (z0 + z1) / 2), (w - 0.040, back - front, z1 - z0), P.grout, rot_z=rot, bevel=0.001)
-        slip_panel(scene, name + "_split_stone_" + label, p, -w / 2 + 0.024, w / 2 - 0.024, front - 0.002, z0, z1, P, seed)
-    for sign in (-1, 1):
-        x = sign * (w / 2 - side / 2 - 0.020)
-        scene.box(name + "_niche_side_return", p(x, (back + front) / 2, (niche_bottom + niche_top) / 2), (side, back - front, niche_top - niche_bottom), P.basin, rot_z=rot, bevel=0.001)
-        slip_panel(scene, name + "_niche_side_slips", p, x - side / 2, x + side / 2, front - 0.002, niche_bottom, niche_top, P, seed + int(sign))
+    x0, x1 = -w / 2, w / 2
+    top = 2.55
+    if principal:
+        # Photo05 has a flat wet-room soffit. Its unsurveyed height remains
+        # within the model's 6.50 m upper room datum; the roof above is not the
+        # bathroom's finish ceiling. The stair-side footprint is unchanged.
+        top = 6.48 - at[2]
+    niche_bottom, niche_top, front = 1.08, 1.40, back - 0.085
+    backing = scene.box(name + "_continuous_wet_wall_backing", p(0, back + 0.007, top / 2), (w, 0.028, top), P.basin, rot_z=rot, bevel=0.001)
+    backing["source_reference"] = "photo05 uninterrupted stone elevation / long open shelf; concealed support and room assignment inferred"
+    if principal:
+        soffit = scene.box(name + "_flat_wet_room_soffit", p(0, 0, top - 0.011),
+                           (w, d, 0.022), P.white, rot_z=rot)
+        soffit["source_reference"] = "photo05 flat soffit; 6.48 m model height and concealed construction inferred"
+    for z0, z1, label in [(0.05, niche_bottom, "lower"), (niche_top, top, "upper")]:
+        scene.box(name + "_stone_" + label + "_support", p(0, (back + front) / 2, (z0 + z1) / 2), (w, back - front, z1 - z0), P.grout, rot_z=rot, bevel=0.001)
+        slip_panel(scene, name + "_split_stone_" + label, p, x0, x1, front - 0.002, z0, z1, P, seed + int(z0 * 200))
+    # No projecting side piers: the reference shelf continues across the wall.
     for z in (niche_bottom, niche_top):
-        tagged(scene.box(name + "_honed_niche_lip", p(0, (front + back) / 2 - 0.003, z), (w - 0.035, back - front + 0.025, 0.023), P.basin, rot_z=rot, bevel=0.002))
-    fx, fy = -w * 0.20, front - 0.016
-    # A wall-mounted mixer and overhead elbow match photo05's black fixtures.
-    for dx in (-0.070, 0.070):
-        flange = scene.cyl(name + "_black_mixer_rosette", p(fx + dx, fy, 0.98), 0.030, 0.016, P.black, verts=48)
+        tagged(scene.box(name + "_honed_continuous_shelf_lip", p(0, (front + back) / 2 - 0.002, z), (w, back - front + 0.017, 0.018), P.basin, rot_z=rot, bevel=0.0015))
+    fx, fy = -w * 0.18, front - 0.016
+    # A rectangular plate with handset on the left and two cross controls is
+    # clearly visible in the original; separate round rosettes were incorrect.
+    tagged(scene.box(name + "_black_mixer_backplate", p(fx, fy, 0.98), (0.265, 0.012, 0.092), P.black, rot_z=rot, bevel=0.002))
+    for dx in (-0.025, 0.075):
+        scene.rod(name + "_mixer_control_stem", p(fx + dx, fy - 0.010, 0.98), p(fx + dx, fy - 0.049, 0.98), 0.011, P.black)
+        for angle in (math.pi / 4, -math.pi / 4):
+            scene.rod(name + "_cross_control_handle", p(fx + dx - 0.026 * math.cos(angle), fy - 0.051, 0.98 - 0.026 * math.sin(angle)), p(fx + dx + 0.026 * math.cos(angle), fy - 0.051, 0.98 + 0.026 * math.sin(angle)), 0.005, P.black)
+    if principal:
+        # Local -X is the north/window wall after the plan-supported rotation.
+        # The fitting is above the real window head, and projects into the
+        # wet compartment rather than emerging from the shelf wall.
+        wall_x, arm_y, arm_z = x0 + 0.010, back - 0.30, 2.27
+        flange = scene.cyl(name + "_rain_arm_window_wall_rosette", p(wall_x, arm_y, arm_z), 0.032, 0.014, P.black, verts=48)
+        flange.rotation_euler = (0, math.pi / 2, rot)
+        scene.rod(name + "_black_rain_arm", p(wall_x + 0.005, arm_y, arm_z), p(wall_x + 0.39, arm_y, arm_z), 0.011, P.black)
+        scene.rod(name + "_black_rain_elbow", p(wall_x + 0.39, arm_y, arm_z), p(wall_x + 0.39, arm_y, arm_z - 0.030), 0.011, P.black)
+        head = (wall_x + 0.39, arm_y, arm_z - 0.039)
+        flange["source_reference"] = "photo05 overhead fitting attached to left/window wall, independent of mixer wall"
+    else:
+        # Unphotographed bathrooms keep compact wall-fed overhead fittings;
+        # their original room-specific fit has not been photograph-calibrated.
+        flange = scene.cyl(name + "_rain_arm_wall_rosette", p(0, fy, 2.19), 0.035, 0.016, P.black, verts=48)
         flange.rotation_euler = (math.pi / 2, 0, rot)
-    scene.rod(name + "_black_mixer_body", p(fx - 0.10, fy - 0.030, 0.98), p(fx + 0.10, fy - 0.030, 0.98), 0.020, P.black)
-    scene.rod(name + "_black_control_lever", p(fx + 0.07, fy - 0.047, 0.98), p(fx + 0.055, fy - 0.082, 1.03), 0.006, P.black)
-    flange = scene.cyl(name + "_rain_arm_wall_rosette", p(0, fy, 2.19), 0.035, 0.016, P.black, verts=48)
-    flange.rotation_euler = (math.pi / 2, 0, rot)
-    scene.rod(name + "_black_rain_arm", p(0, fy - 0.011, 2.19), p(0, fy - min(0.39, d * 0.54), 2.19), 0.013, P.black)
-    scene.rod(name + "_black_rain_elbow", p(0, fy - min(0.39, d * 0.54), 2.19), p(0, fy - min(0.39, d * 0.54), 2.155), 0.013, P.black)
-    head = (0, fy - min(0.39, d * 0.54), 2.14)
-    scene.cyl(name + "_black_rain_head", p(*head), min(0.147, w * 0.23), 0.020, P.black, verts=80)
+        scene.rod(name + "_black_rain_arm", p(0, fy - 0.011, 2.19), p(0, fy - min(0.39, d * 0.54), 2.19), 0.013, P.black)
+        head = (0, fy - min(0.39, d * 0.54), 2.14)
+        scene.rod(name + "_black_rain_elbow", p(head[0], head[1], 2.19), p(head[0], head[1], 2.155), 0.013, P.black)
+    scene.cyl(name + "_black_rain_head", p(*head), min(0.147, w * 0.23), 0.014, P.black, verts=80)
     for ring, radius in enumerate((0.03, 0.06, 0.09, 0.12)):
         for i in range(10 + ring * 8):
             a = math.tau * i / (10 + ring * 8)
-            scene.cyl(name + "_rain_head_rubber_nozzle", p(head[0] + radius * math.cos(a), head[1] + radius * math.sin(a), head[2] - 0.012), 0.0018, 0.003, P.black, verts=8)
-    hose = [p(fx - 0.05, fy - 0.04, 0.95), p(fx - 0.025, fy - 0.08, 0.59), p(fx + 0.085, fy - 0.10, 0.53), p(fx + 0.16, fy - 0.11, 0.74), p(fx + 0.12, fy - 0.06, 1.10)]
-    F.curve(scene, name + "_flexible_black_hose", smooth_path(hose, 12), 0.006, P.black)
-    scene.rod(name + "_handset_wall_bracket", p(fx + 0.12, fy, 1.10), p(fx + 0.12, fy - 0.065, 1.10), 0.011, P.black)
-    scene.rod(name + "_slim_black_handset", p(fx + 0.12, fy - 0.066, 1.08), p(fx + 0.12, fy - 0.069, 1.29), 0.015, P.black)
-    bottle(scene, name + "_niche_shampoo", (w * 0.18, back - 0.050, niche_bottom + 0.013), p, P, 0.95)
+            scene.cyl(name + "_rain_head_rubber_nozzle", p(head[0] + radius * math.cos(a), head[1] + radius * math.sin(a), head[2] - 0.009), 0.0018, 0.003, P.black, verts=8)
+    handset_x = fx - 0.113
+    hose = [p(handset_x + 0.014, fy - 0.027, 0.96), p(handset_x + 0.064, fy - 0.062, 0.50), p(handset_x + 0.023, fy - 0.076, 0.43), p(handset_x - 0.025, fy - 0.074, 0.49), p(handset_x, fy - 0.050, 1.01)]
+    F.curve(scene, name + "_flexible_black_hose", smooth_path(hose, 12), 0.005, P.black)
+    scene.rod(name + "_handset_wall_bracket", p(handset_x, fy, 1.04), p(handset_x, fy - 0.050, 1.04), 0.010, P.black)
+    scene.rod(name + "_slim_black_handset", p(handset_x, fy - 0.051, 1.00), p(handset_x, fy - 0.051, 1.23), 0.013, P.black)
+    bottle(scene, name + "_niche_shampoo", (w * 0.21, back - 0.040, niche_bottom + 0.010), p, P, 0.95)
     if w > 0.8:
-        bottle(scene, name + "_niche_conditioner", (w * 0.18 + 0.10, back - 0.049, niche_bottom + 0.013), p, P, 0.90)
-    # Discrete glazing clamps and a door pull stop the shower reading as an unattached pane.
-    side = 1 if name == "principal_shower" else -1
+        bottle(scene, name + "_niche_conditioner", (w * 0.21 + 0.10, back - 0.040, niche_bottom + 0.010), p, P, 0.90)
+    side = 1 if principal else -1
     gx = side * (w / 2 - 0.018)
     handle_x = gx - side * 0.055
     for z in (0.14, 1.92):
@@ -616,7 +660,7 @@ def bathroom_window_curtains(scene, P):
         cloth.rotation_euler[2] = math.atan2(u.y, u.x)
         cloth["reference_interpretation"] = "Photo05 cloth; reference bathroom identity unconfirmed. Existing surveyed window only."
         solid = cloth.modifiers.new("Gauze physical thickness", "SOLIDIFY")
-        solid.thickness = 0.0006
+        solid.thickness = 0.00035
         scene.rod(eid + "_black_curtain_rod", p(-width / 2 - 0.06, 0, top + 0.012), p(width / 2 + 0.06, 0, top + 0.012), 0.007, P.black)
         for side in (-1, 1):
             # Rod returns terminate on the actual interior wall face.
@@ -649,17 +693,19 @@ def apply(scene, M):
     # The first-floor plan places the principal shower east of the north
     # window, immediately west of the spiral. Its complete footprint stops
     # at x5.355m, before the surveyed stair void's westernmost x5.440m.
-    relocate("principal_shower", (3.0, 7.9, 3.3), (4.68, 10.025, 3.3), -math.pi / 2)
+    relocate("principal_shower", (3.0, 7.9, 3.3), (4.68, 9.825, 3.3), -math.pi / 2)
     # Glazing is the southern wet-room screen; the northern side is the
     # existing curtained window. This avoids cloth intersecting the glass.
     for ob in list(bpy.data.objects):
         if ob.name.startswith("principal_shower_frameless_glass"):
-            ob.location.y -= 1.064
+            ob.location.y = 9.018
+        elif ob.name == "principal_shower_stone_tray":
+            ob.scale.x = 1.65 / 1.10
     # The double vanity fits the north wall west of the window, leaving the
     # west linking doorway's complete1m approach clear.
     relocate("principal_bath_", (3.3, 10.15, 3.3), (2.30, 10.30, 3.3))
     for i, (name, at, width, depth, rot) in enumerate([
-        ("principal_shower", (4.68, 10.025, 3.3), 1.10, 1.35, -math.pi / 2),
+        ("principal_shower", (4.68, 9.825, 3.3), 1.65, 1.35, -math.pi / 2),
         ("bedroom3_shower", (-4.33, 13.76, 3.3), 0.98, 1.12, 0),
         ("bedroom4_shower", (-8.43, 26.70, 3.3), 0.88, 0.94, math.radians(-18)),
         ("garden1_shower", (-4.30, 29.38, 0), 0.84, 1.00, math.radians(-18)),

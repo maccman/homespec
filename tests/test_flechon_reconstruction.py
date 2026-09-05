@@ -42,3 +42,30 @@ def test_flat_lintel_removes_a_rectangular_void_through_the_host():
     assert build["A"].derived["head"] == 2100
     assert build["A"].derived["radius"] == 0
     assert G.volume(build["W"].solid) == pytest.approx(4000 * 350 * 3000 - 1000 * 350 * 2100)
+
+
+def test_segmental_kitchen_door_void_and_glass_share_shallow_head():
+    from homespec import Material
+    from projects.bastide_de_flechon.project import SegmentalGardenDoor
+
+    with House("segmental_head") as house:
+        Level("L0", height=3000)
+        Material("steel")
+        Material("glass_double")
+        Assembly("wall", layers=[Layer(material="stone", thickness=350)])
+        Wall("W", (0, 0), (4000, 0), assembly="wall", level="L0")
+        SegmentalGardenDoor("D", host="W", at=900, width=2200, height=2080,
+                            rise=360, frame="steel", frame_size=55, panes=(4, 3))
+    build = house.compile()
+    assert build["D"].derived["head"] == 2440
+    void = build["D.void"].solid
+    assert G.bbox(void).max[2] == pytest.approx(2440, abs=.1)
+    # Independent circular-segment area, not width/2 semicircle arithmetic.
+    import math
+    radius = (1100 ** 2 + 360 ** 2) / (2 * 360)
+    cap_area = radius ** 2 * math.acos((radius - 360) / radius) - (radius - 360) * 1100
+    removed = 4000 * 350 * 3000 - G.volume(build["W"].solid)
+    assert removed == pytest.approx((2200 * 2080 + cap_area) * 350, rel=1e-5)
+    glass = build["D.glass"].solid
+    assert G.bbox(glass).max[2] == pytest.approx(2385, abs=.1)
+    assert G.volume(glass - void) < 1

@@ -82,7 +82,10 @@ def upholstered_body(scene, name, at, width, material, rot, seed):
     for i in range(1, n_profile):
         distances.append(distances[-1] + (cross_section[i] - cross_section[i - 1]).length)
     for i in range(nx + 1):
-        x = (i / nx - 0.5) * usable
+        fraction = i / nx
+        # The stitched foam bays remain regularly spaced, while the fabric
+        # pulls fractionally sideways across the full cushion length.
+        x = (fraction - 0.5) * usable + 0.009 * math.sin(fraction * math.tau * 2 + seed) * math.sin(fraction * math.pi)
         phase = i / nx * channels
         channel = min(channels - 1, int(phase))
         local = phase - math.floor(phase)
@@ -101,9 +104,13 @@ def upholstered_body(scene, name, at, width, material, rot, seed):
             front = math.exp(-(((y + 0.50) / 0.075) ** 4))
             back = math.exp(-(((y - 0.26) / 0.065) ** 4)) * max(0, min(1, (z - 0.57) / 0.17))
             rear = math.exp(-(((y - 0.51) / 0.055) ** 4))
-            quilt = (0.020 * rounded - 0.015 * valley) * max(seat, front, back, rear)
+            crown = math.exp(-(((z - 0.944) / 0.060) ** 4))
+            # In photo58 each stuffed bay rounds continuously over the rear
+            # crest. Omitting this band formerly left a ruler-straight top.
+            fullness = 0.020 + 0.003 * math.sin(channel * 2.31 + seed)
+            quilt = (fullness * rounded - 0.017 * valley) * max(seat, front, back, rear, crown)
             # Pressure hollows sit within the broad pads, not on their seam.
-            hollow = 0.009 * seat * rounded**3 * math.exp(-(((y + 0.215) / 0.21) ** 2))
+            hollow = (0.011 + 0.007 * (0.5 + 0.5 * math.sin(channel * 1.47 + seed))) * seat * rounded**3 * math.exp(-(((y + 0.215) / 0.21) ** 2))
             worn = settle * seat + 0.0020 * math.sin(x * 12 + y * 6 + seed) * seat
             # Three shallow diagonal pulls converge on each stitched valley.
             # Their diminishing amplitude avoids an artificial all-over noise.
@@ -113,7 +120,7 @@ def upholstered_body(scene, name, at, width, material, rot, seed):
             q = Vector((y, z)) + normal * (quilt + crease)
             q[0] += 0.002 * math.sin(channel * 1.7 + z * 14) * rear
             q[1] -= hollow
-            q[1] += worn + 0.0025 * math.sin(channel * 2.1 + seed) * math.exp(-(((z - 0.94) / 0.055) ** 2))
+            q[1] += worn + 0.007 * math.sin(channel * 2.1 + seed) * crown
             # Rounded boxes previously floated over their feet; the continuous
             # bottom remains on the original 110 mm frame supports.
             q[0] = max(-0.52, min(0.52, q[0]))
@@ -136,7 +143,7 @@ def upholstered_body(scene, name, at, width, material, rot, seed):
         index = boundary * 30
         path = []
         for j, point in enumerate(cross_section):
-            if point[0] < -0.47 or (point[1] > 0.47 and point[0] < 0.30) or point[0] > 0.45:
+            if point[0] < -0.47 or (point[1] > 0.47 and point[0] < 0.30) or point[0] > 0.45 or point[1] > 0.89:
                 x, y, z = vertices[index * n_profile + j]
                 path.append((x, y, z + 0.0005))
         if path:
@@ -182,7 +189,10 @@ def cushion(scene, name, loc, width, height, depth, mat, rot, lean, seed):
         pull = 0.007 * math.sin(a * 17 + b * 9 + seed) * math.exp(-(((abs(a) - 0.7) / 0.23) ** 2))
         pull += 0.005 * math.sin(a * 11 - b * 21 + seed) * math.exp(-(((b - 0.70) / 0.22) ** 2))
         vertex.co.y += side * pull * inside
-        vertex.co.z -= 0.008 * inside * max(0, b)
+        vertex.co.z -= 0.023 * inside * max(0, b)
+        vertex.co.z -= 0.016 * (1 - a * a) * max(0, b) ** 3
+        vertex.co.x += 0.013 * math.sin(seed) * max(0, b) ** 3
+        vertex.co.y += 0.009 * math.sin(a * 3.2 + seed) * abs(b) ** 5
     obj.data.update()
     return obj
 

@@ -1,0 +1,1349 @@
+{
+  "schema": 1,
+  "lock_id": "flechon-exif-photo-cameras-2026-09-05-v4",
+  "method": "Original JPEG EXIF lens/sensor priors, parallel-line review and explicit landmark fits. Nonzero lens shift is supported and recorded. Edited crop/stitch field is unknown; camera height, furniture dimensions and room assignments remain inferred. Point residuals measure camera-plus-geometry disagreement, not photographic fidelity.",
+  "baseline_commit": "f5920006f6e825efb556f0b83aeea5e3c11c8e24",
+  "baseline_manifest_sha256": "26077c1987d0d91828840ddd4eddf6d585c7d026b372b276e36c6ee2670bb4bb",
+  "projection": "Perspective; square pixels; 36mm sensor on longer image axis; lens distortion unknown and unmodeled; zero roll. All comparisons use the same full uncropped frame.",
+  "views": [
+    {
+      "id": "kitchen10",
+      "reference": "photo_10.jpg",
+      "room": "Kitchen · oak island",
+      "location": [
+        -2.509445680446759,
+        15.856258822774247,
+        1.5301723198259631
+      ],
+      "target": [
+        -2.5128819851021085,
+        10.856260003593356,
+        1.5301723198259631
+      ],
+      "lens_mm": 24,
+      "size": [
+        900,
+        1200
+      ],
+      "note": "Axial portrait: island end in foreground, dark stone top, suspended woven baskets and south arched garden door; west cabinetry appears on the right.",
+      "exposure": 0.8500000238418579,
+      "shift_x": -0.016987545100755227,
+      "shift_y": 0.0011838424626445178,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          -2.6,
+          16.08,
+          1.46
+        ],
+        "target": [
+          -2.67,
+          10.55,
+          1.45
+        ],
+        "lens_mm": 25,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "landmarks": [
+        {
+          "name": "island near east top",
+          "world_m": [
+            -2.1,
+            13.795,
+            0.9575
+          ],
+          "photo_uv": [
+            0.354,
+            0.681
+          ],
+          "weight": 1
+        },
+        {
+          "name": "island near west top",
+          "world_m": [
+            -3.16,
+            13.795,
+            0.9575
+          ],
+          "photo_uv": [
+            0.796,
+            0.683
+          ],
+          "weight": 1
+        },
+        {
+          "name": "island far east top",
+          "world_m": [
+            -2.1,
+            10.35,
+            0.9575
+          ],
+          "photo_uv": [
+            0.462,
+            0.57
+          ],
+          "weight": 1
+        },
+        {
+          "name": "island far west top",
+          "world_m": [
+            -3.16,
+            10.35,
+            0.9575
+          ],
+          "photo_uv": [
+            0.621,
+            0.571
+          ],
+          "weight": 1
+        },
+        {
+          "name": "island near east base",
+          "world_m": [
+            -2.17,
+            13.79,
+            0.1
+          ],
+          "photo_uv": [
+            0.372,
+            0.967
+          ],
+          "weight": 1
+        },
+        {
+          "name": "island near west base",
+          "world_m": [
+            -3.09,
+            13.79,
+            0.1
+          ],
+          "photo_uv": [
+            0.774,
+            0.967
+          ],
+          "weight": 1
+        }
+      ],
+      "fit_status": "exif_constrained_landmark_fit",
+      "fit_note": "Native EXIF 24mm is fixed. XYZ, yaw and two lens shifts are solved against island corners with modeled dimensions unchanged. RMS is 6.90 preview pixels. Edited crop/stitch field remains unknown; no unconstrained focal substitution is used.",
+      "photo_lines": [
+        {
+          "name": "vertical island end",
+          "photo_uv": [
+            [
+              0.364,
+              0.69
+            ],
+            [
+              0.37,
+              0.948
+            ]
+          ]
+        },
+        {
+          "name": "vertical rear glazing",
+          "photo_uv": [
+            [
+              0.466,
+              0.437
+            ],
+            [
+              0.466,
+              0.623
+            ]
+          ]
+        },
+        {
+          "name": "depth island east",
+          "photo_uv": [
+            [
+              0.354,
+              0.681
+            ],
+            [
+              0.462,
+              0.57
+            ]
+          ]
+        },
+        {
+          "name": "depth island west",
+          "photo_uv": [
+            [
+              0.796,
+              0.683
+            ],
+            [
+              0.621,
+              0.571
+            ]
+          ]
+        },
+        {
+          "name": "beam underside transverse",
+          "photo_uv": [
+            [
+              0.018,
+              0.244
+            ],
+            [
+              0.994,
+              0.25
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-2.jpg",
+      "reference_sha256": "d884b2fbf52556af8cba69d5e2a7fb6d741e3274d07bf29e8891b82c1cf3f8bd",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "Canon",
+        "camera_model": "Canon EOS 5DS R",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.4,
+        "physical_focal_length_mm": 24.0,
+        "lens_model": "TS-E24mm f/3.5L II",
+        "physical_sensor_long_mm": 36,
+        "long_axis_equivalent_for_blender_mm": 24.0,
+        "sensor_source": "Full-frame 36mm convention; native EXIF focal length retained.",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit."
+    },
+    {
+      "id": "salon58",
+      "reference": "photo_58.jpg",
+      "room": "Salon · fireplace and garden",
+      "location": [
+        0.65,
+        8.8,
+        2.08
+      ],
+      "target": [
+        5.1,
+        3.0,
+        1.36
+      ],
+      "lens_mm": 30,
+      "size": [
+        1400,
+        788
+      ],
+      "note": "View from dining edge across the long sofa: fireplace at left, garden arch at right. Reference occupants and temporary entertaining props are excluded.",
+      "exposure": 0.800000011920929,
+      "shift_x": 0,
+      "shift_y": 0,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          1.35,
+          7.75,
+          1.76
+        ],
+        "target": [
+          4.8,
+          3.0,
+          1.76
+        ],
+        "lens_mm": 25,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "fit_status": "exif_constrained_composition_estimate",
+      "fit_note": "Reviewed against the integrated salon study: retained native30mm lens, higher eye and slight downward aim show the seating, coffee table and entire fireplace while keeping actual dining geometry present. Extrinsics are an inferred visual estimate; no surveyed-point recovery or hidden geometry.",
+      "photo_lines": [
+        {
+          "name": "garden glazing left jamb",
+          "photo_uv": [
+            [
+              0.59,
+              0.179
+            ],
+            [
+              0.59,
+              0.601
+            ]
+          ]
+        },
+        {
+          "name": "garden glazing right jamb",
+          "photo_uv": [
+            [
+              0.919,
+              0.14
+            ],
+            [
+              0.919,
+              0.628
+            ]
+          ]
+        },
+        {
+          "name": "fireplace mantel",
+          "photo_uv": [
+            [
+              0.156,
+              0.359
+            ],
+            [
+              0.357,
+              0.368
+            ]
+          ]
+        },
+        {
+          "name": "ceiling axis",
+          "photo_uv": [
+            [
+              0.492,
+              0.204
+            ],
+            [
+              0.037,
+              0.046
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg",
+      "reference_sha256": "c86b5dd62a664577ebb2be0c580075e66546743ca089be85998c4ff6eb1a14e3",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "SONY",
+        "camera_model": "ILCE-7M4",
+        "editing_software": "Adobe Photoshop Lightroom Classic 13.1 (Macintosh)",
+        "exposure_seconds": 0.016666666666666666,
+        "physical_focal_length_mm": 30.0,
+        "reported_35mm_equivalent_mm": 30,
+        "lens_model": "FE 24-105mm F4 G OSS",
+        "physical_sensor_long_mm": 36,
+        "long_axis_equivalent_for_blender_mm": 30.0,
+        "sensor_source": "Full-frame 36mm convention; native EXIF focal length retained.",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit."
+    },
+    {
+      "id": "garden02",
+      "reference": "photo_02.jpg",
+      "room": "Garden bedroom one",
+      "location": [
+        -1.1846616305135618,
+        26.519299796564063,
+        1.65
+      ],
+      "target": [
+        0.44274918168077804,
+        31.247040699823565,
+        1.65
+      ],
+      "lens_mm": 24,
+      "size": [
+        900,
+        1200
+      ],
+      "note": "Close portrait of the bed's right side, individual line drawing, woven sconce, coarse linen and animal-pattern coverlet. Bed/room assignment is inferred from the supplied plan.",
+      "exposure": 0.550000011920929,
+      "shift_x": 0,
+      "shift_y": -0.0178,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          -0.2849400042000316,
+          27.948499619156784,
+          1.42
+        ],
+        "target": [
+          -2.550855066299528,
+          29.0001787200952,
+          1.3
+        ],
+        "lens_mm": 35,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "landmarks": [
+        {
+          "name": "right picture top left",
+          "world_m": [
+            -1.0370463203489633,
+            28.80998565896532,
+            2.18
+          ],
+          "photo_uv": [
+            0.256,
+            0.325
+          ],
+          "weight": 1,
+          "role": "fit"
+        },
+        {
+          "name": "right picture top right",
+          "world_m": [
+            -0.4318954847317452,
+            28.601677075004446,
+            2.18
+          ],
+          "photo_uv": [
+            0.513,
+            0.326
+          ],
+          "weight": 1,
+          "role": "fit"
+        },
+        {
+          "name": "right picture bottom left",
+          "world_m": [
+            -1.0370463203489633,
+            28.80998565896532,
+            1.44
+          ],
+          "photo_uv": [
+            0.257,
+            0.543
+          ],
+          "weight": 1,
+          "role": "fit"
+        },
+        {
+          "name": "right picture bottom right",
+          "world_m": [
+            -0.4318954847317452,
+            28.601677075004446,
+            1.44
+          ],
+          "photo_uv": [
+            0.513,
+            0.543
+          ],
+          "weight": 1,
+          "role": "fit"
+        },
+        {
+          "name": "sconce woven centre",
+          "world_m": [
+            -0.2713952807044011,
+            28.39202096489272,
+            2.1
+          ],
+          "photo_uv": [
+            0.658,
+            0.387
+          ],
+          "weight": 0,
+          "role": "holdout"
+        }
+      ],
+      "fit_status": "exif_constrained_landmark_fit",
+      "fit_note": "Native EXIF 24mm and parallel frame edges fix a frontal head-wall camera at bed-local (0.716,-1.058,1.65)m. Four artwork corners have about 3.3-pixel RMS. The sconce is an independent geometry holdout, excluded from fitting. Camera is inside the south wall, near the foot of the bed; it is separate from the walking bookmark.",
+      "photo_lines": [
+        {
+          "name": "right frame left upright",
+          "photo_uv": [
+            [
+              0.256,
+              0.325
+            ],
+            [
+              0.257,
+              0.543
+            ]
+          ]
+        },
+        {
+          "name": "right frame right upright",
+          "photo_uv": [
+            [
+              0.513,
+              0.326
+            ],
+            [
+              0.513,
+              0.543
+            ]
+          ]
+        },
+        {
+          "name": "picture head",
+          "photo_uv": [
+            [
+              0.256,
+              0.325
+            ],
+            [
+              0.513,
+              0.326
+            ]
+          ]
+        },
+        {
+          "name": "joist underside",
+          "photo_uv": [
+            [
+              0.048,
+              0.139
+            ],
+            [
+              0.876,
+              0.144
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-12.jpg",
+      "reference_sha256": "834469c86438eb8f0b3cefdf9afbf56b8f81c29378df453830895f32bf25c4b4",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "bed_pose": {
+        "center_m": [
+          -1.517314,
+          27.752735,
+          0
+        ],
+        "rotation_degrees": -18.9931,
+        "landmark_front_y_m": 1.156,
+        "camera_local_y_min_m": -1.4
+      },
+      "reference_capture": {
+        "make": "Canon",
+        "camera_model": "Canon EOS R5",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.125,
+        "physical_focal_length_mm": 24.0,
+        "lens_model": "TS-E24mm f/3.5L II",
+        "physical_sensor_long_mm": 36,
+        "long_axis_equivalent_for_blender_mm": 24.0,
+        "sensor_source": "Full-frame 36mm convention; native EXIF focal length retained.",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit."
+    },
+    {
+      "id": "principal06",
+      "reference": "photo_06.jpg",
+      "room": "Principal suite · arched window",
+      "location": [
+        5.3,
+        5.3,
+        4.45
+      ],
+      "target": [
+        2.6,
+        1.38,
+        4.45
+      ],
+      "lens_mm": 24.657534246575345,
+      "size": [
+        1200,
+        900
+      ],
+      "note": "Camera on the east side of the bed faces southwest. The south arched glazing is left; the rectangular west window and paired cane chairs are right.",
+      "exposure": 0.800000011920929,
+      "shift_x": 0,
+      "shift_y": 0.12,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          5.9,
+          4.18,
+          4.86
+        ],
+        "target": [
+          2.6,
+          1.38,
+          4.76
+        ],
+        "lens_mm": 25,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "landmarks": [
+        {
+          "name": "arch east spring",
+          "world_m": [
+            5.68,
+            0.35,
+            4.1
+          ],
+          "photo_uv": [
+            0.096,
+            0.791
+          ],
+          "weight": 1
+        },
+        {
+          "name": "arch west spring",
+          "world_m": [
+            2.32,
+            0.35,
+            4.1
+          ],
+          "photo_uv": [
+            0.427,
+            0.74
+          ],
+          "weight": 1
+        },
+        {
+          "name": "arch crown",
+          "world_m": [
+            4,
+            0.35,
+            5.78
+          ],
+          "photo_uv": [
+            0.289,
+            0.416
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window south head",
+          "world_m": [
+            0.35,
+            2.275,
+            5.25
+          ],
+          "photo_uv": [
+            0.75,
+            0.495
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window north head",
+          "world_m": [
+            0.35,
+            3.725,
+            5.25
+          ],
+          "photo_uv": [
+            0.9,
+            0.489
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window south sill",
+          "world_m": [
+            0.35,
+            2.275,
+            4.4
+          ],
+          "photo_uv": [
+            0.75,
+            0.599
+          ],
+          "weight": 1
+        },
+        {
+          "name": "west window north sill",
+          "world_m": [
+            0.35,
+            3.725,
+            4.4
+          ],
+          "photo_uv": [
+            0.9,
+            0.602
+          ],
+          "weight": 1
+        }
+      ],
+      "fit_status": "exif_constrained_composition_compromise",
+      "fit_note": "Native GFX EXIF 30mm converted by physical long axis to 24.6575mm on the 36mm Blender sensor. Level camera on the east side of the bed, south of its headboard, at a low 1.15m eye height above the suite floor. Actual Cycles and untextured trials rejected lower-point-error cameras that lost the bed or introduced foreground headboard/brace occlusion. The selected compromise includes bed, arch, west window and seating. Architectural landmark RMS is 122.3px at 1200x900; source has more bed, a smaller apparent arch, and less west-brace intrusion. Edited image field, timber/layout and height uncertainty remain unresolved.",
+      "photo_lines": [
+        {
+          "name": "west window south jamb",
+          "photo_uv": [
+            [
+              0.75,
+              0.495
+            ],
+            [
+              0.75,
+              0.599
+            ]
+          ]
+        },
+        {
+          "name": "west window north jamb",
+          "photo_uv": [
+            [
+              0.9,
+              0.489
+            ],
+            [
+              0.9,
+              0.602
+            ]
+          ]
+        },
+        {
+          "name": "arch radial upright",
+          "photo_uv": [
+            [
+              0.29,
+              0.426
+            ],
+            [
+              0.292,
+              0.628
+            ]
+          ]
+        },
+        {
+          "name": "curtain rod depth",
+          "photo_uv": [
+            [
+              0.075,
+              0.251
+            ],
+            [
+              0.51,
+              0.362
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-16.jpg",
+      "reference_sha256": "b713335e429d0ac7e4831073e4932ba6f3c545788d451b1b99d00d3d6c1c7aa2",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "FUJIFILM",
+        "camera_model": "GFX100S",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.6,
+        "physical_focal_length_mm": 30.0,
+        "reported_35mm_equivalent_mm": 24,
+        "lens_model": "GF30mmF5.6 T/S",
+        "physical_sensor_long_mm": 43.8,
+        "long_axis_equivalent_for_blender_mm": 24.657534246575345,
+        "sensor_source": "https://www.fujifilm-x.com/global/products/cameras/gfx100s/specifications/",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit.",
+      "rejected_trials": [
+        {
+          "location": [
+            7.399999999981731,
+            4.268286170293558,
+            5.3999999999999995
+          ],
+          "target": [
+            3.466670038129365,
+            1.181392033593295,
+            5.3999999999999995
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0.052387280481657375,
+          "shift_y": -0.019681673648426882,
+          "reason": "Lower reprojection error alone does not resolve geometry uncertainty or observed foreground occlusion."
+        },
+        {
+          "location": [
+            7.3999999999999995,
+            3.1499999999999995,
+            4.928941145403446
+          ],
+          "target": [
+            3.142341552828772,
+            0.5284843034550599,
+            4.928941145403446
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0.08935364537352847,
+          "shift_y": 0.031922983959193255,
+          "reason": "Rejected after updated-scene Cycles and Workbench inspection: low architectural-point error removes essentially the entire bed from the frame.",
+          "landmark_rms_preview_px": 41.564378514713866
+        },
+        {
+          "location": [
+            5.7,
+            6.4,
+            4.55
+          ],
+          "target": [
+            2.6,
+            1.38,
+            4.55
+          ],
+          "lens_mm": 24.657534246575345,
+          "shift_x": 0,
+          "shift_y": 0.077,
+          "reason": "Actual Cycles render shows rear of headboard across lower-right half, obscuring room."
+        }
+      ],
+      "visual_review": {
+        "render": "deliverables/calibration-principal-v4/principal_low_nearhead.png",
+        "manifest": "deliverables/calibration-principal-v4/camera-review-manifest.json",
+        "diagnostic_exposure_offset_ev": 3,
+        "source_scene_sha256": "9839b01feadd3b1044d8e6344120a8a32af1b7ecc540ca1573e548c10e8ed08b",
+        "conclusion": "Selected as a transparent composition compromise, not a photographic match. No geometry changed to hide the remaining brace/bed disagreement."
+      }
+    },
+    {
+      "id": "principal33",
+      "reference": "photo_33.jpg",
+      "room": "Principal suite · arched window",
+      "location": [
+        4.84375,
+        5.978125,
+        4.87
+      ],
+      "target": [
+        1.25,
+        2.15,
+        4.87
+      ],
+      "lens_mm": 50,
+      "size": [
+        900,
+        1200
+      ],
+      "note": "Portrait of the west seating corner: gathered ikat, both raked cane chairs, patinated trumpet table and huge diagonal brace. Photo33's table staging differs from photo06.",
+      "exposure": 0.800000011920929,
+      "shift_x": -0.075,
+      "shift_y": 0.015,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          3.55,
+          4.6,
+          4.87
+        ],
+        "target": [
+          1.25,
+          2.15,
+          4.87
+        ],
+        "lens_mm": 32,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "fit_status": "exif_constrained_composition_estimate",
+      "fit_note": "Native EXIF Canon TS-E 50mm fixes the lens at 50mm. Position moves along the prior subject axis by 50/32 to retain seating scale; horizontal shift recentres the chairs. This is a composition estimate with unresolved brace/window disagreement, not a recovered numerical calibration.",
+      "photo_lines": [
+        {
+          "name": "curtain rod",
+          "photo_uv": [
+            [
+              0.002,
+              0.25
+            ],
+            [
+              0.268,
+              0.25
+            ]
+          ]
+        },
+        {
+          "name": "window jamb",
+          "photo_uv": [
+            [
+              0.952,
+              0.488
+            ],
+            [
+              0.952,
+              0.628
+            ]
+          ]
+        },
+        {
+          "name": "brace centre",
+          "photo_uv": [
+            [
+              0.267,
+              0.117
+            ],
+            [
+              0.954,
+              0.872
+            ]
+          ]
+        },
+        {
+          "name": "horizontal tie underside",
+          "photo_uv": [
+            [
+              0.404,
+              0.344
+            ],
+            [
+              0.997,
+              0.349
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-7.jpg",
+      "reference_sha256": "88390c1a116c2f498e7961c1db4c774767d8e70f33856caed54142f1ecf8d4ee",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "Canon",
+        "camera_model": "Canon EOS 5DS R",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.5,
+        "physical_focal_length_mm": 50.0,
+        "lens_model": "TS-E50mm f/2.8L MACRO",
+        "physical_sensor_long_mm": 36,
+        "long_axis_equivalent_for_blender_mm": 50.0,
+        "sensor_source": "Full-frame 36mm convention; native EXIF focal length retained.",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit."
+    },
+    {
+      "id": "bedroom09",
+      "reference": "photo_09.jpg",
+      "room": "Bedroom above kitchen",
+      "location": [
+        -4.89000396353578,
+        8.820000000000002,
+        4.610501165186139
+      ],
+      "target": [
+        -0.7827028870120394,
+        11.67132914038119,
+        4.610501165186139
+      ],
+      "lens_mm": 41.09589041095891,
+      "size": [
+        1200,
+        900
+      ],
+      "note": "Oblique view from the southwest foot corner toward the reclaimed wardrobe, olive lumbar cushions and broad east-wall mirror.",
+      "exposure": 0.75,
+      "shift_x": -0.23309439621974037,
+      "shift_y": 0.04349915978648477,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          -4.66,
+          8.97,
+          4.91
+        ],
+        "target": [
+          -2.65,
+          11.58,
+          4.91
+        ],
+        "lens_mm": 24,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "fit_status": "exif_constrained_landmark_fit",
+      "fit_note": "Native GFX EXIF 50mm converts to 41.0959mm on the 36mm sensor. Bounded XYZ/yaw/lens-shift fitting reduces prior camera disagreement, but inferred headboard and wardrobe correspondences retain about 94 pixels RMS. This is a candidate composition; furniture-size/layout uncertainty remains. Actual Workbench review confirms that the bed foot remains cropped relative to the original. The large image-field/layout mismatch is unresolved; native-lens evidence is retained rather than claiming an accurate match.",
+      "landmarks": [
+        {
+          "name": "headboard west top",
+          "world_m": [
+            -3.605,
+            11.49,
+            4.65
+          ],
+          "photo_uv": [
+            0.081,
+            0.536
+          ],
+          "weight": 1
+        },
+        {
+          "name": "headboard east top",
+          "world_m": [
+            -1.675,
+            11.49,
+            4.65
+          ],
+          "photo_uv": [
+            0.454,
+            0.523
+          ],
+          "weight": 1
+        },
+        {
+          "name": "mirror top",
+          "world_m": [
+            -0.444,
+            11.13,
+            5.57
+          ],
+          "photo_uv": [
+            0.879,
+            0.291
+          ],
+          "weight": 1
+        },
+        {
+          "name": "mirror bottom",
+          "world_m": [
+            -0.444,
+            11.13,
+            4.31
+          ],
+          "photo_uv": [
+            0.887,
+            0.63
+          ],
+          "weight": 1
+        },
+        {
+          "name": "mirror centre",
+          "world_m": [
+            -0.444,
+            11.13,
+            4.94
+          ],
+          "photo_uv": [
+            0.888,
+            0.463
+          ],
+          "weight": 1
+        },
+        {
+          "name": "wardrobe right head",
+          "world_m": [
+            -2.54,
+            12.25,
+            5.65
+          ],
+          "photo_uv": [
+            0.356,
+            0.166
+          ],
+          "weight": 0.4
+        }
+      ],
+      "rejected_fit": {
+        "location": [
+          -3.8000000000002307,
+          8.700000000000001,
+          4.633711545984873
+        ],
+        "target": [
+          -1.2851011063113633,
+          13.021490894879049,
+          4.633711545984873
+        ],
+        "lens_mm": 30.714479322719527,
+        "shift_y": 0.031088878324714016,
+        "landmark_rms_preview_px": 79.97252975540954,
+        "reason": "Lower reprojection error alone does not resolve geometry uncertainty or observed foreground occlusion."
+      },
+      "photo_lines": [
+        {
+          "name": "wardrobe shelf upright",
+          "photo_uv": [
+            [
+              0.13,
+              0.111
+            ],
+            [
+              0.13,
+              0.495
+            ]
+          ]
+        },
+        {
+          "name": "wardrobe right upright",
+          "photo_uv": [
+            [
+              0.346,
+              0.192
+            ],
+            [
+              0.348,
+              0.52
+            ]
+          ]
+        },
+        {
+          "name": "headboard top",
+          "photo_uv": [
+            [
+              0.081,
+              0.536
+            ],
+            [
+              0.454,
+              0.523
+            ]
+          ]
+        },
+        {
+          "name": "ceiling eave",
+          "photo_uv": [
+            [
+              0.41,
+              0.269
+            ],
+            [
+              0.99,
+              0.2
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-19.jpg",
+      "reference_sha256": "0be9c4435a3b91660cee284c596ab6f1c26267b74f7f1d8d49cd52b881e53c2c",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "FUJIFILM",
+        "camera_model": "GFX100S",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.5,
+        "physical_focal_length_mm": 50.0,
+        "reported_35mm_equivalent_mm": 40,
+        "lens_model": "Canon TS-E 50mm f/2.8L",
+        "physical_sensor_long_mm": 43.8,
+        "long_axis_equivalent_for_blender_mm": 41.09589041095891,
+        "sensor_source": "https://www.fujifilm-x.com/global/products/cameras/gfx100s/specifications/",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit."
+    },
+    {
+      "id": "hall21",
+      "reference": "photo_21.jpg",
+      "room": "Ochre entrance hall",
+      "location": [
+        -2.43,
+        17.14,
+        1.58
+      ],
+      "target": [
+        -1.8,
+        21.3,
+        1.58
+      ],
+      "lens_mm": 24,
+      "size": [
+        900,
+        1200
+      ],
+      "note": "Portrait from the south entry passage: carved commode/Ganesha at left, tall entry glazing at right, gallery opening above and gilt mirror beyond.",
+      "exposure": 0.6499999761581421,
+      "shift_x": 0.0,
+      "shift_y": 0.04,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          -2.43,
+          17.14,
+          1.58
+        ],
+        "target": [
+          -1.8,
+          21.3,
+          1.58
+        ],
+        "lens_mm": 24,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "fit_status": "exif_constrained_composition_estimate",
+      "fit_note": "Native Canon TS-E 24mm is retained. Glazing, mirror and gallery uprights support a level camera with vertical shift. The crossing ceiling, gallery aperture and stair remain geometry checks; no unique surveyed pose is claimed.",
+      "photo_lines": [
+        {
+          "name": "gallery aperture vertical",
+          "photo_uv": [
+            [
+              0.602,
+              0.245
+            ],
+            [
+              0.599,
+              0.468
+            ]
+          ]
+        },
+        {
+          "name": "mirror right upright",
+          "photo_uv": [
+            [
+              0.71,
+              0.539
+            ],
+            [
+              0.708,
+              0.806
+            ]
+          ]
+        },
+        {
+          "name": "glazing frame",
+          "photo_uv": [
+            [
+              0.927,
+              0.507
+            ],
+            [
+              0.929,
+              0.913
+            ]
+          ]
+        },
+        {
+          "name": "gallery underside",
+          "photo_uv": [
+            [
+              0.599,
+              0.469
+            ],
+            [
+              0.821,
+              0.47
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-3.jpg",
+      "reference_sha256": "3b14d14f7dab359f3930c5bc756704014750aa5414f520879d455c21422e212c",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "Canon",
+        "camera_model": "Canon EOS 5DS R",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.8,
+        "physical_focal_length_mm": 24.0,
+        "lens_model": "TS-E24mm f/3.5L II",
+        "physical_sensor_long_mm": 36,
+        "long_axis_equivalent_for_blender_mm": 24.0,
+        "sensor_source": "Full-frame 36mm convention; native EXIF focal length retained.",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit."
+    },
+    {
+      "id": "shower05",
+      "reference": "photo_05.jpg",
+      "room": "Principal bathroom",
+      "location": [
+        3.4,
+        8.8,
+        4.85
+      ],
+      "target": [
+        4.9,
+        10.18,
+        4.85
+      ],
+      "lens_mm": 24.657534246575345,
+      "size": [
+        900,
+        1200
+      ],
+      "note": "Principal shower beside the north window: pale window curtain at left and east-facing split-stone niche at right. The source shower's room assignment remains inferred; this view compares observed materials and fixtures with the plan-supported placement.",
+      "exposure": 0.75,
+      "shift_x": 0.0,
+      "shift_y": 0.0,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          3.4,
+          8.8,
+          4.85
+        ],
+        "target": [
+          4.9,
+          10.18,
+          4.85
+        ],
+        "lens_mm": 24,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "fit_status": "exif_constrained_composition_estimate",
+      "fit_note": "Native GFX EXIF 30mm converts to 24.6575mm on the 36mm sensor. Upright glass and wall edges support level framing. Bathroom assignment and camera position remain inferred; fixture/wall corrections must be judged in the actual updated scene.",
+      "photo_lines": [
+        {
+          "name": "glass vertical",
+          "photo_uv": [
+            [
+              0.402,
+              0.008
+            ],
+            [
+              0.398,
+              0.993
+            ]
+          ]
+        },
+        {
+          "name": "stone right termination",
+          "photo_uv": [
+            [
+              0.966,
+              0.027
+            ],
+            [
+              0.965,
+              0.984
+            ]
+          ]
+        },
+        {
+          "name": "shelf lower edge",
+          "photo_uv": [
+            [
+              0.404,
+              0.601
+            ],
+            [
+              0.962,
+              0.618
+            ]
+          ]
+        },
+        {
+          "name": "niche upper edge",
+          "photo_uv": [
+            [
+              0.405,
+              0.506
+            ],
+            [
+              0.965,
+              0.489
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-15.jpg",
+      "reference_sha256": "8bc10e93e703079cfae917e3808fec4487d1cf92a43ab4afc961f5f835b4c709",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "FUJIFILM",
+        "camera_model": "GFX100S",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 3.0,
+        "physical_focal_length_mm": 30.0,
+        "reported_35mm_equivalent_mm": 24,
+        "lens_model": "GF30mmF5.6 T/S",
+        "physical_sensor_long_mm": 43.8,
+        "long_axis_equivalent_for_blender_mm": 24.657534246575345,
+        "sensor_source": "https://www.fujifilm-x.com/global/products/cameras/gfx100s/specifications/",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit."
+    }
+  ],
+  "review_status": "All eight views inspected as actual Cycles and Workbench renders; principal06 subsequently selected from actual native-lens low-eye trials. Lock is ready for identical-camera baseline/current comparisons. Numerical residuals and visual limitations are retained."
+}

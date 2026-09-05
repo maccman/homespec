@@ -1,0 +1,402 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-09-05",
+  "generator": "builtin image_gen__imagegen (reference-guided new material synthesis)",
+  "scope": "La Bastide de Fléchon salon only",
+  "source_archive": "/Users/cloud/LABASTIDEDEFLECHON.zip",
+  "reference_policy": "Original files unmodified. Every nine requested photograph was opened at original size; the viewer resizes large frames, so the fireplace was additionally inspected with an original-pixel crop. All new images are interpretations, not measured scans.",
+  "inspected_photographs": [
+    {
+      "preview": 7,
+      "archive_relative": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-17.jpg",
+      "inspected_path": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-17.jpg"
+    },
+    {
+      "preview": 13,
+      "archive_relative": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-22.jpg",
+      "inspected_path": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-22.jpg"
+    },
+    {
+      "preview": 23,
+      "archive_relative": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-30.jpg",
+      "inspected_path": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-30.jpg"
+    },
+    {
+      "preview": 26,
+      "archive_relative": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-34.jpg",
+      "inspected_path": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-34.jpg"
+    },
+    {
+      "preview": 31,
+      "archive_relative": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-5.jpg",
+      "inspected_path": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-5.jpg"
+    },
+    {
+      "preview": 56,
+      "archive_relative": "PHOTOS/VICTOR FITZ/DSC05427.jpg",
+      "inspected_path": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/PHOTOS/VICTOR FITZ/DSC05427.jpg"
+    },
+    {
+      "preview": 57,
+      "archive_relative": "PHOTOS/VICTOR FITZ/DSC05430.jpg",
+      "inspected_path": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/PHOTOS/VICTOR FITZ/DSC05430.jpg"
+    },
+    {
+      "preview": 58,
+      "archive_relative": "PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg",
+      "inspected_path": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg"
+    },
+    {
+      "preview": 60,
+      "archive_relative": "PHOTOS/VICTOR FITZ/DSC05572-3.jpg",
+      "inspected_path": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/PHOTOS/VICTOR FITZ/DSC05572-3.jpg"
+    }
+  ],
+  "assets": [
+    {
+      "name": "salon-fireplace-limestone",
+      "file": "salon-fireplace-limestone.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-348c805a-dcb9-468c-b948-06cf2a0e00db.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless physically based 3D base-color material. Input reference image is the photographed fireplace of La Bastide de Fléchon, reference only. Generate a NEW square 2048px texture scan of ONE CONTINUOUS pale creamy white limestone surface matching the fireplace lintel and hearth, about 80 cm square of stone. Near-smooth soft honed chalky ivory limestone, tiny scattered warm grey pores, minute warm beige mineral freckles, extremely subtle cloudy old patina, a few very faint hairline natural mineral marks. It is finely finished old limestone, NOT rough rubble, not crumbling, not concrete, not marble and not heavily speckled travertine. Do NOT draw joints, blocks, chips at edges, moldings or fireplace; editable geometry will provide those. Match pale cream body under neutral daylight with no orange firelight. Flat orthographic albedo, uniform neutral diffuse color, no baked shadows, no occlusion, no highlights or vignette, seamless all edges. Fill image only with material, no objects/text.",
+      "reference_photographs": [
+        "PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg"
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Photo-informed visual interpretation, not measured reflectance or photogrammetry. Minor generated texture deviations remain; metric geometry and shader controls determine physical relief.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 2571344,
+      "sha256": "3f87a668208180ca127521deb15d99be545646540ea6a3b7c92f7b28b56fa675"
+    },
+    {
+      "name": "salon-floor-stone-a",
+      "file": "salon-floor-stone-a.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-b63f7261-7d9a-4149-be72-8ecd9342f5bd.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless physically based 3D base-color material. Input photo is reference ONLY: faithfully reconstruct the pale warm beige honed limestone tile surface on the floor at La Bastide de Fléchon, clearly visible beside chair and rug. Generate NEW square 2048px texture scan showing ONE CONTINUOUS STONE SURFACE about 70 cm square, no tile divisions. Pale warm ivory-beige with low-contrast cloudy buff/cream mineral mottling, delicate scattered grey-beige pin pores and extremely faint fossils, smooth old honed finish. Quiet natural variations, avoid grey cement, tan sandpaper, dramatic veins, dark pits. Editable individual tile geometry will create every grout joint and worn edge: NO seams, joints, grout, borders, tiles or outlines in this image. Remove reference lighting: orthographic flat neutral diffuse BASE COLOR only, no cast shadows, no highlights, no warm spotlight gradient or vignette. Seamless all edges, no room/furniture/text.",
+      "reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-22.jpg"
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Photo-informed visual interpretation, not measured reflectance or photogrammetry. Minor generated texture deviations remain; metric geometry and shader controls determine physical relief.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 2620847,
+      "sha256": "6d318ffb1452286d406517473b0e47a62e231512ac13c7d8733518ab6f9c13a9"
+    },
+    {
+      "name": "salon-floor-stone-b",
+      "file": "salon-floor-stone-b.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-70502053-8a3e-491c-a061-1124f3c7a4d2.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless physically based limestone base-color material variation. Reference photograph ONLY: warm pale beige limestone floor of La Bastide de Fléchon next to the chair and dark/rust rug. Generate NEW square 2048px seamless scan of ONE unbroken 70 cm limestone surface, a slightly warmer milk-and-honey buff variant but in same pale low-contrast cream limestone family. Subtle organic cream cloudy regions mixed with muted oatmeal beige, tiny sparse grey pin pores, a few extremely faint 1-3cm mineral fossil fragments, maintained smooth honed limestone. No dramatic veining, no gravel, no large black holes, no tiles, no tile joints/grout or bevels; geometry supplies installed tile edges. Neutral uniform diffuse albedo color ONLY, eliminate orange room lighting and cast shadows, no reflections, no perspective or vignette. Surface edge-to-edge and seamless. No objects/text.",
+      "reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-22.jpg"
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Photo-informed visual interpretation, not measured reflectance or photogrammetry. Minor generated texture deviations remain; metric geometry and shader controls determine physical relief.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 2584977,
+      "sha256": "f03c900205c22d84d63cfb0e6977eb25c97a33956753322219c0ca78c1d75627"
+    },
+    {
+      "name": "salon-rug",
+      "file": "salon-rug.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-74cee832-f184-44a4-b888-e966b1d64554.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: entire rug base-color map for an editable 3D rug mesh. Input photographs are reference ONLY; reconstruct the REAL plain contemporary wool rug beneath the carved coffee table in La Bastide de Fléchon. NEW portrait 1536x2048 orthographic top-down scan of complete rectangular rug, longer dimension vertical. Pattern identity: ONE LARGE PLAIN near-black/espresso dark chocolate field with soft variegated brown/charcoal vertical abrash striations in the woven pile; a broad PLAIN muted brick-red/terracotta/vermilion border band of CONSTANT PHYSICAL WIDTH around ALL four sides (about 30cm on a 3.5x4.5m rug); thin nearly-black dark brown outer binding about 2cm. NO decorative motifs at all. The intricate pattern in photos belongs to the wooden COFFEE TABLE and must NOT appear on rug. Border soft faded rusty red with gentle natural uneven yarn tone, not bright orange, not burgundy. Matte short handwoven wool pile with fine linear fiber character. Rug fills frame exactly edge-to-edge with NO floor outside, no fringe outside, no perspective, no furniture/objects, no folds, wrinkles or shadows, no scene light gradients or glints. Flat neutral albedo color scan, no labels.",
+      "reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-22.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-5.jpg"
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Photo-informed visual interpretation, not measured reflectance or photogrammetry. Minor generated texture deviations remain; metric geometry and shader controls determine physical relief.",
+      "actual_dimensions_px": [
+        1086,
+        1448
+      ],
+      "bytes": 2947126,
+      "sha256": "00d9279e4c83f5eb908ced80127d55714fb77ee00ff99b66e38cf160a15d037f"
+    },
+    {
+      "name": "salon-cream-plaster",
+      "file": "salon-cream-plaster.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-ddae0711-1447-476c-b5b8-2455ef8502c2.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless PBR base color for plaster hood, lime plaster walls and cream masonry mortar. Image reference ONLY: faithfully recreate the pale warm off-white smooth hand-applied lime plaster around the arched glazed doors and chimney hood at La Bastide de Fléchon. NEW square 2048px material scan showing 1m square: warm chalk-white/very pale ivory with extremely subtle milky beige/cloudy grey-white broad hand-trowel variations, fine chalky grain, maintained old French lime plaster. No strong brush streaks, no golden ochre, no saturated orange, no greige concrete, no chipped or cracked decay, no rough sandy rubble. Match cream body after removing warm firelight and garden light. Entire image a single unbroken surface with uniform neutral diffuse albedo, no directional lighting or shading, no highlights, shadows or vignette. Seamless all edges. No blocks/joints/moldings/room/furniture/text.",
+      "reference_photographs": [
+        "PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-17.jpg"
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Photo-informed visual interpretation, not measured reflectance or photogrammetry. Minor generated texture deviations remain; metric geometry and shader controls determine physical relief.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 1727356,
+      "sha256": "50272a02b27dd8527a6d0d7958a015adce2b442067cf54f4c779c6d5a3348b26"
+    },
+    {
+      "name": "salon-oak-timber",
+      "file": "salon-oak-timber.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-e13c2ac2-72f1-459b-ad3b-e2085ca4f538.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless PBR base-color scan for a rough old main ceiling beam. Reference photographs ONLY: match the very large pale weathered, checked main beams beneath the narrower warmer joists in this La Bastide de Fléchon salon. NEW landscape 2048x1024 close orthographic scan of one continuous beam face approx 2m wide and 45cm tall. Grain runs HORIZONTALLY left to right. Desaturated pale grey-honey/aged sandy oak, old long thin irregular dark checking cracks following grain, repeated uneven shallow broad adze facets, slight splintering, occasional knot scar and small old pinholes. The main beam is notably paler and more weathered than the orange joists. Keep restrained natural variegation; not black burnt wood, not golden varnish, no bright raw timber. Base-color only: uniform neutral diffuse lighting, NO shadows in deep holes, no highlights, no vignette. NO beam edges, boards/plank joints or seams, no room/objects. Continuous seamless material edge-to-edge horizontally and vertically, no text.",
+      "reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-17.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-5.jpg"
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Photo-informed visual interpretation, not measured reflectance or photogrammetry. Minor generated texture deviations remain; metric geometry and shader controls determine physical relief.",
+      "actual_dimensions_px": [
+        1774,
+        887
+      ],
+      "bytes": 2789838,
+      "sha256": "e21c9ae4660373807b6b2e6e91038dd625e71636d88356ae0b78e48f6d37bcc1"
+    },
+    {
+      "name": "salon-forged-iron",
+      "file": "salon-forged-iron.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-08aa326b-1425-4238-8974-ed8ef9beb1f9.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless physically based metal BASE COLOR scan. Reference is La Bastide de Fléchon's fireplace, reference ONLY. Generate new 2048px square of 70cm of continuous old charcoal-black forged/cast iron surface matching the dark fireback plates and andirons. Very dark warm charcoal with restrained brown-black oxidized patina, irregular soft grey smoke staining, minute warm umber rubbed patches and very fine hammered surface character. Metal is old and sooty but not orange rusty, not silver, not shiny chrome. Keep the albedo appropriately dark. NO embossed/cast ornament, no plate borders, no rivets, no seams, no fire or logs; editable geometry supplies all those. Neutral evenly lit flat orthographic scan, no specular highlights, reflections, baked flame orange light or shadows, no vignette. Seamless edge-to-edge single surface only, no objects or text.",
+      "reference_photographs": [
+        "PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg"
+      ],
+      "additional_reference_crop": {
+        "source": "PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg",
+        "crop_xywh": [
+          950,
+          1250,
+          1700,
+          1500
+        ],
+        "inspection_file": "reference/salon-inspection/fireplace-original-pixels.jpg"
+      },
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Photo-informed visual interpretation, not measured reflectance or photogrammetry. Minor generated texture deviations remain; metric geometry and shader controls determine physical relief.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 2531971,
+      "sha256": "d00ed1cf405003fad0ea7fcadefabf2b6dad36ed11722c0d86c465c8bc3154c7"
+    },
+    {
+      "name": "salon-curtain-linen",
+      "file": "salon-curtain-linen.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-2ab25300-36e5-4c8a-ac08-ea79ea96d0a0.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless albedo for sheer ivory linen curtains. Input salon reference photos ONLY, recreate the fine pale warm ivory curtains on thin dark rods beside the glazed doors. Generate new square 2048px macro orthographic scan covering 20cm of flat semi-sheer linen cloth. Delicate flax-warm off-white warp and weft, thin slightly irregular vertical slub threads at 0.3-0.6mm spacing, subtle finer cross threads. More visibly vertical than horizontal, softly open and airy weave. NOT chunky pillow basketweave, not mesh net, not woven straw, not knitted. Near-uniform pale ivory cloth with tiny low-contrast thread variations. No folds, pleats or seams, no room/door/rod/light gradients or cast shadows. Neutral flat diffuse base color, seamless all edges, surface fills image, no text. Transparency will be provided by separate physically based shader, don't paint a background or dark grid.",
+      "reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-17.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-5.jpg"
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Photo-informed visual interpretation, not measured reflectance or photogrammetry. Minor generated texture deviations remain; metric geometry and shader controls determine physical relief.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 2903273,
+      "sha256": "a6473e7259c98ee57345cca755747b95085f40efa8fd4a8249f6a70eee01d9f0"
+    },
+    {
+      "name": "salon-rubble-face",
+      "file": "salon-rubble-face.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-2f884d98-4473-4bed-88bd-a28c145365c8.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless BASE COLOR texture for individual irregular limestone stones in editable masonry geometry. Reference photographs ONLY: match the exposed natural split-faced pale Baux limestone flanking the great glazed doors in La Bastide de Fléchon salon. NEW 2048px square scan of ONE unbroken stone face about 60cm across, warm cream-to-light sandy buff limestone, irregular pale ochre mineral flecks and chalky white weathering, naturally porous and roughly split with fine to medium mineral granularity. Old pale Provençal limestone with soft tan spots. NO mortar, NO masonry joints, NO blocks, no separate stones or edge outlines; all rubble outlines and joints exist in geometry. Albedo only: flatten directional shading from all crevices, neutral even diffuse color with no highlights or cast shadows/vignette/perspective. Seamless continuous texture fills image, no room/furniture/windows or text.",
+      "reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-17.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-5.jpg"
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Photo-informed visual interpretation, not measured reflectance or photogrammetry. Minor generated texture deviations remain; metric geometry and shader controls determine physical relief.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 3057024,
+      "sha256": "f209d8cebc51347585d5e000e8f5a7796bf513d7e2a01473eb1fd21f7d9fa853"
+    },
+    {
+      "name": "salon-pillow-diamond",
+      "file": "salon-pillow-diamond.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-be372987-85cf-4f47-a8e0-bbf5b2a81e65.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless textile base-color map for small 34cm cushion in La Bastide de Fléchon salon. Input photo is reference ONLY; focus on the small pale square pillow in front of the large flax pillows on the sofa. Generate NEW square 2048px scan of 30cm of flat woven cloth, warm ivory/oatmeal base with restrained very pale taupe/beige tiny soft quatrefoil / diamond floral motifs arranged in a loose diagonal lattice, each motif about 3cm across. Low-contrast woven-jacquard appearance, slightly faded and irregular fine natural linen yarn. Subtle pearl-beige flower/diamond clusters, NOT large geometric ikat, no sharp black marks, no colorful ornament. Match photographed quiet pale pillow. Edge-to-edge seamless in both axes. Flat orthographic neutral diffuse albedo only, no pillow shape, seams, folds, shadows, highlights or scene lighting, no other objects/text.",
+      "reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-5.jpg"
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Photo-informed visual interpretation, not measured reflectance or photogrammetry. Minor generated texture deviations remain; metric geometry and shader controls determine physical relief.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 3380268,
+      "sha256": "b0bfa58102fc95918a8a72eb575040d318f398f9256dd6d032415d1991bd96bd"
+    },
+    {
+      "name": "salon-sofa-basketweave",
+      "file": "salon-sofa-basketweave.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-0ad1644d-e8b1-4b18-b778-35e8101c498f.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless base-color scan for the La Bastide de Fléchon salon's taupe sofa upholstery. Input original photograph is reference ONLY; focus on the taupe fabric on the left sofa arm and seat immediately beside the dark carved table. Generate NEW square 2048px fabric scan covering exactly 25x25cm. Match the observed sharply visible natural BASKET-WEAVE: approximately 100–125 yarn crossings across this whole swatch, 2mm broad alternating paired warp/weft strands. Soft warm mushroom/grey-brown/taupe thread colors, muted low saturation; some individual pale flax and deeper grey threads create a clear regular interlaced 2x2 basket structure. Threads are soft slightly slubby flat ribbons, not shaggy pile and not boucle loops. The textile is medium muted taupe, NOT white or creamy beige and not brown velvet. Weave should remain visible on an upholstered arm rendered from a few metres away. Uniform neutral diffuse albedo ONLY; show thread colors but do not bake directional occlusion shadows, specular highlights, light gradients. No cushion seams, folds, tufting, furniture, objects, perspective, borders or text. Perfectly seamless edge-to-edge flat cloth scan.",
+      "reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-22.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-5.jpg"
+      ],
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Photograph-informed material interpretation. Weave crossing scale calibrated to original sofa arms; yarn microrelief remains independent of image luminance.",
+      "reason_added_after_initial_neutral_render": "The earlier shared taupe_chenille scan read as smooth boucle in the source-matched furniture view. Photo13 clearly shows a broader basketweave.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 3261153,
+      "sha256": "2327a955e4100c5775106366cfdf8053c1061a7619c8369d03adff7c3260e678"
+    },
+    {
+      "name": "salon-charred-oak-bark",
+      "file": "salon-charred-oak-bark.png",
+      "generator_output_path": "/Users/cloud/.codex/generated_images/01a072bd-4c45-7c03-820e-c2e3ca4f2798/exec-8c65ddab-c0fe-46c9-a1dd-abfadd0b9315.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless PBR base-color texture for editable charred oak firewood logs in La Bastide de Fléchon's salon fireplace. Input images reference ONLY: look closely at the logs on the hearth in the supplied source fireplace. Generate NEW 2048px square orthographic material scan of a single continuous 45cm square oak BARK surface, natural broken split ridges running VERTICALLY bottom to top along the log, dark muted grey-brown furrows, pale ash-grey flaky char islands, remaining dark umber/tobacco wood fibres, thin irregular cracks across the long bark ribbons. Partially burned weathered oak, NOT smooth sawn timber, not a photograph of multiple logs, not uniform coal. The bark should have complex irregular overlapping grey-brown scales and lengthwise fibres at 5–30mm scale. Albedo color only: neutral flat uniform diffuse illumination, remove fire orange and all cast shadow or occlusion directionality. NO flames, embers, glow, smoke, room, ironwork, people or log silhouette/ends. No glossy burnt highlights, no vignette, no text. Texture fills frame edge-to-edge and is seamlessly tileable horizontally and vertically. Real substantial bark ridges will be provided in separate editable 3D geometry; do not depict scene lighting.",
+      "reference_photographs": [
+        "PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg"
+      ],
+      "additional_reference_crop": {
+        "source": "PHOTOS/VICTOR FITZ/DSC05439-Edit-2.jpg",
+        "crop_xywh": [
+          950,
+          1250,
+          1700,
+          1500
+        ],
+        "inspection_file": "reference/salon-inspection/fireplace-original-pixels.jpg"
+      },
+      "map_role": "sRGB base color only",
+      "output_edits": "None. Exact generated PNG copied into project.",
+      "limitations": "Neutral photo-informed oak bark and partial char interpretation, not a measured scan. Full bark cracks and split-log silhouette are geometry; independent fine normal and roughness are material controls.",
+      "mapping": "Normalized cylinder side UV: U around circumference, V along log. Shader scale U1/V2 gives one 45cm patch around a roughly 12–14cm diameter log and two along a roughly90cm length.",
+      "actual_dimensions_px": [
+        1254,
+        1254
+      ],
+      "bytes": 3360636,
+      "sha256": "6c033c70a6e836bce51e2a2df3a7fdbc5e679aaf7cc7c1917e8ecda8fa6ff6b5"
+    }
+  ],
+  "reused_generated_assets": [
+    {
+      "file": "hemp_linen.png",
+      "use": "Large flax pillows",
+      "provenance": "generated-manifest.json"
+    },
+    {
+      "file": "antique_walnut.png",
+      "use": "Chair walnut and rubbed dark table carving",
+      "provenance": "generated-manifest.json"
+    },
+    {
+      "file": "reclaimed_oak.png",
+      "use": "Warmer small joists distinguished from pale main beams",
+      "provenance": "generated-manifest.json"
+    }
+  ],
+  "shader_policy": {
+    "implementation": "rooms/salon_materials.py",
+    "color": "Images feed base color only through optional neutral saturation/gain calibration.",
+    "roughness": "Material-specific ranges driven by an independent metric noise signal; no texture luminance input.",
+    "relief": "Independent metric noise and crossing yarn signals. Major edges, joints, carved profiles, cushions and creases remain actual geometry.",
+    "reflectance": "Principled physical IOR/Fresnel retained at specular IOR level 0.5. Stone/plaster/textile roughness and metal fractions vary by material. No global specular suppression.",
+    "scope": "New salon_* material datablocks only; no shared house material mutation.",
+    "curtain": "Diffuse + transmitted fiber mix, with small independent open-weave transparent fraction.",
+    "floor": "Two separately generated stone albedos, each with a second subtle color calibration variant; normalized tile UVs receive deterministic object offsets. No image-painted tile grout.",
+    "rug": "Single full-rug normalized UV. Simple espresso field, broad rust-red border, narrow dark binding. No invented ornamental carpet motifs.",
+    "upholstery": "Sofa uses room-specific 25cm basketweave scan at 4 repeats/metre on physical-metre cloth UVs; large hemp pillows use physical UVs at 5.5 repeats/metre. Independent yarn normals follow those cloth UVs.",
+    "bark": "Room-specific partially charred oak scan, normalized cylindrical side UVs U=circumference/V=length, scale U1/V2. Independent metric micro-normal and roughness; substantial bark ridges remain geometry."
+  },
+  "material_calibration_passes": [
+    {
+      "reason": "Integrated draft frame385 showed pale raw-looking main beams, near-white floor, and stone faces merging with cream mortar versus original photos07/13/31.",
+      "reference_photographs": [
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-17.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-22.jpg",
+        "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-5.jpg"
+      ],
+      "color_space_check": "All albedo images are sRGB. Mean decoded linear RGB before gains: timber [.453,.352,.252], floor A [.692,.605,.484], floor B [.694,.615,.497]; no color-space bug found.",
+      "timber": {
+        "gain": [
+          0.58,
+          0.56,
+          0.53
+        ],
+        "roughness": [
+          0.76,
+          0.88
+        ],
+        "reason": "Reduce main-beam reflectance toward weathered grey-brown oak while retaining full generated grain and independent detail."
+      },
+      "floor": {
+        "multiplier_on_previous_gains": [
+          0.8,
+          0.79,
+          0.78
+        ],
+        "roughness_changed": false,
+        "reason": "Small salon-only albedo calibration preserves pale warm beige and subtle four-material tile variations; no global exposure adjustment."
+      },
+      "rubble": {
+        "gains": [
+          [
+            0.67,
+            0.65,
+            0.61
+          ],
+          [
+            0.54,
+            0.55,
+            0.55
+          ],
+          [
+            0.76,
+            0.72,
+            0.65
+          ]
+        ],
+        "reason": "Buff/grey limestone faces should be visibly darker than cream mortar, with natural block variation."
+      },
+      "verification": "Beam/floor gains rendered in the saved draft house at frame385, Cycles24 samples, same camera and lighting; out/salon-study/timber-floor-adjusted.png. Rubble adjustment based on inspected neutral closeup and source31 without another simultaneous Blender worker.",
+      "limitations": "A photographic reflectance interpretation, not measured albedo. Bright aperture illumination still reduces floor contrast in the draft; source-linked lighting comparison remains necessary."
+    }
+  ],
+  "final_surface_calibration": {
+    "method": "Visual comparison of integrated Cycles previews with the unchanged originals; inferred reflectance, not measured BRDF.",
+    "mortar_gain_linear": [
+      0.46,
+      0.43,
+      0.38
+    ],
+    "mortar_reason": "The prior mortar was too white relative to stone in the frontal original, making every block look outlined. The final gain lowers that contrast independently of stone color.",
+    "bark_gain_linear": [
+      0.28,
+      0.27,
+      0.25
+    ],
+    "bark_reason": "The isolated firebox render exposed overly pale bark under the modeled fire; pigment gain reduced while geometric splits and ash variation remain.",
+    "rubble_geometry": "Broader flatter faces, 16–25 mm projections, irregular perimeter points and 120–550 mm piece widths. Mortar is separate physical geometry.",
+    "final_acceptance": "See salon verification and exact rendered model hashes; these controls alone do not prove photographic identity."
+  }
+}

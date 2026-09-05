@@ -304,6 +304,168 @@ tobacco plaster and terracotta entrance. Curtain folds and fabric scale are
 calibrated against the principal-suite photograph. These are appearance and
 placement corrections; architectural clearances and policies remain unchanged.
 
+## D-034 Kitchen segmental head and heavy ceiling members
+Entities: D_KITCHEN_GARDEN, C0_K, KITCHEN_BEAM0, KITCHEN_BEAM1, KITCHEN_BEAM2, KITCHEN_BEAM3
+Original photographs 10 and 12 (interior and exterior) agree on a shallow
+segmental kitchen garden-door head, not the previous semicircle. Retain the
+2200 mm plan opening and its centre, with inferred spring 2080 mm and 360 mm
+rise. The circular void, steel perimeter, continuous mullions and glazing share
+one profile; the head is 2440 mm. Photo10's joists are wider than their plaster
+gaps imply in the previous model. Four distinct heavy cross beams are visible
+in photo10; the reverse kitchen view in photo00 shows three ahead of its
+viewpoint and supports a denser sequence. Their centres at y=10600, 11850,
+13100 and 14350 mm, with equal 1250 mm spacing, are inferred from these two
+views; the plan does not specify ceiling beam positions. The updated
+92 x 105 mm joists and retained 285 x 310 mm beams (2557 mm soffit) meet at
+their bearing plane. Beam positions and visible silhouette heights remain
+unsurveyed photographic estimates. Plan footprint, floor/storey levels,
+door approaches and headroom checks remain unchanged.
+
+## D-035 Repeatable photographic review and material response
+Entities: kitchen, living, master, bed1, bed2, bed3, bed4, hall, master_bath
+The third pass locks source landmark camera fits independently of model changes,
+records residuals, and compares baseline/current scenes with identical cameras.
+Photo10 staging clears the island; flowers observed in photo00 remain an editable
+alternate collection. Pigment maps no longer drive bump or roughness. Procedural
+pores/weave/wood fibres represent inferred relief in metres, and dielectric
+specular response is restored for neutral-light review. Named photographic
+lighting presets are separate from the coherent walkthrough daylight state.
+
+## D-036 Garden bedroom heads against the plan exterior wall
+Entities: bed1, bed2, D_BED1, P_BED1, A2
+The ground-floor plan places both garden bedroom heads against the north
+exterior wall. Prior presentation rotation +72 degrees put them against the
+bathroom partitions. Reorient to the actual north inside face (approximately
+−19 degrees), retaining the 1500/1600 mm mattresses and physical room bounds.
+Bedroom one's doorway is corrected to the southwest end of its south partition
+(original from-start parameter 110 mm rather than 1550 mm), as shown in the plan,
+to preserve the bed approach. The first bed has 280 mm extra lateral offset for
+the bathroom approach. The photo02 ceiling now reads with the existing heavy
+beam projecting above the bed and fine joists across its head; no ceiling axes
+are changed to compensate for the old furniture rotation. Room/photo assignment
+and precise furniture offsets remain inferred. The principal curtain rod retains
+6460 mm elevation inside the audited room height, with its panel positions tied
+to the corrected south opening jambs. That narrower fanlight provides the wall
+band visible in photos 06 and 33; curtain hems remain above the floor.
+
+## D-037 Distinguish the shared front glazing from its stone surround
+Entities: D_FRONT, D_FRONT.surround, D_FRONT.frieze
+The parallel salon study measured the high-resolution ground plan against the
+8000 mm main block. This task independently checked the first-floor plan:
+approximately 397 pixels clear opening versus 953 pixels across the 8000 mm
+block gives 3333 mm, while the outer surround is about 4420 mm. Agree a 3360 mm
+clear width centred at x=4000 mm, with 500 mm stone jambs, replacing the previous
+4400 mm clear opening. Retain the inferred 4100 mm spring height, reducing the
+upper fanlight crown to 5780 mm, and scale its concentric tracery consistently.
+The upper and lower opening remain one shared physical void. This is a plan
+measurement correction, not a per-camera deformation. Exact millimetre precision
+is not established by the raster plans.
+
+
+## D-038 Continuous shower stone and inferred wet-room soffit
+Entities: master_bath, bath1, bath2, bath3, bath4, MN, ST_MASTER
+Photo05 supports a continuous split-stone field around a long recessed shelf,
+a head on the window wall, and separate mixer plate and handset on the shelf
+wall. The interpreted principal shower is 1650 mm north–south, stops at the
+north wall y=10650 mm, and remains west of x=5355 mm, clear of the spiral stair.
+Its 22 mm flat soffit and stone backing end at z=6480 mm, below the existing
+6500 mm room datum. The photo supports a flat ceiling but does not establish
+its height, concealed construction or the photographed bathroom's identity.
+The other four bathrooms retain their plan-based locations. Their repeated
+stone finish is an interpretation, not evidence of identical fittings.
+Oblique stone fields use local object coordinates with identical world geometry,
+so the existing audit receives tight oriented bounds rather than inflated
+world-axis bounds. No placement threshold or room height is relaxed.
+
+## D-039 Rebuild the salon hearth and its flanking fanlights
+Entities: FP, FP_HEARTH, D_FRONT, D_FRONT.surround, D_E1, D_E2, D_W1, D_W2, living, dining, MAIN_BEAM0, MAIN_BEAM1, MAIN_BEAM2, MAIN_BEAM1_DINING
+Original-pixel inspection of Victor Fitz DSC05439-Edit-2 shows a raised paneled
+base, 80 mm projecting hearth, broad flat lintel with thin continuous moldings,
+concave shoulders and a smooth tapering hood. The earlier 230 mm hearth and
+empty black opening were substantial reconstruction errors. The backing now
+tapers with the hood and the fire opening starts 470 mm above the floor;
+individual stone courses, profiles, firebrick, crowned riveted iron fireback,
+andirons and logs are editable Blender geometry in rooms/salon_fireplace.py.
+The unsurveyed vertical proportions are photographic estimates. The 800 x
+1100 cm main block is confirmed by the ground plan. The northern east garden
+door moves south to flank the fireplace as drawn. Both east clear widths are
+1650 mm; west rectangular doors are 1200 mm, repositioned from the enlarged plan.
+The gable clear opening is 3360 mm, surrounded by 500 mm stone jambs; the earlier
+4400 mm clear opening had conflated the stone surround with the glazing. This
+shared gable opening also corrects the upper fanlight width. Side upper openings
+retain their positions. The open living/dining bookkeeping boundary moves to
+y=7.30 m without introducing a partition or modifying the continuous slab.
+The salon French pairs have movable meeting stiles, not a fixed central post;
+clear width is the opening between the outer jambs with both leaves released
+(as drawn), not the width of one half. The front lower leaves are modeled open
+78 degrees inward, with glazing and bars following the hinges in the IR/IFC.
+Their 2780 mm leaf head clears the 2822 mm joist soffit; the upper fixed panes
+stay in the facade plane. The passage clear-height schedule now reports the
+actual 2780 mm fixed transom, independently checked against a vertical solid
+probe, rather than the much taller upper fanlight. Both the angle and leaf
+head are photographic estimates.
+This restores the photographed open garden view and preserves full walk access.
+Photos26/57 show two flanking main timbers and no central axial beam. MAIN_BEAM1
+is therefore recast as the transverse member at y=7.30 m, the structural line
+shown on the plan, rather than terminating over the centre of the front glass.
+The prior axial segment north of this joint remains as MAIN_BEAM1_DINING,
+preserving the adjacent dining ceiling outside the salon scope.
+Its cross-section and underside remain unchanged; its ends butt against the
+flanking beams, while concealed bearing details remain inferred. East fanlights receive a clear concentric inner
+arch and three spokes between it and the outer arch; frame sections reduce to
+38 mm and glazing bars to 19 mm. Matching finish layers and room-specific
+generated textures are isolated from adjacent room materials.
+
+Integrated from the parallel salon study, commit `297f492`; its native geometry regressions are retained.
+
+## D-040 Select reproducible daylight after controlled render studies
+Entities: D_KITCHEN_GARDEN, D_KITCHEN_TERRACE, D_ENTRY, D_FRONT, N_MASTER_N, N_GUEST_E0, living, kitchen, master, hall
+Locked-camera Cycles studies separately tested supplemental aperture lights off
+and at their full original power, exposure +3 EV, sky strength x6, and corrected
+sun directions. Sky/exposure alone left deep interiors too dark relative to the
+garden; full aperture power flattened their relief. Retain an explicitly added
+diffuse-light approximation at 20% of the original aperture powers, or 15% for
+photo58, with neutral-warm color (1, .96, .90). This is neither measured sky
+radiance nor a zero-energy sampling portal. Original full powers and effective
+scaled energies remain recorded, and identical-camera off/full comparisons
+remain available through the preset API.
+
+Photo10's warm image-left/east-wall patch supports inferred sun rays traveling
+(+.72, +.62, -.31), approximately 18 degrees above the horizon in model axes.
+This lower model-southwest direction replaces the previous opposite-X kitchen
+direction and supplies one coherent walking state: sun energy 2.6, sky strength
+1.65, 5500 K white balance, and 20% aperture power. True north, solar position
+and capture photometry are not established. The walk adds 1.25 EV to the prior
+daylit interior bookmark exposures, preserving their relative differences;
+four exterior views and five windowless rooms retain their base exposures.
+Both camera animation and waypoint metadata record these computed values.
+
+Eight named photograph presets independently record sun, sky, fixtures,
+exposure and white balance. Final photo sky strengths/EV are kitchen10
+1.95/2.45, principal06 2.25/1.70, principal33 1.95/1.80, salon58 2.40/1.55,
+garden02 2.10/1.55, bedroom09 2.25/1.90, hall21 1.95/1.30 and shower05
+2.55/1.85. All eight candidates and four coherent-walk camera views were
+rendered and inspected. Their improved legibility is not photographic
+equivalence. Final aperture rectangles were subsequently cropped to actual
+openings: generic arches stop below their springs and the front upper plane
+is inscribed at z=4.13–5.30 m, width 2.10 m. Final rebuilt renders must recheck
+these changed distributions and the integrated salon fire.
+
+Thin open linen shades use 0.55 mm thickness and .55 diffuse translucency;
+small bulbs and real fixture lights switch together and retain reflection and
+transmission. These are estimated optical properties. The integrated salon
+volume flames and embers replace the fallback fire, are visible in photo58,
+and are off in the daylight walk. Actual fixture visibility, surface emission,
+light area dimensions, original/scaled powers, native white balance and render
+exposure are recorded. Cycles transport is restored after render setup to
+14 total, 8 diffuse and 10 transmission bounces. No audit policy is relaxed.
+
+## D-041 Integrate the independently reviewed salon finish
+
+Entities: FP, MAIN_BEAM0, MAIN_BEAM1, MAIN_BEAM2, C0_MAIN, D_FRONT
+
+The isolated salon reconstruction from source commits `297f492`, `e67a70d` and `ac42812` provides physical floor joints, irregular rubble and plaster returns, fireplace profiles and ironwork, timber checks, textile geometry and twelve generated pigment maps. It runs after shared material and timber work, preserving timber end-grain slots, and before the house lighting policy so fire and practicals have one owner. Its geometry is still subject to the combined house audit. The evidence and remaining limits are recorded in `salon-discrepancies.md` and `salon-materials-provenance.md`; the maps are inferred surface appearance, not measured reflectance.
+
 ## Against the reference
 
 - Retained: 8 x 11 m principal house block, attached kitchen, skew entrance hall,
@@ -319,6 +481,11 @@ placement corrections; architectural clearances and policies remain unchanged.
   structure, complete guest ceiling, plastered upper rooms, stair ironwork,
   room-specific upholstery, draped cloth, detailed kitchen cabinetry,
   generated material textures, bathroom fittings and physical lighting.
+- Third-pass corrections: four heavy kitchen beams and a segmental door head,
+  north-wall garden bed orientation, shared front glazing proportions, actual
+  sink opening, recessed wardrobe shelves, timber end grain, softer textiles,
+  continuous shower stone and detailed salon stonework, ironwork and furniture.
+  Generated pigment stays independent of inferred roughness and microrelief.
 
 - Mechanical verification: The generated checks.md records the final architectural checks; it is
   authoritative after each documented visual correction. No check thresholds
@@ -342,3 +509,7 @@ placement corrections; architectural clearances and policies remain unchanged.
   drainage, structure and plant systems are not verified by the supplied plans.
 - Photographs show different lighting and dressing arrangements. Furniture is
   placed to match the strongest consistent references, not every photograph.
+- Camera fits retain explicit residuals: the principal arch/bed framing and
+  guest bed-foot crop remain approximate. Supplemental aperture lights add
+  recorded energy; their powers are an approximation to interior fill, not
+  measured daylight. Final delivered artifacts carry their own dated checks.

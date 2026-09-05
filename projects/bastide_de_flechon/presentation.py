@@ -110,6 +110,12 @@ def dress(scene):
         print(f"FLECHON refined {name}: {time.monotonic() - started:.1f}s", flush=True)
     load_room("fidelity_materials").apply(scene, M)
     load_room("fidelity_timbers").apply(scene, M)
+    # The isolated salon reconstruction follows shared surface/UV work and
+    # precedes the house lighting policy so practicals have one owner.
+    salon = load_room("salon_materials").build_materials()
+    load_room("salon_envelope").apply(scene, salon)
+    load_room("salon_fireplace").apply(scene, salon)
+    load_room("salon_furniture").build(scene, salon)
     load_room("fidelity_lighting").apply(scene, M)
     # A natural sky/ground bounce, present in both the still and the walk file.
     # Interior practicals are placed by the interiors module.
@@ -129,17 +135,36 @@ def dress(scene):
                 shots.append(("interiors", label, loc, look, ev))
     if not shots:
         raise ValueError(f"No camera shots for HOMESPEC_ROOM={only!r}")
+    # The physical daylight stays coherent across the walk. Preserve the
+    # existing relative view adaptation and the windowless practical-lit rooms;
+    # apply the reviewed offset only to daylight interiors, never exteriors.
+    walk_policy = load_room("fidelity_lighting").PRESETS["walk"]
+    base_exposures = {label: ev for _, label, _, _, ev in shots}
+    shots = [(module, label, loc, look,
+              ev + walk_policy["interior_exposure_offset"] if module == "interiors" and label not in walk_policy["exposure_offset_exempt"] else ev)
+             for module, label, loc, look, ev in shots]
     scene.path([(i * 4, loc, look) for i, (_, _, loc, look, _) in enumerate(shots)], fps=24, lens=24, fstop=16, focus=6)
     scene.exposure([(i * 4, ev) for i, (_, _, _, _, ev) in enumerate(shots)], fps=24)
     scene.render_settings(rx=1600, ry=1000, samples=192, exposure=0, adaptive=0.035)
+    # The generic helper defaults to eight total bounces. Restore the reviewed
+    # transport depth after it runs so glazing and interior bounce retain the
+    # same settings as the lighting studies.
+    scene.scene.cycles.max_bounces = 14
+    scene.scene.cycles.diffuse_bounces = 8
+    scene.scene.cycles.transmission_bounces = 10
     # Keep the route as metadata so the interactive viewer can jump to rooms.
     import json
 
     import bpy
 
     scene.scene["flechon_waypoints"] = json.dumps(
-        [{"name": label, "location": loc, "look": look, "exposure": ev, "frame": 1 + i * 96} for i, (_, label, loc, look, ev) in enumerate(shots)]
+        [{"name": label, "location": loc, "look": look, "exposure": ev, "base_exposure": base_exposures[label], "frame": 1 + i * 96} for i, (_, label, loc, look, ev) in enumerate(shots)]
     )
+    scene.scene["flechon_walk_exposure_policy"] = json.dumps({
+        "daylight_interior_offset": walk_policy["interior_exposure_offset"],
+        "exempt_rooms": walk_policy["exposure_offset_exempt"],
+        "exterior_offset": 0, "purpose": "Camera adaptation under one physical daylight state",
+    })
     # Environment textures are packed into the final walk file by prepare_walk.py.
     scene.scene["source_archive"] = "LABASTIDEDEFLECHON.zip"
     scene.scene["reconstruction_note"] = "Measured plan layout; heights, material choices and furnishings interpreted from supplied photographs."

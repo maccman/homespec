@@ -80,7 +80,7 @@ def grain_uv(obj):
         across = next(d for d in range(3) if d != along and d != normal_axis) if normal_axis != along else min(range(3), key=lambda d: extents[d])
         for index in face.loop_indices:
             point = obj.data.vertices[obj.data.loops[index].vertex_index].co
-            layer.data[index].uv = (point[across], point[along])
+            layer.data[index].uv = (point[along], point[across])
 
 
 def box(scene, name, at, size, mat, *, rot=0, bevel=0.0025):
@@ -415,20 +415,33 @@ def kitchen_details(scene, N):
     for i, y in enumerate((11.2, 13.2)):
         wire_pendant(scene, "kitchen_fine_wire_pendant_" + str(i), (-2.63, y, 2.10), 3.05, N, i)
     flowers(scene, N)
+    # Alternate observed photo00 staging remains editable, but photo10 has an
+    # uninterrupted worktop. Collection visibility is explicit in the walk.
+    alternate = bpy.data.collections.get("Kitchen · photo00 flowers (alternate)") or bpy.data.collections.new("Kitchen · photo00 flowers (alternate)")
+    if alternate.name not in scene.scene.collection.children:
+        scene.scene.collection.children.link(alternate)
+    for obj in list(bpy.data.objects):
+        if obj.name.startswith(("kitchen_flower_", "kitchen_botanical_", "kitchen_autumn_")):
+            for collection in list(obj.users_collection):
+                collection.objects.unlink(obj)
+            alternate.objects.link(obj)
+    alternate.hide_render = True
+    alternate.hide_viewport = True
+    worktop_and_sink(scene, N)
     # Smooth period tap replaces the visible low-poly angular pipe.
     remove("kitchen_tap")
     path = S.bezier((0, 0, 0), (0.006, 0, 0.27), (-0.11, 0, 0.39), (-0.23, 0, 0.34), 28)
     path += S.bezier((-0.23, 0, 0.34), (-0.30, 0, 0.31), (-0.31, 0, 0.23), (-0.30, 0, 0.20), 20)[1:]
-    S.curves(scene, "kitchen_polished_swan_spout", [path], 0.014, N.silver, at=(-2.22, 11.49, 0.955))
+    S.curves(scene, "kitchen_polished_swan_spout", [path], 0.014, N.silver, at=(-2.22, 12.29, 0.955))
     S.lathe(
         scene,
         "kitchen_tap_turned_base",
         [(0, 0.044), (0.013, 0.044), (0.022, 0.028), (0.065, 0.022), (0.13, 0.023), (0.16, 0.018)],
         N.silver,
-        at=(-2.22, 11.49, 0.955),
+        at=(-2.22, 12.29, 0.955),
         segments=64,
     )
-    for y in (11.34, 11.64):
+    for y in (12.14, 12.44):
         S.lathe(
             scene,
             "kitchen_tap_cross_valve",
@@ -445,6 +458,47 @@ def kitchen_details(scene, N):
             N.silver,
             at=(-2.22, y, 0.955),
         )
+
+
+def worktop_and_sink(scene, N):
+    """Long honed top and an open stainless bowl, photo10's clear staging."""
+    remove("kitchen_island_top_", "kitchen_sink_", "kitchen_chopping_board")
+    # Butt joints occupy the sink sides; no hidden slab closes the bowl.
+    x0, x1, y0, y1 = -3.16, -2.10, 10.35, 13.795
+    sx0, sx1, sy0, sy1 = -2.98, -2.38, 11.99, 12.68
+    for name, xa, xb, ya, yb in (("north", x0, x1, sy1, y1), ("south", x0, x1, y0, sy0),
+                                ("west", x0, sx0, sy0, sy1), ("east", sx1, x1, sy0, sy1)):
+        scene.box("kitchen_island_top_" + name, ((xa + xb) / 2, (ya + yb) / 2, .92),
+                  (xb - xa, yb - ya, .075), N.travertine, bevel=.003)
+    cx, cy = (sx0 + sx1) / 2, (sy0 + sy1) / 2
+    vertices, faces = [], []
+    # Rounded rectangle sections; broad bottom, subtly coved corners.
+    count = 64
+    for z, width, depth, radius in ((.955, .60, .69, .035), (.927, .584, .674, .036),
+                                    (.77, .53, .61, .068), (.748, .46, .54, .090)):
+        for i in range(count):
+            corner, step = divmod(i, 16)
+            angle = corner * math.pi / 2 + step / 15 * math.pi / 2
+            signx = 1 if corner in (0, 3) else -1
+            signy = 1 if corner in (0, 1) else -1
+            vertices.append((cx + signx * (width / 2 - radius) + radius * math.cos(angle),
+                             cy + signy * (depth / 2 - radius) + radius * math.sin(angle), z))
+    for row in range(3):
+        for i in range(count):
+            j = (i + 1) % count
+            faces.append((row * count + i, row * count + j, (row + 1) * count + j, (row + 1) * count + i))
+    faces.append(tuple(reversed(range(3 * count, 4 * count))))
+    bowl = S.mesh(scene, "kitchen_sink_open_burnished_bowl", vertices, faces, N.silver, tag="primitive")
+    for face in bowl.data.polygons:
+        face.use_smooth = face.index < len(faces) - 1
+    solid = bowl.modifiers.new("1.2 mm stainless shell", "SOLIDIFY")
+    solid.thickness = .0012
+    scene.cyl("kitchen_sink_drain", (cx, cy, .75), .035, .003, N.iron, verts=48)
+    scene.cyl("kitchen_sink_strainer", (cx, cy, .752), .027, .003, N.silver, verts=48)
+    scene.box("kitchen_chopping_board", (-2.63, 11.65, .978), (.80, .44, .035), N.walnut, bevel=.022)
+    # The solid working top has soft, irregular grazing reflections, not a
+    # metallic glaze or embossed bitmap veins.
+    scene.scene["flechon_kitchen_staging"] = "Photo10 clear worktop; optional photo00 flowers collection disabled"
 
 
 def carved_table(scene, N):
