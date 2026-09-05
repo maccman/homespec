@@ -2,20 +2,22 @@
 
 A detailed, editable HomeSpec reconstruction of the house in `LABASTIDEDEFLECHON.zip`, based on 61 photos, both floor plans, the site plan and the supplied brochures.
 
-This documentation describes the final integrated source. The refreshed delivery renders, portable package and artifact-verification report still require the final run; existing diagnostic images are not that final evidence.
+The integrated source is ready for review. At the user’s request, the full 26-view render, completed motion video, portable-package refresh and final artifact-verification pass are deferred. The eight study previews below show the reviewed geometry and lighting; they are not a completed delivery set.
 
-Double-click **Walk Bastide.command** to open the furnished, textured house in Blender. In the **Flechon** sidebar, choose a room and click **Walk from here**.
+After packaging, double-click **Walk Bastide.command** to open the furnished, textured house in Blender. In the **Flechon** sidebar, choose a room and click **Walk from here**.
 
 - Mouse: look around. **W A S D**: move. **Q / E**: down / up.
 - **Shift**: move faster. **Tab**: toggle gravity.
 - **Click / Enter**: finish moving. **Esc**: cancel. **N**: show room shortcuts.
 - **Eevee** is the interactive renderer. Choose **Cycles** in the sidebar for more accurate lighting that refines while you pause.
 
-The 26 bookmarks cover the garden, pool house, living and dining rooms, kitchen, entrance, all five bedrooms, all five bathrooms, laundry, WC and circulation spaces. The model is freely navigable between bookmarks. The separate Cycles motion review contains three short moving-camera takes through the kitchen, principal suite and salon; the bookmarks remain freely selectable.
+The 26 bookmarks cover the garden, pool house, living and dining rooms, kitchen, entrance, all five bedrooms, all five bathrooms, laundry, WC and circulation spaces. The model is freely navigable between bookmarks. The Cycles motion renderer produces three short moving-camera takes through the kitchen, principal suite and salon; the bookmarks remain freely selectable.
 
-![Existing gallery overview; the final integrated-source refresh is pending](review-gallery.jpg)
+![Eight reviewed photographic study previews; full delivery deferred](review-photo-pass.jpg)
 
 ## Files
+
+Expected local outputs from the commands below. The full refresh is deferred, so some outputs are absent or belong to earlier diagnostic runs. `review-photo-pass.jpg` is the committed preview sheet; `review-gallery.jpg` retains the prior pass’s gallery.
 
 - `deliverables/La-Bastide-de-Flechon-Walkthrough.zip`: complete portable walkthrough folder; unzip and open its launcher.
 - `deliverables/model/house_walk.blend`: portable model with packed textures and sky.
@@ -139,7 +141,7 @@ uv run --frozen --with pillow python "$FLECHON_PROJECT/review_assets.py" \
 uv run --frozen python "$FLECHON_PROJECT/verify_delivery.py"
 ```
 
-`--with pillow` supplies the review tool's image dependency for that command without changing project dependencies. These commands are the reproduction procedure, not a claim that this final artifact set has already passed. The manifest files and `verification.md` record the completed run.
+`--with pillow` supplies the review tool's image dependency for that command without changing project dependencies. These commands are the reproduction procedure for the deferred artifact pass. `verification.md` distinguishes completed source/study checks from the unfinished final delivery.
 
 ## Fidelity
 

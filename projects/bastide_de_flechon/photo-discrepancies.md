@@ -5,16 +5,16 @@ they do not establish photographic equivalence for the whole house. Source paths
 below are relative to `reference/`. Camera evidence and rejected trials are in
 `camera_calibration.md` and `photo_camera_lock.json` (lock v4).
 
-The eight fresh Cycles previews in `deliverables/photo-comparison/` now exist
-from the final integrated source and v4 lock. The four bedroom sections below
-were updated by directly comparing those images with the untouched originals;
-their manifest records the named photo presets and 20% aperture fraction.
-Earlier `calibration-current-v2/`, `calibration-clay-v2/` and principal-camera
-trials remain diagnostic history, not substitutes for the fresh comparisons.
-Source includes all four salon modules from `ac42812` and the selected reduced-
-aperture lighting. **Gallery, motion-review and portable-package completion and
-final artifact verification are not claimed here.** The comparison manifest
-identifies the actual scene, camera lock, render settings and image hashes.
+Eight Cycles study previews were rendered and compared directly with the
+untouched originals using the integrated geometry and v4 camera lock. The
+complete study set preceded two verifier/archive-name fixes, which changed no
+geometry, material, camera or lighting. Four views were regenerated afterward;
+the user then deferred the remaining full render and packaging work. The
+committed `review-photo-pass.jpg` contains those eight reviewed compositions.
+The local comparison directory is consequently a partial latest-provenance
+refresh, not a completed final artifact set. Earlier calibration folders remain
+diagnostic history. **The 26-view gallery, completed motion video, portable
+package refresh and final artifact verification are deferred and unclaimed.**
 
 ## Kitchen10
 
