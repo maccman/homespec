@@ -1,0 +1,8 @@
+{
+  "operators": 4.243812416912988,
+  "cached_data": 0.02773700002580881,
+  "count": 600,
+  "speedup": 153.00185358777776,
+  "blender": "5.2.1 LTS",
+  "scope": "Construction of 600 boxes plus one dependency-graph update; excludes rendering, CAD import and whole-house performance."
+}

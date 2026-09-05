@@ -50,8 +50,9 @@ background Blender process; it never touches an interactive session. Timing is a
 local workload measurement, not a guarantee for all presentations.
 
 On the local Blender 5.2.1 LTS verification run, the 600-box workload took
-4.374 seconds through the former operator path and 0.0273 seconds through cached
-mesh copies: approximately 160× faster for this construction-only fixture.
+4.244 seconds through the former operator path and 0.0277 seconds through cached
+mesh copies: approximately 153× faster for this construction-only fixture.
+The [recorded timing](assets/primitive-timing.json) retains the measured values.
 Rendering, CAD import, materials and the full house are outside that timing.
 The migrated project grain writers explicitly mark their intended UV layer as
 active for rendering, preserving grain when a normal primitive already carries
