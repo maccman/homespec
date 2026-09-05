@@ -1,0 +1,628 @@
+{
+  "schema": 1,
+  "passed": true,
+  "image_count": 30,
+  "manifest_count": 7,
+  "reports": [
+    {
+      "schema": 1,
+      "purpose": "Manifest/file integrity and valid images; no photographic fidelity score",
+      "verifier_script_sha256": "74d6847d3e80c4cc94fd25fdd996394ec96a5a7f4a73394794b76b358944f1ce",
+      "root": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution",
+      "manifest_count": 1,
+      "image_count": 4,
+      "manifests": [
+        {
+          "manifest": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/manifest.json",
+          "manifest_sha256": "08dbf23c342069c8e5073397e1ff9b56777377f17c0ab84ffd2b3d89831bf459",
+          "views": [
+            {
+              "id": "pool46",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/pool46.png",
+              "sha256_actual": "dbb45554bd2c03d21e02dcc82e597244a0cfd2ebdc60f36f89d00e8d26f198ca",
+              "pixels": [
+                3840,
+                2160
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                246
+              ],
+              "luminance_stddev_8bit": 61.455555382157144
+            },
+            {
+              "id": "courtyard08",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/courtyard08.png",
+              "sha256_actual": "6b11a66cdf1161ecbb1b4717a1a8627d440709a7f2c12e55a3bb11415dca4aa8",
+              "pixels": [
+                2160,
+                2880
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                239
+              ],
+              "luminance_stddev_8bit": 68.3533076814345
+            },
+            {
+              "id": "kitchen12",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/kitchen12.png",
+              "sha256_actual": "af676f418dde34568d8c41bd2204104dc0d0277fe8af84a5d063195bd3356bf8",
+              "pixels": [
+                2160,
+                2880
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                242
+              ],
+              "luminance_stddev_8bit": 57.2904414428301
+            },
+            {
+              "id": "front41",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/front41.png",
+              "sha256_actual": "31c473badb28c21a5a3812325c9b222e36dfa4ab8b05c52f7877c7b0c68adb35",
+              "pixels": [
+                2250,
+                3000
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                241
+              ],
+              "luminance_stddev_8bit": 64.96769755669645
+            }
+          ],
+          "saved_scene_sha256_actual": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373"
+        }
+      ],
+      "findings": [],
+      "counts_by_rule": {},
+      "passed": true
+    },
+    {
+      "schema": 1,
+      "purpose": "Manifest/file integrity and valid images; no photographic fidelity score",
+      "verifier_script_sha256": "74d6847d3e80c4cc94fd25fdd996394ec96a5a7f4a73394794b76b358944f1ce",
+      "root": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details",
+      "manifest_count": 1,
+      "image_count": 6,
+      "manifests": [
+        {
+          "manifest": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/manifest.json",
+          "manifest_sha256": "d026a9959cd137220932fef8c8995a3aa19390656fdb81e1e47dcce0a05f699e",
+          "views": [
+            {
+              "id": "front-trim",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/front-trim.png",
+              "sha256_actual": "dd5c00da7723eb7f9a3f55e3f210fbc675e84cf87a9ed035dc4bc709303120f0",
+              "pixels": [
+                1920,
+                1600
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                232
+              ],
+              "luminance_stddev_8bit": 84.64962508966676
+            },
+            {
+              "id": "side-oculus",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/side-oculus.png",
+              "sha256_actual": "591728de988ba89008c371d7b5f51526528fbf97d4a650c7a6d259730a7bd145",
+              "pixels": [
+                1600,
+                1920
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                225
+              ],
+              "luminance_stddev_8bit": 63.3525107933298
+            },
+            {
+              "id": "shutter-sill",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/shutter-sill.png",
+              "sha256_actual": "58dec10dbbf849e48c81dc8ff09ee549152b5dfe5776e1a4cddcb0181512ee9f",
+              "pixels": [
+                1920,
+                1600
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                234
+              ],
+              "luminance_stddev_8bit": 73.2335984407364
+            },
+            {
+              "id": "courtyard-trim",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/courtyard-trim.png",
+              "sha256_actual": "8834db35bdc06a5e5140981f2cc64ce0a5cc4b61393990e83bf585116d1d3376",
+              "pixels": [
+                1600,
+                1920
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                247
+              ],
+              "luminance_stddev_8bit": 64.18388103734624
+            },
+            {
+              "id": "roof-eave",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/roof-eave.png",
+              "sha256_actual": "04363d8fe4b5547a392ae07217dbf9af7c45c362ae69583f8d810fa5952f2e68",
+              "pixels": [
+                1920,
+                1280
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                223
+              ],
+              "luminance_stddev_8bit": 37.60429068922359
+            },
+            {
+              "id": "rear45",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/rear45.png",
+              "sha256_actual": "6337ce29d000ac8a78a26cdf3a1f42fef425dc02acfbbb157858530b3fbd5ffb",
+              "pixels": [
+                1920,
+                1440
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                229
+              ],
+              "luminance_stddev_8bit": 57.77352689299235
+            }
+          ],
+          "saved_scene_sha256_actual": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373"
+        }
+      ],
+      "findings": [],
+      "counts_by_rule": {},
+      "passed": true
+    },
+    {
+      "schema": 1,
+      "purpose": "Manifest/file integrity and valid images; no photographic fidelity score",
+      "verifier_script_sha256": "74d6847d3e80c4cc94fd25fdd996394ec96a5a7f4a73394794b76b358944f1ce",
+      "root": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/neutral",
+      "manifest_count": 1,
+      "image_count": 3,
+      "manifests": [
+        {
+          "manifest": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/neutral/manifest.json",
+          "manifest_sha256": "3a01cb425f832b296146fefba81880414430a53dd12fbb8f894931345cb1aea9",
+          "views": [
+            {
+              "id": "pool46",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/neutral/pool46.png",
+              "sha256_actual": "7a8826a715a6be35b383746f61f979727c1b0dc288c6ce144adc5941557ca455",
+              "pixels": [
+                2560,
+                1440
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                234
+              ],
+              "luminance_stddev_8bit": 59.641704467845315
+            },
+            {
+              "id": "courtyard08",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/neutral/courtyard08.png",
+              "sha256_actual": "e6f83f49dc821714f2081bc7996505aa692286c1f6f2ea26372c7ba696ac8884",
+              "pixels": [
+                1440,
+                1920
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                219
+              ],
+              "luminance_stddev_8bit": 66.57533905365489
+            },
+            {
+              "id": "kitchen12",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/neutral/kitchen12.png",
+              "sha256_actual": "b315464cdc9fd61f6c116f0faa3e5320f72ab04cbf26c16ffda7254ae5c5397f",
+              "pixels": [
+                1440,
+                1920
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                240
+              ],
+              "luminance_stddev_8bit": 56.93373824488324
+            }
+          ],
+          "saved_scene_sha256_actual": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373"
+        }
+      ],
+      "findings": [],
+      "counts_by_rule": {},
+      "passed": true
+    },
+    {
+      "schema": 1,
+      "purpose": "Manifest/file integrity and valid images; no photographic fidelity score",
+      "verifier_script_sha256": "74d6847d3e80c4cc94fd25fdd996394ec96a5a7f4a73394794b76b358944f1ce",
+      "root": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/clay",
+      "manifest_count": 1,
+      "image_count": 3,
+      "manifests": [
+        {
+          "manifest": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/clay/manifest.json",
+          "manifest_sha256": "72ce27b648aa1ed0550b4bef99396ad269c9681c0b2104b22aa924964c863c45",
+          "views": [
+            {
+              "id": "pool46",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/clay/pool46.png",
+              "sha256_actual": "5ccfe101836bded329bac54ff469ec5408ba82c63a856a46b0c133e474f7fd8d",
+              "pixels": [
+                2560,
+                1440
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                3,
+                228
+              ],
+              "luminance_stddev_8bit": 29.056929454999462
+            },
+            {
+              "id": "courtyard08",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/clay/courtyard08.png",
+              "sha256_actual": "bde4edf6a1fd83fea69f753ad26aaccad0325b2d8ad377117efa5f4019ee61d0",
+              "pixels": [
+                1440,
+                1920
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                8,
+                215
+              ],
+              "luminance_stddev_8bit": 40.72559823064862
+            },
+            {
+              "id": "kitchen12",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/clay/kitchen12.png",
+              "sha256_actual": "74186df1a67b32d460ea539829c370a9aceeabbfa8a909758d998ea7817d9b4d",
+              "pixels": [
+                1440,
+                1920
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                229
+              ],
+              "luminance_stddev_8bit": 31.033398227987426
+            }
+          ],
+          "saved_scene_sha256_actual": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373"
+        }
+      ],
+      "findings": [],
+      "counts_by_rule": {},
+      "passed": true
+    },
+    {
+      "schema": 1,
+      "purpose": "Manifest/file integrity and valid images; no photographic fidelity score",
+      "verifier_script_sha256": "74d6847d3e80c4cc94fd25fdd996394ec96a5a7f4a73394794b76b358944f1ce",
+      "root": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/baseline-clay",
+      "manifest_count": 1,
+      "image_count": 3,
+      "manifests": [
+        {
+          "manifest": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/baseline-clay/manifest.json",
+          "manifest_sha256": "a562c99a5aade1e9541b60f52c0da7fce0aa5bd161a90bb115874eae80a81d4e",
+          "views": [
+            {
+              "id": "pool46",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/baseline-clay/pool46.png",
+              "sha256_actual": "a0b2487dae5e6d49b195aa57ef381662474e864144822a16b9aec475943d9cb5",
+              "pixels": [
+                2560,
+                1440
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                3,
+                228
+              ],
+              "luminance_stddev_8bit": 28.522889920241617
+            },
+            {
+              "id": "courtyard08",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/baseline-clay/courtyard08.png",
+              "sha256_actual": "9eb696589e84ce28f39105a0fad9c51f4cfd6aab66647687c18c7189ceb90120",
+              "pixels": [
+                1440,
+                1920
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                216
+              ],
+              "luminance_stddev_8bit": 38.60861579845923
+            },
+            {
+              "id": "kitchen12",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/baseline-clay/kitchen12.png",
+              "sha256_actual": "d97854345085052153d2c4a9707c3f17167deb7ac87ea2e9d4380b6934afa464",
+              "pixels": [
+                1440,
+                1920
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                2,
+                227
+              ],
+              "luminance_stddev_8bit": 32.584408048405635
+            }
+          ],
+          "saved_scene_sha256_actual": "2c500a928c7dc9291a1b2ea44396af8912e24db2c16f98ea16e5f74a48793758"
+        }
+      ],
+      "findings": [],
+      "counts_by_rule": {},
+      "passed": true
+    },
+    {
+      "schema": 1,
+      "purpose": "Manifest/file integrity and valid images; no photographic fidelity score",
+      "verifier_script_sha256": "74d6847d3e80c4cc94fd25fdd996394ec96a5a7f4a73394794b76b358944f1ce",
+      "root": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/material-studio",
+      "manifest_count": 1,
+      "image_count": 1,
+      "manifests": [
+        {
+          "manifest": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/material-studio/manifest.json",
+          "manifest_sha256": "ce02595ac8483253dae29165688a2d6f2817da8b84bdca0255bfb43c4963474e",
+          "views": [
+            {
+              "id": "materials",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/material-studio/materials.png",
+              "sha256_actual": "65b081a019ec26bebebebfba05d5499076bd6e19377f461775509dc08a90e24d",
+              "pixels": [
+                2400,
+                1600
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                230
+              ],
+              "luminance_stddev_8bit": 44.780564725128926
+            }
+          ],
+          "saved_scene_sha256_actual": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373"
+        }
+      ],
+      "findings": [],
+      "counts_by_rule": {},
+      "passed": true
+    },
+    {
+      "schema": 1,
+      "purpose": "Manifest/file integrity and valid images; no photographic fidelity score",
+      "verifier_script_sha256": "74d6847d3e80c4cc94fd25fdd996394ec96a5a7f4a73394794b76b358944f1ce",
+      "root": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft",
+      "manifest_count": 1,
+      "image_count": 10,
+      "manifests": [
+        {
+          "manifest": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/manifest.json",
+          "manifest_sha256": "e790d41b4e1bc0332eceeca6a6f0569740bc5c3111807c2e2ec16600181b646e",
+          "views": [
+            {
+              "id": "pool46",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/pool46.png",
+              "sha256_actual": "6e4ab96d0d8f7db688ec36f547c3a112b943211b13b22af5d0a27534d3aced91",
+              "pixels": [
+                896,
+                504
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                235
+              ],
+              "luminance_stddev_8bit": 57.402960980763524
+            },
+            {
+              "id": "courtyard08",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/courtyard08.png",
+              "sha256_actual": "3762939b4749eb469c0652f5aa9616e3fcd982298ec207f5420e34a388e6db4d",
+              "pixels": [
+                504,
+                672
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                217
+              ],
+              "luminance_stddev_8bit": 66.81635274655784
+            },
+            {
+              "id": "kitchen12",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/kitchen12.png",
+              "sha256_actual": "e7e1015c9b5788609b62ca51c7dc249af4d3ae5f1c773523f9d422000c4d44c2",
+              "pixels": [
+                504,
+                672
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                241
+              ],
+              "luminance_stddev_8bit": 55.37909740422628
+            },
+            {
+              "id": "front41",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/front41.png",
+              "sha256_actual": "98a6653fde6f4ed4ad606f50ae2924d49db3d86ebfae8388f34ba982f4fd9dc1",
+              "pixels": [
+                525,
+                700
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                235
+              ],
+              "luminance_stddev_8bit": 60.17791965010893
+            },
+            {
+              "id": "front-trim",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/front-trim.png",
+              "sha256_actual": "9639fe6fe32e380f471ce9a3e08e6fdd9e50c8bd0621357cc7b53a3b9922c241",
+              "pixels": [
+                672,
+                560
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                230
+              ],
+              "luminance_stddev_8bit": 84.1418090306355
+            },
+            {
+              "id": "side-oculus",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/side-oculus.png",
+              "sha256_actual": "c87da94cd2b1552a556af4f1d84a0f3fb1747eddf63574d21bbb8f51a47e5ea8",
+              "pixels": [
+                560,
+                672
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                229
+              ],
+              "luminance_stddev_8bit": 62.05020792453742
+            },
+            {
+              "id": "shutter-sill",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/shutter-sill.png",
+              "sha256_actual": "f2ba9bc5e79b1284f918a3f4795bc227eae6dae5c8559d08eea07408f3520549",
+              "pixels": [
+                672,
+                560
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                233
+              ],
+              "luminance_stddev_8bit": 72.5261217277444
+            },
+            {
+              "id": "courtyard-trim",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/courtyard-trim.png",
+              "sha256_actual": "c8dc524e66e60288b5112cc3df40a85fccf9933f7a05a3d2c2f9574a6d0c7f1e",
+              "pixels": [
+                560,
+                672
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                215
+              ],
+              "luminance_stddev_8bit": 64.027979087158
+            },
+            {
+              "id": "roof-eave",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/roof-eave.png",
+              "sha256_actual": "2d14721dafa38b7d6057757926fd0f79477fc7ccd1a1b31b7abf35eb7f95bd40",
+              "pixels": [
+                672,
+                448
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                13,
+                222
+              ],
+              "luminance_stddev_8bit": 35.42681647124676
+            },
+            {
+              "id": "rear45",
+              "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/production-draft/rear45.png",
+              "sha256_actual": "f401027a795acfb6f380bdaf487c3fa08ebdc17ca7beba213c0e3befcd3037fe",
+              "pixels": [
+                672,
+                504
+              ],
+              "format": "PNG",
+              "decoded_mode": "RGB",
+              "luminance_range_8bit": [
+                0,
+                222
+              ],
+              "luminance_stddev_8bit": 55.65451045972801
+            }
+          ],
+          "saved_scene_sha256_actual": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373"
+        }
+      ],
+      "findings": [],
+      "counts_by_rule": {},
+      "passed": true
+    }
+  ]
+}

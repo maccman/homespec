@@ -1,0 +1,92 @@
+{
+  "scope": "Static conservative envelope study, not Blender saved-scene audit. Uses actual source cloth vertices collapsed to local XY boxes, source base/headboard sizes, and the actual 96-side circular drum. Pillow and curve evaluation remains for integrated saved-scene audit. Clear depth is found by expanding the entire native opening width inward until first envelope contact.",
+  "source": "/Users/cloud/.codex/worktrees/60a7/homespec/projects/bastide_de_flechon/rooms/fidelity_bedrooms.py",
+  "source_sha256": "25d2766a987b2173e30d67149d82b21f2b4146afd85b99a06a9933c851b2ef26",
+  "native_ir": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/0b912baa9c2845caba0228c7821025f2/ir.json",
+  "native_ir_sha256": "85dfb294cfdaacefd2591047365cec96975d856aef21d807a8d7436bf6560def",
+  "reference_plan": "PLANS/Rez-de-chauss\u00e9e.pdf",
+  "reference_photo": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-12.jpg",
+  "before": {
+    "bed_center_m": [
+      -1.517353,
+      27.752748,
+      0.0
+    ],
+    "table_center_m": [
+      -0.407518,
+      28.058146,
+      0.0
+    ],
+    "room_boundary_gap_m": 0.035,
+    "contained": true,
+    "table_headboard_gap_m": 0.2275,
+    "routes": {
+      "N_GUEST_E1": {
+        "uniform_clear_depth_m": 0.2974,
+        "encroaching_components": [
+          "duvet",
+          "cover",
+          "base",
+          "table"
+        ],
+        "table_separation_from_zone_m": 0.0
+      },
+      "D_BED1": {
+        "uniform_clear_depth_m": 1.0,
+        "encroaching_components": [],
+        "table_separation_from_zone_m": 2.101
+      },
+      "D_BATH1": {
+        "uniform_clear_depth_m": 1.0,
+        "encroaching_components": [],
+        "table_separation_from_zone_m": 2.075
+      }
+    }
+  },
+  "after": {
+    "bed_center_m": [
+      -1.725373,
+      27.824354,
+      0.0
+    ],
+    "table_center_m": [
+      -0.460853,
+      28.425509,
+      0.0
+    ],
+    "room_boundary_gap_m": 0.035,
+    "contained": true,
+    "table_headboard_gap_m": 0.0304,
+    "routes": {
+      "N_GUEST_E1": {
+        "uniform_clear_depth_m": 0.7732,
+        "encroaching_components": [
+          "duvet",
+          "cover",
+          "base"
+        ],
+        "table_separation_from_zone_m": 0.0873
+      },
+      "D_BED1": {
+        "uniform_clear_depth_m": 0.6771,
+        "encroaching_components": [
+          "duvet",
+          "cover",
+          "base"
+        ],
+        "table_separation_from_zone_m": 2.2018
+      },
+      "D_BATH1": {
+        "uniform_clear_depth_m": 0.8497,
+        "encroaching_components": [
+          "duvet",
+          "cover",
+          "base"
+        ],
+        "table_separation_from_zone_m": 2.1495
+      }
+    }
+  },
+  "change": "Complete bed/artwork/sconce/emitter arrangement slides 220mm west along north wall. Table additionally moves 330mm headward and 50mm outward to avoid headboard. Z, bed dimensions, orientation, doors and audit rules retained.",
+  "limitations": "Full 1m approach regions still encroach on retained furniture. Plan shows 160x200cm bed in this room; model keeps existing 150cm mattress. No audit exemption or zero-audit claim."
+}

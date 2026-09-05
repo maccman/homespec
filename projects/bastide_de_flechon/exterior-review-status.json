@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "purpose": "Focused exterior reconstruction evidence; full delivery refresh remains deferred",
+  "source": {
+    "generation": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/e3b0760284354eac9ea110ca7e12ec92",
+    "ir": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/e3b0760284354eac9ea110ca7e12ec92/ir.json",
+    "ir_sha256": "c5ae2d0418beefc946656622791043ea0ceb73c1bfe6e262ee174ed5369f1171",
+    "presentation_directory": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a",
+    "presentation_fingerprint": "272c952e5d565d7a50660e1944f53d2cbd1afbd5ca6dc1312fe1b3a238d4c000",
+    "source_commit": "55a3069a899f42e7ad019103dc5c5114bb3fef37",
+    "native_checks": {
+      "passed": 371,
+      "failed": [
+        {
+          "rule": "glazing_ratio",
+          "target": "bed3",
+          "ok": false,
+          "value": 0.086,
+          "limit": 0.1,
+          "note": "glass area / floor area",
+          "clause": "habitable rooms: glass area >= 10% of floor area (rule of thumb)"
+        }
+      ]
+    }
+  },
+  "review_source_commit": "55a3069a899f42e7ad019103dc5c5114bb3fef37",
+  "saved_scene": {
+    "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/house.blend",
+    "sha256": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373",
+    "walk_file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/house_walk.blend",
+    "walk_sha256": "daeafa38dcd837c8cd8e0aa8973d42bf9c8d6d317f90c8085e116937d334efff"
+  },
+  "camera_register_sha256": "c120f2c07e4440c1cccde7022e654e98ee938f8489fb81304aed8c7f4d0ac8c7",
+  "image_summary": {
+    "high_resolution_beauty": 4,
+    "detail_beauty": 6,
+    "neutral_controls": 3,
+    "clay_controls": 3,
+    "older_baseline_clay": 3,
+    "material_studio": 1,
+    "production_drafts": 10
+  },
+  "checks": {
+    "native": {
+      "passed": 371,
+      "failed": [
+        {
+          "rule": "glazing_ratio",
+          "target": "bed3",
+          "ok": false,
+          "value": 0.086,
+          "limit": 0.1,
+          "note": "glass area / floor area",
+          "clause": "habitable rooms: glass area >= 10% of floor area (rule of thumb)"
+        }
+      ]
+    },
+    "non_blender_tests": 247,
+    "focused_after_finish_changes": 39,
+    "blender_integration_tests": 5,
+    "saved_scene_invariant_errors": [],
+    "raw_audit_count": 46,
+    "raw_audit_counts": {
+      "inside_wall": 43,
+      "in_the_way": 3
+    },
+    "raw_audit_policy": "Every raw finding retained; classification is not an exemption or a geometry fix",
+    "output_verification_passed": true
+  },
+  "remaining_limits": [
+    "Main roof remains about1.3m above cross-photo proportional inference; coupled principal-room envelope revision required.",
+    "East oculus heights remain above photographic holdouts, although plan-supported XY centers are corrected.",
+    "Courtyard retaining wall and steps require coordinated floor/terrace levels; common ground datum retained.",
+    "Front garden door leaves remain78deg open; source photos show closed leaves.",
+    "Bed1 furniture retains three garden-door route findings; strict passage depths0.773m garden,0.677m corridor,0.850m bathroom.",
+    "Rubble faces and joints remain more regular than the photographed broken stone; pigment and plant morphology are inferred.",
+    "43 unfiltered inside-wall findings retained: current sampling confirms8mm rubble bedding, sill/oculus embedment and buried main-roof cover/pan/genoise contacts at the chimney;19reportedroof pairs have no inside samples. Full triangle intersection remains unproven."
+  ],
+  "deferred": [
+    "Complete26-view gallery",
+    "Completed motion tour",
+    "Website refresh",
+    "Portable packed-model/package refresh",
+    "Whole-house final artifact verification"
+  ],
+  "native_drawing_evidence": "exterior-review/native-drawings/drawing-provenance.json",
+  "current_contact_evidence": "exterior-review/roof-contact-samples.json",
+  "current_contact_loaded_scene_sha256": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373"
+}

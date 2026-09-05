@@ -1,0 +1,47 @@
+{
+  "current_scene_sha256": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373",
+  "current_images_matching_scene": 27,
+  "png_bit_depth_by_group": {
+    "high-resolution": [
+      16,
+      16,
+      16,
+      16
+    ],
+    "details": [
+      8,
+      8,
+      8,
+      8,
+      8,
+      8
+    ],
+    "neutral": [
+      8,
+      8,
+      8
+    ],
+    "clay": [
+      8,
+      8,
+      8
+    ],
+    "material-studio": [
+      16
+    ],
+    "production-draft": [
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8
+    ]
+  },
+  "verified_sheet_jpeg_records": 15,
+  "passed": true
+}

@@ -171,3 +171,12 @@ pigment at gain(0.27,0.25,0.245), with independent roughness0.65–0.83 and0.45m
 procedural relief. It is assigned to the native frieze's outward faces and the
 added panel mouldings; its inward material slots remain intact. This brings
 the exterior material inventory to19 without generating another image.
+
+The subsequent actual roof/shutter review still read too pale and uniform.
+The six canal-tile pigment gains are now(0.64,0.44,0.27), (0.38,0.29,0.21),
+(0.79,0.62,0.40), (0.57,0.34,0.20), (0.40,0.40,0.37) and(0.70,0.53,0.32),
+covering observed ochre, brown and grey variation. The shutter gain is now
+(0.56,0.50,0.42). These are visual pigment estimates, not measured reflectance;
+roughness and physical relief stay independent. The upper kitchen window's
+outward frame faces also use the grey frieze material, matching photograph12's
+painted frame; glass and inward frame material slots remain untouched.

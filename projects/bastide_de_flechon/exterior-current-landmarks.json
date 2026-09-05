@@ -1,12 +1,12 @@
 {
   "schema": 1,
-  "created_utc": "2026-09-05T21:59:18.721165+00:00",
+  "created_utc": "2026-09-05T22:09:17.833772+00:00",
   "purpose": "Independent current-geometry reprojection with frozen cameras; no optimization or fidelity percentage",
   "source_commits": [
-    "6a66186"
+    "55a3069"
   ],
-  "current_ir": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/c48bda1fad184c5080dbc425b1566a7a/ir.json",
-  "current_ir_sha256": "b64784c34bc574168338935b48ba3df2ebec909deed4cb6632d79df5840f0524",
+  "current_ir": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/e3b0760284354eac9ea110ca7e12ec92/ir.json",
+  "current_ir_sha256": "c5ae2d0418beefc946656622791043ea0ceb73c1bfe6e262ee174ed5369f1171",
   "previous_calibration_ir": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/cc5f3633dcb04e339fc979864142c382/ir.json",
   "previous_calibration_ir_sha256": "aa48121d6c5c9d068a8f52015ec0b7f1c09a6e89e4d575de471035c07cdc6697",
   "camera_lock": "/Users/cloud/.codex/worktrees/60a7/homespec/projects/bastide_de_flechon/exterior_cameras.json",

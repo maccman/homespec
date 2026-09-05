@@ -1,0 +1,528 @@
+{
+  "schema": 1,
+  "records": [
+    {
+      "sheet": "projects/bastide_de_flechon/exterior-review/exterior-views.jpg",
+      "sha256": "d34c6c3fdeafe60fc2181a0a5c37b82522ab4ced96aa16c64a18e4f4362dddde",
+      "pixels": [
+        2280,
+        2490
+      ],
+      "operation": "Uniform fit, uncropped; labels and neutral borders only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/pool46.png",
+          "sha256": "dbb45554bd2c03d21e02dcc82e597244a0cfd2ebdc60f36f89d00e8d26f198ca",
+          "original_pixels": [
+            3840,
+            2160
+          ],
+          "label": "Pool / photo 46 camera"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/courtyard08.png",
+          "sha256": "6b11a66cdf1161ecbb1b4717a1a8627d440709a7f2c12e55a3bb11415dca4aa8",
+          "original_pixels": [
+            2160,
+            2880
+          ],
+          "label": "Courtyard / photo 08 camera"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/kitchen12.png",
+          "sha256": "af676f418dde34568d8c41bd2204104dc0d0277fe8af84a5d063195bd3356bf8",
+          "original_pixels": [
+            2160,
+            2880
+          ],
+          "label": "Kitchen / photo 12 camera"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/front41.png",
+          "sha256": "31c473badb28c21a5a3812325c9b222e36dfa4ab8b05c52f7877c7b0c68adb35",
+          "original_pixels": [
+            2250,
+            3000
+          ],
+          "label": "Front / photo 41 camera"
+        }
+      ]
+    },
+    {
+      "sheet": "projects/bastide_de_flechon/exterior-review/exterior-details.jpg",
+      "sha256": "c99cb695cef77ae8217baf085cec66ee15711fb2deca78103a532becf7493cb1",
+      "pixels": [
+        2550,
+        1800
+      ],
+      "operation": "Uniform fit, uncropped; labels and neutral borders only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/front-trim.png",
+          "sha256": "dd5c00da7723eb7f9a3f55e3f210fbc675e84cf87a9ed035dc4bc709303120f0",
+          "original_pixels": [
+            1920,
+            1600
+          ],
+          "label": "Front carving and stone arch"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/side-oculus.png",
+          "sha256": "591728de988ba89008c371d7b5f51526528fbf97d4a650c7a6d259730a7bd145",
+          "original_pixels": [
+            1600,
+            1920
+          ],
+          "label": "East oculus, arch and reveals"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/shutter-sill.png",
+          "sha256": "58dec10dbbf849e48c81dc8ff09ee549152b5dfe5776e1a4cddcb0181512ee9f",
+          "original_pixels": [
+            1920,
+            1600
+          ],
+          "label": "Kitchen shutter, lintel and sill"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/courtyard-trim.png",
+          "sha256": "8834db35bdc06a5e5140981f2cc64ce0a5cc4b61393990e83bf585116d1d3376",
+          "original_pixels": [
+            1600,
+            1920
+          ],
+          "label": "Courtyard entry and continuous arch"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/roof-eave.png",
+          "sha256": "04363d8fe4b5547a392ae07217dbf9af7c45c362ae69583f8d810fa5952f2e68",
+          "original_pixels": [
+            1920,
+            1280
+          ],
+          "label": "Canal tiles, ridge and genoise"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/details/rear45.png",
+          "sha256": "6337ce29d000ac8a78a26cdf3a1f42fef425dc02acfbbb157858530b3fbd5ffb",
+          "original_pixels": [
+            1920,
+            1440
+          ],
+          "label": "Rear roofs and pergola"
+        }
+      ]
+    },
+    {
+      "sheet": "projects/bastide_de_flechon/exterior-review/exterior-controls.jpg",
+      "sha256": "620523e9ab9d14eb67d6e299fa53f9936fba5e47f4066a3aac3a42f4f8c5a84a",
+      "pixels": [
+        2000,
+        3100
+      ],
+      "operation": "Uniform fit, uncropped; labels and neutral borders only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/neutral/pool46.png",
+          "sha256": "7a8826a715a6be35b383746f61f979727c1b0dc288c6ce144adc5941557ca455",
+          "original_pixels": [
+            2560,
+            1440
+          ],
+          "label": "Pool / photo 46 camera / neutral"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/clay/pool46.png",
+          "sha256": "5ccfe101836bded329bac54ff469ec5408ba82c63a856a46b0c133e474f7fd8d",
+          "original_pixels": [
+            2560,
+            1440
+          ],
+          "label": "Pool / photo 46 camera / clay"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/neutral/courtyard08.png",
+          "sha256": "e6f83f49dc821714f2081bc7996505aa692286c1f6f2ea26372c7ba696ac8884",
+          "original_pixels": [
+            1440,
+            1920
+          ],
+          "label": "Courtyard / photo 08 camera / neutral"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/clay/courtyard08.png",
+          "sha256": "bde4edf6a1fd83fea69f753ad26aaccad0325b2d8ad377117efa5f4019ee61d0",
+          "original_pixels": [
+            1440,
+            1920
+          ],
+          "label": "Courtyard / photo 08 camera / clay"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/neutral/kitchen12.png",
+          "sha256": "b315464cdc9fd61f6c116f0faa3e5320f72ab04cbf26c16ffda7254ae5c5397f",
+          "original_pixels": [
+            1440,
+            1920
+          ],
+          "label": "Kitchen / photo 12 camera / neutral"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/clay/kitchen12.png",
+          "sha256": "74186df1a67b32d460ea539829c370a9aceeabbfa8a909758d998ea7817d9b4d",
+          "original_pixels": [
+            1440,
+            1920
+          ],
+          "label": "Kitchen / photo 12 camera / clay"
+        }
+      ]
+    },
+    {
+      "sheet": "out/exterior-study/pool46-reference-review.jpg",
+      "sha256": "23f686d0ffc78ea2ff2535425ccb2369b81e9c4f387d9ad73f1f67e40fe80650",
+      "pixels": [
+        2200,
+        1400
+      ],
+      "operation": "Uniform fit, uncropped; labels and neutral borders only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/review/photo_46.jpg",
+          "sha256": "193c1aabf9c4096052c05871b5b2f0ab40bda169952dca0ccb6bc97650b61258",
+          "original_pixels": [
+            1200,
+            675
+          ],
+          "label": "Original reference (private local copy)"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/pool46.png",
+          "sha256": "dbb45554bd2c03d21e02dcc82e597244a0cfd2ebdc60f36f89d00e8d26f198ca",
+          "original_pixels": [
+            3840,
+            2160
+          ],
+          "label": "Actual Cycles model; remaining differences documented"
+        }
+      ]
+    },
+    {
+      "sheet": "out/exterior-study/courtyard08-reference-review.jpg",
+      "sha256": "eb2a814d8f14020ed6524f91b2192018c08c055e3e9a88fb5b684a83fae59005",
+      "pixels": [
+        2200,
+        1400
+      ],
+      "operation": "Uniform fit, uncropped; labels and neutral borders only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/review/photo_08.jpg",
+          "sha256": "8480cd84c05ca571154f4462cc48da3f890893825120bf9948d78b66bf643950",
+          "original_pixels": [
+            900,
+            1200
+          ],
+          "label": "Original reference (private local copy)"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/courtyard08.png",
+          "sha256": "6b11a66cdf1161ecbb1b4717a1a8627d440709a7f2c12e55a3bb11415dca4aa8",
+          "original_pixels": [
+            2160,
+            2880
+          ],
+          "label": "Actual Cycles model; remaining differences documented"
+        }
+      ]
+    },
+    {
+      "sheet": "out/exterior-study/kitchen12-reference-review.jpg",
+      "sha256": "9da468a70674e40295a9b980da03b8ed9a5ee2dead7cebf7872f5a0927fd43c9",
+      "pixels": [
+        2200,
+        1400
+      ],
+      "operation": "Uniform fit, uncropped; labels and neutral borders only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/review/photo_12.jpg",
+          "sha256": "a71dd55edf547e60d390267958b0f31192f7c1dee1c6710422131f76db347ee1",
+          "original_pixels": [
+            900,
+            1200
+          ],
+          "label": "Original reference (private local copy)"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/kitchen12.png",
+          "sha256": "af676f418dde34568d8c41bd2204104dc0d0277fe8af84a5d063195bd3356bf8",
+          "original_pixels": [
+            2160,
+            2880
+          ],
+          "label": "Actual Cycles model; remaining differences documented"
+        }
+      ]
+    },
+    {
+      "sheet": "out/exterior-study/front41-reference-review.jpg",
+      "sha256": "b21b53db172d5a82b68c921ec25ab419731a085af982eb060aebccead56f0629",
+      "pixels": [
+        2200,
+        1400
+      ],
+      "operation": "Uniform fit, uncropped; labels and neutral borders only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/54c7/homespec/projects/bastide_de_flechon/reference/review/photo_41.jpg",
+          "sha256": "4c14bbc3a7d0116a44168dddc8a7d692898e654d7f23e58a1eb34ff0d345093f",
+          "original_pixels": [
+            900,
+            1200
+          ],
+          "label": "Original reference (private local copy)"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/front41.png",
+          "sha256": "31c473badb28c21a5a3812325c9b222e36dfa4ab8b05c52f7877c7b0c68adb35",
+          "original_pixels": [
+            2250,
+            3000
+          ],
+          "label": "Actual Cycles model; remaining differences documented"
+        }
+      ]
+    },
+    {
+      "sheet": "projects/bastide_de_flechon/exterior-review/pool46.jpg",
+      "sha256": "9073fdf69911201851a09fb754312cccbb0672ea5f5c95f43502d9818d2656aa",
+      "pixels": [
+        2400,
+        1350
+      ],
+      "operation": "Uniform downscale from actual Cycles PNG, JPEG compression only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/pool46.png",
+          "sha256": "dbb45554bd2c03d21e02dcc82e597244a0cfd2ebdc60f36f89d00e8d26f198ca"
+        }
+      ]
+    },
+    {
+      "sheet": "projects/bastide_de_flechon/exterior-review/courtyard08.jpg",
+      "sha256": "fdd7fdf686f3026c7b2f4a030a3ad7fbf65ec635702715ee7c6a031ebb7be4bf",
+      "pixels": [
+        1800,
+        2400
+      ],
+      "operation": "Uniform downscale from actual Cycles PNG, JPEG compression only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/courtyard08.png",
+          "sha256": "6b11a66cdf1161ecbb1b4717a1a8627d440709a7f2c12e55a3bb11415dca4aa8"
+        }
+      ]
+    },
+    {
+      "sheet": "projects/bastide_de_flechon/exterior-review/kitchen12.jpg",
+      "sha256": "6c5132c9bb521d1fbc4b512df4955ccbfa6d24f72c20eec9d97d488f698087ae",
+      "pixels": [
+        1800,
+        2400
+      ],
+      "operation": "Uniform downscale from actual Cycles PNG, JPEG compression only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/kitchen12.png",
+          "sha256": "af676f418dde34568d8c41bd2204104dc0d0277fe8af84a5d063195bd3356bf8"
+        }
+      ]
+    },
+    {
+      "sheet": "projects/bastide_de_flechon/exterior-review/front41.jpg",
+      "sha256": "ccc6979ddc2a8a3f0d8af0ab3ddc837c43e02f221505c4b1f70ff40d2d8dd335",
+      "pixels": [
+        1800,
+        2400
+      ],
+      "operation": "Uniform downscale from actual Cycles PNG, JPEG compression only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/front41.png",
+          "sha256": "31c473badb28c21a5a3812325c9b222e36dfa4ab8b05c52f7877c7b0c68adb35"
+        }
+      ]
+    },
+    {
+      "sheet": "projects/bastide_de_flechon/exterior-review/exterior-materials.jpg",
+      "sha256": "b1922ef4695493b5d92cfec81f153e7a10de1eb5de16dcd420282d8f84af5a1f",
+      "pixels": [
+        1800,
+        1420
+      ],
+      "operation": "Uniform fit, uncropped; labels and neutral borders only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/material-studio/materials.png",
+          "sha256": "65b081a019ec26bebebebfba05d5499076bd6e19377f461775509dc08a90e24d",
+          "original_pixels": [
+            2400,
+            1600
+          ],
+          "label": "Actual albedo + independently authored physical finish"
+        }
+      ]
+    },
+    {
+      "sheet": "projects/bastide_de_flechon/exterior-review/exterior-before-after-clay.jpg",
+      "sha256": "7fd60577431b336c01039dd9388dd861c9ff8f5ce77dc53dd962d8ff0dd8e3c2",
+      "pixels": [
+        2000,
+        3100
+      ],
+      "operation": "Uniform fit, uncropped; labels and neutral borders only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/baseline-clay/pool46.png",
+          "sha256": "a0b2487dae5e6d49b195aa57ef381662474e864144822a16b9aec475943d9cb5",
+          "original_pixels": [
+            2560,
+            1440
+          ],
+          "label": "Pool / photo 46 camera / older integrated baseline"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/clay/pool46.png",
+          "sha256": "5ccfe101836bded329bac54ff469ec5408ba82c63a856a46b0c133e474f7fd8d",
+          "original_pixels": [
+            2560,
+            1440
+          ],
+          "label": "Pool / photo 46 camera / current"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/baseline-clay/courtyard08.png",
+          "sha256": "9eb696589e84ce28f39105a0fad9c51f4cfd6aab66647687c18c7189ceb90120",
+          "original_pixels": [
+            1440,
+            1920
+          ],
+          "label": "Courtyard / photo 08 camera / older integrated baseline"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/clay/courtyard08.png",
+          "sha256": "bde4edf6a1fd83fea69f753ad26aaccad0325b2d8ad377117efa5f4019ee61d0",
+          "original_pixels": [
+            1440,
+            1920
+          ],
+          "label": "Courtyard / photo 08 camera / current"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/baseline-clay/kitchen12.png",
+          "sha256": "d97854345085052153d2c4a9707c3f17167deb7ac87ea2e9d4380b6934afa464",
+          "original_pixels": [
+            1440,
+            1920
+          ],
+          "label": "Kitchen / photo 12 camera / older integrated baseline"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/clay/kitchen12.png",
+          "sha256": "74186df1a67b32d460ea539829c370a9aceeabbfa8a909758d998ea7817d9b4d",
+          "original_pixels": [
+            1440,
+            1920
+          ],
+          "label": "Kitchen / photo 12 camera / current"
+        }
+      ]
+    },
+    {
+      "sheet": "projects/bastide_de_flechon/exterior-review/exterior-native-views.jpg",
+      "sha256": "70830d8dc73328bdf5450769f0f43d799cc0eef02bc0725a941aa77e5939f362",
+      "pixels": [
+        2000,
+        1700
+      ],
+      "operation": "Uniform fit, uncropped; labels and neutral borders only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-views/views/11_plan_L0.png",
+          "sha256": "03956b90ebb482c2f539ca26ecb25cb23c0a7a5115e44509286015da9321b882",
+          "original_pixels": [
+            1600,
+            1200
+          ],
+          "label": "11_plan_L0"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-views/views/12_plan_L1.png",
+          "sha256": "59e0225c52d2974e12398c22e1ef5708d72d0fbdcf98cac22e3ac22f8fea5757",
+          "original_pixels": [
+            1600,
+            1200
+          ],
+          "label": "12_plan_L1"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-views/views/13_section_long.png",
+          "sha256": "1cfd17cec3b1fc40ed8ea63426cede3c55e49523b91001d3ee6bf98e5d4c4828",
+          "original_pixels": [
+            1600,
+            1200
+          ],
+          "label": "13_section_long"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-views/views/14_section_cross.png",
+          "sha256": "7b84d844392aa4179054412b65b2c45635402b1f99846c01e2bd3048080f6705",
+          "original_pixels": [
+            1600,
+            1200
+          ],
+          "label": "14_section_cross"
+        }
+      ]
+    },
+    {
+      "sheet": "projects/bastide_de_flechon/exterior-review/exterior-native-drawings.jpg",
+      "sha256": "7ba1f014379f52e1dfb5e43b41f8d15adfca180cfdc50c96ff207b3bce3f06ba",
+      "pixels": [
+        1800,
+        4150
+      ],
+      "operation": "Uniform fit, uncropped; labels and neutral borders only",
+      "inputs": [
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-drawings/plan_L0.png",
+          "sha256": "10e33612f90db3b2bb2f090e1cbd69d48c92f2fcbc4adb3deb5e9af6c9e09da5",
+          "original_pixels": [
+            3968,
+            2806
+          ],
+          "label": "plan_L0.png"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-drawings/plan_L1.png",
+          "sha256": "736e2f20691f1a14a2145208949770509c0db827804ec6c495b44825dbbcc7d9",
+          "original_pixels": [
+            3968,
+            2806
+          ],
+          "label": "plan_L1.png"
+        },
+        {
+          "file": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/native-drawings/plan_L1-oculus-5425mm.png",
+          "sha256": "32401404f537370b7b1fdc8fdd0ef5e0d2e00a0ec0470477ca308e6d7768e27f",
+          "original_pixels": [
+            3968,
+            2806
+          ],
+          "label": "plan_L1-oculus-5425mm.png"
+        }
+      ]
+    }
+  ]
+}
