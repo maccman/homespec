@@ -1,0 +1,197 @@
+{
+ "project": "bastide-de-flechon",
+ "resolution": [
+  1600,
+  900
+ ],
+ "colours": {
+  "arched_door": [
+   0.2,
+   0.16,
+   0.14
+  ],
+  "beam": [
+   0.56,
+   0.38,
+   0.22
+  ],
+  "ceiling": [
+   0.93,
+   0.91,
+   0.85
+  ],
+  "chimney": [
+   0.52,
+   0.4,
+   0.36
+  ],
+  "column": [
+   0.44,
+   0.46,
+   0.62
+  ],
+  "coping": [
+   0.9,
+   0.88,
+   0.8
+  ],
+  "cornice": [
+   0.78,
+   0.5,
+   0.38
+  ],
+  "curved_stair": [
+   0.7,
+   0.7,
+   0.7
+  ],
+  "door": [
+   0.2,
+   0.16,
+   0.14
+  ],
+  "frieze": [
+   0.7,
+   0.7,
+   0.7
+  ],
+  "gable": [
+   0.76,
+   0.68,
+   0.54
+  ],
+  "glazing": [
+   0.55,
+   0.8,
+   0.95
+  ],
+  "leaf": [
+   0.36,
+   0.26,
+   0.2
+  ],
+  "pool": [
+   0.3,
+   0.58,
+   0.68
+  ],
+  "roof": [
+   0.72,
+   0.38,
+   0.3
+  ],
+  "roof_finish": [
+   0.7,
+   0.7,
+   0.7
+  ],
+  "shutters": [
+   0.46,
+   0.6,
+   0.7
+  ],
+  "slab": [
+   0.58,
+   0.58,
+   0.58
+  ],
+  "structural_brace": [
+   0.7,
+   0.7,
+   0.7
+  ],
+  "surround": [
+   0.9,
+   0.86,
+   0.72
+  ],
+  "wall": [
+   0.82,
+   0.74,
+   0.6
+  ],
+  "wall_infill": [
+   0.82,
+   0.74,
+   0.6
+  ],
+  "water": [
+   0.4,
+   0.72,
+   0.9
+  ],
+  "window": [
+   0.12,
+   0.12,
+   0.12
+  ]
+ },
+ "views": [
+  {
+   "name": "kitchen_hall_section",
+   "title": "Kitchen looking north; section plane y=15.8m, paired flat hall lintel",
+   "kind": "section",
+   "camera": {
+    "position": [
+     -2737.0,
+     8400.0,
+     1550.0
+    ],
+    "right": [
+     1.0,
+     0.0,
+     -0.0
+    ],
+    "up": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "back": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "width": 6755.555555555555,
+    "clip_start": 7400.0,
+    "clip_end": 9237.0
+   },
+   "hide": [],
+   "level": null,
+   "focus": null
+  },
+  {
+   "name": "kitchen_long_section",
+   "title": "Kitchen looking west; section plane x=-2.63m, retained ceiling and beam bearing",
+   "kind": "section",
+   "camera": {
+    "position": [
+     150.0,
+     12943.5,
+     1550.0
+    ],
+    "right": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "up": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "back": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "width": 9087.0,
+    "clip_start": 2780.0,
+    "clip_end": 5924.0
+   },
+   "hide": [],
+   "level": null,
+   "focus": null
+  }
+ ]
+}

@@ -1,0 +1,1474 @@
+{
+  "purpose": "Actual scene materials on 800 mm studio swatches and 270 mm response spheres.",
+  "visible_rows_left_to_right": [
+    [
+      "Honed worktop",
+      "Waxed island walnut",
+      "Cleaned ceiling oak"
+    ],
+    [
+      "Ceiling lime",
+      "Painted cabinetry",
+      "Limestone flag 0"
+    ],
+    [
+      "Limestone flag 1",
+      "Limestone flag 2",
+      "Limestone flag 3"
+    ],
+    [
+      "Cast stool",
+      "Blackened shade wire",
+      "Sink and tap steel"
+    ]
+  ],
+  "material_rows_top_to_bottom": [
+    [
+      "kitchen_honed_travertine",
+      "kitchen_waxed_walnut",
+      "kitchen_cleaned_oak"
+    ],
+    [
+      "kitchen_ceiling_chalk",
+      "kitchen_mushroom_joinery",
+      "kitchen_floor_0"
+    ],
+    [
+      "kitchen_floor_1",
+      "kitchen_floor_2",
+      "kitchen_floor_3"
+    ],
+    [
+      "fidelity_living_cast_iron",
+      "fidelity_living_blackened_wire",
+      "interior_burnished_steel"
+    ]
+  ],
+  "scene": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/presentation/bd73002f07a44a1f8904b1c9b32dc116/1ecb3ca4ed29de48/house.blend",
+  "scene_sha256": "a50281334f04981eaf9ee7ccb449ab6afea09c329b0a9a85a053634b071ad007",
+  "script_sha256": "18632c93ea3b706fe9a643d3f2ae833a5701b34c86cadb0eba10a00639604b0c",
+  "samples": [
+    [
+      "kitchen_honed_travertine",
+      "Honed worktop"
+    ],
+    [
+      "kitchen_waxed_walnut",
+      "Waxed island walnut"
+    ],
+    [
+      "kitchen_cleaned_oak",
+      "Cleaned ceiling oak"
+    ],
+    [
+      "kitchen_ceiling_chalk",
+      "Ceiling lime"
+    ],
+    [
+      "kitchen_mushroom_joinery",
+      "Painted cabinetry"
+    ],
+    [
+      "kitchen_floor_0",
+      "Limestone flag 0"
+    ],
+    [
+      "kitchen_floor_1",
+      "Limestone flag 1"
+    ],
+    [
+      "kitchen_floor_2",
+      "Limestone flag 2"
+    ],
+    [
+      "kitchen_floor_3",
+      "Limestone flag 3"
+    ],
+    [
+      "fidelity_living_cast_iron",
+      "Cast stool"
+    ],
+    [
+      "fidelity_living_blackened_wire",
+      "Blackened shade wire"
+    ],
+    [
+      "interior_burnished_steel",
+      "Sink and tap steel"
+    ]
+  ],
+  "sample_sources": [
+    {
+      "material": "kitchen_honed_travertine",
+      "label": "Honed worktop",
+      "visible_source_objects": [
+        "kitchen_island_continuous_stone_with_sink_cutout",
+        "kitchen_range_splash",
+        "kitchen_west_stone_upstand",
+        "kitchen_west_stone_upstand.001",
+        "kitchen_west_thin_stone_counter",
+        "kitchen_west_thin_stone_counter.001"
+      ],
+      "row_from_top": 1,
+      "column_from_left": 1,
+      "swatch_center_m": [
+        -0.92,
+        1.3800000000000001,
+        0
+      ]
+    },
+    {
+      "material": "kitchen_waxed_walnut",
+      "label": "Waxed island walnut",
+      "visible_source_objects": [
+        "kitchen_chopping_board",
+        "kitchen_glass_bank_back",
+        "kitchen_glass_bank_back.001",
+        "kitchen_hood_canopy_lip",
+        "kitchen_hood_side_open_back",
+        "kitchen_hood_side_open_back.001",
+        "kitchen_hood_side_open_shelf",
+        "kitchen_hood_side_open_shelf.001",
+        "kitchen_hood_side_open_shelf.002",
+        "kitchen_hood_side_open_shelf.003",
+        "kitchen_hood_side_open_shelf.004",
+        "kitchen_hood_side_open_shelf.005",
+        "kitchen_hood_timber_shell",
+        "kitchen_island_bottom_board",
+        "kitchen_island_east_joined_panel_field",
+        "kitchen_island_east_joined_panel_field.001",
+        "kitchen_island_east_joined_panel_field.002",
+        "kitchen_island_east_joined_panel_rail",
+        "kitchen_island_east_joined_panel_rail.001",
+        "kitchen_island_east_joined_panel_rail.002",
+        "kitchen_island_east_joined_panel_rail.003",
+        "kitchen_island_east_joined_panel_rail.004",
+        "kitchen_island_east_joined_panel_rail.005",
+        "kitchen_island_east_joined_panel_stile",
+        "kitchen_island_east_joined_panel_stile.001",
+        "kitchen_island_east_joined_panel_stile.002",
+        "kitchen_island_east_joined_panel_stile.003",
+        "kitchen_island_east_joined_panel_stile.004",
+        "kitchen_island_east_joined_panel_stile.005",
+        "kitchen_island_edge_rail",
+        "kitchen_island_edge_rail.001",
+        "kitchen_island_edge_rail.002",
+        "kitchen_island_edge_rail.003",
+        "kitchen_island_edge_rail.004",
+        "kitchen_island_edge_rail.005",
+        "kitchen_island_edge_rail.006",
+        "kitchen_island_edge_rail.007",
+        "kitchen_island_end_rail",
+        "kitchen_island_end_rail.001",
+        "kitchen_island_end_rail.002",
+        "kitchen_island_end_rail.003",
+        "kitchen_island_end_rail.004",
+        "kitchen_island_end_rail.005",
+        "kitchen_island_end_rail.006",
+        "kitchen_island_end_rail.007",
+        "kitchen_island_framed_end_field",
+        "kitchen_island_framed_end_field.001",
+        "kitchen_island_framed_end_rail",
+        "kitchen_island_framed_end_rail.001",
+        "kitchen_island_framed_end_rail.002",
+        "kitchen_island_framed_end_rail.003",
+        "kitchen_island_framed_end_stile",
+        "kitchen_island_framed_end_stile.001",
+        "kitchen_island_framed_end_stile.002",
+        "kitchen_island_framed_end_stile.003",
+        "kitchen_island_recessed_plinth",
+        "kitchen_island_shell_end",
+        "kitchen_island_shell_end.001",
+        "kitchen_island_shell_side",
+        "kitchen_island_shell_side.001",
+        "kitchen_island_working_drawer_field",
+        "kitchen_island_working_drawer_field.001",
+        "kitchen_island_working_drawer_field.002",
+        "kitchen_island_working_drawer_field.003",
+        "kitchen_island_working_drawer_field.004",
+        "kitchen_island_working_drawer_field.005",
+        "kitchen_island_working_drawer_rail",
+        "kitchen_island_working_drawer_rail.001",
+        "kitchen_island_working_drawer_rail.002",
+        "kitchen_island_working_drawer_rail.003",
+        "kitchen_island_working_drawer_rail.004",
+        "kitchen_island_working_drawer_rail.005",
+        "kitchen_island_working_drawer_rail.006",
+        "kitchen_island_working_drawer_rail.007",
+        "kitchen_island_working_drawer_rail.008",
+        "kitchen_island_working_drawer_rail.009",
+        "kitchen_island_working_drawer_rail.010",
+        "kitchen_island_working_drawer_rail.011",
+        "kitchen_island_working_drawer_stile",
+        "kitchen_island_working_drawer_stile.001",
+        "kitchen_island_working_drawer_stile.002",
+        "kitchen_island_working_drawer_stile.003",
+        "kitchen_island_working_drawer_stile.004",
+        "kitchen_island_working_drawer_stile.005",
+        "kitchen_island_working_drawer_stile.006",
+        "kitchen_island_working_drawer_stile.007",
+        "kitchen_island_working_drawer_stile.008",
+        "kitchen_island_working_drawer_stile.009",
+        "kitchen_island_working_drawer_stile.010",
+        "kitchen_island_working_drawer_stile.011"
+      ],
+      "row_from_top": 1,
+      "column_from_left": 2,
+      "swatch_center_m": [
+        0.0,
+        1.3800000000000001,
+        0
+      ]
+    },
+    {
+      "material": "kitchen_cleaned_oak",
+      "label": "Cleaned ceiling oak",
+      "visible_source_objects": [
+        "C0_K.B1",
+        "C0_K.B10",
+        "C0_K.B11",
+        "C0_K.B12",
+        "C0_K.B13",
+        "C0_K.B14",
+        "C0_K.B15",
+        "C0_K.B16",
+        "C0_K.B17",
+        "C0_K.B18",
+        "C0_K.B19",
+        "C0_K.B2",
+        "C0_K.B20",
+        "C0_K.B3",
+        "C0_K.B4",
+        "C0_K.B5",
+        "C0_K.B6",
+        "C0_K.B7",
+        "C0_K.B8",
+        "C0_K.B9",
+        "KITCHEN_BEAM0",
+        "KITCHEN_BEAM1",
+        "KITCHEN_BEAM2",
+        "KITCHEN_BEAM3"
+      ],
+      "row_from_top": 1,
+      "column_from_left": 3,
+      "swatch_center_m": [
+        0.92,
+        1.3800000000000001,
+        0
+      ]
+    },
+    {
+      "material": "kitchen_ceiling_chalk",
+      "label": "Ceiling lime",
+      "visible_source_objects": [
+        "C0_K"
+      ],
+      "row_from_top": 2,
+      "column_from_left": 1,
+      "swatch_center_m": [
+        -0.92,
+        0.46,
+        0
+      ]
+    },
+    {
+      "material": "kitchen_mushroom_joinery",
+      "label": "Painted cabinetry",
+      "visible_source_objects": [
+        "kitchen_crown_contoured_member",
+        "kitchen_crown_contoured_member.001",
+        "kitchen_crown_contoured_member.002",
+        "kitchen_crown_contoured_member.003",
+        "kitchen_crown_contoured_member.004",
+        "kitchen_crown_contoured_member.005",
+        "kitchen_glass_bank_shelf",
+        "kitchen_glass_bank_shelf.001",
+        "kitchen_glass_bank_shelf.002",
+        "kitchen_glass_bank_shelf.003",
+        "kitchen_glass_bank_shelf.004",
+        "kitchen_glass_bank_shelf.005",
+        "kitchen_glass_bank_shelf.006",
+        "kitchen_glass_bank_shelf.007",
+        "kitchen_glass_bank_shelf.008",
+        "kitchen_glass_bank_shelf.009",
+        "kitchen_glass_bank_side",
+        "kitchen_glass_bank_side.001",
+        "kitchen_glass_bank_side.002",
+        "kitchen_glass_bank_side.003",
+        "kitchen_glass_door_rail",
+        "kitchen_glass_door_rail.001",
+        "kitchen_glass_door_rail.002",
+        "kitchen_glass_door_rail.003",
+        "kitchen_glass_door_rail.004",
+        "kitchen_glass_door_rail.005",
+        "kitchen_glass_door_rail.006",
+        "kitchen_glass_door_rail.007",
+        "kitchen_glass_door_rail.008",
+        "kitchen_glass_door_rail.009",
+        "kitchen_glass_door_rail.010",
+        "kitchen_glass_door_rail.011",
+        "kitchen_glass_door_rail.012",
+        "kitchen_glass_door_rail.013",
+        "kitchen_glass_door_rail.014",
+        "kitchen_glass_door_rail.015",
+        "kitchen_glass_door_rail.016",
+        "kitchen_glass_door_rail.017",
+        "kitchen_glass_door_rail.018",
+        "kitchen_glass_door_rail.019",
+        "kitchen_glass_door_stile",
+        "kitchen_glass_door_stile.001",
+        "kitchen_glass_door_stile.002",
+        "kitchen_glass_door_stile.003",
+        "kitchen_glass_door_stile.004",
+        "kitchen_glass_door_stile.005",
+        "kitchen_glass_door_stile.006",
+        "kitchen_glass_door_stile.007",
+        "kitchen_glass_door_stile.008",
+        "kitchen_glass_door_stile.009",
+        "kitchen_glass_door_stile.010",
+        "kitchen_glass_door_stile.011",
+        "kitchen_hood_painted_front_field",
+        "kitchen_hood_painted_front_rail",
+        "kitchen_hood_painted_front_rail.001",
+        "kitchen_hood_painted_front_stile",
+        "kitchen_hood_painted_front_stile.001",
+        "kitchen_lower_paneled_door_field",
+        "kitchen_lower_paneled_door_field.001",
+        "kitchen_lower_paneled_door_field.002",
+        "kitchen_lower_paneled_door_field.003",
+        "kitchen_lower_paneled_door_field.004",
+        "kitchen_lower_paneled_door_field.005",
+        "kitchen_lower_paneled_door_rail",
+        "kitchen_lower_paneled_door_rail.001",
+        "kitchen_lower_paneled_door_rail.002",
+        "kitchen_lower_paneled_door_rail.003",
+        "kitchen_lower_paneled_door_rail.004",
+        "kitchen_lower_paneled_door_rail.005",
+        "kitchen_lower_paneled_door_rail.006",
+        "kitchen_lower_paneled_door_rail.007",
+        "kitchen_lower_paneled_door_rail.008",
+        "kitchen_lower_paneled_door_rail.009",
+        "kitchen_lower_paneled_door_rail.010",
+        "kitchen_lower_paneled_door_rail.011",
+        "kitchen_lower_paneled_door_stile",
+        "kitchen_lower_paneled_door_stile.001",
+        "kitchen_lower_paneled_door_stile.002",
+        "kitchen_lower_paneled_door_stile.003",
+        "kitchen_lower_paneled_door_stile.004",
+        "kitchen_lower_paneled_door_stile.005",
+        "kitchen_lower_paneled_door_stile.006",
+        "kitchen_lower_paneled_door_stile.007",
+        "kitchen_lower_paneled_door_stile.008",
+        "kitchen_lower_paneled_door_stile.009",
+        "kitchen_lower_paneled_door_stile.010",
+        "kitchen_lower_paneled_door_stile.011",
+        "kitchen_lower_recessed_toe",
+        "kitchen_lower_recessed_toe.001",
+        "kitchen_lower_structural_base",
+        "kitchen_lower_structural_base.001",
+        "kitchen_lower_top_drawer_field",
+        "kitchen_lower_top_drawer_field.001",
+        "kitchen_lower_top_drawer_field.002",
+        "kitchen_lower_top_drawer_field.003",
+        "kitchen_lower_top_drawer_field.004",
+        "kitchen_lower_top_drawer_field.005",
+        "kitchen_lower_top_drawer_rail",
+        "kitchen_lower_top_drawer_rail.001",
+        "kitchen_lower_top_drawer_rail.002",
+        "kitchen_lower_top_drawer_rail.003",
+        "kitchen_lower_top_drawer_rail.004",
+        "kitchen_lower_top_drawer_rail.005",
+        "kitchen_lower_top_drawer_rail.006",
+        "kitchen_lower_top_drawer_rail.007",
+        "kitchen_lower_top_drawer_rail.008",
+        "kitchen_lower_top_drawer_rail.009",
+        "kitchen_lower_top_drawer_rail.010",
+        "kitchen_lower_top_drawer_rail.011",
+        "kitchen_lower_top_drawer_stile",
+        "kitchen_lower_top_drawer_stile.001",
+        "kitchen_lower_top_drawer_stile.002",
+        "kitchen_lower_top_drawer_stile.003",
+        "kitchen_lower_top_drawer_stile.004",
+        "kitchen_lower_top_drawer_stile.005",
+        "kitchen_lower_top_drawer_stile.006",
+        "kitchen_lower_top_drawer_stile.007",
+        "kitchen_lower_top_drawer_stile.008",
+        "kitchen_lower_top_drawer_stile.009",
+        "kitchen_lower_top_drawer_stile.010",
+        "kitchen_lower_top_drawer_stile.011",
+        "kitchen_plinth_diamond_grille",
+        "kitchen_range_adjacent_drawer_field",
+        "kitchen_range_adjacent_drawer_field.001",
+        "kitchen_range_adjacent_drawer_field.002",
+        "kitchen_range_adjacent_drawer_field.003",
+        "kitchen_range_adjacent_drawer_field.004",
+        "kitchen_range_adjacent_drawer_field.005",
+        "kitchen_range_adjacent_drawer_rail",
+        "kitchen_range_adjacent_drawer_rail.001",
+        "kitchen_range_adjacent_drawer_rail.002",
+        "kitchen_range_adjacent_drawer_rail.003",
+        "kitchen_range_adjacent_drawer_rail.004",
+        "kitchen_range_adjacent_drawer_rail.005",
+        "kitchen_range_adjacent_drawer_rail.006",
+        "kitchen_range_adjacent_drawer_rail.007",
+        "kitchen_range_adjacent_drawer_rail.008",
+        "kitchen_range_adjacent_drawer_rail.009",
+        "kitchen_range_adjacent_drawer_rail.010",
+        "kitchen_range_adjacent_drawer_rail.011",
+        "kitchen_range_adjacent_drawer_stile",
+        "kitchen_range_adjacent_drawer_stile.001",
+        "kitchen_range_adjacent_drawer_stile.002",
+        "kitchen_range_adjacent_drawer_stile.003",
+        "kitchen_range_adjacent_drawer_stile.004",
+        "kitchen_range_adjacent_drawer_stile.005",
+        "kitchen_range_adjacent_drawer_stile.006",
+        "kitchen_range_adjacent_drawer_stile.007",
+        "kitchen_range_adjacent_drawer_stile.008",
+        "kitchen_range_adjacent_drawer_stile.009",
+        "kitchen_range_adjacent_drawer_stile.010",
+        "kitchen_range_adjacent_drawer_stile.011",
+        "kitchen_tall_narrow_carcase",
+        "kitchen_tall_stacked_door_field",
+        "kitchen_tall_stacked_door_field.001",
+        "kitchen_tall_stacked_door_field.002",
+        "kitchen_tall_stacked_door_rail",
+        "kitchen_tall_stacked_door_rail.001",
+        "kitchen_tall_stacked_door_rail.002",
+        "kitchen_tall_stacked_door_rail.003",
+        "kitchen_tall_stacked_door_rail.004",
+        "kitchen_tall_stacked_door_rail.005",
+        "kitchen_tall_stacked_door_stile",
+        "kitchen_tall_stacked_door_stile.001",
+        "kitchen_tall_stacked_door_stile.002",
+        "kitchen_tall_stacked_door_stile.003",
+        "kitchen_tall_stacked_door_stile.004",
+        "kitchen_tall_stacked_door_stile.005"
+      ],
+      "row_from_top": 2,
+      "column_from_left": 2,
+      "swatch_center_m": [
+        0.0,
+        0.46,
+        0
+      ]
+    },
+    {
+      "material": "kitchen_floor_0",
+      "label": "Limestone flag 0",
+      "visible_source_objects": [
+        "kitchen_envelope_flag_00_00",
+        "kitchen_envelope_flag_00_04",
+        "kitchen_envelope_flag_00_08",
+        "kitchen_envelope_flag_01_01",
+        "kitchen_envelope_flag_01_05",
+        "kitchen_envelope_flag_01_09",
+        "kitchen_envelope_flag_02_02",
+        "kitchen_envelope_flag_02_06",
+        "kitchen_envelope_flag_03_03",
+        "kitchen_envelope_flag_03_07",
+        "kitchen_envelope_flag_04_00",
+        "kitchen_envelope_flag_04_04",
+        "kitchen_envelope_flag_04_08",
+        "kitchen_envelope_flag_05_01",
+        "kitchen_envelope_flag_05_05",
+        "kitchen_envelope_flag_05_09",
+        "kitchen_envelope_flag_06_02",
+        "kitchen_envelope_flag_06_06",
+        "kitchen_envelope_flag_07_03",
+        "kitchen_envelope_flag_07_07",
+        "kitchen_envelope_flag_08_00",
+        "kitchen_envelope_flag_08_04",
+        "kitchen_envelope_flag_08_08",
+        "kitchen_envelope_flag_09_01",
+        "kitchen_envelope_flag_09_05",
+        "kitchen_envelope_flag_09_09",
+        "kitchen_envelope_flag_10_02",
+        "kitchen_envelope_flag_10_06",
+        "kitchen_envelope_flag_11_03",
+        "kitchen_envelope_flag_11_07"
+      ],
+      "row_from_top": 2,
+      "column_from_left": 3,
+      "swatch_center_m": [
+        0.92,
+        0.46,
+        0
+      ]
+    },
+    {
+      "material": "kitchen_floor_1",
+      "label": "Limestone flag 1",
+      "visible_source_objects": [
+        "kitchen_envelope_flag_00_01",
+        "kitchen_envelope_flag_00_05",
+        "kitchen_envelope_flag_00_09",
+        "kitchen_envelope_flag_01_02",
+        "kitchen_envelope_flag_01_06",
+        "kitchen_envelope_flag_01_10",
+        "kitchen_envelope_flag_02_03",
+        "kitchen_envelope_flag_02_07",
+        "kitchen_envelope_flag_03_00",
+        "kitchen_envelope_flag_03_04",
+        "kitchen_envelope_flag_03_08",
+        "kitchen_envelope_flag_04_01",
+        "kitchen_envelope_flag_04_05",
+        "kitchen_envelope_flag_04_09",
+        "kitchen_envelope_flag_05_02",
+        "kitchen_envelope_flag_05_06",
+        "kitchen_envelope_flag_06_03",
+        "kitchen_envelope_flag_06_07",
+        "kitchen_envelope_flag_07_00",
+        "kitchen_envelope_flag_07_04",
+        "kitchen_envelope_flag_07_08",
+        "kitchen_envelope_flag_08_01",
+        "kitchen_envelope_flag_08_05",
+        "kitchen_envelope_flag_08_09",
+        "kitchen_envelope_flag_09_02",
+        "kitchen_envelope_flag_09_06",
+        "kitchen_envelope_flag_10_03",
+        "kitchen_envelope_flag_10_07",
+        "kitchen_envelope_flag_11_00",
+        "kitchen_envelope_flag_11_04",
+        "kitchen_envelope_flag_11_08",
+        "kitchen_envelope_skirting_0_0",
+        "kitchen_envelope_skirting_0_1",
+        "kitchen_envelope_skirting_0_2",
+        "kitchen_envelope_skirting_1_0",
+        "kitchen_envelope_skirting_1_1",
+        "kitchen_envelope_skirting_2_0",
+        "kitchen_envelope_skirting_3_0",
+        "kitchen_envelope_skirting_3_1"
+      ],
+      "row_from_top": 3,
+      "column_from_left": 1,
+      "swatch_center_m": [
+        -0.92,
+        -0.46,
+        0
+      ]
+    },
+    {
+      "material": "kitchen_floor_2",
+      "label": "Limestone flag 2",
+      "visible_source_objects": [
+        "kitchen_envelope_flag_00_02",
+        "kitchen_envelope_flag_00_06",
+        "kitchen_envelope_flag_01_03",
+        "kitchen_envelope_flag_01_07",
+        "kitchen_envelope_flag_02_00",
+        "kitchen_envelope_flag_02_04",
+        "kitchen_envelope_flag_02_08",
+        "kitchen_envelope_flag_03_01",
+        "kitchen_envelope_flag_03_05",
+        "kitchen_envelope_flag_03_09",
+        "kitchen_envelope_flag_04_02",
+        "kitchen_envelope_flag_04_06",
+        "kitchen_envelope_flag_05_03",
+        "kitchen_envelope_flag_05_07",
+        "kitchen_envelope_flag_06_00",
+        "kitchen_envelope_flag_06_04",
+        "kitchen_envelope_flag_06_08",
+        "kitchen_envelope_flag_07_01",
+        "kitchen_envelope_flag_07_05",
+        "kitchen_envelope_flag_07_09",
+        "kitchen_envelope_flag_08_02",
+        "kitchen_envelope_flag_08_06",
+        "kitchen_envelope_flag_09_03",
+        "kitchen_envelope_flag_09_07",
+        "kitchen_envelope_flag_10_00",
+        "kitchen_envelope_flag_10_04",
+        "kitchen_envelope_flag_10_08",
+        "kitchen_envelope_flag_11_01",
+        "kitchen_envelope_flag_11_05",
+        "kitchen_envelope_flag_11_09"
+      ],
+      "row_from_top": 3,
+      "column_from_left": 2,
+      "swatch_center_m": [
+        0.0,
+        -0.46,
+        0
+      ]
+    },
+    {
+      "material": "kitchen_floor_3",
+      "label": "Limestone flag 3",
+      "visible_source_objects": [
+        "kitchen_envelope_flag_00_03",
+        "kitchen_envelope_flag_00_07",
+        "kitchen_envelope_flag_01_00",
+        "kitchen_envelope_flag_01_04",
+        "kitchen_envelope_flag_01_08",
+        "kitchen_envelope_flag_02_01",
+        "kitchen_envelope_flag_02_05",
+        "kitchen_envelope_flag_02_09",
+        "kitchen_envelope_flag_03_02",
+        "kitchen_envelope_flag_03_06",
+        "kitchen_envelope_flag_03_10",
+        "kitchen_envelope_flag_04_03",
+        "kitchen_envelope_flag_04_07",
+        "kitchen_envelope_flag_05_00",
+        "kitchen_envelope_flag_05_04",
+        "kitchen_envelope_flag_05_08",
+        "kitchen_envelope_flag_06_01",
+        "kitchen_envelope_flag_06_05",
+        "kitchen_envelope_flag_06_09",
+        "kitchen_envelope_flag_07_02",
+        "kitchen_envelope_flag_07_06",
+        "kitchen_envelope_flag_08_03",
+        "kitchen_envelope_flag_08_07",
+        "kitchen_envelope_flag_09_00",
+        "kitchen_envelope_flag_09_04",
+        "kitchen_envelope_flag_09_08",
+        "kitchen_envelope_flag_10_01",
+        "kitchen_envelope_flag_10_05",
+        "kitchen_envelope_flag_11_02",
+        "kitchen_envelope_flag_11_06"
+      ],
+      "row_from_top": 3,
+      "column_from_left": 3,
+      "swatch_center_m": [
+        0.92,
+        -0.46,
+        0
+      ]
+    },
+    {
+      "material": "fidelity_living_cast_iron",
+      "label": "Cast stool",
+      "visible_source_objects": [
+        "kitchen_tractor_stool_0_curved_footrest_arms",
+        "kitchen_tractor_stool_0_floor_bearing_rim",
+        "kitchen_tractor_stool_0_fluted_pedestal",
+        "kitchen_tractor_stool_0_footrest_crossbar",
+        "kitchen_tractor_stool_0_perforated_saddle",
+        "kitchen_tractor_stool_0_tapered_cast_foot_ribs",
+        "kitchen_tractor_stool_0_turned_column_rings",
+        "kitchen_tractor_stool_1_curved_footrest_arms",
+        "kitchen_tractor_stool_1_floor_bearing_rim",
+        "kitchen_tractor_stool_1_fluted_pedestal",
+        "kitchen_tractor_stool_1_footrest_crossbar",
+        "kitchen_tractor_stool_1_perforated_saddle",
+        "kitchen_tractor_stool_1_tapered_cast_foot_ribs",
+        "kitchen_tractor_stool_1_turned_column_rings",
+        "kitchen_tractor_stool_2_curved_footrest_arms",
+        "kitchen_tractor_stool_2_floor_bearing_rim",
+        "kitchen_tractor_stool_2_fluted_pedestal",
+        "kitchen_tractor_stool_2_footrest_crossbar",
+        "kitchen_tractor_stool_2_perforated_saddle",
+        "kitchen_tractor_stool_2_tapered_cast_foot_ribs",
+        "kitchen_tractor_stool_2_turned_column_rings"
+      ],
+      "row_from_top": 4,
+      "column_from_left": 1,
+      "swatch_center_m": [
+        -0.92,
+        -1.3800000000000001,
+        0
+      ]
+    },
+    {
+      "material": "fidelity_living_blackened_wire",
+      "label": "Blackened shade wire",
+      "visible_source_objects": [
+        "kitchen_fine_wire_pendant_0_bound_edges",
+        "kitchen_fine_wire_pendant_0_coiled_wire_weft",
+        "kitchen_fine_wire_pendant_0_supporting_crossed_wire",
+        "kitchen_fine_wire_pendant_1_bound_edges",
+        "kitchen_fine_wire_pendant_1_coiled_wire_weft",
+        "kitchen_fine_wire_pendant_1_supporting_crossed_wire",
+        "kitchen_fine_wire_pendant_2_bound_edges",
+        "kitchen_fine_wire_pendant_2_coiled_wire_weft",
+        "kitchen_fine_wire_pendant_2_supporting_crossed_wire"
+      ],
+      "row_from_top": 4,
+      "column_from_left": 2,
+      "swatch_center_m": [
+        0.0,
+        -1.3800000000000001,
+        0
+      ]
+    },
+    {
+      "material": "interior_burnished_steel",
+      "label": "Sink and tap steel",
+      "visible_source_objects": [
+        "bedroom3_shower_drain",
+        "bedroom4_shower_drain",
+        "garden1_shower_drain",
+        "garden2_shower_drain",
+        "kitchen_falcon_range",
+        "kitchen_glass_door_small_knob",
+        "kitchen_glass_door_small_knob.001",
+        "kitchen_glass_door_small_knob.002",
+        "kitchen_glass_door_small_knob.003",
+        "kitchen_lower_drawer_pull_pull",
+        "kitchen_lower_drawer_pull_pull.001",
+        "kitchen_lower_drawer_pull_pull.002",
+        "kitchen_lower_drawer_pull_pull.003",
+        "kitchen_lower_drawer_pull_pull.004",
+        "kitchen_lower_drawer_pull_pull.005",
+        "kitchen_lower_drawer_pull_rosette",
+        "kitchen_lower_drawer_pull_rosette.001",
+        "kitchen_lower_drawer_pull_rosette.002",
+        "kitchen_lower_drawer_pull_rosette.003",
+        "kitchen_lower_drawer_pull_rosette.004",
+        "kitchen_lower_drawer_pull_rosette.005",
+        "kitchen_lower_drawer_pull_rosette.006",
+        "kitchen_lower_drawer_pull_rosette.007",
+        "kitchen_lower_drawer_pull_rosette.008",
+        "kitchen_lower_drawer_pull_rosette.009",
+        "kitchen_lower_drawer_pull_rosette.010",
+        "kitchen_lower_drawer_pull_rosette.011",
+        "kitchen_range_adjacent_pull_pull",
+        "kitchen_range_adjacent_pull_pull.001",
+        "kitchen_range_adjacent_pull_pull.002",
+        "kitchen_range_adjacent_pull_pull.003",
+        "kitchen_range_adjacent_pull_pull.004",
+        "kitchen_range_adjacent_pull_pull.005",
+        "kitchen_range_adjacent_pull_rosette",
+        "kitchen_range_adjacent_pull_rosette.001",
+        "kitchen_range_adjacent_pull_rosette.002",
+        "kitchen_range_adjacent_pull_rosette.003",
+        "kitchen_range_adjacent_pull_rosette.004",
+        "kitchen_range_adjacent_pull_rosette.005",
+        "kitchen_range_adjacent_pull_rosette.006",
+        "kitchen_range_adjacent_pull_rosette.007",
+        "kitchen_range_adjacent_pull_rosette.008",
+        "kitchen_range_adjacent_pull_rosette.009",
+        "kitchen_range_adjacent_pull_rosette.010",
+        "kitchen_range_adjacent_pull_rosette.011",
+        "kitchen_range_handle",
+        "kitchen_range_knob",
+        "kitchen_range_knob.001",
+        "kitchen_range_knob.002",
+        "kitchen_range_knob.003",
+        "kitchen_range_knob.004",
+        "kitchen_range_knob.005",
+        "kitchen_sink_open_drain_neck",
+        "kitchen_sink_open_steel_shell",
+        "kitchen_sink_overflow_plate",
+        "kitchen_sink_perforated_strainer",
+        "kitchen_sink_strainer_screw",
+        "kitchen_tall_stacked_pull_pull",
+        "kitchen_tall_stacked_pull_pull.001",
+        "kitchen_tall_stacked_pull_rosette",
+        "kitchen_tall_stacked_pull_rosette.001",
+        "kitchen_tall_stacked_pull_rosette.002",
+        "kitchen_tall_stacked_pull_rosette.003",
+        "kitchen_tap_cross_handle",
+        "kitchen_tap_cross_handle.001",
+        "kitchen_tap_deck_valve",
+        "kitchen_tap_deck_valve.001",
+        "kitchen_tap_period_column",
+        "kitchen_tap_spout_nozzle",
+        "kitchen_tap_undulating_spout",
+        "principal_shower_drain"
+      ],
+      "row_from_top": 4,
+      "column_from_left": 3,
+      "swatch_center_m": [
+        0.92,
+        -1.3800000000000001,
+        0
+      ]
+    }
+  ],
+  "shader_checks": [
+    {
+      "material": "A1_putty_below_tobacco_above",
+      "pigment": "guest_putty_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "A2_putty_below_tobacco_above",
+      "pigment": "guest_putty_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "A3_putty_below_tobacco_above",
+      "pigment": "guest_putty_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "A4_putty_below_tobacco_above",
+      "pigment": "guest_putty_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "bath_warm_white_terry",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.15000000596046448,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "cut_stone",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_aged_cane",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_bed_hemp",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.18000000715255737,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_bedroom_bench_oak",
+      "pigment": "reclaimed_oak.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_bedroom_chair_walnut",
+      "pigment": "antique_walnut.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_bedroom_mirror_oak",
+      "pigment": "antique_walnut.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_bedroom_tobacco_lime",
+      "pigment": "tobacco_brushed_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_bedroom_weathered_oak",
+      "pigment": "reclaimed_oak.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_ceiling_chalk",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_guest_chinoiserie",
+      "pigment": "guest_chinoiserie.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.029999999329447746,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_guest_lumbar_weave",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.20000000298023224,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_guest_putty_lime",
+      "pigment": "guest_putty_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_guest_taupe_paisley",
+      "pigment": "guest_taupe_paisley.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.029999999329447746,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_honed_limestone",
+      "pigment": "limestone_floor.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_living_ebony_carving",
+      "pigment": "antique_walnut.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_living_walnut",
+      "pigment": "antique_walnut.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_living_worn_carving",
+      "pigment": "antique_walnut.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_olive_lumbar",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.20000000298023224,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_principal_paisley",
+      "pigment": "principal_paisley.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.029999999329447746,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_reclaimed_oak",
+      "pigment": "reclaimed_oak.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_sconce_cane",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "fidelity_sheer_linen",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.20000000298023224,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "flechon_dark_oak",
+      "pigment": "antique_walnut.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "flechon_lime",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "flechon_limestone",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "flechon_oak",
+      "pigment": "antique_walnut.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "hall_photo21_handwoven_kilim",
+      "pigment": "hall_kilim.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.10000000149011612,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "interior_aged_rug",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.02500000037252903,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "interior_bronze_travertine",
+      "pigment": "bronze_travertine.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "interior_cream_linen",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.04500000178813934,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "interior_hemp_pillows",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.18000000715255737,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "interior_ivory_bedding",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.20000000298023224,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "interior_rug_rust",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.02500000037252903,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "interior_rust_ivory_curtain",
+      "pigment": "rust_ikat.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.18000000715255737,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "interior_taupe_sofa",
+      "pigment": "taupe_chenille.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.1599999964237213,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "K1_kitchen_inward_cream",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "K1_kitchen_inward_cream",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "K2_kitchen_inward_cream",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "K2_kitchen_inward_cream",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "K3_kitchen_inward_cream",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "K3_kitchen_inward_cream",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "K4_kitchen_inward_cream",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "K4_kitchen_inward_cream",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "kitchen_cleaned_oak",
+      "pigment": "kitchen-cleaned-oak.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "kitchen_floor_0",
+      "pigment": "salon-floor-stone-b.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "kitchen_floor_1",
+      "pigment": "salon-floor-stone-a.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "kitchen_floor_2",
+      "pigment": "salon-floor-stone-b.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "kitchen_floor_3",
+      "pigment": "salon-floor-stone-a.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "kitchen_honed_travertine",
+      "pigment": "bronze_travertine.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "kitchen_waxed_walnut",
+      "pigment": "antique_walnut.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "lime_plaster",
+      "pigment": "ochre_limewash.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "limestone_rubble",
+      "pigment": "limestone_rubble.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "oak_floor",
+      "pigment": "weathered_floorboards.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_chair_linen",
+      "pigment": "salon-curtain-linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.11999999731779099,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_chair_walnut",
+      "pigment": "antique_walnut.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_charred_oak_bark",
+      "pigment": "salon-charred-oak-bark.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_cream_mortar",
+      "pigment": "salon-cream-plaster.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_curtain_linen",
+      "pigment": "salon-curtain-linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.10999999940395355,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_fireplace_limestone",
+      "pigment": "salon-fireplace-limestone.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_floor_grout",
+      "pigment": "salon-cream-plaster.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_floor_stone_01",
+      "pigment": "salon-floor-stone-a.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_floor_stone_02",
+      "pigment": "salon-floor-stone-b.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_floor_stone_03",
+      "pigment": "salon-floor-stone-a.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_floor_stone_04",
+      "pigment": "salon-floor-stone-b.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_forged_iron",
+      "pigment": "salon-forged-iron.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_hemp_pillows",
+      "pigment": "hemp_linen.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.10999999940395355,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_lime_plaster",
+      "pigment": "salon-cream-plaster.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_oak_joist",
+      "pigment": "reclaimed_oak.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_oak_timber",
+      "pigment": "salon-oak-timber.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_patinated_metal",
+      "pigment": "salon-forged-iron.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_rubble_stone",
+      "pigment": "salon-rubble-face.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_rubble_stone_1",
+      "pigment": "salon-rubble-face.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_rubble_stone_2",
+      "pigment": "salon-rubble-face.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_small_diamond_pillow",
+      "pigment": "salon-pillow-diamond.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.10999999940395355,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_soot_deposit",
+      "pigment": "salon-forged-iron.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_table_carved_ebony",
+      "pigment": "antique_walnut.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_taupe_sofa",
+      "pigment": "salon-sofa-basketweave.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.12999999523162842,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "salon_whole_rug",
+      "pigment": "salon-rug.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.054999999701976776,
+      "Normal": [],
+      "Roughness": []
+    },
+    {
+      "material": "stone_floor",
+      "pigment": "limestone_floor.png",
+      "specular_ior_level": 0.5,
+      "sheen": 0.0,
+      "Normal": [],
+      "Roughness": []
+    }
+  ],
+  "image_sha256": "f6b19363ff9ceebaa2127dff4c69b224817e627ee728c450e01fb862755a5aab",
+  "pixels": [
+    1500,
+    1800
+  ],
+  "camera": {
+    "location": [
+      0.0,
+      -3.0999999046325684,
+      6.5
+    ],
+    "rotation_euler": [
+      0.4486299753189087,
+      -0.0,
+      0.0
+    ],
+    "ortho_scale": 4.2,
+    "sensor_fit": "VERTICAL"
+  },
+  "lighting": "Neutral D65 world .35, 950 W / 4 m broad softbox, 180 W / 2.5 m grazing strip; exposure 0; 6500 K WB",
+  "limitations": "Procedural relief is inferred, not measured surface scanning. Swatches do not validate room exposure.",
+  "kitchen_configuration_sha256": "b3bd479f07dddc6459667ec8f0848ee9222a107194a645688c3cb1895fea486a",
+  "kitchen_configuration": "/Users/cloud/.codex/worktrees/af1b/homespec/projects/bastide_de_flechon/kitchen_material_study.py"
+}

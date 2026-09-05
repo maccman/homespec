@@ -15,7 +15,7 @@ The numbered previews and contact sheets in `reference/review/` refer to the exa
 
 | Subject | Preview indices |
 |---|---|
-| Kitchen joinery, bronze travertine island, beam ceiling | 00, 10, 34, 35, 54 |
+| Kitchen joinery, bronze travertine island, beam ceiling | 00, 10, 35, 54 |
 | Salon sofas, rugs, fireplace, lighting | 07, 13, 23, 26, 31, 56, 57, 58, 60 |
 | Entrance and main stair | 21 |
 | Ground-floor bedroom and shower | 02, 03, 04, 05, 30 |
@@ -53,3 +53,13 @@ salon maps and their reference provenance. Exact source paths remain in the
 manifests; source originals are unchanged.
 
 The review process follows the supplied [Architectural visualization with Astra](https://developers.openai.com/blog/architectural-visualization-with-astra) article: inspect actual scene renders, isolate geometry and surface/lighting studies, and verify camera motion through the editable model. It does not reuse that article's house geometry.
+
+## Focused kitchen reconstruction
+
+[Kitchen evidence inventory](kitchen-discrepancies.md) records the original
+photos00/10/35/54, exterior12 and three original plans. Photo34 was inspected
+and is outdoor dining; it is no longer indexed as kitchen joinery evidence.
+[kitchen-baseline.json](kitchen-baseline.json) preserves a fresh ec117ec scene,
+source generation and hashes, independent from the prior mixed deliverables.
+Generated cleaned-oak pigment is documented in
+[textures/kitchen-generated-manifest.json](textures/kitchen-generated-manifest.json).
