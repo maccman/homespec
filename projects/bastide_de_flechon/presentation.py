@@ -110,6 +110,11 @@ def dress(scene):
         print(f"FLECHON refined {name}: {time.monotonic() - started:.1f}s", flush=True)
     load_room("fidelity_materials").apply(scene, M)
     load_room("fidelity_timbers").apply(scene, M)
+    kitchen = load_room("kitchen_surfaces").build_materials(scene)
+    load_room("kitchen_joinery").apply(scene, kitchen)
+    load_room("kitchen_furniture").apply(scene, kitchen)
+    load_room("kitchen_surfaces").apply(scene, kitchen)
+    load_room("kitchen_envelope").apply(scene, kitchen)
     # The isolated salon reconstruction follows shared surface/UV work and
     # precedes the house lighting policy so practicals have one owner.
     salon = load_room("salon_materials").build_materials()

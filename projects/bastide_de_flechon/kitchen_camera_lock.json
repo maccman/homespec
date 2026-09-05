@@ -1,0 +1,445 @@
+{
+  "schema": 1,
+  "lock_id": "kitchen-focus-v1",
+  "method": "Original JPEG EXIF lens/sensor priors, parallel-line review and explicit landmark fits. Nonzero lens shift is supported and recorded. Edited crop/stitch field is unknown; camera height, furniture dimensions and room assignments remain inferred. Point residuals measure camera-plus-geometry disagreement, not photographic fidelity.",
+  "projection": "Perspective; square pixels; 36mm sensor on longer image axis; lens distortion unknown and unmodeled; zero roll. All comparisons use the same full uncropped frame.",
+  "views": [
+    {
+      "id": "kitchen10",
+      "reference": "photo_10.jpg",
+      "room": "Kitchen \u00b7 oak island",
+      "location": [
+        -2.509445680446759,
+        15.856258822774247,
+        1.5301723198259631
+      ],
+      "target": [
+        -2.5128819851021085,
+        10.856260003593356,
+        1.5301723198259631
+      ],
+      "lens_mm": 24,
+      "size": [
+        900,
+        1200
+      ],
+      "note": "Axial portrait: island end in foreground, dark stone top, suspended woven baskets and south arched garden door; west cabinetry appears on the right.",
+      "exposure": 0.8500000238418579,
+      "shift_x": -0.016987545100755227,
+      "shift_y": 0.0011838424626445178,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          -2.6,
+          16.08,
+          1.46
+        ],
+        "target": [
+          -2.67,
+          10.55,
+          1.45
+        ],
+        "lens_mm": 25,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "landmarks": [
+        {
+          "name": "island near east top",
+          "world_m": [
+            -2.1,
+            13.795,
+            0.9575
+          ],
+          "photo_uv": [
+            0.354,
+            0.681
+          ],
+          "weight": 1
+        },
+        {
+          "name": "island near west top",
+          "world_m": [
+            -3.16,
+            13.795,
+            0.9575
+          ],
+          "photo_uv": [
+            0.796,
+            0.683
+          ],
+          "weight": 1
+        },
+        {
+          "name": "island far east top",
+          "world_m": [
+            -2.1,
+            10.35,
+            0.9575
+          ],
+          "photo_uv": [
+            0.462,
+            0.57
+          ],
+          "weight": 1
+        },
+        {
+          "name": "island far west top",
+          "world_m": [
+            -3.16,
+            10.35,
+            0.9575
+          ],
+          "photo_uv": [
+            0.621,
+            0.571
+          ],
+          "weight": 1
+        },
+        {
+          "name": "island near east base",
+          "world_m": [
+            -2.17,
+            13.79,
+            0.1
+          ],
+          "photo_uv": [
+            0.372,
+            0.967
+          ],
+          "weight": 1
+        },
+        {
+          "name": "island near west base",
+          "world_m": [
+            -3.09,
+            13.79,
+            0.1
+          ],
+          "photo_uv": [
+            0.774,
+            0.967
+          ],
+          "weight": 1
+        }
+      ],
+      "fit_status": "exif_constrained_landmark_fit",
+      "fit_note": "Native EXIF 24mm is fixed. XYZ, yaw and two lens shifts are solved against island corners with modeled dimensions unchanged. RMS is 6.90 preview pixels. Edited crop/stitch field remains unknown; no unconstrained focal substitution is used.",
+      "photo_lines": [
+        {
+          "name": "vertical island end",
+          "photo_uv": [
+            [
+              0.364,
+              0.69
+            ],
+            [
+              0.37,
+              0.948
+            ]
+          ]
+        },
+        {
+          "name": "vertical rear glazing",
+          "photo_uv": [
+            [
+              0.466,
+              0.437
+            ],
+            [
+              0.466,
+              0.623
+            ]
+          ]
+        },
+        {
+          "name": "depth island east",
+          "photo_uv": [
+            [
+              0.354,
+              0.681
+            ],
+            [
+              0.462,
+              0.57
+            ]
+          ]
+        },
+        {
+          "name": "depth island west",
+          "photo_uv": [
+            [
+              0.796,
+              0.683
+            ],
+            [
+              0.621,
+              0.571
+            ]
+          ]
+        },
+        {
+          "name": "beam underside transverse",
+          "photo_uv": [
+            [
+              0.018,
+              0.244
+            ],
+            [
+              0.994,
+              0.25
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-2.jpg",
+      "reference_sha256": "d884b2fbf52556af8cba69d5e2a7fb6d741e3274d07bf29e8891b82c1cf3f8bd",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 8,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "Canon",
+        "camera_model": "Canon EOS 5DS R",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.4,
+        "physical_focal_length_mm": 24.0,
+        "lens_model": "TS-E24mm f/3.5L II",
+        "physical_sensor_long_mm": 36,
+        "long_axis_equivalent_for_blender_mm": 24.0,
+        "sensor_source": "Full-frame 36mm convention; native EXIF focal length retained.",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit."
+    },
+    {
+      "id": "kitchen00",
+      "reference": "photo_00.jpg",
+      "room": "Kitchen \u00b7 oak island",
+      "location": [
+        -3.4621978560236837,
+        9.100000000000001,
+        1.7948237637648632
+      ],
+      "target": [
+        -2.643866201199435,
+        14.032578768019079,
+        1.7948237637648632
+      ],
+      "lens_mm": 24,
+      "size": [
+        1200,
+        900
+      ],
+      "note": "Reverse view checks cabinet face, sink depth, room portal and stool grouping; flowers disabled for geometry comparison.",
+      "exposure": 0.8500000238418579,
+      "shift_x": -0.1172694840027924,
+      "shift_y": 0.0350060953566366,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          -3.66,
+          9.87,
+          1.54
+        ],
+        "target": [
+          -2.4,
+          16.55,
+          1.54
+        ],
+        "lens_mm": 24,
+        "shift_x": 0,
+        "shift_y": 0.02
+      },
+      "landmarks": [
+        {
+          "name": "sink northwest lip",
+          "world_m": [
+            -2.98,
+            12.68,
+            0.9575
+          ],
+          "photo_uv": [
+            0.598,
+            0.746
+          ],
+          "role": "fit"
+        },
+        {
+          "name": "sink northeast lip",
+          "world_m": [
+            -2.38,
+            12.68,
+            0.9575
+          ],
+          "photo_uv": [
+            0.694,
+            0.746
+          ],
+          "role": "fit"
+        },
+        {
+          "name": "sink southeast lip",
+          "world_m": [
+            -2.38,
+            11.99,
+            0.9575
+          ],
+          "photo_uv": [
+            0.74,
+            0.799
+          ],
+          "role": "fit"
+        },
+        {
+          "name": "sink southwest lip",
+          "world_m": [
+            -2.98,
+            11.99,
+            0.9575
+          ],
+          "photo_uv": [
+            0.628,
+            0.799
+          ],
+          "role": "fit"
+        },
+        {
+          "name": "island far northwest top",
+          "world_m": [
+            -3.16,
+            13.795,
+            0.9575
+          ],
+          "photo_uv": [
+            0.557,
+            0.709
+          ],
+          "role": "fit"
+        }
+      ],
+      "fit_status": "conditional_native_24mm_reverse_fit",
+      "fit_note": "Five manually annotated stone/sink points; all coplanar inferred geometry. Native24mm fixed. Pose and shift remain ambiguous; use reverse view to check construction, not surveyed dimensions. Solution touches the y=9.1m lower bound; this indicates residual ambiguity. No room geometry was changed to reduce this residual.",
+      "photo_lines": [
+        {
+          "name": "reverse upright portal edge",
+          "photo_uv": [
+            [
+              0.578,
+              0.403
+            ],
+            [
+              0.578,
+              0.69
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-10.jpg",
+      "reference_sha256": "041770ebdc2d4d052fb389559f93dc235bad6246a6bec12d8b688bac08a3a848",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 15,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "Canon",
+        "camera_model": "Canon EOS 5DS R",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.6,
+        "physical_focal_length_mm": 24.0,
+        "lens_model": "TS-E24mm f/3.5L II",
+        "physical_sensor_long_mm": 36,
+        "long_axis_equivalent_for_blender_mm": 24.0,
+        "sensor_source": "Full-frame 36mm convention; native EXIF focal length retained.",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit.",
+      "rejected_initial": {
+        "location": [
+          -3.66,
+          9.87,
+          1.54
+        ],
+        "target": [
+          -2.4,
+          16.55,
+          1.54
+        ],
+        "lens_mm": 24,
+        "shift_x": 0,
+        "shift_y": 0.02
+      },
+      "fit_solver": {
+        "implementation": "camera_calibration.py::fit_with_exif",
+        "implementation_sha256": "db5739e87f65c0185b972138493cf7eaeed0da3f5f1c9ddff00fd80fd878fff8",
+        "scipy_version": "1.18.1",
+        "method": "scipy.optimize.least_squares, bounded default trust-region-reflective method, soft_l1 loss, f_scale=0.025, max_nfev=5000",
+        "parameter_order": [
+          "x_m",
+          "y_m",
+          "z_m",
+          "yaw_radians",
+          "shift_x",
+          "shift_y"
+        ],
+        "lower_bounds": [
+          -4.2,
+          9.1,
+          1.25,
+          1.1,
+          -0.3,
+          -0.2
+        ],
+        "upper_bounds": [
+          -3.3,
+          11.2,
+          1.95,
+          1.9,
+          0.3,
+          0.2
+        ],
+        "initial_camera": "baseline_camera and rejected_initial in this view; yaw=atan2(target_y-location_y,target_x-location_x)",
+        "fixed_optics": "24 mm native EXIF focal length, 36 mm sensor long axis, level camera, zero roll",
+        "objective": "Normalized projected-minus-annotated UV residuals with square-root point weights, plus (z-z_initial)*0.01 and shift_x*0.002, shift_y*0.002 soft terms; holdout landmarks excluded.",
+        "limitations": "Five coplanar inferred stone/sink points, no independent holdouts; solution touches the y=9.1 m lower bound. Unknown optical shift, crop and correction preserve pose/geometry ambiguity. This records the original solve, not a new fit."
+      }
+    },
+    {
+      "id": "kitchen_side",
+      "reference": "photo35/54 informed construction diagnostic",
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-9.jpg",
+      "reference_sha256": "701e8d843dda1aea931b1ac17c6b0dfbcafe23fae8b3d82cbb7255b9c7772579",
+      "room": "Kitchen south seating extension",
+      "location": [
+        -0.72,
+        10.1,
+        1.42
+      ],
+      "target": [
+        -3.85,
+        11.18,
+        1.4
+      ],
+      "lens_mm": 28,
+      "size": [
+        1000,
+        800
+      ],
+      "shift_x": 0,
+      "shift_y": 0,
+      "exposure": 2.45,
+      "landmarks": [],
+      "fit_status": "unfitted supplemental construction view",
+      "fit_note": "Deliberate28mm diagnostic inside kitchen to reveal knee space, stool bearing and southcabinet. Not a photo35 camera fit. Photo35 originalEXIF is50mm; this view does not claim that capturefield.",
+      "note": "Same fixed diagnostic camera for baseline/current; documented kitchen source changes remain visible. No architecture is adjusted to fit this diagnostic camera."
+    }
+  ],
+  "review_status": "Three focused views: inherited kitchen10, conditional fitted kitchen00, and unfitted kitchen_side construction diagnostic. Exact-lock render validation and photographic limitations are recorded separately in kitchen-verification.md; no residual constitutes photographic acceptance.",
+  "purpose": "Focused kitchen before/after: exact inherited photo10; independent reverse camera, with conditional residual and explicit uncertainties.",
+  "inherited_calibration_origin_commit": "f5920006f6e825efb556f0b83aeea5e3c11c8e24",
+  "inherited_calibration_origin_manifest_sha256": "26077c1987d0d91828840ddd4eddf6d585c7d026b372b276e36c6ee2670bb4bb",
+  "inherited_calibration_note": "These origin fields belong to the inherited photograph calibration history, not the fresh focused-kitchen comparison baseline.",
+  "comparison_baseline": {
+    "manifest": "kitchen-baseline.json",
+    "source_commit": "ec117ec97c3a5610c9f9bf8b8e4fb18b2a2fc5a8",
+    "note": "Fresh saved kitchen baseline and artifact hashes are recorded separately. Use this focused lock for identical-camera baseline/current comparisons."
+  }
+}

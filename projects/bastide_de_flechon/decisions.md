@@ -468,6 +468,52 @@ Entities: FP, MAIN_BEAM0, MAIN_BEAM1, MAIN_BEAM2, C0_MAIN, D_FRONT
 
 The isolated salon reconstruction from source commits `297f492`, `e67a70d` and `ac42812` provides physical floor joints, irregular rubble and plaster returns, fireplace profiles and ironwork, timber checks, textile geometry and twelve generated pigment maps. It runs after shared material and timber work, preserving timber end-grain slots, and before the house lighting policy so fire and practicals have one owner. Its geometry is still subject to the combined house audit. The evidence and remaining limits are recorded in `salon-discrepancies.md` and `salon-materials-provenance.md`; the maps are inferred surface appearance, not measured reflectance.
 
+## D-042 Reconstruct the kitchen's photographed construction
+
+Entities: A_HALL_K, A_K_HALL, C0_K, kitchen, K1, K2, K3, K4, F0_K
+
+Original photos00/10/35/54 and the ground-floor plan reveal errors that were
+not established by the old six-point island camera residual. The two aligned
+kitchen/hall cuts now have flat 2100 mm heads; photo00 clearly shows the square
+lintel. Keep 1100 mm width and shared world centre. Fine kitchen joists widen
+from 92 to 150 mm at retained 245 mm pitch and 105 mm depth: untouched photo10
+samples show roughly 60–64% timber silhouette, versus 38% before. Four heavy
+beams retain their 285 x 310 mm sections and inferred axes; the second visible
+beam's overly tall silhouette remains unresolved across camera/height/section.
+
+The stone top retains the locked XY bounds and 957.5 mm top datum, but becomes
+one continuous 25 mm slab with a real sink hole. Photos35/54 and the plan establish
+a garden-end seating extension, so the cabinet begins at y=11.25 m under the
+unchanged y=10.35 m stone edge. Its 900 mm extension and concealed steel support
+rails are inferred construction. Three cast stools occupy this actual knee
+space. The former full solid cabinet filled the thin sink shell; independent
+side/end/bottom boards now leave the recessed bowl open, with a real drain.
+Broad joined mouldings replace the nested square sticks, end-panel grain runs
+vertically, and the worktop has a separate wood cornice. The west cabinet
+fronts face into the room; formerly their local-Y sign buried panels/pulls in
+the carcase. Photo35 supports a narrower three-door south tower; photo00
+supports drawers, paired glazed banks, open shelves and a low northern counter.
+These furniture dimensions remain photographic estimates.
+
+Original-pixel photo10 inspection distinguishes three separate shade necks and
+bells, correcting the inherited count of two. Their inferred centres at
+y=10.65/11.55/12.45 m and lower rims at 1.65 m place the fixtures entirely over
+the fixed counter; they do not occupy a walking route. The shade radius is
+235 mm, height 815 mm and minimum counter clearance is over 690 mm. The actual
+counter footprint is checked before placing each shade, and its cord terminates
+at the first actual joist/beam/ceiling hit. Low countertop fixtures are an
+explicit photographic condition; audit policies and object tags are unchanged.
+The three stools bear on the new +2 mm floor finish.
+
+Kitchen-only finishes use quieter cream plaster, longitudinal cleaned-oak
+pigment, independently inferred fine pores and waxed walnut response. The new
+oak map's exact prompt and hash are retained. Existing neutral stone-face maps
+supply pigment for 400 x 800 mm flags with pale 2.5 mm physical joints, long axis+y
+and half bond. Their +2 mm finish datum and skirting cuts follow the actual slab
+and openings; no wall, doorway approach or room footprint is narrowed by an
+inferred cabinet/camera adjustment. Shared salon shaders and the coherent
+whole-house lighting preset are preserved.
+
 ## D-043 Trace the principal-suite layout from the original upper plan
 
 Entities: master, N_W2, MW, MASTER_ROOF_TIMBERS, MASTER_TRUSS_BRACES, F1_MAIN, D_FRONT, D_FRONT.frieze

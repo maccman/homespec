@@ -102,6 +102,16 @@ PRESETS = {
     },
 }
 
+# The reverse kitchen study keeps photo10's radiometry as a control and adds
+# only the visibly warm wire-fixture practicals. It does not claim recovered
+# photo00 photometry; the coherent house walk is unchanged.
+PRESETS["kitchen00"] = {
+    **PRESETS["kitchen10"],
+    "reference": "photo_00.jpg / Final Collection-10.jpg",
+    "fixture_multipliers": {"kitchen_fine_wire_pendant_": .6},
+    "note": "Reverse construction validation; same daylight/EV as kitchen10 with 60% kitchen practicals. Crop, shift and captured photometry remain inferred.",
+}
+
 
 def fixture_multiplier(name, preset):
     """Longer explicit prefixes win, with a complete fallback for every light."""

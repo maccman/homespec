@@ -1,0 +1,19 @@
+{
+  "source_commit": "ec117ec97c3a5610c9f9bf8b8e4fb18b2a2fc5a8",
+  "generation": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/generations/129519b59a2f497891ca2ca6b0f5ea3a",
+  "presentation": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/presentation/129519b59a2f497891ca2ca6b0f5ea3a/7a5aae1526736bdc",
+  "presentation_fingerprint": "7a5aae1526736bdc720e014faa555a96c84ec754fa481c69f92d03aad1d75676",
+  "saved_scene": "/Users/cloud/.codex/worktrees/af1b/homespec/out/bastide_de_flechon/presentation/129519b59a2f497891ca2ca6b0f5ea3a/7a5aae1526736bdc/house.blend",
+  "saved_scene_sha256": "ace6a7b2bf1426c4f99576c263737f50353c392c1cc18a33a31d8f09328b9ab4",
+  "bytes": 59649859,
+  "original_archive_sha256": "b7fe2f9451a9223dba133fe54dfa0eac7eab9e7540ae834beb9af15e419741a8",
+  "preservation": "Original ZIP and extracted reference cache are read-only. Baseline scene remains at its raw original path; no save-over or user Blender session modification.",
+  "fresh_baseline_validation": {
+    "checks_passed": 366,
+    "checks_failed": 0,
+    "audit_findings": 0,
+    "objects": 15155
+  },
+  "inherited_global_camera_lock_sha256": "477cd639301fecca34695a49f5ef5b2ddcba5b3c53f901a36088d9d718304a3f",
+  "comparison_camera_lock": "kitchen_camera_lock.json (both scenes; exact hash recorded in each render manifest)"
+}
