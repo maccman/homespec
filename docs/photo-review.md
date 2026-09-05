@@ -30,6 +30,10 @@ projection. Coincident or vertical look directions, behind-camera points,
 nonfinite values, invalid dimensions, unsupported conventions and distorted
 reference aspect ratios fail validation. Nonzero roll, lens distortion, crop
 recovery, orthographic and panoramic calibration are not implemented.
+Render scale rounds to integer pixels only when the resulting raster retains
+the exact declared aspect ratio. For example, `1400×788` accepts `.5`
+(`700×394`) and rejects `.4` (`560×315`); the runner never substitutes a scale
+or relaxes its projection check, including cameras with no landmarks.
 
 `ReferenceImage.sha256` identifies the untouched original. Its optional `size`
 is the measured original raster size; leaving it absent explicitly reports
@@ -84,6 +88,8 @@ producers must supply their own camera and effective-setting evidence;
 PNG dimensions. It does not independently probe or decode videos: the producer
 must do that and attach its results. Build consistency and
 hash verification establish traceability; photographs still need visual review.
+Adaptive sampling records Blender's actual value; validation accepts the requested
+threshold or its exact IEEE binary32 representation, without a numeric tolerance.
 
 Color, clay and neutral variants use the same camera, exposure, Cycles samples,
 seed and lighting. Neutral replaces material response with a uniform grey
@@ -98,7 +104,9 @@ have one coherent lighting state; per-photo lighting studies must be labeled.
 `study_state(scene)` creates a temporary camera, preserves source camera
 animation, copies world/light data, and restores overrides, object hiding,
 light transforms, emissive strength, exposure/color settings and custom scene
-state even after an exception. Its contract prohibits geometry or arbitrary
+state even after an exception. Nested custom-property groups and arrays are
+copied independently before mutation; scalar and datablock references are retained.
+Its contract prohibits geometry or arbitrary
 shader-network mutation. Source scenes are never saved by the review runner.
 Bastide's camera-review adapter uses this runner and retains its legacy manifest
 for existing project consumers. `verify_views.py` declares every navigation

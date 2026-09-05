@@ -176,6 +176,28 @@ def test_recorded_effective_controls_must_match_request(tmp_path):
         manifest.add(wrong, tmp_path)
 
 
+def test_adaptive_threshold_accepts_only_exact_or_binary32_representation(tmp_path):
+    import math
+
+    from homespec.review import fingerprint
+
+    manifest = fixture(tmp_path)
+    manifest.settings["adaptive_threshold"] = .05
+    rendered = artifact(tmp_path, manifest)
+    binary32 = struct.unpack(">f", struct.pack(">f", .05))[0]
+    assert binary32 != .05
+    for actual in (.05, binary32):
+        effective = {"samples": 16, "seed": 7, "adaptive_threshold": actual}
+        row = replace(rendered, details={"effective_settings": effective, "effective_settings_sha256": fingerprint(effective)})
+        checked = ReviewManifest(manifest.source, manifest.coverage, manifest.settings, [row])
+        assert checked.artifacts[0].details["effective_settings"]["adaptive_threshold"] == actual
+    for actual in (.0501, .04, math.nextafter(.05, math.inf)):
+        effective = {"adaptive_threshold": actual}
+        row = replace(rendered, details={"effective_settings": effective, "effective_settings_sha256": fingerprint(effective)})
+        with pytest.raises(ValueError, match="Applied render adaptive_threshold"):
+            manifest.add(row, tmp_path)
+
+
 def test_shared_studio_capture_and_resume_records_effective_evidence(tmp_path):
     from homespec.review import fingerprint, open_review
 

@@ -164,6 +164,21 @@ class PhotoView:
         up = (right[1] * forward[2], -right[0] * forward[2], right[0] * forward[1] - right[1] * forward[0])
         return right, up, (forward[0], forward[1], forward[2])
 
+    def scaled_size(self, scale: float = 1) -> tuple[int, int]:
+        """Round a requested raster scale only when full-frame aspect is retained."""
+        _finite((scale,), "Review scale")
+        if scale <= 0:
+            raise ValueError("Review scale must be positive")
+        width, height = self.size
+        scaled = (width * scale, height * scale)
+        _finite(scaled, "Scaled review dimensions")
+        result = (round(scaled[0]), round(scaled[1]))
+        _size(result)
+        if result[0] * height != result[1] * width:
+            raise ValueError(f"Camera {self.id}: scale {scale} rounds {width}x{height} to {result[0]}x{result[1]}, "
+                             "which changes the full-frame aspect ratio; choose a scale producing proportional integer dimensions")
+        return result
+
     def project(self, point: Vec3) -> tuple[float, float]:
         if len(point) != 3:
             raise ValueError("Projection point requires XYZ")

@@ -230,8 +230,18 @@ class ReviewManifest:
             raise ValueError(f"Stale/mixed review source or settings: {artifact.id}")
         effective = artifact.details.get("effective_settings", {})
         for key in ("samples", "seed", "adaptive_threshold"):
-            if key in self.settings and key in effective and self.settings[key] != effective[key]:
-                raise ValueError(f"Applied render {key} differs from declared controls: {artifact.id}")
+            if key in self.settings and key in effective:
+                expected, actual = self.settings[key], effective[key]
+                same = expected == actual
+                if not same and key == "adaptive_threshold" and isinstance(expected, (int, float)):
+                    # Blender stores this RNA float as IEEE binary32. Accept its
+                    # exact representation, never an arbitrary tolerance window.
+                    try:
+                        same = actual == struct.unpack(">f", struct.pack(">f", expected))[0]
+                    except (OverflowError, struct.error):
+                        same = False
+                if not same:
+                    raise ValueError(f"Applied render {key} differs from declared controls: {artifact.id}")
 
     def add(self, artifact: ReviewArtifact, root: Path) -> None:
         self._compatible(artifact)

@@ -159,6 +159,9 @@ def photo_review(project: str, cameras: str, destination: str, out: str | None =
         raise typer.BadParameter("Unknown or duplicate camera/variant")
     if samples <= 0 or not math.isfinite(scale) or scale <= 0:
         raise typer.BadParameter("Samples and scale must be positive and finite")
+    for view in photo_views.views:
+        if view.id in selected:
+            view.scaled_size(scale)
     package = Path(__file__).resolve().parent
     dependencies = [FileIdentity.capture(cameras, "camera-views")]
     for path in (package / "photo.py", package / "review.py", package / "blender" / "photo_review.py", package / "blender" / "review_studies.py", package / "blender" / "devices.py"):

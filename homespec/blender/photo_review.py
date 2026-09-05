@@ -52,6 +52,7 @@ def loaded_scene_source(dependencies=()):
 def apply_camera(scene, camera, view, scale=1):
     """Apply exactly the shared long-axis, zero-roll, square-pixel convention."""
     width, height = view.size
+    raster = view.scaled_size(scale)
     camera.location = view.location
     camera.rotation_euler = (Vector(view.target) - Vector(view.location)).to_track_quat("-Z", "Y").to_euler()
     camera.data.type = "PERSP"
@@ -62,9 +63,7 @@ def apply_camera(scene, camera, view, scale=1):
     camera.data.dof.use_dof = False
     camera.data.clip_start, camera.data.clip_end = .01, 1000
     scene.render.pixel_aspect_x = scene.render.pixel_aspect_y = 1
-    scene.render.resolution_x, scene.render.resolution_y = round(width * scale), round(height * scale)
-    if min(scene.render.resolution_x, scene.render.resolution_y) <= 0:
-        raise ValueError("Review scale produces an invalid raster")
+    scene.render.resolution_x, scene.render.resolution_y = raster
     scene.render.resolution_percentage = 100
     scene.view_settings.exposure = view.exposure
     bpy.context.view_layer.update()

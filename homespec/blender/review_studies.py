@@ -10,12 +10,25 @@ import bpy
 from mathutils import Vector
 
 
+def _property_snapshot(value):
+    """Detach ID-property containers; scalar and datablock references stay intact."""
+    if hasattr(value, "to_dict"):
+        return {key: _property_snapshot(item) for key, item in value.to_dict().items()}
+    if hasattr(value, "to_list"):
+        return [_property_snapshot(item) for item in value.to_list()]
+    if isinstance(value, dict):
+        return {key: _property_snapshot(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_property_snapshot(item) for item in value]
+    return value
+
+
 def custom_properties(owner):
     # Registered RNA property groups (e.g. cycles) must never be removed while
     # settings snapshots hold references to them. Only authored ID properties
     # are review state.
     registered = set(owner.bl_rna.properties.keys())
-    return {key: value for key, value in owner.items() if key not in registered}
+    return {key: _property_snapshot(value) for key, value in owner.items() if key not in registered}
 
 
 def checked(checker, *args):

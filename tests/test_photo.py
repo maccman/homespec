@@ -19,6 +19,39 @@ def test_portrait_landscape_projection_and_reference_framing():
         camera(reference=ReferenceImage("original.jpg", "a" * 64, (4000, 3000)))
 
 
+@pytest.mark.parametrize("size,expected", [((1400, 788), (700, 394)), ((788, 1400), (394, 700))])
+def test_scaled_raster_preserves_exact_framing_without_landmarks(size, expected):
+    view = camera(size=size)
+    assert not view.landmarks
+    assert view.scaled_size(.5) == expected
+    assert view.scaled_size(.50001) == expected  # valid rounding must remain supported
+    with pytest.raises(ValueError, match="scale 0.4.*proportional integer"):
+        view.scaled_size(.4)
+    assert replace(view, size=expected).project((1, 4, 2)) == pytest.approx(view.project((1, 4, 2)))
+
+
+@pytest.mark.parametrize("scale", [0, -1, float("nan"), float("inf"), 1e308, .00001, True])
+def test_invalid_scaled_rasters_fail_cleanly(scale):
+    with pytest.raises(ValueError):
+        camera().scaled_size(scale)
+
+
+def test_cli_rejects_aspect_rounding_before_starting_blender(tmp_path, monkeypatch):
+    import subprocess
+
+    from homespec import buildstate, cli
+
+    path = tmp_path / "cameras.json"
+    PhotoViews("independent", (camera(size=(1400, 788)),)).write(path)
+    monkeypatch.setattr(buildstate, "resolve_build", lambda *args, **kwargs: tmp_path)
+    def unexpected_launch(*args, **kwargs):
+        pytest.fail("Invalid raster reached the Blender launcher")
+    monkeypatch.setattr(subprocess, "run", unexpected_launch)
+    with pytest.raises(ValueError, match="proportional integer"):
+        cli.photo_review(str(tmp_path), str(path), str(tmp_path / "output"), scale=.4)
+    assert not (tmp_path / "output").exists()
+
+
 def test_tilt_projection_basis_is_orthonormal():
     view = camera(location=(5, -2, 1), target=(8, 2, 4))
     right, up, forward = view.basis()
