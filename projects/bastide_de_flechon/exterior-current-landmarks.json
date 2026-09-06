@@ -1,0 +1,2887 @@
+{
+  "schema": 1,
+  "created_utc": "2026-09-05T22:09:17.833772+00:00",
+  "purpose": "Independent current-geometry reprojection with frozen cameras; no optimization or fidelity percentage",
+  "source_commits": [
+    "55a3069"
+  ],
+  "current_ir": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/e3b0760284354eac9ea110ca7e12ec92/ir.json",
+  "current_ir_sha256": "c5ae2d0418beefc946656622791043ea0ceb73c1bfe6e262ee174ed5369f1171",
+  "previous_calibration_ir": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/generations/cc5f3633dcb04e339fc979864142c382/ir.json",
+  "previous_calibration_ir_sha256": "aa48121d6c5c9d068a8f52015ec0b7f1c09a6e89e4d575de471035c07cdc6697",
+  "camera_lock": "/Users/cloud/.codex/worktrees/60a7/homespec/projects/bastide_de_flechon/exterior_cameras.json",
+  "camera_lock_sha256": "c120f2c07e4440c1cccde7022e654e98ee938f8489fb81304aed8c7f4d0ac8c7",
+  "lock_id": "exterior-v2-landmark-fit",
+  "role_semantics": "fit and holdout preserve membership of original fit; no current points were used to optimize any camera",
+  "views": [
+    {
+      "id": "pool46",
+      "camera": {
+        "location": [
+          32.02370024128025,
+          -24.247669725086066,
+          8.800000000000002
+        ],
+        "target": [
+          24.768689128174614,
+          -17.642180584906264,
+          6.868076873247707
+        ],
+        "lens_mm": 70,
+        "size": [
+          2560,
+          1440
+        ],
+        "sensor_dimension_mm": 36,
+        "shift_x": 9.999999999999999e-10,
+        "shift_y": 9.999999999999999e-10
+      },
+      "reference_original": "PHOTOS/VICTOR FITZ/DJI_20231012094055_0813_D.jpg",
+      "reference_sha256": "7826463492e70c2aea7eb0a1edc3e0135438927999c544400504315d58cb5cee",
+      "previous_rms_px": {
+        "rms_preview_px": 82.91241956153011,
+        "fit_rms_preview_px": 34.04833396977298,
+        "holdout_rms_preview_px": 117.18654207400783
+      },
+      "current_rms_px": {
+        "rms_preview_px": 61.4911048578771,
+        "fit_rms_preview_px": 34.04833396977298,
+        "holdout_rms_preview_px": 83.2309815710035
+      },
+      "landmarks": [
+        {
+          "name": "D_FRONT fraction0 z3.55",
+          "world_m": [
+            2.32,
+            0.0,
+            3.55
+          ],
+          "photo_uv": [
+            0.39666666666666667,
+            0.3022222222222222
+          ],
+          "annotation_px": [
+            476,
+            204
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            2.32,
+            0.0,
+            3.55
+          ],
+          "current_z_m": 3.55,
+          "semantic": "fanlight spring",
+          "entity": "D_FRONT",
+          "fraction": 0.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction0 z3.55",
+            "photo_uv": [
+              0.39666666666666667,
+              0.3022222222222222
+            ],
+            "projected_uv": [
+              0.39577536600421154,
+              0.29877340731929974
+            ],
+            "error_preview_px": [
+              -2.281729695885133,
+              -4.966293460208373
+            ],
+            "distance_preview_px": 5.465378407575501
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction0 z3.55",
+            "photo_uv": [
+              0.39666666666666667,
+              0.3022222222222222
+            ],
+            "projected_uv": [
+              0.39577536600421154,
+              0.29877340731929974
+            ],
+            "error_preview_px": [
+              -2.281729695885133,
+              -4.966293460208373
+            ],
+            "distance_preview_px": 5.465378407575501
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_FRONT fraction1 z3.55",
+          "world_m": [
+            5.68,
+            0.0,
+            3.55
+          ],
+          "photo_uv": [
+            0.515,
+            0.3037037037037037
+          ],
+          "annotation_px": [
+            618,
+            205
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            5.68,
+            0.0,
+            3.55
+          ],
+          "current_z_m": 3.55,
+          "semantic": "fanlight spring",
+          "entity": "D_FRONT",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z3.55",
+            "photo_uv": [
+              0.515,
+              0.3037037037037037
+            ],
+            "projected_uv": [
+              0.5104402997145685,
+              0.33110787042673656
+            ],
+            "error_preview_px": [
+              -11.67283273070467,
+              39.462000081167325
+            ],
+            "distance_preview_px": 41.15221105074502
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z3.55",
+            "photo_uv": [
+              0.515,
+              0.3037037037037037
+            ],
+            "projected_uv": [
+              0.5104402997145685,
+              0.33110787042673656
+            ],
+            "error_preview_px": [
+              -11.67283273070467,
+              39.462000081167325
+            ],
+            "distance_preview_px": 41.15221105074502
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_FRONT fraction0.5 z5.23",
+          "world_m": [
+            4.0,
+            0.0,
+            5.23
+          ],
+          "photo_uv": [
+            0.45666666666666667,
+            0.1511111111111111
+          ],
+          "annotation_px": [
+            548,
+            102
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            4.0,
+            0.0,
+            5.23
+          ],
+          "current_z_m": 5.23,
+          "semantic": "fanlight crown",
+          "entity": "D_FRONT",
+          "fraction": 0.5,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction0.5 z5.23",
+            "photo_uv": [
+              0.45666666666666667,
+              0.1511111111111111
+            ],
+            "projected_uv": [
+              0.4508102093419919,
+              0.15894361999633985
+            ],
+            "error_preview_px": [
+              -14.992530751167408,
+              11.278812794729385
+            ],
+            "distance_preview_px": 18.76133247888464
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction0.5 z5.23",
+            "photo_uv": [
+              0.45666666666666667,
+              0.1511111111111111
+            ],
+            "projected_uv": [
+              0.4508102093419919,
+              0.15894361999633985
+            ],
+            "error_preview_px": [
+              -14.992530751167408,
+              11.278812794729385
+            ],
+            "distance_preview_px": 18.76133247888464
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_FRONT fraction1 z0",
+          "world_m": [
+            5.68,
+            0.0,
+            0.0
+          ],
+          "photo_uv": [
+            0.5158333333333334,
+            0.6592592592592592
+          ],
+          "annotation_px": [
+            619,
+            445
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            5.68,
+            0.0,
+            0
+          ],
+          "current_z_m": 0.0,
+          "semantic": "masonry sill",
+          "entity": "D_FRONT",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z0",
+            "photo_uv": [
+              0.5158333333333334,
+              0.6592592592592592
+            ],
+            "projected_uv": [
+              0.5102458808732938,
+              0.6611784380240014
+            ],
+            "error_preview_px": [
+              -14.30387829770126,
+              2.763617421228819
+            ],
+            "distance_preview_px": 14.568408135632682
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z0",
+            "photo_uv": [
+              0.5158333333333334,
+              0.6592592592592592
+            ],
+            "projected_uv": [
+              0.5102458808732938,
+              0.6611784380240014
+            ],
+            "error_preview_px": [
+              -14.30387829770126,
+              2.763617421228819
+            ],
+            "distance_preview_px": 14.568408135632682
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_FRONT fraction0 z0",
+          "world_m": [
+            2.32,
+            0.0,
+            0.0
+          ],
+          "photo_uv": [
+            0.3975,
+            0.64
+          ],
+          "annotation_px": [
+            477,
+            432
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "holdout",
+          "weight": 0.4,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            2.32,
+            0.0,
+            0
+          ],
+          "current_z_m": 0.0,
+          "semantic": "masonry sill",
+          "entity": "D_FRONT",
+          "fraction": 0.0,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "D_FRONT fraction0 z0",
+            "photo_uv": [
+              0.3975,
+              0.64
+            ],
+            "projected_uv": [
+              0.3975957440993582,
+              0.608918007045929
+            ],
+            "error_preview_px": [
+              0.24510489435698446,
+              -44.758069853862224
+            ],
+            "distance_preview_px": 44.758740972601636
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "D_FRONT fraction0 z0",
+            "photo_uv": [
+              0.3975,
+              0.64
+            ],
+            "projected_uv": [
+              0.3975957440993582,
+              0.608918007045929
+            ],
+            "error_preview_px": [
+              0.24510489435698446,
+              -44.758069853862224
+            ],
+            "distance_preview_px": 44.758740972601636
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_E1 fraction1 z0",
+          "world_m": [
+            8.0,
+            3.15,
+            0.0
+          ],
+          "photo_uv": [
+            0.71,
+            0.6577777777777778
+          ],
+          "annotation_px": [
+            852,
+            444
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            8.0,
+            3.15,
+            0
+          ],
+          "current_z_m": 0.0,
+          "semantic": "masonry sill",
+          "entity": "D_E1",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_E1 fraction1 z0",
+            "photo_uv": [
+              0.71,
+              0.6577777777777778
+            ],
+            "projected_uv": [
+              0.7133781621955048,
+              0.6521880900174318
+            ],
+            "error_preview_px": [
+              8.64809522049228,
+              -8.049150374898186
+            ],
+            "distance_preview_px": 11.814329126125827
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_E1 fraction1 z0",
+            "photo_uv": [
+              0.71,
+              0.6577777777777778
+            ],
+            "projected_uv": [
+              0.7133781621955048,
+              0.6521880900174318
+            ],
+            "error_preview_px": [
+              8.64809522049228,
+              -8.049150374898186
+            ],
+            "distance_preview_px": 11.814329126125827
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_E2 fraction1 z0",
+          "world_m": [
+            8.0,
+            7.2,
+            0.0
+          ],
+          "photo_uv": [
+            0.825,
+            0.6266666666666667
+          ],
+          "annotation_px": [
+            990,
+            423
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            8.0,
+            7.2,
+            0
+          ],
+          "current_z_m": 0.0,
+          "semantic": "masonry sill",
+          "entity": "D_E2",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_E2 fraction1 z0",
+            "photo_uv": [
+              0.825,
+              0.6266666666666667
+            ],
+            "projected_uv": [
+              0.8450052118535606,
+              0.5963507779802998
+            ],
+            "error_preview_px": [
+              51.21334234511522,
+              -43.65487970836837
+            ],
+            "distance_preview_px": 67.29453883124606
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_E2 fraction1 z0",
+            "photo_uv": [
+              0.825,
+              0.6266666666666667
+            ],
+            "projected_uv": [
+              0.8450052118535606,
+              0.5963507779802998
+            ],
+            "error_preview_px": [
+              51.21334234511522,
+              -43.65487970836837
+            ],
+            "distance_preview_px": 67.29453883124606
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_E1 fraction0.5 z2.875",
+          "world_m": [
+            8.0,
+            2.325,
+            2.875
+          ],
+          "photo_uv": [
+            0.6941666666666667,
+            0.36592592592592593
+          ],
+          "annotation_px": [
+            833,
+            247
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            8.0,
+            2.325,
+            2.875
+          ],
+          "current_z_m": 2.875,
+          "semantic": "arch crown",
+          "entity": "D_E1",
+          "fraction": 0.5,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "D_E1 fraction0.5 z2.875",
+            "photo_uv": [
+              0.6941666666666667,
+              0.36592592592592593
+            ],
+            "projected_uv": [
+              0.6870435988383699,
+              0.39717654623913284
+            ],
+            "error_preview_px": [
+              -18.235053640439958,
+              45.000893251017956
+            ],
+            "distance_preview_px": 48.55509833847766
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "D_E1 fraction0.5 z2.875",
+            "photo_uv": [
+              0.6941666666666667,
+              0.36592592592592593
+            ],
+            "projected_uv": [
+              0.6870435988383699,
+              0.39717654623913284
+            ],
+            "error_preview_px": [
+              -18.235053640439958,
+              45.000893251017956
+            ],
+            "distance_preview_px": 48.55509833847766
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_E2 fraction0.5 z2.875",
+          "world_m": [
+            8.0,
+            6.375,
+            2.875
+          ],
+          "photo_uv": [
+            0.8075,
+            0.35703703703703704
+          ],
+          "annotation_px": [
+            969,
+            241
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            8.0,
+            6.375,
+            2.875
+          ],
+          "current_z_m": 2.875,
+          "semantic": "arch crown",
+          "entity": "D_E2",
+          "fraction": 0.5,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "D_E2 fraction0.5 z2.875",
+            "photo_uv": [
+              0.8075,
+              0.35703703703703704
+            ],
+            "projected_uv": [
+              0.8242191410467467,
+              0.3573377899121915
+            ],
+            "error_preview_px": [
+              42.80100107967144,
+              0.43308414022242836
+            ],
+            "distance_preview_px": 42.80319211571197
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "D_E2 fraction0.5 z2.875",
+            "photo_uv": [
+              0.8075,
+              0.35703703703703704
+            ],
+            "projected_uv": [
+              0.8242191410467467,
+              0.3573377899121915
+            ],
+            "error_preview_px": [
+              42.80100107967144,
+              0.43308414022242836
+            ],
+            "distance_preview_px": 42.80319211571197
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "N_E1 fraction0.5 z5.425",
+          "world_m": [
+            8.0,
+            2.325,
+            5.425
+          ],
+          "photo_uv": [
+            0.6908333333333333,
+            0.22074074074074074
+          ],
+          "annotation_px": [
+            829,
+            149
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            8.0,
+            2.05,
+            5.425
+          ],
+          "current_z_m": 5.425,
+          "semantic": "circular aperture center",
+          "entity": "N_E1",
+          "fraction": 0.5,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "N_E1 fraction0.5 z5.425",
+            "photo_uv": [
+              0.6908333333333333,
+              0.22074074074074074
+            ],
+            "projected_uv": [
+              0.6794483320529845,
+              0.15475271166830143
+            ],
+            "error_preview_px": [
+              -29.145603277692942,
+              -95.0227618643126
+            ],
+            "distance_preview_px": 99.39210966038766
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "N_E1 fraction0.5 z5.425",
+            "photo_uv": [
+              0.6908333333333333,
+              0.22074074074074074
+            ],
+            "projected_uv": [
+              0.6896294934212708,
+              0.15304293382158832
+            ],
+            "error_preview_px": [
+              -3.0818301748800536,
+              -97.48484196357948
+            ],
+            "distance_preview_px": 97.53354340887482
+          },
+          "residual_change_px": -1.8585662515128405
+        },
+        {
+          "name": "N_E2 fraction0.5 z5.425",
+          "world_m": [
+            8.0,
+            6.375,
+            5.425
+          ],
+          "photo_uv": [
+            0.8075,
+            0.21777777777777776
+          ],
+          "annotation_px": [
+            969,
+            147
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            8.0,
+            8.0,
+            5.425
+          ],
+          "current_z_m": 5.425,
+          "semantic": "circular aperture center",
+          "entity": "N_E2",
+          "fraction": 0.5,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "N_E2 fraction0.5 z5.425",
+            "photo_uv": [
+              0.8075,
+              0.21777777777777776
+            ],
+            "projected_uv": [
+              0.8787639718433568,
+              0.12128055136264544
+            ],
+            "error_preview_px": [
+              182.4357679189933,
+              -138.95600603779056
+            ],
+            "distance_preview_px": 229.32854386265848
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "N_E2 fraction0.5 z5.425",
+            "photo_uv": [
+              0.8075,
+              0.21777777777777776
+            ],
+            "projected_uv": [
+              0.8283884844940846,
+              0.12974038115725559
+            ],
+            "error_preview_px": [
+              53.474520304856696,
+              -126.77385113355194
+            ],
+            "distance_preview_px": 137.59045625720745
+          },
+          "residual_change_px": -91.73808760545103
+        }
+      ]
+    },
+    {
+      "id": "courtyard08",
+      "camera": {
+        "location": [
+          15.201809976691049,
+          14.999999999999998,
+          1.8463389557897907
+        ],
+        "target": [
+          5.466028372604109,
+          17.28354035600914,
+          1.8463389557897907
+        ],
+        "lens_mm": 41.096,
+        "size": [
+          1440,
+          1920
+        ],
+        "sensor_dimension_mm": 36,
+        "shift_x": -0.07999999999999999,
+        "shift_y": 0.10297214897333178
+      },
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-18.jpg",
+      "reference_sha256": "b418d42ab5253b208d5d5142d0042109efe0cc471bb242f249f0fe8b82a99b9f",
+      "previous_rms_px": {
+        "rms_preview_px": 68.11459757437615,
+        "fit_rms_preview_px": 23.12076041572281,
+        "holdout_rms_preview_px": 103.9092953661805
+      },
+      "current_rms_px": {
+        "rms_preview_px": 68.11459757437615,
+        "fit_rms_preview_px": 23.12076041572281,
+        "holdout_rms_preview_px": 103.9092953661805
+      },
+      "landmarks": [
+        {
+          "name": "D_ENTRY fraction0 z0",
+          "world_m": [
+            -0.3581224,
+            18.2343914,
+            0.0
+          ],
+          "photo_uv": [
+            0.56,
+            0.7266666666666667
+          ],
+          "annotation_px": [
+            504,
+            872
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -0.3581224,
+            18.2343914,
+            0
+          ],
+          "current_z_m": 0.0,
+          "semantic": "entrance sill",
+          "entity": "D_ENTRY",
+          "fraction": 0.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_ENTRY fraction0 z0",
+            "photo_uv": [
+              0.56,
+              0.7266666666666667
+            ],
+            "projected_uv": [
+              0.5679388604660264,
+              0.7356369609892541
+            ],
+            "error_preview_px": [
+              11.431959071077902,
+              17.222965099367897
+            ],
+            "distance_preview_px": 20.67172501309083
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_ENTRY fraction0 z0",
+            "photo_uv": [
+              0.56,
+              0.7266666666666667
+            ],
+            "projected_uv": [
+              0.5679388604660264,
+              0.7356369609892541
+            ],
+            "error_preview_px": [
+              11.431959071077902,
+              17.222965099367897
+            ],
+            "distance_preview_px": 20.67172501309083
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_ENTRY fraction1 z0",
+          "world_m": [
+            -0.06287240000000002,
+            20.7168914,
+            0.0
+          ],
+          "photo_uv": [
+            0.8177777777777778,
+            0.7291666666666666
+          ],
+          "annotation_px": [
+            736,
+            875
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -0.06287240000000002,
+            20.7168914,
+            0
+          ],
+          "current_z_m": 0.0,
+          "semantic": "entrance sill",
+          "entity": "D_ENTRY",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_ENTRY fraction1 z0",
+            "photo_uv": [
+              0.8177777777777778,
+              0.7291666666666666
+            ],
+            "projected_uv": [
+              0.8025027040321371,
+              0.7333438811365868
+            ],
+            "error_preview_px": [
+              -21.99610619372267,
+              8.020251782246675
+            ],
+            "distance_preview_px": 23.412670209443345
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_ENTRY fraction1 z0",
+            "photo_uv": [
+              0.8177777777777778,
+              0.7291666666666666
+            ],
+            "projected_uv": [
+              0.8025027040321371,
+              0.7333438811365868
+            ],
+            "error_preview_px": [
+              -21.99610619372267,
+              8.020251782246675
+            ],
+            "distance_preview_px": 23.412670209443345
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_ENTRY fraction0.5 z2.68",
+          "world_m": [
+            -0.21049740000000003,
+            19.4756414,
+            2.68
+          ],
+          "photo_uv": [
+            0.6855555555555556,
+            0.5416666666666666
+          ],
+          "annotation_px": [
+            617,
+            650
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -0.21049740000000003,
+            19.4756414,
+            2.68
+          ],
+          "current_z_m": 2.68,
+          "semantic": "central wooden leaf head",
+          "entity": "D_ENTRY",
+          "fraction": 0.5,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_ENTRY fraction0.5 z2.68",
+            "photo_uv": [
+              0.6855555555555556,
+              0.5416666666666666
+            ],
+            "projected_uv": [
+              0.6862432136103288,
+              0.543593383728061
+            ],
+            "error_preview_px": [
+              0.9902275988734388,
+              3.699296757877164
+            ],
+            "distance_preview_px": 3.829536159956079
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_ENTRY fraction0.5 z2.68",
+            "photo_uv": [
+              0.6855555555555556,
+              0.5416666666666666
+            ],
+            "projected_uv": [
+              0.6862432136103288,
+              0.543593383728061
+            ],
+            "error_preview_px": [
+              0.9902275988734388,
+              3.699296757877164
+            ],
+            "distance_preview_px": 3.829536159956079
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_ENTRY fraction0.5 z5.75",
+          "world_m": [
+            -0.21049740000000003,
+            19.4756414,
+            5.75
+          ],
+          "photo_uv": [
+            0.69,
+            0.3425
+          ],
+          "annotation_px": [
+            621,
+            411
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -0.21049740000000003,
+            19.4756414,
+            5.75
+          ],
+          "current_z_m": 5.75,
+          "semantic": "upper arch crown",
+          "entity": "D_ENTRY",
+          "fraction": 0.5,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_ENTRY fraction0.5 z5.75",
+            "photo_uv": [
+              0.69,
+              0.3425
+            ],
+            "projected_uv": [
+              0.6862432136103288,
+              0.3249280033927222
+            ],
+            "error_preview_px": [
+              -5.4097724011264425,
+              -33.73823348597341
+            ],
+            "distance_preview_px": 34.16919718380938
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_ENTRY fraction0.5 z5.75",
+            "photo_uv": [
+              0.69,
+              0.3425
+            ],
+            "projected_uv": [
+              0.6862432136103288,
+              0.3249280033927222
+            ],
+            "error_preview_px": [
+              -5.4097724011264425,
+              -33.73823348597341
+            ],
+            "distance_preview_px": 34.16919718380938
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_ENTRY fraction0 z4.5",
+          "world_m": [
+            -0.3581224,
+            18.2343914,
+            4.5
+          ],
+          "photo_uv": [
+            0.5622222222222222,
+            0.45666666666666667
+          ],
+          "annotation_px": [
+            506,
+            548
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -0.3581224,
+            18.2343914,
+            4.5
+          ],
+          "current_z_m": 4.5,
+          "semantic": "upper curved shoulder spring",
+          "entity": "D_ENTRY",
+          "fraction": 0.0,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "D_ENTRY fraction0 z4.5",
+            "photo_uv": [
+              0.5622222222222222,
+              0.45666666666666667
+            ],
+            "projected_uv": [
+              0.5679388604660264,
+              0.41229890207022907
+            ],
+            "error_preview_px": [
+              8.231959071078041,
+              -85.1861080251602
+            ],
+            "distance_preview_px": 85.5829314210618
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "D_ENTRY fraction0 z4.5",
+            "photo_uv": [
+              0.5622222222222222,
+              0.45666666666666667
+            ],
+            "projected_uv": [
+              0.5679388604660264,
+              0.41229890207022907
+            ],
+            "error_preview_px": [
+              8.231959071078041,
+              -85.1861080251602
+            ],
+            "distance_preview_px": 85.5829314210618
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_ENTRY fraction1 z4.5",
+          "world_m": [
+            -0.06287240000000002,
+            20.7168914,
+            4.5
+          ],
+          "photo_uv": [
+            0.8211111111111111,
+            0.45666666666666667
+          ],
+          "annotation_px": [
+            739,
+            548
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -0.06287240000000002,
+            20.7168914,
+            4.5
+          ],
+          "current_z_m": 4.5,
+          "semantic": "upper curved shoulder spring",
+          "entity": "D_ENTRY",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "D_ENTRY fraction1 z4.5",
+            "photo_uv": [
+              0.8211111111111111,
+              0.45666666666666667
+            ],
+            "projected_uv": [
+              0.8025027040321371,
+              0.41559464398002566
+            ],
+            "error_preview_px": [
+              -26.796106193722622,
+              -78.85828355835073
+            ],
+            "distance_preview_px": 83.28661472838543
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "D_ENTRY fraction1 z4.5",
+            "photo_uv": [
+              0.8211111111111111,
+              0.45666666666666667
+            ],
+            "projected_uv": [
+              0.8025027040321371,
+              0.41559464398002566
+            ],
+            "error_preview_px": [
+              -26.796106193722622,
+              -78.85828355835073
+            ],
+            "distance_preview_px": 83.28661472838543
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_KITCHEN_TERRACE fraction1 z0",
+          "world_m": [
+            0.0,
+            14.65,
+            0.0
+          ],
+          "photo_uv": [
+            0.20444444444444446,
+            0.7375
+          ],
+          "annotation_px": [
+            184,
+            885
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.45,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            0.0,
+            14.65,
+            0
+          ],
+          "current_z_m": 0.0,
+          "semantic": "masonry sill",
+          "entity": "D_KITCHEN_TERRACE",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_TERRACE fraction1 z0",
+            "photo_uv": [
+              0.20444444444444446,
+              0.7375
+            ],
+            "projected_uv": [
+              0.21248997233499894,
+              0.7461559868027531
+            ],
+            "error_preview_px": [
+              11.585560162398462,
+              16.619494661285827
+            ],
+            "distance_preview_px": 20.259141321217502
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_TERRACE fraction1 z0",
+            "photo_uv": [
+              0.20444444444444446,
+              0.7375
+            ],
+            "projected_uv": [
+              0.21248997233499894,
+              0.7461559868027531
+            ],
+            "error_preview_px": [
+              11.585560162398462,
+              16.619494661285827
+            ],
+            "distance_preview_px": 20.259141321217502
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_KITCHEN_TERRACE fraction1 z2.18",
+          "world_m": [
+            0.0,
+            14.65,
+            2.18
+          ],
+          "photo_uv": [
+            0.20333333333333334,
+            0.5883333333333334
+          ],
+          "annotation_px": [
+            183,
+            706
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.45,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            0.0,
+            14.65,
+            2.18
+          ],
+          "current_z_m": 2.18,
+          "semantic": "segmental spring",
+          "entity": "D_KITCHEN_TERRACE",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_TERRACE fraction1 z2.18",
+            "photo_uv": [
+              0.20333333333333334,
+              0.5883333333333334
+            ],
+            "projected_uv": [
+              0.21248997233499894,
+              0.5770966894893749
+            ],
+            "error_preview_px": [
+              13.185560162398474,
+              -21.57435618040033
+            ],
+            "distance_preview_px": 25.284616694642764
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_TERRACE fraction1 z2.18",
+            "photo_uv": [
+              0.20333333333333334,
+              0.5883333333333334
+            ],
+            "projected_uv": [
+              0.21248997233499894,
+              0.5770966894893749
+            ],
+            "error_preview_px": [
+              13.185560162398474,
+              -21.57435618040033
+            ],
+            "distance_preview_px": 25.284616694642764
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "N_BATH3_E fraction1 z5.55",
+          "world_m": [
+            0.0,
+            14.85,
+            5.55
+          ],
+          "photo_uv": [
+            0.15666666666666668,
+            0.2825
+          ],
+          "annotation_px": [
+            141,
+            339
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            0.0,
+            14.85,
+            5.55
+          ],
+          "current_z_m": 5.55,
+          "semantic": "window head",
+          "entity": "N_BATH3_E",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "N_BATH3_E fraction1 z5.55",
+            "photo_uv": [
+              0.15666666666666668,
+              0.2825
+            ],
+            "projected_uv": [
+              0.2337805164409102,
+              0.3166410973546947
+            ],
+            "error_preview_px": [
+              111.04394367491066,
+              65.55090692101388
+            ],
+            "distance_preview_px": 128.94835720180447
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "N_BATH3_E fraction1 z5.55",
+            "photo_uv": [
+              0.15666666666666668,
+              0.2825
+            ],
+            "projected_uv": [
+              0.2337805164409102,
+              0.3166410973546947
+            ],
+            "error_preview_px": [
+              111.04394367491066,
+              65.55090692101388
+            ],
+            "distance_preview_px": 128.94835720180447
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "N_BATH3_E fraction1 z4.2",
+          "world_m": [
+            0.0,
+            14.85,
+            4.2
+          ],
+          "photo_uv": [
+            0.15777777777777777,
+            0.4116666666666667
+          ],
+          "annotation_px": [
+            142,
+            494
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            0.0,
+            14.85,
+            4.2
+          ],
+          "current_z_m": 4.2,
+          "semantic": "window sill",
+          "entity": "N_BATH3_E",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "N_BATH3_E fraction1 z4.2",
+            "photo_uv": [
+              0.15777777777777777,
+              0.4116666666666667
+            ],
+            "projected_uv": [
+              0.2337805164409102,
+              0.4210099677969383
+            ],
+            "error_preview_px": [
+              109.44394367491068,
+              17.939138170121467
+            ],
+            "distance_preview_px": 110.90441598693774
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "N_BATH3_E fraction1 z4.2",
+            "photo_uv": [
+              0.15777777777777777,
+              0.4116666666666667
+            ],
+            "projected_uv": [
+              0.2337805164409102,
+              0.4210099677969383
+            ],
+            "error_preview_px": [
+              109.44394367491068,
+              17.939138170121467
+            ],
+            "distance_preview_px": 110.90441598693774
+          },
+          "residual_change_px": 0.0
+        }
+      ]
+    },
+    {
+      "id": "kitchen12",
+      "camera": {
+        "location": [
+          -0.9999999999999999,
+          -5.4064061335206945,
+          1.470553930403924
+        ],
+        "target": [
+          -1.9477356389620055,
+          4.548582422908754,
+          1.470553930403924
+        ],
+        "lens_mm": 41.096,
+        "size": [
+          1440,
+          1920
+        ],
+        "sensor_dimension_mm": 36,
+        "shift_x": -0.1599999999999995,
+        "shift_y": 0.2051254294928803
+      },
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-21.jpg",
+      "reference_sha256": "fa2099c9ef048bde63d79746601a7cc31ec7efb5d52c8925ee7b3d882990a8a4",
+      "previous_rms_px": {
+        "rms_preview_px": 31.28404874454498,
+        "fit_rms_preview_px": 24.771195485142062,
+        "holdout_rms_preview_px": 40.219161739212915
+      },
+      "current_rms_px": {
+        "rms_preview_px": 12.907149753159851,
+        "fit_rms_preview_px": 15.85073204592391,
+        "holdout_rms_preview_px": 4.295920085199553
+      },
+      "landmarks": [
+        {
+          "name": "D_KITCHEN_GARDEN fraction0 z2.08",
+          "world_m": [
+            -3.837,
+            8.4,
+            2.08
+          ],
+          "photo_uv": [
+            0.5355555555555556,
+            0.6566666666666666
+          ],
+          "annotation_px": [
+            482,
+            788
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -3.837,
+            8.4,
+            2.08
+          ],
+          "current_z_m": 2.08,
+          "semantic": "segmental spring",
+          "entity": "D_KITCHEN_GARDEN",
+          "fraction": 0.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction0 z2.08",
+            "photo_uv": [
+              0.5355555555555556,
+              0.6566666666666666
+            ],
+            "projected_uv": [
+              0.5486963132333629,
+              0.655477967245324
+            ],
+            "error_preview_px": [
+              18.92269105604253,
+              -2.2823028889777675
+            ],
+            "distance_preview_px": 19.059830620429665
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction0 z2.08",
+            "photo_uv": [
+              0.5355555555555556,
+              0.6566666666666666
+            ],
+            "projected_uv": [
+              0.5486963132333629,
+              0.655477967245324
+            ],
+            "error_preview_px": [
+              18.92269105604253,
+              -2.2823028889777675
+            ],
+            "distance_preview_px": 19.059830620429665
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_KITCHEN_GARDEN fraction1 z2.08",
+          "world_m": [
+            -1.637,
+            8.4,
+            2.08
+          ],
+          "photo_uv": [
+            0.8,
+            0.6516666666666666
+          ],
+          "annotation_px": [
+            720,
+            782
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -1.637,
+            8.4,
+            2.08
+          ],
+          "current_z_m": 2.08,
+          "semantic": "segmental spring",
+          "entity": "D_KITCHEN_GARDEN",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction1 z2.08",
+            "photo_uv": [
+              0.8,
+              0.6516666666666666
+            ],
+            "projected_uv": [
+              0.7876859083367389,
+              0.6547281039343451
+            ],
+            "error_preview_px": [
+              -17.73229199509604,
+              5.877959553942702
+            ],
+            "distance_preview_px": 18.68112919277455
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction1 z2.08",
+            "photo_uv": [
+              0.8,
+              0.6516666666666666
+            ],
+            "projected_uv": [
+              0.7876859083367389,
+              0.6547281039343451
+            ],
+            "error_preview_px": [
+              -17.73229199509604,
+              5.877959553942702
+            ],
+            "distance_preview_px": 18.68112919277455
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_KITCHEN_GARDEN fraction0.5 z2.44",
+          "world_m": [
+            -2.737,
+            8.4,
+            2.44
+          ],
+          "photo_uv": [
+            0.6666666666666666,
+            0.6291666666666667
+          ],
+          "annotation_px": [
+            600,
+            755
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -2.737,
+            8.4,
+            2.44
+          ],
+          "current_z_m": 2.44,
+          "semantic": "arch crown",
+          "entity": "D_KITCHEN_GARDEN",
+          "fraction": 0.5,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction0.5 z2.44",
+            "photo_uv": [
+              0.6666666666666666,
+              0.6291666666666667
+            ],
+            "projected_uv": [
+              0.6672954642801021,
+              0.6255592607585498
+            ],
+            "error_preview_px": [
+              0.905468563347096,
+              -6.926219343584279
+            ],
+            "distance_preview_px": 6.985154809641007
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction0.5 z2.44",
+            "photo_uv": [
+              0.6666666666666666,
+              0.6291666666666667
+            ],
+            "projected_uv": [
+              0.6672954642801021,
+              0.6255592607585498
+            ],
+            "error_preview_px": [
+              0.905468563347096,
+              -6.926219343584279
+            ],
+            "distance_preview_px": 6.985154809641007
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_KITCHEN_GARDEN fraction0 z0",
+          "world_m": [
+            -3.837,
+            8.4,
+            0.0
+          ],
+          "photo_uv": [
+            0.5377777777777778,
+            0.8208333333333333
+          ],
+          "annotation_px": [
+            484,
+            985
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -3.837,
+            8.4,
+            0
+          ],
+          "current_z_m": 0.0,
+          "semantic": "masonry sill",
+          "entity": "D_KITCHEN_GARDEN",
+          "fraction": 0.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction0 z0",
+            "photo_uv": [
+              0.5377777777777778,
+              0.8208333333333333
+            ],
+            "projected_uv": [
+              0.5486963132333629,
+              0.8249215433493743
+            ],
+            "error_preview_px": [
+              15.72269105604251,
+              7.849363230798687
+            ],
+            "distance_preview_px": 17.573147617110987
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction0 z0",
+            "photo_uv": [
+              0.5377777777777778,
+              0.8208333333333333
+            ],
+            "projected_uv": [
+              0.5486963132333629,
+              0.8249215433493743
+            ],
+            "error_preview_px": [
+              15.72269105604251,
+              7.849363230798687
+            ],
+            "distance_preview_px": 17.573147617110987
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_KITCHEN_GARDEN fraction1 z0",
+          "world_m": [
+            -1.637,
+            8.4,
+            0.0
+          ],
+          "photo_uv": [
+            0.8,
+            0.8166666666666667
+          ],
+          "annotation_px": [
+            720,
+            980
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -1.637,
+            8.4,
+            0
+          ],
+          "current_z_m": 0.0,
+          "semantic": "masonry sill",
+          "entity": "D_KITCHEN_GARDEN",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction1 z0",
+            "photo_uv": [
+              0.8,
+              0.8166666666666667
+            ],
+            "projected_uv": [
+              0.7876859083367389,
+              0.8267309149972325
+            ],
+            "error_preview_px": [
+              -17.73229199509604,
+              19.323356794686433
+            ],
+            "distance_preview_px": 26.226442709870156
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction1 z0",
+            "photo_uv": [
+              0.8,
+              0.8166666666666667
+            ],
+            "projected_uv": [
+              0.7876859083367389,
+              0.8267309149972325
+            ],
+            "error_preview_px": [
+              -17.73229199509604,
+              19.323356794686433
+            ],
+            "distance_preview_px": 26.226442709870156
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "N_BED3_S fraction0.5 z5.6",
+          "world_m": [
+            -2.737,
+            8.4,
+            5.4
+          ],
+          "photo_uv": [
+            0.6677777777777778,
+            0.3825
+          ],
+          "annotation_px": [
+            601,
+            459
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.35,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -2.737,
+            8.4,
+            5.6
+          ],
+          "current_z_m": 5.4,
+          "semantic": "window head",
+          "entity": "N_BED3_S",
+          "fraction": 0.5,
+          "previous_projection": {
+            "role": "fit",
+            "name": "N_BED3_S fraction0.5 z5.6",
+            "photo_uv": [
+              0.6677777777777778,
+              0.3825
+            ],
+            "projected_uv": [
+              0.6672954642801021,
+              0.36620590311871437
+            ],
+            "error_preview_px": [
+              -0.6945314366529942,
+              -31.28466601206842
+            ],
+            "distance_preview_px": 31.29237449288833
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "N_BED3_S fraction0.5 z5.6",
+            "photo_uv": [
+              0.6677777777777778,
+              0.3825
+            ],
+            "projected_uv": [
+              0.6672954642801021,
+              0.38262067258959
+            ],
+            "error_preview_px": [
+              -0.6945314366529942,
+              0.23169137201275447
+            ],
+            "distance_preview_px": 0.7321576390125454
+          },
+          "residual_change_px": -30.560216853875787
+        },
+        {
+          "name": "N_BED3_S fraction0.5 z4.2",
+          "world_m": [
+            -2.737,
+            8.4,
+            3.95
+          ],
+          "photo_uv": [
+            0.6677777777777778,
+            0.5016666666666667
+          ],
+          "annotation_px": [
+            601,
+            602
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.35,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -2.737,
+            8.4,
+            4.2
+          ],
+          "current_z_m": 3.95,
+          "semantic": "window sill",
+          "entity": "N_BED3_S",
+          "fraction": 0.5,
+          "previous_projection": {
+            "role": "fit",
+            "name": "N_BED3_S fraction0.5 z4.2",
+            "photo_uv": [
+              0.6677777777777778,
+              0.5016666666666667
+            ],
+            "projected_uv": [
+              0.6672954642801021,
+              0.481109289414844
+            ],
+            "error_preview_px": [
+              -0.6945314366529942,
+              -39.47016432349962
+            ],
+            "distance_preview_px": 39.476274465057635
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "N_BED3_S fraction0.5 z4.2",
+            "photo_uv": [
+              0.6677777777777778,
+              0.5016666666666667
+            ],
+            "projected_uv": [
+              0.6672954642801021,
+              0.5016277512534386
+            ],
+            "error_preview_px": [
+              -0.6945314366529942,
+              -0.07471759339793493
+            ],
+            "distance_preview_px": 0.6985389289527473
+          },
+          "residual_change_px": -38.777735536104885
+        },
+        {
+          "name": "N_BED3_S fraction0 z5.6",
+          "world_m": [
+            -3.412,
+            8.4,
+            5.4
+          ],
+          "photo_uv": [
+            0.5944444444444444,
+            0.38666666666666666
+          ],
+          "annotation_px": [
+            535,
+            464
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -3.537,
+            8.4,
+            5.6
+          ],
+          "current_z_m": 5.4,
+          "semantic": "window head",
+          "entity": "N_BED3_S",
+          "fraction": 0.0,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "N_BED3_S fraction0 z5.6",
+            "photo_uv": [
+              0.5944444444444444,
+              0.38666666666666666
+            ],
+            "projected_uv": [
+              0.5808661747946272,
+              0.36804337445280844
+            ],
+            "error_preview_px": [
+              -19.552708295736814,
+              -35.75672105060779
+            ],
+            "distance_preview_px": 40.75354588240333
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "N_BED3_S fraction0 z5.6",
+            "photo_uv": [
+              0.5944444444444444,
+              0.38666666666666666
+            ],
+            "projected_uv": [
+              0.5943089230499852,
+              0.38409720147321347
+            ],
+            "error_preview_px": [
+              -0.19515080802134932,
+              -4.9333731714301265
+            ],
+            "distance_preview_px": 4.937231479934674
+          },
+          "residual_change_px": -35.816314402468656
+        },
+        {
+          "name": "N_BED3_S fraction1 z5.6",
+          "world_m": [
+            -2.062,
+            8.4,
+            5.4
+          ],
+          "photo_uv": [
+            0.7422222222222222,
+            0.37833333333333335
+          ],
+          "annotation_px": [
+            668,
+            454
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -1.937,
+            8.4,
+            5.6
+          ],
+          "current_z_m": 5.4,
+          "semantic": "window head",
+          "entity": "N_BED3_S",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "N_BED3_S fraction1 z5.6",
+            "photo_uv": [
+              0.7422222222222222,
+              0.37833333333333335
+            ],
+            "projected_uv": [
+              0.7546721894562605,
+              0.36434828947021636
+            ],
+            "error_preview_px": [
+              17.927952817015065,
+              -26.851284217184634
+            ],
+            "distance_preview_px": 32.28626575374035
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "N_BED3_S fraction1 z5.6",
+            "photo_uv": [
+              0.7422222222222222,
+              0.37833333333333335
+            ],
+            "projected_uv": [
+              0.740956492527709,
+              0.38113049873052074
+            ],
+            "error_preview_px": [
+              -1.8226507600990338,
+              5.370557562599778
+            ],
+            "distance_preview_px": 5.671414667125589
+          },
+          "residual_change_px": -26.614851086614763
+        },
+        {
+          "name": "N_BED3_S fraction0 z4.2",
+          "world_m": [
+            -3.412,
+            8.4,
+            3.95
+          ],
+          "photo_uv": [
+            0.5955555555555555,
+            0.5033333333333333
+          ],
+          "annotation_px": [
+            536,
+            604
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -3.537,
+            8.4,
+            4.2
+          ],
+          "current_z_m": 3.95,
+          "semantic": "window sill",
+          "entity": "N_BED3_S",
+          "fraction": 0.0,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "N_BED3_S fraction0 z4.2",
+            "photo_uv": [
+              0.5955555555555555,
+              0.5033333333333333
+            ],
+            "projected_uv": [
+              0.5808661747946272,
+              0.48232380555727883
+            ],
+            "error_preview_px": [
+              -21.152708295736744,
+              -40.338293330024584
+            ],
+            "distance_preview_px": 45.54794152345017
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "N_BED3_S fraction0 z4.2",
+            "photo_uv": [
+              0.5955555555555555,
+              0.5033333333333333
+            ],
+            "projected_uv": [
+              0.5943089230499852,
+              0.5025594280527391
+            ],
+            "error_preview_px": [
+              -1.7951508080212797,
+              -1.485898138740822
+            ],
+            "distance_preview_px": 2.3303346760182095
+          },
+          "residual_change_px": -43.21760684743196
+        },
+        {
+          "name": "N_BED3_S fraction1 z4.2",
+          "world_m": [
+            -2.062,
+            8.4,
+            3.95
+          ],
+          "photo_uv": [
+            0.7422222222222222,
+            0.49916666666666665
+          ],
+          "annotation_px": [
+            668,
+            599
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            -1.937,
+            8.4,
+            4.2
+          ],
+          "current_z_m": 3.95,
+          "semantic": "window sill",
+          "entity": "N_BED3_S",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "N_BED3_S fraction1 z4.2",
+            "photo_uv": [
+              0.7422222222222222,
+              0.49916666666666665
+            ],
+            "projected_uv": [
+              0.7546721894562605,
+              0.4798814597770986
+            ],
+            "error_preview_px": [
+              17.927952817015065,
+              -37.02759722797062
+            ],
+            "distance_preview_px": 41.13945124434617
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "N_BED3_S fraction1 z4.2",
+            "photo_uv": [
+              0.7422222222222222,
+              0.49916666666666665
+            ],
+            "projected_uv": [
+              0.740956492527709,
+              0.5006874645940866
+            ],
+            "error_preview_px": [
+              -1.8226507600990338,
+              2.9199320206463852
+            ],
+            "distance_preview_px": 3.4421009279923314
+          },
+          "residual_change_px": -37.69735031635384
+        }
+      ]
+    },
+    {
+      "id": "front41",
+      "camera": {
+        "location": [
+          4.1499999999945905,
+          -28.238967200857168,
+          1.6984225614538004
+        ],
+        "target": [
+          4.277959775727039,
+          -18.23978591958246,
+          1.6984225614538004
+        ],
+        "lens_mm": 50,
+        "size": [
+          1500,
+          2000
+        ],
+        "sensor_dimension_mm": 36,
+        "shift_x": -0.06457390462587288,
+        "shift_y": 0.24654070606566905
+      },
+      "reference_original": "PHOTOS/MARK ELST/Bastide_de_Flechon_4.jpg",
+      "reference_sha256": "f04f98a00d9eec5c4ea8a3884ab3cd1c47dc36fa8aa8db21b4c4f8acae74aaca",
+      "previous_rms_px": {
+        "rms_preview_px": 5.791512818280329,
+        "fit_rms_preview_px": 3.9723370352621425,
+        "holdout_rms_preview_px": 8.828760883090032
+      },
+      "current_rms_px": {
+        "rms_preview_px": 5.791512818280329,
+        "fit_rms_preview_px": 3.9723370352621425,
+        "holdout_rms_preview_px": 8.828760883090032
+      },
+      "landmarks": [
+        {
+          "name": "D_FRONT fraction0 z3.55",
+          "world_m": [
+            2.32,
+            0.0,
+            3.55
+          ],
+          "photo_uv": [
+            0.4411111111111111,
+            0.6533333333333333
+          ],
+          "annotation_px": [
+            397,
+            784
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            2.32,
+            0.0,
+            3.55
+          ],
+          "current_z_m": 3.55,
+          "semantic": "fanlight spring",
+          "entity": "D_FRONT",
+          "fraction": 0.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction0 z3.55",
+            "photo_uv": [
+              0.4411111111111111,
+              0.6533333333333333
+            ],
+            "projected_uv": [
+              0.44227353397737323,
+              0.6553907544716004
+            ],
+            "error_preview_px": [
+              1.7436342993931708,
+              4.114842276534247
+            ],
+            "distance_preview_px": 4.46902534461082
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction0 z3.55",
+            "photo_uv": [
+              0.4411111111111111,
+              0.6533333333333333
+            ],
+            "projected_uv": [
+              0.44227353397737323,
+              0.6553907544716004
+            ],
+            "error_preview_px": [
+              1.7436342993931708,
+              4.114842276534247
+            ],
+            "distance_preview_px": 4.46902534461082
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_FRONT fraction1 z3.55",
+          "world_m": [
+            5.68,
+            0.0,
+            3.55
+          ],
+          "photo_uv": [
+            0.6622222222222223,
+            0.6541666666666667
+          ],
+          "annotation_px": [
+            596,
+            785
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            5.68,
+            0.0,
+            3.55
+          ],
+          "current_z_m": 3.55,
+          "semantic": "fanlight spring",
+          "entity": "D_FRONT",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z3.55",
+            "photo_uv": [
+              0.6622222222222223,
+              0.6541666666666667
+            ],
+            "projected_uv": [
+              0.6626814158039536,
+              0.655529447594094
+            ],
+            "error_preview_px": [
+              0.688790372596948,
+              2.72556185485473
+            ],
+            "distance_preview_px": 2.8112487620311013
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z3.55",
+            "photo_uv": [
+              0.6622222222222223,
+              0.6541666666666667
+            ],
+            "projected_uv": [
+              0.6626814158039536,
+              0.655529447594094
+            ],
+            "error_preview_px": [
+              0.688790372596948,
+              2.72556185485473
+            ],
+            "distance_preview_px": 2.8112487620311013
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_FRONT fraction0.5 z5.23",
+          "world_m": [
+            4.0,
+            0.0,
+            5.23
+          ],
+          "photo_uv": [
+            0.5544444444444444,
+            0.5741666666666667
+          ],
+          "annotation_px": [
+            499,
+            689
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            4.0,
+            0.0,
+            5.23
+          ],
+          "current_z_m": 5.23,
+          "semantic": "fanlight crown",
+          "entity": "D_FRONT",
+          "fraction": 0.5,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction0.5 z5.23",
+            "photo_uv": [
+              0.5544444444444444,
+              0.5741666666666667
+            ],
+            "projected_uv": [
+              0.5525613814955375,
+              0.5728196309090187
+            ],
+            "error_preview_px": [
+              -2.824594423360416,
+              -2.6940715152961037
+            ],
+            "distance_preview_px": 3.9033773819614987
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction0.5 z5.23",
+            "photo_uv": [
+              0.5544444444444444,
+              0.5741666666666667
+            ],
+            "projected_uv": [
+              0.5525613814955375,
+              0.5728196309090187
+            ],
+            "error_preview_px": [
+              -2.824594423360416,
+              -2.6940715152961037
+            ],
+            "distance_preview_px": 3.9033773819614987
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_FRONT fraction0 z3",
+          "world_m": [
+            2.32,
+            0.0,
+            3.0
+          ],
+          "photo_uv": [
+            0.44222222222222224,
+            0.6841666666666667
+          ],
+          "annotation_px": [
+            398,
+            821
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.5,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            2.32,
+            0.0,
+            3
+          ],
+          "current_z_m": 3.0,
+          "semantic": "frieze bottom",
+          "entity": "D_FRONT",
+          "fraction": 0.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction0 z3",
+            "photo_uv": [
+              0.44222222222222224,
+              0.6841666666666667
+            ],
+            "projected_uv": [
+              0.44227353397737323,
+              0.6824663022359435
+            ],
+            "error_preview_px": [
+              0.07696763272649343,
+              -3.400728861446378
+            ],
+            "distance_preview_px": 3.4015997421157445
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction0 z3",
+            "photo_uv": [
+              0.44222222222222224,
+              0.6841666666666667
+            ],
+            "projected_uv": [
+              0.44227353397737323,
+              0.6824663022359435
+            ],
+            "error_preview_px": [
+              0.07696763272649343,
+              -3.400728861446378
+            ],
+            "distance_preview_px": 3.4015997421157445
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_FRONT fraction1 z3",
+          "world_m": [
+            5.68,
+            0.0,
+            3.0
+          ],
+          "photo_uv": [
+            0.6622222222222223,
+            0.685
+          ],
+          "annotation_px": [
+            596,
+            822
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.5,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            5.68,
+            0.0,
+            3
+          ],
+          "current_z_m": 3.0,
+          "semantic": "frieze bottom",
+          "entity": "D_FRONT",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z3",
+            "photo_uv": [
+              0.6622222222222223,
+              0.685
+            ],
+            "projected_uv": [
+              0.6626814158039536,
+              0.6825637973962113
+            ],
+            "error_preview_px": [
+              0.688790372596948,
+              -4.872405207577479
+            ],
+            "distance_preview_px": 4.9208499961094505
+          },
+          "current_projection": {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z3",
+            "photo_uv": [
+              0.6622222222222223,
+              0.685
+            ],
+            "projected_uv": [
+              0.6626814158039536,
+              0.6825637973962113
+            ],
+            "error_preview_px": [
+              0.688790372596948,
+              -4.872405207577479
+            ],
+            "distance_preview_px": 4.9208499961094505
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_FRONT fraction0 z0",
+          "world_m": [
+            2.32,
+            0.0,
+            0.0
+          ],
+          "photo_uv": [
+            0.4444444444444444,
+            0.8258333333333333
+          ],
+          "annotation_px": [
+            400,
+            991
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            2.32,
+            0.0,
+            0
+          ],
+          "current_z_m": 0.0,
+          "semantic": "masonry sill",
+          "entity": "D_FRONT",
+          "fraction": 0.0,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "D_FRONT fraction0 z0",
+            "photo_uv": [
+              0.4444444444444444,
+              0.8258333333333333
+            ],
+            "projected_uv": [
+              0.44227353397737323,
+              0.8301511082232698
+            ],
+            "error_preview_px": [
+              -3.256365700606778,
+              8.635549779872909
+            ],
+            "distance_preview_px": 9.229119003282563
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "D_FRONT fraction0 z0",
+            "photo_uv": [
+              0.4444444444444444,
+              0.8258333333333333
+            ],
+            "projected_uv": [
+              0.44227353397737323,
+              0.8301511082232698
+            ],
+            "error_preview_px": [
+              -3.256365700606778,
+              8.635549779872909
+            ],
+            "distance_preview_px": 9.229119003282563
+          },
+          "residual_change_px": 0.0
+        },
+        {
+          "name": "D_FRONT fraction1 z0",
+          "world_m": [
+            5.68,
+            0.0,
+            0.0
+          ],
+          "photo_uv": [
+            0.6622222222222223,
+            0.8258333333333333
+          ],
+          "annotation_px": [
+            596,
+            991
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5,
+          "original_world_m": [
+            5.68,
+            0.0,
+            0
+          ],
+          "current_z_m": 0.0,
+          "semantic": "masonry sill",
+          "entity": "D_FRONT",
+          "fraction": 1.0,
+          "previous_projection": {
+            "role": "holdout",
+            "name": "D_FRONT fraction1 z0",
+            "photo_uv": [
+              0.6622222222222223,
+              0.8258333333333333
+            ],
+            "projected_uv": [
+              0.6626814158039536,
+              0.8300238872259419
+            ],
+            "error_preview_px": [
+              0.688790372596948,
+              8.381107785217168
+            ],
+            "distance_preview_px": 8.409363821646085
+          },
+          "current_projection": {
+            "role": "holdout",
+            "name": "D_FRONT fraction1 z0",
+            "photo_uv": [
+              0.6622222222222223,
+              0.8258333333333333
+            ],
+            "projected_uv": [
+              0.6626814158039536,
+              0.8300238872259419
+            ],
+            "error_preview_px": [
+              0.688790372596948,
+              8.381107785217168
+            ],
+            "distance_preview_px": 8.409363821646085
+          },
+          "residual_change_px": 0.0
+        }
+      ]
+    }
+  ],
+  "roof_holdouts": [
+    {
+      "view": "courtyard08",
+      "entity": "R_H",
+      "name": "hall roof ridge at east facade",
+      "role": "holdout",
+      "photo_uv": [
+        0.7,
+        0.21666666666666667
+      ],
+      "annotation_px": [
+        630,
+        260
+      ],
+      "annotation_size": [
+        900,
+        1200
+      ],
+      "weight": 1,
+      "annotation_uncertainty_px": 5,
+      "semantic": "Native roof-bed crest; photographed coping/cap thickness is additional inference",
+      "previous": {
+        "world_m": [
+          -0.19762652261320818,
+          19.587341878516387,
+          8.1799278
+        ],
+        "projected_uv": [
+          0.6967771417962252,
+          0.1522176869130314
+        ],
+        "error_output_px": [
+          -4.640915813435669,
+          -123.74204112697974
+        ],
+        "distance_output_px": 123.82903876659361
+      },
+      "current": {
+        "world_m": [
+          -0.19762652261320818,
+          19.587341878516387,
+          7.379927800000001
+        ],
+        "projected_uv": [
+          0.6967771417962252,
+          0.20915279566703304
+        ],
+        "error_output_px": [
+          -4.640915813435669,
+          -14.426632319296573
+        ],
+        "distance_output_px": 15.154729283744057
+      }
+    },
+    {
+      "view": "front41",
+      "entity": "R_MAIN",
+      "name": "main front roof ridge",
+      "role": "holdout",
+      "photo_uv": [
+        0.5544444444444444,
+        0.4708333333333333
+      ],
+      "annotation_px": [
+        499,
+        565
+      ],
+      "annotation_size": [
+        900,
+        1200
+      ],
+      "weight": 1,
+      "annotation_uncertainty_px": 5,
+      "semantic": "Native roof-bed crest; photographed coping/cap thickness is additional inference",
+      "previous": {
+        "world_m": [
+          4,
+          -0.3,
+          8.508829599999999
+        ],
+        "projected_uv": [
+          0.5524557264905878,
+          0.4079339475667737
+        ],
+        "error_output_px": [
+          -2.983076930784867,
+          -125.79877153311925
+        ],
+        "distance_output_px": 125.83413554046817
+      },
+      "current": {
+        "world_m": [
+          4,
+          -0.3,
+          8.508829599999999
+        ],
+        "projected_uv": [
+          0.5524557264905878,
+          0.4079339475667737
+        ],
+        "error_output_px": [
+          -2.983076930784867,
+          -125.79877153311925
+        ],
+        "distance_output_px": 125.83413554046817
+      }
+    }
+  ]
+}

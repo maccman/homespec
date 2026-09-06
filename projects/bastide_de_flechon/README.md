@@ -4,6 +4,23 @@ A detailed, editable HomeSpec reconstruction of the house in `LABASTIDEDEFLECHON
 
 The integrated source is ready for review. At the user’s request, the full 26-view render, completed motion video, portable-package refresh and final artifact-verification pass are deferred. The eight study previews below show the reviewed geometry and lighting; they are not a completed delivery set.
 
+The later focused exterior work has its own [verification record](exterior-verification.md),
+[photographic discrepancy register](exterior-discrepancies.md),
+[camera calibration](exterior-camera-calibration.md),
+[roof construction notes](exterior-roof-notes.md) and
+[material provenance](exterior-materials-provenance.md).
+Its local Cycles studies are separate from the earlier images below. Main
+roof height and courtyard terrace levels retain documented discrepancies.
+The source improves the facade and roof construction but is not an accepted
+photogrammetric match or a refreshed portable delivery.
+
+The focused exterior pass has now completed four high-resolution Cycles views,
+six detail views and the matched material/clay controls from source `55a3069`.
+[Review evidence and exact saved-model provenance](exterior-review-status.json)
+retain all native/audit limits; [browse the review](exterior-review/README.md).
+
+![Actual exterior review renders; documented height and construction limits remain](exterior-review/exterior-views.jpg)
+
 After packaging, double-click **Walk Bastide.command** to open the furnished, textured house in Blender. In the **Flechon** sidebar, choose a room and click **Walk from here**.
 
 - Mouse: look around. **W A S D**: move. **Q / E**: down / up.
@@ -195,3 +212,42 @@ Pigment maps are distinct from inferred physical roughness and small surface rel
 The coherent walk uses 20% of the preserved full-power aperture lights, selected after off/full/reduced-power Cycles studies. Named photograph presets currently use 20%, except salon58 at 15%. These are documented diffuse-light approximations at real openings, not measured sky radiance. `apply_preset(..., supplemental_windows=None)` uses the configured fraction; explicit `False`/`True` or comparison environment values `0`/`1` select off/full for controlled studies. Effective fractions and actual/base light energies are recorded. The walk keeps one daylight state with room exposure adaptation; photograph presets have separate lighting, exposure and white balance. Exact optical values, solar directions and photographic processing remain inferred.
 
 This is a photo-led reconstruction. Heights, concealed construction, exact furniture dimensions and landscape contours are inferred where the source material does not measure them. It is not a photogrammetric or laser scan. `decisions.md` records these choices.
+
+## Principal-suite focused review
+
+The principal pass follows the original upper plan for the bed, bench, west
+window and front truss. Chair toe-in follows the plan, while photo33 supplies
+the movable chair and vessel arrangement. It corrects the shared upper arch spring,
+adds the photographed short side ties, and refines the floorboards, blind,
+curtains, linen, bench supports, cane frames and surface finishes. It preserves
+the floor-reaching braces and lower salon doors. See
+[the discrepancy inventory](principal-discrepancies.md),
+[camera evidence](principal-camera-evidence.md) and
+[material provenance](principal-material-provenance.json).
+
+The [completed focused review](principal-review.md) contains the paired color
+and clay sheets, material/off-light controls and measured checks. The compact
+comparison uses identical recorded cameras on immutable main and updated saved scenes. Camera uncertainty and different table staging in the
+source photographs remain explicit. Full-house gallery, animation,
+full-resolution renders and portable repack are deferred.
+
+The saved-scene checker and material studio run without redressing or saving
+over the house:
+
+```sh
+blender -b /absolute/path/to/house.blend --python-exit-code 1 \
+  --python tools/bastide_principal_scene_check.py -- \
+  --output /absolute/path/to/scene-check.json \
+  --baseline /absolute/path/to/baseline/house.blend
+blender -b /absolute/path/to/house.blend --python-exit-code 1 \
+  --python tools/bastide_principal_material_study.py -- \
+  /absolute/path/to/principal-studio
+```
+
+After the paired renders exist, assemble the compact model-only sheets with
+Pillow. The assembler rejects mismatched camera parameters or image hashes:
+
+```sh
+uv run --frozen --with pillow python tools/bastide_principal_review_sheets.py \
+  --study /absolute/path/to/final-review --include-clay
+```

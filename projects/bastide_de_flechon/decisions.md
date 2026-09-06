@@ -468,6 +468,63 @@ Entities: FP, MAIN_BEAM0, MAIN_BEAM1, MAIN_BEAM2, C0_MAIN, D_FRONT
 
 The isolated salon reconstruction from source commits `297f492`, `e67a70d` and `ac42812` provides physical floor joints, irregular rubble and plaster returns, fireplace profiles and ironwork, timber checks, textile geometry and twelve generated pigment maps. It runs after shared material and timber work, preserving timber end-grain slots, and before the house lighting policy so fire and practicals have one owner. Its geometry is still subject to the combined house audit. The evidence and remaining limits are recorded in `salon-discrepancies.md` and `salon-materials-provenance.md`; the maps are inferred surface appearance, not measured reflectance.
 
+## D-044 Exterior envelope, roof construction and photographic review
+
+Entities: D_ENTRY, N_HALL, D_KITCHEN_TERRACE, D_PERGOLA, N_BED3_S,
+N_GUEST_E0, N_GUEST_E1, N_E1, N_E2, R_K, R_H, R_MAIN
+
+Original photographs08/11 establish one continuous monumental courtyard
+opening: central paneled wooden leaves, fixed glazed sidelights, a transom and
+an arched upper light. The retained two opening IDs now cut a contiguous void;
+the upper element retains its window identity. Both plans retain the oblique
+hall and guest-wing footprints. Kitchen terrace and main north garden heads
+are shallow circular segments; the guest wing's two ground east openings are
+full-height arched glazed doors. Their original plan widths and IDs remain.
+
+The upper plan independently supports a1350mm kitchen-south window rather
+than1600mm, and both east oculi within the master room at y≈2.31/6.40m.
+The model uses1350mm and door-aligned oculus centers2.325/6.375m. Window sill
+3950mm and head5400mm remain same-facade photographic inferences. These plan
+corrections do not certify the existing absolute upper-storey heights.
+
+The shared D_FRONT spring3550mm and N_W2 position7525mm are the exact two
+changes approved by the independent principal-bedroom owner (D-043).
+Exterior also terminates the three fanlight spokes at the inner curved arc,
+preserving the lower open leaves, opaque frieze and salon interior geometry.
+Kitchen approved the terrace's1900mm-wide segmental head with2180mm spring
+and320mm rise; its interior garden opening remains unchanged.
+
+External finish geometry reads the compiled outward wall and opening faces.
+Clipped rounded rubble, coursed cut stone, radial voussoirs, projecting sills,
+molded courtyard trim, boarded shutters and iron hardware have physical depth.
+Only outward material slots change. The roof finish has hollow lapped canal
+tiles, separate ridge caps, slender coping and two-course génoise. The hall
+roof ridge is perpendicular to its entrance gable. Kitchen is a native18.4°
+shed, with a shared roof/wall/infill/vault profile derived from three visible
+points along photograph12's coping. The hall's lower roof retains clearance
+over the existing paired upper link arches; its absolute height uses both
+the courtyard peak and these openings. The guest-room-three tie retains
+2100mm clear height below it. Exact construction thicknesses and concealed
+details remain inferred.
+
+Five generated exterior pigment images have exact prompts, source hashes and
+image hashes in `textures/exterior-generated-manifest.json`. Pigment images
+cannot feed Normal or Roughness; physical pores, finish response and masonry
+relief are independently authored. The walnut and iron maps are explicitly
+identified reused assets. Complete tree groups move in the scene to correct
+unsupported courtyard screens and overgrown foreground placements. They are
+not hidden selectively for a beauty camera.
+
+The four primary camera poses use native photographic optics and recorded
+landmarks. Holdout errors are retained. Two independent front photographs
+indicate that the main roof may be about1.3m too high relative to the corrected
+arch; changing it would require a coupled principal-room timber, curtain and
+oculus-height correction. This exterior pass retains that shared envelope and
+records the mismatch. The unmeasured courtyard terrace levels and stair
+transition also remain unresolved. Neither lighting nor camera shift is used
+to claim these discrepancies are solved. Actual dated render and audit status
+belongs to `exterior-verification.md`, separate from the preceding pass.
+
 ## D-042 Reconstruct the kitchen's photographed construction
 
 Entities: A_HALL_K, A_K_HALL, C0_K, kitchen, K1, K2, K3, K4, F0_K
@@ -514,7 +571,60 @@ and openings; no wall, doorway approach or room footprint is narrowed by an
 inferred cabinet/camera adjustment. Shared salon shaders and the coherent
 whole-house lighting preset are preserved.
 
-## D-043 — Share exact opening profiles and roof attachment geometry
+## D-043 Trace the principal-suite layout from the original upper plan
+
+Entities: master, N_W2, MW, MASTER_ROOF_TIMBERS, MASTER_TRUSS_BRACES, F1_MAIN, D_FRONT, D_FRONT.frieze
+
+Independent tracing of `PLANS/Premier Étage.pdf`, rendered at 2400 pixels tall,
+uses the main block's approximately457-pixel 8000mm outside width. The 200/200cm
+bed outline spans x965..1078 and y1925..2038 against southwest(x792,y2190),
+placing its center near(4.02,3.65)m. Move the bed and its desk/bedside assembly
+83cm south and10cm west (nominal centerline4.00m, within the trace uncertainty); set the separately traced bench center to(4.00,2.42)m.
+The south-facing bed axis and plan mattress dimensions remain unchanged.
+
+The same trace places the west rectangular window near y2.40m and the front
+truss plane near y3.76m, correcting the former3.00m/3.40m estimates. Retain the
+1450x850mm rectangular opening and its inferred sill/head heights; the raster
+cannot reliably distinguish a proposed1550mm width from its trim. The truss
+and braces move together; grain coordinates read their actual IR plane. Keep
+the roof/floor levels, rear carpentry and room connections. Photo06/33/55 prove
+the west floor-reaching brace; the east continuation remains inferred.
+
+Exterior photo41 (`Bastide_de_Flechon_4.jpg`) independently aligns all upper
+semicircle feet with the frieze top. Remove the erroneous550mm rectangular
+upper-glass band by lowering the shared arch spring4100→3550mm; the clear
+3360mm width, lower salon doors and frieze3000..3550mm remain. Photo06/55 support
+this shallow sill. Lower the curtain pole6460→5910mm with shorter panels to
+retain the photographed wall band; that pole height is an inferred vertical
+fit. Photo33's free-ended horizontal member and short side strokes on the upper
+plan motivate380x300mm side ties fromx.35..2.10 and5.90..7.65m atz5.10..5.40m.
+The west is photographed; the matching east stub is plan-supported but its
+vertical detail is inferred. The central3.80m passage remains free of low ties.
+The tips follow the plan trace. Two900x500x2000mm standing prisms beside the
+nominal bed centerline do not intersect the actual brace/tie solids at the
+truss plane; the saved-scene review separately checks the dressed cloth envelope. The overhead roof tie is retained; exact historic load paths are unverified.
+
+Physical wide-board joints, an opening-derived folded Roman blind, an attached
+amber lantern, lower loose pillows, a linen valance and the split-plank bench's
+round pale pedestals refine the presentation. Nominal board widths220–260mm,
+3mm finishing arrises and furniture/joinery details are photographic estimates.
+The plan chair symbols suggest opposing northeast/southeast toe-in angles,
+with the south chair near(1.50,1.05)m and north chair near(1.18,3.05)m.
+Actual photo33 review showed the plan-staged south chair on the wrong side of
+the table. Use the photograph's movable arrangement: south chair(1.00,1.50)m,
+north chair(1.18,3.05)m, table(1.43,2.13)m, and tall/small vessels near
+(1.37,1.00)m/(1.70,0.96)m. The source's ordering is recovered; the far chair's
+roughly74-pixel vertical mismatch remains conditional on the inferred camera
+and chair height. An exact point fit would move it into the other chair's
+region and was rejected. Twig tips rise above the chair back as photographed.
+Saved-scene checks require chair/curtain and chair/vessel separation. The raked
+chair legs have horizontal sawn feet at the physical board surface, retaining
+the upper frame and seat height. The audited structural walking
+surface and route thresholds remain unchanged.
+Photo33's trumpet table differs from the cylindrical table in06/55; the source
+arrangements must not be represented as a single exact photographic match.
+
+## D-045 — Share exact opening profiles and roof attachment geometry
 Entities: D_KITCHEN_GARDEN, D_FRONT.surround, N_E1, N_E2, N_W1, N_W2, R_K, R_H, R_A, C1_K
 
 The circular clerestories, segmental kitchen head and concentric front stone
@@ -539,7 +649,11 @@ declared tessellation tolerance. The coordinated house build and dressed-scene
 audit establish source consistency; final photographic fidelity still requires
 the render task's fixed-camera visual review.
 
-## D-044 Attach reusable presentation detail to compiled room and member facts
+Integration preserves the principal-suite and exterior decisions D-043/D-044,
+including their revised opening positions, single-slope wings, courtyard
+joinery and roof details. Reusable implementations retain those project choices.
+
+## D-046 Attach reusable presentation detail to compiled room and member facts
 
 Entities: F0_K K1 K2 K3 K4 C0_K ST_MASTER ST_HALL
 
@@ -580,6 +694,10 @@ This extraction does not convert an inferred dimension into surveyed evidence.
   continuous shower stone and detailed salon stonework, ironwork and furniture.
   Generated pigment stays independent of inferred roughness and microrelief.
 
+- Principal focused pass: original-plan bed/bench/window/front-truss setting-out,
+  native-lens camera investigation, split-plank pedestal bench, low linen and
+  room-specific wood, curtain and patinated-metal appearance.
+
 - Mechanical verification: The generated checks.md records the final architectural checks; it is
   authoritative after each documented visual correction. No check thresholds
   or clash policies were loosened.
@@ -595,6 +713,8 @@ This extraction does not convert an inferred dimension into surveyed evidence.
   arrangement is preserved instead of replacing it with a generic bastide.
 - The site is represented at the ground-floor walking datum because the supplied site
   plan has no spot heights or contours around the building terraces.
+- Shared lower salon doors and frieze remain; only the upper fanlight spring
+  changes against exterior41 and interior06/55. No invented crop is used.
 - Furniture and planting are presentation objects; the architectural source
   remains a Homespec model with IFC, dimensioned drawings and schedules.
 - House-specific fanlight ornament and junction footprint exclusions remain

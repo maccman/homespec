@@ -1,0 +1,1472 @@
+{
+  "file": "/Users/cloud/.codex/worktrees/7f26/homespec/out/bastide_de_flechon/presentation/2499ff23bd534ceca7b46035611042fb/579e51094753a055/house.blend",
+  "checks": {
+    "standing_prisms": {
+      "west": {
+        "prism_m": [
+          [
+            2.045,
+            3.51,
+            3.303
+          ],
+          [
+            2.945,
+            4.01,
+            5.303
+          ]
+        ],
+        "surface_check": "clear",
+        "objects": []
+      },
+      "east": {
+        "prism_m": [
+          [
+            5.055,
+            3.51,
+            3.303
+          ],
+          [
+            5.955,
+            4.01,
+            5.303
+          ]
+        ],
+        "surface_check": "clear",
+        "objects": []
+      }
+    },
+    "bed_bench": {
+      "status": "bounds_separated",
+      "overlapping_pairs": [],
+      "bed_bounds_m_count": 663,
+      "bed_bounds_m_combined": [
+        [
+          2.9350266456604004,
+          2.6157379150390625,
+          3.299999952316284
+        ],
+        [
+          5.064908981323242,
+          4.799882888793945,
+          4.649956703186035
+        ]
+      ],
+      "cloth_bounds_m_count": 652,
+      "cloth_bounds_m_combined": [
+        [
+          2.9406888484954834,
+          2.6157379150390625,
+          3.3305089473724365
+        ],
+        [
+          5.059310436248779,
+          4.600103378295898,
+          4.436493873596191
+        ]
+      ],
+      "bench_bounds_m_count": 6,
+      "bench_bounds_m_combined": [
+        [
+          3.0149998664855957,
+          2.2269303798675537,
+          3.299999952316284
+        ],
+        [
+          4.985000133514404,
+          2.613011121749878,
+          3.709498643875122
+        ]
+      ]
+    },
+    "southwest_chair_curtain": {
+      "chair_parts_measured": 20,
+      "curtain_meshes_measured": 2,
+      "status": "bounds_separated",
+      "overlapping_pairs": [],
+      "limitation": "BVH triangle pairs detect surface contact/crossing but do not certify penetration depth; sampled vertex distance is only an upper bound on minimum surface separation."
+    },
+    "chairs_stoneware": {
+      "first_objects_measured": 40,
+      "second_objects_measured": 2,
+      "object_pairs_measured": 80,
+      "bounds_separated_pair_count": 75,
+      "bvh_tested_pair_count": 5,
+      "total_triangle_contact_pair_count": 0,
+      "status": "surfaces_separated_containment_not_tested",
+      "overlapping_pairs": [
+        {
+          "first_object": "principal_raked_walnut_chair_0_back_stile",
+          "second_object": "principal_cream_stoneware_vessel_0",
+          "first_bounds_m": [
+            [
+              1.0797661542892456,
+              0.963986337184906,
+              3.63398814201355
+            ],
+            [
+              1.2265058755874634,
+              1.2009530067443848,
+              4.31101131439209
+            ]
+          ],
+          "second_bounds_m": [
+            [
+              1.2200000286102295,
+              0.8500000238418579,
+              3.299999952316284
+            ],
+            [
+              1.5199999809265137,
+              1.149999976158142,
+              3.7200000286102295
+            ]
+          ],
+          "triangle_contact_pair_count": 0,
+          "sample_triangle_pairs": [],
+          "status": "surfaces_separated_containment_not_tested",
+          "sampled_surface_distance": {
+            "sample_spacing_limit_m": 0.015,
+            "triangle_count": 300,
+            "sample_query_count": 46780,
+            "failed_queries": 0,
+            "maximum_barycentric_subdivisions": 47,
+            "minimum_sample_to_target_distance_m": 0.11638405174016953,
+            "maximum_surface_cover_radius_m": 0.014997426488506329,
+            "numeric_slack_m": 1e-05,
+            "surface_separation_lower_bound_m": 0.1013766252516632,
+            "positive_surface_separation_certified": true,
+            "method": "Every source triangle sampled on complete barycentric grid n=ceil(max_edge/0.015m); 1-Lipschitz target distance minus maximum grid-cell diameter and numerical slack.",
+            "limitation": "Certifies distance between the evaluated surfaces only; solid containment is not tested."
+          }
+        },
+        {
+          "first_object": "principal_raked_walnut_chair_0_olive_seat_pad",
+          "second_object": "principal_cream_stoneware_vessel_0",
+          "first_bounds_m": [
+            [
+              0.5998767614364624,
+              1.1216208934783936,
+              3.6720457077026367
+            ],
+            [
+              1.4318147897720337,
+              1.9430122375488281,
+              3.767368793487549
+            ]
+          ],
+          "second_bounds_m": [
+            [
+              1.2200000286102295,
+              0.8500000238418579,
+              3.299999952316284
+            ],
+            [
+              1.5199999809265137,
+              1.149999976158142,
+              3.7200000286102295
+            ]
+          ],
+          "triangle_contact_pair_count": 0,
+          "sample_triangle_pairs": [],
+          "status": "surfaces_separated_containment_not_tested",
+          "sampled_surface_distance": {
+            "sample_spacing_limit_m": 0.015,
+            "triangle_count": 3888,
+            "sample_query_count": 42998,
+            "failed_queries": 0,
+            "maximum_barycentric_subdivisions": 4,
+            "minimum_sample_to_target_distance_m": 0.14200696349143982,
+            "maximum_surface_cover_radius_m": 0.014991900985592173,
+            "numeric_slack_m": 1e-05,
+            "surface_separation_lower_bound_m": 0.12700506250584764,
+            "positive_surface_separation_certified": true,
+            "method": "Every source triangle sampled on complete barycentric grid n=ceil(max_edge/0.015m); 1-Lipschitz target distance minus maximum grid-cell diameter and numerical slack.",
+            "limitation": "Certifies distance between the evaluated surfaces only; solid containment is not tested."
+          }
+        },
+        {
+          "first_object": "principal_raked_walnut_chair_0_raked_rear_leg",
+          "second_object": "principal_cream_stoneware_vessel_0",
+          "first_bounds_m": [
+            [
+              1.1027294397354126,
+              1.0209776163101196,
+              3.3030002117156982
+            ],
+            [
+              1.3104069232940674,
+              1.3534048795700073,
+              3.9401755332946777
+            ]
+          ],
+          "second_bounds_m": [
+            [
+              1.2200000286102295,
+              0.8500000238418579,
+              3.299999952316284
+            ],
+            [
+              1.5199999809265137,
+              1.149999976158142,
+              3.7200000286102295
+            ]
+          ],
+          "triangle_contact_pair_count": 0,
+          "sample_triangle_pairs": [],
+          "status": "surfaces_separated_containment_not_tested",
+          "sampled_surface_distance": {
+            "sample_spacing_limit_m": 0.015,
+            "triangle_count": 300,
+            "sample_query_count": 47668,
+            "failed_queries": 0,
+            "maximum_barycentric_subdivisions": 47,
+            "minimum_sample_to_target_distance_m": 0.05104175955057144,
+            "maximum_surface_cover_radius_m": 0.014920360894169017,
+            "numeric_slack_m": 1e-05,
+            "surface_separation_lower_bound_m": 0.03611139865640242,
+            "positive_surface_separation_certified": true,
+            "method": "Every source triangle sampled on complete barycentric grid n=ceil(max_edge/0.015m); 1-Lipschitz target distance minus maximum grid-cell diameter and numerical slack.",
+            "limitation": "Certifies distance between the evaluated surfaces only; solid containment is not tested."
+          }
+        },
+        {
+          "first_object": "principal_raked_walnut_chair_0_seat_deck",
+          "second_object": "principal_cream_stoneware_vessel_0",
+          "first_bounds_m": [
+            [
+              0.5820797681808472,
+              1.0995604991912842,
+              3.6524999141693115
+            ],
+            [
+              1.4269999265670776,
+              1.918259620666504,
+              3.677500009536743
+            ]
+          ],
+          "second_bounds_m": [
+            [
+              1.2200000286102295,
+              0.8500000238418579,
+              3.299999952316284
+            ],
+            [
+              1.5199999809265137,
+              1.149999976158142,
+              3.7200000286102295
+            ]
+          ],
+          "triangle_contact_pair_count": 0,
+          "sample_triangle_pairs": [],
+          "status": "surfaces_separated_containment_not_tested",
+          "sampled_surface_distance": {
+            "sample_spacing_limit_m": 0.015,
+            "triangle_count": 300,
+            "sample_query_count": 73008,
+            "failed_queries": 0,
+            "maximum_barycentric_subdivisions": 58,
+            "minimum_sample_to_target_distance_m": 0.1342141479253769,
+            "maximum_surface_cover_radius_m": 0.014989016388852753,
+            "numeric_slack_m": 1e-05,
+            "surface_separation_lower_bound_m": 0.11921513153652415,
+            "positive_surface_separation_certified": true,
+            "method": "Every source triangle sampled on complete barycentric grid n=ceil(max_edge/0.015m); 1-Lipschitz target distance minus maximum grid-cell diameter and numerical slack.",
+            "limitation": "Certifies distance between the evaluated surfaces only; solid containment is not tested."
+          }
+        },
+        {
+          "first_object": "principal_raked_walnut_chair_0_seat_welt",
+          "second_object": "principal_cream_stoneware_vessel_0",
+          "first_bounds_m": [
+            [
+              0.6176452040672302,
+              1.1417467594146729,
+              3.7154109477996826
+            ],
+            [
+              1.4140371084213257,
+              1.9206234216690063,
+              3.72059965133667
+            ]
+          ],
+          "second_bounds_m": [
+            [
+              1.2200000286102295,
+              0.8500000238418579,
+              3.299999952316284
+            ],
+            [
+              1.5199999809265137,
+              1.149999976158142,
+              3.7200000286102295
+            ]
+          ],
+          "triangle_contact_pair_count": 0,
+          "sample_triangle_pairs": [],
+          "status": "surfaces_separated_containment_not_tested",
+          "sampled_surface_distance": {
+            "sample_spacing_limit_m": 0.015,
+            "triangle_count": 1584,
+            "sample_query_count": 9360,
+            "failed_queries": 0,
+            "maximum_barycentric_subdivisions": 2,
+            "minimum_sample_to_target_distance_m": 0.15949586033821106,
+            "maximum_surface_cover_radius_m": 0.013018750366863297,
+            "numeric_slack_m": 1e-05,
+            "surface_separation_lower_bound_m": 0.14646710997134776,
+            "positive_surface_separation_certified": true,
+            "method": "Every source triangle sampled on complete barycentric grid n=ceil(max_edge/0.015m); 1-Lipschitz target distance minus maximum grid-cell diameter and numerical slack.",
+            "limitation": "Certifies distance between the evaluated surfaces only; solid containment is not tested."
+          }
+        }
+      ],
+      "limitation": "Evaluated BVH pairs identify triangle touching/crossing, not penetration depth. Overlapping bounds with no surface pairs do not certify solid nonpenetration.",
+      "chair_parts_by_index": {
+        "0": 20,
+        "1": 20
+      },
+      "vessel_meshes": [
+        "principal_cream_stoneware_vessel_0",
+        "principal_cream_stoneware_vessel_1"
+      ]
+    },
+    "stoneware_curtain": {
+      "first_objects_measured": 2,
+      "second_objects_measured": 2,
+      "object_pairs_measured": 4,
+      "bounds_separated_pair_count": 4,
+      "bvh_tested_pair_count": 0,
+      "total_triangle_contact_pair_count": 0,
+      "status": "bounds_separated",
+      "overlapping_pairs": [],
+      "limitation": "Evaluated BVH pairs identify triangle touching/crossing, not penetration depth. Overlapping bounds with no surface pairs do not certify solid nonpenetration."
+    },
+    "floorboards": {
+      "count": 120,
+      "count_note": "Measured count; staggered board lengths are inferred, not fixed by source plan",
+      "u_along_x_v_along_y_metric_errors": [],
+      "board_bounds_overlaps": [],
+      "top_z_range_m": [
+        3.3030002117156982,
+        3.3030002117156982
+      ]
+    },
+    "chair_leg_floor_contact": {
+      "evaluated_board_top_m": 3.3030002117156982,
+      "board_top_range_m": [
+        3.3030002117156982,
+        3.3030002117156982
+      ],
+      "numeric_tolerance_m": 1e-05,
+      "legs": [
+        {
+          "object": "principal_raked_walnut_chair_0_raked_front_leg",
+          "evaluated_bounds_m": [
+            [
+              1.232771873474121,
+              1.2765682935714722,
+              3.302999973297119
+            ],
+            [
+              1.4840328693389893,
+              1.6946221590042114,
+              3.9230499267578125
+            ]
+          ],
+          "minimum_z_m": 3.302999973297119,
+          "minimum_z_minus_board_top_m": -2.384185791015625e-07,
+          "status": "at_board_datum",
+          "bottom_horizontal_triangle_count": 2,
+          "bottom_sample_vertex_count": 4,
+          "bottom_sample_z_range_m": [
+            3.302999973297119,
+            3.302999973297119
+          ]
+        },
+        {
+          "object": "principal_raked_walnut_chair_0_raked_front_leg.001",
+          "evaluated_bounds_m": [
+            [
+              0.651835560798645,
+              1.5725700855255127,
+              3.302999973297119
+            ],
+            [
+              0.9030964970588684,
+              1.9906235933303833,
+              3.9230499267578125
+            ]
+          ],
+          "minimum_z_m": 3.302999973297119,
+          "minimum_z_minus_board_top_m": -2.384185791015625e-07,
+          "status": "at_board_datum",
+          "bottom_horizontal_triangle_count": 2,
+          "bottom_sample_vertex_count": 4,
+          "bottom_sample_z_range_m": [
+            3.302999973297119,
+            3.302999973297119
+          ]
+        },
+        {
+          "object": "principal_raked_walnut_chair_0_raked_rear_leg",
+          "evaluated_bounds_m": [
+            [
+              1.1027294397354126,
+              1.0209776163101196,
+              3.3030002117156982
+            ],
+            [
+              1.3104069232940674,
+              1.3534048795700073,
+              3.9401755332946777
+            ]
+          ],
+          "minimum_z_m": 3.3030002117156982,
+          "minimum_z_minus_board_top_m": 0.0,
+          "status": "at_board_datum",
+          "bottom_horizontal_triangle_count": 2,
+          "bottom_sample_vertex_count": 4,
+          "bottom_sample_z_range_m": [
+            3.3030002117156982,
+            3.3030002117156982
+          ]
+        },
+        {
+          "object": "principal_raked_walnut_chair_0_raked_rear_leg.001",
+          "evaluated_bounds_m": [
+            [
+              0.5217934250831604,
+              1.3169797658920288,
+              3.3030004501342773
+            ],
+            [
+              0.7294706702232361,
+              1.6494066715240479,
+              3.9401755332946777
+            ]
+          ],
+          "minimum_z_m": 3.3030004501342773,
+          "minimum_z_minus_board_top_m": 2.384185791015625e-07,
+          "status": "at_board_datum",
+          "bottom_horizontal_triangle_count": 2,
+          "bottom_sample_vertex_count": 4,
+          "bottom_sample_z_range_m": [
+            3.3030004501342773,
+            3.3030004501342773
+          ]
+        },
+        {
+          "object": "principal_raked_walnut_chair_1_raked_front_leg",
+          "evaluated_bounds_m": [
+            [
+              0.8441681265830994,
+              2.5466442108154297,
+              3.3030002117156982
+            ],
+            [
+              1.1320874691009521,
+              2.946786880493164,
+              3.9230499267578125
+            ]
+          ],
+          "minimum_z_m": 3.3030002117156982,
+          "minimum_z_minus_board_top_m": 0.0,
+          "status": "at_board_datum",
+          "bottom_horizontal_triangle_count": 2,
+          "bottom_sample_vertex_count": 4,
+          "bottom_sample_z_range_m": [
+            3.3030002117156982,
+            3.3030002117156982
+          ]
+        },
+        {
+          "object": "principal_raked_walnut_chair_1_raked_front_leg.001",
+          "evaluated_bounds_m": [
+            [
+              1.3909813165664673,
+              2.9017491340637207,
+              3.3030002117156982
+            ],
+            [
+              1.6789002418518066,
+              3.301891565322876,
+              3.9230499267578125
+            ]
+          ],
+          "minimum_z_m": 3.3030002117156982,
+          "minimum_z_minus_board_top_m": 0.0,
+          "status": "at_board_datum",
+          "bottom_horizontal_triangle_count": 2,
+          "bottom_sample_vertex_count": 4,
+          "bottom_sample_z_range_m": [
+            3.3030002117156982,
+            3.3030004501342773
+          ]
+        },
+        {
+          "object": "principal_raked_walnut_chair_1_raked_rear_leg",
+          "evaluated_bounds_m": [
+            [
+              0.6881335973739624,
+              2.8678088188171387,
+              3.30299973487854
+            ],
+            [
+              0.9237221479415894,
+              3.187330961227417,
+              3.9401755332946777
+            ]
+          ],
+          "minimum_z_m": 3.30299973487854,
+          "minimum_z_minus_board_top_m": -4.76837158203125e-07,
+          "status": "at_board_datum",
+          "bottom_horizontal_triangle_count": 2,
+          "bottom_sample_vertex_count": 4,
+          "bottom_sample_z_range_m": [
+            3.30299973487854,
+            3.302999973297119
+          ]
+        },
+        {
+          "object": "principal_raked_walnut_chair_1_raked_rear_leg.001",
+          "evaluated_bounds_m": [
+            [
+              1.2349469661712646,
+              3.2229135036468506,
+              3.3030002117156982
+            ],
+            [
+              1.470535397529602,
+              3.542435884475708,
+              3.9401755332946777
+            ]
+          ],
+          "minimum_z_m": 3.3030002117156982,
+          "minimum_z_minus_board_top_m": 0.0,
+          "status": "at_board_datum",
+          "bottom_horizontal_triangle_count": 2,
+          "bottom_sample_vertex_count": 4,
+          "bottom_sample_z_range_m": [
+            3.3030002117156982,
+            3.3030002117156982
+          ]
+        }
+      ],
+      "limitation": "Checks feet against the actual planar board-top datum, including bevel modifiers. It does not certify contact area across individual 2 mm board joints."
+    },
+    "timber_uv_endgrain": [
+      {
+        "object": "MASTER_ROOF_TIMBERS",
+        "uv": "Member grain metres",
+        "finite_uv": true,
+        "endgrain_faces": 3127,
+        "longitudinal_faces": 340245,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "MASTER_TRUSS_BRACES",
+        "uv": "Member grain metres",
+        "finite_uv": true,
+        "endgrain_faces": 289,
+        "longitudinal_faces": 104157,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_antique_bench_split_plank_0",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 256,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_antique_bench_split_plank_1",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 256,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_arm",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 582,
+        "longitudinal_faces": 1362,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_arm.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 582,
+        "longitudinal_faces": 1362,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_back_rail",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_back_rail.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_back_stile",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_back_stile.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_raked_front_leg",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_raked_front_leg.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_raked_rear_leg",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_raked_rear_leg.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_seat_deck",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_seat_rail",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_seat_rail.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_wood_pin",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 8,
+        "longitudinal_faces": 10,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_0_wood_pin.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 8,
+        "longitudinal_faces": 10,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_arm",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 582,
+        "longitudinal_faces": 1362,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_arm.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 582,
+        "longitudinal_faces": 1362,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_back_rail",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_back_rail.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_back_stile",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_back_stile.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_raked_front_leg",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_raked_front_leg.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_raked_rear_leg",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_raked_rear_leg.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_seat_deck",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_seat_rail",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_seat_rail.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 2,
+        "longitudinal_faces": 4,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_wood_pin",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 8,
+        "longitudinal_faces": 10,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      },
+      {
+        "object": "principal_raked_walnut_chair_1_wood_pin.001",
+        "uv": "Wood member metres",
+        "finite_uv": true,
+        "endgrain_faces": 8,
+        "longitudinal_faces": 10,
+        "note": "Verifies actual UV data and separate cap assignments; architectural grain direction still requires image review."
+      }
+    ],
+    "pigment_to_physical_inputs": {
+      "fidelity_principal_bed_linen": [],
+      "fidelity_principal_bench_endgrain": [],
+      "fidelity_principal_bench_oak": [],
+      "fidelity_principal_bench_stone": [],
+      "fidelity_principal_chair_endgrain": [],
+      "fidelity_principal_chair_walnut": [],
+      "fidelity_principal_coverlet": [],
+      "fidelity_principal_curtain_rust_ikat": [],
+      "fidelity_principal_floorboard": [],
+      "fidelity_principal_old_oak": [],
+      "fidelity_principal_seat_linen": [],
+      "fidelity_principal_stoneware": [],
+      "fidelity_principal_table_patinated_bronze": []
+    },
+    "local_material_assignment_leaks": [],
+    "west_blind": {
+      "bounds_m": [
+        [
+          0.36381667852401733,
+          1.5800001621246338,
+          5.242000102996826
+        ],
+        [
+          0.4249986708164215,
+          3.2200002670288086,
+          5.650000095367432
+        ]
+      ],
+      "center_y_m": 2.400000214576721,
+      "center_y_matches_2_4m": true
+    },
+    "curtain_cloth": [
+      {
+        "object": "principal_patterned_curtain",
+        "evaluated_bounds_m": [
+          [
+            1.4841512441635132,
+            0.46047037839889526,
+            3.3029518127441406
+          ],
+          [
+            2.315847873687744,
+            0.6110460758209229,
+            5.879463195800781
+          ]
+        ],
+        "metadata_height_m": 2.5764459930313595,
+        "uv_height_m": 2.5764458179473877,
+        "metadata_matches_uv": true
+      },
+      {
+        "object": "principal_patterned_curtain.001",
+        "evaluated_bounds_m": [
+          [
+            5.684157848358154,
+            0.4598501920700073,
+            3.3029580116271973
+          ],
+          [
+            6.515841007232666,
+            0.6104419231414795,
+            5.879464149475098
+          ]
+        ],
+        "metadata_height_m": 2.5764459930313595,
+        "uv_height_m": 2.5764458179473877,
+        "metadata_matches_uv": true
+      }
+    ],
+    "curtain_hardware_bounds_m": {
+      "principal_curtain_brass_hook": [
+        [
+          1.5537502765655518,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          1.5573501586914062,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.001": [
+        [
+          1.6398627758026123,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          1.6434626579284668,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.002": [
+        [
+          1.7259752750396729,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          1.7295751571655273,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.003": [
+        [
+          1.8120877742767334,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          1.815687656402588,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.004": [
+        [
+          1.898200273513794,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          1.9018001556396484,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.005": [
+        [
+          1.9843127727508545,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          1.987912654876709,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.006": [
+        [
+          2.070425033569336,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          2.0740251541137695,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.007": [
+        [
+          2.1565375328063965,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          2.16013765335083,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.008": [
+        [
+          2.242650032043457,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          2.2462501525878906,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.009": [
+        [
+          5.753750324249268,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          5.757350444793701,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.010": [
+        [
+          5.839862823486328,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          5.843462944030762,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.011": [
+        [
+          5.925975322723389,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          5.929575443267822,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.012": [
+        [
+          6.012087821960449,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          6.015687942504883,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.013": [
+        [
+          6.09820032119751,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          6.101800441741943,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.014": [
+        [
+          6.18431282043457,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          6.187912940979004,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.015": [
+        [
+          6.270425319671631,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          6.2740254402160645,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.016": [
+        [
+          6.356537818908691,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          6.360137939453125,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_brass_hook.017": [
+        [
+          6.442650318145752,
+          0.40956345200538635,
+          5.869999885559082
+        ],
+        [
+          6.4462504386901855,
+          0.5368000268936157,
+          5.921795845031738
+        ]
+      ],
+      "principal_curtain_pole_support_hook": [
+        [
+          1.5140001773834229,
+          0.3720000088214874,
+          5.8389997482299805
+        ],
+        [
+          1.5260002613067627,
+          0.4329417645931244,
+          5.932983875274658
+        ]
+      ],
+      "principal_curtain_pole_support_hook.001": [
+        [
+          3.99399995803833,
+          0.3720000088214874,
+          5.8389997482299805
+        ],
+        [
+          4.00600004196167,
+          0.4329417645931244,
+          5.932983875274658
+        ]
+      ],
+      "principal_curtain_pole_support_hook.002": [
+        [
+          6.474000453948975,
+          0.3720000088214874,
+          5.8389997482299805
+        ],
+        [
+          6.4860005378723145,
+          0.4329417645931244,
+          5.932983875274658
+        ]
+      ],
+      "principal_curtain_pole_support_plate": [
+        [
+          1.4975001811981201,
+          0.35100001096725464,
+          5.807499885559082
+        ],
+        [
+          1.5425002574920654,
+          0.3790000081062317,
+          5.91249942779541
+        ]
+      ],
+      "principal_curtain_pole_support_plate.001": [
+        [
+          3.9774999618530273,
+          0.35100001096725464,
+          5.807499885559082
+        ],
+        [
+          4.022500038146973,
+          0.3790000081062317,
+          5.91249942779541
+        ]
+      ],
+      "principal_curtain_pole_support_plate.002": [
+        [
+          6.457500457763672,
+          0.35100001096725464,
+          5.807499885559082
+        ],
+        [
+          6.502500534057617,
+          0.3790000081062317,
+          5.91249942779541
+        ]
+      ],
+      "principal_curtain_rod": [
+        [
+          1.4200003147125244,
+          0.39599987864494324,
+          5.8966851234436035
+        ],
+        [
+          6.580000877380371,
+          0.4240001142024994,
+          5.923314571380615
+        ]
+      ]
+    }
+  },
+  "limitations": [
+    "Standing-box check detects evaluated mesh/curve surfaces inside the open box; it is not whole-house route certification.",
+    "Cloth bounds and bench surface crossings are measured; overlapping bounds without crossings remain uncertified.",
+    "Baseline shader fingerprints compare node types, input values, links, image filenames and principal node modes; not rendered appearance."
+  ],
+  "nonprincipal_baseline_material_comparison": {
+    "baseline": "/Users/cloud/.codex/worktrees/7f26/homespec/out/principal-study/baseline/house.blend",
+    "common_objects": 13499,
+    "changed": [],
+    "removed": [],
+    "added": []
+  },
+  "curtain_hardware_baseline_comparison": [
+    {
+      "object": "principal_curtain_brass_hook",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.001",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.002",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.003",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.004",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.005",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.006",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.007",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.008",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.009",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.010",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.011",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.012",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.013",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.014",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.015",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.016",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_brass_hook.017",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_pole_support_hook",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_pole_support_hook.001",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_pole_support_hook.002",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_pole_support_plate",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_pole_support_plate.001",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_pole_support_plate.002",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    },
+    {
+      "object": "principal_curtain_rod",
+      "dimension_error_m": 0.0,
+      "translation_m": [
+        0.0,
+        0.0,
+        -0.5500001907348633
+      ],
+      "rigid_550mm_lowering": true
+    }
+  ],
+  "full_measurement_report_sha256": "66dc3104d665d609fda453cc69e83e648fad1ffe3e396dac60d458cfc9857f5f",
+  "measurement_script_sha256": "80a523bc8e229a5c566889d07db76894786d6b75cf008c0184d70c058f5469af",
+  "saved_scene_sha256": "909696ed2df9b45065a78e4e2dbfa5c82b3e4a4a1e45cf33c5e6d0ca7de8cba2",
+  "compact_report_note": "Per-object bed/cloth/bench bounds replaced with counts and combined envelopes; per-foot sample XYZ omitted. All crossing/distance results and sample counts retained. Full measurement report remains in local study output."
+}

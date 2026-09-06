@@ -1,5 +1,10 @@
 # Verification — La Bastide de Fléchon
 
+The focused exterior branch has separate, later evidence in
+[exterior-verification.md](exterior-verification.md). The counts and images
+below describe the earlier combined pass and do not validate the exterior
+geometry or its remaining roof/terrace discrepancies.
+
 Third photographic pass, Blender 5.2.1 LTS, 5 September 2026. The user requested that all source work be committed and the PR made ready while the full render is deferred.
 
 Separate [standalone salon evidence](salon-verification.md) adds two

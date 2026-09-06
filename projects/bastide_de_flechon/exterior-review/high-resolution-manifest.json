@@ -1,0 +1,2303 @@
+{
+  "schema": 1,
+  "purpose": "Actual editable 3D exterior render evidence; photographic extrinsics are inferred",
+  "saved_scene": "/Users/cloud/.codex/worktrees/60a7/homespec/out/bastide_de_flechon/presentation/e3b0760284354eac9ea110ca7e12ec92/272c952e5d565d7a/house.blend",
+  "saved_scene_sha256": "88ba4fa0080ecd15f4b5a1a730871be7878949099e999022f76724930527d373",
+  "source_hashes_at_render": {
+    "project.py": "1fd115fc388cea53c07bbce74d254aa9c23a3a3957cf7a6ca1df3e1e25afb98f",
+    "presentation.py": "585a6534cdc433b0c3ed31ba82c2068d09c4b5adb8b00ffa9b49354f83f8391a",
+    "floor_layout.json": "e6c5d8e23e442159ba72f344aa2cef5530c31be49ad4e7feab237e910e5206d7",
+    "rooms/exterior.py": "d8485a91bfeadd435764bb0bf8b2d6155bc12684edbca8d7c15040b0e35777f7",
+    "rooms/exterior_envelope.py": "995f4363eafa3be709558f38e333afba7b229947321d2c81df2a926634d53833",
+    "rooms/exterior_geometry.py": "2aae1b61599086334d50cd3355f1aae98dfd1f7443e886d374bd83c57bf3970b",
+    "rooms/exterior_materials.py": "2848a8f13e8bf1c564992d2e1bb1151cedf860638ec8e3f01aa815db964c47fa",
+    "rooms/exterior_planting.py": "f5339e1da70e8565cfbb151bafd8458c9722e67495d3e0030d5134e29870adc0",
+    "rooms/exterior_roofs.py": "a030a7086671662f5442650aad3144e1e1a5661ff09dd712e9c2907c24016f45",
+    "rooms/exterior_setting.py": "bb8eb3bc843cd3ed9458c43ba801378e0418cee285d69504bf145394096fa4de",
+    "rooms/fast_primitives.py": "13e99233efbe1aa3e116d5c7ce2cbf93931d14baf4efcf760f1067f9cbc5eb07",
+    "rooms/fidelity_bedrooms.py": "25d2766a987b2173e30d67149d82b21f2b4146afd85b99a06a9933c851b2ef26",
+    "rooms/fidelity_hall_baths.py": "83aba8c1a2b42d4fbbd62412b927237589f3c116f351b6173137a858c6bcef0a",
+    "rooms/fidelity_lighting.py": "2a21ad24fd03ebbf9093c2284a3d2ca6e519f929fcf1d16538305dfc895f7125",
+    "rooms/fidelity_living.py": "5708077ff11f1fc82bd47fc2511308c7a33ac6c881ee610e8b3daf4e9677116c",
+    "rooms/fidelity_materials.py": "3bcf54f9ccba61d88a6829e83bca214e8bdbe095082be21bdac953f374291f9f",
+    "rooms/fidelity_service.py": "f8b741195dd4894f21a9f5363c8c237040d30c43adbc04a8e87d675b3e55bb9a",
+    "rooms/fidelity_timbers.py": "4f145165a386ea373cb4510db2ff415fb984f65d6a21d950ae7be85f5a7ed4e7",
+    "rooms/fidelity_upholstery.py": "40e2823119d03a2d88721df16834d842ef11a06d8593daad7036dc7f8aff2a31",
+    "rooms/fidelity_vegetation.py": "2a402feae95c72564173db7247c74409b3ef7230b598ef30740e964a1e43666d",
+    "rooms/furnishings.py": "134d2442f0c4edbca1f7d634d715c38b00c959b617f0f2e99e9863a75d8d9dab",
+    "rooms/gallery_ironwork.py": "f9b94faf7df70a9089d9abadf9b64663cc050a7732aa5930c1eaae54972321d7",
+    "rooms/interiors.py": "5af3f1874d92369828149179b5dcd63e9220a064d33fcf25381e5315101cee42",
+    "rooms/kitchen_envelope.py": "bf24cb9e144e7353aa58ae62924b9e40520345c1a12d61cd8aa7732b0c465895",
+    "rooms/kitchen_furniture.py": "4f871f1d01d4aa1fd1c1fb4e1c0a25c4381ebb76317683f80c7302d7b59fc78f",
+    "rooms/kitchen_joinery.py": "b723f8865d37646c2bb86cd037772a87d7d63de4c6a32b0f20c9a138b9e1666f",
+    "rooms/kitchen_surfaces.py": "30bfa5de3502de2af5f2d73cdd450854b182a708b0019f0d5fc1eb3dd2516805",
+    "rooms/lighting_presets.py": "05effeb505989eac311861e2c6810cee2d58e9c651838af0f278a9e42cac5ed7",
+    "rooms/living_shapes.py": "0d2c97b73c2038f526c758cc3900d834764760c25f0b9a99484681c7e5ef72fd",
+    "rooms/material_details.py": "b82342ae66019cc32627bc282987bb4909c7e49aa3758f56c862a0c0125bdea5",
+    "rooms/salon_envelope.py": "47e1c1333f4948827b92e623915ef7f8a61ffb94f3c20af793564e79c70fe69d",
+    "rooms/salon_fireplace.py": "73b8c7cdf553f101bb4f363eac581e38a40291c5c8122147ba5485e11d8e419c",
+    "rooms/salon_furniture.py": "989d6b952f909a0871981f6df05c0824d08432f03ef9d6c21606e36b46819d45",
+    "rooms/salon_materials.py": "cdcb296e1f2243533c86a98fa017069bd9efa5f234da963cf1a5bb619ccd2031",
+    "textures/antique_walnut.png": "24222e9358e9f08a9941776e9a267a290e02bccba23b24c8ca69aa5208e7107d",
+    "textures/bath_ikat.png": "a3169f79e4488eaee708c432b29360204d59ac6dd5adf45870ed1d2ad4e1392e",
+    "textures/bronze_travertine.png": "ae5daf579da014571d50d445e7def15a1a815c59568e1bda8f33b245bb871834",
+    "textures/exterior-cream-plaster.png": "1f9f5bec90adee3914d386881bdd8771bdb9ea6a37ea2d635e5c33e4b1c608d1",
+    "textures/exterior-cut-limestone.png": "f7f902638e6b23d2de7659269fc01fd7c7e5c1b84bfdcca0581be1e5c1552d29",
+    "textures/exterior-roof-terracotta.png": "d4e1d0371e628910716b04a4e7a1381f45ad62b35148db0b6ec1ae4468b04962",
+    "textures/exterior-rubble-face.png": "21e1e66a77e1f68fe8c0794a3980b2f2d7538ddaaeeae1d7f6882483d0d12571",
+    "textures/exterior-weathered-shutter.png": "5d93914003c8fc1c74ce8a7b5ad58cf040a393fd5ffa6a065e0f2d0b11c74c8b",
+    "textures/guest_chinoiserie.png": "8a2d6501df2f38e2893403aa4856c7c102cbf931fa326695147adf181348e3c0",
+    "textures/guest_putty_limewash.png": "4507d24093cccedd0267e604bce60d34552ebfc544fb36d335571760bb41d755",
+    "textures/guest_taupe_paisley.png": "6d3d17f7793953006754485ad9f9860683b86226298e59521c624f2ba6b57313",
+    "textures/hall_kilim.png": "4625c33ef84f175b83876de9246fbc7dc403b6ced1f8b0b77fdd8d69b469a835",
+    "textures/hall_terracotta_limewash.png": "d280740cbc26571db70016a7b2c76ce6cba147eb901f8f178029f61889a7a39b",
+    "textures/hemp_linen.png": "32c5e3602104c55e3d30458533cba47f69d7ce0b05f1ffa223b6e91f3e122e64",
+    "textures/kitchen-cleaned-oak.png": "7c6c41fccb9df2bfdff8087259f7e7662a9e5813e8251a3b1643c7f7387e6b9c",
+    "textures/limestone_floor.png": "32e6e1c32401937bef2d530a432155caa5cc02e7da533fbdb5b7af2897c73752",
+    "textures/limestone_rubble.png": "f52fdf90e3d8d7a75931dd7b7d8583864af6e21df0aeca9643afc8744923324f",
+    "textures/ochre_limewash.png": "597934ebd4a8fb456445d165c236d23ccaeb9e04aaaff1a14400250fcc612048",
+    "textures/paisley_coverlet.png": "0913f2e441288a96e222a42d9e934b5b94016cced0b7a553c1789b58d7274738",
+    "textures/principal_paisley.png": "c12895a408971ccd42a4e72f68b1ea6b500f2f2911ca349343cfb337e53a960d",
+    "textures/reclaimed_oak.png": "c3a3129166b198c1f27270c205871bee8ebde02b2ef4b36cfc510b41b6cc1bd8",
+    "textures/rust_ikat.png": "d99576994154e8c9f3e5299e786e1165c38d8917ee1bcea0412382d7de09a178",
+    "textures/salon-charred-oak-bark.png": "6c033c70a6e836bce51e2a2df3a7fdbc5e679aaf7cc7c1917e8ecda8fa6ff6b5",
+    "textures/salon-cream-plaster.png": "50272a02b27dd8527a6d0d7958a015adce2b442067cf54f4c779c6d5a3348b26",
+    "textures/salon-curtain-linen.png": "a6473e7259c98ee57345cca755747b95085f40efa8fd4a8249f6a70eee01d9f0",
+    "textures/salon-fireplace-limestone.png": "3f87a668208180ca127521deb15d99be545646540ea6a3b7c92f7b28b56fa675",
+    "textures/salon-floor-stone-a.png": "6d318ffb1452286d406517473b0e47a62e231512ac13c7d8733518ab6f9c13a9",
+    "textures/salon-floor-stone-b.png": "f03c900205c22d84d63cfb0e6977eb25c97a33956753322219c0ca78c1d75627",
+    "textures/salon-forged-iron.png": "d00ed1cf405003fad0ea7fcadefabf2b6dad36ed11722c0d86c465c8bc3154c7",
+    "textures/salon-oak-timber.png": "e21c9ae4660373807b6b2e6e91038dd625e71636d88356ae0b78e48f6d37bcc1",
+    "textures/salon-pillow-diamond.png": "b0bfa58102fc95918a8a72eb575040d318f398f9256dd6d032415d1991bd96bd",
+    "textures/salon-rubble-face.png": "f209d8cebc51347585d5e000e8f5a7796bf513d7e2a01473eb1fd21f7d9fa853",
+    "textures/salon-rug.png": "00d9279e4c83f5eb908ced80127d55714fb77ee00ff99b66e38cf160a15d037f",
+    "textures/salon-sofa-basketweave.png": "2327a955e4100c5775106366cfdf8053c1061a7619c8369d03adff7c3260e678",
+    "textures/stone_slips.png": "745cc339b2524593127bcd8a42c4313bc1aecf5c7366cadbe2f86a2cbb00c8e9",
+    "textures/taupe_chenille.png": "15067a6d0a3f136530c967c5aff79a9d8bffdd356c478d3611dd2797da1f2821",
+    "textures/tobacco_brushed_limewash.png": "ebf009939aebd0111961ea3d5bfa6fc699be5cecc9d8b46ab5aed277ca639ad2",
+    "textures/weathered_floorboards.png": "a98d6153954aa49ba32c98439d83afbf05d0460c91e37fb7ce92026c91df0e5f"
+  },
+  "camera_lock_sha256": "c120f2c07e4440c1cccde7022e654e98ee938f8489fb81304aed8c7f4d0ac8c7",
+  "source_hash_scope": "Working-tree render support only; saved-scene identity is its immutable file hash, with generation provenance recorded separately",
+  "review_script_sha256": "ed9d492c7bc04e5e56f35d127a33458e7508c983b90b7b4ead0511142c8f0cba",
+  "quality": "final",
+  "mode": "beauty",
+  "samples_max": 128,
+  "adaptive_threshold": 0.017999999225139618,
+  "pixel_aspect": [
+    1,
+    1
+  ],
+  "geometry": "Saved geometry retained; documented in-memory clay visibility/lighting overrides only",
+  "clay_hidden_plants": [],
+  "saved_plant_visibility_sha256": "7f25122500e23cb254af4da514fd714f05ef8c47506a2c958f98186210923bd3",
+  "saved_hidden_plant_count": 12,
+  "additional_hidden_plants_for_study": [],
+  "views": [
+    {
+      "id": "pool46",
+      "reference_original": "PHOTOS/VICTOR FITZ/DJI_20231012094055_0813_D.jpg",
+      "location": [
+        32.02370024128025,
+        -24.247669725086066,
+        8.800000000000002
+      ],
+      "target": [
+        24.768689128174614,
+        -17.642180584906264,
+        6.868076873247707
+      ],
+      "lens_mm": 70,
+      "size": [
+        2560,
+        1440
+      ],
+      "sun_direction": [
+        -0.65,
+        0.5,
+        -0.55
+      ],
+      "exposure": 0.55,
+      "pose_status": "Bounded native-optics landmark fit; geometry fixed; visual render review pending",
+      "sensor_dimension_mm": 36.0,
+      "landmarks": [
+        {
+          "name": "D_FRONT fraction0 z3.55",
+          "world_m": [
+            2.32,
+            0.0,
+            3.55
+          ],
+          "photo_uv": [
+            0.39666666666666667,
+            0.3022222222222222
+          ],
+          "annotation_px": [
+            476,
+            204
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_FRONT fraction1 z3.55",
+          "world_m": [
+            5.68,
+            0.0,
+            3.55
+          ],
+          "photo_uv": [
+            0.515,
+            0.3037037037037037
+          ],
+          "annotation_px": [
+            618,
+            205
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_FRONT fraction0.5 z5.23",
+          "world_m": [
+            4.0,
+            0.0,
+            5.23
+          ],
+          "photo_uv": [
+            0.45666666666666667,
+            0.1511111111111111
+          ],
+          "annotation_px": [
+            548,
+            102
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_FRONT fraction1 z0",
+          "world_m": [
+            5.68,
+            0.0,
+            0
+          ],
+          "photo_uv": [
+            0.5158333333333334,
+            0.6592592592592592
+          ],
+          "annotation_px": [
+            619,
+            445
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_FRONT fraction0 z0",
+          "world_m": [
+            2.32,
+            0.0,
+            0
+          ],
+          "photo_uv": [
+            0.3975,
+            0.64
+          ],
+          "annotation_px": [
+            477,
+            432
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "holdout",
+          "weight": 0.4,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_E1 fraction1 z0",
+          "world_m": [
+            8.0,
+            3.15,
+            0
+          ],
+          "photo_uv": [
+            0.71,
+            0.6577777777777778
+          ],
+          "annotation_px": [
+            852,
+            444
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_E2 fraction1 z0",
+          "world_m": [
+            8.0,
+            7.2,
+            0
+          ],
+          "photo_uv": [
+            0.825,
+            0.6266666666666667
+          ],
+          "annotation_px": [
+            990,
+            423
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_E1 fraction0.5 z2.875",
+          "world_m": [
+            8.0,
+            2.325,
+            2.875
+          ],
+          "photo_uv": [
+            0.6941666666666667,
+            0.36592592592592593
+          ],
+          "annotation_px": [
+            833,
+            247
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_E2 fraction0.5 z2.875",
+          "world_m": [
+            8.0,
+            6.375,
+            2.875
+          ],
+          "photo_uv": [
+            0.8075,
+            0.35703703703703704
+          ],
+          "annotation_px": [
+            969,
+            241
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "N_E1 fraction0.5 z5.425",
+          "world_m": [
+            8.0,
+            2.05,
+            5.425
+          ],
+          "photo_uv": [
+            0.6908333333333333,
+            0.22074074074074074
+          ],
+          "annotation_px": [
+            829,
+            149
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "N_E2 fraction0.5 z5.425",
+          "world_m": [
+            8.0,
+            8.0,
+            5.425
+          ],
+          "photo_uv": [
+            0.8075,
+            0.21777777777777776
+          ],
+          "annotation_px": [
+            969,
+            147
+          ],
+          "annotation_size": [
+            1200,
+            675
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        }
+      ],
+      "shift_x": 9.999999999999999e-10,
+      "shift_y": 9.999999999999999e-10,
+      "reference_sha256": "7826463492e70c2aea7eb0a1edc3e0135438927999c544400504315d58cb5cee",
+      "reference_exif": {
+        "make": "DJI",
+        "camera_model": "FC8284",
+        "editing_software": "Adobe Photoshop Lightroom Classic 13.0.2 (Macintosh)",
+        "exposure_seconds": 0.00125,
+        "physical_focal_length_mm": 19.35,
+        "reported_35mm_equivalent_mm": 70,
+        "lens_model": "70.0 mm f/2.8"
+      },
+      "previous_camera": {
+        "location": [
+          27,
+          -36,
+          15
+        ],
+        "target": [
+          3,
+          2,
+          3.5
+        ],
+        "lens_mm": 70,
+        "size": [
+          2560,
+          1440
+        ]
+      },
+      "fit_method": "scipy.optimize.least_squares soft_l1(f_scale=.02); repo camera_calibration.project; fixed lens/sensor; pool pitch free, other views level",
+      "fit_bounds": {
+        "variables": [
+          "x",
+          "y",
+          "z",
+          "yaw_radians",
+          "pitch_radians",
+          "shift_x",
+          "shift_y"
+        ],
+        "lower": [
+          10,
+          -65,
+          8.8,
+          1.75,
+          -0.55,
+          -1e-09,
+          -1e-09
+        ],
+        "upper": [
+          60,
+          -14,
+          25,
+          2.75,
+          -0.06,
+          1e-09,
+          1e-09
+        ]
+      },
+      "fit_residual_px": 34.04833396977298,
+      "holdout_residual_px": 117.18654207400783,
+      "fit_result": {
+        "converged": true,
+        "function_evaluations": 25,
+        "landmarks": [
+          {
+            "role": "fit",
+            "name": "D_FRONT fraction0 z3.55",
+            "photo_uv": [
+              0.39666666666666667,
+              0.3022222222222222
+            ],
+            "projected_uv": [
+              0.39577536600421154,
+              0.29877340731929974
+            ],
+            "error_preview_px": [
+              -2.281729695885133,
+              -4.966293460208373
+            ],
+            "distance_preview_px": 5.465378407575501
+          },
+          {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z3.55",
+            "photo_uv": [
+              0.515,
+              0.3037037037037037
+            ],
+            "projected_uv": [
+              0.5104402997145685,
+              0.33110787042673656
+            ],
+            "error_preview_px": [
+              -11.67283273070467,
+              39.462000081167325
+            ],
+            "distance_preview_px": 41.15221105074502
+          },
+          {
+            "role": "fit",
+            "name": "D_FRONT fraction0.5 z5.23",
+            "photo_uv": [
+              0.45666666666666667,
+              0.1511111111111111
+            ],
+            "projected_uv": [
+              0.4508102093419919,
+              0.15894361999633985
+            ],
+            "error_preview_px": [
+              -14.992530751167408,
+              11.278812794729385
+            ],
+            "distance_preview_px": 18.76133247888464
+          },
+          {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z0",
+            "photo_uv": [
+              0.5158333333333334,
+              0.6592592592592592
+            ],
+            "projected_uv": [
+              0.5102458808732938,
+              0.6611784380240014
+            ],
+            "error_preview_px": [
+              -14.30387829770126,
+              2.763617421228819
+            ],
+            "distance_preview_px": 14.568408135632682
+          },
+          {
+            "role": "holdout",
+            "name": "D_FRONT fraction0 z0",
+            "photo_uv": [
+              0.3975,
+              0.64
+            ],
+            "projected_uv": [
+              0.3975957440993582,
+              0.608918007045929
+            ],
+            "error_preview_px": [
+              0.24510489435698446,
+              -44.758069853862224
+            ],
+            "distance_preview_px": 44.758740972601636
+          },
+          {
+            "role": "fit",
+            "name": "D_E1 fraction1 z0",
+            "photo_uv": [
+              0.71,
+              0.6577777777777778
+            ],
+            "projected_uv": [
+              0.7133781621955048,
+              0.6521880900174318
+            ],
+            "error_preview_px": [
+              8.64809522049228,
+              -8.049150374898186
+            ],
+            "distance_preview_px": 11.814329126125827
+          },
+          {
+            "role": "fit",
+            "name": "D_E2 fraction1 z0",
+            "photo_uv": [
+              0.825,
+              0.6266666666666667
+            ],
+            "projected_uv": [
+              0.8450052118535606,
+              0.5963507779802998
+            ],
+            "error_preview_px": [
+              51.21334234511522,
+              -43.65487970836837
+            ],
+            "distance_preview_px": 67.29453883124606
+          },
+          {
+            "role": "holdout",
+            "name": "D_E1 fraction0.5 z2.875",
+            "photo_uv": [
+              0.6941666666666667,
+              0.36592592592592593
+            ],
+            "projected_uv": [
+              0.6870435988383699,
+              0.39717654623913284
+            ],
+            "error_preview_px": [
+              -18.235053640439958,
+              45.000893251017956
+            ],
+            "distance_preview_px": 48.55509833847766
+          },
+          {
+            "role": "holdout",
+            "name": "D_E2 fraction0.5 z2.875",
+            "photo_uv": [
+              0.8075,
+              0.35703703703703704
+            ],
+            "projected_uv": [
+              0.8242191410467467,
+              0.3573377899121915
+            ],
+            "error_preview_px": [
+              42.80100107967144,
+              0.43308414022242836
+            ],
+            "distance_preview_px": 42.80319211571197
+          },
+          {
+            "role": "holdout",
+            "name": "N_E1 fraction0.5 z5.425",
+            "photo_uv": [
+              0.6908333333333333,
+              0.22074074074074074
+            ],
+            "projected_uv": [
+              0.6794483320529845,
+              0.15475271166830143
+            ],
+            "error_preview_px": [
+              -29.145603277692942,
+              -95.0227618643126
+            ],
+            "distance_preview_px": 99.39210966038766
+          },
+          {
+            "role": "holdout",
+            "name": "N_E2 fraction0.5 z5.425",
+            "photo_uv": [
+              0.8075,
+              0.21777777777777776
+            ],
+            "projected_uv": [
+              0.8787639718433568,
+              0.12128055136264544
+            ],
+            "error_preview_px": [
+              182.4357679189933,
+              -138.95600603779056
+            ],
+            "distance_preview_px": 229.32854386265848
+          }
+        ]
+      },
+      "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/pool46.png",
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/pool46.png",
+      "sha256": "dbb45554bd2c03d21e02dcc82e597244a0cfd2ebdc60f36f89d00e8d26f198ca",
+      "pixels": [
+        3840,
+        2160
+      ],
+      "seconds": 89.05,
+      "lighting": {
+        "basis": "walk sky with exterior-only directional study",
+        "sun_direction": [
+          -0.65,
+          0.5,
+          -0.55
+        ],
+        "sun_energy": 2.4000000953674316,
+        "sun_count": 1,
+        "sun_color": [
+          1.0,
+          0.9100000262260437,
+          0.7699999809265137
+        ],
+        "exposure": 0.550000011920929,
+        "aperture_lights": "off",
+        "practical_light_objects": "off",
+        "fixture_tagged_emission_disabled": [
+          "bedroom3_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "bedroom3_bath_vanity_light_physical_bulb_controlled_emitter",
+          "bedroom4_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "bedroom4_bath_vanity_light_physical_bulb_controlled_emitter",
+          "dining_lantern_warm_bulb.002_controlled_emitter",
+          "fidelity_opal_ceiling_diffuser.005",
+          "garden_bath1_vanity_light.001_physical_bulb_controlled_emitter",
+          "garden_bath1_vanity_light_physical_bulb_controlled_emitter",
+          "garden_bath2_vanity_light.001_physical_bulb_controlled_emitter",
+          "garden_bath2_vanity_light_physical_bulb_controlled_emitter",
+          "guest_1_woven_sconce_glowing_filament_controlled_emitter",
+          "hall_clear_filament_bulb_controlled_emitter",
+          "hall_pendant_tungsten_filament.001_controlled_emitter",
+          "hall_pendant_tungsten_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_0_warm_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_1_warm_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_2_warm_filament_controlled_emitter",
+          "principal_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light.002_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light.003_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light_physical_bulb_controlled_emitter",
+          "principal_bedside_lamp_bulb.001_controlled_emitter",
+          "salon_black_ceramic_lamp_glow_physical_bulb_controlled_emitter",
+          "salon_fp_glowing_ember",
+          "salon_fp_reading_lamp_glow_physical_bulb_controlled_emitter",
+          "salon_photo_lighting_frosted_bulb.005_controlled_emitter",
+          "salon_photo_lighting_sconce_bulb.001_controlled_emitter",
+          "service_opal_lamp_diffuser.001",
+          "service_opal_lamp_diffuser.002",
+          "service_opal_lamp_diffuser.003",
+          "service_opal_lamp_diffuser.004",
+          "upper_gallery_sconce_practical_physical_bulb_controlled_emitter"
+        ],
+        "other_emissive_materials": "Retained from saved scene; not falsely certified as disabled"
+      },
+      "sensor_fit": "HORIZONTAL",
+      "plant_visibility_preserved_from_saved_scene": true,
+      "color_management": {
+        "view_transform": "AgX",
+        "look": "AgX - Medium High Contrast",
+        "white_balance_enabled": true
+      }
+    },
+    {
+      "id": "courtyard08",
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-18.jpg",
+      "location": [
+        15.201809976691049,
+        14.999999999999998,
+        1.8463389557897907
+      ],
+      "target": [
+        5.466028372604109,
+        17.28354035600914,
+        1.8463389557897907
+      ],
+      "lens_mm": 41.096,
+      "size": [
+        1440,
+        1920
+      ],
+      "shift_y": 0.10297214897333178,
+      "sun_direction": [
+        -0.7,
+        0.45,
+        -0.6
+      ],
+      "exposure": 0.6,
+      "pose_status": "Bounded native-optics landmark fit; geometry fixed; visual render review pending",
+      "sensor_dimension_mm": 36.0,
+      "landmarks": [
+        {
+          "name": "D_ENTRY fraction0 z0",
+          "world_m": [
+            -0.3581224,
+            18.2343914,
+            0
+          ],
+          "photo_uv": [
+            0.56,
+            0.7266666666666667
+          ],
+          "annotation_px": [
+            504,
+            872
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_ENTRY fraction1 z0",
+          "world_m": [
+            -0.06287240000000002,
+            20.7168914,
+            0
+          ],
+          "photo_uv": [
+            0.8177777777777778,
+            0.7291666666666666
+          ],
+          "annotation_px": [
+            736,
+            875
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_ENTRY fraction0.5 z2.68",
+          "world_m": [
+            -0.21049740000000003,
+            19.4756414,
+            2.68
+          ],
+          "photo_uv": [
+            0.6855555555555556,
+            0.5416666666666666
+          ],
+          "annotation_px": [
+            617,
+            650
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_ENTRY fraction0.5 z5.75",
+          "world_m": [
+            -0.21049740000000003,
+            19.4756414,
+            5.75
+          ],
+          "photo_uv": [
+            0.69,
+            0.3425
+          ],
+          "annotation_px": [
+            621,
+            411
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_ENTRY fraction0 z4.5",
+          "world_m": [
+            -0.3581224,
+            18.2343914,
+            4.5
+          ],
+          "photo_uv": [
+            0.5622222222222222,
+            0.45666666666666667
+          ],
+          "annotation_px": [
+            506,
+            548
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_ENTRY fraction1 z4.5",
+          "world_m": [
+            -0.06287240000000002,
+            20.7168914,
+            4.5
+          ],
+          "photo_uv": [
+            0.8211111111111111,
+            0.45666666666666667
+          ],
+          "annotation_px": [
+            739,
+            548
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_KITCHEN_TERRACE fraction1 z0",
+          "world_m": [
+            0.0,
+            14.65,
+            0
+          ],
+          "photo_uv": [
+            0.20444444444444446,
+            0.7375
+          ],
+          "annotation_px": [
+            184,
+            885
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.45,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_KITCHEN_TERRACE fraction1 z2.18",
+          "world_m": [
+            0.0,
+            14.65,
+            2.18
+          ],
+          "photo_uv": [
+            0.20333333333333334,
+            0.5883333333333334
+          ],
+          "annotation_px": [
+            183,
+            706
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.45,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "N_BATH3_E fraction1 z5.55",
+          "world_m": [
+            0.0,
+            14.85,
+            5.55
+          ],
+          "photo_uv": [
+            0.15666666666666668,
+            0.2825
+          ],
+          "annotation_px": [
+            141,
+            339
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "N_BATH3_E fraction1 z4.2",
+          "world_m": [
+            0.0,
+            14.85,
+            4.2
+          ],
+          "photo_uv": [
+            0.15777777777777777,
+            0.4116666666666667
+          ],
+          "annotation_px": [
+            142,
+            494
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        }
+      ],
+      "shift_x": -0.07999999999999999,
+      "reference_sha256": "b418d42ab5253b208d5d5142d0042109efe0cc471bb242f249f0fe8b82a99b9f",
+      "reference_exif": {
+        "make": "FUJIFILM",
+        "camera_model": "GFX100S",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.025,
+        "physical_focal_length_mm": 50.0,
+        "reported_35mm_equivalent_mm": 40,
+        "lens_model": "Canon TS-E 50mm f/2.8L"
+      },
+      "previous_camera": {
+        "location": [
+          11.5,
+          8.2,
+          1.7
+        ],
+        "target": [
+          -0.2,
+          16.2,
+          3.5
+        ],
+        "lens_mm": 41.096,
+        "size": [
+          1440,
+          1920
+        ],
+        "shift_y": 0.07
+      },
+      "fit_method": "scipy.optimize.least_squares soft_l1(f_scale=.02); repo camera_calibration.project; fixed lens/sensor; pool pitch free, other views level",
+      "fit_bounds": {
+        "variables": [
+          "x",
+          "y",
+          "z",
+          "yaw_radians",
+          "shift_x",
+          "shift_y"
+        ],
+        "lower": [
+          10,
+          8.1,
+          0.9,
+          2.6,
+          -0.08,
+          -0.3
+        ],
+        "upper": [
+          28,
+          15,
+          2.5,
+          3.18,
+          0.08,
+          0.5
+        ]
+      },
+      "fit_residual_px": 23.12076041572281,
+      "holdout_residual_px": 103.9092953661805,
+      "fit_result": {
+        "converged": true,
+        "function_evaluations": 26,
+        "landmarks": [
+          {
+            "role": "fit",
+            "name": "D_ENTRY fraction0 z0",
+            "photo_uv": [
+              0.56,
+              0.7266666666666667
+            ],
+            "projected_uv": [
+              0.5679388604660264,
+              0.7356369609892541
+            ],
+            "error_preview_px": [
+              11.431959071077902,
+              17.222965099367897
+            ],
+            "distance_preview_px": 20.67172501309083
+          },
+          {
+            "role": "fit",
+            "name": "D_ENTRY fraction1 z0",
+            "photo_uv": [
+              0.8177777777777778,
+              0.7291666666666666
+            ],
+            "projected_uv": [
+              0.8025027040321371,
+              0.7333438811365868
+            ],
+            "error_preview_px": [
+              -21.99610619372267,
+              8.020251782246675
+            ],
+            "distance_preview_px": 23.412670209443345
+          },
+          {
+            "role": "fit",
+            "name": "D_ENTRY fraction0.5 z2.68",
+            "photo_uv": [
+              0.6855555555555556,
+              0.5416666666666666
+            ],
+            "projected_uv": [
+              0.6862432136103288,
+              0.543593383728061
+            ],
+            "error_preview_px": [
+              0.9902275988734388,
+              3.699296757877164
+            ],
+            "distance_preview_px": 3.829536159956079
+          },
+          {
+            "role": "fit",
+            "name": "D_ENTRY fraction0.5 z5.75",
+            "photo_uv": [
+              0.69,
+              0.3425
+            ],
+            "projected_uv": [
+              0.6862432136103288,
+              0.3249280033927222
+            ],
+            "error_preview_px": [
+              -5.4097724011264425,
+              -33.73823348597341
+            ],
+            "distance_preview_px": 34.16919718380938
+          },
+          {
+            "role": "holdout",
+            "name": "D_ENTRY fraction0 z4.5",
+            "photo_uv": [
+              0.5622222222222222,
+              0.45666666666666667
+            ],
+            "projected_uv": [
+              0.5679388604660264,
+              0.41229890207022907
+            ],
+            "error_preview_px": [
+              8.231959071078041,
+              -85.1861080251602
+            ],
+            "distance_preview_px": 85.5829314210618
+          },
+          {
+            "role": "holdout",
+            "name": "D_ENTRY fraction1 z4.5",
+            "photo_uv": [
+              0.8211111111111111,
+              0.45666666666666667
+            ],
+            "projected_uv": [
+              0.8025027040321371,
+              0.41559464398002566
+            ],
+            "error_preview_px": [
+              -26.796106193722622,
+              -78.85828355835073
+            ],
+            "distance_preview_px": 83.28661472838543
+          },
+          {
+            "role": "fit",
+            "name": "D_KITCHEN_TERRACE fraction1 z0",
+            "photo_uv": [
+              0.20444444444444446,
+              0.7375
+            ],
+            "projected_uv": [
+              0.21248997233499894,
+              0.7461559868027531
+            ],
+            "error_preview_px": [
+              11.585560162398462,
+              16.619494661285827
+            ],
+            "distance_preview_px": 20.259141321217502
+          },
+          {
+            "role": "fit",
+            "name": "D_KITCHEN_TERRACE fraction1 z2.18",
+            "photo_uv": [
+              0.20333333333333334,
+              0.5883333333333334
+            ],
+            "projected_uv": [
+              0.21248997233499894,
+              0.5770966894893749
+            ],
+            "error_preview_px": [
+              13.185560162398474,
+              -21.57435618040033
+            ],
+            "distance_preview_px": 25.284616694642764
+          },
+          {
+            "role": "holdout",
+            "name": "N_BATH3_E fraction1 z5.55",
+            "photo_uv": [
+              0.15666666666666668,
+              0.2825
+            ],
+            "projected_uv": [
+              0.2337805164409102,
+              0.3166410973546947
+            ],
+            "error_preview_px": [
+              111.04394367491066,
+              65.55090692101388
+            ],
+            "distance_preview_px": 128.94835720180447
+          },
+          {
+            "role": "holdout",
+            "name": "N_BATH3_E fraction1 z4.2",
+            "photo_uv": [
+              0.15777777777777777,
+              0.4116666666666667
+            ],
+            "projected_uv": [
+              0.2337805164409102,
+              0.4210099677969383
+            ],
+            "error_preview_px": [
+              109.44394367491068,
+              17.939138170121467
+            ],
+            "distance_preview_px": 110.90441598693774
+          }
+        ]
+      },
+      "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/courtyard08.png",
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/courtyard08.png",
+      "sha256": "6b11a66cdf1161ecbb1b4717a1a8627d440709a7f2c12e55a3bb11415dca4aa8",
+      "pixels": [
+        2160,
+        2880
+      ],
+      "seconds": 44.75,
+      "lighting": {
+        "basis": "walk sky with exterior-only directional study",
+        "sun_direction": [
+          -0.7,
+          0.45,
+          -0.6
+        ],
+        "sun_energy": 2.4000000953674316,
+        "sun_count": 1,
+        "sun_color": [
+          1.0,
+          0.9100000262260437,
+          0.7699999809265137
+        ],
+        "exposure": 0.6000000238418579,
+        "aperture_lights": "off",
+        "practical_light_objects": "off",
+        "fixture_tagged_emission_disabled": [
+          "bedroom3_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "bedroom3_bath_vanity_light_physical_bulb_controlled_emitter",
+          "bedroom4_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "bedroom4_bath_vanity_light_physical_bulb_controlled_emitter",
+          "dining_lantern_warm_bulb.002_controlled_emitter",
+          "fidelity_opal_ceiling_diffuser.005",
+          "garden_bath1_vanity_light.001_physical_bulb_controlled_emitter",
+          "garden_bath1_vanity_light_physical_bulb_controlled_emitter",
+          "garden_bath2_vanity_light.001_physical_bulb_controlled_emitter",
+          "garden_bath2_vanity_light_physical_bulb_controlled_emitter",
+          "guest_1_woven_sconce_glowing_filament_controlled_emitter",
+          "hall_clear_filament_bulb_controlled_emitter",
+          "hall_pendant_tungsten_filament.001_controlled_emitter",
+          "hall_pendant_tungsten_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_0_warm_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_1_warm_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_2_warm_filament_controlled_emitter",
+          "principal_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light.002_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light.003_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light_physical_bulb_controlled_emitter",
+          "principal_bedside_lamp_bulb.001_controlled_emitter",
+          "salon_black_ceramic_lamp_glow_physical_bulb_controlled_emitter",
+          "salon_fp_glowing_ember",
+          "salon_fp_reading_lamp_glow_physical_bulb_controlled_emitter",
+          "salon_photo_lighting_frosted_bulb.005_controlled_emitter",
+          "salon_photo_lighting_sconce_bulb.001_controlled_emitter",
+          "service_opal_lamp_diffuser.001",
+          "service_opal_lamp_diffuser.002",
+          "service_opal_lamp_diffuser.003",
+          "service_opal_lamp_diffuser.004",
+          "upper_gallery_sconce_practical_physical_bulb_controlled_emitter"
+        ],
+        "other_emissive_materials": "Retained from saved scene; not falsely certified as disabled"
+      },
+      "sensor_fit": "VERTICAL",
+      "plant_visibility_preserved_from_saved_scene": true,
+      "color_management": {
+        "view_transform": "AgX",
+        "look": "AgX - Medium High Contrast",
+        "white_balance_enabled": true
+      }
+    },
+    {
+      "id": "kitchen12",
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-21.jpg",
+      "location": [
+        -0.9999999999999999,
+        -5.4064061335206945,
+        1.470553930403924
+      ],
+      "target": [
+        -1.9477356389620055,
+        4.548582422908754,
+        1.470553930403924
+      ],
+      "lens_mm": 41.096,
+      "size": [
+        1440,
+        1920
+      ],
+      "shift_y": 0.2051254294928803,
+      "sun_direction": [
+        -0.6,
+        0.65,
+        -0.6
+      ],
+      "exposure": 0.65,
+      "pose_status": "Bounded native-optics landmark fit; geometry fixed; visual render review pending",
+      "sensor_dimension_mm": 36.0,
+      "landmarks": [
+        {
+          "name": "D_KITCHEN_GARDEN fraction0 z2.08",
+          "world_m": [
+            -3.837,
+            8.4,
+            2.08
+          ],
+          "photo_uv": [
+            0.5355555555555556,
+            0.6566666666666666
+          ],
+          "annotation_px": [
+            482,
+            788
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_KITCHEN_GARDEN fraction1 z2.08",
+          "world_m": [
+            -1.637,
+            8.4,
+            2.08
+          ],
+          "photo_uv": [
+            0.8,
+            0.6516666666666666
+          ],
+          "annotation_px": [
+            720,
+            782
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_KITCHEN_GARDEN fraction0.5 z2.44",
+          "world_m": [
+            -2.737,
+            8.4,
+            2.44
+          ],
+          "photo_uv": [
+            0.6666666666666666,
+            0.6291666666666667
+          ],
+          "annotation_px": [
+            600,
+            755
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_KITCHEN_GARDEN fraction0 z0",
+          "world_m": [
+            -3.837,
+            8.4,
+            0
+          ],
+          "photo_uv": [
+            0.5377777777777778,
+            0.8208333333333333
+          ],
+          "annotation_px": [
+            484,
+            985
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_KITCHEN_GARDEN fraction1 z0",
+          "world_m": [
+            -1.637,
+            8.4,
+            0
+          ],
+          "photo_uv": [
+            0.8,
+            0.8166666666666667
+          ],
+          "annotation_px": [
+            720,
+            980
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "N_BED3_S fraction0.5 z5.6",
+          "world_m": [
+            -2.737,
+            8.4,
+            5.6
+          ],
+          "photo_uv": [
+            0.6677777777777778,
+            0.3825
+          ],
+          "annotation_px": [
+            601,
+            459
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.35,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "N_BED3_S fraction0.5 z4.2",
+          "world_m": [
+            -2.737,
+            8.4,
+            4.2
+          ],
+          "photo_uv": [
+            0.6677777777777778,
+            0.5016666666666667
+          ],
+          "annotation_px": [
+            601,
+            602
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.35,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "N_BED3_S fraction0 z5.6",
+          "world_m": [
+            -3.537,
+            8.4,
+            5.6
+          ],
+          "photo_uv": [
+            0.5944444444444444,
+            0.38666666666666666
+          ],
+          "annotation_px": [
+            535,
+            464
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "N_BED3_S fraction1 z5.6",
+          "world_m": [
+            -1.937,
+            8.4,
+            5.6
+          ],
+          "photo_uv": [
+            0.7422222222222222,
+            0.37833333333333335
+          ],
+          "annotation_px": [
+            668,
+            454
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "N_BED3_S fraction0 z4.2",
+          "world_m": [
+            -3.537,
+            8.4,
+            4.2
+          ],
+          "photo_uv": [
+            0.5955555555555555,
+            0.5033333333333333
+          ],
+          "annotation_px": [
+            536,
+            604
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "N_BED3_S fraction1 z4.2",
+          "world_m": [
+            -1.937,
+            8.4,
+            4.2
+          ],
+          "photo_uv": [
+            0.7422222222222222,
+            0.49916666666666665
+          ],
+          "annotation_px": [
+            668,
+            599
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        }
+      ],
+      "shift_x": -0.1599999999999995,
+      "reference_sha256": "fa2099c9ef048bde63d79746601a7cc31ec7efb5d52c8925ee7b3d882990a8a4",
+      "reference_exif": {
+        "make": "FUJIFILM",
+        "camera_model": "GFX100S",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.0058823529411764705,
+        "physical_focal_length_mm": 50.0,
+        "reported_35mm_equivalent_mm": 40,
+        "lens_model": "Canon TS-E 50mm f/2.8L"
+      },
+      "previous_camera": {
+        "location": [
+          -4.0,
+          -1.8,
+          1.7
+        ],
+        "target": [
+          -2.8,
+          8.4,
+          3.6
+        ],
+        "lens_mm": 41.096,
+        "size": [
+          1440,
+          1920
+        ],
+        "shift_y": 0.04
+      },
+      "fit_method": "scipy.optimize.least_squares soft_l1(f_scale=.02); repo camera_calibration.project; fixed lens/sensor; pool pitch free, other views level",
+      "fit_bounds": {
+        "variables": [
+          "x",
+          "y",
+          "z",
+          "yaw_radians",
+          "shift_x",
+          "shift_y"
+        ],
+        "lower": [
+          -1.0,
+          -20,
+          1.3,
+          1.45,
+          -0.16,
+          -0.15
+        ],
+        "upper": [
+          -0.2,
+          -2,
+          2.1,
+          1.85,
+          0.16,
+          0.4
+        ]
+      },
+      "fit_residual_px": 24.771195485142062,
+      "holdout_residual_px": 40.219161739212915,
+      "fit_result": {
+        "converged": true,
+        "function_evaluations": 15,
+        "landmarks": [
+          {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction0 z2.08",
+            "photo_uv": [
+              0.5355555555555556,
+              0.6566666666666666
+            ],
+            "projected_uv": [
+              0.5486963132333629,
+              0.655477967245324
+            ],
+            "error_preview_px": [
+              18.92269105604253,
+              -2.2823028889777675
+            ],
+            "distance_preview_px": 19.059830620429665
+          },
+          {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction1 z2.08",
+            "photo_uv": [
+              0.8,
+              0.6516666666666666
+            ],
+            "projected_uv": [
+              0.7876859083367389,
+              0.6547281039343451
+            ],
+            "error_preview_px": [
+              -17.73229199509604,
+              5.877959553942702
+            ],
+            "distance_preview_px": 18.68112919277455
+          },
+          {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction0.5 z2.44",
+            "photo_uv": [
+              0.6666666666666666,
+              0.6291666666666667
+            ],
+            "projected_uv": [
+              0.6672954642801021,
+              0.6255592607585498
+            ],
+            "error_preview_px": [
+              0.905468563347096,
+              -6.926219343584279
+            ],
+            "distance_preview_px": 6.985154809641007
+          },
+          {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction0 z0",
+            "photo_uv": [
+              0.5377777777777778,
+              0.8208333333333333
+            ],
+            "projected_uv": [
+              0.5486963132333629,
+              0.8249215433493743
+            ],
+            "error_preview_px": [
+              15.72269105604251,
+              7.849363230798687
+            ],
+            "distance_preview_px": 17.573147617110987
+          },
+          {
+            "role": "fit",
+            "name": "D_KITCHEN_GARDEN fraction1 z0",
+            "photo_uv": [
+              0.8,
+              0.8166666666666667
+            ],
+            "projected_uv": [
+              0.7876859083367389,
+              0.8267309149972325
+            ],
+            "error_preview_px": [
+              -17.73229199509604,
+              19.323356794686433
+            ],
+            "distance_preview_px": 26.226442709870156
+          },
+          {
+            "role": "fit",
+            "name": "N_BED3_S fraction0.5 z5.6",
+            "photo_uv": [
+              0.6677777777777778,
+              0.3825
+            ],
+            "projected_uv": [
+              0.6672954642801021,
+              0.36620590311871437
+            ],
+            "error_preview_px": [
+              -0.6945314366529942,
+              -31.28466601206842
+            ],
+            "distance_preview_px": 31.29237449288833
+          },
+          {
+            "role": "fit",
+            "name": "N_BED3_S fraction0.5 z4.2",
+            "photo_uv": [
+              0.6677777777777778,
+              0.5016666666666667
+            ],
+            "projected_uv": [
+              0.6672954642801021,
+              0.481109289414844
+            ],
+            "error_preview_px": [
+              -0.6945314366529942,
+              -39.47016432349962
+            ],
+            "distance_preview_px": 39.476274465057635
+          },
+          {
+            "role": "holdout",
+            "name": "N_BED3_S fraction0 z5.6",
+            "photo_uv": [
+              0.5944444444444444,
+              0.38666666666666666
+            ],
+            "projected_uv": [
+              0.5808661747946272,
+              0.36804337445280844
+            ],
+            "error_preview_px": [
+              -19.552708295736814,
+              -35.75672105060779
+            ],
+            "distance_preview_px": 40.75354588240333
+          },
+          {
+            "role": "holdout",
+            "name": "N_BED3_S fraction1 z5.6",
+            "photo_uv": [
+              0.7422222222222222,
+              0.37833333333333335
+            ],
+            "projected_uv": [
+              0.7546721894562605,
+              0.36434828947021636
+            ],
+            "error_preview_px": [
+              17.927952817015065,
+              -26.851284217184634
+            ],
+            "distance_preview_px": 32.28626575374035
+          },
+          {
+            "role": "holdout",
+            "name": "N_BED3_S fraction0 z4.2",
+            "photo_uv": [
+              0.5955555555555555,
+              0.5033333333333333
+            ],
+            "projected_uv": [
+              0.5808661747946272,
+              0.48232380555727883
+            ],
+            "error_preview_px": [
+              -21.152708295736744,
+              -40.338293330024584
+            ],
+            "distance_preview_px": 45.54794152345017
+          },
+          {
+            "role": "holdout",
+            "name": "N_BED3_S fraction1 z4.2",
+            "photo_uv": [
+              0.7422222222222222,
+              0.49916666666666665
+            ],
+            "projected_uv": [
+              0.7546721894562605,
+              0.4798814597770986
+            ],
+            "error_preview_px": [
+              17.927952817015065,
+              -37.02759722797062
+            ],
+            "distance_preview_px": 41.13945124434617
+          }
+        ]
+      },
+      "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/kitchen12.png",
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/kitchen12.png",
+      "sha256": "af676f418dde34568d8c41bd2204104dc0d0277fe8af84a5d063195bd3356bf8",
+      "pixels": [
+        2160,
+        2880
+      ],
+      "seconds": 47.21,
+      "lighting": {
+        "basis": "walk sky with exterior-only directional study",
+        "sun_direction": [
+          -0.6,
+          0.65,
+          -0.6
+        ],
+        "sun_energy": 2.4000000953674316,
+        "sun_count": 1,
+        "sun_color": [
+          1.0,
+          0.9100000262260437,
+          0.7699999809265137
+        ],
+        "exposure": 0.6499999761581421,
+        "aperture_lights": "off",
+        "practical_light_objects": "off",
+        "fixture_tagged_emission_disabled": [
+          "bedroom3_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "bedroom3_bath_vanity_light_physical_bulb_controlled_emitter",
+          "bedroom4_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "bedroom4_bath_vanity_light_physical_bulb_controlled_emitter",
+          "dining_lantern_warm_bulb.002_controlled_emitter",
+          "fidelity_opal_ceiling_diffuser.005",
+          "garden_bath1_vanity_light.001_physical_bulb_controlled_emitter",
+          "garden_bath1_vanity_light_physical_bulb_controlled_emitter",
+          "garden_bath2_vanity_light.001_physical_bulb_controlled_emitter",
+          "garden_bath2_vanity_light_physical_bulb_controlled_emitter",
+          "guest_1_woven_sconce_glowing_filament_controlled_emitter",
+          "hall_clear_filament_bulb_controlled_emitter",
+          "hall_pendant_tungsten_filament.001_controlled_emitter",
+          "hall_pendant_tungsten_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_0_warm_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_1_warm_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_2_warm_filament_controlled_emitter",
+          "principal_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light.002_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light.003_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light_physical_bulb_controlled_emitter",
+          "principal_bedside_lamp_bulb.001_controlled_emitter",
+          "salon_black_ceramic_lamp_glow_physical_bulb_controlled_emitter",
+          "salon_fp_glowing_ember",
+          "salon_fp_reading_lamp_glow_physical_bulb_controlled_emitter",
+          "salon_photo_lighting_frosted_bulb.005_controlled_emitter",
+          "salon_photo_lighting_sconce_bulb.001_controlled_emitter",
+          "service_opal_lamp_diffuser.001",
+          "service_opal_lamp_diffuser.002",
+          "service_opal_lamp_diffuser.003",
+          "service_opal_lamp_diffuser.004",
+          "upper_gallery_sconce_practical_physical_bulb_controlled_emitter"
+        ],
+        "other_emissive_materials": "Retained from saved scene; not falsely certified as disabled"
+      },
+      "sensor_fit": "VERTICAL",
+      "plant_visibility_preserved_from_saved_scene": true,
+      "color_management": {
+        "view_transform": "AgX",
+        "look": "AgX - Medium High Contrast",
+        "white_balance_enabled": true
+      }
+    },
+    {
+      "id": "front41",
+      "reference_original": "PHOTOS/MARK ELST/Bastide_de_Flechon_4.jpg",
+      "location": [
+        4.1499999999945905,
+        -28.238967200857168,
+        1.6984225614538004
+      ],
+      "target": [
+        4.277959775727039,
+        -18.23978591958246,
+        1.6984225614538004
+      ],
+      "lens_mm": 50,
+      "size": [
+        1500,
+        2000
+      ],
+      "shift_y": 0.24654070606566905,
+      "exposure": 0.65,
+      "pose_status": "Bounded native-optics landmark fit; geometry fixed; visual render review pending",
+      "sensor_dimension_mm": 36.0,
+      "landmarks": [
+        {
+          "name": "D_FRONT fraction0 z3.55",
+          "world_m": [
+            2.32,
+            0.0,
+            3.55
+          ],
+          "photo_uv": [
+            0.4411111111111111,
+            0.6533333333333333
+          ],
+          "annotation_px": [
+            397,
+            784
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_FRONT fraction1 z3.55",
+          "world_m": [
+            5.68,
+            0.0,
+            3.55
+          ],
+          "photo_uv": [
+            0.6622222222222223,
+            0.6541666666666667
+          ],
+          "annotation_px": [
+            596,
+            785
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_FRONT fraction0.5 z5.23",
+          "world_m": [
+            4.0,
+            0.0,
+            5.23
+          ],
+          "photo_uv": [
+            0.5544444444444444,
+            0.5741666666666667
+          ],
+          "annotation_px": [
+            499,
+            689
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_FRONT fraction0 z3",
+          "world_m": [
+            2.32,
+            0.0,
+            3
+          ],
+          "photo_uv": [
+            0.44222222222222224,
+            0.6841666666666667
+          ],
+          "annotation_px": [
+            398,
+            821
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.5,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_FRONT fraction1 z3",
+          "world_m": [
+            5.68,
+            0.0,
+            3
+          ],
+          "photo_uv": [
+            0.6622222222222223,
+            0.685
+          ],
+          "annotation_px": [
+            596,
+            822
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "fit",
+          "weight": 0.5,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_FRONT fraction0 z0",
+          "world_m": [
+            2.32,
+            0.0,
+            0
+          ],
+          "photo_uv": [
+            0.4444444444444444,
+            0.8258333333333333
+          ],
+          "annotation_px": [
+            400,
+            991
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        },
+        {
+          "name": "D_FRONT fraction1 z0",
+          "world_m": [
+            5.68,
+            0.0,
+            0
+          ],
+          "photo_uv": [
+            0.6622222222222223,
+            0.8258333333333333
+          ],
+          "annotation_px": [
+            596,
+            991
+          ],
+          "annotation_size": [
+            900,
+            1200
+          ],
+          "role": "holdout",
+          "weight": 1,
+          "annotation_uncertainty_px": 5
+        }
+      ],
+      "shift_x": -0.06457390462587288,
+      "reference_sha256": "f04f98a00d9eec5c4ea8a3884ab3cd1c47dc36fa8aa8db21b4c4f8acae74aaca",
+      "reference_exif": {
+        "make": "Canon",
+        "camera_model": "Canon EOS R5",
+        "editing_software": "Adobe Photoshop 24.5 (Macintosh)",
+        "exposure_seconds": 0.003125,
+        "physical_focal_length_mm": 50.0,
+        "lens_model": "TS-E50mm f/2.8L MACRO"
+      },
+      "previous_camera": {
+        "location": [
+          4,
+          -21,
+          1.7
+        ],
+        "target": [
+          4,
+          0,
+          4.0
+        ],
+        "lens_mm": 50,
+        "size": [
+          1600,
+          2000
+        ],
+        "shift_y": 0.02
+      },
+      "fit_method": "scipy.optimize.least_squares soft_l1(f_scale=.02); repo camera_calibration.project; fixed lens/sensor; pool pitch free, other views level",
+      "fit_bounds": {
+        "variables": [
+          "x",
+          "y",
+          "z",
+          "yaw_radians",
+          "shift_x",
+          "shift_y"
+        ],
+        "lower": [
+          3.85,
+          -50,
+          1.6,
+          1.558,
+          -0.16,
+          -0.3
+        ],
+        "upper": [
+          4.15,
+          -15,
+          1.8,
+          1.583,
+          0.16,
+          0.5
+        ]
+      },
+      "fit_residual_px": 3.9723370352621425,
+      "holdout_residual_px": 8.828760883090032,
+      "fit_result": {
+        "converged": true,
+        "function_evaluations": 18,
+        "landmarks": [
+          {
+            "role": "fit",
+            "name": "D_FRONT fraction0 z3.55",
+            "photo_uv": [
+              0.4411111111111111,
+              0.6533333333333333
+            ],
+            "projected_uv": [
+              0.44227353397737323,
+              0.6553907544716004
+            ],
+            "error_preview_px": [
+              1.7436342993931708,
+              4.114842276534247
+            ],
+            "distance_preview_px": 4.46902534461082
+          },
+          {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z3.55",
+            "photo_uv": [
+              0.6622222222222223,
+              0.6541666666666667
+            ],
+            "projected_uv": [
+              0.6626814158039536,
+              0.655529447594094
+            ],
+            "error_preview_px": [
+              0.688790372596948,
+              2.72556185485473
+            ],
+            "distance_preview_px": 2.8112487620311013
+          },
+          {
+            "role": "fit",
+            "name": "D_FRONT fraction0.5 z5.23",
+            "photo_uv": [
+              0.5544444444444444,
+              0.5741666666666667
+            ],
+            "projected_uv": [
+              0.5525613814955375,
+              0.5728196309090187
+            ],
+            "error_preview_px": [
+              -2.824594423360416,
+              -2.6940715152961037
+            ],
+            "distance_preview_px": 3.9033773819614987
+          },
+          {
+            "role": "fit",
+            "name": "D_FRONT fraction0 z3",
+            "photo_uv": [
+              0.44222222222222224,
+              0.6841666666666667
+            ],
+            "projected_uv": [
+              0.44227353397737323,
+              0.6824663022359435
+            ],
+            "error_preview_px": [
+              0.07696763272649343,
+              -3.400728861446378
+            ],
+            "distance_preview_px": 3.4015997421157445
+          },
+          {
+            "role": "fit",
+            "name": "D_FRONT fraction1 z3",
+            "photo_uv": [
+              0.6622222222222223,
+              0.685
+            ],
+            "projected_uv": [
+              0.6626814158039536,
+              0.6825637973962113
+            ],
+            "error_preview_px": [
+              0.688790372596948,
+              -4.872405207577479
+            ],
+            "distance_preview_px": 4.9208499961094505
+          },
+          {
+            "role": "holdout",
+            "name": "D_FRONT fraction0 z0",
+            "photo_uv": [
+              0.4444444444444444,
+              0.8258333333333333
+            ],
+            "projected_uv": [
+              0.44227353397737323,
+              0.8301511082232698
+            ],
+            "error_preview_px": [
+              -3.256365700606778,
+              8.635549779872909
+            ],
+            "distance_preview_px": 9.229119003282563
+          },
+          {
+            "role": "holdout",
+            "name": "D_FRONT fraction1 z0",
+            "photo_uv": [
+              0.6622222222222223,
+              0.8258333333333333
+            ],
+            "projected_uv": [
+              0.6626814158039536,
+              0.8300238872259419
+            ],
+            "error_preview_px": [
+              0.688790372596948,
+              8.381107785217168
+            ],
+            "distance_preview_px": 8.409363821646085
+          }
+        ]
+      },
+      "render": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/front41.png",
+      "path": "/Users/cloud/.codex/worktrees/60a7/homespec/out/exterior-study/high-resolution/front41.png",
+      "sha256": "31c473badb28c21a5a3812325c9b222e36dfa4ab8b05c52f7877c7b0c68adb35",
+      "pixels": [
+        2250,
+        3000
+      ],
+      "seconds": 46.97,
+      "lighting": {
+        "basis": "walk sky with exterior-only directional study",
+        "sun_direction": [
+          -0.65,
+          0.52,
+          -0.55
+        ],
+        "sun_energy": 2.4000000953674316,
+        "sun_count": 1,
+        "sun_color": [
+          1.0,
+          0.9100000262260437,
+          0.7699999809265137
+        ],
+        "exposure": 0.6499999761581421,
+        "aperture_lights": "off",
+        "practical_light_objects": "off",
+        "fixture_tagged_emission_disabled": [
+          "bedroom3_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "bedroom3_bath_vanity_light_physical_bulb_controlled_emitter",
+          "bedroom4_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "bedroom4_bath_vanity_light_physical_bulb_controlled_emitter",
+          "dining_lantern_warm_bulb.002_controlled_emitter",
+          "fidelity_opal_ceiling_diffuser.005",
+          "garden_bath1_vanity_light.001_physical_bulb_controlled_emitter",
+          "garden_bath1_vanity_light_physical_bulb_controlled_emitter",
+          "garden_bath2_vanity_light.001_physical_bulb_controlled_emitter",
+          "garden_bath2_vanity_light_physical_bulb_controlled_emitter",
+          "guest_1_woven_sconce_glowing_filament_controlled_emitter",
+          "hall_clear_filament_bulb_controlled_emitter",
+          "hall_pendant_tungsten_filament.001_controlled_emitter",
+          "hall_pendant_tungsten_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_0_warm_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_1_warm_filament_controlled_emitter",
+          "kitchen_fine_wire_pendant_2_warm_filament_controlled_emitter",
+          "principal_bath_vanity_light.001_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light.002_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light.003_physical_bulb_controlled_emitter",
+          "principal_bath_vanity_light_physical_bulb_controlled_emitter",
+          "principal_bedside_lamp_bulb.001_controlled_emitter",
+          "salon_black_ceramic_lamp_glow_physical_bulb_controlled_emitter",
+          "salon_fp_glowing_ember",
+          "salon_fp_reading_lamp_glow_physical_bulb_controlled_emitter",
+          "salon_photo_lighting_frosted_bulb.005_controlled_emitter",
+          "salon_photo_lighting_sconce_bulb.001_controlled_emitter",
+          "service_opal_lamp_diffuser.001",
+          "service_opal_lamp_diffuser.002",
+          "service_opal_lamp_diffuser.003",
+          "service_opal_lamp_diffuser.004",
+          "upper_gallery_sconce_practical_physical_bulb_controlled_emitter"
+        ],
+        "other_emissive_materials": "Retained from saved scene; not falsely certified as disabled"
+      },
+      "sensor_fit": "VERTICAL",
+      "plant_visibility_preserved_from_saved_scene": true,
+      "color_management": {
+        "view_transform": "AgX",
+        "look": "AgX - Medium High Contrast",
+        "white_balance_enabled": true
+      }
+    }
+  ],
+  "saved_model_bytes_unchanged": true
+}

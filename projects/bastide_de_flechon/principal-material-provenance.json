@@ -1,0 +1,93 @@
+{
+  "scope": "Principal/master suite above salon; does not recolor north-wing bedrooms, salon or bathroom. Shared roof long-face shader selects new finish only where world y<6.94 m.",
+  "pre_edit_inventory": "principal-material-inventory.md",
+  "evidence": [
+    {
+      "id": "photo06",
+      "source": "reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-16.jpg",
+      "observed": "rust/ivory curtain, honey-brown timber with dark checks, cream bed linen, dark botanical-paisley cover, gray-brown oak floor"
+    },
+    {
+      "id": "photo33",
+      "source": "reference/PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-7.jpg",
+      "observed": "unequal broken ikat lozenges; dark walnut cane chairs with pale olive/ivory cushions; rough dark bronze trumpet table; fine matte cream ceramic; worn oak and warm tobacco plaster"
+    },
+    {
+      "id": "photo55",
+      "source": "reference/PHOTOS/VICTOR FITZ/DSC05311.jpg",
+      "observed": "supporting timber grain/end and bench support evidence, strong warm sun, different cushion/table staging"
+    }
+  ],
+  "generated_assets": [
+    {
+      "path": "textures/principal-curtain-ikat-v2.png",
+      "sha256": "718c292b16d98b5a3fc23a31110ec7faa61d1e61d57cdee25f41963bcb61fb1d",
+      "bytes": 3312944,
+      "dimensions_px": [
+        1254,
+        1254
+      ],
+      "requested_physical_tile_m": [
+        1.25,
+        1.25
+      ],
+      "generation_method": "built-in image_gen.imagegen",
+      "generation_date": "2026-09-05",
+      "generation_output": "exec-819c18b5-e9a6-4b0f-9587-f9c3cee6f7bc.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless color-only fabric albedo for an editable Blender material, square 1536 x 1536. Primary request: flat orthographic close scan of antique French-country rust-red and warm ivory cotton-linen ikat curtain cloth. Tile represents 1.25 x 1.25 metres of unfolded cloth. Pattern consists of three varied columns of linked elongated diamonds and broken nested lozenges, with about four diamond lengths vertically. Large warm ivory zigzag ribbons and small ivory diamond centers set in faded terracotta/rust red, irregular handwoven edges, uneven ochre wear patches, intermittent faded rose-red and tawny brown threads. Slight variations between neighboring motifs: irregular narrower/wider arms, broken edges, soft feathered ikat feathering. Match old subtly worn woven dyed cloth, soft muted pigments; no clean vector geometry, no uniform high contrast black lines. Textile completely flat with evenly distributed neutral diffuse lighting; no folds, no drape, no highlights, no shadows, no vignette, no perspective, no frame, no text, no logos. Fine subtle woven thread color texture; do not encode sculpted raised pattern or relief. Opposite image edges must meet seamlessly.",
+      "post_processing": "None; copied original generated PNG into project. Original generation retained.",
+      "role": "sRGB pigment into Base Color only",
+      "review": "Inspected generated output: flat color texture without scene shadows or folds. Texture remains a photo-informed synthesis, not a recovered measured scan. Repetition and reflectance require actual room previews."
+    },
+    {
+      "path": "textures/principal-timber-oak-v2.png",
+      "sha256": "0bdab448aa7d2c89bc6a674f38219d2b1fac4dba275baea18495684433772347",
+      "bytes": 2897688,
+      "dimensions_px": [
+        1254,
+        1254
+      ],
+      "requested_physical_tile_m": [
+        2.5,
+        0.55
+      ],
+      "generation_method": "built-in image_gen.imagegen",
+      "generation_date": "2026-09-05",
+      "generation_output": "exec-ff6d08a7-8e9d-4252-8aa2-12b6a10e5834.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless color-only albedo scan of one broad face of an old solid roof timber, for a Blender reconstruction. Square image, flat orthographic scan under completely even neutral diffuse illumination, no perspective. A smooth but old French reclaimed pine/oak structural beam face: warm weathered honey brown with pale dry rubbed straw-brown patches, local muted greyish oxidation, a few dark small knots and short black age checks, irregular fine longitudinal growth lines. Fibres run horizontally left to right. Long shallow saw marks and subtle uneven old tool wear, broad areas of relatively plain faded wood interrupted by irregular knots and small old nail stains. Intended physical tile 2.5 metres long by 0.55 metres across. Do not look like deeply cracked tree bark. Do not use dark orange varnish, uniform black crevices, multiple floorboards, seams between boards, shadows, directional highlights, vignettes, text, logos, raised knots or a frame. Surface color only, not a normal/displacement image. Opposite edges join seamlessly.",
+      "post_processing": "None; copied original generated PNG into project. Original generation retained.",
+      "role": "sRGB pigment into Base Color only",
+      "review": "Inspected generated output: flat color texture without scene shadows or folds. Texture remains a photo-informed synthesis, not a recovered measured scan. Repetition and reflectance require actual room previews."
+    }
+  ],
+  "retained_assets": [
+    {
+      "path": "textures/principal_paisley.png",
+      "use": "Complete normalized coverlet UV retained, saturation 0.30, gain 0.98/1.00/1.02; reduce reddish cast without interpreting photographed sunlight as red pigment"
+    },
+    {
+      "path": "textures/antique_walnut.png",
+      "use": "Principal cane-chair frames; member U metres along grain, texture rotated90deg because fibres are vertical in input"
+    },
+    {
+      "path": "textures/hemp_linen.png",
+      "use": "Bedsheet and chair-seat color only; no fabric bitmap applied to ceramic"
+    }
+  ],
+  "physical_shading": {
+    "roughness": "Independent Geometry.Position noise, range documented per material in principal_materials.py. Inferred; no measured BRDF available.",
+    "relief": "Independent procedural fibre/pore normal; 0.055 mm stoneware, 0.11-0.18 mm linen, 0.16 mm chair walnut, 0.32 mm floor, 0.45 mm mottled metal, 0.70 mm reclaimed oak. No generated image feeds Bump, Roughness or Displacement.",
+    "timber": "UV U along each physical member and V across; existing topology and face material indices retained. Existing architectural endgrain retained. Separate local bench and chair endgrain colors on existing cap assignments.",
+    "curtain": "1.25m tile applied to existing unfolded cloth-metre UV; real pleats remain geometry. 7.5 percent independent translucent closure models dense linen; no color-driven relief.",
+    "floor": "Dedicated principal_floorboard meshes only; whole shared slab material unchanged. Single-timber image carries no plank joints.",
+    "table": "Dark oxide to rubbed brown bronze color noise independent of finish noise; metallic0.76, roughness0.36-0.65, shallow surface microrelief0.45mm."
+  },
+  "uncertainties_and_rejected_assumptions": [
+    "Photos06/55 stage a scalloped shiny drum; photo33 stages a trumpet table. Final trumpet choice follows photo33 and is not claimed to match the other staging.",
+    "Source brightness and color vary with sunlight, exposure and white balance. No global exposure or light changes in this material module.",
+    "Existing plaster pigment is retained pending neutral-light room review; do not mistake photograph06 darkness for low albedo.",
+    "Generated curtain motif is less mechanical than previous image but is not an exact textile reproduction; the remaining motif/proportion difference must be reported.",
+    "Generated timber asset is smoother and paler than previous deeply fissured image; large splits and member irregularity remain editable geometry. No image-based displacement."
+  ],
+  "verification": "Source passes ruff and py_compile. Root task owns Blender audit and camera comparison; these are not claimed passed by the material subtask."
+}

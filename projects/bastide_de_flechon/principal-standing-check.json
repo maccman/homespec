@@ -1,0 +1,48 @@
+{
+  "build": "out/bastide_de_flechon/generations/2499ff23bd534ceca7b46035611042fb",
+  "checked_at_utc": "2026-09-05T21:22:27.580756+00:00",
+  "ir_sha256": "a523d34c04895318875fae572379cf511a5d97b6aec982604fadd9ae736f883a",
+  "native_step_sha256": {
+    "MASTER_TRUSS_BRACES": "81984e20ced74a2b2af5389a18864db3e8c7d48ced16733a35981b2b15f95122",
+    "MASTER_ROOF_TIMBERS": "5483b5bd0e3c9d8d219290afc7f74334176d56f6f6184c386eb7c861bb621850"
+  },
+  "method": "Native STEP Boolean intersections with both principal brace and roof-timber solids; null/empty compounds measured as zero-volume.",
+  "volume_tolerance_mm3": 1e-05,
+  "checks": [
+    {
+      "side": "west",
+      "origin_mm": [
+        2045,
+        3510,
+        3303
+      ],
+      "size_mm": [
+        900,
+        500,
+        2000
+      ],
+      "intersection_mm3": 0.0,
+      "brace_intersection_mm3": 0.0,
+      "roof_timber_intersection_mm3": 0.0,
+      "clear_within_tolerance": true
+    },
+    {
+      "side": "east",
+      "origin_mm": [
+        5055,
+        3510,
+        3303
+      ],
+      "size_mm": [
+        900,
+        500,
+        2000
+      ],
+      "intersection_mm3": 0.0,
+      "brace_intersection_mm3": 0.0,
+      "roof_timber_intersection_mm3": 0.0,
+      "clear_within_tolerance": true
+    }
+  ],
+  "scope": "900 x 2000 mm standing prisms, 500 mm long, through the front truss. Confirms architectural overhead clearance only; not building-wide route certification. Final dressed cloth/furniture and approach continuity require separate scene inspection."
+}

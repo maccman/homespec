@@ -616,7 +616,11 @@ def apply(scene, M):
     axis = Vector((math.cos(rot), math.sin(rot), 0))
     head = Vector((-math.sin(rot), math.cos(rot), 0))
     positions = []
-    for room, sideways in (("bed1", 0.28), ("bed2", 0.0)):
+    # The ground plan confirms an inward-opening garden door at N_GUEST_E1.
+    # Slide the complete first-bed arrangement 220 mm west along its head wall:
+    # this balances the three approximately 0.8 m passages in the small room.
+    # It cannot provide every full 1 m audit rectangle with the retained bed.
+    for room, sideways in (("bed1", 0.06), ("bed2", 0.0)):
         outline = [Vector((x / 1000, y / 1000, 0)) for x, y in scene.entity(room)["params"]["outline"]]
         north_corners = sorted(outline, key=lambda point: point.dot(head), reverse=True)[:2]
         center = (north_corners[0] + north_corners[1]) / 2 - head * 1.185 + axis * sideways
@@ -644,7 +648,9 @@ def apply(scene, M):
             else:
                 bpy.data.objects.remove(light, do_unlink=True)
         if i == 1:
-            bedside_drum(scene, "guest_1_fluted_pewter_drum", p(0.95, 0.65, 0), M, radius_scale=0.84)
+            # Move 330 mm towards the head wall to clear the garden-door swing
+            # approach; 50 mm outwards keeps its rim beside the headboard.
+            bedside_drum(scene, "guest_1_fluted_pewter_drum", p(1.00, 0.98, 0), M, radius_scale=0.84)
         else:
             # Portable reading lights rest on the existing tables instead of
             # fictitious wall sconces floating in front of the bed2 window.

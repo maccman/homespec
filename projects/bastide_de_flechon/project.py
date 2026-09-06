@@ -14,6 +14,8 @@ from shapely.geometry import Polygon
 
 from homespec import *  # noqa: F403
 from homespec import geometry as G
+from homespec.derived import WallGeometry, WallToRoofInfillGeometry
+from homespec.elements.roof import structural_roof_solid
 from homespec.elements.walls import OpeningPart
 from homespec.model import Analysis, Element, Realized, Ref, Relation, element
 
@@ -34,6 +36,101 @@ MAIN = rect(0, 0, 8, 11)
 KITCHEN = [(-5.48, 8.4), (0, 8.4), (0, 16), (-5.34, 17.17)]
 HALL = [(-5.34, 17.17), (-0.63, 15.95), (0.17, 22.68), (-4.59, 23.8)]
 ANNEX = [(-9.75, 25.3), (-1.61, 22.84), (0.68, 28.62), (-8.88, 31.91)]
+
+
+@element
+class CourtyardEntrance(Door):
+    """Central wooden French leaves, fixed sidelights and a glazed transom.
+
+    Photo08/11 show a single monumental envelope. The separate N_HALL upper
+    light retains its storey identity but meets this opening without masonry.
+    Door proportions are photographic estimates; the 2500mm width is retained.
+    """
+
+    central_width: float = 1320
+    leaf_head: float = 2680
+    glazed: bool = True
+    leaves: int = 2
+
+    @model_validator(mode="after")
+    def central_passage(self):
+        object.__setattr__(self, "composition", DoorComposition(
+            passage_width=self.central_width - self.frame_size,
+            passage_height=self.leaf_head - self.frame_size / 2,
+            leaves=2,
+        ))
+        return self
+
+    def mullion_positions(self):
+        return [(self.width - self.central_width) / 2, (self.width + self.central_width) / 2]
+
+    def clear_width(self):
+        return self.central_width - self.frame_size
+
+    def clear_height(self):
+        return self.leaf_head - self.frame_size / 2
+
+    def frame_members(self, x, wall, z):
+        fs, bs, t = self.frame_size, self.bar_size, wall.thickness
+        left, right = self.mullion_positions()
+        parts = [G.frame_box(wall.body, x + q - fs / 2, (t - fs) / 2, z,
+                             (fs, fs, self.height)) for q in (fs / 2, left, right, self.width - fs / 2)]
+        for h in (self.leaf_head, self.height - fs / 2):
+            parts.append(G.frame_box(wall.body, x, (t - fs) / 2, z + h - fs / 2, (self.width, fs, fs)))
+        for lo, hi in ((fs, left - fs / 2), (right + fs / 2, self.width - fs)):
+            parts.append(G.frame_box(wall.body, x + lo, (t - bs) / 2, z + 1060, (hi - lo, bs, bs)))
+        parts.append(G.frame_box(wall.body, x + self.width / 2 - bs / 2, (t - bs) / 2,
+                                 z + self.leaf_head, (bs, bs, self.height - self.leaf_head)))
+        return parts
+
+    def panes_of(self, x, wall, z):
+        fs = self.frame_size
+        left, right = self.mullion_positions()
+        rectangles = [(fs, left - fs / 2, fs, self.height - fs),
+                      (right + fs / 2, self.width - fs, fs, self.height - fs),
+                      (left + fs / 2, right - fs / 2, self.leaf_head + fs / 2, self.height - fs)]
+        parts = [G.frame_box(wall.body, x + lo, (wall.thickness - 10) / 2, z + bottom,
+                             (hi - lo, 10, top - bottom)) for lo, hi, bottom, top in rectangles]
+        return parts, sum(G.volume(p) / 10 for p in parts)
+
+    def fill(self, ctx, wall, x, level):
+        from homespec.elements.walls import Leaf
+
+        left, right = self.mullion_positions()
+        lo, hi = left + self.frame_size / 2, right - self.frame_size / 2
+        half = (hi - lo) / 2
+        leaves = [G.frame_box(wall.body, x + lo + i * half + 2, (wall.thickness - 52) / 2,
+                              wall.elevation + self.sill + 8, (half - 4, 52, self.leaf_head - self.frame_size / 2 - 8)) for i in range(2)]
+        ctx.emit(Leaf(self.id + ".leaf", opening=self.id, level=level, material=self.leaf),
+                 Realized(solid=G.group(leaves), relations=[Relation(pred="part_of", obj=self.id)]))
+
+
+@element
+class CourtyardUpperLight(ArchedDoor):
+    """Fixed arched hall glazing continuous with the ground entrance below."""
+
+    kind: ClassVar[str] = "window"
+    ifc_class: ClassVar[str | None] = "IfcWindow"
+    threshold: ClassVar[bool] = True
+
+    def all_tags(self):
+        return Element.all_tags(self) | {"opening"}
+
+    def mullion_positions(self):
+        return []
+
+    def clear_width(self):
+        return self.width - 2 * self.frame_size
+
+    def panes_of(self, x, wall, z):
+        fs, r = self.frame_size, self.width / 2
+        base = G.frame_box(wall.body, x + fs, (wall.thickness - 10) / 2, z + fs,
+                           (self.width - 2 * fs, 10, self.height - 2 * fs))
+        centre = wall.body.point(x + r, wall.thickness / 2)
+        disc = G.horizontal_cylinder(r - fs, 10, (*centre, z + self.height), wall.angle + 90)
+        cap = G.frame_box(wall.body, x, (wall.thickness - 20) / 2, z + self.height, (self.width, 20, r))
+        parts = [base, disc & cap]
+        return parts, sum(G.volume(p) / 10 for p in parts)
 
 
 @element
@@ -215,11 +312,12 @@ class BastideGableDoor(ArchedDoor):
             u = (math.cos(a), math.sin(a))
             n = (-u[1], u[0])
             length = r - fs
+            start = r * 0.409
             profile = [
-                (x + r + n[0] * bs / 2, z + self.height + n[1] * bs / 2),
+                (x + r + u[0] * start + n[0] * bs / 2, z + self.height + u[1] * start + n[1] * bs / 2),
                 (x + r + u[0] * length + n[0] * bs / 2, z + self.height + u[1] * length + n[1] * bs / 2),
                 (x + r + u[0] * length - n[0] * bs / 2, z + self.height + u[1] * length - n[1] * bs / 2),
-                (x + r - n[0] * bs / 2, z + self.height - n[1] * bs / 2),
+                (x + r + u[0] * start - n[0] * bs / 2, z + self.height + u[1] * start - n[1] * bs / 2),
             ]
             spoke = G.prism_profile(profile, (t - bs) / 2, bs, along="y")
             members.append(Location((*wall.body.origin, 0), (0, 0, wall.angle)) * spoke)
@@ -331,20 +429,24 @@ class CanalTileEaves(Element):
 
 @element
 class JoinedWall(Wall):
-    """Butt joints are trimmed as solids, so skew masonry is counted once."""
+    """Butt joints and the retained 2 mm roof separation share core attachments."""
 
     joins: list[str] = field(default_factory=list)
+    roof_clearance: NonNegative = 2
 
     def deps(self):
-        return self.joins
+        return [*super().deps(), *self.joins]
 
     def realize(self, ctx):
-        r = super().realize(ctx)
+        result = super().realize(ctx)
         for other in self.joins:
-            r.solid = r.solid - ctx.built(other).solid
-        if self.joins:
-            r.extrusion = None
-        return r
+            result.solid = result.solid - ctx.built(other).solid
+        if self.roof_limit:
+            result.derived["nominal_plate"] = result.derived["elevation"] + result.derived["height"]
+        if self.joins or self.roof_limit:
+            result.extrusion = None
+        result.derived["physical_z_top"] = G.bbox(result.solid).max[2]
+        return result
 
 
 @element
@@ -363,6 +465,7 @@ class SalonChimneyBreast(JoinedWall):
 @element
 class JoinedInfill(WallToRoofInfill):
     cut_against: list[str] = field(default_factory=list)
+    opening_voids: list[Ref] = field(default_factory=list)
 
     def deps(self):
         return [self.wall, self.roof, *self.opening_voids] + [i.split(".")[0] for i in self.cut_against]
@@ -370,7 +473,8 @@ class JoinedInfill(WallToRoofInfill):
     def realize(self, ctx):
         from build123d import Location
 
-        r = super().realize(ctx)
+        roof = ctx.house.elements[self.roof]
+        r = Realized() if isinstance(roof, TracedRoof) else super().realize(ctx)
         wall = ctx.built(self.wall)
         wd = wall.derived
         f = G.Frame.model_validate(wd["body"])
@@ -388,27 +492,51 @@ class JoinedInfill(WallToRoofInfill):
                 ef = G.Frame.model_validate(ew["body"])
                 clip = Polygon([ef.point(0, 0), ef.point(ew["length"], 0), ef.point(ew["length"], ew["thickness"]), ef.point(0, ew["thickness"])])
                 region = region.difference(clip)
-        roof = ctx.house.elements[self.roof]
         if isinstance(roof, TracedRoof):
-            a = math.radians(roof.ridge_angle)
-            u = (math.cos(a), math.sin(a))
-            n = (-u[1], u[0])
-            local = [(x * u[0] + y * u[1], x * n[0] + y * n[1]) for x, y in roof.outline]
-            xs = [p[0] for p in local]
-            ys = [p[1] for p in local]
-            lo, hi = min(ys), max(ys)
-            z = ctx.level(roof).elevation + roof.eave - roof.thickness - 2
-            ridge = z + (hi - lo) / 2 * math.tan(math.radians(roof.pitch))
             zbase = wd["elevation"] + wd["height"]
-            under = G.prism_profile([(lo, z), ((lo + hi) / 2, ridge), (hi, z), (hi, zbase - 1), (lo, zbase - 1)], min(xs) - 1, max(xs) - min(xs) + 2, along="x")
-            under = Location((0, 0, 0), (0, 0, roof.ridge_angle)) * under
+            native_roof = ctx.built(self.roof)
+            under = Location((0, 0, -2)) * G.volume_below(structural_roof_solid(ctx, self.roof), zbase - 3)
+            height = max(1, G.bbox(native_roof.solid).max[2] - zbase)
             polygons = [region] if region.geom_type == "Polygon" else list(region.geoms)
-            parts = [G.prism(list(poly.exterior.coords)[:-1], zbase, ridge - zbase + 1) & under for poly in polygons if poly.area > 1]
-            r.solid = G.group(parts)
-        else:
-            for other in self.cut_against:
-                r.solid = r.solid - ctx.built(other).solid
+            parts = [part for poly in polygons if poly.area > 1
+                     for part in G.overlap(G.prism(list(poly.exterior.coords)[:-1], zbase, height), under)]
+            r.solid = G.group(parts) if parts else None
+            r.derived = WallToRoofInfillGeometry(
+                wall=self.wall, roof=self.roof, z_base=zbase,
+                max_height=G.bbox(r.solid).max[2] - zbase if r.solid is not None else 0,
+                thickness=thick, assembly=wd["assembly"], body=f,
+            ).model_dump()
+            r.relations = [Relation(pred="extends", obj=self.wall), Relation(pred="meets", obj=self.roof)]
+            r.material = self.material or wall.material
+            r.level = self.level or native_roof.level or wall.level
+            r.tags = {"external"} if wall.has("external") else {"internal"}
+        for opening in self.opening_voids if r.solid is not None else []:
+            # Rectangular openings do not publish a separate void entity.
+            # Reuse their native cutter, including any subclass's true arch.
+            source = ctx.house.elements[opening]
+            host = ctx.derived(source.host, WallGeometry)
+            void = source.void_solid(source.position(host), host, host.elevation + source.sill)
+            r.solid = r.solid - void
+        if r.solid is not None and G.volume(r.solid) <= 1:
+            r.solid = None
+        r.derived.update(empty=r.solid is None, opening_voids=list(self.opening_voids), junction_cuts=list(self.cut_against),
+                         max_height=0 if r.solid is None else G.bbox(r.solid).max[2] - r.derived["z_base"])
         return r
+
+
+@element
+class EmptyRoofInfill(JoinedInfill):
+    """A zero-height infill reference, with no physical or IFC wall product."""
+
+    ifc_class: ClassVar[str | None] = None
+    physical: ClassVar[bool] = False
+
+    def realize(self, ctx):
+        result = super().realize(ctx)
+        if result.solid is not None:
+            raise ValueError(f"{self.id} now has masonry: declare a physical JoinedInfill")
+        result.derived["empty_reason"] = "The roof underside stays below the nominal wall plate"
+        return result
 
 
 @element
@@ -422,6 +550,13 @@ class TracedRoof(Roof):
     def deps(self):
         # Génoise and gables are emitted after their named roof parent.
         return [target.split(".")[0] for target in self.cut_against]
+
+    def realize(self, ctx):
+        result = super().realize(ctx)
+        # Keep the exterior consumer's explicit absent-ridge/high-point keys.
+        result.derived.setdefault("z_ridge", None)
+        result.derived.setdefault("z_high", None)
+        return result
 
 
 @element
@@ -651,6 +786,7 @@ class PrincipalCarpentry(Element):
     kind: ClassVar[str] = "beam"
     ifc_class: ClassVar[str | None] = "IfcBeam"
     roof: Ref
+    truss_planes: tuple[float, float] = (3760, 8200)
 
     def deps(self):
         return [self.roof]
@@ -673,7 +809,7 @@ class PrincipalCarpentry(Element):
             return [(ax + nx, az + nz), (bx + nx, bz + nz), (bx - nx, bz - nz), (ax - nx, az - nz)]
 
         parts = []
-        for y in [3400, 8200]:
+        for y in self.truss_planes:
             tie = G.box((7300, 260, 280), (350, y - 130, 5700))
             pieces = [tie]
             for a, b in [
@@ -702,7 +838,7 @@ class PrincipalCarpentry(Element):
                 rafters.append(shape - structure)
         return Realized(
             solid=G.group([structure, *rafters]),
-            derived={"span": 7300, "clear_below": 2400, "size": [260, 280], "trusses": 2, "purlins": 3, "rafter_pairs": 20},
+            derived={"span": 7300, "clear_below": 2400, "size": [260, 280], "trusses": 2, "truss_planes": list(self.truss_planes), "purlins": 3, "rafter_pairs": 20},
             relations=[Relation(pred="part_of", obj=self.roof)],
             tags={"exposed"},
         )
@@ -721,18 +857,31 @@ class PrimaryKneeBraces(Element):
 
     def realize(self, ctx):
         parts = []
+        plane = ctx.built(self.carpentry).derived["truss_planes"][0]
         for a, b in [((630, 3300), (3200, 7540)), ((7370, 3300), (4800, 7540))]:
             dx, dz = b[0] - a[0], b[1] - a[1]
             length = math.hypot(dx, dz)
             nx = -dz / length * 170
             nz = dx / length * 170
             profile = [(a[0] + nx, a[1] + nz), (b[0] + nx, b[1] + nz), (b[0] - nx, b[1] - nz), (a[0] - nx, a[1] - nz)]
-            brace = G.prism_profile(profile, 3240, 320, along="y")
+            brace = G.prism_profile(profile, plane - 160, 320, along="y")
             brace = brace & G.box((7300, 10300, 7000), (350, 350, 3300))
             parts.append(brace - ctx.built(self.carpentry).solid)
+        # The original plan has short side members, and photo33 resolves the
+        # west free end crossing the diagonal. They are not a low full-span
+        # beam across the bed/circulation. Vertical setting-out is inferred.
+        for profile in (
+            [(350, 5100), (1880, 5100), (2100, 5400), (350, 5400)],
+            [(7650, 5100), (6120, 5100), (5900, 5400), (7650, 5400)],
+        ):
+            parts.append(G.prism_profile(profile, plane - 190, 380, along="y"))
+        joined = parts[0]
+        for part in parts[1:]:
+            joined = joined + part
         return Realized(
-            solid=G.group(parts),
-            derived={"foot_elevation": 3300, "top_elevation": 7540, "width": 320, "depth": 340, "plane_y": 3400},
+            solid=joined,
+            derived={"foot_elevation": 3300, "top_elevation": 7540, "width": 320, "depth": 340, "plane_y": plane,
+                     "side_tie_underside": 5100, "side_tie_top": 5400, "side_tie_inner_ends": [2100, 5900]},
             relations=[Relation(pred="part_of", obj=self.carpentry)],
             tags={"exposed", "fixed"},
         )
@@ -878,7 +1027,7 @@ def build() -> House:
         ME = JoinedWall("ME", (7650, 350), (7650, 10650), assembly=plaster, level=L0, height=6500)
         MN = JoinedWall("MN", (7650, 10650), (350, 10650), assembly=rubble, level=L0, height=6500)
         MW = JoinedWall("MW", (350, 10650), (350, 350), assembly=rubble, level=L0, height=6500)
-        BastideGableDoor("D_FRONT", host=MS, width=3360, height=4100, at=1970, panes=(4, 4), frame=steel, frame_size=48, bar_size=22)
+        BastideGableDoor("D_FRONT", host=MS, width=3360, height=3550, at=1970, panes=(4, 4), frame=steel, frame_size=48, bar_size=22)
         ArchedStoneSurround("D_FRONT.surround", opening="D_FRONT", material=cut)
         GableFrieze("D_FRONT.frieze", opening="D_FRONT", material=grey_frieze)
         for wall, prefix in [(ME, "E"), (MW, "W")]:
@@ -893,10 +1042,11 @@ def build() -> House:
                          at=(3680, 7720)[j], glazed=True, leaves=2, panes=(2, 3), frame=steel, frame_size=38, bar_size=19)
                 if prefix == "W" and j == 1:
                     # Looking south from the suite, photo-right is the WEST wall.
-                    Window("N_W2", host=wall, width=1450, height=850, sill=4400, at=6925, frame=steel, frame_size=45, panes=(2, 1), bar_size=30)
+                    Window("N_W2", host=wall, width=1450, height=850, sill=4400, at=7525, frame=steel, frame_size=45, panes=(2, 1), bar_size=30)
                 else:
-                    Window(f"N_{prefix}{j + 1}", profile=OpeningProfile(shape="circular"), host=wall, width=650, height=650, sill=5100, at=y + 625, frame=cut, frame_size=90)
-        Door("D_PERGOLA", host=MN, width=2600, height=2750, at=2350, glazed=True, leaves=2, panes=(3, 4), frame=steel, frame_size=50, bar_size=24)
+                    Window(f"N_{prefix}{j + 1}", profile=OpeningProfile(shape="circular"), host=wall, width=650, height=650, sill=5100, at=((1650, 5700)[j] if prefix == "E" else y + 625), frame=cut, frame_size=90)
+        SegmentalGardenDoor("D_PERGOLA", host=MN, width=2600, height=2400, rise=350, at=2350, panes=(4, 3), frame=steel, frame_size=50, bar_size=24)
+
         Window("N_MASTER_N", host=MN, width=1800, height=1800, sill=3550, at=2600, panes=(2, 3), frame=steel, frame_size=50)
         Arch("A_KITCHEN", host=MW, width=1100, height=2100, at=450)
         Arch("A_MASTER_LINK", host=MW, width=1100, height=2100, at=450, sill=3300)
@@ -908,11 +1058,13 @@ def build() -> House:
             inner[name] = pts
             walls = []
             for i, (a, b) in enumerate(zip(pts, pts[1:] + pts[:1], strict=True)):
-                walls.append(JoinedWall(f"{name}{i + 1}", mm([a])[0], mm([b])[0], assembly=wing_wall, level=L0, height=6300))
+                walls.append(JoinedWall(f"{name}{i + 1}", mm([a])[0], mm([b])[0], assembly=wing_wall, level=L0, height=6300,
+                                        roof_limit="R_" + name if name in ("K", "H") else None))
             wings[name] = walls
         K, H, A = wings["K"], wings["H"], wings["A"]
-        house.elements["H4"].joins = ["K2"]
-        house.elements["A4"].joins = ["H2"]
+        house.elements["K2"].joins = ["R_H"]
+        house.elements["H4"].joins = ["K2", "R_K"]
+        house.elements["A4"].joins = ["H2", "R_H"]
 
         # Stable wall labels are resolved by direction to keep tracing independent of winding.
         def edge(walls, axis, want):
@@ -930,23 +1082,23 @@ def build() -> House:
         AE = max(A, key=lambda w: (w.start[0] + w.end[0]) / 2)
         AW = min(A, key=lambda w: (w.start[0] + w.end[0]) / 2)
         SegmentalGardenDoor("D_KITCHEN_GARDEN", host=KS, width=2200, height=2080, rise=360, at="center", panes=(4, 3), frame=steel, frame_size=55, bar_size=25)
-        Door("D_KITCHEN_TERRACE", host=KE, width=1900, height=2500, at=4000, glazed=True, leaves=2, panes=(2, 3), frame=steel, frame_size=45)
+        SegmentalGardenDoor("D_KITCHEN_TERRACE", host=KE, width=1900, height=2180, rise=320, at=4000, panes=(4, 3), frame=steel, frame_size=45, bar_size=22)
         Arch("A_DINING_K", host=KE, width=1100, height=2100, at=350)
         Arch("A_DRESSING_K", host=KE, width=1100, height=2100, at=350, sill=3300)
         SquareHeadedOpening("A_HALL_K", host=KN, width=1100, height=2100, at=1250)
         SquareHeadedOpening("A_K_HALL", host=HS, width=1100, height=2100, at=1250)
         Arch("A_BED3_HALL", host=KN, width=1000, height=2100, at=1300, sill=3300)
         Arch("A_HALL_BED3", host=HS, width=1000, height=2100, at=1300, sill=3300)
-        Door("D_ENTRY", host=HE, width=2500, height=2850, at=1900, glazed=True, leaves=2, panes=(2, 4), frame=steel, frame_size=50)
-        Window("N_HALL", host=HE, width=2500, height=2200, sill=3550, at=1900, panes=(3, 3), frame=steel, frame_size=50)
+        CourtyardEntrance("D_ENTRY", host=HE, width=2500, height=3550, at=1900, frame=steel, leaf=oak, frame_size=50, bar_size=24)
+        CourtyardUpperLight("N_HALL", host=HE, width=2500, height=950, sill=3550, at=1900, panes=(2, 1), frame=steel, frame_size=50, bar_size=24)
         SquareHeadedOpening("A_HALL_GUEST", host=HN, width=1000, height=2100, at=1800)
         SquareHeadedOpening("A_GUEST_HALL", host=AS, width=1000, height=2100, at=5600)
         Arch("A_HALL_SUITE4", host=HN, width=1000, height=2100, at=1800, sill=3300)
         Arch("A_SUITE4_HALL", host=AS, width=1000, height=2100, at=5600, sill=3300)
-        Window("N_BED3_S", host=KS, width=1600, height=1400, sill=4200, at="center", panes=(2, 2), frame=oak, shutters=oak)
+        Window("N_BED3_S", host=KS, width=1350, height=1450, sill=3950, at="center", panes=(2, 2), frame=oak, shutters=oak)
         Window("N_BATH3_E", host=KE, width=1300, height=1350, sill=4200, at=4800, panes=(2, 2), frame=oak, shutters=oak)
         for j, s in enumerate([950, 3900]):
-            Window(f"N_GUEST_E{j}", host=AE, width=1150, height=1600, sill=700, at=s, panes=(2, 3), frame=oak)
+            SalonArchedDoor(f"N_GUEST_E{j}", host=AE, width=1150, height=2050, sill=0, at=s, panes=(2, 3), frame=steel, frame_size=38, bar_size=19)
             Window(f"N_SUITE4_E{j}", host=AE, width=1200, height=1600, sill=4000, at=s, panes=(2, 3), frame=oak)
         Window("N_GUEST_W", host=AW, width=1150, height=1600, sill=700, at=1800, panes=(2, 3), frame=oak)
         Window("N_BATH4_W", host=AW, width=1350, height=1700, sill=3950, at=1800, panes=(2, 3), frame=oak)
@@ -1030,6 +1182,7 @@ def build() -> House:
             ("P_BATH3", "K3", "K1", ["K3", "K1"]),
         ]:
             extend(*args)
+        house.elements["P_BATH3"].roof_limit = "R_K"
         # Main helical stair to the master: no rectangular stair in its place.
         spiral = SpiralStair("ST_MASTER", center=(6500, 9450), level=L0, to_level=L1, material=oak)
         Column("ST_MASTER_NEWEL", at=(6500, 9450), radius=90, height=4200, level=L0, material=steel)
@@ -1064,7 +1217,7 @@ def build() -> House:
                 voids=voids,
                 beams=BeamGrid(width=150, depth=105, spacing=245, along="y", material=oak) if key == "K" else None,
             )
-            if key != "K":
+            if key == "A":
                 Ceiling("C1_" + key, outline=mm(inner[key]), level=L1, material=lime, thickness=28)
         GuestCeilingTimbers("GUEST_CEILING_TIMBERS", outline=mm(inner["A"]), level=L0, material=oak)
         # Two massive axial oak members and a transverse salon/dining joint.
@@ -1100,18 +1253,35 @@ def build() -> House:
         PrincipalCarpentry("MASTER_ROOF_TIMBERS", roof=RM, level=L1, material=oak)
         PrimaryKneeBraces("MASTER_TRUSS_BRACES", carpentry="MASTER_ROOF_TIMBERS", level=L1, material=oak)
         CanalTileEaves("R_MAIN_TILE_ENDS", roof=RM, level=L1, material=eave_clay)
-        for key, outline, angle in [("K", KITCHEN, 90), ("H", HALL, 83.2), ("A", ANNEX, -18.9)]:
+        for key, outline, angle in [("K", KITCHEN, 90), ("H", HALL, -6.8), ("A", ANNEX, -18.9)]:
             roof = TracedRoof("R_" + key, outline=mm(outline), level=L1, eave=3400, material=tile, ridge_angle=angle)
             if key == "K":
+                # Photo12 fixes the coping slope near18.4 degrees. Absolute
+                # elevation also allows a200mm tie and2100mm clear headroom:
+                # the plaster clears its low-side top corner by8mm. The coping
+                # starts166mm above the conditional5.55m camera extrapolation.
+                roof.shape = "shed"
+                roof.high_side = "y0"  # ridge_angle=90: local low v is east/x=0
+                roof.eave = 2370  # L1+2370=5670mm; thin coping starts5716mm
+                roof.pitch = 18.4
                 roof.cut_against = ["R_MAIN", "R_MAIN.genoise"]
             if key == "H":
+                # Conditional photo08 peak plus clearance over the retained
+                # paired5900mm upper arches sets the bed eave at5900mm.
+                roof.eave = 2600
                 roof.cut_against = ["R_K"]
             if key == "A":
                 roof.cut_against = ["R_H"]
             for wall in wings[key]:
-                JoinedInfill(wall.id + "_INFILL", wall=wall, roof=roof)
+                openings = [e.id for e in house.elements.values() if getattr(e, "host", None) == wall.id] if key in ("K", "H") else []
+                infill_type = EmptyRoofInfill if wall.id in ("K3", "H2", "H4") else JoinedInfill
+                infill_type(wall.id + "_INFILL", wall=wall, roof=roof, opening_voids=openings)
         TracedVault("C1_K", roof="R_K", outline=mm(inner["K"]), level=L1, material=lime)
-        Beam("BED3_CROSS_BEAM", (-5050, 12200), (-350, 12200), width=270, depth=300, underside=6070, level=L1, material=oak)
+        TracedVault("C1_H", roof="R_H", outline=mm(inner["H"]), level=L1, material=lime)
+        # The unsurveyed horizontal bedroom-three tie fits below the low-side
+        # plaster while retaining2100mm clearance above the unchanged upper floor.
+        # The200mm depth is an unsurveyed inference, not a timber specification.
+        Beam("BED3_CROSS_BEAM", (-5050, 12200), (-350, 12200), width=270, depth=200, underside=5400, level=L1, material=oak)
         Chimney("CH_MAIN", at=(7600, 4500), size=600, base=3000, height=2100, level=L1, material=lime)
         # Fireplace breast with a real recessed fire opening; dressing adds the sculpted mantel.
         fpasm = Assembly("fireplace", layers=[Layer(material="cut_stone", thickness=300)], finish_in=cut)

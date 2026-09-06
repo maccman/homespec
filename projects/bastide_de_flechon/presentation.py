@@ -118,6 +118,16 @@ def dress(scene):
     load_room("salon_envelope").apply(scene, salon)
     load_room("salon_fireplace").apply(scene, salon)
     load_room("salon_furniture").build(scene, salon)
+    # Principal-only refinements follow the shared UV/material pass; the
+    # coherent house lighting policy still owns every practical's power.
+    load_room("principal_envelope").apply(scene, M)
+    load_room("principal_furniture").apply(scene, M)
+    load_room("principal_materials").apply(scene, M)
+    exterior_mats = load_room("exterior_materials").build_materials()
+    load_room("exterior_envelope").apply(scene, exterior_mats)
+    load_room("exterior_roofs").apply(scene, exterior_mats)
+    load_room("exterior_setting").apply(scene, exterior_mats)
+    load_room("exterior_planting").apply(scene)
     load_room("fidelity_lighting").apply(scene, M)
     # A natural sky/ground bounce, present in both the still and the walk file.
     # Interior practicals are placed by the interiors module.
