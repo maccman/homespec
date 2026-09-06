@@ -1,5 +1,7 @@
 # Exterior evidence and discrepancy audit — 5 September 2026
 
+**Current release:** [Final image delivery](final-delivery.md) records the completed combined scene, all 54 stills and current checks. The delivered shutter/sill close-up retains rubble intersecting the dressed trim. The source-specific observations below retain their original scope; completing the images does not establish that every photographic discrepancy is resolved.
+
 This is the **pre-implementation evidence inventory**, against source revision
 `33b7db59cfd06b617d569086ab266f7f2e56c094`, on
 `codex/bastide-exterior-fidelity`. It is not a claim that the listed corrections

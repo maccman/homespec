@@ -631,9 +631,10 @@ The circular clerestories, segmental kitchen head and concentric front stone
 surround now use HomeSpec's shared profile geometry. The kitchen keeps its
 2,200 mm width, 2,080 mm springing and inferred 360 mm rise; the shared
 concentric inset fixes the short transition where the former separately
-clipped rectangle and circle could disagree. The floor-level door frame has
-no fixed threshold member. Its clear passage remains below the curved head;
-the correction does not enlarge the photographed facade or change its camera.
+clipped rectangle and circle could disagree. The initial shared-grid migration
+removed the lower frame member; D-047 records the later restoration of the
+reviewed segmental joinery. The clear passage remains below the curved head;
+neither change enlarges the photographed facade or changes its camera.
 
 The wing roofs retain their traced outlines, ridge rotations, 180 mm vertical
 thickness and eave datums through the shared polygon Roof implementation.
@@ -672,6 +673,31 @@ reconstruction remains local. Both custom stairs now adapt their actual tread
 and approach polygons to the same typed clearance evaluator as core stairs;
 the existing 2000 mm envelope and 0.2 mm project contact inset remain unchanged.
 This extraction does not convert an inferred dimension into surveyed evidence.
+
+## D-047 Restore reviewed segmental-door joinery after shared-profile migration
+
+Entities: D_KITCHEN_GARDEN D_KITCHEN_TERRACE D_PERGOLA
+
+Independent native sections of the combined model found that the generic grid
+used by D-045 shifted the garden door's side bars 27.5 mm inward and horizontal
+bars 12.5 mm down, while omitting the lower steel ring. The terrace and pergola
+instances inherited the same change at their own frame/bar sizes. Original
+photo12 shows the four-column closed garden assembly and lower framing; the
+kitchen and exterior reviews deliberately retained its inferred joinery.
+The frozen exterior STEP solids provide the exact prior reconstruction for
+comparison, not survey measurements.
+
+Restore those three instances' local quarter-width bars, horizontal row bands,
+meeting stiles and complete steel ring. Retain the shared exact profile for
+the curved contour, void and glass, and preserve every opening's width, spring,
+rise, position and camera. Reverting the shared profile machinery is unnecessary.
+The retained lower member describes the reviewed closed joinery pose; its exact
+construction and operation remain inferred, not an accessibility certification.
+
+Independent final-solid section tests measure all three grids, and native STEP
+comparisons check the complete frames against frozen exterior evidence. No
+clash policy or guideline threshold changes. Fresh dressed-scene and photograph
+review remain required after this source correction.
 
 ## Against the reference
 

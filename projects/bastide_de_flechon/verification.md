@@ -1,5 +1,8 @@
 # Verification — La Bastide de Fléchon
 
+<!-- current-image-delivery -->
+**Current combined release, 6 September 2026:** [54 final stills and the verified portable model](final-delivery.md) are complete; image-only delivery checks passed 3,408 assertions and the independent local audit passed 966. Video is omitted at the user's request. The release record tracks publication status. The source-specific study below is preserved as historical evidence; its older counts and isolated-study omissions retain their original scope.
+
 The focused exterior branch has separate, later evidence in
 [exterior-verification.md](exterior-verification.md). The counts and images
 below describe the earlier combined pass and do not validate the exterior

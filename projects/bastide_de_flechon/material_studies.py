@@ -6,6 +6,7 @@ explicit studio studies; no edited scene is saved or substituted for room views.
 
 import hashlib
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -19,24 +20,47 @@ from photo_review import loaded_scene_source  # noqa: E402
 from review import Coverage, FileIdentity, fingerprint, open_review  # noqa: E402
 from review_studies import camera_settings, checked, effective_settings, study_state  # noqa: E402
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from delivery_support import delivery_pixels, render_settings, still_samples  # noqa: E402
+
 SAMPLES = [
-    ('interior_bronze_travertine', 'Honed counter'),
-    ('fidelity_reclaimed_oak', 'Reclaimed oak'),
-    ('salon_taupe_sofa', 'Salon basketweave sofa'),
-    ('interior_cream_linen', 'Bedroom linen'),
-    ('fidelity_bedroom_weathered_oak', 'Weathered wardrobe'),
-    ('fidelity_bedroom_tobacco_lime', 'Tobacco plaster'),
+    ('kitchen_honed_travertine', 'Kitchen honed worktop'),
+    ('kitchen_waxed_walnut', 'Kitchen island walnut'),
+    ('kitchen_cleaned_oak', 'Kitchen cleaned oak'),
     ('salon_floor_stone_01', 'Salon limestone floor'),
     ('salon_fireplace_limestone', 'Carved hearth limestone'),
     ('salon_oak_timber', 'Salon oak timber'),
+    ('fidelity_principal_floorboard', 'Principal oak floor'),
+    ('fidelity_principal_curtain_rust_ikat', 'Principal patterned linen'),
+    ('fidelity_principal_chair_walnut', 'Principal chair walnut'),
+    ('fidelity_principal_bed_linen', 'Principal cream bed linen'),
     ('salon_curtain_linen', 'Salon sheer linen'),
-    ('salon_chair_walnut', 'Polished chair walnut'),
-    ('salon_whole_rug', 'Salon woven rug'),
+    ('salon_taupe_sofa', 'Salon basketweave sofa'),
+    ('exterior_plaster', 'Exterior cream plaster'),
+    ('exterior_cut', 'Exterior cut limestone'),
+    ('exterior_shutter', 'Exterior weathered shutter'),
+    ('exterior_rubble_0', 'Exterior rubble stone'),
+    ('exterior_roof_0', 'Exterior terracotta roof'),
+    ('exterior_entry_wood', 'Exterior entry timber'),
 ]
 
 
 def digest(path):
-    return hashlib.file_digest(open(path, 'rb'), 'sha256').hexdigest()
+    with open(path, 'rb') as stream:
+        return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+def assigned_users(scene, material):
+    """Only visible mesh faces or curve splines prove a shader is installed."""
+    result = []
+    for obj in scene.objects:
+        if obj.hide_render or obj.type not in {'MESH', 'CURVE'}:
+            continue
+        slots = {i for i, slot in enumerate(obj.material_slots) if slot.material == material}
+        faces = obj.data.polygons if obj.type == 'MESH' else obj.data.splines
+        if slots and any(face.material_index in slots for face in faces):
+            result.append(obj.name)
+    return sorted(result)
 
 
 def image_dependencies(socket, visited=None):
@@ -54,16 +78,16 @@ def image_dependencies(socket, visited=None):
     return result
 
 
-def render_studies(destination=None, *, samples=64, size=(1500, 1800)):
+def render_studies(destination=None, *, samples=64, size=(1500, 1800), quality="preview"):
     out = Path(destination or sys.argv[sys.argv.index('--') + 1]).resolve()
     out.mkdir(parents=True, exist_ok=True)
     scene = bpy.context.scene
-    source = loaded_scene_source((FileIdentity.capture(__file__, "studio-script"),))
+    source = loaded_scene_source((FileIdentity.capture(__file__, "studio-script"),
+                                  FileIdentity.capture(Path(__file__).with_name("delivery_support.py"), "studio-settings")))
     sample_sources = []
     for name, label in SAMPLES:
         material = bpy.data.materials.get(name)
-        users = sorted(obj.name for obj in scene.objects if obj.type in {'MESH', 'CURVE'}
-                       and not obj.hide_render and any(slot.material == material for slot in obj.material_slots)) if material else []
+        users = assigned_users(scene, material) if material else []
         if not users:
             raise RuntimeError(f'Studio sample has no visible scene assignment: {name}')
         sample_sources.append({'material': name, 'label': label, 'visible_source_objects': users})
@@ -99,6 +123,12 @@ def render_studies(destination=None, *, samples=64, size=(1500, 1800)):
     scene.render.resolution_x, scene.render.resolution_y = size
     scene.render.resolution_percentage = 100
     scene.render.image_settings.file_format = 'PNG'
+    scene.render.image_settings.color_mode = 'RGB'
+    scene.render.image_settings.color_depth = '16' if quality == 'final' else '8'
+    scene.render.pixel_aspect_x = scene.render.pixel_aspect_y = 1
+    scene.render.use_border = scene.render.use_crop_to_border = False
+    scene.render.use_compositing = False
+    scene.render.film_transparent = False
     scene.view_settings.exposure = 0
     scene.view_settings.look = 'AgX - Medium High Contrast'
     if hasattr(scene.view_settings, 'use_white_balance'):
@@ -112,8 +142,9 @@ def render_studies(destination=None, *, samples=64, size=(1500, 1800)):
         scene.collection.objects.link(obj)
         obj.location = loc
         obj.rotation_euler = (-Vector(loc)).to_track_quat('-Z', 'Y').to_euler()
+    row_count = math.ceil(len(SAMPLES) / 3)
     for i, (name, _) in enumerate(SAMPLES):
-        x, y = (i % 3 - 1) * .92, (1.5 - i // 3) * .92
+        x, y = (i % 3 - 1) * .92, ((row_count - 1) / 2 - i // 3) * .92
         sample_sources[i].update({'row_from_top': i // 3 + 1, 'column_from_left': i % 3 + 1, 'swatch_center_m': [x, y, 0]})
         bpy.ops.mesh.primitive_cube_add(size=1, location=(x, y, 0))
         obj = bpy.context.object
@@ -141,7 +172,7 @@ def render_studies(destination=None, *, samples=64, size=(1500, 1800)):
     camera = scene.camera
     camera.location = (0, -3.1, 6.5)
     camera.rotation_euler = (Vector((0, 0, .06)) - camera.location).to_track_quat('-Z', 'Y').to_euler()
-    camera.data.type, camera.data.ortho_scale = 'ORTHO', 4.2
+    camera.data.type, camera.data.ortho_scale = 'ORTHO', max(4.2, row_count * .92 + .52)
     camera.data.sensor_fit = 'VERTICAL'
     camera.data.shift_x = camera.data.shift_y = 0
     camera.data.dof.use_dof = False
@@ -150,7 +181,7 @@ def render_studies(destination=None, *, samples=64, size=(1500, 1800)):
     settings = {'samples': scene.cycles.samples, 'seed': scene.cycles.seed,
                 'adaptive_threshold': scene.cycles.adaptive_threshold,
                 'sample_sources': sample_sources, 'camera': camera_record,
-                'effective_settings': effective}
+                'effective_settings': effective, 'quality': quality, 'render_settings': render_settings(scene)}
     review_path = out / 'review.json'
     review = open_review(review_path, source, Coverage(('neutral-materials', 'studio-evidence'),
         'Declared material samples on physical swatches; room coverage is outside this study.'), settings)
@@ -169,7 +200,9 @@ def render_studies(destination=None, *, samples=64, size=(1500, 1800)):
                 'material_rows_top_to_bottom': [[name for name, _ in SAMPLES[i:i + 3]] for i in range(0, len(SAMPLES), 3)],
                 'scene': bpy.data.filepath, 'scene_sha256': digest(bpy.data.filepath), 'script_sha256': digest(__file__),
                 'samples': SAMPLES, 'sample_sources': sample_sources, 'shader_checks': shader_checks, 'image_sha256': digest(scene.render.filepath),
-                'pixels': list(size), 'camera': {'location': list(camera.location), 'rotation_euler': list(camera.rotation_euler), 'ortho_scale': 4.2, 'sensor_fit': 'VERTICAL'},
+                'quality': quality, 'render_settings': render_settings(scene),
+                'delivery_support_sha256': digest(Path(__file__).with_name('delivery_support.py')),
+                'pixels': list(size), 'camera': {'location': list(camera.location), 'rotation_euler': list(camera.rotation_euler), 'ortho_scale': camera.data.ortho_scale, 'sensor_fit': 'VERTICAL'},
                 'lighting': 'Neutral D65 world .35, 950 W / 4 m broad softbox, 180 W / 2.5 m grazing strip; exposure 0; 6500 K WB',
                 'effective_settings': effective, 'source_sha256': source.sha256,
                 'limitations': 'Procedural relief is inferred, not measured surface scanning. Swatches do not validate room exposure.'}
@@ -184,8 +217,12 @@ def render_studies(destination=None, *, samples=64, size=(1500, 1800)):
 
 
 def main():
+    args = sys.argv[sys.argv.index('--') + 1:]
+    quality = args[1] if len(args) > 1 else 'final'
+    rows = math.ceil(len(SAMPLES) / 3)
+    size = tuple(delivery_pixels((1500, max(1800, round(rows * 450))), quality))
     with study_state(bpy.context.scene):
-        render_studies()
+        render_studies(samples=still_samples(quality), size=size, quality=quality)
 
 
 if __name__ == '__main__':

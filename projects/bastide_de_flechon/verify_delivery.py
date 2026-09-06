@@ -1,9 +1,12 @@
 """Verify the portable house, all 26 views, camera comparisons and motion provenance.
 
 Run with the locked Python environment after rendering and packaging. This
-performs independent video decode/count checks; no Blender process is launched.
+performs independent video decode/count checks by default. Pass --images-only
+to omit video at the user's request while retaining every still, web-asset and
+portable-model check. No Blender process is launched.
 """
 
+import argparse
 import hashlib
 import importlib.util
 import json
@@ -11,6 +14,7 @@ import math
 import os
 import shutil
 import subprocess
+import sys
 import zipfile
 from fractions import Fraction
 from pathlib import Path
@@ -18,6 +22,9 @@ from pathlib import Path
 from homespec import buildstate
 from homespec.review import ReviewManifest
 from homespec.review import png_size as image_dimensions
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from delivery_support import resolve_delivery_build, resolve_source_archive  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 DEST = HERE / "deliverables"
@@ -120,19 +127,19 @@ def verify_photo_lighting(require, row, *, fraction=None):
 
 def verify_light_controls(require, source, lock, tuned):
     records = {}
-    require(lock["lock_id"] == "flechon-exif-photo-cameras-2026-09-05-v4", "Lighting controls use reviewed v4 cameras")
+    require(lock["lock_id"] == json.loads((HERE / "photo_camera_lock.json").read_text())["lock_id"], "Lighting controls use the current reviewed cameras")
     anchors = {row["id"]: row for row in lock["views"]}
     manifests = {}
     for state, fraction in (("off", 0), ("on", 1)):
         path = DEST / ("light-controls-" + state) / "camera-review-manifest.json"
-        ReviewManifest.read(path.parent / "review.json").verify(path.parent)  # explicitly partial lighting diagnostic
+        ReviewManifest.read(path.parent / "review.json").verify(path.parent)
         manifest = json.loads(path.read_text())
         manifests[state] = manifest
         require(manifest["saved_scene_sha256"] == source["source_scene_sha256"]
                 and digest(manifest["saved_scene"]) == source["source_scene_sha256"], state + " controls use current immutable scene")
         require(manifest["camera_lock_sha256"] == digest(HERE / "photo_camera_lock.json")
                 and manifest["camera_lock_id"] == lock["lock_id"]
-                and manifest["camera_script_sha256"] == digest(HERE / "photo_camera_review.py"), state + " controls use current v4 camera renderer")
+                and manifest["camera_script_sha256"] == digest(HERE / "photo_camera_review.py"), state + " controls use current camera renderer")
         require(manifest.get("cycles_seed") == 0 and manifest.get("clay_study") is None, state + " controls use seed zero and original shaders")
         require(len(manifest["views"]) == 2 and {row["id"] for row in manifest["views"]} == set(LIGHT_CONTROL_VIEWS), state + " controls contain kitchen10 and salon58 exactly once")
         records[state] = {row["id"]: row for row in manifest["views"]}
@@ -142,9 +149,16 @@ def verify_light_controls(require, source, lock, tuned):
                     and all(abs(row.get(key, 0) - anchor.get(key, 0)) < 0.00001 for key in ("lens_mm", "shift_x", "shift_y")), state + "/" + name + " locked camera")
             require(outcome(row.get("camera_check")) and outcome(row.get("frame_check")), state + "/" + name + " camera and frame checks")
             require(digest(row["render"]) == row["sha256"] and png_size(row["render"]) == row["pixels"], state + "/" + name + " image hash and dimensions")
+            verify_camera_optics(require, row, anchor, state + "/" + name)
             verify_photo_lighting(require, row, fraction=fraction)
             verify_photo_lighting(require, tuned[name])
     require(manifests["off"]["quality"] == manifests["on"]["quality"], "Off/on controls use identical sample quality")
+    settings_a, settings_b = (manifests[state].get("render_settings") for state in ("off", "on"))
+    required_settings = {"engine", "samples_max", "adaptive_threshold", "denoising", "cycles_seed", "device",
+                         "color_depth", "pixel_aspect", "view_transform", "look"}
+    require(isinstance(settings_a, dict) and isinstance(settings_b, dict)
+            and required_settings <= set(settings_a) and required_settings <= set(settings_b)
+            and settings_a == settings_b, "Off/on controls use identical actual render settings, including sample overrides")
     for name in LIGHT_CONTROL_VIEWS:
         off, on = (records[state][name] for state in ("off", "on"))
         require(off["pixels"] == on["pixels"] and off["exposure"] == on["exposure"], name + " off/on identical resolution and exposure")
@@ -264,7 +278,52 @@ def verify_tour(require, source, lock):
             "independent_full_decode": "passed"}
 
 
-def main():
+def verify_final_image(require, row, label):
+    require(digest(row["render"]) == row["sha256"] and png_size(row["render"]) == row["pixels"], label + " image hash and dimensions")
+    with open(row["render"], "rb") as stream:
+        header = stream.read(26)
+    require(header[:8] == b"\x89PNG\r\n\x1a\n" and header[24] == 16, label + " actual 16-bit PNG pixels")
+    require(max(row["pixels"]) >= 2560, label + " presentation still resolution (at least 2560 px; manifest records exact practical setting)")
+    if row.get("size"):
+        w, h = row["size"]
+        x, y = row["pixels"]
+        require(abs(x / y - w / h) <= 1 / y + w / h / y, label + " full locked aspect within pixel rounding")
+
+
+def verify_camera_optics(require, row, anchor, label):
+    require(row.get("size") == anchor["size"], label + " retains the authoritative camera-lock aspect")
+    width, height = anchor["size"]
+    expected_fit = "VERTICAL" if height > width else "HORIZONTAL"
+    require(row.get("sensor_fit") == expected_fit, label + " native sensor fit agrees with the locked orientation")
+    sensor = row.get("sensor_dimension_mm")
+    require(isinstance(sensor, (int, float)) and math.isfinite(sensor)
+            and abs(sensor - anchor.get("sensor_dimension_mm", 36)) < 0.00001, label + " native sensor dimension agrees with the camera lock")
+
+
+def verify_camera_row(require, row, anchor, label):
+    verify_camera_optics(require, row, anchor, label)
+    require(all(near(row[key], anchor[key]) for key in ("location", "target"))
+            and all(abs(row.get(key, 0) - anchor.get(key, 0)) < 0.00001 for key in ("lens_mm", "shift_x", "shift_y")), label + " matches locked camera")
+    if "reference" in anchor:
+        require(row["reference"] == anchor["reference"], label + " original reference retained")
+    if "reference_original" in anchor:
+        require(row["reference_original"] == anchor["reference_original"], label + " original archive reference retained")
+    verify_final_image(require, row, label)
+
+
+def verify_delivery_video(require, source, lock, *, images_only):
+    if images_only:
+        return {"status": "omitted", "reason": "Video omitted at the user's request; deliver images only."}
+    return verify_tour(require, source, lock)
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--images-only", action="store_true",
+                        help="Omit video at the user's request; still require all stills, web assets and portable/native checks.")
+    parser.add_argument("--archive", type=Path,
+                        help="Original reference ZIP; defaults to FLECHON_SOURCE_ARCHIVE or ~/LABASTIDEDEFLECHON.zip.")
+    args = parser.parse_args(argv)
     checks = []
 
     def require(condition, label):
@@ -274,72 +333,129 @@ def main():
 
     ReviewManifest.read(DEST / "model" / "review.json").verify(DEST / "model", require_complete=True)
     source = json.loads((DEST / "SOURCE.json").read_text())
-    generation = buildstate.resolve_build(HERE.parents[1] / "out" / HERE.name, HERE, allow_failed_checks=False)
+    archive = resolve_source_archive(args.archive)
+    require(digest(archive) == source["source_archive_sha256"], "Unchanged original reference archive")
+    generation, native_checks = resolve_delivery_build(HERE.parents[1] / "out" / HERE.name, HERE)
     presentation, fingerprint = buildstate.presentation_directory(generation, HERE)
-    require(str(generation) == source["generation"], "Current passing build generation")
+    require(str(generation) == source["generation"], "Current verified build generation")
+    require(source.get("native_checks") == native_checks, "Native check result and exact existing-glazing acknowledgement preserved")
     require(fingerprint == source["presentation_fingerprint"], "Current presentation fingerprint")
     require(digest(presentation / "house.blend") == source["source_scene_sha256"], "Saved source scene hash")
-    for key, filename in [("walk_sha256", "house_walk.blend"), ("navigation_sha256", "walk_ui.py"), ("launcher_sha256", "Walk Bastide.command")]:
+    for key, filename in [("walk_sha256", "house_walk.blend"), ("navigation_sha256", "walk_ui.py"), ("launcher_sha256", "Walk Bastide.command"),
+                          ("native_walk_verification_sha256", "packed-model-verification.json")]:
         require(digest(DEST / "model" / filename) == source[key], filename + " hash")
+    for key, filename in [("packager_sha256", "package_model.py"), ("prepare_walk_sha256", "prepare_walk.py"),
+                          ("verify_walk_sha256", "verify_walk.py"), ("delivery_support_sha256", "delivery_support.py")]:
+        require(source.get(key) == digest(HERE / filename), "Portable package current " + filename)
     require((DEST / "model" / "Walk Bastide.command").stat().st_mode & 0o111, "Executable portable launcher")
     points = json.loads((DEST / "model" / "waypoints.json").read_text())
-    require(len(points) == COVERAGE["navigation_bookmark_count"] and len({row["name"] for row in points}) == COVERAGE["navigation_bookmark_count"], "All 26 distinct navigation bookmarks")
+    require(len(points) == 26 and len({row["name"] for row in points}) == 26, "All 26 distinct navigation bookmarks")
+    walk = json.loads((DEST / "model" / "packed-model-verification.json").read_text())
+    require(walk.get("status") == "passed" and walk["model_sha256"] == source["walk_sha256"]
+            and walk["script_sha256"] == source["verify_walk_sha256"], "Native walkthrough verification uses this exact packed model")
+    require(not walk["unpacked_textures"] and walk["light_probes"] == 3 and walk["engine"] == "BLENDER_EEVEE", "Packed textures and actual interactive renderer/probes")
+    require(len(walk["bookmarks"]) == 26 and [row["index"] for row in walk["bookmarks"]] == list(range(1, 27)), "Native check covered every bookmark once")
+    for row, point in zip(walk["bookmarks"], points, strict=True):
+        look_length = math.sqrt(sum(value * value for value in point["look"]))
+        require(row["name"] == point["name"] and near(row["location"], point["location"])
+                and near(row["look_normalized"], [value / look_length for value in point["look"]])
+                and row["camera_check"] == "passed" and row["navigation_operator"] == "FINISHED", "Native navigation " + point["name"])
+    require(len(walk["previews"]) == 10, "Ten actual native walkthrough lighting previews")
+    for row in walk["previews"]:
+        path = DEST / "model" / row["file"]
+        require(digest(path) == row["sha256"] and png_size(path) == row["pixels"] and row["frame_check"] == "passed", "Native preview " + row["name"])
     for filename in ("house.ifc", "checks.json"):
         require(digest(DEST / filename) == digest(generation / filename), filename + " matches generation")
     ReviewManifest.read(DEST / "gallery" / "review.json").verify(DEST / "gallery", require_complete=True)
     gallery = json.loads((DEST / "gallery-manifest.json").read_text())
     require(gallery["source_scene_sha256"] == source["source_scene_sha256"], "Gallery from current scene")
     require(gallery["script_sha256"] == digest(HERE / "verify_views.py"), "Gallery uses current renderer")
-    require(gallery.get("render_engine") == "CYCLES", "Room gallery consists of actual Cycles renders")
-    require(len(gallery["views"]) == len(points) and sorted(row["index"] for row in gallery["views"]) == list(range(1, len(points) + 1)), "All 26 room renders without duplicate indices")
+    require(gallery.get("render_engine") == "CYCLES" and gallery["quality"] == "final", "Room gallery consists of final actual Cycles renders")
+    require(gallery["delivery_support_sha256"] == digest(HERE / "delivery_support.py"), "Gallery current render settings support")
+    verify_tour_lighting(require, gallery["lighting"])
+    require(len(gallery["views"]) == 26 and sorted(row["index"] for row in gallery["views"]) == list(range(1, 27)), "All 26 room renders without duplicate indices")
     for row in gallery["views"]:
         point = points[row["index"] - 1]
         require(row["name"] == point["name"] and near(row["location"], point["location"]), "Gallery matches bookmark " + row["name"])
         require(row.get("camera_check") == "passed" and row.get("frame_check") == "passed", "Gallery camera and frame checks " + row["name"])
-        require(digest(row["render"]) == row["sha256"] and png_size(row["render"]) == row["pixels"], "Gallery image " + row["name"])
+        verify_final_image(require, row, "Gallery " + row["name"])
     lock_path = HERE / "photo_camera_lock.json"
-    lock_hash = digest(lock_path)
     lock = json.loads(lock_path.read_text())
     anchors = {row["id"]: row for row in lock["views"]}
     require(len(anchors) == 8, "Eight unique committed reference cameras")
-    baseline = json.loads((DEST / "baseline" / "SOURCE.json").read_text())
+    ReviewManifest.read(DEST / "photo-comparison" / "review.json").verify(DEST / "photo-comparison", require_complete=True)
+    manifest = json.loads((DEST / "photo-comparison" / "camera-review-manifest.json").read_text())
+    require(manifest["camera_lock_sha256"] == digest(lock_path) and manifest["camera_lock_id"] == lock["lock_id"], "Photo comparisons use final reviewed camera lock")
+    require(manifest["camera_script_sha256"] == digest(HERE / "photo_camera_review.py") and manifest["quality"] == "final", "Photo comparisons use current final renderer")
+    require(len(manifest["views"]) == 8 and {row["id"] for row in manifest["views"]} == set(anchors), "All eight distinct comparisons")
+    require(manifest.get("clay_study") is None and manifest["saved_scene_sha256"] == source["source_scene_sha256"], "Comparisons retain current textured saved geometry")
     tuned = {}
-    for folder in ("photo-comparison", "comparison-baseline"):
-        ReviewManifest.read(DEST / folder / "review.json").verify(DEST / folder, require_complete=True)
-        manifest = json.loads((DEST / folder / "camera-review-manifest.json").read_text())
-        require(manifest["camera_lock_sha256"] == lock_hash, folder + " uses final camera lock")
-        require(manifest["camera_script_sha256"] == digest(HERE / "photo_camera_review.py"), folder + " uses current comparison renderer")
-        require(len(manifest["views"]) == 8 and {row["id"] for row in manifest["views"]} == set(anchors), folder + " has all eight distinct comparisons")
-        require(manifest.get("clay_study") is None, folder + " contains textured comparison images")
-        expected_hashes = {source["source_scene_sha256"]} if folder == "photo-comparison" else {baseline["walk_sha256"], baseline["source_scene_sha256"]}
-        require(manifest["saved_scene_sha256"] in expected_hashes, folder + " uses its documented source scene")
-        for row in manifest["views"]:
-            if folder == "photo-comparison":
-                verify_photo_lighting(require, row)
-                tuned[row["id"]] = row
-            anchor = anchors[row["id"]]
-            require(row["reference"] == anchor["reference"] and all(near(row[key], anchor[key]) for key in ("location", "target"))
-                    and all(abs(row.get(key, 0) - anchor.get(key, 0)) < 0.00001 for key in ("lens_mm", "shift_x", "shift_y")), folder + "/" + row["id"] + " matches locked camera")
-            require(outcome(row.get("camera_check")) and outcome(row.get("frame_check")), folder + "/" + row["id"] + " passed camera/frame checks")
-            projected = row.get("projection_implementation_check", [])
-            require(len(projected) == len(anchor.get("landmarks", [])) and all(0 <= p["maximum_uv_disagreement"] <= 0.0001 for p in projected), folder + "/" + row["id"] + " Blender projection agrees with calibration")
-            require(digest(row["render"]) == row["sha256"] and png_size(row["render"]) == row["pixels"], folder + "/" + row["id"] + " image hash and dimensions")
-    require(digest(DEST / "baseline" / "house_walk.blend") == baseline["walk_sha256"], "Preserved baseline remains identical")
+    for row in manifest["views"]:
+        label = "Photo " + row["id"]
+        anchor = anchors[row["id"]]
+        verify_photo_lighting(require, row)
+        tuned[row["id"]] = row
+        verify_camera_row(require, row, anchor, label)
+        require(outcome(row.get("camera_check")) and outcome(row.get("frame_check")), label + " passed camera/frame checks")
+        projected = row.get("projection_implementation_check", [])
+        require(len(projected) == len(anchor.get("landmarks", [])) and all(0 <= p["maximum_uv_disagreement"] <= 0.0001 for p in projected), label + " Blender projection agrees with calibration")
     light_controls = verify_light_controls(require, source, lock, tuned)
-    study = json.loads((DEST / "material-studies" / "material-study-manifest.json").read_text())
+    exterior_lock = json.loads((HERE / "exterior_cameras.json").read_text())
+    ReviewManifest.read(DEST / "exterior" / "review.json").verify(DEST / "exterior", require_complete=True)
+    exterior = json.loads((DEST / "exterior" / "manifest.json").read_text())
+    require(exterior["saved_scene_sha256"] == source["source_scene_sha256"] and exterior["saved_model_bytes_unchanged"] is True, "Exterior uses current immutable model")
+    require(exterior["camera_lock_sha256"] == digest(HERE / "exterior_cameras.json")
+            and exterior["review_script_sha256"] == digest(HERE / "exterior_review.py"), "Exterior current reviewed register and renderer")
+    require(exterior["quality"] == "final" and exterior["mode"] == "beauty" and not exterior["additional_hidden_plants_for_study"], "Exterior actual final beauty images preserve plants")
+    exterior_anchors = {row["id"]: row for row in exterior_lock["views"]}
+    require(len(exterior["views"]) == len(exterior_anchors) and {row["id"] for row in exterior["views"]} == set(exterior_anchors), "Four primary exterior photo comparisons and six construction/context views")
+    for row in exterior["views"]:
+        label = "Exterior " + row["id"]
+        verify_camera_row(require, row, exterior_anchors[row["id"]], label)
+        lighting = row["lighting"]
+        require(lighting["sun_count"] == 1 and lighting["aperture_lights"] == "off" and lighting["practical_light_objects"] == "off", label + " records exterior photo light state")
+        require(lighting["implementation_sha256"] == digest(HERE / "rooms" / "fidelity_lighting.py")
+                and lighting["preset_source_sha256"] == digest(HERE / "rooms" / "lighting_presets.py"), label + " current lighting support")
+        require(bool(lighting["actual_lights"]) and bool(lighting["white_balance_actual"]) and row["plant_visibility_preserved_from_saved_scene"], label + " actual native light/WB and plant records")
+    details_lock = json.loads((HERE / "delivery_detail_cameras.json").read_text())
+    detail_anchors = {row["id"]: row for row in details_lock["views"]}
+    ReviewManifest.read(DEST / "details" / "review.json").verify(DEST / "details", require_complete=True)
+    details = json.loads((DEST / "details" / "camera-review-manifest.json").read_text())
+    require(details["saved_scene_sha256"] == source["source_scene_sha256"] and details["camera_lock_sha256"] == digest(HERE / "delivery_detail_cameras.json"), "Construction details from current scene and camera lock")
+    require(details["camera_script_sha256"] == digest(HERE / "photo_camera_review.py") and details["quality"] == "final" and details.get("clay_study") is None, "Details use current final actual scene renderer")
+    require(len(details["views"]) == len(detail_anchors) and {row["id"] for row in details["views"]} == set(detail_anchors), "Kitchen reverse/side, fireplace, floor and trim construction details")
+    for row in details["views"]:
+        verify_camera_row(require, row, detail_anchors[row["id"]], "Detail " + row["id"])
+        require(outcome(row.get("camera_check")) and outcome(row.get("frame_check")), "Detail camera/frame checks " + row["id"])
+        require(row["lighting_study"]["preset"] == detail_anchors[row["id"]]["lighting_preset"], "Detail named lighting " + row["id"])
     ReviewManifest.read(DEST / "material-studies" / "review.json").verify(DEST / "material-studies", require_complete=True)
+    study = json.loads((DEST / "material-studies" / "material-study-manifest.json").read_text())
     require(study["scene_sha256"] == source["source_scene_sha256"], "Material studies from current scene")
     require(study["script_sha256"] == digest(HERE / "material_studies.py"), "Material studies use current assigned-material renderer")
     require(len(study["samples"]) == COVERAGE["material_sample_count"] and len(study["sample_sources"]) == COVERAGE["material_sample_count"]
-            and all(row["visible_source_objects"] for row in study["sample_sources"]), "Twelve material samples have visible scene assignments")
-    require(len(study["visible_rows_left_to_right"]) == 4 and all(len(row) == 3 for row in study["visible_rows_left_to_right"]), "Material study records exact four-row layout")
+            and [row[0] for row in study["samples"]] == COVERAGE["material_samples"]
+            and all(row["visible_source_objects"] for row in study["sample_sources"]), "All declared combined kitchen/salon/principal/exterior materials have visible face assignments")
+    require(len(study["visible_rows_left_to_right"]) == math.ceil(COVERAGE["material_sample_count"] / 3) and all(len(row) == 3 for row in study["visible_rows_left_to_right"]), "Material study records exact six-row layout")
     require(bool(study["shader_checks"]) and all(not row["Normal"] and not row["Roughness"] for row in study["shader_checks"]), "Generated pigment is independent of relief and roughness")
-    require(digest(DEST / "material-studies" / "neutral-materials.png") == study["image_sha256"], "Material study image hash")
-    tour = verify_tour(require, source, lock)
+    verify_final_image(require, {"render": str(DEST / "material-studies" / "neutral-materials.png"), "sha256": study["image_sha256"], "pixels": study["pixels"]}, "Neutral material board")
+    assets = json.loads((DEST / "comparison-assets" / "provenance.json").read_text())
+    require(assets["source_scene_sha256"] == source["source_scene_sha256"] and assets["coverage"]["matched_pairs"] == 12
+            and assets["coverage"]["bookmarks"] == 26, "Published asset provenance covers twelve photographs and 26 rooms")
+    for pair in assets["pairs"]:
+        for key in ("original", "current", "baseline"):
+            record = pair.get(key)
+            if record:
+                require(digest(record["path"]) == record["sha256"], pair["id"] + " preserves " + key + " bytes")
+        for record in pair["web_derivatives"]:
+            require(digest(record["path"]) == record["sha256"], pair["id"] + " web derivative integrity")
+    require(len(assets.get("details", [])) >= 11, "Exterior plus interior construction detail web assets")
+    for record in assets["outputs"]:
+        require(digest(record["path"]) == record["sha256"], "Review output " + Path(record["path"]).name)
+    tour = verify_delivery_video(require, source, lock, images_only=args.images_only)
     archive = DEST / "La-Bastide-de-Flechon-Walkthrough.zip"
     with zipfile.ZipFile(archive) as bundle:
         require(bundle.testzip() is None, "Portable ZIP CRC")
-        for name in ("house_walk.blend", "walk_ui.py", "Walk Bastide.command"):
+        for name in ("house_walk.blend", "walk_ui.py", "Walk Bastide.command", "packed-model-verification.json"):
             matches = [info for info in bundle.infolist() if info.filename.endswith("/" + name)]
             require(len(matches) == 1, "ZIP contains exactly one " + name)
             info = matches[0]
@@ -347,11 +463,15 @@ def main():
                 require(hashlib.file_digest(stream, "sha256").hexdigest() == digest(DEST / "model" / name), "ZIP matches " + name)
             if name.endswith(".command"):
                 require((info.external_attr >> 16) & 0o111, "ZIP preserves launcher executable bit")
-    report = {"generation": generation.name, "presentation_fingerprint": fingerprint,
+    scope = {"mode": "images-only" if args.images_only else "images-and-video",
+             "required": ["still-images", "lighting-controls", "material-board", "web-assets", "portable-model", "native-checks"]
+                         + ([] if args.images_only else ["cycles-video"]),
+             "video": "omitted-at-user-request" if args.images_only else "verified"}
+    report = {"delivery_scope": scope, "generation": generation.name, "presentation_fingerprint": fingerprint, "native_checks": native_checks,
               "checks": checks, "passed": all(c["passed"] for c in checks), "tour": tour, "light_controls": light_controls,
-              "limits": "Integrity, camera and frame checks do not establish photographic likeness or certify unsampled walk trajectories. Material and photographic residuals require visual review."}
+              "limits": "Integrity, camera and frame checks do not establish photographic likeness or certify unsampled walk trajectories. Native existing-house guideline failures remain reported. Dressed-scene contact and approach findings must remain in the scene audit; they are not zeroed by delivery verification."}
     (DEST / "artifact-verification.json").write_text(json.dumps(report, indent=2))
-    print("DELIVERY VERIFIED", len(checks), "assertions")
+    print("DELIVERY VERIFIED", scope["mode"], len(checks), "assertions")
 
 
 if __name__ == "__main__":

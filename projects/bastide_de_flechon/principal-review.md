@@ -1,5 +1,8 @@
 # Principal-suite focused review
 
+<!-- current-image-delivery -->
+**Current combined release, 6 September 2026:** [54 final stills and the verified portable model](final-delivery.md) are complete; image-only delivery checks passed 3,408 assertions and the independent local audit passed 966. Video is omitted at the user's request. The release record tracks publication status. The source-specific study below is preserved as historical evidence; its older counts and isolated-study omissions retain their original scope.
+
 The principal suite above the salon now follows the original upper-plan bed,
 bench, west-window and front-truss positions. The shared upper fanlight has a
 lower spring aligned with the frieze; the lower salon doors, frieze and bathroom

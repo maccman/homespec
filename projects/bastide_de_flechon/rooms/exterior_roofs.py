@@ -23,7 +23,10 @@ SOURCE = "Photo46 DJI_20231012094055_0813_D.jpg; Photo45 DJI_20231012092709_0763
 def descriptor(entity):
     """Roof-local u follows the ridge; v crosses it; all lengths are metres."""
     params, derived = entity["params"], entity["derived"]
-    angle = math.radians(params.get("ridge_angle", 90 if params.get("ridge_along") == "y" else 0))
+    ridge_angle = params.get("ridge_angle")
+    if ridge_angle is None:
+        ridge_angle = 90 if params.get("ridge_along") == "y" else 0
+    angle = math.radians(ridge_angle)
     u, n = (math.cos(angle), math.sin(angle)), (-math.sin(angle), math.cos(angle))
     polygon = [(x / 1000, y / 1000) for x, y in params["outline"]]
     local = [(x * u[0] + y * u[1], x * n[0] + y * n[1]) for x, y in polygon]
