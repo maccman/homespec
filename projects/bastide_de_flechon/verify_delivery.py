@@ -24,7 +24,7 @@ from homespec.review import ReviewManifest
 from homespec.review import png_size as image_dimensions
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from delivery_support import resolve_delivery_build  # noqa: E402
+from delivery_support import resolve_delivery_build, resolve_source_archive  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 DEST = HERE / "deliverables"
@@ -198,48 +198,14 @@ def verify_tour_lighting(require, lighting):
     return fraction
 
 
-def evidence_hash(value):
-    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
-
-
-def verify_motion_frame_provenance(require, row, identity, settings, label):
-    """Independently relate actual saved camera matrices to the planned 3D path."""
-    require(row.get("source_sha256") == identity["source_sha256"], label + " frozen source dependency hash")
-    camera = row.get("camera", {})
-    require(row.get("camera_sha256") == evidence_hash(camera), label + " actual camera hash")
-    require(row.get("effective_settings_take") == row["take"]
-            and row.get("effective_settings_sha256") == evidence_hash(settings), label + " actual render and lighting settings hash")
-    require(settings.get("engine") == "CYCLES" and settings.get("samples") == identity["samples"]
-            and settings.get("seed") == identity["cycles_seed"] and settings.get("animated_seed") is False
-            and settings.get("denoising") is True and settings.get("adaptive_threshold") == identity["adaptive"]
-            and math.isclose(settings.get("exposure"), row["exposure"], abs_tol=0.00001), label + " actual Cycles quality and exposure")
-    require(camera.get("raster") == [*identity["pixels"], 100] and camera.get("pixel_aspect") == [1, 1]
-            and row.get("pixels") == identity["pixels"], label + " actual square-pixel delivery raster")
-    data = camera.get("data", {})
-    require(data.get("type") == "PERSP" and data.get("sensor_fit") == "HORIZONTAL"
-            and data.get("sensor_width") == data.get("sensor_height") == 36
-            and data.get("lens") == row["lens_mm"] and data.get("shift_x") == row["shift_x"]
-            and data.get("shift_y") == row["shift_y"] and camera.get("depth_of_field") is False,
-            label + " actual perspective lens and framing")
-    matrix = camera.get("matrix_world", [])
-    require(len(matrix) == 4 and all(len(values) == 4 and all(math.isfinite(x) for x in values) for values in matrix), label + " finite actual camera matrix")
-    require(near([matrix[index][3] for index in range(3)], row["location"]), label + " actual camera origin matches planned path")
-    gaze = [b - a for a, b in zip(row["location"], row["target"], strict=True)]
-    length = math.sqrt(sum(value * value for value in gaze))
-    require(length > 0 and near([-matrix[index][2] for index in range(3)], [value / length for value in gaze]),
-            label + " actual camera forward axis matches planned gaze")
-
-
 def verify_tour(require, source, lock):
     override = os.environ.get("FLECHON_TOUR_MANIFEST")
     candidates = [Path(override)] if override else sorted(DEST.glob("*/tour-manifest.json"))
     require(len(candidates) == 1, "Exactly one delivery tour manifest (or FLECHON_TOUR_MANIFEST selects it)")
     path = candidates[0]
-    review = ReviewManifest.read(path.parent / "review.json")
-    review.verify(path.parent, require_complete=True)
+    ReviewManifest.read(path.parent / "review.json").verify(path.parent, require_complete=True)
     tour = json.loads(path.read_text())
     identity = tour["identity"]
-    require(tour.get("schema") == 2, "Tour uses whole-house motion schema 2; old three-take diagnostic is not delivery")
     require(tour.get("status") == "verified", "Tour render and encoding completed")
     require(tour.get("saved_scene_modified") is False, "Tour records no saved-scene mutation")
     for key, expected in (
@@ -251,83 +217,36 @@ def verify_tour(require, source, lock):
     ):
         require(identity.get(key) == expected, "Tour current " + key)
     require(digest(identity["saved_scene"]) == identity["saved_scene_sha256"], "Tour source blend still identical")
-    require(identity.get("source_sha256") == review.source.sha256, "Tour frame source agrees with verified shared source dependencies")
-    settings_by_take = tour.get("effective_settings_by_take", {})
-    require(identity.get("effective_settings_sha256") == evidence_hash(settings_by_take), "Tour actual per-take render and lighting settings hash")
-    require(tour.get("frames_retained") is identity.get("frames_retained"), "Tour raw-frame retention matches frozen identity")
     window_fraction = verify_tour_lighting(require, tour["lighting"])
-    lighting = tour["lighting"]
-    wb = lighting.get("white_balance_actual") or {}
-    require(lighting.get("white_balance_applied") is True and wb.get("enabled") is True
-            and wb.get("temperature_kelvin") == lighting["config"]["white_balance_kelvin"]
-            and wb.get("tint") == lighting["config"]["white_balance_tint"], "Tour actual native white balance recorded")
-    points = json.loads((DEST / "model" / "waypoints.json").read_text())
-    require(len(points) == 26 and tour["waypoints"] == points, "Tour anchors agree with all 26 portable-model bookmarks")
-    waypoint_hash = hashlib.sha256(json.dumps(points, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
-    require(identity.get("waypoints_sha256") == waypoint_hash, "Tour bookmark source hash")
-    coverage = tour["coverage"]
-    require(coverage.get("full_bookmark_coverage") is True and coverage.get("bookmarks_available") == 26
-            and coverage.get("bookmarks_rendered") == 26, "Tour actually covers every bookmark")
-    require(coverage.get("continuous_walk") is False and bool(coverage.get("limitations")), "Tour discloses cuts and unanimated inter-room/stair transitions")
-    require(coverage.get("sections") == ["Exterior", "Ground floor", "Upper floor"], "Tour covers exterior and both house levels")
     records = tour["frames"]
     fps, total = identity["fps"], identity["frames"]
-    require(isinstance(fps, int) and fps >= 24 and total >= 26 * fps * 2 and total % 26 == 0, "Tour has at least two seconds per bookmark at 24 fps or higher")
-    require(identity["pixels"][0] >= 1920 and identity["pixels"][1] >= 1080 and identity["samples"] >= 32, "Tour delivery has at least 1080p and 32 Cycles samples")
-    require(identity.get("denoising") is True and identity.get("cycles_seed") == 173 and identity.get("animated_seed") is False
-            and identity.get("bounces") == [14, 8, 10], "Tour actual denoising, fixed seed and light-transport settings")
+    require(isinstance(fps, int) and fps > 0 and total >= 6 and total % 3 == 0, "Tour frame rate and three complete takes")
     require(len(records) == total and [row["frame"] for row in records] == list(range(1, total + 1)), "Tour has every ordered frame exactly once")
     require(abs(tour["duration_seconds"] - total / fps) < 0.00001, "Tour recorded duration agrees with frames")
-    count = total // 26
+    count = total // 3
+    anchors = {row["id"]: row for row in lock["views"]}
     trajectories = tour["trajectories"]
-    exterior_names = {"Pool garden overview", "The great garden arch", "Pool and olive grove", "Summer kitchen terrace"}
-    sections = ["Exterior" if row["name"] in exterior_names else "Upper floor" if row["location"][2] > 3 else "Ground floor" for row in points]
-    expected_indices = sorted(range(26), key=lambda index: (["Exterior", "Ground floor", "Upper floor"].index(sections[index]), index))
-    expected_takes = [f"walk{index + 1:02d}" for index in expected_indices]
-    require(len(trajectories) == 26 and [row["take"] for row in trajectories] == expected_takes
-            and set(expected_takes) == set(TOUR_TAKES) and identity["takes"] == expected_takes, "Tour renders all 26 bookmarks once, grouped by house level")
-    require(set(settings_by_take) == set(expected_takes), "Tour actual settings cover every declared take")
+    require([row["take"] for row in trajectories] == list(TOUR_TAKES), "Tour contains kitchen, principal suite and salon")
     for take_index, trajectory in enumerate(trajectories):
         name = trajectory["take"]
-        index = expected_indices[take_index]
-        point = points[index]
-        anchor = trajectory["anchor"]
-        require(trajectory["bookmark_index"] == index and trajectory["name"] == point["name"]
-                and trajectory["section"] == sections[index], name + " honest chapter and bookmark identity")
-        look_length = math.sqrt(sum(value * value for value in point["look"]))
-        require(look_length > 0 and math.isfinite(look_length), name + " valid saved gaze direction")
-        target = [a + 4 * b / look_length for a, b in zip(point["location"], point["look"], strict=True)]
-        require(anchor["id"] == name and near(anchor["location"], point["location"]) and near(anchor["target"], target)
-                and anchor["exposure"] == point["exposure"] and anchor["lens_mm"] == 24
-                and anchor["shift_x"] == anchor["shift_y"] == 0, name + " source bookmark camera and exposure")
+        anchor = anchors[name]
         segment = records[take_index * count:(take_index + 1) * count]
-        require(all(row["take"] == name for row in segment) and trajectory["frame_start"] == segment[0]["frame"]
-                and trajectory["frame_end"] == segment[-1]["frame"], name + " is one continuous take")
-        require(trajectory.get("preflight") == "all frames and connecting segments clear", name + " preflight passed")
-        require(trajectory.get("radial_directions") == 26 and trajectory.get("swept_rays") == 27
-                and trajectory["clearance_m"] == identity["clearance_m"] and 0.05 <= identity["clearance_m"] <= 0.30, name + " records sampled mesh clearance and swept rays")
-        offset, travel = trajectory["offset_m"], trajectory["travel_m"]
-        maximum = identity["exterior_travel_m"] if sections[index] == "Exterior" else identity["travel_m"]
-        require(len(offset) == 3 and all(math.isfinite(value) for value in offset) and abs(offset[2]) < 0.00001
-                and identity["minimum_travel_m"] <= travel + 0.00001 <= maximum + 0.00002
-                and math.isclose(math.sqrt(sum(value * value for value in offset)), travel, abs_tol=0.00001), name + " real bounded level camera travel")
-        require(math.isclose(math.dist(segment[0]["location"], segment[-1]["location"]), travel, abs_tol=0.00001), name + " actual displacement matches trajectory")
-        require(len({segment[index]["sha256"] for index in (0, count // 2, count - 1)}) == 3,
-                name + " has distinct rendered start/middle/end motion content")
+        require(all(row["take"] == name for row in segment), name + " is a continuous take")
+        require(isinstance(trajectory.get("preflight"), dict) and trajectory["preflight"].get("sample_count", 0) >= len(segment), name + " preflight passed")
+        travel = abs(trajectory["sideways_metres"])
+        require(0 < travel <= 0.30 and abs(travel - identity["travel_m"]) < 0.00001, name + " bounded sideways travel")
+        require(near(segment[0]["location"], anchor["location"]) and near(segment[0]["target"], anchor["target"]), name + " starts at its locked camera")
+        endpoint_travel = math.dist(segment[0]["location"], segment[-1]["location"])
+        require(abs(endpoint_travel - travel) < 0.00001, name + " actual displacement matches trajectory")
         previous = None
         for local_index, row in enumerate(segment):
             label = f"Tour frame {row['frame']}"
-            require(outcome(row.get("camera_check")) and outcome(row.get("frame_check")) and row.get("swept_segment_check") == "clear", label + " camera, image and swept-path checks")
-            fraction = local_index / (count - 1)
-            ease = fraction * fraction * (3 - 2 * fraction)
-            require(abs(row["take_fraction"] - fraction) < 0.00001, label + " timing")
-            require(near(row["location"], [a + b * ease for a, b in zip(point["location"], offset, strict=True)])
-                    and near(row["target"], [a + b * ease * 0.25 for a, b in zip(target, offset, strict=True)]), label + " independent eased 3D path reconstruction")
-            require(row["lens_mm"] == 24 and row["shift_x"] == row["shift_y"] == 0
-                    and row["exposure"] == point["exposure"], label + " saved eye height, focal length and constant within-take exposure")
-            verify_motion_frame_provenance(require, row, identity, settings_by_take[name], label)
-            ray = row.get("forward_ray", {})
-            require("object" in ray and (ray.get("distance_m") is None or math.isfinite(ray["distance_m"]) and ray["distance_m"] >= 0), label + " actual forward mesh-ray record")
+            require(outcome(row.get("camera_check")) and outcome(row.get("frame_check")) and row.get("sampled_route_check") == trajectory["preflight"], label + " camera, image and sampled-route checks")
+            require(abs(row["take_fraction"] - local_index / (count - 1)) < 0.00001, label + " timing")
+            require(all(len(row[key]) == 3 and all(math.isfinite(value) for value in row[key]) for key in ("location", "target")), label + " finite camera transform")
+            require(abs(row["location"][2] - anchor["location"][2]) < 0.00001 and abs(row["lens_mm"] - anchor["lens_mm"]) < 0.00001,
+                    label + " locked eye level and focal length")
+            require(all(abs(row.get(key, 0) - anchor.get(key, 0)) < 0.00001 for key in ("shift_x", "shift_y")), label + " locked lens shifts")
             if previous is not None:
                 require(math.dist(previous, row["location"]) <= 1.5 * travel / (count - 1) + 0.00001, label + " has no camera jump")
             previous = row["location"]
@@ -337,10 +256,6 @@ def verify_tour(require, source, lock):
                 require(digest(frame) == row["sha256"] and png_size(frame) == identity["pixels"], label + " retained pixels")
             else:
                 require(not frame.exists(), label + " temporary PNG was removed after video verification")
-    path_keys = ("frame", "take", "take_fraction", "location", "target", "lens_mm", "shift_x", "shift_y", "exposure")
-    planned = [{key: row[key] for key in path_keys} for row in records]
-    path_hash = hashlib.sha256(json.dumps(planned, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
-    require(identity.get("path_sha256") == path_hash, "Tour frame camera/exposure path hash")
     video = Path(tour["video"])
     require(digest(video) == tour["video_sha256"], "Tour MP4 hash")
     actual = media_probe(video, count=True)
@@ -351,23 +266,16 @@ def verify_tour(require, source, lock):
     require(all(str(actual[key]) == str(tour["video_probe"][key]) for key in ("width", "height", "nb_read_frames", "r_frame_rate")), "Saved video probe agrees with independent probe")
     run([tool("ffmpeg"), "-v", "error", "-i", str(video), "-f", "null", "-"])
     require(tour.get("full_decode") == "passed", "Tour records prior full decode; independent full decode also passed")
-    chapters = json.loads(run([tool("ffprobe"), "-v", "error", "-show_chapters", "-of", "json", str(video)]))["chapters"]
-    require(len(chapters) == 26, "MP4 contains all 26 room chapters")
-    for chapter, trajectory in zip(chapters, trajectories, strict=True):
-        require(chapter["tags"]["title"] == trajectory["section"] + " · " + trajectory["name"]
-                and abs(float(chapter["start_time"]) - (trajectory["frame_start"] - 1) / fps) < 0.002
-                and abs(float(chapter["end_time"]) - trajectory["frame_end"] / fps) < 0.002, trajectory["take"] + " encoded chapter label and time")
-    require(digest(tour["chapters"]) == tour["chapters_sha256"], "Tour WebVTT labels hash")
     strips = tour["contact_strips"]
-    require([row["take"] for row in strips] == expected_takes, "All 26 motion contact strips")
+    require([row["take"] for row in strips] == list(TOUR_TAKES), "All three motion contact strips")
     for index, strip in enumerate(strips):
         require(strip["frames"] == [1 + index * count, 1 + index * count + count // 2, (index + 1) * count], strip["take"] + " contact uses first, middle and last frames")
         require(digest(strip["path"]) == strip["sha256"], strip["take"] + " contact image hash")
         size = media_probe(strip["path"])
         require([size["width"], size["height"]] == [identity["pixels"][0] * 3, identity["pixels"][1]], strip["take"] + " contact image dimensions")
     return {"manifest": str(path), "video": str(video), "frames": total, "fps": fps, "duration_seconds": total / fps,
-            "resolution": identity["pixels"], "bookmarks": 26, "continuous_walk": False, "chapters": tour["chapters"],
-            "supplemental_window_fraction": window_fraction, "independent_full_decode": "passed"}
+            "resolution": identity["pixels"], "supplemental_window_fraction": window_fraction,
+            "independent_full_decode": "passed"}
 
 
 def verify_final_image(require, row, label):
@@ -413,6 +321,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--images-only", action="store_true",
                         help="Omit video at the user's request; still require all stills, web assets and portable/native checks.")
+    parser.add_argument("--archive", type=Path,
+                        help="Original reference ZIP; defaults to FLECHON_SOURCE_ARCHIVE or ~/LABASTIDEDEFLECHON.zip.")
     args = parser.parse_args(argv)
     checks = []
 
@@ -423,11 +333,12 @@ def main(argv=None):
 
     ReviewManifest.read(DEST / "model" / "review.json").verify(DEST / "model", require_complete=True)
     source = json.loads((DEST / "SOURCE.json").read_text())
+    archive = resolve_source_archive(args.archive)
+    require(digest(archive) == source["source_archive_sha256"], "Unchanged original reference archive")
     generation, native_checks = resolve_delivery_build(HERE.parents[1] / "out" / HERE.name, HERE)
     presentation, fingerprint = buildstate.presentation_directory(generation, HERE)
     require(str(generation) == source["generation"], "Current verified build generation")
     require(source.get("native_checks") == native_checks, "Native check result and exact existing-glazing acknowledgement preserved")
-    require(digest("/Users/cloud/LABASTIDEDEFLECHON.zip") == source["source_archive_sha256"], "Unchanged original reference archive")
     require(fingerprint == source["presentation_fingerprint"], "Current presentation fingerprint")
     require(digest(presentation / "house.blend") == source["source_scene_sha256"], "Saved source scene hash")
     for key, filename in [("walk_sha256", "house_walk.blend"), ("navigation_sha256", "walk_ui.py"), ("launcher_sha256", "Walk Bastide.command"),

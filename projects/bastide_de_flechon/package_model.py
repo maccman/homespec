@@ -4,13 +4,14 @@ Run after homespec render projects/bastide_de_flechon --mode still.
 This uses the published generation and checks its source/artifact freshness.
 """
 
+import argparse
 import json
 import shutil
 import subprocess
 import tempfile
 from pathlib import Path
 
-from delivery_support import digest, resolve_delivery_build
+from delivery_support import digest, resolve_delivery_build, resolve_source_archive
 
 from homespec import buildstate
 from homespec.pipeline import blender_binary
@@ -23,7 +24,14 @@ ROOT = REPO / "out" / PROJECT.name
 DEST = PROJECT / "deliverables"
 
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--archive", type=Path,
+                        help="Original reference ZIP; defaults to FLECHON_SOURCE_ARCHIVE or ~/LABASTIDEDEFLECHON.zip.")
+    args = parser.parse_args(argv)
+    # Resolve and hash before Blender, publication, or any output mutations.
+    archive = resolve_source_archive(args.archive)
+    archive_hash = digest(archive)
     generation, acknowledged = resolve_delivery_build(ROOT, PROJECT)
     presentation, fingerprint = buildstate.presentation_directory(generation, PROJECT)
     scene = presentation / "house.blend"
@@ -111,8 +119,9 @@ exec "$TASK_BLENDER_BIN" "$TASK_MODEL_DIR/house_walk.blend" --python "$TASK_MODE
         "walk_sha256": buildstate.digest(model / "house_walk.blend"),
         "navigation_sha256": buildstate.digest(model / "walk_ui.py"),
         "launcher_sha256": buildstate.digest(model / "Walk Bastide.command"),
-        "source_archive": "LABASTIDEDEFLECHON.zip",
-        "source_archive_sha256": digest(Path("/Users/cloud/LABASTIDEDEFLECHON.zip")),
+        "source_archive": archive.name,
+        "source_archive_path": str(archive),
+        "source_archive_sha256": archive_hash,
         "native_checks": acknowledged,
         "packager_sha256": digest(Path(__file__)),
         "prepare_walk_sha256": digest(PROJECT / "prepare_walk.py"),

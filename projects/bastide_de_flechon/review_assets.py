@@ -27,6 +27,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 from PIL import __version__ as PILLOW_VERSION
+from review_asset_support import verify_render_mapping
 
 PROJECT = Path(__file__).resolve().parent
 BASELINE = PROJECT / 'deliverables/baseline'
@@ -112,15 +113,10 @@ def verify_authoritative(manifest_path, manifest, *, allow_partial=False):
     review.verify(path.parent, require_complete=not allow_partial)
     if review.source.scene.sha256 != manifest.get('saved_scene_sha256', manifest.get('source_scene_sha256')):
         raise ValueError('Legacy and authoritative scene hashes disagree: ' + str(manifest_path))
-    artifacts = {(path.parent / row.path).resolve(): row for row in review.artifacts if row.kind == 'render'}
     rows = manifest.get('views', [])
-    if len(rows) != len(artifacts):
-        raise ValueError('Legacy and authoritative render coverage disagree: ' + str(manifest_path))
+    verify_render_mapping(review, rows, manifest_path.parent, path.parent)
     for row in rows:
-        rendered = render_file(row, manifest_path)
-        artifact = artifacts.get(rendered)
-        if artifact is None or artifact.sha256 != row.get('sha256'):
-            raise ValueError('Legacy render is absent from authoritative review: ' + str(rendered))
+        render_file(row, manifest_path)
     return file_record(path)
 
 

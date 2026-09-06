@@ -6,12 +6,23 @@ import hashlib
 import json
 import math
 import os
+import zipfile
 from pathlib import Path
 
 
 def digest(path):
     with Path(path).open("rb") as stream:
         return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def resolve_source_archive(path=None):
+    """Locate the original ZIP explicitly, from the environment, or in the user's home."""
+    archive = Path(path or os.environ.get("FLECHON_SOURCE_ARCHIVE") or Path.home() / "LABASTIDEDEFLECHON.zip").expanduser().resolve()
+    if not archive.is_file():
+        raise FileNotFoundError(f"Original reference ZIP not found: {archive}; set --archive or FLECHON_SOURCE_ARCHIVE")
+    if not zipfile.is_zipfile(archive):
+        raise ValueError(f"Original reference archive is not a valid ZIP: {archive}")
+    return archive
 
 
 def delivery_pixels(size, quality, *, preview_scale=1, draft_scale=.5):
