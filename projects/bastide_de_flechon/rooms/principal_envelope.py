@@ -46,6 +46,7 @@ def floorboards(scene, M):
                                 (right - left - .002, high - y - .002, .018), mat, bevel=.001)
                 obj.data = obj.data.copy()
                 layer = obj.data.uv_layers.new(name='Individual board grain metres')
+                layer.active_render = True
                 u_offset, v_offset = rng.uniform(0, 4), rng.uniform(0, .55)
                 for face in obj.data.polygons:
                     for loop in face.loop_indices:

@@ -348,6 +348,7 @@ def furniture_grain(ob, along=None):
     extents = [max(v.co[d] for v in ob.data.vertices) - min(v.co[d] for v in ob.data.vertices) for d in range(3)]
     along = max(range(3), key=lambda d: extents[d]) if along is None else along
     layer = ob.data.uv_layers.get("Wood member metres") or ob.data.uv_layers.new(name="Wood member metres")
+    layer.active_render = True
     ob.data.uv_layers.active = layer
     for face in ob.data.polygons:
         normal_axis = max(range(3), key=lambda d: abs(face.normal[d]))

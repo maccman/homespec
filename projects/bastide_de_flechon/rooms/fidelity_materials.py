@@ -11,6 +11,7 @@ import math
 import os
 
 import bpy
+from primitives import ensure_unique_mesh
 
 TEXTURES = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "textures"))
 
@@ -112,6 +113,7 @@ def surface(name, texture, *, scale=1.0, uv=False, gain=(1, 1, 1), saturation=1.
 
 def assign(ob, material):
     if ob and ob.type == "MESH":
+        ensure_unique_mesh(ob)
         ob.data.materials.clear()
         ob.data.materials.append(material)
         for p in ob.data.polygons:

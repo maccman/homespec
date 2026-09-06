@@ -10,7 +10,7 @@ before opening a pull request.
 
 ```bash
 export PYTHONPATH=$PWD
-homespec build projects/bastide_montfuron         # IR, IFC, drawings, schedules, checks (must all pass)
+homespec build projects/bastide_montfuron         # IR, IFC, drawings, schedules, checks; report failures
 homespec views projects/bastide_montfuron         # Workbench diagnostics: plans, sections, structure
 homespec audit projects/bastide_montfuron         # the dressed scene: things in walls, floating, in the way
 HOMESPEC_ROOM=hall HOMESPEC_RES=960x540 HOMESPEC_SAMPLES=48 homespec render projects/bastide_montfuron --mode still --frame 1,97
@@ -22,11 +22,13 @@ to a checkout that has them under `assets/`).
 
 ## Rules
 
-- **Invoke the `design-audit` skill** whenever you dress or change a room
+- **Invoke the [design-audit skill](.claude/skills/design-audit/SKILL.md)** whenever you dress or change a room
   in `rooms/`, change anything a person walks through or on in a spec
   (stairs, doors, arches, walls, floor voids), review or regenerate the
   gallery, or are asked why a render looks wrong. Run `homespec audit`
-  after every such change and fix what it finds; never loosen it to pass.
+  after every such change and fix modeling or placement defects; never loosen
+  it to pass. Honor review-only scope and preserve evidence-backed existing
+  conditions, reporting unresolved guideline failures separately.
 - Every spec change a reader could ask "why?" about gets a `## D-nnn` in
   the project's `decisions.md` with an `Entities:` line; the build checks
   the ids. Keep the three ledgers at the end current.

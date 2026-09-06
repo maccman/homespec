@@ -10,18 +10,20 @@ import json
 import math
 import os
 import shutil
-import struct
 import subprocess
 import zipfile
 from fractions import Fraction
 from pathlib import Path
 
 from homespec import buildstate
+from homespec.review import ReviewManifest
+from homespec.review import png_size as image_dimensions
 
 HERE = Path(__file__).resolve().parent
 DEST = HERE / "deliverables"
-TOUR_TAKES = ("kitchen10", "principal06", "salon58")
-LIGHT_CONTROL_VIEWS = ("kitchen10", "salon58")
+COVERAGE = json.loads((HERE / "delivery_coverage.json").read_text())
+TOUR_TAKES = tuple(COVERAGE["tour_takes"])
+LIGHT_CONTROL_VIEWS = tuple(COVERAGE["light_control_views"])
 
 
 def digest(path):
@@ -30,11 +32,7 @@ def digest(path):
 
 
 def png_size(path):
-    with open(path, "rb") as stream:
-        header = stream.read(24)
-    if len(header) != 24 or header[:8] != b"\x89PNG\r\n\x1a\n" or header[12:16] != b"IHDR":
-        raise RuntimeError(f"Not a complete PNG header: {path}")
-    return list(struct.unpack(">II", header[16:24]))
+    return list(image_dimensions(path))
 
 
 def run(command):
@@ -127,6 +125,7 @@ def verify_light_controls(require, source, lock, tuned):
     manifests = {}
     for state, fraction in (("off", 0), ("on", 1)):
         path = DEST / ("light-controls-" + state) / "camera-review-manifest.json"
+        ReviewManifest.read(path.parent / "review.json").verify(path.parent)  # explicitly partial lighting diagnostic
         manifest = json.loads(path.read_text())
         manifests[state] = manifest
         require(manifest["saved_scene_sha256"] == source["source_scene_sha256"]
@@ -190,6 +189,7 @@ def verify_tour(require, source, lock):
     candidates = [Path(override)] if override else sorted(DEST.glob("*/tour-manifest.json"))
     require(len(candidates) == 1, "Exactly one delivery tour manifest (or FLECHON_TOUR_MANIFEST selects it)")
     path = candidates[0]
+    ReviewManifest.read(path.parent / "review.json").verify(path.parent, require_complete=True)
     tour = json.loads(path.read_text())
     identity = tour["identity"]
     require(tour.get("status") == "verified", "Tour render and encoding completed")
@@ -218,7 +218,7 @@ def verify_tour(require, source, lock):
         anchor = anchors[name]
         segment = records[take_index * count:(take_index + 1) * count]
         require(all(row["take"] == name for row in segment), name + " is a continuous take")
-        require(trajectory.get("preflight") == "all frames and connecting segments clear", name + " preflight passed")
+        require(isinstance(trajectory.get("preflight"), dict) and trajectory["preflight"].get("sample_count", 0) >= len(segment), name + " preflight passed")
         travel = abs(trajectory["sideways_metres"])
         require(0 < travel <= 0.30 and abs(travel - identity["travel_m"]) < 0.00001, name + " bounded sideways travel")
         require(near(segment[0]["location"], anchor["location"]) and near(segment[0]["target"], anchor["target"]), name + " starts at its locked camera")
@@ -227,7 +227,7 @@ def verify_tour(require, source, lock):
         previous = None
         for local_index, row in enumerate(segment):
             label = f"Tour frame {row['frame']}"
-            require(outcome(row.get("camera_check")) and outcome(row.get("frame_check")) and row.get("swept_segment_check") == "clear", label + " camera, image and swept-path checks")
+            require(outcome(row.get("camera_check")) and outcome(row.get("frame_check")) and row.get("sampled_route_check") == trajectory["preflight"], label + " camera, image and sampled-route checks")
             require(abs(row["take_fraction"] - local_index / (count - 1)) < 0.00001, label + " timing")
             require(all(len(row[key]) == 3 and all(math.isfinite(value) for value in row[key]) for key in ("location", "target")), label + " finite camera transform")
             require(abs(row["location"][2] - anchor["location"][2]) < 0.00001 and abs(row["lens_mm"] - anchor["lens_mm"]) < 0.00001,
@@ -272,6 +272,7 @@ def main():
         if not condition:
             raise RuntimeError(label)
 
+    ReviewManifest.read(DEST / "model" / "review.json").verify(DEST / "model", require_complete=True)
     source = json.loads((DEST / "SOURCE.json").read_text())
     generation = buildstate.resolve_build(HERE.parents[1] / "out" / HERE.name, HERE, allow_failed_checks=False)
     presentation, fingerprint = buildstate.presentation_directory(generation, HERE)
@@ -282,14 +283,15 @@ def main():
         require(digest(DEST / "model" / filename) == source[key], filename + " hash")
     require((DEST / "model" / "Walk Bastide.command").stat().st_mode & 0o111, "Executable portable launcher")
     points = json.loads((DEST / "model" / "waypoints.json").read_text())
-    require(len(points) == 26 and len({row["name"] for row in points}) == 26, "All 26 distinct navigation bookmarks")
+    require(len(points) == COVERAGE["navigation_bookmark_count"] and len({row["name"] for row in points}) == COVERAGE["navigation_bookmark_count"], "All 26 distinct navigation bookmarks")
     for filename in ("house.ifc", "checks.json"):
         require(digest(DEST / filename) == digest(generation / filename), filename + " matches generation")
+    ReviewManifest.read(DEST / "gallery" / "review.json").verify(DEST / "gallery", require_complete=True)
     gallery = json.loads((DEST / "gallery-manifest.json").read_text())
     require(gallery["source_scene_sha256"] == source["source_scene_sha256"], "Gallery from current scene")
     require(gallery["script_sha256"] == digest(HERE / "verify_views.py"), "Gallery uses current renderer")
     require(gallery.get("render_engine") == "CYCLES", "Room gallery consists of actual Cycles renders")
-    require(len(gallery["views"]) == 26 and sorted(row["index"] for row in gallery["views"]) == list(range(1, 27)), "All 26 room renders without duplicate indices")
+    require(len(gallery["views"]) == len(points) and sorted(row["index"] for row in gallery["views"]) == list(range(1, len(points) + 1)), "All 26 room renders without duplicate indices")
     for row in gallery["views"]:
         point = points[row["index"] - 1]
         require(row["name"] == point["name"] and near(row["location"], point["location"]), "Gallery matches bookmark " + row["name"])
@@ -303,6 +305,7 @@ def main():
     baseline = json.loads((DEST / "baseline" / "SOURCE.json").read_text())
     tuned = {}
     for folder in ("photo-comparison", "comparison-baseline"):
+        ReviewManifest.read(DEST / folder / "review.json").verify(DEST / folder, require_complete=True)
         manifest = json.loads((DEST / folder / "camera-review-manifest.json").read_text())
         require(manifest["camera_lock_sha256"] == lock_hash, folder + " uses final camera lock")
         require(manifest["camera_script_sha256"] == digest(HERE / "photo_camera_review.py"), folder + " uses current comparison renderer")
@@ -324,9 +327,10 @@ def main():
     require(digest(DEST / "baseline" / "house_walk.blend") == baseline["walk_sha256"], "Preserved baseline remains identical")
     light_controls = verify_light_controls(require, source, lock, tuned)
     study = json.loads((DEST / "material-studies" / "material-study-manifest.json").read_text())
+    ReviewManifest.read(DEST / "material-studies" / "review.json").verify(DEST / "material-studies", require_complete=True)
     require(study["scene_sha256"] == source["source_scene_sha256"], "Material studies from current scene")
     require(study["script_sha256"] == digest(HERE / "material_studies.py"), "Material studies use current assigned-material renderer")
-    require(len(study["samples"]) == 12 and len(study["sample_sources"]) == 12
+    require(len(study["samples"]) == COVERAGE["material_sample_count"] and len(study["sample_sources"]) == COVERAGE["material_sample_count"]
             and all(row["visible_source_objects"] for row in study["sample_sources"]), "Twelve material samples have visible scene assignments")
     require(len(study["visible_rows_left_to_right"]) == 4 and all(len(row) == 3 for row in study["visible_rows_left_to_right"]), "Material study records exact four-row layout")
     require(bool(study["shader_checks"]) and all(not row["Normal"] and not row["Roughness"] for row in study["shader_checks"]), "Generated pigment is independent of relief and roughness")

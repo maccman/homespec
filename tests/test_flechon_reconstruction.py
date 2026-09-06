@@ -69,3 +69,18 @@ def test_segmental_kitchen_door_void_and_glass_share_shallow_head():
     glass = build["D.glass"].solid
     assert G.bbox(glass).max[2] == pytest.approx(2385, abs=.1)
     assert G.volume(glass - void) < 1
+
+
+def test_migrated_roof_cuts_an_emitted_cornice_after_its_parent_is_realized():
+    from homespec import Roof
+    from projects.bastide_de_flechon.project import TracedRoof
+
+    with House("roof_part_dependency") as house:
+        Level("L0", height=3000)
+        TracedRoof("wing", outline=[(2500, -300), (4500, -300), (4500, 600), (2500, 600)],
+                   ridge_angle=0, eave=3070, level="L0", cut_against=["main.genoise"])
+        Roof("main", outline=[(0, 0), (3000, 0), (3000, 3000), (0, 3000)],
+             shape="flat", eave=3300, genoise=1, thickness=200, overhang=200, level="L0")
+    b = house.compile()
+    assert G.volume(b["wing"].solid) < G.volume(b["wing.surface"].solid)
+    assert not G.overlap(b["wing"].solid, b["main.genoise"].solid)

@@ -12,6 +12,8 @@ from pathlib import Path
 
 from homespec import buildstate
 from homespec.pipeline import blender_binary
+from homespec.review import Coverage, FileIdentity, ReviewArtifact, ReviewManifest, png_size, publish_review_directory, verified_source
+from homespec.review import fingerprint as review_fingerprint
 
 PROJECT = Path(__file__).resolve().parent
 REPO = PROJECT.parent.parent
@@ -30,16 +32,10 @@ def main():
     blender = blender_binary()
     build = json.loads((generation / "build.json").read_text())
     with buildstate.build_lock(presentation):
-        metadata = presentation / "presentation.json"
-        if not metadata.is_file():
-            raise SystemExit("The scene has no completed presentation record; rerun homespec render.")
-        record = json.loads(metadata.read_text())
-        expected = {"generation": generation.name, "build_fingerprint": build["fingerprint"], "presentation_fingerprint": fingerprint}
-        if any(record.get(key) != value for key, value in expected.items()):
-            raise SystemExit("Scene provenance does not match the current build; rerun homespec render.")
-        # Still-mode presentation metadata does not carry a .blend hash. Record
-        # its current hash and keep the locked source stable throughout export.
-        source_hash = buildstate.digest(scene)
+        review_source = verified_source(generation, PROJECT, dependencies=tuple(
+            FileIdentity.capture(PROJECT / name, "packaging-script-or-declaration")
+            for name in ("prepare_walk.py", "verify_walk.py", "walk_ui.py", "package_model.py", "delivery_coverage.json")))
+        source_hash = review_source.scene.sha256
         with tempfile.TemporaryDirectory(prefix=".walk-package-", dir=DEST) as temporary:
             staged = Path(temporary)
             subprocess.run([blender, "-b", str(scene), "--python-exit-code", "1", "--python", str(PROJECT / "prepare_walk.py"), "--", str(staged)], check=True)
@@ -78,7 +74,26 @@ exec "$TASK_BLENDER_BIN" "$TASK_MODEL_DIR/house_walk.blend" --python "$TASK_MODE
             _, current_fingerprint = buildstate.presentation_directory(generation, PROJECT)
             if current_fingerprint != fingerprint or buildstate.digest(scene) != source_hash:
                 raise RuntimeError("The source scene changed while packaging; rerun packaging.")
-            shutil.copytree(staged, model, dirs_exist_ok=True)
+            coverage = Coverage(**json.loads((PROJECT / "delivery_coverage.json").read_text())["model"])
+            review = ReviewManifest(review_source, coverage, {"purpose": coverage.purpose, "mode": "portable-model", "packing": "Blender pack_all plus independent reload verification"})
+            camera_hash = review_fingerprint(json.loads((staged / "waypoints.json").read_text()))
+            verified = json.loads((staged / "packed-model-verification.json").read_text())
+            if verified.get("packed_resources_verified") is not True or verified.get("scene_sha256") != buildstate.digest(staged / "house_walk.blend"):
+                raise RuntimeError("Packed model has no matching independent resource verification")
+            for identifier, name, kind in (("packed-model", "house_walk.blend", "model"), ("navigation", "walk_ui.py", "report"),
+                                          ("launcher", "Walk Bastide.command", "report"), ("waypoints", "waypoints.json", "report"),
+                                          ("packed-model-verification", "packed-model-verification.json", "report")):
+                review.add(ReviewArtifact(identifier, name, buildstate.digest(staged / name), review_source.sha256, camera_hash,
+                                          review.settings_sha256, kind=kind, details=verified if kind == "model" else {}), staged)
+            for preview in sorted((staged / "walk-previews").glob("*.png")):
+                review.add(ReviewArtifact("preview:" + preview.stem, preview.relative_to(staged).as_posix(), buildstate.digest(preview),
+                                          review_source.sha256, camera_hash, review.settings_sha256, png_size(preview)), staged)
+            review.complete(staged)
+            review.write(staged / "review.json")
+            # Only publish a complete model subpackage after shared coverage/hash validation.
+            # Existing deliverables are retained elsewhere by the project baseline workflow.
+            publish_review_directory(staged, model)
+            ReviewManifest.read(model / "review.json").verify(model, require_complete=True)
     for name in ("house.ifc", "checks.md", "checks.json", "requirements.ids"):
         if (generation / name).exists():
             shutil.copy2(generation / name, DEST / name)

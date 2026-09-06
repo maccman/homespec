@@ -263,7 +263,8 @@ def record_presentation(generation: Path, directory: Path, presentation_fingerpr
     check_freshness(record["inputs"])
     provenance = {"generation": generation.name, "build_fingerprint": record["fingerprint"],
                   "presentation_fingerprint": presentation_fingerprint}
-    atomic_json(directory / "presentation.json", provenance)
+    scene_hashes = {name: digest(directory / name) for name in ("house.blend", "house_walk.blend") if (directory / name).is_file()}
+    atomic_json(directory / "presentation.json", {**provenance, "scene_hashes": scene_hashes})
     if saved_scene:
         scene = directory / "house_walk.blend"
         if not scene.is_file():

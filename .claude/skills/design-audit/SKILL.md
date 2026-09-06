@@ -1,131 +1,187 @@
 ---
 name: design-audit
-description: Audit a room, a storey or a whole house in a homespec project the way an architect and an interior designer would, then fix what fails. Use before and after dressing a room's presentation, when a spec change touches circulation (stairs, doors, arches, walls, floor voids), when reviewing or regenerating gallery renders, or whenever a render "looks wrong" and nobody can say why.
+description: Audit and improve HomeSpec geometry, room dressing and rendered evidence. Use for circulation changes (stairs, doors, arches, walls or floor voids), before and after dressing a room, and when reviewing gallery images or diagnosing a render that looks wrong.
 ---
 
 # Design audit
 
-A house is judged twice: the build checks the building (`checks.md`), and
-this audit judges what the presentation puts in it and how the two read
-together. Most of it is mechanical and runs in a minute; the rest is
-looking, with a list of what to look for. Do the mechanical part first,
-always; it catches what an eye slides over (a console 0.9 m inside a wall
-read as a table against it for a whole day).
+The build checks the building; the dressed-scene audit checks what the
+presentation places inside it. Visual inspection checks what neither can
+establish. A passing build, clean audit or small camera residual is evidence
+of consistency, not proof of photographic fidelity or a continuous safe route.
 
-## 1. The mechanical pass
+## Establish the task and evidence
 
-From the project root, using the locked environment:
+Read the project's brief, `decisions.md`, relevant plans and original references.
+Distinguish a design proposal from reconstruction of an existing building.
+For reconstruction, preserve observed geometry and label plan-derived, inferred
+and unverified choices. Report conflicts between evidence and design guidelines;
+do not remodel the building or weaken a check just to make the report green.
+For a design proposal, use the requested constraints and resolve actual defects.
+Keep dimensions, palette, staging and editorial choices in the project.
+
+Work within the requested scope. A room fix needs affected views; a documentation
+edit does not need a house render. For review-only requests, report findings
+without editing sources; honor explicit rendering and delivery deferrals.
+Use background Blender processes and preserve
+interactive scenes. If another task owns the render worker, coordinate its use
+and release it after the batch. Follow the repository's
+[authorization and rendering limits](../../../CLAUDE.md); ordinary still review
+does not imply permission for a movie, merge or external publication.
+
+## Build and inspect the geometry
+
+From the repository root, using the locked environment:
 
 ```bash
-uv run --frozen homespec build projects/<project>            # after any source or decisions change; every check must pass
-uv run --frozen homespec views projects/<project> --only plan,section --focus <ids>   # Workbench, seconds: plans per storey, two sections
-uv run --frozen homespec audit projects/<project>            # the dressed scene: one line per finding, with a position
+uv run --frozen homespec build projects/<project>
+uv run --frozen homespec views projects/<project> --only plan,section --focus <ids>
+uv run --frozen homespec audit projects/<project>
 ```
 
-Builds publish a complete generation through `out/<project>/manifest.json`.
-Views and audits resolve that generation and verify source freshness and artifact
-hashes. Presentation outputs live separately under
-`out/<project>/presentation/<generation>/<presentation-fingerprint>/`; record
-that provenance when publishing gallery images. Rebuild after changing source
-(including `presentation.py`, `rooms/` or package Python files) or decisions.
-Diagnostic views may inspect a complete build with failed checks, but finish
-this workflow with passing checks.
+Choose actual entity ids for optional close-ups, and inspect the generated plans
+and sections with the available image viewer. Check the room's footprint,
+openings, floor voids, ceiling and stair arrival before placing details.
 
-`homespec audit` (and the first lines of every render) reports, per placed
-object:
+Builds publish complete generations through `out/<project>/manifest.json`.
+Consumers resolve a verified generation and check source freshness and artifact
+hashes. Presentation outputs belong to
+`out/<project>/presentation/<generation>/<presentation-fingerprint>/`.
+Rebuild after changing model or presentation sources, package Python files or
+project decisions, before generating affected presentation artifacts. Do not
+assemble a scene from loose files belonging to different generations.
 
-| finding | meaning | usual cause |
-|---|---|---|
-| `inside_wall` | shares more than 60 mm with a wall | a piece placed on the wall's centre line, a rotation that never happened, the wrong face of a wall (`y 7.5` when the wall is `7.5..8.0`) |
-| `floating` | nothing within 30 mm under it, 50 mm beside it, 1.5 m above it | a table top lower than the model's box (a console's upturned ends), a counter at 0.90 dressed at 0.95, a bench whose legs are missing |
-| `in_the_way` | in the metre before a door or an arch, at a flight's foot or head, beside its first treads | a bed across a doorway, a pot at the foot of a stair, a chair in an arch's approach |
-| `through_the_ceiling` / `below_the_floor` | rises above its storey or sinks under it | a tall picture placed by its bottom as if by its centre, a mirror over a mantel |
-| `off_the_wall` | a thin thing stands 50 to 300 mm from a wall | a picture hung on the wall's centre line, or on a wall face remembered wrongly |
-| `hangs_low` | hung from the building with its lowest point under 2 m over the floor | a pendant placed by its fixing's height on an upper floor |
+Read failed build checks and every dressed-scene finding:
 
-Read every line. A finding is a fact about geometry; decide whether it is
-wrong (almost always) or construction (a batten bedded in a wall). Never
-loosen the audit to make a finding go away; move the thing, or the wall.
+| Finding | Meaning / likely cause |
+| --- | --- |
+| `inside_wall` | More than 60 mm into a wall: wrong wall face, misplaced back or wrong rotation. |
+| `floating` | No support within the audit's probes: wrong tabletop height, absent legs or an inappropriate support surface. |
+| `in_the_way` | Occupies a door approach or stair entry/arrival: furniture, trim or a guard crosses the usable passage. |
+| `through_the_ceiling` / `below_the_floor` | Wrong storey, vertical origin or object extent. |
+| `off_the_wall` | A thin object stands 50–300 mm from the wall: misplaced picture, mirror or wall lamp. |
+| `hangs_low` | A suspended object's lowest point is below the audit's 2 m clearance. |
 
-The build's own rules that matter here: `stair_lands_clear` (a landing
-at least the flight's width beyond the top riser), `stair_proportions`,
-`headroom_under_beam`, `stair_headroom` (2000 mm above every tread and
-arrival area against physical solids), `room_access` (local access only), `no_clash` (every pair of solids sharing volume, and
-whether construction allows it).
+Inspect the reported geometry before choosing a fix. Construction overlaps need
+a concrete construction explanation under the project's clash policy. Correct
+placement, geometry or an actual checker defect; never loosen thresholds to
+hide a finding. An evidence-backed existing condition that violates a guideline
+remains visible in the report. Diagnostics may inspect a complete failed-check
+build; render consumers require a passing build by default. Where a requested
+diagnostic needs `--allow-failed-checks`, report that status explicitly. The flag
+cannot bypass stale sources, incomplete generations or damaged artifacts.
 
-## 2. The principles, for the eye
+Useful build rules include `stair_lands_clear`, `stair_proportions`,
+`headroom_under_beam`, `stair_headroom`, `room_access` and `no_clash`.
+Tread clearance covers the supplied treads and approach zones up to the finite
+checked height (normally 2000 mm). `room_access` is local access. Neither
+certifies a continuous escape route or a moving body's swept volume.
+The dressed audit selects tagged, visible objects and uses size thresholds and
+support probes. Inspect small, untagged or hidden objects and visual defects
+separately; zero findings does not establish complete scene coverage.
 
-Render the room's shots at low resolution (`HOMESPEC_ROOM=<room>
-HOMESPEC_RES=960x540 HOMESPEC_SAMPLES=48`) and look at every frame with
-the Read tool, against the plan. Judge each of these in order; the first
-group is architecture and outranks the rest.
+## Fix through the shared geometry and material contracts
 
-**Circulation is sacred.** A route from every door to every other door
-and to every stair, 900 mm wide, with nothing in it. The metre in front
-of a door, on both sides, is empty. A flight is entered from its foot or,
-where it starts at a wall, from the side over open bottom treads; it
-lands on a landing at least its own width deep, and a guard rail never
-crosses where it arrives. An arch is a route, not a niche for a chair.
+Use the existing constructor DSL and Blender helpers before adding a project
+implementation. Keep one owner for each wall, opening, roof or room envelope.
+Read only the relevant API guide when a change touches it:
 
-**Every object rests on something, and on the right thing.** Feet on a
-floor, a lamp on a table's flat top (measure the top; a model's box lies
-about altar tables and counters), a picture with its back on a wall, a
-chandelier hung from a ceiling with a chain or a rod, not from air. Nothing
-sits half in a wall: a console is against a wall when its back is 10 to
-20 mm off the face.
+| Task | Read and apply |
+| --- | --- |
+| Openings, composed doors, roof junctions or linings | [Opening profiles and roof surfaces](../../../docs/opening-roof-surfaces.md). Reuse the host's exact cutter/profile; distinguish clear passage from fixed lights, and structural attachment from the completed skin. |
+| Floor/wall courses, room finishes, skirting or tread zones | [Host surfaces and finishes](../../../docs/surface-details.md). Use final surfaces with their holes and room boundaries. Declare all opening cuts affecting trim or infill. |
+| Local texture assets, grain or surface response | [Material assets](../../../docs/material-assets.md). Declare asset inputs, hashes, channel roles and physical repeat dimensions; retain provenance and uncertainty. |
+| Repeated Blender parts or per-object edits | [Primitive sharing](../../../docs/blender-primitives.md). Default primitives are independent; explicit instances and imported assets may share meshes. |
+| Photographic cameras, lighting studies or review delivery | [Photo review](../../../docs/photo-review.md). Use typed cameras, reversible controls and source/coverage manifests. |
 
-**Things face what they are for.** A chair faces a table, a fire, a
-window or another chair, never a wall 300 mm away. A sofa's back is to the
-wall or to the room's edge, never to the fire it was placed for. A bed's
-head is against a wall with 600 mm to walk past on each side; its foot
-does not face the door it blocks. Mirrors and pictures face into the room.
+Read wall frames, room polygons, opening profiles and stair facts from the IR.
+Bounding boxes are useful for extents; they do not describe an exact cut surface,
+an opening's usable passage or a sloping ceiling. Room outlines are inside faces;
+the wall body lies outside them. IR coordinates are millimetres, presentation
+coordinates are metres, Z up. Convert once at the boundary.
 
-**Scale is the room's.** A piece fits its room with air around it: a
-2.4 m console wants a 4 m wall. A plant is no taller than two thirds of
-the ceiling, a rug lies under the whole group of furniture with its front
-legs on it, a pendant clears 2.1 m under it (2.0 m over a table). Nothing
-is 1.5x the size of the thing it stands beside unless it is meant to be.
+Use compiled `PlanarSurface` and member frames for placement and mapping instead
+of repeating roof pitch, floor footprint or timber axes in a project helper.
+Retain concavity, apertures and clipping. Geometric joints and silhouette-changing
+relief belong in geometry; color textures supply pigment, and shader bump does
+not displace the silhouette. Roughness and normals need their own declared
+response, not an arbitrary conversion from a color image.
 
-**Light at three heights.** A ceiling light, a table lamp, a wall sconce;
-every lit shade emits, none reads black. Daylight comes from the windows
-the spec has, so furniture does not turn its back on them.
+Before editing shared vertices, UVs or face/material slots, call
+`scene.ensure_unique_mesh`; `scene.set_material` isolates its slot edit.
+Copy a shared material before changing one object's shader graph. Use metric,
+named UV layers and actual member frames; preserve other finishes and endgrain.
+Do not reinstall a project monkeypatch that changes primitive sharing globally.
 
-**Composition.** One focal point per view (the fire, the stair, the
-window), a foreground, a middle, a background; symmetry where the
-architecture is symmetrical (sconces flanking an arch, chairs flanking a
-console) and nowhere else; surfaces dressed but not crowded (three things
-on a console, not eight); textiles and plants where people live. The
-listing's photographs (`docs/agents/refs/`) are the standard.
+Check asset axes before rotation: chairs, sofas, benches and beds face -Y;
+consoles and tables run along X; pictures, mirrors and wall lamps are thin along
+Y. Inspect actual support surfaces and dimensions rather than assuming a model's
+bounding box is its flat top. Test an unfamiliar asset alone when needed.
 
-**Tell-tales in a render.** A flight that meets a ceiling or a wall with
-no landing visible; a candlestick with a shadow on the wall and nothing
-under it; a chair's back to the camera when its front should show; a
-picture flat against a wall that is the wrong wall; a piece cut by the
-frame edge that would explain the room if the camera stepped back. If a
-shot needs a wider lens to make sense, the room is wrong, not the lens.
+A reasoned spec change gets a `## D-nnn` entry with affected `Entities:` and
+updated evidence, alternatives and unverified-work ledgers. Rebuild after the
+last relevant edit, rerun the dressed-scene audit, then inspect affected stills.
+When changing a reusable geometry or Blender helper, follow
+[CONTRIBUTING](../../../CONTRIBUTING.md) and add an independent fixture that
+checks its observable contract. Run the relevant real Blender integrations for
+Blender changes; a skipped Blender test is not a pass. Do not add rendering or
+implementation-mirroring tests for prose-only edits.
 
-## 3. Fixing
+## Inspect the affected stills
 
-- Read the plan before placing anything: wall faces are in the IR
-  (`scene.bbox("MN")`), not in your memory of them. Room outlines in this
-  repo are the inside faces; the wall body is outside them.
-- Read a stair from the IR (`scene.entity("ST1")["derived"]`: `outline`,
-  `top`, `steps`, `riser`, `going`), never from a number in a docstring.
-- Know the assets' axes before rotating: chairs, sofas, benches and beds
-  face -y and their backs are at +y; consoles and tables are long along x;
-  mirrors, pictures and wall lamps are thin along y. `rot_z` of a quarter
-  turn (`math.radians(90)`) makes a chair face +x. When in doubt, measure
-  with `o.dimensions` or test-render the asset alone.
-- A defect in the spec (a flight into a wall, a door onto a bed) is fixed
-  in `project.py` with the smallest change and a `## D-nnn` entry in
-  `decisions.md` with an `Entities:` line; the build must stay green.
-- Re-run `homespec audit` after every change to `rooms/` or the spec, then
-  re-render and look again. Stop when the audit is clean and the shots
-  would pass for the listing's photographs.
+Choose modest settings and the project's actual room/shot selection. For example:
 
-## 4. Reporting
+```bash
+HOMESPEC_ROOM=<room> HOMESPEC_RES=960x540 HOMESPEC_SAMPLES=48 \
+  uv run --frozen homespec render projects/<project> --mode still --frame <frames>
+```
 
-List: what the audit found and what was done about each finding; what the
-eye found that the audit could not, and what that suggests adding to
-`homespec/blender/audit.py`; every spec change with its decision; the
-paths of the final renders; anything left, under "Not verified".
+`HOMESPEC_ROOM` is a project presentation convention; use it only where supported.
+These settings are an example, not required camera dimensions. Check every
+result with an image viewer against the plan and relevant references. Prioritize:
+
+- **Architecture and circulation:** actual clear door passages, stair foot and
+  arrival, guards, headroom, floor edges and voids. Furniture must respect the
+  project's usable routes. Report design concerns separately from source evidence.
+- **Support and orientation:** feet on floors, lamps on measured flat tops,
+  fixtures attached to walls/ceilings, and furniture facing its intended use.
+- **Scale and composition:** room-appropriate furniture, understandable foreground
+  and background, and the focal relationships required by the brief or photograph.
+  Styling preferences must not override the observed arrangement in reconstruction.
+- **Material and light:** plausible physical pattern scale, continuous fabric or
+  grain, distinct endgrain, real joints, and daylight from modeled openings.
+  Diagnose geometry, pigment, response and illumination separately.
+
+For photographic comparison, freeze the typed camera and preserve the full
+original image. Do not change crop, lens or exposure to conceal geometry or
+material errors. If calibration is the requested task, record the camera change,
+its evidence and fit versus independent holdout residuals, then establish a new
+baseline. Missing holdouts remain an explicit limitation. Render scales must
+retain exact aspect after integer rounding; use `PhotoView.scaled_size` rather
+than stretching the frame or relaxing projection checks.
+
+Use the shared color, clay and neutral studies with the same camera and declared
+lighting controls to isolate a mismatch. Label lighting experiments and capture
+actual applied settings. Use `study_state` for temporary cameras, hiding,
+material overrides and lighting changes; keep architectural geometry and arbitrary
+shader edits outside its restoration contract. A shot that reads badly can have
+an architectural, camera or staging problem: inspect the evidence before editing.
+
+## Verify and report the result
+
+For photo reviews, use `photo-review` with a verified saved scene, the camera
+file and optional `--reference-root` for original/render pairing. `--only` selects
+a diagnostic subset but retains full declared coverage. Verify the written
+manifest with `review-verify`; use `--require-complete` and `review-package` for
+a complete portable delivery. Do not mark a subset complete or resume solely
+because an output filename exists. Source, scripts/assets, camera, settings,
+actual raster and output hashes must remain compatible. Keep archived evidence
+attached to its original generation; do not relabel it as a newly built scene.
+
+Report the fixes and their decisions, passing and unresolved findings, inspected
+views, source generation and presentation identity, and actual coverage. Separate
+mechanical verification from visual conclusions. Identify missing evidence,
+untested routes, unsupported geometry or incomplete camera coverage under
+"Not verified". Stop when the requested change is verified to its stated scope;
+list remaining photographic or design discrepancies without claiming that a
+clean audit makes the house match its photographs.

@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "model": {
+    "purpose": "Portable Bastide model subpackage; photo/gallery/motion delivery is verified separately.",
+    "required": ["packed-model", "navigation", "launcher", "waypoints", "packed-model-verification"]
+  },
+  "camera_lock": "photo_camera_lock.json",
+  "navigation_bookmark_count": 26,
+  "tour_takes": ["kitchen10", "principal06", "salon58"],
+  "light_control_views": ["kitchen10", "salon58"],
+  "material_sample_count": 12
+}

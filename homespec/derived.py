@@ -11,12 +11,15 @@ small informal dicts: nothing downstream depends on them.
 """
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Self
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from .geometry import Frame, Point, Point3
-from .model import Extrusion
+from .model import Extrusion, Outline
+from .profiles import OpeningProfile
+from .surface import MemberFrame, PlanarSurface, SurfaceFrame
+from .validation import FiniteModel
 
 
 class WallGeometry(BaseModel):
@@ -38,6 +41,10 @@ class WallGeometry(BaseModel):
     body: Frame
     assembly: str
     align: str
+    roof_limit: str | None = None
+    junction_cuts: list[str] = Field(default_factory=list)
+    physical_z_top: float | None = None
+    surfaces: list[PlanarSurface] = Field(default_factory=list)
 
     def z_top(self) -> float:
         return self.elevation + self.height
@@ -77,6 +84,18 @@ class OpeningGeometry(BaseModel):
     grille: str | None = None
     rooms: list[OpeningRoom] = Field(default_factory=list)
     partition_conflicts: list[str] = Field(default_factory=list)
+    profile: OpeningProfile | None = None
+    passage_intervals: list[tuple[float, float]] = Field(default_factory=list)
+    """Clear operable intervals, relative to the opening start; fixed lights are excluded."""
+    components: list[OpeningComponent] = Field(default_factory=list)
+
+
+class OpeningComponent(BaseModel):
+    """Semantic filling zones; coordinates are relative to the opening bottom/start."""
+
+    role: Literal["operable_leaf", "fixed_sidelight", "fixed_transom"]
+    x_range: tuple[float, float]
+    z_range: tuple[float, float]
 
 
 class ArchGeometry(OpeningGeometry):
@@ -84,6 +103,34 @@ class ArchGeometry(OpeningGeometry):
 
     springing: float
     radius: float
+
+
+class RoofSection(FiniteModel):
+    """Piecewise linear roof height in one axis of the roof-local frame."""
+
+    axis: Literal["x", "y"]
+    profile: list[Point] = Field(min_length=2)
+
+    @model_validator(mode="after")
+    def increasing_positions(self) -> Self:
+        if any(b[0] <= a[0] for a, b in zip(self.profile, self.profile[1:], strict=False)):
+            raise ValueError("roof profile positions must be strictly increasing")
+        return self
+
+
+class RoofSurfaceGeometry(FiniteModel):
+    """Untrimmed structural roof surface; junction cuts do not project downward.
+
+    Height is the lower of the section heights. Thickness is measured
+    vertically, as for the original Roof vocabulary. Openings in ``holes``
+    are intentional through-apertures and apply to all attached layers.
+    """
+
+    frame: SurfaceFrame
+    outline: Outline
+    holes: list[Outline] = Field(default_factory=list)
+    sections: list[RoofSection] = Field(min_length=1)
+    thickness: float = Field(gt=0)
 
 
 class RoofGeometry(BaseModel):
@@ -98,6 +145,29 @@ class RoofGeometry(BaseModel):
     rise: float | None = None
     span: float | None = None
     rafter_length: float | None = None
+    surface: RoofSurfaceGeometry | None = None
+    structural_surface_entity: str | None = None
+    surfaces: list[PlanarSurface] = Field(default_factory=list)
+    junction_cuts: list[str] = Field(default_factory=list)
+    surface_area_mm2: float | None = Field(default=None, ge=0)
+    """Net upward-facing final skin area, after roof apertures and junction cuts."""
+    covered_plan_area_mm2: float | None = Field(default=None, ge=0)
+    """Union of the final upward-facing skin projected onto world XY."""
+
+
+class RoofCoveringGeometry(FiniteModel):
+    """A completed lining/covering's net physical skin and projected area."""
+
+    roof: str
+    side: Literal["top", "underside"]
+    follow: Literal["structural", "finished"]
+    kind: Literal["vault"] = "vault"
+    z_underside: float
+    thickness: float = Field(gt=0)
+    gap: float = Field(ge=0)
+    area_mm2: float | None = Field(default=None, ge=0)
+    plan_area_mm2: float | None = Field(default=None, ge=0)
+    surfaces: list[PlanarSurface] = Field(default_factory=list)
 
 
 class WallToRoofInfillGeometry(BaseModel):
@@ -110,6 +180,10 @@ class WallToRoofInfillGeometry(BaseModel):
     thickness: float
     assembly: str
     body: Frame
+    empty: bool = False
+    opening_voids: list[str] = Field(default_factory=list)
+    junction_cuts: list[str] = Field(default_factory=list)
+    surfaces: list[PlanarSurface] = Field(default_factory=list)
 
 
 class HeadroomObstruction(BaseModel):
@@ -147,6 +221,18 @@ class SlabGeometry(BaseModel):
     z_top: float
     voids: int
     outline: list[list[float]]
+    top_surface: PlanarSurface | None = None
+
+
+class SkirtingGeometry(BaseModel):
+    floor: str
+    room: str
+    openings: list[str]
+    z_base: float
+    height: float = Field(gt=0)
+    depth: float = Field(gt=0)
+    volume_mm3: float = Field(ge=0)
+    empty: bool
 
 
 class CeilingGeometry(BaseModel):
@@ -155,7 +241,7 @@ class CeilingGeometry(BaseModel):
     model_config = ConfigDict(extra="allow")
 
     z_underside: float
-    kind: Literal["flat", "planks"]
+    kind: Literal["flat", "planks", "vault"]
     plank_width: float | None = None
     count: int | None = None
     voids: int = 0
@@ -165,6 +251,7 @@ class BeamGeometry(BaseModel):
     span: float
     clear_below: float
     size: list[float]
+    member: MemberFrame | None = None
 
 
 class ColumnGeometry(BaseModel):
@@ -172,6 +259,7 @@ class ColumnGeometry(BaseModel):
     z_top: float
     radius: float | None = None
     size: float | None = None
+    member: MemberFrame | None = None
 
 
 class SpaceGeometry(BaseModel):

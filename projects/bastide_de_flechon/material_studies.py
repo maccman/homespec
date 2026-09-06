@@ -12,6 +12,13 @@ from pathlib import Path
 import bpy
 from mathutils import Vector
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "homespec" / "blender"))
+import frames  # noqa: E402
+from devices import configure_cycles  # noqa: E402
+from photo_review import loaded_scene_source  # noqa: E402
+from review import Coverage, FileIdentity, fingerprint, open_review  # noqa: E402
+from review_studies import camera_settings, checked, effective_settings, study_state  # noqa: E402
+
 SAMPLES = [
     ('interior_bronze_travertine', 'Honed counter'),
     ('fidelity_reclaimed_oak', 'Reclaimed oak'),
@@ -47,10 +54,11 @@ def image_dependencies(socket, visited=None):
     return result
 
 
-def main():
-    out = Path(sys.argv[sys.argv.index('--') + 1]).resolve()
+def render_studies(destination=None, *, samples=64, size=(1500, 1800)):
+    out = Path(destination or sys.argv[sys.argv.index('--') + 1]).resolve()
     out.mkdir(parents=True, exist_ok=True)
     scene = bpy.context.scene
+    source = loaded_scene_source((FileIdentity.capture(__file__, "studio-script"),))
     sample_sources = []
     for name, label in SAMPLES:
         material = bpy.data.materials.get(name)
@@ -74,7 +82,6 @@ def main():
                                   'sheen': node.inputs['Sheen Weight'].default_value, **dependencies})
     scene.camera.animation_data_clear()
     scene.camera.data.animation_data_clear()
-    scene.animation_data_clear()
     for obj in list(scene.objects):
         if obj.type != 'CAMERA':
             obj.hide_render = True
@@ -84,16 +91,12 @@ def main():
     world.node_tree.nodes['Background'].inputs['Strength'].default_value = .35
     scene.world = world
     scene.render.engine = 'CYCLES'
-    scene.cycles.samples = 64
+    scene.cycles.samples = samples
+    scene.cycles.seed, scene.cycles.use_animated_seed = 173, False
     scene.cycles.adaptive_threshold = .04
     scene.cycles.use_denoising = True
-    prefs = bpy.context.preferences.addons['cycles'].preferences
-    prefs.compute_device_type = 'METAL'
-    prefs.get_devices()
-    for device in prefs.devices:
-        device.use = device.type == 'METAL'
-    scene.cycles.device = 'GPU'
-    scene.render.resolution_x, scene.render.resolution_y = 1500, 1800
+    configure_cycles(scene)
+    scene.render.resolution_x, scene.render.resolution_y = size
     scene.render.resolution_percentage = 100
     scene.render.image_settings.file_format = 'PNG'
     scene.view_settings.exposure = 0
@@ -102,9 +105,9 @@ def main():
         scene.view_settings.use_white_balance = True
         scene.view_settings.white_balance_temperature = 6500
         scene.view_settings.white_balance_tint = 0
-    for name, loc, power, size in [('large neutral softbox', (0, -1.0, 4.5), 950, 4.0), ('grazing strip', (3, 1.0, 1.3), 180, 2.5)]:
+    for name, loc, power, light_size in [('large neutral softbox', (0, -1.0, 4.5), 950, 4.0), ('grazing strip', (3, 1.0, 1.3), 180, 2.5)]:
         data = bpy.data.lights.new(name, 'AREA')
-        data.energy, data.size = power, size
+        data.energy, data.size = power, light_size
         obj = bpy.data.objects.new(name, data)
         scene.collection.objects.link(obj)
         obj.location = loc
@@ -143,17 +146,46 @@ def main():
     camera.data.shift_x = camera.data.shift_y = 0
     camera.data.dof.use_dof = False
     scene.render.filepath = str(out / 'neutral-materials.png')
-    bpy.ops.render.render(write_still=True)
+    camera_record, effective = camera_settings(scene), effective_settings(scene)
+    settings = {'samples': scene.cycles.samples, 'seed': scene.cycles.seed,
+                'adaptive_threshold': scene.cycles.adaptive_threshold,
+                'sample_sources': sample_sources, 'camera': camera_record,
+                'effective_settings': effective}
+    review_path = out / 'review.json'
+    review = open_review(review_path, source, Coverage(('neutral-materials', 'studio-evidence'),
+        'Declared material samples on physical swatches; room coverage is outside this study.'), settings)
+    if review.status == 'complete':
+        print('MATERIAL STUDIES VERIFIED', len(shader_checks), flush=True)
+        return
+    review.write(review_path)
+    if not review.resume('neutral-materials', fingerprint(camera_record), out):
+        bpy.ops.render.render(write_still=True)
+        image_check = checked(frames.check_frame, scene.render.filepath)
+        review.capture('neutral-materials', Path(scene.render.filepath), out, camera=camera_record,
+                       effective_settings=effective, details={'sample_sources': sample_sources, 'frame_check': image_check})
+        review.write(review_path)
     manifest = {'purpose': 'Actual scene materials on 800 mm studio swatches and 270 mm response spheres.',
-                'visible_rows_left_to_right': [[label for _, label in SAMPLES[i:i + 3]] for i in range(0, 12, 3)],
-                'material_rows_top_to_bottom': [[name for name, _ in SAMPLES[i:i + 3]] for i in range(0, 12, 3)],
+                'visible_rows_left_to_right': [[label for _, label in SAMPLES[i:i + 3]] for i in range(0, len(SAMPLES), 3)],
+                'material_rows_top_to_bottom': [[name for name, _ in SAMPLES[i:i + 3]] for i in range(0, len(SAMPLES), 3)],
                 'scene': bpy.data.filepath, 'scene_sha256': digest(bpy.data.filepath), 'script_sha256': digest(__file__),
                 'samples': SAMPLES, 'sample_sources': sample_sources, 'shader_checks': shader_checks, 'image_sha256': digest(scene.render.filepath),
-                'pixels': [1500, 1800], 'camera': {'location': list(camera.location), 'rotation_euler': list(camera.rotation_euler), 'ortho_scale': 4.2, 'sensor_fit': 'VERTICAL'},
+                'pixels': list(size), 'camera': {'location': list(camera.location), 'rotation_euler': list(camera.rotation_euler), 'ortho_scale': 4.2, 'sensor_fit': 'VERTICAL'},
                 'lighting': 'Neutral D65 world .35, 950 W / 4 m broad softbox, 180 W / 2.5 m grazing strip; exposure 0; 6500 K WB',
+                'effective_settings': effective, 'source_sha256': source.sha256,
                 'limitations': 'Procedural relief is inferred, not measured surface scanning. Swatches do not validate room exposure.'}
-    (out / 'material-study-manifest.json').write_text(json.dumps(manifest, indent=2))
+    report_path = out / 'material-study-manifest.json'
+    report_path.write_text(json.dumps(manifest, indent=2))
+    review.capture('studio-evidence', report_path, out, camera=camera_record,
+                   effective_settings=effective, kind='report', details={'sample_ids': [row[0] for row in SAMPLES]})
+    source.verify()
+    review.complete(out)
+    review.write(review_path)
     print('MATERIAL STUDIES VERIFIED', len(shader_checks), flush=True)
+
+
+def main():
+    with study_state(bpy.context.scene):
+        render_studies()
 
 
 if __name__ == '__main__':

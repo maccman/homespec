@@ -7,15 +7,17 @@ reconstruction records unsurveyed heights and obscured details in decisions.md.
 
 import math
 from dataclasses import field
-from typing import ClassVar, Literal
+from typing import ClassVar
 
+from pydantic import model_validator
 from shapely.geometry import Polygon
 
 from homespec import *  # noqa: F403
 from homespec import geometry as G
-from homespec.derived import RoofGeometry, WallGeometry, WallToRoofInfillGeometry
+from homespec.derived import WallGeometry, WallToRoofInfillGeometry
+from homespec.elements.roof import structural_roof_solid
 from homespec.elements.walls import OpeningPart
-from homespec.model import Analysis, Context, Element, Realized, Ref, Relation, element
+from homespec.model import Analysis, Element, Realized, Ref, Relation, element
 
 
 def mm(points):
@@ -37,11 +39,6 @@ ANNEX = [(-9.75, 25.3), (-1.61, 22.84), (0.68, 28.62), (-8.88, 31.91)]
 
 
 @element
-class ExactArchedDoor(ArchedDoor):
-    """The shared opening implementation publishes its exact arched void."""
-
-
-@element
 class CourtyardEntrance(Door):
     """Central wooden French leaves, fixed sidelights and a glazed transom.
 
@@ -54,6 +51,15 @@ class CourtyardEntrance(Door):
     leaf_head: float = 2680
     glazed: bool = True
     leaves: int = 2
+
+    @model_validator(mode="after")
+    def central_passage(self):
+        object.__setattr__(self, "composition", DoorComposition(
+            passage_width=self.central_width - self.frame_size,
+            passage_height=self.leaf_head - self.frame_size / 2,
+            leaves=2,
+        ))
+        return self
 
     def mullion_positions(self):
         return [(self.width - self.central_width) / 2, (self.width + self.central_width) / 2]
@@ -100,7 +106,7 @@ class CourtyardEntrance(Door):
 
 
 @element
-class CourtyardUpperLight(ExactArchedDoor):
+class CourtyardUpperLight(ArchedDoor):
     """Fixed arched hall glazing continuous with the ground entrance below."""
 
     kind: ClassVar[str] = "window"
@@ -128,62 +134,24 @@ class CourtyardUpperLight(ExactArchedDoor):
 
 
 @element
-class SegmentalGardenDoor(ExactArchedDoor):
-    """Shallow circular kitchen head, shared by the void, steel and glass."""
+class SegmentalGardenDoor(ArchedDoor):
+    """The kitchen's inferred rise, using the shared exact profile machinery."""
 
-    rise: float = 360.0
+    rise: Positive = 360.0
+    profile: OpeningProfile = field(default_factory=lambda: OpeningProfile(shape="segmental", rise=360))
+
+    @model_validator(mode="after")
+    def segmental_profile(self):
+        object.__setattr__(self, "profile", OpeningProfile(shape="segmental", rise=self.rise))
+        self.profile.validate_dimensions(self.width, self.head_height())
+        return self
 
     def head_height(self):
         return self.height + self.rise
 
-    def circle(self):
-        radius = ((self.width / 2) ** 2 + self.rise ** 2) / (2 * self.rise)
-        return radius, self.height + self.rise - radius
-
-    def profile_solid(self, x, wall, z, depth, thickness, inset=0):
-        radius, centre_z = self.circle()
-        c = wall.body.point(x + self.width / 2, depth + thickness / 2)
-        disc = G.horizontal_cylinder(radius - inset, thickness, (*c, z + centre_z), wall.angle + 90)
-        cap = G.frame_box(wall.body, x + inset, depth - 1, z + self.height - inset,
-                          (self.width - 2 * inset, thickness + 2, self.rise + inset + 1))
-        base = G.frame_box(wall.body, x + inset, depth, z + inset,
-                           (self.width - 2 * inset, thickness, self.height - 2 * inset))
-        return base + (disc & cap)
-
-    def void_solid(self, x, wall, z):
-        return self.profile_solid(x, wall, z, -100, wall.thickness + 200)
-
-    def frame_members(self, x, wall, z):
-        fs, bs, t = self.frame_size, self.bar_size, wall.thickness
-        outer = self.profile_solid(x, wall, z, (t - fs) / 2, fs)
-        inner = self.profile_solid(x, wall, z, (t - fs) / 2 - 1, fs + 2, inset=fs)
-        members = [outer - inner]
-        radius, centre_z = self.circle()
-        cols, rows = self.panes
-        for c in range(1, cols):
-            offset = self.width * c / cols
-            top = centre_z + math.sqrt((radius - fs) ** 2 - (offset - self.width / 2) ** 2)
-            size = fs if c == cols / 2 else bs
-            members.append(G.frame_box(wall.body, x + offset - size / 2, (t - size) / 2,
-                                       z + fs, (size, size, top - fs)))
-        for row in range(1, rows):
-            members.append(G.frame_box(wall.body, x + fs, (t - bs) / 2,
-                                       z + fs + (self.height - 2 * fs) * row / rows,
-                                       (self.width - 2 * fs, bs, bs)))
-        return members
-
-    def panes_of(self, x, wall, z):
-        pane = self.profile_solid(x, wall, z, (wall.thickness - 10) / 2, 10, inset=self.frame_size)
-        return [pane], G.volume(pane) / 10
-
-    def realize(self, ctx):
-        result = super().realize(ctx)
-        result.derived.update(radius=self.circle()[0], segment_rise=self.rise)
-        return result
-
 
 @element
-class SalonArchedDoor(ExactArchedDoor):
+class SalonArchedDoor(ArchedDoor):
     """Concentric salon fanlight with spokes outside its clear inner arch."""
 
     def mullion_positions(self):
@@ -285,29 +253,7 @@ class SquareHeadedOpening(Arch):
 
 
 @element
-class OcularWindow(Window):
-    """The round clerestories visible above the principal side doors."""
-
-    exact_void: ClassVar[bool] = True
-
-    def void_solid(self, x, wall, z):
-        c = wall.body.point(x + self.width / 2, wall.thickness / 2)
-        return G.horizontal_cylinder(self.width / 2, wall.thickness + 200, (*c, z + self.width / 2), wall.angle + 90)
-
-    def frame_members(self, x, wall, z):
-        c = wall.body.point(x + self.width / 2, wall.thickness / 2)
-        outer = G.horizontal_cylinder(self.width / 2, self.frame_size, (*c, z + self.width / 2), wall.angle + 90)
-        inner = G.horizontal_cylinder(self.width / 2 - self.frame_size, self.frame_size + 2, (*c, z + self.width / 2), wall.angle + 90)
-        return [outer - inner]
-
-    def panes_of(self, x, wall, z):
-        c = wall.body.point(x + self.width / 2, wall.thickness / 2)
-        r = self.width / 2 - self.frame_size
-        return [G.horizontal_cylinder(r, 10, (*c, z + self.width / 2), wall.angle + 90)], math.pi * r * r
-
-
-@element
-class BastideGableDoor(ExactArchedDoor):
+class BastideGableDoor(ArchedDoor):
     """Lower salon glazing grid and upper bedroom's concentric radial fanlight."""
 
     ground_leaf_angle: float = 78
@@ -398,26 +344,12 @@ class BastideGableDoor(ExactArchedDoor):
 
 
 @element
-class ArchedStoneSurround(OpeningPart):
-    kind: ClassVar[str] = "surround"
+class ArchedStoneSurround(Surround):
+    """House-specific stone dimensions; its contour follows the shared opening."""
 
-    def realize(self, ctx):
-        geom, wall = self.geometry(ctx)
-        x = geom.from_start
-        spring = ctx.house.elements[self.opening].height
-        z = wall.elevation + geom.sill
-        r = geom.width / 2
-        jamb = 500
-        proud = 80
-        depth = 100
-        parts = [G.frame_box(wall.body, x - jamb, -proud, z, (jamb, depth, spring)), G.frame_box(wall.body, x + geom.width, -proud, z, (jamb, depth, spring))]
-        c = wall.body.point(x + r, -proud + depth / 2)
-        ring = G.horizontal_cylinder(r + jamb, depth, (*c, z + spring), wall.angle + 90) - G.horizontal_cylinder(
-            r, depth + 2, (*c, z + spring), wall.angle + 90
-        )
-        clip = G.frame_box(wall.body, x - jamb - 1, -proud - 1, z + spring, (geom.width + 2 * jamb + 2, depth + 2, r + jamb + 1))
-        parts.append(ring & clip)
-        return self.finish(ctx, geom, wall, G.group(parts), {"jamb": jamb, "projection": proud, "springing": spring, "radius": r})
+    jamb: Positive = 500
+    projection: Positive = 80
+    embed: NonNegative = 20
 
 
 @element
@@ -497,32 +429,24 @@ class CanalTileEaves(Element):
 
 @element
 class JoinedWall(Wall):
-    """Butt joints are trimmed as solids, so skew masonry is counted once."""
+    """Butt joints and the retained 2 mm roof separation share core attachments."""
 
     joins: list[str] = field(default_factory=list)
-    roof_limit: Ref | None = None
+    roof_clearance: NonNegative = 2
 
     def deps(self):
-        return self.joins + ([self.roof_limit] if self.roof_limit else [])
+        return [*super().deps(), *self.joins]
 
     def realize(self, ctx):
-        r = super().realize(ctx)
+        result = super().realize(ctx)
         for other in self.joins:
-            r.solid = r.solid - ctx.built(other).solid
+            result.solid = result.solid - ctx.built(other).solid
         if self.roof_limit:
-            from build123d import Location
-
-            # The nominal plate remains explicit, but the physical wall ends
-            # under the exact roof skin, including its true plan and pitch.
-            roof = ctx.house.elements[self.roof_limit]
-            shell = roof.untrimmed_shell(ctx)[0] if isinstance(roof, TracedRoof) else ctx.built(self.roof_limit).solid
-            below = G.volume_below(shell, r.derived["elevation"] - 3)
-            r.solid = r.solid & (Location((0, 0, -2)) * below)
-            r.derived["roof_limit"] = self.roof_limit
-            r.derived["nominal_plate"] = r.derived["elevation"] + r.derived["height"]
+            result.derived["nominal_plate"] = result.derived["elevation"] + result.derived["height"]
         if self.joins or self.roof_limit:
-            r.extrusion = None
-        return r
+            result.extrusion = None
+        result.derived["physical_z_top"] = G.bbox(result.solid).max[2]
+        return result
 
 
 @element
@@ -544,7 +468,7 @@ class JoinedInfill(WallToRoofInfill):
     opening_voids: list[Ref] = field(default_factory=list)
 
     def deps(self):
-        return super().deps() + [i.split(".")[0] for i in self.cut_against] + self.opening_voids
+        return [self.wall, self.roof, *self.opening_voids] + [i.split(".")[0] for i in self.cut_against]
 
     def realize(self, ctx):
         from build123d import Location
@@ -571,7 +495,7 @@ class JoinedInfill(WallToRoofInfill):
         if isinstance(roof, TracedRoof):
             zbase = wd["elevation"] + wd["height"]
             native_roof = ctx.built(self.roof)
-            under = Location((0, 0, -2)) * G.volume_below(roof.untrimmed_shell(ctx)[0], zbase - 3)
+            under = Location((0, 0, -2)) * G.volume_below(structural_roof_solid(ctx, self.roof), zbase - 3)
             height = max(1, G.bbox(native_roof.solid).max[2] - zbase)
             polygons = [region] if region.geom_type == "Polygon" else list(region.geoms)
             parts = [part for poly in polygons if poly.area > 1
@@ -586,9 +510,6 @@ class JoinedInfill(WallToRoofInfill):
             r.material = self.material or wall.material
             r.level = self.level or native_roof.level or wall.level
             r.tags = {"external"} if wall.has("external") else {"internal"}
-        else:
-            for other in self.cut_against:
-                r.solid = r.solid - ctx.built(other).solid
         for opening in self.opening_voids if r.solid is not None else []:
             # Rectangular openings do not publish a separate void entity.
             # Reuse their native cutter, including any subclass's true arch.
@@ -596,6 +517,10 @@ class JoinedInfill(WallToRoofInfill):
             host = ctx.derived(source.host, WallGeometry)
             void = source.void_solid(source.position(host), host, host.elevation + source.sill)
             r.solid = r.solid - void
+        if r.solid is not None and G.volume(r.solid) <= 1:
+            r.solid = None
+        r.derived.update(empty=r.solid is None, opening_voids=list(self.opening_voids), junction_cuts=list(self.cut_against),
+                         max_height=0 if r.solid is None else G.bbox(r.solid).max[2] - r.derived["z_base"])
         return r
 
 
@@ -615,71 +540,23 @@ class EmptyRoofInfill(JoinedInfill):
 
 
 @element
-class TracedRoof(Element):
-    """A gable or single-slope shell clipped to an irregular traced footprint."""
+class TracedRoof(Roof):
+    """The historic wings retain local dimensions on the shared polygon roof."""
 
-    kind: ClassVar[str] = "roof"
-    ifc_class: ClassVar[str | None] = "IfcRoof"
-    outline: list[tuple[float, float]]
-    eave: float
-    pitch: float = 22
+    overhang: NonNegative = 0
+    thickness: Positive = 180
     ridge_angle: float = 90
-    thickness: float = 180
-    shape: Literal["gable", "shed"] = "gable"
-    high_side: Literal["lo", "hi"] = "lo"
-    cut_against: list[str] = field(default_factory=list)
 
     def deps(self):
-        return [i.split(".")[0] for i in self.cut_against]
+        # Génoise and gables are emitted after their named roof parent.
+        return [target.split(".")[0] for target in self.cut_against]
 
-    def profile(self, lo, hi, z):
-        """One authoritative upper profile, also used by infills and plaster."""
-        slope = math.tan(math.radians(self.pitch))
-        if self.shape == "shed":
-            high = z + (hi - lo) * slope
-            return [(lo, high if self.high_side == "lo" else z), (hi, high if self.high_side == "hi" else z)]
-        return [(lo, z), ((lo + hi) / 2, z + (hi - lo) / 2 * slope), (hi, z)]
-
-    def untrimmed_shell(self, ctx: Context):
-        # Transform into a roof-local frame; CAD solids then rotate back.
-        from build123d import Location
-
-        a = math.radians(self.ridge_angle)
-        u = (math.cos(a), math.sin(a))
-        n = (-u[1], u[0])
-        local = [(x * u[0] + y * u[1], x * n[0] + y * n[1]) for x, y in self.outline]
-        xs = [p[0] for p in local]
-        ys = [p[1] for p in local]
-        lo, hi = min(ys), max(ys)
-        z = ctx.level(self).elevation + self.eave
-        top = self.profile(lo, hi, z)
-        ridge = max(height for _, height in top)
-        ext = {"x0": min(xs), "x1": max(xs), "y0": lo, "y1": hi}
-        shell = Roof._shell([(top, "y")], ext, self.thickness)
-        shell = shell & G.prism(local, z - self.thickness - 1, ridge - z + self.thickness + 2)
-        shell = Location((0, 0, 0), (0, 0, self.ridge_angle)) * shell
-        return shell, z, ridge, hi - lo
-
-    def realize(self, ctx: Context):
-        shell, z, ridge, span = self.untrimmed_shell(ctx)
-        for other in self.cut_against:
-            shell = shell - ctx.built(other).solid
-        return Realized(
-            solid=shell,
-            derived=RoofGeometry(
-                shape=self.shape,
-                pitch=self.pitch,
-                z_eave=z,
-                thickness=self.thickness,
-                overhang=0,
-                plan_area_mm2=G.polygon_area(self.outline),
-                z_ridge=ridge if self.shape == "gable" else None,
-                z_high=ridge if self.shape == "shed" else None,
-                rise=ridge - z,
-                span=span,
-            ).model_dump(),
-            tags={"external"},
-        )
+    def realize(self, ctx):
+        result = super().realize(ctx)
+        # Keep the exterior consumer's explicit absent-ridge/high-point keys.
+        result.derived.setdefault("z_ridge", None)
+        result.derived.setdefault("z_high", None)
+        return result
 
 
 @element
@@ -861,30 +738,17 @@ class VoidBeam(Beam):
 
 
 def curved_physical_headroom(self, ctx):
-    """Test each curved tread and both approaches against every physical solid."""
-    own = ctx.built(self.id)
-    d = own.derived
+    """Adapt local stair evidence to HomeSpec's shared physical clearance test."""
+    from homespec.clearance import TreadZone, tread_clearance
+    d = ctx.built(self.id).derived
     z0 = ctx.house.levels[self.level].elevation
-    zones = [(poly, z0 + (i + 1) * d["riser"], str(i + 1)) for i, poly in enumerate(d["tread_polygons"])]
-    zones += [(zone["outline"], zone["z0"], zone["name"]) for zone in d["approach_zones"]]
-    candidates = [(other, G.bbox(other.solid)) for other in ctx.build if other.id != self.id and other.element.physical and other.solid is not None]
-    obstructions = []
-    for outline, z, label in zones:
-        # A small inset excludes contact at neighbouring risers and structural edges.
-        inset_poly = Polygon(outline).buffer(-0.2, join_style=2)
-        if inset_poly.is_empty:
-            continue
-        zone = G.prism(list(inset_poly.exterior.coords)[:-1], z + 0.2, 1999.8)
-        box = G.bbox(zone)
-        for other, bounds in candidates:
-            if any(box.min[k] >= bounds.max[k] - 0.1 or bounds.min[k] >= box.max[k] - 0.1 for k in range(3)):
-                continue
-            hits = G.overlap(zone, other.solid)
-            if not hits:
-                continue
-            clearance = min(G.bbox(hit).min[2] - z for hit in hits)
-            obstructions.append({"entity": other.id, "tread": label, "clearance_mm": round(clearance, 2)})
-    return Analysis(derived={"physical_headroom_mm": min((hit["clearance_mm"] for hit in obstructions), default=2000), "headroom_obstructions": obstructions})
+    zones = [TreadZone(outline=poly, z=z0 + (i + 1) * d["riser"], name=str(i + 1), tread=str(i + 1))
+             for i, poly in enumerate(d["tread_polygons"])]
+    zones += [TreadZone(outline=zone["outline"], z=zone["z0"], name=zone["name"], tread=zone["name"])
+              for zone in d["approach_zones"]]
+    result = tread_clearance(ctx, self.id, zones, inset_mm=.2)
+    return Analysis(derived={"physical_headroom_mm": result.minimum_mm,
+                             "headroom_obstructions": [hit.model_dump(exclude={"zone", "at"}) for hit in result.obstructions]})
 
 
 @element
@@ -1064,39 +928,11 @@ class GuestCeilingTimbers(Element):
 
 
 @element
-class TracedVault(Element):
-    """Plaster following the actual gabled or single-slope roof underside."""
+class TracedVault(RoofCovering):
+    """The wing's 24 mm plaster and 1 mm separation follow its roof underside."""
 
     kind: ClassVar[str] = "ceiling"
-    ifc_class: ClassVar[str | None] = "IfcCovering"
-    roof: Ref
-    outline: list[tuple[float, float]]
-
-    def deps(self):
-        return [self.roof]
-
-    def realize(self, ctx):
-        from build123d import Location
-
-        roof = ctx.house.elements[self.roof]
-        d = ctx.built(self.roof).derived
-        a = math.radians(roof.ridge_angle)
-        u = (math.cos(a), math.sin(a))
-        n = (-u[1], u[0])
-        points = [(x * u[0] + y * u[1], x * n[0] + y * n[1]) for x, y in roof.outline]
-        lo, hi = min(y for x, y in points), max(y for x, y in points)
-        z = d["z_eave"] - d["thickness"] - 1
-        top = roof.profile(lo, hi, z)
-        ridge = max(height for _, height in top)
-        ext = {"x0": min(x for x, y in points), "x1": max(x for x, y in points), "y0": lo, "y1": hi}
-        shell = Roof._shell([(top, "y")], ext, 24)
-        shell = Location((0, 0, 0), (0, 0, roof.ridge_angle)) * shell
-        shell = shell & G.prism(self.outline, z - 25, ridge - z + 26)
-        return Realized(
-            solid=shell,
-            derived={"kind": "vault", "z_underside": z - 24, "area_mm2": G.volume(shell) / 24, "voids": 0},
-            relations=[Relation(pred="part_of", obj=self.roof)],
-        )
+    gap: NonNegative = 1
 
 
 @element
@@ -1208,8 +1044,9 @@ def build() -> House:
                     # Looking south from the suite, photo-right is the WEST wall.
                     Window("N_W2", host=wall, width=1450, height=850, sill=4400, at=7525, frame=steel, frame_size=45, panes=(2, 1), bar_size=30)
                 else:
-                    OcularWindow(f"N_{prefix}{j + 1}", host=wall, width=650, height=650, sill=5100, at=((1650, 5700)[j] if prefix == "E" else y + 625), frame=cut, frame_size=90)
+                    Window(f"N_{prefix}{j + 1}", profile=OpeningProfile(shape="circular"), host=wall, width=650, height=650, sill=5100, at=((1650, 5700)[j] if prefix == "E" else y + 625), frame=cut, frame_size=90)
         SegmentalGardenDoor("D_PERGOLA", host=MN, width=2600, height=2400, rise=350, at=2350, panes=(4, 3), frame=steel, frame_size=50, bar_size=24)
+
         Window("N_MASTER_N", host=MN, width=1800, height=1800, sill=3550, at=2600, panes=(2, 3), frame=steel, frame_size=50)
         Arch("A_KITCHEN", host=MW, width=1100, height=2100, at=450)
         Arch("A_MASTER_LINK", host=MW, width=1100, height=2100, at=450, sill=3300)
@@ -1424,7 +1261,7 @@ def build() -> House:
                 # the plaster clears its low-side top corner by8mm. The coping
                 # starts166mm above the conditional5.55m camera extrapolation.
                 roof.shape = "shed"
-                roof.high_side = "lo"  # ridge_angle=90: local low v is east/x=0
+                roof.high_side = "y0"  # ridge_angle=90: local low v is east/x=0
                 roof.eave = 2370  # L1+2370=5670mm; thin coping starts5716mm
                 roof.pitch = 18.4
                 roof.cut_against = ["R_MAIN", "R_MAIN.genoise"]

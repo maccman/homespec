@@ -624,6 +624,55 @@ surface and route thresholds remain unchanged.
 Photo33's trumpet table differs from the cylindrical table in06/55; the source
 arrangements must not be represented as a single exact photographic match.
 
+## D-045 — Share exact opening profiles and roof attachment geometry
+Entities: D_KITCHEN_GARDEN, D_FRONT.surround, N_E1, N_E2, N_W1, N_W2, R_K, R_H, R_A, C1_K
+
+The circular clerestories, segmental kitchen head and concentric front stone
+surround now use HomeSpec's shared profile geometry. The kitchen keeps its
+2,200 mm width, 2,080 mm springing and inferred 360 mm rise; the shared
+concentric inset fixes the short transition where the former separately
+clipped rectangle and circle could disagree. The floor-level door frame has
+no fixed threshold member. Its clear passage remains below the curved head;
+the correction does not enlarge the photographed facade or change its camera.
+
+The wing roofs retain their traced outlines, ridge rotations, 180 mm vertical
+thickness and eave datums through the shared polygon Roof implementation.
+The 24 mm plaster lining stays 1 mm below the authoritative structural skin.
+Roof junction cuts remain separate from the recorded structural surface, so
+an overlap cut cannot accidentally project a hole down into a supporting wall.
+The project-specific junction footprint exclusions and decorative fanlights
+remain local; their photographic assumptions have not become measured facts.
+
+Independent fixtures check concave footprints, roof holes, rotation, exact
+opening CAD volume, glazing, room passage and IFC mesh error bounded by the
+declared tessellation tolerance. The coordinated house build and dressed-scene
+audit establish source consistency; final photographic fidelity still requires
+the render task's fixed-camera visual review.
+
+Integration preserves the principal-suite and exterior decisions D-043/D-044,
+including their revised opening positions, single-slope wings, courtyard
+joinery and roof details. Reusable implementations retain those project choices.
+
+## D-046 Attach reusable presentation detail to compiled room and member facts
+
+Entities: F0_K K1 K2 K3 K4 C0_K ST_MASTER ST_HALL
+
+The inferred kitchen 400 x 800 mm limestone courses, 2.5 mm joints and 2 mm
+finish offset stay project data. The shared generator now clips their geometry
+to the completed F0_K top surface, retaining any future concavity or floor
+void. Kitchen plaster selects the declared kitchen room boundary/storey and
+attached wall infill instead of a depth/z shader mask. Its scope is the room's
+recorded vertical extent; the previous arbitrary 3.25 m paint cut is not an
+independent observation. Generated cream pigment and physical pore assumptions
+remain in the kitchen material module. Adjacent faces and upper-room slots are
+preserved by scoped face splits with interpolated UVs.
+
+Standard timber grain reads published member frames. House-specific truss
+reconstruction remains local. Both custom stairs now adapt their actual tread
+and approach polygons to the same typed clearance evaluator as core stairs;
+the existing 2000 mm envelope and 0.2 mm project contact inset remain unchanged.
+This extraction does not convert an inferred dimension into surveyed evidence.
+
 ## Against the reference
 
 - Retained: 8 x 11 m principal house block, attached kitchen, skew entrance hall,
@@ -652,6 +701,11 @@ arrangements must not be represented as a single exact photographic match.
 - Mechanical verification: The generated checks.md records the final architectural checks; it is
   authoritative after each documented visual correction. No check thresholds
   or clash policies were loosened.
+- Shared profile and roof attachment fixtures validate geometric consistency;
+  the retained dimensions still have the evidence status documented above.
+
+- Shared surface and clearance fixtures prove consistency on an independent
+  concave/skew room; house photo fidelity still needs the recorded visual audit.
 
 ## Considered and not changed
 
@@ -663,6 +717,11 @@ arrangements must not be represented as a single exact photographic match.
   changes against exterior41 and interior06/55. No invented crop is used.
 - Furniture and planting are presentation objects; the architectural source
   remains a Homespec model with IFC, dimensioned drawings and schedules.
+- House-specific fanlight ornament and junction footprint exclusions remain
+  project data and custom vocabulary; shared profiles do not infer those details.
+
+- Decorative kitchen skirting and special carved/profiled tiles remain local;
+  the reusable Skirting constructor is available when trim needs BIM quantities.
 
 ## Not verified
 

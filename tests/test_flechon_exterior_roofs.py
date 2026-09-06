@@ -74,6 +74,18 @@ def test_only_regular_roofs_receive_declared_overhang():
     assert roof_z(regular, regular["lo"]) == pytest.approx(6.7)
 
 
+@pytest.mark.parametrize("side,high_x", [("lo", 8), ("y0", 8), ("hi", 0), ("y1", 0)])
+def test_shared_and_legacy_shed_sides_keep_the_same_physical_slope(side, high_x):
+    entity = _entity(angle=90)
+    entity["params"]["high_side"] = side
+    entity["derived"].update(shape="shed", z_ridge=None, z_high=6700 + 8000 * math.tan(math.radians(22)))
+    roof = descriptor(entity)
+    high_z = 6.7 + 8 * math.tan(math.radians(22))
+    # With the ridge along +Y, the cross-ridge coordinate is world -X.
+    assert roof_z(roof, -high_x) == pytest.approx(high_z)
+    assert roof_z(roof, -(8 - high_x)) == pytest.approx(6.7)
+
+
 def test_tile_boundary_clipping_interpolates_roof_height_and_uvs():
     roof = [(0, 0), (2, 0), (1, 1), (0, 1)]
     tile_face = [(0.8, .2, 7.1, .08, .02), (1.8, .2, 7.1, .18, .02),

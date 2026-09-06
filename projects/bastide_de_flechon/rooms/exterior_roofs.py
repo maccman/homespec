@@ -34,13 +34,17 @@ def descriptor(entity):
     # no asymmetric Roof.abuts. Fail rather than silently model a false edge.
     if params.get("abuts"):
         raise ValueError("Exterior roofs require explicit asymmetric overhang handling")
+    high_side = params.get("high_side", "lo")
+    # Shared rotated roofs name the cross-ridge axis y0/y1; historical
+    # project roofs used lo/hi for these same physical sides.
+    high_side = {"y0": "lo", "y1": "hi"}.get(high_side, high_side)
     return {"id": entity["id"], "u": u, "n": n, "polygon": local,
             "a": a - overhang, "b": b + overhang,
             "lo": lo - overhang, "hi": hi + overhang, "mid": (lo + hi) / 2,
             "wall_a": a, "wall_b": b, "wall_lo": lo, "wall_hi": hi,
             "slope": math.tan(math.radians(derived["pitch"])),
             "eave": derived["z_eave"] / 1000, "ridge": (derived.get("z_ridge") or derived.get("z_high")) / 1000,
-            "shape": derived.get("shape", "gable"), "high_side": params.get("high_side", "lo"),
+            "shape": derived.get("shape", "gable"), "high_side": high_side,
             "thickness": derived["thickness"] / 1000}
 
 

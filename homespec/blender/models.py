@@ -7,6 +7,7 @@ import bpy
 import session
 from materials import tinted
 from mathutils import Matrix, Vector
+from primitives import ensure_unique_mesh
 
 
 class Models:
@@ -96,6 +97,7 @@ class Models:
         lo = Vector((min(v.x for v in bb), min(v.y for v in bb), min(v.z for v in bb)))
         hi = Vector((max(v.x for v in bb), max(v.y for v in bb), max(v.z for v in bb)))
         ctr = (lo + hi) / 2
+        ensure_unique_mesh(o)
         o.data.transform(Matrix.Translation((-ctr.x, -ctr.y, -lo.z)))
         o["homespec_height"] = float(hi.z - lo.z)
         return o
