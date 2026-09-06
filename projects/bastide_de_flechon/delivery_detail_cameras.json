@@ -1,0 +1,357 @@
+{
+  "schema": 1,
+  "lock_id": "flechon-final-construction-details-v1",
+  "purpose": "Existing kitchen and salon construction cameras retained unchanged; current combined-scene framing requires render review. Original photographs remain uncropped evidence.",
+  "source_camera_sha256": {
+    "kitchen_camera_lock.json": "46422221cb8658448f296cb85193dff81868ff0fca6b43dcbb379a7c916366ef",
+    "salon_review.py": "e0ef29fd45f10f9864554309583d18e48327c72bd4fbd31a5e1a7e5a6bb532c1"
+  },
+  "views": [
+    {
+      "id": "kitchen00",
+      "reference": "photo_00.jpg",
+      "room": "Kitchen \u00b7 oak island",
+      "location": [
+        -3.4621978560236837,
+        9.100000000000001,
+        1.7948237637648632
+      ],
+      "target": [
+        -2.643866201199435,
+        14.032578768019079,
+        1.7948237637648632
+      ],
+      "lens_mm": 24,
+      "size": [
+        1200,
+        900
+      ],
+      "note": "Reverse view checks cabinet face, sink depth, room portal and stool grouping; flowers disabled for geometry comparison.",
+      "exposure": 0.8500000238418579,
+      "shift_x": -0.1172694840027924,
+      "shift_y": 0.0350060953566366,
+      "roll_degrees": 0.0,
+      "sensor_dimension_mm": 36,
+      "baseline_camera": {
+        "location": [
+          -3.66,
+          9.87,
+          1.54
+        ],
+        "target": [
+          -2.4,
+          16.55,
+          1.54
+        ],
+        "lens_mm": 24,
+        "shift_x": 0,
+        "shift_y": 0.02
+      },
+      "landmarks": [
+        {
+          "name": "sink northwest lip",
+          "world_m": [
+            -2.98,
+            12.68,
+            0.9575
+          ],
+          "photo_uv": [
+            0.598,
+            0.746
+          ],
+          "role": "fit"
+        },
+        {
+          "name": "sink northeast lip",
+          "world_m": [
+            -2.38,
+            12.68,
+            0.9575
+          ],
+          "photo_uv": [
+            0.694,
+            0.746
+          ],
+          "role": "fit"
+        },
+        {
+          "name": "sink southeast lip",
+          "world_m": [
+            -2.38,
+            11.99,
+            0.9575
+          ],
+          "photo_uv": [
+            0.74,
+            0.799
+          ],
+          "role": "fit"
+        },
+        {
+          "name": "sink southwest lip",
+          "world_m": [
+            -2.98,
+            11.99,
+            0.9575
+          ],
+          "photo_uv": [
+            0.628,
+            0.799
+          ],
+          "role": "fit"
+        },
+        {
+          "name": "island far northwest top",
+          "world_m": [
+            -3.16,
+            13.795,
+            0.9575
+          ],
+          "photo_uv": [
+            0.557,
+            0.709
+          ],
+          "role": "fit"
+        }
+      ],
+      "fit_status": "conditional_native_24mm_reverse_fit",
+      "fit_note": "Five manually annotated stone/sink points; all coplanar inferred geometry. Native24mm fixed. Pose and shift remain ambiguous; use reverse view to check construction, not surveyed dimensions. Solution touches the y=9.1m lower bound; this indicates residual ambiguity. No room geometry was changed to reduce this residual.",
+      "photo_lines": [
+        {
+          "name": "reverse upright portal edge",
+          "photo_uv": [
+            [
+              0.578,
+              0.403
+            ],
+            [
+              0.578,
+              0.69
+            ]
+          ]
+        }
+      ],
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-10.jpg",
+      "reference_sha256": "041770ebdc2d4d052fb389559f93dc235bad6246a6bec12d8b688bac08a3a848",
+      "annotation_uncertainty_pixels_at_2000_long_edge": 15,
+      "point_coordinates": "u right, v down; normalized to complete uncropped original image",
+      "reference_capture": {
+        "make": "Canon",
+        "camera_model": "Canon EOS 5DS R",
+        "editing_software": "Adobe Photoshop 26.11 (Macintosh)",
+        "exposure_seconds": 0.6,
+        "physical_focal_length_mm": 24.0,
+        "lens_model": "TS-E24mm f/3.5L II",
+        "physical_sensor_long_mm": 36,
+        "long_axis_equivalent_for_blender_mm": 24.0,
+        "sensor_source": "Full-frame 36mm convention; native EXIF focal length retained.",
+        "crop_and_shift": "Edited JPEG: optical shift, crop, stitching and correction profiles are not retained in the extracted EXIF tags. Metadata identifies physical optics, not a uniquely recoverable final image field."
+      },
+      "effective_focal_source": "Native EXIF physical focal length converted to a 36mm sensor by physical long axis; no free focal fit.",
+      "rejected_initial": {
+        "location": [
+          -3.66,
+          9.87,
+          1.54
+        ],
+        "target": [
+          -2.4,
+          16.55,
+          1.54
+        ],
+        "lens_mm": 24,
+        "shift_x": 0,
+        "shift_y": 0.02
+      },
+      "fit_solver": {
+        "implementation": "camera_calibration.py::fit_with_exif",
+        "implementation_sha256": "db5739e87f65c0185b972138493cf7eaeed0da3f5f1c9ddff00fd80fd878fff8",
+        "scipy_version": "1.18.1",
+        "method": "scipy.optimize.least_squares, bounded default trust-region-reflective method, soft_l1 loss, f_scale=0.025, max_nfev=5000",
+        "parameter_order": [
+          "x_m",
+          "y_m",
+          "z_m",
+          "yaw_radians",
+          "shift_x",
+          "shift_y"
+        ],
+        "lower_bounds": [
+          -4.2,
+          9.1,
+          1.25,
+          1.1,
+          -0.3,
+          -0.2
+        ],
+        "upper_bounds": [
+          -3.3,
+          11.2,
+          1.95,
+          1.9,
+          0.3,
+          0.2
+        ],
+        "initial_camera": "baseline_camera and rejected_initial in this view; yaw=atan2(target_y-location_y,target_x-location_x)",
+        "fixed_optics": "24 mm native EXIF focal length, 36 mm sensor long axis, level camera, zero roll",
+        "objective": "Normalized projected-minus-annotated UV residuals with square-root point weights, plus (z-z_initial)*0.01 and shift_x*0.002, shift_y*0.002 soft terms; holdout landmarks excluded.",
+        "limitations": "Five coplanar inferred stone/sink points, no independent holdouts; solution touches the y=9.1 m lower bound. Unknown optical shift, crop and correction preserve pose/geometry ambiguity. This records the original solve, not a new fit."
+      },
+      "lighting_preset": "kitchen10",
+      "camera_provenance": "Unchanged kitchen-focus-v1 detail/reverse camera"
+    },
+    {
+      "id": "kitchen_side",
+      "reference": "photo35/54 informed construction diagnostic",
+      "reference_original": "PHOTOS/MARK ELST/Bastide de Flechon - Final Collection-9.jpg",
+      "reference_sha256": "701e8d843dda1aea931b1ac17c6b0dfbcafe23fae8b3d82cbb7255b9c7772579",
+      "room": "Kitchen south seating extension",
+      "location": [
+        -0.72,
+        10.1,
+        1.42
+      ],
+      "target": [
+        -3.85,
+        11.18,
+        1.4
+      ],
+      "lens_mm": 28,
+      "size": [
+        1000,
+        800
+      ],
+      "shift_x": 0,
+      "shift_y": 0,
+      "exposure": 2.45,
+      "landmarks": [],
+      "fit_status": "unfitted supplemental construction view",
+      "fit_note": "Deliberate28mm diagnostic inside kitchen to reveal knee space, stool bearing and southcabinet. Not a photo35 camera fit. Photo35 originalEXIF is50mm; this view does not claim that capturefield.",
+      "note": "Same fixed diagnostic camera for baseline/current; documented kitchen source changes remain visible. No architecture is adjusted to fit this diagnostic camera.",
+      "lighting_preset": "kitchen10",
+      "camera_provenance": "Unchanged kitchen-focus-v1 detail/reverse camera"
+    },
+    {
+      "id": "fireplace58",
+      "source": "58",
+      "supporting_sources": [
+        "57"
+      ],
+      "source_crop_pixels": [
+        1050,
+        560,
+        2640,
+        2930
+      ],
+      "location": [
+        4.03,
+        5.75,
+        1.65
+      ],
+      "target": [
+        7.01,
+        4.4,
+        1.5
+      ],
+      "lens_mm": 41,
+      "aspect": [
+        1590,
+        2370
+      ],
+      "sensor_fit": "VERTICAL",
+      "sensor_height_mm": 36,
+      "note": "Fireplace hood, mouldings, curved shoulders, hearth and ironwork close-up. Detail camera is an inspection view of the named source crop, not a claim of recovered source extrinsics.",
+      "room": "Salon \u00b7 fireplace and hearth",
+      "reference": "photo_58.jpg",
+      "size": [
+        805,
+        1200
+      ],
+      "landmarks": [],
+      "lighting_preset": "salon58",
+      "camera_provenance": "Unchanged salon_review.py construction camera; no recovered photographic extrinsics claimed"
+    },
+    {
+      "id": "floor13",
+      "source": "13",
+      "supporting_sources": [
+        "07",
+        "58"
+      ],
+      "source_crop_pixels": [
+        900,
+        790,
+        1500,
+        1430
+      ],
+      "location": [
+        3.1,
+        3.33,
+        1.5
+      ],
+      "target": [
+        1.75,
+        3.33,
+        0.04
+      ],
+      "lens_mm": 35,
+      "aspect": [
+        600,
+        640
+      ],
+      "sensor_fit": "VERTICAL",
+      "sensor_height_mm": 36,
+      "note": "Installed stone tiles, fine joints and rug-to-chair floor transition, looking west through the gap between walnut chairs and away from the tabletop. The full photo13 EXIF is 90.1mm/71mm equivalent; this inspection camera enlarges the specified architectural detail crop.",
+      "room": "Salon \u00b7 limestone floor and rug",
+      "reference": "photo_13.jpg",
+      "size": [
+        1125,
+        1200
+      ],
+      "landmarks": [],
+      "lighting_preset": "salon58",
+      "camera_provenance": "Unchanged salon_review.py construction camera; no recovered photographic extrinsics claimed"
+    },
+    {
+      "id": "trim31",
+      "source": "31",
+      "supporting_sources": [
+        "07",
+        "58"
+      ],
+      "source_crop_pixels": [
+        0,
+        340,
+        375,
+        1510
+      ],
+      "location": [
+        5.35,
+        2.65,
+        1.45
+      ],
+      "target": [
+        7.58,
+        1.48,
+        1.15
+      ],
+      "lens_mm": 42,
+      "aspect": [
+        3,
+        4
+      ],
+      "sensor_fit": "VERTICAL",
+      "sensor_height_mm": 36,
+      "note": "Door frame, hinge/handle, curtain folds, stone skirting and plaster. The source crop is wider-context evidence; the render keeps a practical 3:4 inspection frame.",
+      "room": "Salon \u00b7 window, curtain and skirting",
+      "reference": "photo_31.jpg",
+      "size": [
+        900,
+        1200
+      ],
+      "landmarks": [],
+      "lighting_preset": "salon58",
+      "camera_provenance": "Unchanged salon_review.py construction camera; no recovered photographic extrinsics claimed"
+    }
+  ]
+}

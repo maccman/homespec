@@ -91,3 +91,41 @@ def test_emitted_kitchen_joists_match_photographic_timber_coverage(declarations)
     assert .55 < timber.area / footprint.area < .70
     assert timber.difference(footprint).area < .1
     assert timber.area == pytest.approx(sum(section.area for section in sections), abs=.1)
+
+
+@pytest.mark.parametrize("eid", ["D_KITCHEN_GARDEN", "D_KITCHEN_TERRACE", "D_PERGOLA"])
+def test_segmental_steel_grid_keeps_reviewed_member_sections(eid, declarations):
+    source = declarations.elements[eid]
+    with House("reviewed_segmental_grid") as house:
+        Level("L0", height=3000)
+        Material("steel")
+        Material("glass_double")
+        Assembly("test_wall", layers=[Layer(material="stone", thickness=350)])
+        Wall("W", (0, 0), (4000, 0), assembly="test_wall", level="L0")
+        replace(source, id="D", host="W", at=900, frame="steel")
+    compiled = house.compile()
+    steel = compiled["D"].solid
+    frame = G.Frame.model_validate(compiled["W"].derived["body"])
+    # Native section strips, independently measured from the final joined
+    # solid, catch a generic grid moving off the reviewed quarter-width axes.
+    section = steel & G.frame_box(frame, 900, 0, 1000, (source.width, 350, .1))
+    members = sorted((G.bbox(part) for part in section.solids()), key=lambda box: box.min[0])
+    assert len(members) == 5
+    assert [box.center[0] - 900 for box in members[1:-1]] == pytest.approx(
+        [source.width / 4, source.width / 2, 3 * source.width / 4], abs=.001)
+    assert [box.size[0] for box in members[1:-1]] == pytest.approx(
+        [source.bar_size, source.frame_size, source.bar_size], abs=.001)
+    # A second strip passes through clear panes, away from the vertical bars.
+    # It exposes the retained lower steel ring and both horizontal row bars.
+    section = steel & G.frame_box(frame, 1200, 0, 0, (.1, 350, source.height - source.frame_size))
+    spans = sorted((G.bbox(part) for part in section.solids()), key=lambda box: box.min[2])
+    assert len(spans) == 3
+    expected = [
+        (0, source.frame_size),
+        (source.frame_size + (source.height - 2 * source.frame_size) / 3,
+         source.frame_size + (source.height - 2 * source.frame_size) / 3 + source.bar_size),
+        (source.frame_size + 2 * (source.height - 2 * source.frame_size) / 3,
+         source.frame_size + 2 * (source.height - 2 * source.frame_size) / 3 + source.bar_size),
+    ]
+    for box, interval in zip(spans, expected, strict=True):
+        assert (box.min[2], box.max[2]) == pytest.approx(interval, abs=.001)

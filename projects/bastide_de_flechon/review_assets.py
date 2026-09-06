@@ -40,6 +40,12 @@ PAIRS = [
     ('hall21', '21', 'Entrance hall', 'Ochre walls & gallery', 'Compare the ochre walls, carved chest and sculpture, gallery opening and tall mirror.', ''),
     ('shower05', '05', 'Bathroom', 'Stone shower', 'Compare the pale stone, recessed shelf, dark shower fittings and filtered window light.', 'The shower’s assignment to the principal suite is inferred.'),
 ]
+EXTERIOR_PAIRS = [
+    ('pool46', '46', 'Exterior', 'Pool & south facade', 'Compare the full facade, arched opening, limestone trim, shutters and roof silhouette.', 'Main roof and oculus heights remain uncertain; the regular rubble appearance differs from the photograph.'),
+    ('courtyard08', '08', 'Exterior', 'Courtyard elevations', 'Compare the courtyard openings, cream plaster, rubble masonry and roof junctions.', 'Courtyard terrace levels and tight passages retain documented discrepancies.'),
+    ('kitchen12', '12', 'Exterior', 'Kitchen garden elevation', 'Compare the kitchen garden opening, shutter, sill and adjoining masonry.', 'Weathering and local bedding contacts remain inferred.'),
+    ('front41', '41', 'Exterior', 'Front facade & tree', 'Compare the arched front opening, facade proportions, trim and main roof.', 'Front-door pose, roof height and landscape staging remain reconstructed estimates.'),
+]
 BACKGROUND = (239, 236, 227)
 INK = (40, 38, 34)
 
@@ -91,6 +97,33 @@ def render_file(row, manifest_path):
     return path
 
 
+def verify_authoritative(manifest_path, manifest, *, allow_partial=False):
+    """Bind legacy consumer rows to the shared generation/camera/settings record."""
+    sys.path.insert(0, str(PROJECT.parents[1]))
+    from homespec.review import ReviewManifest
+
+    value = manifest.get('authoritative_review')
+    if not value:
+        raise ValueError('Current delivery lacks its authoritative review: ' + str(manifest_path))
+    path = Path(value)
+    if not path.is_absolute():
+        path = manifest_path.parent / path
+    review = ReviewManifest.read(path)
+    review.verify(path.parent, require_complete=not allow_partial)
+    if review.source.scene.sha256 != manifest.get('saved_scene_sha256', manifest.get('source_scene_sha256')):
+        raise ValueError('Legacy and authoritative scene hashes disagree: ' + str(manifest_path))
+    artifacts = {(path.parent / row.path).resolve(): row for row in review.artifacts if row.kind == 'render'}
+    rows = manifest.get('views', [])
+    if len(rows) != len(artifacts):
+        raise ValueError('Legacy and authoritative render coverage disagree: ' + str(manifest_path))
+    for row in rows:
+        rendered = render_file(row, manifest_path)
+        artifact = artifacts.get(rendered)
+        if artifact is None or artifact.sha256 != row.get('sha256'):
+            raise ValueError('Legacy render is absent from authoritative review: ' + str(rendered))
+    return file_record(path)
+
+
 def original_file(project, photo):
     index_path = project / 'reference/review/photo_index.txt'
     mapping = {}
@@ -130,7 +163,7 @@ def comparison_overview(rows, output, *, baseline=False, partial=False):
     canvas = Image.new('RGB', (margin * 2 + cell_width * columns + gap * (columns - 1), title_h + row_h * len(rows) + margin), BACKGROUND)
     draw = ImageDraw.Draw(canvas)
     draw.text((margin, 18), 'Photograph / baseline / updated scene' if baseline else 'Photograph / updated scene', fill=INK, font=font(28))
-    label = 'PARTIAL DIAGNOSTIC SET' if partial else 'Eight photographed views; coverage is separate from fidelity'
+    label = 'PARTIAL DIAGNOSTIC SET' if partial else f'{len(rows)} photographed views; coverage is separate from fidelity'
     draw.text((margin, 60), label, fill=INK, font=font(18))
     draw.text((margin, 88), 'Full frames retained. See provenance for camera-lock agreement and scene hashes.', fill=INK, font=font(17))
     for index, row in enumerate(rows):
@@ -223,6 +256,8 @@ def main():
     parser.add_argument('--baseline-manifest', type=Path, default=PROJECT / 'deliverables/comparison-baseline/camera-review-manifest.json')
     parser.add_argument('--archive', type=Path, help='Original ZIP, if available, to include its independent SHA256')
     parser.add_argument('--gallery-manifest', type=Path)
+    parser.add_argument('--exterior-manifest', type=Path, help='Current exterior beauty manifest, including the four primary photograph views')
+    parser.add_argument('--detail-manifest', type=Path, action='append', default=[], help='Additional current photo-renderer detail manifest; repeatable')
     parser.add_argument('--output', type=Path)
     parser.add_argument('--allow-partial', action='store_true')
     parser.add_argument('--zip', action='store_true', help='Also package verified deliverables/model, preserving executable bits')
@@ -235,18 +270,27 @@ def main():
     deliverables = project / 'deliverables'
     output = (args.output or deliverables / 'comparison-assets').resolve()
     current_path, current = read_manifest(args.current_manifest or deliverables / 'photo-comparison/camera-review-manifest.json')
-    baseline_path, baseline = read_manifest(args.baseline_manifest)
+    baseline_path, baseline = read_manifest(args.baseline_manifest) if args.baseline_manifest.is_file() else (None, {'views': []})
+    exterior_path, exterior = read_manifest(args.exterior_manifest or deliverables / 'exterior/manifest.json')
     gallery_path, gallery = read_manifest(args.gallery_manifest or deliverables / 'gallery-manifest.json')
-    if output.is_relative_to(BASELINE) or output.is_relative_to(baseline_path.parent):
+    authoritative = [verify_authoritative(path, manifest, allow_partial=args.allow_partial)
+                     for path, manifest in ((current_path, current), (exterior_path, exterior), (gallery_path, gallery))]
+    if output.is_relative_to(BASELINE) or baseline_path and output.is_relative_to(baseline_path.parent):
         raise ValueError('Output must not overwrite baseline deliverables')
     current_views = indexed_views(current, 'id')
     baseline_views = indexed_views(baseline, 'id')
+    exterior_views = indexed_views(exterior, 'id')
     gallery_views = indexed_views(gallery, 'index')
     wanted = {pair[0] for pair in PAIRS}
-    if not args.allow_partial and (set(current_views) != wanted or not wanted.issubset(baseline_views) or set(gallery_views) != set(range(1, 27))):
-        raise ValueError('Complete publication requires all eight current/baseline pairs and exactly 26 indexed gallery views; use --allow-partial only for labelled diagnostics')
+    exterior_wanted = {pair[0] for pair in EXTERIOR_PAIRS}
+    if not args.allow_partial and (set(current_views) != wanted or not exterior_wanted.issubset(exterior_views) or set(gallery_views) != set(range(1, 27))):
+        raise ValueError('Complete publication requires eight current interior pairs, four exterior pairs and 26 indexed gallery views; historical baseline evidence is retained without rerendering')
     if current.get('saved_scene_sha256') != gallery.get('source_scene_sha256'):
         raise ValueError('Current comparisons and gallery were rendered from different scene hashes')
+    if current.get('saved_scene_sha256') != exterior.get('saved_scene_sha256') or exterior.get('mode') != 'beauty':
+        raise ValueError('Exterior comparisons must use the same saved scene and actual beauty shaders')
+    if exterior.get('camera_lock_sha256') != sha256(project / 'exterior_cameras.json'):
+        raise ValueError('Exterior render camera register differs from the committed register')
     lock_path = project / 'photo_camera_lock.json'
     lock_hash = sha256(lock_path)
     if current.get('camera_lock_sha256') != lock_hash:
@@ -259,12 +303,15 @@ def main():
     presentation = json.loads(presentation_path.read_text()) if presentation_path.is_file() else {}
     output.mkdir(parents=True, exist_ok=True)
     records, web_records = [], []
-    for id_, photo, room, view, caption, note in PAIRS:
-        if id_ not in current_views or id_ not in baseline_views:
+    for id_, photo, room, view, caption, note in PAIRS + EXTERIOR_PAIRS:
+        views, manifest_path = (exterior_views, exterior_path) if id_ in exterior_wanted else (current_views, current_path)
+        if id_ not in views:
             continue
         original = original_file(project, photo)
-        rendered = render_file(current_views[id_], current_path)
-        previous = render_file(baseline_views[id_], baseline_path)
+        rendered = render_file(views[id_], manifest_path)
+        if views[id_].get('reference_sha256') and sha256(original) != views[id_]['reference_sha256']:
+            raise ValueError(f'Original photograph differs from the reviewed camera reference: {id_}')
+        previous = render_file(baseline_views[id_], baseline_path) if id_ in baseline_views else None
         original_web = output / f'{id_}-original.jpg'
         rendered_web = output / f'{id_}-render.webp'
         thumbnail = output / f'{id_}-thumb.webp'
@@ -283,24 +330,63 @@ def main():
                             'render': f'/comparisons/{rendered_web.name}', 'thumbnail': f'/comparisons/{thumbnail.name}'})
         matches = bool(current.get('camera_lock_sha256')) and current.get('camera_lock_sha256') == baseline.get('camera_lock_sha256')
         records.append({'id': id_, 'photo': photo, 'room': room, 'view': view, 'original_path': str(original),
-                        'current_path': str(rendered), 'baseline_path': str(previous), 'original': file_record(original),
-                        'current': file_record(rendered), 'baseline': file_record(previous),
-                        'baseline_camera_lock_matches': matches, 'current_render_record': current_views[id_],
-                        'baseline_render_record': baseline_views[id_],
+                        'current_path': str(rendered), 'baseline_path': str(previous) if previous else None, 'original': file_record(original),
+                        'current': file_record(rendered), 'baseline': file_record(previous) if previous else None,
+                        'baseline_camera_lock_matches': matches if previous else None, 'current_render_record': views[id_],
+                        'baseline_render_record': baseline_views.get(id_),
                         'web_derivatives': [file_record(p) for p in (original_web, rendered_web, thumbnail)]})
     galleries = [dict(row, path=str(render_file(row, gallery_path))) for _, row in sorted(gallery_views.items())]
-    partial = len(records) != 8 or len(galleries) != 26
+    partial = len(records) != 12 or len(galleries) != 26
     if not records or not galleries:
         raise ValueError('At least one verified comparison and gallery image are needed')
     comparison_overview(records, output / 'photo-comparison-overview.jpg', partial=partial)
-    comparison_overview(records, output / 'baseline-current-source-overview.jpg', baseline=True, partial=partial)
+    baseline_records = [row for row in records if row['baseline_path']]
+    if baseline_records:
+        comparison_overview(baseline_records, output / 'baseline-current-source-overview.jpg', baseline=True, partial=partial)
     gallery_overview(galleries, output / 'gallery-overview.jpg', partial=partial)
     write_json(output / 'comparisons.json', web_records)
+    detail_inputs = [(exterior_path, exterior, [row for name, row in exterior_views.items() if name not in exterior_wanted])]
+    for detail_path in args.detail_manifest:
+        path, detail = read_manifest(detail_path)
+        authoritative.append(verify_authoritative(path, detail, allow_partial=args.allow_partial))
+        if detail.get('saved_scene_sha256') != current['saved_scene_sha256']:
+            raise ValueError('Detail manifest uses a different saved scene: ' + str(path))
+        detail_inputs.append((path, detail, detail['views']))
+    details = []
+    for manifest_path, _manifest, rows in detail_inputs:
+        for row in rows:
+            rendered = render_file(row, manifest_path)
+            name = row['id']
+            if name in {item['id'] for item in details}:
+                raise ValueError('Duplicate detail id: ' + name)
+            web = output / (name + '-detail.webp')
+            image = opened(rendered)
+            image.thumbnail((2560, 2560), Image.Resampling.LANCZOS)
+            image.save(web, 'WEBP', quality=94, method=6)
+            image.close()
+            details.append({'id': name, 'label': row.get('room', name.replace('-', ' ').replace('_', ' ').title()),
+                            'render': f'/comparisons/{web.name}', 'pixels': row['pixels'],
+                            'full_resolution': file_record(rendered), 'web_derivative': file_record(web),
+                            'manifest': file_record(manifest_path), 'render_record': row,
+                            'scope': 'Actual saved-model construction view; photograph camera matching is only claimed where the camera record supplies a fit.'})
+    write_json(output / 'details.json', details)
+    web_gallery = []
+    for row in galleries:
+        web = output / f'gallery-{row["index"]:02d}.webp'
+        image = opened(row['path'])
+        image.thumbnail((1920, 1920), Image.Resampling.LANCZOS)
+        image.save(web, 'WEBP', quality=90, method=6)
+        image.close()
+        web_gallery.append({'index': row['index'], 'name': row['name'], 'render': f'/comparisons/{web.name}',
+                            'pixels': row['pixels'], 'full_resolution': file_record(row['path']), 'web_derivative': file_record(web)})
+    write_json(output / 'gallery.json', web_gallery)
     (output / 'README.txt').write_text('Verified Bastide comparison assets\n\nCopy *-original.jpg, *-render.webp and *-thumb.webp to site public/comparisons/.\nUse comparisons.json for site app/comparisons.json. No site was edited or published.\nRead provenance.json for original/render hashes, camera-lock agreement, generation and coverage.\nMain comparison frames are uncropped; only thumbnails use a center crop.\n')
     provenance = {'schema': 1, 'publication_status': 'partial diagnostic' if partial else 'complete coverage; fidelity remains a visual judgment',
-                  'coverage': {'matched_pairs': len(records), 'expected_pairs': 8, 'bookmarks': len(galleries), 'expected_bookmarks': 26},
+                  'coverage': {'matched_pairs': len(records), 'expected_pairs': 12, 'bookmarks': len(galleries), 'expected_bookmarks': 26, 'details': len(details)},
                   'source_archive': file_record(args.archive) if args.archive else None,
-                  'current_manifest': file_record(current_path), 'baseline_manifest': file_record(baseline_path),
+                  'current_manifest': file_record(current_path), 'baseline_manifest': file_record(baseline_path) if baseline_path else None,
+                  'baseline_policy': 'Preserved historical evidence; earlier camera/script provenance remains distinct from the final combined scene.',
+                  'exterior_manifest': file_record(exterior_path), 'exterior_camera_register': file_record(project / 'exterior_cameras.json'),
                   'gallery_manifest': file_record(gallery_path), 'camera_lock': file_record(lock_path),
                   'camera_lock_id': current.get('camera_lock_id'), 'source_scene_sha256': current['saved_scene_sha256'],
                   'generation': package.get('generation') if package else gallery.get('generation', presentation.get('generation')),
@@ -309,9 +395,10 @@ def main():
                   'portable_source': file_record(package_path) if package else None,
                   'originals': 'Unmodified full-resolution archive images; site JPEGs resized to at most 2400 px, uncropped. Only thumbnails are cropped.',
                   'image_processing': 'Pillow format conversion, Lanczos resizing and labelled overview composition only; no image generation or scene alteration.',
+                  'authoritative_reviews': authoritative,
                   'runtime': {'python': sys.version, 'executable': sys.executable, 'pillow': PILLOW_VERSION},
                   'consumer_contract': 'Site public/comparisons filenames and app/comparisons.json records match scripts/prepare-assets.mjs; site is not edited.',
-                  'pairs': records, 'gallery': galleries}
+                  'pairs': records, 'gallery': galleries, 'details': details, 'web_gallery': web_gallery}
     provenance['outputs'] = [file_record(p) for p in sorted(output.iterdir()) if p.is_file() and p.name != 'provenance.json']
     write_json(output / 'provenance.json', provenance)
     if args.zip:

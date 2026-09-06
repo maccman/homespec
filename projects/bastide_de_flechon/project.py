@@ -135,7 +135,7 @@ class CourtyardUpperLight(ArchedDoor):
 
 @element
 class SegmentalGardenDoor(ArchedDoor):
-    """The kitchen's inferred rise, using the shared exact profile machinery."""
+    """Shared exact profile, with the kitchen's reviewed steel grid retained."""
 
     rise: Positive = 360.0
     profile: OpeningProfile = field(default_factory=lambda: OpeningProfile(shape="segmental", rise=360))
@@ -148,6 +148,30 @@ class SegmentalGardenDoor(ArchedDoor):
 
     def head_height(self):
         return self.height + self.rise
+
+    def frame_members(self, x, wall, z):
+        # The photograph-led kitchen/exterior scenes place the three vertical
+        # bars on quarter-width axes and retain a full outer steel ring. The
+        # generic door grid spaces bars inside its jambs, centers horizontal
+        # bars on their row datum, and omits the lower ring. Keep this local
+        # joinery detail while sharing the exact void/glass/profile solids.
+        fs, bs, t = self.frame_size, self.bar_size, wall.thickness
+        outer = self.profile_body(x, wall, z, (t - fs) / 2, fs)
+        inner = self.profile_body(x, wall, z, (t - fs) / 2 - 1, fs + 2, inset=fs)
+        members = [outer - inner]
+        radius, centre_z = self.profile.circle(self.width, self.head_height())
+        cols, rows = self.panes
+        for column in range(1, cols):
+            offset = self.width * column / cols
+            top = centre_z + math.sqrt((radius - fs) ** 2 - (offset - self.width / 2) ** 2)
+            size = fs if column == cols / 2 else bs
+            members.append(G.frame_box(wall.body, x + offset - size / 2, (t - size) / 2,
+                                       z + fs, (size, size, top - fs)))
+        for row in range(1, rows):
+            members.append(G.frame_box(wall.body, x + fs, (t - bs) / 2,
+                                       z + fs + (self.height - 2 * fs) * row / rows,
+                                       (self.width - 2 * fs, bs, bs)))
+        return members
 
 
 @element

@@ -2,11 +2,67 @@
   "schema": 1,
   "model": {
     "purpose": "Portable Bastide model subpackage; photo/gallery/motion delivery is verified separately.",
-    "required": ["packed-model", "navigation", "launcher", "waypoints", "packed-model-verification"]
+    "required": [
+      "packed-model",
+      "navigation",
+      "launcher",
+      "waypoints",
+      "packed-model-verification"
+    ]
   },
   "camera_lock": "photo_camera_lock.json",
   "navigation_bookmark_count": 26,
-  "tour_takes": ["kitchen10", "principal06", "salon58"],
-  "light_control_views": ["kitchen10", "salon58"],
-  "material_sample_count": 12
+  "tour_takes": [
+    "walk01",
+    "walk02",
+    "walk03",
+    "walk04",
+    "walk05",
+    "walk06",
+    "walk07",
+    "walk08",
+    "walk09",
+    "walk10",
+    "walk11",
+    "walk12",
+    "walk13",
+    "walk14",
+    "walk15",
+    "walk16",
+    "walk17",
+    "walk18",
+    "walk19",
+    "walk20",
+    "walk21",
+    "walk22",
+    "walk23",
+    "walk24",
+    "walk25",
+    "walk26"
+  ],
+  "light_control_views": [
+    "kitchen10",
+    "salon58"
+  ],
+  "material_sample_count": 18,
+  "material_samples": [
+    "kitchen_honed_travertine",
+    "kitchen_waxed_walnut",
+    "kitchen_cleaned_oak",
+    "salon_floor_stone_01",
+    "salon_fireplace_limestone",
+    "salon_oak_timber",
+    "fidelity_principal_floorboard",
+    "fidelity_principal_curtain_rust_ikat",
+    "fidelity_principal_chair_walnut",
+    "fidelity_principal_bed_linen",
+    "salon_curtain_linen",
+    "salon_taupe_sofa",
+    "exterior_plaster",
+    "exterior_cut",
+    "exterior_shutter",
+    "exterior_rubble_0",
+    "exterior_roof_0",
+    "exterior_entry_wood"
+  ]
 }

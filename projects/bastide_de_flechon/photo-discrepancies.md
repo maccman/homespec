@@ -1,5 +1,7 @@
 # Photograph evidence and remaining discrepancies
 
+**Current release:** [Final image delivery](final-delivery.md) records the completed combined scene, all 54 stills and current checks. Gallery view 18 retains a thin irregular boundary along the inner left arch reveal and upper arch facets; both were present in the approved preview. The source-specific observations below retain their original scope; completing the images does not establish that every photographic discrepancy is resolved.
+
 Review ledger, 5 September 2026. These eight anchors compare specific photographs;
 they do not establish photographic equivalence for the whole house. Source paths
 below are relative to `reference/`. Camera evidence and rejected trials are in

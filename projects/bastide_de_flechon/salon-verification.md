@@ -1,5 +1,8 @@
 # Standalone salon verification — La Bastide de Fléchon
 
+<!-- current-image-delivery -->
+**Current combined release, 6 September 2026:** [54 final stills and the verified portable model](final-delivery.md) are complete; image-only delivery checks passed 3,408 assertions and the independent local audit passed 966. Video is omitted at the user's request. The release record tracks publication status. The source-specific study below is preserved as historical evidence; its older counts and isolated-study omissions retain their original scope.
+
 This evidence was produced on the isolated salon branch at `6f4bd82`, before
 the combined house PR #7 was merged as `ec117ec`. It records a separate saved
 scene and lighting state, not the latest integrated-house render. Current

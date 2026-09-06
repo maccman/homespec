@@ -64,6 +64,28 @@ def test_ir_roof_elevations_and_rotation_are_not_fitted_to_one_camera():
         assert z == p[2]
 
 
+@pytest.mark.parametrize("ridge_along,rotation,expected_angle", [
+    ("x", "absent", 0), ("y", "absent", 90),
+    ("x", None, 0), ("y", None, 90),
+    ("x", 0, 0), ("y", 0, 0),
+])
+def test_optional_rotation_preserves_axis_roofs_and_explicit_zero(ridge_along, rotation, expected_angle):
+    entity = _entity(angle=expected_angle)
+    entity["params"]["ridge_along"] = ridge_along
+    if rotation == "absent":
+        entity["params"].pop("ridge_angle")
+    else:
+        entity["params"]["ridge_angle"] = rotation
+    roof = descriptor(entity)
+    # The main house and poolhouse retain a world-Y ridge when their shared
+    # optional ridge_angle serializes as null. Explicit zero still means X.
+    expected_u = (1, 0) if expected_angle == 0 else (0, 1)
+    assert roof["u"] == pytest.approx(expected_u)
+    assert roof["n"] == pytest.approx((-expected_u[1], expected_u[0]))
+    for v in (roof["lo"], roof["hi"]):
+        assert to_world(roof, (roof["a"], v, roof_z(roof, v)))[2] == pytest.approx(6.7)
+
+
 def test_only_regular_roofs_receive_declared_overhang():
     regular = descriptor(_entity(overhang=300))
     traced = descriptor(_entity())

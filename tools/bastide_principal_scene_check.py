@@ -300,11 +300,15 @@ def measure():
     checks['chairs_stoneware']['vessel_meshes'] = sorted(vessels)
     checks['stoneware_curtain'] = surface_pairs(vessels, curtains)
     boards = [o for o in bpy.data.objects if o.name.startswith('principal_floorboard') and o.type == 'MESH']
-    uv_errors, heights, bbrows = [], [], []
+    uv_errors, uv_layers, heights, bbrows = [], [], [], []
     for obj in boards:
-        uv = obj.data.uv_layers.active
+        # The floor shader's Texture Coordinate UV socket uses the render
+        # layer. Blender's active edit layer can remain the primitive UVMap.
+        uv = next((layer for layer in obj.data.uv_layers if layer.active_render), None)
+        uv_layers.append({'object': obj.name, 'render_uv_layer': uv.name if uv else None,
+                          'edit_uv_layer': obj.data.uv_layers.active.name if obj.data.uv_layers.active else None})
         if not uv:
-            uv_errors.append({'object': obj.name, 'error': 'missing UV'})
+            uv_errors.append({'object': obj.name, 'error': 'missing render UV layer'})
             continue
         offsets = [(uv.data[i].uv.x - obj.data.vertices[loop.vertex_index].co.x,
                     uv.data[i].uv.y - obj.data.vertices[loop.vertex_index].co.y) for i, loop in enumerate(obj.data.loops)]
@@ -316,6 +320,8 @@ def measure():
         bbrows.append((obj.name, bb))
     overlaps = [(a[0], b[0]) for i, a in enumerate(bbrows) for b in bbrows[i + 1:] if overlap(a[1], b[1], 0.00001)]
     checks['floorboards'] = {'count': len(boards), 'count_note': 'Measured count; staggered board lengths are inferred, not fixed by source plan',
+                            'measured_uv_layers': uv_layers,
+                            'uv_selection': 'Render-active UV layer used by the floor shader Texture Coordinate UV output; edit selection is recorded separately',
                             'u_along_x_v_along_y_metric_errors': uv_errors, 'board_bounds_overlaps': overlaps,
                             'top_z_range_m': [min(heights), max(heights)] if heights else None}
     # Measure modifier-evaluated feet, not their unsawn parametric boxes.

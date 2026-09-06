@@ -1,5 +1,8 @@
 # Focused kitchen verification — 2026-09-05
 
+<!-- current-image-delivery -->
+**Current combined release, 6 September 2026:** [54 final stills and the verified portable model](final-delivery.md) are complete; image-only delivery checks passed 3,408 assertions and the independent local audit passed 966. Video is omitted at the user's request. The release record tracks publication status. The source-specific study below is preserved as historical evidence; its older counts and isolated-study omissions retain their original scope.
+
 This is a reviewable kitchen reconstruction, with source fixes and targeted renders. It does not establish exact photographic equivalence. The full-house gallery, motion video and portable-package refresh remain deferred.
 
 ## Source and artifacts

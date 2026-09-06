@@ -10,6 +10,8 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+from delivery_support import digest, resolve_delivery_build
+
 from homespec import buildstate
 from homespec.pipeline import blender_binary
 from homespec.review import Coverage, FileIdentity, ReviewArtifact, ReviewManifest, png_size, publish_review_directory, verified_source
@@ -22,7 +24,7 @@ DEST = PROJECT / "deliverables"
 
 
 def main():
-    generation = buildstate.resolve_build(ROOT, PROJECT, allow_failed_checks=False)
+    generation, acknowledged = resolve_delivery_build(ROOT, PROJECT)
     presentation, fingerprint = buildstate.presentation_directory(generation, PROJECT)
     scene = presentation / "house.blend"
     if not scene.is_file():
@@ -34,7 +36,7 @@ def main():
     with buildstate.build_lock(presentation):
         review_source = verified_source(generation, PROJECT, dependencies=tuple(
             FileIdentity.capture(PROJECT / name, "packaging-script-or-declaration")
-            for name in ("prepare_walk.py", "verify_walk.py", "walk_ui.py", "package_model.py", "delivery_coverage.json")))
+            for name in ("prepare_walk.py", "verify_walk.py", "walk_ui.py", "package_model.py", "delivery_support.py", "delivery_coverage.json")))
         source_hash = review_source.scene.sha256
         with tempfile.TemporaryDirectory(prefix=".walk-package-", dir=DEST) as temporary:
             staged = Path(temporary)
@@ -69,7 +71,7 @@ exec "$TASK_BLENDER_BIN" "$TASK_MODEL_DIR/house_walk.blend" --python "$TASK_MODE
                 "On another platform: blender house_walk.blend --python walk_ui.py\n"
             )
             # Recheck after Blender jobs and before publishing the verified files.
-            if buildstate.resolve_build(ROOT, PROJECT, allow_failed_checks=False) != generation:
+            if resolve_delivery_build(ROOT, PROJECT)[0] != generation:
                 raise RuntimeError("A newer generation was published while packaging; package it instead.")
             _, current_fingerprint = buildstate.presentation_directory(generation, PROJECT)
             if current_fingerprint != fingerprint or buildstate.digest(scene) != source_hash:
@@ -110,6 +112,13 @@ exec "$TASK_BLENDER_BIN" "$TASK_MODEL_DIR/house_walk.blend" --python "$TASK_MODE
         "navigation_sha256": buildstate.digest(model / "walk_ui.py"),
         "launcher_sha256": buildstate.digest(model / "Walk Bastide.command"),
         "source_archive": "LABASTIDEDEFLECHON.zip",
+        "source_archive_sha256": digest(Path("/Users/cloud/LABASTIDEDEFLECHON.zip")),
+        "native_checks": acknowledged,
+        "packager_sha256": digest(Path(__file__)),
+        "prepare_walk_sha256": digest(PROJECT / "prepare_walk.py"),
+        "verify_walk_sha256": digest(PROJECT / "verify_walk.py"),
+        "delivery_support_sha256": digest(PROJECT / "delivery_support.py"),
+        "native_walk_verification_sha256": digest(model / "packed-model-verification.json"),
         "note": "Photo-led reconstruction; unsurveyed heights and furnishing dimensions are inferred.",
     }
     (DEST / "SOURCE.json").write_text(json.dumps(source, indent=2))
