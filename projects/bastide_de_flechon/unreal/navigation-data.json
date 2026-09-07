@@ -1,0 +1,8270 @@
+{
+  "schema": 1,
+  "scope": "Source-derived navigation evidence; no native Unreal runtime verification",
+  "source": {
+    "generation": "9340bb88d26d4244a5364682e8d81807",
+    "packed_model": "/Users/cloud/.codex/worktrees/49bf/homespec/projects/bastide_de_flechon/deliverables/model/house_walk.blend",
+    "packed_sha256": "caa9878ba4ca5d71850f4887e0ce3d00fd3f7f218fcafc5fc2873f83d392d23a",
+    "ir": "/Users/cloud/.codex/worktrees/49bf/homespec/out/bastide_de_flechon/generations/9340bb88d26d4244a5364682e8d81807/ir.json",
+    "ir_sha256": "79f9c91081593254ecf7480057638a46e21913eff01f24a053fda54ade1c6e4b",
+    "waypoints_sha256": "f9e42b20c9126726a4987f28db8d21fe92e713dade1ac9553f265bf7d1697730",
+    "scene_check_sha256": "2461dfe68b0e8b160657f4d91a595f157d983b97990a501242983c14fe776296"
+  },
+  "coordinates": {
+    "native_ir_units": "millimetres",
+    "derived_positions": "Blender metres",
+    "axes": "Blender source axes retained; importer must record and verify Unreal transform",
+    "unreal_units_per_blender_metre": 100
+  },
+  "levels_mm": {
+    "L0": {
+      "elevation": 0.0,
+      "height": 3000.0
+    },
+    "L1": {
+      "elevation": 3300.0,
+      "height": 3200.0
+    }
+  },
+  "rooms": [
+    {
+      "id": "living",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          0.35,
+          0.35
+        ],
+        [
+          7.65,
+          0.35
+        ],
+        [
+          7.65,
+          7.3
+        ],
+        [
+          0.35,
+          7.3
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "MS",
+        "ME",
+        "MW"
+      ]
+    },
+    {
+      "id": "dining",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          0.35,
+          7.3
+        ],
+        [
+          7.65,
+          7.3
+        ],
+        [
+          7.65,
+          10.65
+        ],
+        [
+          0.35,
+          10.65
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "MN",
+        "ME",
+        "MW"
+      ]
+    },
+    {
+      "id": "master",
+      "level": "L1",
+      "outline_blender_m": [
+        [
+          0.35,
+          0.35
+        ],
+        [
+          7.65,
+          0.35
+        ],
+        [
+          7.65,
+          6.94
+        ],
+        [
+          0.35,
+          6.94
+        ]
+      ],
+      "floor_structural_z_m": 3.3,
+      "bounded_by": [
+        "MS",
+        "ME",
+        "MW",
+        "P_DRESS"
+      ]
+    },
+    {
+      "id": "master_bath",
+      "level": "L1",
+      "outline_blender_m": [
+        [
+          0.35,
+          7.06
+        ],
+        [
+          7.65,
+          7.06
+        ],
+        [
+          7.65,
+          10.65
+        ],
+        [
+          0.35,
+          10.65
+        ]
+      ],
+      "floor_structural_z_m": 3.3,
+      "bounded_by": [
+        "MN",
+        "ME",
+        "MW",
+        "P_DRESS"
+      ]
+    },
+    {
+      "id": "kitchen",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          -0.35,
+          8.75
+        ],
+        [
+          -0.35,
+          15.718
+        ],
+        [
+          -4.997,
+          16.737
+        ],
+        [
+          -5.124,
+          8.75
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "K1",
+        "K2",
+        "K3",
+        "K4"
+      ]
+    },
+    {
+      "id": "hall",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          -0.93,
+          16.389
+        ],
+        [
+          -0.214,
+          22.411
+        ],
+        [
+          -4.287,
+          23.369
+        ],
+        [
+          -4.958,
+          17.433
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ]
+    },
+    {
+      "id": "bed1",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          -0.8410000828412966,
+          25.73075875021882
+        ],
+        [
+          -3.8362183545660007,
+          26.65993230166626
+        ],
+        [
+          -3.012819563284888,
+          29.520715281630125
+        ],
+        [
+          0.21999999999999997,
+          28.408
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "A2",
+        "A1",
+        "P_BED1",
+        "P_BATH1"
+      ]
+    },
+    {
+      "id": "bed2",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          -5.191794226141084,
+          30.270704063305683
+        ],
+        [
+          -6.734659064998406,
+          26.261354618111824
+        ],
+        [
+          -9.16331985891846,
+          27.074428014337233
+        ],
+        [
+          -8.589,
+          31.44
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "A3",
+        "A2",
+        "P_BED2",
+        "P_BATH2"
+      ]
+    },
+    {
+      "id": "bath1",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          -4.860636196070648,
+          30.156721642239326
+        ],
+        [
+          -3.126435623690927,
+          29.559821184133376
+        ],
+        [
+          -3.950854355477052,
+          26.695494564722612
+        ],
+        [
+          -5.953503228580922,
+          27.316754251634396
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "A2",
+        "P_BED2",
+        "P_BATH1",
+        "P_BED1"
+      ]
+    },
+    {
+      "id": "bath2",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          -9.17926555538447,
+          26.953220146103316
+        ],
+        [
+          -6.77779851350351,
+          26.149250745125773
+        ],
+        [
+          -7.254172257190525,
+          24.911327139081965
+        ],
+        [
+          -9.363999999999999,
+          25.549
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "A3",
+        "A4",
+        "P_BED2",
+        "P_BATH2"
+      ]
+    },
+    {
+      "id": "landing",
+      "level": "L1",
+      "outline_blender_m": [
+        [
+          -0.93,
+          16.389
+        ],
+        [
+          -4.958,
+          17.433
+        ],
+        [
+          -4.287,
+          23.369
+        ],
+        [
+          -0.214,
+          22.411
+        ],
+        [
+          -0.3809941164452714,
+          21.006476858612537
+        ],
+        [
+          -1.6222513365024047,
+          21.15405908537456
+        ],
+        [
+          -1.946932235378857,
+          18.423293201248867
+        ],
+        [
+          -0.7056750153217238,
+          18.27571097448684
+        ]
+      ],
+      "floor_structural_z_m": 3.3,
+      "bounded_by": [
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ]
+    },
+    {
+      "id": "bed3",
+      "level": "L1",
+      "outline_blender_m": [
+        [
+          -5.060555652936021,
+          12.74
+        ],
+        [
+          -0.35,
+          12.74
+        ],
+        [
+          -0.35,
+          8.75
+        ],
+        [
+          -5.124,
+          8.75
+        ]
+      ],
+      "floor_structural_z_m": 3.3,
+      "bounded_by": [
+        "K4",
+        "K3",
+        "K1",
+        "P_BATH3"
+      ]
+    },
+    {
+      "id": "bath3",
+      "level": "L1",
+      "outline_blender_m": [
+        [
+          -4.997,
+          16.737
+        ],
+        [
+          -0.35,
+          15.718
+        ],
+        [
+          -0.35,
+          12.86
+        ],
+        [
+          -5.0586475522724434,
+          12.86
+        ]
+      ],
+      "floor_structural_z_m": 3.3,
+      "bounded_by": [
+        "K3",
+        "K2",
+        "K1",
+        "P_BATH3"
+      ]
+    },
+    {
+      "id": "pergola",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          0.0,
+          11.0
+        ],
+        [
+          8.0,
+          11.0
+        ],
+        [
+          8.0,
+          16.0
+        ],
+        [
+          0.0,
+          16.0
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "MN",
+        "K1"
+      ]
+    },
+    {
+      "id": "guest_corridor",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          -6.4372985099122735,
+          26.059544745045443
+        ],
+        [
+          -5.996695958473662,
+          27.20451191953217
+        ],
+        [
+          -0.8853409581291708,
+          25.618872594607787
+        ],
+        [
+          -1.817,
+          23.268
+        ],
+        [
+          -3.3627571849551123,
+          23.735188570144775
+        ],
+        [
+          -3.019130473383603,
+          24.99515317924031
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "A1",
+        "A4",
+        "P_BED1",
+        "P_SERV",
+        "P_BED2",
+        "P_WC"
+      ]
+    },
+    {
+      "id": "laundry",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          -6.480488184629703,
+          25.947310352242322
+        ],
+        [
+          -4.731845847842366,
+          25.40279640939462
+        ],
+        [
+          -5.148655932045146,
+          24.27495735802239
+        ],
+        [
+          -6.918224833660707,
+          24.80979062482842
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "A4",
+        "P_BED2",
+        "P_SERV",
+        "P_LAUNDRY"
+      ]
+    },
+    {
+      "id": "wc",
+      "level": "L0",
+      "outline_blender_m": [
+        [
+          -4.61711637305033,
+          25.36707052230748
+        ],
+        [
+          -3.165371011554881,
+          24.915008042651934
+        ],
+        [
+          -3.4776679875354324,
+          23.769919130723242
+        ],
+        [
+          -5.033577358708049,
+          24.240176090527765
+        ]
+      ],
+      "floor_structural_z_m": 0.0,
+      "bounded_by": [
+        "A4",
+        "P_SERV",
+        "P_LAUNDRY",
+        "P_WC"
+      ]
+    },
+    {
+      "id": "bed4",
+      "level": "L1",
+      "outline_blender_m": [
+        [
+          0.21999999999999983,
+          28.408
+        ],
+        [
+          -1.817,
+          23.268
+        ],
+        [
+          -7.073378469569449,
+          24.856684151197552
+        ],
+        [
+          -5.232560983191966,
+          30.284735713592696
+        ]
+      ],
+      "floor_structural_z_m": 3.3,
+      "bounded_by": [
+        "A1",
+        "A2",
+        "A4",
+        "P_BATH4"
+      ]
+    },
+    {
+      "id": "bath4",
+      "level": "L1",
+      "outline_blender_m": [
+        [
+          -5.563509552650972,
+          30.398646039690966
+        ],
+        [
+          -7.408597984764714,
+          24.958000662945317
+        ],
+        [
+          -9.364,
+          25.549
+        ],
+        [
+          -8.589,
+          31.44
+        ]
+      ],
+      "floor_structural_z_m": 3.3,
+      "bounded_by": [
+        "A2",
+        "A3",
+        "A4",
+        "P_BATH4"
+      ]
+    }
+  ],
+  "openings": [
+    {
+      "id": "D_FRONT",
+      "kind": "arched_door",
+      "host": "MS",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        4.0,
+        0.175,
+        0.0
+      ],
+      "opening_axis_blender": [
+        1.0,
+        0.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.0,
+        1.0,
+        0
+      ],
+      "width_m": 3.36,
+      "height_m": 5.23,
+      "reported_clear_width_m": 3.264,
+      "reported_clear_height_m": 2.78,
+      "rooms": [
+        {
+          "room": "living",
+          "side": 1,
+          "z_range": [
+            0.0,
+            3000.0
+          ],
+          "intervals": [
+            [
+              1970.0,
+              5330.0
+            ]
+          ],
+          "glass_area_mm2": 1680132.40587009,
+          "clear_width": 3264.0,
+          "clear_height": 2780.0
+        },
+        {
+          "room": "master",
+          "side": 1,
+          "z_range": [
+            3300.0,
+            5230.0
+          ],
+          "intervals": [
+            [
+              1970.0,
+              5330.0
+            ]
+          ],
+          "glass_area_mm2": 4180432.636101619,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "D_FRONT.glass",
+      "fixed_view_only": false
+    },
+    {
+      "id": "D_E1",
+      "kind": "arched_door",
+      "host": "ME",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        7.825,
+        2.325,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.0,
+        1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.65,
+      "height_m": 2.875,
+      "reported_clear_width_m": 1.574,
+      "reported_clear_height_m": 2.012,
+      "rooms": [
+        {
+          "room": "living",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2875.0
+          ],
+          "intervals": [
+            [
+              1150.0,
+              2800.0
+            ]
+          ],
+          "glass_area_mm2": 4042472.550130628,
+          "clear_width": 1574.0,
+          "clear_height": 2012.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "D_E1.glass",
+      "fixed_view_only": false
+    },
+    {
+      "id": "N_E1",
+      "kind": "window",
+      "host": "ME",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        7.825,
+        2.325,
+        5.1
+      ],
+      "opening_axis_blender": [
+        0.0,
+        1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -1.0,
+        0.0,
+        0
+      ],
+      "width_m": 0.65,
+      "height_m": 0.65,
+      "reported_clear_width_m": 0.47,
+      "reported_clear_height_m": 0.0,
+      "rooms": [
+        {
+          "room": "master",
+          "side": 1,
+          "z_range": [
+            5100.0,
+            5750.0
+          ],
+          "intervals": [
+            [
+              1650.0,
+              2300.0
+            ]
+          ],
+          "glass_area_mm2": 173494.454294496,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_E1.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "D_E2",
+      "kind": "arched_door",
+      "host": "ME",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        7.825,
+        6.375,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.0,
+        1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.65,
+      "height_m": 2.875,
+      "reported_clear_width_m": 1.574,
+      "reported_clear_height_m": 2.012,
+      "rooms": [
+        {
+          "room": "living",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2875.0
+          ],
+          "intervals": [
+            [
+              5200.0,
+              6850.0
+            ]
+          ],
+          "glass_area_mm2": 4042472.550130628,
+          "clear_width": 1574.0,
+          "clear_height": 2012.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "D_E2.glass",
+      "fixed_view_only": false
+    },
+    {
+      "id": "N_E2",
+      "kind": "window",
+      "host": "ME",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        7.825,
+        6.375,
+        5.1
+      ],
+      "opening_axis_blender": [
+        0.0,
+        1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -1.0,
+        0.0,
+        0
+      ],
+      "width_m": 0.65,
+      "height_m": 0.65,
+      "reported_clear_width_m": 0.47,
+      "reported_clear_height_m": 0.0,
+      "rooms": [
+        {
+          "room": "master",
+          "side": 1,
+          "z_range": [
+            5100.0,
+            5750.0
+          ],
+          "intervals": [
+            [
+              5700.0,
+              6350.0
+            ]
+          ],
+          "glass_area_mm2": 173494.454294496,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_E2.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "D_W1",
+      "kind": "door",
+      "host": "MW",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        0.175,
+        6.37,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.0,
+        -1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.2,
+      "height_m": 2.6,
+      "reported_clear_width_m": 1.124,
+      "reported_clear_height_m": 2.562,
+      "rooms": [
+        {
+          "room": "living",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2600.0
+          ],
+          "intervals": [
+            [
+              3680.0,
+              4880.0
+            ]
+          ],
+          "glass_area_mm2": 2789020.0,
+          "clear_width": 1124.0,
+          "clear_height": 2562.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "D_W1.glass",
+      "fixed_view_only": false
+    },
+    {
+      "id": "N_W1",
+      "kind": "window",
+      "host": "MW",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        0.175,
+        8.05,
+        5.1
+      ],
+      "opening_axis_blender": [
+        0.0,
+        -1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        1.0,
+        0.0,
+        0
+      ],
+      "width_m": 0.65,
+      "height_m": 0.65,
+      "reported_clear_width_m": 0.47,
+      "reported_clear_height_m": 0.0,
+      "rooms": [
+        {
+          "room": "master_bath",
+          "side": 1,
+          "z_range": [
+            5100.0,
+            5750.0
+          ],
+          "intervals": [
+            [
+              2275.0,
+              2925.0
+            ]
+          ],
+          "glass_area_mm2": 173494.454294496,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_W1.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "D_W2",
+      "kind": "door",
+      "host": "MW",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        0.175,
+        2.33,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.0,
+        -1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.2,
+      "height_m": 2.6,
+      "reported_clear_width_m": 1.124,
+      "reported_clear_height_m": 2.562,
+      "rooms": [
+        {
+          "room": "living",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2600.0
+          ],
+          "intervals": [
+            [
+              7720.0,
+              8920.0
+            ]
+          ],
+          "glass_area_mm2": 2789020.0,
+          "clear_width": 1124.0,
+          "clear_height": 2562.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "D_W2.glass",
+      "fixed_view_only": false
+    },
+    {
+      "id": "N_W2",
+      "kind": "window",
+      "host": "MW",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        0.175,
+        2.4,
+        4.4
+      ],
+      "opening_axis_blender": [
+        0.0,
+        -1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.45,
+      "height_m": 0.85,
+      "reported_clear_width_m": 1.36,
+      "reported_clear_height_m": 0.76,
+      "rooms": [
+        {
+          "room": "master",
+          "side": 1,
+          "z_range": [
+            4400.0,
+            5250.0
+          ],
+          "intervals": [
+            [
+              7525.0,
+              8975.0
+            ]
+          ],
+          "glass_area_mm2": 1033600.0,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_W2.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "D_PERGOLA",
+      "kind": "arched_door",
+      "host": "MN",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        4.0,
+        10.825,
+        0.0
+      ],
+      "opening_axis_blender": [
+        -1.0,
+        0.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.0,
+        -1.0,
+        0
+      ],
+      "width_m": 2.6,
+      "height_m": 2.75,
+      "reported_clear_width_m": 1.225,
+      "reported_clear_height_m": 2.35,
+      "rooms": [
+        {
+          "room": "dining",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2750.0
+          ],
+          "intervals": [
+            [
+              2350.0,
+              4950.0
+            ]
+          ],
+          "glass_area_mm2": 6358375.775672697,
+          "clear_width": 1225.0,
+          "clear_height": 2350.0
+        },
+        {
+          "room": "pergola",
+          "side": 0,
+          "z_range": [
+            0.0,
+            2750.0
+          ],
+          "intervals": [
+            [
+              2350.0,
+              4950.0
+            ]
+          ],
+          "glass_area_mm2": 6358375.775672697,
+          "clear_width": 1225.0,
+          "clear_height": 2350.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "D_PERGOLA.glass",
+      "fixed_view_only": false
+    },
+    {
+      "id": "N_MASTER_N",
+      "kind": "window",
+      "host": "MN",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        4.15,
+        10.825,
+        3.55
+      ],
+      "opening_axis_blender": [
+        -1.0,
+        0.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.0,
+        -1.0,
+        0
+      ],
+      "width_m": 1.8,
+      "height_m": 1.8,
+      "reported_clear_width_m": 1.7,
+      "reported_clear_height_m": 1.7,
+      "rooms": [
+        {
+          "room": "master_bath",
+          "side": 1,
+          "z_range": [
+            3550.0,
+            5350.0
+          ],
+          "intervals": [
+            [
+              2600.0,
+              4400.0
+            ]
+          ],
+          "glass_area_mm2": 2890000.0,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_MASTER_N.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "A_KITCHEN",
+      "kind": "arch",
+      "host": "MW",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        0.175,
+        9.65,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.0,
+        -1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.1,
+      "height_m": 2.65,
+      "reported_clear_width_m": 1.1,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "dining",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2650.0
+          ],
+          "intervals": [
+            [
+              450.0,
+              1550.0
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1100.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "A_MASTER_LINK",
+      "kind": "arch",
+      "host": "MW",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        0.175,
+        9.65,
+        3.3
+      ],
+      "opening_axis_blender": [
+        0.0,
+        -1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.1,
+      "height_m": 2.65,
+      "reported_clear_width_m": 1.1,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "master_bath",
+          "side": 1,
+          "z_range": [
+            3300.0,
+            5950.0
+          ],
+          "intervals": [
+            [
+              450.0,
+              1550.0
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1100.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "N_GUEST_E0",
+      "kind": "arched_door",
+      "host": "A1",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -1.0924599141629998,
+        24.621252254151,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.368426307,
+        0.929656956,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.929656956,
+        0.368426307,
+        0
+      ],
+      "width_m": 1.15,
+      "height_m": 2.625,
+      "reported_clear_width_m": 1.074,
+      "reported_clear_height_m": 2.012,
+      "rooms": [
+        {
+          "room": "guest_corridor",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2625.0
+          ],
+          "intervals": [
+            [
+              950.0,
+              2100.0
+            ]
+          ],
+          "glass_area_mm2": 2535538.965961518,
+          "clear_width": 1074.0,
+          "clear_height": 2012.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_GUEST_E0.glass",
+      "fixed_view_only": false
+    },
+    {
+      "id": "N_SUITE4_E0",
+      "kind": "window",
+      "host": "A1",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -1.0832492564879999,
+        24.644493678051,
+        4.0
+      ],
+      "opening_axis_blender": [
+        0.368426307,
+        0.929656956,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.929656956,
+        0.368426307,
+        0
+      ],
+      "width_m": 1.2,
+      "height_m": 1.6,
+      "reported_clear_width_m": 1.08,
+      "reported_clear_height_m": 1.48,
+      "rooms": [
+        {
+          "room": "bed4",
+          "side": 1,
+          "z_range": [
+            4000.0,
+            5600.0
+          ],
+          "intervals": [
+            [
+              950.0,
+              2150.0
+            ]
+          ],
+          "glass_area_mm2": 1598400.0,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_SUITE4_E0.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "N_GUEST_E1",
+      "kind": "arched_door",
+      "host": "A1",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -0.005602307566999969,
+        27.363740274723,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.368426307,
+        0.929656956,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.929656956,
+        0.368426307,
+        0
+      ],
+      "width_m": 1.15,
+      "height_m": 2.625,
+      "reported_clear_width_m": 1.074,
+      "reported_clear_height_m": 2.012,
+      "rooms": [
+        {
+          "room": "bed1",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2625.0
+          ],
+          "intervals": [
+            [
+              3900.0,
+              5050.0
+            ]
+          ],
+          "glass_area_mm2": 2535538.965961518,
+          "clear_width": 1074.0,
+          "clear_height": 2012.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_GUEST_E1.glass",
+      "fixed_view_only": false
+    },
+    {
+      "id": "N_SUITE4_E1",
+      "kind": "window",
+      "host": "A1",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        0.0036083501080000245,
+        27.386981698623,
+        4.0
+      ],
+      "opening_axis_blender": [
+        0.368426307,
+        0.929656956,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.929656956,
+        0.368426307,
+        0
+      ],
+      "width_m": 1.2,
+      "height_m": 1.6,
+      "reported_clear_width_m": 1.08,
+      "reported_clear_height_m": 1.48,
+      "rooms": [
+        {
+          "room": "bed4",
+          "side": 1,
+          "z_range": [
+            4000.0,
+            5600.0
+          ],
+          "intervals": [
+            [
+              3900.0,
+              5100.0
+            ]
+          ],
+          "glass_area_mm2": 1598400.0,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_SUITE4_E1.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "N_GUEST_W",
+      "kind": "window",
+      "host": "A3",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -9.072282771485002,
+        29.108114976104,
+        0.7
+      ],
+      "opening_axis_blender": [
+        -0.130432745,
+        -0.99145716,
+        0
+      ],
+      "inward_axis_blender": [
+        0.99145716,
+        -0.130432745,
+        0
+      ],
+      "width_m": 1.15,
+      "height_m": 1.6,
+      "reported_clear_width_m": 1.03,
+      "reported_clear_height_m": 1.48,
+      "rooms": [
+        {
+          "room": "bed2",
+          "side": 1,
+          "z_range": [
+            700.0,
+            2300.0
+          ],
+          "intervals": [
+            [
+              1800.0,
+              2950.0
+            ]
+          ],
+          "glass_area_mm2": 1524400.0,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_GUEST_W.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "N_BATH4_W",
+      "kind": "window",
+      "host": "A3",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -9.085326045985001,
+        29.008969260104,
+        3.95
+      ],
+      "opening_axis_blender": [
+        -0.130432745,
+        -0.99145716,
+        0
+      ],
+      "inward_axis_blender": [
+        0.99145716,
+        -0.130432745,
+        0
+      ],
+      "width_m": 1.35,
+      "height_m": 1.7,
+      "reported_clear_width_m": 1.23,
+      "reported_clear_height_m": 1.58,
+      "rooms": [
+        {
+          "room": "bath4",
+          "side": 1,
+          "z_range": [
+            3950.0,
+            5650.0
+          ],
+          "intervals": [
+            [
+              1800.0,
+              3150.0
+            ]
+          ],
+          "glass_area_mm2": 1943400.0,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_BATH4_W.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "D_MASTER_BATH",
+      "kind": "door",
+      "host": "P_DRESS",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        5.37,
+        7.0,
+        3.3
+      ],
+      "opening_axis_blender": [
+        1.0,
+        0.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.0,
+        1.0,
+        0
+      ],
+      "width_m": 1.1,
+      "height_m": 2.15,
+      "reported_clear_width_m": 1.02,
+      "reported_clear_height_m": 2.11,
+      "rooms": [
+        {
+          "room": "master",
+          "side": 0,
+          "z_range": [
+            3300.0,
+            5450.0
+          ],
+          "intervals": [
+            [
+              4400.0,
+              5500.0
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1020.0,
+          "clear_height": 2110.0
+        },
+        {
+          "room": "master_bath",
+          "side": 1,
+          "z_range": [
+            3300.0,
+            5450.0
+          ],
+          "intervals": [
+            [
+              4400.0,
+              5500.0
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1020.0,
+          "clear_height": 2110.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": "D_MASTER_BATH.leaf",
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "FP_HEARTH",
+      "kind": "arch",
+      "host": "FP",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        7.48,
+        4.4,
+        0.47
+      ],
+      "opening_axis_blender": [
+        0.0,
+        1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.58,
+      "height_m": 1.18,
+      "reported_clear_width_m": 1.58,
+      "reported_clear_height_m": 1.18,
+      "rooms": [],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": true
+    },
+    {
+      "id": "D_KITCHEN_GARDEN",
+      "kind": "arched_door",
+      "host": "K4",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -2.737,
+        8.575,
+        0.0
+      ],
+      "opening_axis_blender": [
+        1.0,
+        0.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.0,
+        1.0,
+        0
+      ],
+      "width_m": 2.2,
+      "height_m": 2.44,
+      "reported_clear_width_m": 1.0175,
+      "reported_clear_height_m": 2.025,
+      "rooms": [
+        {
+          "room": "kitchen",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2440.0
+          ],
+          "intervals": [
+            [
+              1287.0,
+              3487.0
+            ]
+          ],
+          "glass_area_mm2": 4646914.371015681,
+          "clear_width": 1017.5,
+          "clear_height": 2025.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "D_KITCHEN_GARDEN.glass",
+      "fixed_view_only": false
+    },
+    {
+      "id": "D_KITCHEN_TERRACE",
+      "kind": "arched_door",
+      "host": "K1",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -0.175,
+        13.7,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.0,
+        1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.9,
+      "height_m": 2.5,
+      "reported_clear_width_m": 0.8825,
+      "reported_clear_height_m": 2.135,
+      "rooms": [
+        {
+          "room": "kitchen",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2500.0
+          ],
+          "intervals": [
+            [
+              4000.0,
+              5900.0
+            ]
+          ],
+          "glass_area_mm2": 4190237.650246128,
+          "clear_width": 882.5,
+          "clear_height": 2135.0
+        },
+        {
+          "room": "pergola",
+          "side": 0,
+          "z_range": [
+            0.0,
+            2500.0
+          ],
+          "intervals": [
+            [
+              4000.0,
+              5900.0
+            ]
+          ],
+          "glass_area_mm2": 4190237.650246128,
+          "clear_width": 882.5,
+          "clear_height": 2135.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "D_KITCHEN_TERRACE.glass",
+      "fixed_view_only": false
+    },
+    {
+      "id": "A_DINING_K",
+      "kind": "arch",
+      "host": "K1",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -0.175,
+        9.65,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.0,
+        1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.1,
+      "height_m": 2.65,
+      "reported_clear_width_m": 1.1,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "kitchen",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2650.0
+          ],
+          "intervals": [
+            [
+              350.0,
+              1450.0
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1100.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "A_DRESSING_K",
+      "kind": "arch",
+      "host": "K1",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -0.175,
+        9.65,
+        3.3
+      ],
+      "opening_axis_blender": [
+        0.0,
+        1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.1,
+      "height_m": 2.65,
+      "reported_clear_width_m": 1.1,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "bed3",
+          "side": 1,
+          "z_range": [
+            3300.0,
+            5950.0
+          ],
+          "intervals": [
+            [
+              350.0,
+              1450.0
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1100.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "A_HALL_K",
+      "kind": "arch",
+      "host": "K2",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -2.558872141247,
+        16.381522236363,
+        0.0
+      ],
+      "opening_axis_blender": [
+        -0.97679156,
+        0.214192081,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.214192081,
+        -0.97679156,
+        0
+      ],
+      "width_m": 1.1,
+      "height_m": 2.1,
+      "reported_clear_width_m": 1.1,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "kitchen",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2100.0
+          ],
+          "intervals": [
+            [
+              1749.728874281,
+              2849.728874281
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1100.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "A_K_HALL",
+      "kind": "arch",
+      "host": "H4",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -2.508466684505,
+        16.617333519386,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.968014194,
+        -0.250895437,
+        0
+      ],
+      "inward_axis_blender": [
+        0.250895437,
+        0.968014194,
+        0
+      ],
+      "width_m": 1.1,
+      "height_m": 2.1,
+      "reported_clear_width_m": 1.1,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "hall",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2100.0
+          ],
+          "intervals": [
+            [
+              2025.830015846,
+              3125.830015846
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1100.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "A_BED3_HALL",
+      "kind": "arch",
+      "host": "K2",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -2.558872141267,
+        16.38152223636,
+        3.3
+      ],
+      "opening_axis_blender": [
+        -0.97679156,
+        0.214192081,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.214192081,
+        -0.97679156,
+        0
+      ],
+      "width_m": 1.0,
+      "height_m": 2.6,
+      "reported_clear_width_m": 1.0,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "bath3",
+          "side": 1,
+          "z_range": [
+            3300.0,
+            5900.0
+          ],
+          "intervals": [
+            [
+              1799.728874281,
+              2799.728874281
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1000.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "A_HALL_BED3",
+      "kind": "arch",
+      "host": "H4",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -2.508466684503,
+        16.617333519406003,
+        3.3
+      ],
+      "opening_axis_blender": [
+        0.968014194,
+        -0.250895437,
+        0
+      ],
+      "inward_axis_blender": [
+        0.250895437,
+        0.968014194,
+        0
+      ],
+      "width_m": 1.0,
+      "height_m": 2.6,
+      "reported_clear_width_m": 1.0,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "landing",
+          "side": 1,
+          "z_range": [
+            3300.0,
+            5900.0
+          ],
+          "intervals": [
+            [
+              2075.830015846,
+              3075.830015846
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1000.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "D_ENTRY",
+      "kind": "door",
+      "host": "H1",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -0.38431677825099997,
+        19.496306682628003,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.118065781,
+        0.993005776,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.993005776,
+        0.118065781,
+        0
+      ],
+      "width_m": 2.5,
+      "height_m": 3.55,
+      "reported_clear_width_m": 1.27,
+      "reported_clear_height_m": 2.655,
+      "rooms": [
+        {
+          "room": "hall",
+          "side": 1,
+          "z_range": [
+            0.0,
+            3000.0
+          ],
+          "intervals": [
+            [
+              1900.0,
+              4400.0
+            ]
+          ],
+          "glass_area_mm2": 3413150.000000005,
+          "clear_width": 1270.0,
+          "clear_height": 2655.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": "D_ENTRY.leaf",
+      "glazing_entity": "D_ENTRY.glass",
+      "fixed_view_only": false
+    },
+    {
+      "id": "N_HALL",
+      "kind": "window",
+      "host": "H1",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -0.38431677825099997,
+        19.496306682628003,
+        3.55
+      ],
+      "opening_axis_blender": [
+        0.118065781,
+        0.993005776,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.993005776,
+        0.118065781,
+        0
+      ],
+      "width_m": 2.5,
+      "height_m": 2.2,
+      "reported_clear_width_m": 2.4,
+      "reported_clear_height_m": 0.85,
+      "rooms": [],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_HALL.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "A_HALL_GUEST",
+      "kind": "arch",
+      "host": "H2",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -2.8124413148509997,
+        23.201948354826,
+        0.0
+      ],
+      "opening_axis_blender": [
+        -0.973435971,
+        0.228959406,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.228959406,
+        -0.973435971,
+        0
+      ],
+      "width_m": 1.0,
+      "height_m": 2.1,
+      "reported_clear_width_m": 1.0,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "hall",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2100.0
+          ],
+          "intervals": [
+            [
+              2210.511311093,
+              3210.511311093
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1000.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "A_GUEST_HALL",
+      "kind": "arch",
+      "host": "A4",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -2.790820361556,
+        23.379508430487004,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.957234303,
+        -0.289313826,
+        0
+      ],
+      "inward_axis_blender": [
+        0.289313826,
+        0.957234303,
+        0
+      ],
+      "width_m": 1.0,
+      "height_m": 2.1,
+      "reported_clear_width_m": 1.0,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "guest_corridor",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2100.0
+          ],
+          "intervals": [
+            [
+              6419.736933369,
+              7419.736933369
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1000.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "A_HALL_SUITE4",
+      "kind": "arch",
+      "host": "H2",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -2.8124413148509997,
+        23.201948354826,
+        3.3
+      ],
+      "opening_axis_blender": [
+        -0.973435971,
+        0.228959406,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.228959406,
+        -0.973435971,
+        0
+      ],
+      "width_m": 1.0,
+      "height_m": 2.6,
+      "reported_clear_width_m": 1.0,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "landing",
+          "side": 1,
+          "z_range": [
+            3300.0,
+            5900.0
+          ],
+          "intervals": [
+            [
+              2210.511311093,
+              3210.511311093
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1000.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "A_SUITE4_HALL",
+      "kind": "arch",
+      "host": "A4",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -2.790820361556,
+        23.379508430487004,
+        3.3
+      ],
+      "opening_axis_blender": [
+        0.957234303,
+        -0.289313826,
+        0
+      ],
+      "inward_axis_blender": [
+        0.289313826,
+        0.957234303,
+        0
+      ],
+      "width_m": 1.0,
+      "height_m": 2.6,
+      "reported_clear_width_m": 1.0,
+      "reported_clear_height_m": 2.1,
+      "rooms": [
+        {
+          "room": "bed4",
+          "side": 1,
+          "z_range": [
+            3300.0,
+            5900.0
+          ],
+          "intervals": [
+            [
+              6419.736933369,
+              7419.736933369
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 1000.0,
+          "clear_height": 2100.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": null,
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "N_BED3_S",
+      "kind": "window",
+      "host": "K4",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -2.737,
+        8.575,
+        3.95
+      ],
+      "opening_axis_blender": [
+        1.0,
+        0.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.0,
+        1.0,
+        0
+      ],
+      "width_m": 1.35,
+      "height_m": 1.45,
+      "reported_clear_width_m": 1.23,
+      "reported_clear_height_m": 1.33,
+      "rooms": [
+        {
+          "room": "bed3",
+          "side": 1,
+          "z_range": [
+            3950.0,
+            5400.0
+          ],
+          "intervals": [
+            [
+              1712.0,
+              3062.0
+            ]
+          ],
+          "glass_area_mm2": 1635900.0,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_BED3_S.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "N_BATH3_E",
+      "kind": "window",
+      "host": "K1",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -0.175,
+        14.2,
+        4.2
+      ],
+      "opening_axis_blender": [
+        0.0,
+        1.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -1.0,
+        0.0,
+        0
+      ],
+      "width_m": 1.3,
+      "height_m": 1.35,
+      "reported_clear_width_m": 1.18,
+      "reported_clear_height_m": 1.23,
+      "rooms": [
+        {
+          "room": "bath3",
+          "side": 1,
+          "z_range": [
+            4200.0,
+            5550.0
+          ],
+          "intervals": [
+            [
+              4800.0,
+              6100.0
+            ]
+          ],
+          "glass_area_mm2": 1451400.0,
+          "clear_width": 0.0,
+          "clear_height": 0.0
+        }
+      ],
+      "glazed": true,
+      "leaf_entity": null,
+      "glazing_entity": "N_BATH3_E.glass",
+      "fixed_view_only": true
+    },
+    {
+      "id": "D_BED2",
+      "kind": "door",
+      "host": "P_BED2",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -6.389569762390999,
+        26.67084592381,
+        0.0
+      ],
+      "opening_axis_blender": [
+        -0.35914279,
+        -0.933282624,
+        0
+      ],
+      "inward_axis_blender": [
+        0.933282624,
+        -0.35914279,
+        0
+      ],
+      "width_m": 1.0,
+      "height_m": 2.15,
+      "reported_clear_width_m": 0.92,
+      "reported_clear_height_m": 2.11,
+      "rooms": [
+        {
+          "room": "bed2",
+          "side": 0,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              3296.135101498,
+              4296.135101498
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 920.0,
+          "clear_height": 2110.0
+        },
+        {
+          "room": "guest_corridor",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              3296.135101498,
+              4296.135101498
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 920.0,
+          "clear_height": 2110.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": "D_BED2.leaf",
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "D_BATH2",
+      "kind": "door",
+      "host": "P_BATH2",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -7.660181189678999,
+        26.507930224429,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.9482702,
+        -0.317464371,
+        0
+      ],
+      "inward_axis_blender": [
+        0.317464371,
+        0.9482702,
+        0
+      ],
+      "width_m": 0.9,
+      "height_m": 2.15,
+      "reported_clear_width_m": 0.82,
+      "reported_clear_height_m": 2.11,
+      "rooms": [
+        {
+          "room": "bed2",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              1143.545296621,
+              2043.545296621
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 820.0,
+          "clear_height": 2110.0
+        },
+        {
+          "room": "bath2",
+          "side": 0,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              1143.545296621,
+              2043.545296621
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 820.0,
+          "clear_height": 2110.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": "D_BATH2.leaf",
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "D_BED1",
+      "kind": "door",
+      "host": "P_BED1",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -3.3273901248080002,
+        26.439263359794,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.955098156,
+        -0.296289574,
+        0
+      ],
+      "inward_axis_blender": [
+        0.296289574,
+        0.955098156,
+        0
+      ],
+      "width_m": 1.0,
+      "height_m": 2.15,
+      "reported_clear_width_m": 0.92,
+      "reported_clear_height_m": 2.11,
+      "rooms": [
+        {
+          "room": "bed1",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              2447.573891536,
+              3447.573891536
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 920.0,
+          "clear_height": 2110.0
+        },
+        {
+          "room": "guest_corridor",
+          "side": 0,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              2447.573891536,
+              3447.573891536
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 920.0,
+          "clear_height": 2110.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": "D_BED1.leaf",
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "D_BATH1",
+      "kind": "door",
+      "host": "P_BATH1",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -3.7046771122170004,
+        27.333878238547,
+        0.0
+      ],
+      "opening_axis_blender": [
+        -0.276594006,
+        -0.960986866,
+        0
+      ],
+      "inward_axis_blender": [
+        0.960986866,
+        -0.276594006,
+        0
+      ],
+      "width_m": 0.9,
+      "height_m": 2.15,
+      "reported_clear_width_m": 0.82,
+      "reported_clear_height_m": 2.11,
+      "rooms": [
+        {
+          "room": "bed1",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              1845.962695109,
+              2745.962695109
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 820.0,
+          "clear_height": 2110.0
+        },
+        {
+          "room": "bath1",
+          "side": 0,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              1845.962695109,
+              2745.962695109
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 820.0,
+          "clear_height": 2110.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": "D_BATH1.leaf",
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "D_BATH3",
+      "kind": "door",
+      "host": "P_BATH3",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -1.7,
+        12.8,
+        3.3
+      ],
+      "opening_axis_blender": [
+        1.0,
+        0.0,
+        0
+      ],
+      "inward_axis_blender": [
+        -0.0,
+        1.0,
+        0
+      ],
+      "width_m": 1.0,
+      "height_m": 2.15,
+      "reported_clear_width_m": 0.92,
+      "reported_clear_height_m": 2.11,
+      "rooms": [
+        {
+          "room": "bed3",
+          "side": 0,
+          "z_range": [
+            3300.0,
+            5450.0
+          ],
+          "intervals": [
+            [
+              2859.601602604,
+              3859.601602604
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 920.0,
+          "clear_height": 2110.0
+        },
+        {
+          "room": "bath3",
+          "side": 1,
+          "z_range": [
+            3300.0,
+            5450.0
+          ],
+          "intervals": [
+            [
+              2859.601602604,
+              3859.601602604
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 920.0,
+          "clear_height": 2110.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": "D_BATH3.leaf",
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "D_LAUNDRY",
+      "kind": "door",
+      "host": "P_SERV",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -5.429741381538999,
+        25.682957442609,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.954780562,
+        -0.297311416,
+        0
+      ],
+      "inward_axis_blender": [
+        0.297311416,
+        0.954780562,
+        0
+      ],
+      "width_m": 0.9,
+      "height_m": 2.15,
+      "reported_clear_width_m": 0.82,
+      "reported_clear_height_m": 2.11,
+      "rooms": [
+        {
+          "room": "guest_corridor",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              803.269480573,
+              1703.269480573
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 820.0,
+          "clear_height": 2110.0
+        },
+        {
+          "room": "laundry",
+          "side": 0,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              803.269480573,
+              1703.269480573
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 820.0,
+          "clear_height": 2110.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": "D_LAUNDRY.leaf",
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "D_WC",
+      "kind": "door",
+      "host": "P_SERV",
+      "level": "L0",
+      "center_at_sill_blender_m": [
+        -3.7588753975089997,
+        25.162662465304,
+        0.0
+      ],
+      "opening_axis_blender": [
+        0.954780562,
+        -0.297311416,
+        0
+      ],
+      "inward_axis_blender": [
+        0.297311416,
+        0.954780562,
+        0
+      ],
+      "width_m": 0.9,
+      "height_m": 2.15,
+      "reported_clear_width_m": 0.82,
+      "reported_clear_height_m": 2.11,
+      "rooms": [
+        {
+          "room": "guest_corridor",
+          "side": 1,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              2553.269480573,
+              3453.269480573
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 820.0,
+          "clear_height": 2110.0
+        },
+        {
+          "room": "wc",
+          "side": 0,
+          "z_range": [
+            0.0,
+            2150.0
+          ],
+          "intervals": [
+            [
+              2553.269480573,
+              3453.269480573
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 820.0,
+          "clear_height": 2110.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": "D_WC.leaf",
+      "glazing_entity": null,
+      "fixed_view_only": false
+    },
+    {
+      "id": "D_BATH4",
+      "kind": "door",
+      "host": "P_BATH4",
+      "level": "L1",
+      "center_at_sill_blender_m": [
+        -6.05809604388,
+        28.395357819145996,
+        3.3
+      ],
+      "opening_axis_blender": [
+        -0.321164469,
+        -0.947023434,
+        0
+      ],
+      "inward_axis_blender": [
+        0.947023434,
+        -0.321164469,
+        0
+      ],
+      "width_m": 1.0,
+      "height_m": 2.15,
+      "reported_clear_width_m": 0.92,
+      "reported_clear_height_m": 2.11,
+      "rooms": [
+        {
+          "room": "bed4",
+          "side": 1,
+          "z_range": [
+            3300.0,
+            5450.0
+          ],
+          "intervals": [
+            [
+              1555.21108353,
+              2555.21108353
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 920.0,
+          "clear_height": 2110.0
+        },
+        {
+          "room": "bath4",
+          "side": 0,
+          "z_range": [
+            3300.0,
+            5450.0
+          ],
+          "intervals": [
+            [
+              1555.21108353,
+              2555.21108353
+            ]
+          ],
+          "glass_area_mm2": 0.0,
+          "clear_width": 920.0,
+          "clear_height": 2110.0
+        }
+      ],
+      "glazed": false,
+      "leaf_entity": "D_BATH4.leaf",
+      "glazing_entity": null,
+      "fixed_view_only": false
+    }
+  ],
+  "stair_geometry_mm": [
+    {
+      "id": "ST_MASTER",
+      "source_params_mm": {
+        "center": [
+          6500.0,
+          9450.0
+        ],
+        "rise": 3300.0,
+        "radius": 1030.0,
+        "inner_radius": 100.0,
+        "steps": 20,
+        "sweep": 450.0,
+        "start_angle": 180.0,
+        "to_level": "L1"
+      },
+      "source_derived_mm": {
+        "tread_polygons": [
+          [
+            [
+              5470.0,
+              9450.0
+            ],
+            [
+              5472.205309064,
+              9382.634776893
+            ],
+            [
+              5478.811792785,
+              9315.558022013
+            ],
+            [
+              5489.791161185,
+              9249.056968323
+            ],
+            [
+              5505.096398922,
+              9183.416383544
+            ],
+            [
+              5524.66196662,
+              9118.917350738
+            ],
+            [
+              5548.404081513,
+              9055.836064664
+            ],
+            [
+              6407.612046749,
+              9411.731656763
+            ],
+            [
+              6405.30698705,
+              9417.85605347
+            ],
+            [
+              6403.407417371,
+              9424.11809549
+            ],
+            [
+              6401.92147196,
+              9430.490967798
+            ],
+            [
+              6400.855513863,
+              9436.947380778
+            ],
+            [
+              6400.214107676,
+              9443.459687077
+            ],
+            [
+              6400.0,
+              9450.0
+            ]
+          ],
+          [
+            [
+              5548.404081513,
+              9055.836064664
+            ],
+            [
+              5576.221076221,
+              8994.442649074
+            ],
+            [
+              5607.993834102,
+              8935.0
+            ],
+            [
+              5643.586299328,
+              8877.76265999
+            ],
+            [
+              5682.8460595,
+              8822.975728121
+            ],
+            [
+              5725.604998297,
+              8770.873810447
+            ],
+            [
+              5771.680015378,
+              8721.680015378
+            ],
+            [
+              6429.289321881,
+              9379.289321881
+            ],
+            [
+              6424.816019252,
+              9384.06541849
+            ],
+            [
+              6420.664665971,
+              9389.123857099
+            ],
+            [
+              6416.85303877,
+              9394.442976698
+            ],
+            [
+              6413.397459622,
+              9400.0
+            ],
+            [
+              6410.312725847,
+              9405.771130978
+            ],
+            [
+              6407.612046749,
+              9411.731656763
+            ]
+          ],
+          [
+            [
+              5771.680015378,
+              8721.680015378
+            ],
+            [
+              5820.873810447,
+              8675.604998297
+            ],
+            [
+              5872.975728121,
+              8632.8460595
+            ],
+            [
+              5927.76265999,
+              8593.586299328
+            ],
+            [
+              5985.0,
+              8557.993834102
+            ],
+            [
+              6044.442649074,
+              8526.221076221
+            ],
+            [
+              6105.836064664,
+              8498.404081513
+            ],
+            [
+              6461.731656763,
+              9357.612046749
+            ],
+            [
+              6455.771130978,
+              9360.312725847
+            ],
+            [
+              6450.0,
+              9363.397459622
+            ],
+            [
+              6444.442976698,
+              9366.85303877
+            ],
+            [
+              6439.123857099,
+              9370.664665971
+            ],
+            [
+              6434.06541849,
+              9374.816019252
+            ],
+            [
+              6429.289321881,
+              9379.289321881
+            ]
+          ],
+          [
+            [
+              6105.836064664,
+              8498.404081513
+            ],
+            [
+              6168.917350738,
+              8474.66196662
+            ],
+            [
+              6233.416383544,
+              8455.096398922
+            ],
+            [
+              6299.056968323,
+              8439.791161185
+            ],
+            [
+              6365.558022013,
+              8428.811792785
+            ],
+            [
+              6432.634776893,
+              8422.205309064
+            ],
+            [
+              6500.0,
+              8420.0
+            ],
+            [
+              6500.0,
+              9350.0
+            ],
+            [
+              6493.459687077,
+              9350.214107676
+            ],
+            [
+              6486.947380778,
+              9350.855513863
+            ],
+            [
+              6480.490967798,
+              9351.92147196
+            ],
+            [
+              6474.11809549,
+              9353.407417371
+            ],
+            [
+              6467.85605347,
+              9355.30698705
+            ],
+            [
+              6461.731656763,
+              9357.612046749
+            ]
+          ],
+          [
+            [
+              6500.0,
+              8420.0
+            ],
+            [
+              6567.365223107,
+              8422.205309064
+            ],
+            [
+              6634.441977987,
+              8428.811792785
+            ],
+            [
+              6700.943031677,
+              8439.791161185
+            ],
+            [
+              6766.583616456,
+              8455.096398922
+            ],
+            [
+              6831.082649262,
+              8474.66196662
+            ],
+            [
+              6894.163935336,
+              8498.404081513
+            ],
+            [
+              6538.268343237,
+              9357.612046749
+            ],
+            [
+              6532.14394653,
+              9355.30698705
+            ],
+            [
+              6525.88190451,
+              9353.407417371
+            ],
+            [
+              6519.509032202,
+              9351.92147196
+            ],
+            [
+              6513.052619222,
+              9350.855513863
+            ],
+            [
+              6506.540312923,
+              9350.214107676
+            ],
+            [
+              6500.0,
+              9350.0
+            ]
+          ],
+          [
+            [
+              6894.163935336,
+              8498.404081513
+            ],
+            [
+              6955.557350926,
+              8526.221076221
+            ],
+            [
+              7015.0,
+              8557.993834102
+            ],
+            [
+              7072.23734001,
+              8593.586299328
+            ],
+            [
+              7127.024271879,
+              8632.8460595
+            ],
+            [
+              7179.126189553,
+              8675.604998297
+            ],
+            [
+              7228.319984622,
+              8721.680015378
+            ],
+            [
+              6570.710678119,
+              9379.289321881
+            ],
+            [
+              6565.93458151,
+              9374.816019252
+            ],
+            [
+              6560.876142901,
+              9370.664665971
+            ],
+            [
+              6555.557023302,
+              9366.85303877
+            ],
+            [
+              6550.0,
+              9363.397459622
+            ],
+            [
+              6544.228869022,
+              9360.312725847
+            ],
+            [
+              6538.268343237,
+              9357.612046749
+            ]
+          ],
+          [
+            [
+              7228.319984622,
+              8721.680015378
+            ],
+            [
+              7274.395001703,
+              8770.873810447
+            ],
+            [
+              7317.1539405,
+              8822.975728121
+            ],
+            [
+              7356.413700672,
+              8877.76265999
+            ],
+            [
+              7392.006165898,
+              8935.0
+            ],
+            [
+              7423.778923779,
+              8994.442649074
+            ],
+            [
+              7451.595918487,
+              9055.836064664
+            ],
+            [
+              6592.387953251,
+              9411.731656763
+            ],
+            [
+              6589.687274153,
+              9405.771130978
+            ],
+            [
+              6586.602540378,
+              9400.0
+            ],
+            [
+              6583.14696123,
+              9394.442976698
+            ],
+            [
+              6579.335334029,
+              9389.123857099
+            ],
+            [
+              6575.183980748,
+              9384.06541849
+            ],
+            [
+              6570.710678119,
+              9379.289321881
+            ]
+          ],
+          [
+            [
+              7451.595918487,
+              9055.836064664
+            ],
+            [
+              7475.33803338,
+              9118.917350738
+            ],
+            [
+              7494.903601078,
+              9183.416383544
+            ],
+            [
+              7510.208838815,
+              9249.056968323
+            ],
+            [
+              7521.188207215,
+              9315.558022013
+            ],
+            [
+              7527.794690936,
+              9382.634776893
+            ],
+            [
+              7530.0,
+              9450.0
+            ],
+            [
+              6600.0,
+              9450.0
+            ],
+            [
+              6599.785892324,
+              9443.459687077
+            ],
+            [
+              6599.144486137,
+              9436.947380778
+            ],
+            [
+              6598.07852804,
+              9430.490967798
+            ],
+            [
+              6596.592582629,
+              9424.11809549
+            ],
+            [
+              6594.69301295,
+              9417.85605347
+            ],
+            [
+              6592.387953251,
+              9411.731656763
+            ]
+          ],
+          [
+            [
+              7530.0,
+              9450.0
+            ],
+            [
+              7527.794690936,
+              9517.365223107
+            ],
+            [
+              7521.188207215,
+              9584.441977987
+            ],
+            [
+              7510.208838815,
+              9650.943031677
+            ],
+            [
+              7494.903601078,
+              9716.583616456
+            ],
+            [
+              7475.33803338,
+              9781.082649262
+            ],
+            [
+              7451.595918487,
+              9844.163935336
+            ],
+            [
+              6592.387953251,
+              9488.268343237
+            ],
+            [
+              6594.69301295,
+              9482.14394653
+            ],
+            [
+              6596.592582629,
+              9475.88190451
+            ],
+            [
+              6598.07852804,
+              9469.509032202
+            ],
+            [
+              6599.144486137,
+              9463.052619222
+            ],
+            [
+              6599.785892324,
+              9456.540312923
+            ],
+            [
+              6600.0,
+              9450.0
+            ]
+          ],
+          [
+            [
+              7451.595918487,
+              9844.163935336
+            ],
+            [
+              7423.778923779,
+              9905.557350926
+            ],
+            [
+              7392.006165898,
+              9965.0
+            ],
+            [
+              7356.413700672,
+              10022.23734001
+            ],
+            [
+              7317.1539405,
+              10077.024271879
+            ],
+            [
+              7274.395001703,
+              10129.126189553
+            ],
+            [
+              7228.319984622,
+              10178.319984622
+            ],
+            [
+              6570.710678119,
+              9520.710678119
+            ],
+            [
+              6575.183980748,
+              9515.93458151
+            ],
+            [
+              6579.335334029,
+              9510.876142901
+            ],
+            [
+              6583.14696123,
+              9505.557023302
+            ],
+            [
+              6586.602540378,
+              9500.0
+            ],
+            [
+              6589.687274153,
+              9494.228869022
+            ],
+            [
+              6592.387953251,
+              9488.268343237
+            ]
+          ],
+          [
+            [
+              7228.319984622,
+              10178.319984622
+            ],
+            [
+              7179.126189553,
+              10224.395001703
+            ],
+            [
+              7127.024271879,
+              10267.1539405
+            ],
+            [
+              7072.23734001,
+              10306.413700672
+            ],
+            [
+              7015.0,
+              10342.006165898
+            ],
+            [
+              6955.557350926,
+              10373.778923779
+            ],
+            [
+              6894.163935336,
+              10401.595918487
+            ],
+            [
+              6538.268343237,
+              9542.387953251
+            ],
+            [
+              6544.228869022,
+              9539.687274153
+            ],
+            [
+              6550.0,
+              9536.602540378
+            ],
+            [
+              6555.557023302,
+              9533.14696123
+            ],
+            [
+              6560.876142901,
+              9529.335334029
+            ],
+            [
+              6565.93458151,
+              9525.183980748
+            ],
+            [
+              6570.710678119,
+              9520.710678119
+            ]
+          ],
+          [
+            [
+              6894.163935336,
+              10401.595918487
+            ],
+            [
+              6831.082649262,
+              10425.33803338
+            ],
+            [
+              6766.583616456,
+              10444.903601078
+            ],
+            [
+              6700.943031677,
+              10460.208838815
+            ],
+            [
+              6634.441977987,
+              10471.188207215
+            ],
+            [
+              6567.365223107,
+              10477.794690936
+            ],
+            [
+              6500.0,
+              10480.0
+            ],
+            [
+              6500.0,
+              9550.0
+            ],
+            [
+              6506.540312923,
+              9549.785892324
+            ],
+            [
+              6513.052619222,
+              9549.144486137
+            ],
+            [
+              6519.509032202,
+              9548.07852804
+            ],
+            [
+              6525.88190451,
+              9546.592582629
+            ],
+            [
+              6532.14394653,
+              9544.69301295
+            ],
+            [
+              6538.268343237,
+              9542.387953251
+            ]
+          ],
+          [
+            [
+              6500.0,
+              10480.0
+            ],
+            [
+              6432.634776893,
+              10477.794690936
+            ],
+            [
+              6365.558022013,
+              10471.188207215
+            ],
+            [
+              6299.056968323,
+              10460.208838815
+            ],
+            [
+              6233.416383544,
+              10444.903601078
+            ],
+            [
+              6168.917350738,
+              10425.33803338
+            ],
+            [
+              6105.836064664,
+              10401.595918487
+            ],
+            [
+              6461.731656763,
+              9542.387953251
+            ],
+            [
+              6467.85605347,
+              9544.69301295
+            ],
+            [
+              6474.11809549,
+              9546.592582629
+            ],
+            [
+              6480.490967798,
+              9548.07852804
+            ],
+            [
+              6486.947380778,
+              9549.144486137
+            ],
+            [
+              6493.459687077,
+              9549.785892324
+            ],
+            [
+              6500.0,
+              9550.0
+            ]
+          ],
+          [
+            [
+              6105.836064664,
+              10401.595918487
+            ],
+            [
+              6044.442649074,
+              10373.778923779
+            ],
+            [
+              5985.0,
+              10342.006165898
+            ],
+            [
+              5927.76265999,
+              10306.413700672
+            ],
+            [
+              5872.975728121,
+              10267.1539405
+            ],
+            [
+              5820.873810447,
+              10224.395001703
+            ],
+            [
+              5771.680015378,
+              10178.319984622
+            ],
+            [
+              6429.289321881,
+              9520.710678119
+            ],
+            [
+              6434.06541849,
+              9525.183980748
+            ],
+            [
+              6439.123857099,
+              9529.335334029
+            ],
+            [
+              6444.442976698,
+              9533.14696123
+            ],
+            [
+              6450.0,
+              9536.602540378
+            ],
+            [
+              6455.771130978,
+              9539.687274153
+            ],
+            [
+              6461.731656763,
+              9542.387953251
+            ]
+          ],
+          [
+            [
+              5771.680015378,
+              10178.319984622
+            ],
+            [
+              5725.604998297,
+              10129.126189553
+            ],
+            [
+              5682.8460595,
+              10077.024271879
+            ],
+            [
+              5643.586299328,
+              10022.23734001
+            ],
+            [
+              5607.993834102,
+              9965.0
+            ],
+            [
+              5576.221076221,
+              9905.557350926
+            ],
+            [
+              5548.404081513,
+              9844.163935336
+            ],
+            [
+              6407.612046749,
+              9488.268343237
+            ],
+            [
+              6410.312725847,
+              9494.228869022
+            ],
+            [
+              6413.397459622,
+              9500.0
+            ],
+            [
+              6416.85303877,
+              9505.557023302
+            ],
+            [
+              6420.664665971,
+              9510.876142901
+            ],
+            [
+              6424.816019252,
+              9515.93458151
+            ],
+            [
+              6429.289321881,
+              9520.710678119
+            ]
+          ],
+          [
+            [
+              5548.404081513,
+              9844.163935336
+            ],
+            [
+              5524.66196662,
+              9781.082649262
+            ],
+            [
+              5505.096398922,
+              9716.583616456
+            ],
+            [
+              5489.791161185,
+              9650.943031677
+            ],
+            [
+              5478.811792785,
+              9584.441977987
+            ],
+            [
+              5472.205309064,
+              9517.365223107
+            ],
+            [
+              5470.0,
+              9450.0
+            ],
+            [
+              6400.0,
+              9450.0
+            ],
+            [
+              6400.214107676,
+              9456.540312923
+            ],
+            [
+              6400.855513863,
+              9463.052619222
+            ],
+            [
+              6401.92147196,
+              9469.509032202
+            ],
+            [
+              6403.407417371,
+              9475.88190451
+            ],
+            [
+              6405.30698705,
+              9482.14394653
+            ],
+            [
+              6407.612046749,
+              9488.268343237
+            ]
+          ],
+          [
+            [
+              5470.0,
+              9450.0
+            ],
+            [
+              5472.205309064,
+              9382.634776893
+            ],
+            [
+              5478.811792785,
+              9315.558022013
+            ],
+            [
+              5489.791161185,
+              9249.056968323
+            ],
+            [
+              5505.096398922,
+              9183.416383544
+            ],
+            [
+              5524.66196662,
+              9118.917350738
+            ],
+            [
+              5548.404081513,
+              9055.836064664
+            ],
+            [
+              6407.612046749,
+              9411.731656763
+            ],
+            [
+              6405.30698705,
+              9417.85605347
+            ],
+            [
+              6403.407417371,
+              9424.11809549
+            ],
+            [
+              6401.92147196,
+              9430.490967798
+            ],
+            [
+              6400.855513863,
+              9436.947380778
+            ],
+            [
+              6400.214107676,
+              9443.459687077
+            ],
+            [
+              6400.0,
+              9450.0
+            ]
+          ],
+          [
+            [
+              5548.404081513,
+              9055.836064664
+            ],
+            [
+              5576.221076221,
+              8994.442649074
+            ],
+            [
+              5607.993834102,
+              8935.0
+            ],
+            [
+              5643.586299328,
+              8877.76265999
+            ],
+            [
+              5682.8460595,
+              8822.975728121
+            ],
+            [
+              5725.604998297,
+              8770.873810447
+            ],
+            [
+              5771.680015378,
+              8721.680015378
+            ],
+            [
+              6429.289321881,
+              9379.289321881
+            ],
+            [
+              6424.816019252,
+              9384.06541849
+            ],
+            [
+              6420.664665971,
+              9389.123857099
+            ],
+            [
+              6416.85303877,
+              9394.442976698
+            ],
+            [
+              6413.397459622,
+              9400.0
+            ],
+            [
+              6410.312725847,
+              9405.771130978
+            ],
+            [
+              6407.612046749,
+              9411.731656763
+            ]
+          ],
+          [
+            [
+              5771.680015378,
+              8721.680015378
+            ],
+            [
+              5820.873810447,
+              8675.604998297
+            ],
+            [
+              5872.975728121,
+              8632.8460595
+            ],
+            [
+              5927.76265999,
+              8593.586299328
+            ],
+            [
+              5985.0,
+              8557.993834102
+            ],
+            [
+              6044.442649074,
+              8526.221076221
+            ],
+            [
+              6105.836064664,
+              8498.404081513
+            ],
+            [
+              6461.731656763,
+              9357.612046749
+            ],
+            [
+              6455.771130978,
+              9360.312725847
+            ],
+            [
+              6450.0,
+              9363.397459622
+            ],
+            [
+              6444.442976698,
+              9366.85303877
+            ],
+            [
+              6439.123857099,
+              9370.664665971
+            ],
+            [
+              6434.06541849,
+              9374.816019252
+            ],
+            [
+              6429.289321881,
+              9379.289321881
+            ]
+          ],
+          [
+            [
+              6105.836064664,
+              8498.404081513
+            ],
+            [
+              6168.917350738,
+              8474.66196662
+            ],
+            [
+              6233.416383544,
+              8455.096398922
+            ],
+            [
+              6299.056968323,
+              8439.791161185
+            ],
+            [
+              6365.558022013,
+              8428.811792785
+            ],
+            [
+              6432.634776893,
+              8422.205309064
+            ],
+            [
+              6500.0,
+              8420.0
+            ],
+            [
+              6500.0,
+              9350.0
+            ],
+            [
+              6493.459687077,
+              9350.214107676
+            ],
+            [
+              6486.947380778,
+              9350.855513863
+            ],
+            [
+              6480.490967798,
+              9351.92147196
+            ],
+            [
+              6474.11809549,
+              9353.407417371
+            ],
+            [
+              6467.85605347,
+              9355.30698705
+            ],
+            [
+              6461.731656763,
+              9357.612046749
+            ]
+          ]
+        ],
+        "outline": [
+          [
+            7530.0,
+            9450.0
+          ],
+          [
+            7528.759319891,
+            9500.539704557
+          ],
+          [
+            7525.040268472,
+            9550.957654539
+          ],
+          [
+            7518.851805264,
+            9601.132388689
+          ],
+          [
+            7510.208838815,
+            9650.943031677
+          ],
+          [
+            7499.13219079,
+            9700.2695853
+          ],
+          [
+            7485.648545804,
+            9748.993217572
+          ],
+          [
+            7469.790387139,
+            9796.996548994
+          ],
+          [
+            7451.595918487,
+            9844.163935336
+          ],
+          [
+            7431.108971917,
+            9890.381746233
+          ],
+          [
+            7408.378902279,
+            9935.538638931
+          ],
+          [
+            7383.4604683,
+            9979.525826519
+          ],
+          [
+            7356.413700672,
+            10022.23734001
+          ],
+          [
+            7327.303757425,
+            10063.570283627
+          ],
+          [
+            7296.200766964,
+            10103.425082689
+          ],
+          [
+            7263.179659116,
+            10141.705723492
+          ],
+          [
+            7228.319984622,
+            10178.319984622
+          ],
+          [
+            7191.705723492,
+            10213.179659116
+          ],
+          [
+            7153.425082689,
+            10246.200766964
+          ],
+          [
+            7113.570283627,
+            10277.303757425
+          ],
+          [
+            7072.23734001,
+            10306.413700672
+          ],
+          [
+            7029.525826519,
+            10333.4604683
+          ],
+          [
+            6985.538638931,
+            10358.378902279
+          ],
+          [
+            6940.381746233,
+            10381.108971917
+          ],
+          [
+            6894.163935336,
+            10401.595918487
+          ],
+          [
+            6846.996548994,
+            10419.790387139
+          ],
+          [
+            6798.993217572,
+            10435.648545804
+          ],
+          [
+            6750.2695853,
+            10449.13219079
+          ],
+          [
+            6700.943031677,
+            10460.208838815
+          ],
+          [
+            6651.132388689,
+            10468.851805264
+          ],
+          [
+            6600.957654539,
+            10475.040268472
+          ],
+          [
+            6550.539704557,
+            10478.759319891
+          ],
+          [
+            6500.0,
+            10480.0
+          ],
+          [
+            6449.460295443,
+            10478.759319891
+          ],
+          [
+            6399.042345461,
+            10475.040268472
+          ],
+          [
+            6348.867611311,
+            10468.851805264
+          ],
+          [
+            6299.056968323,
+            10460.208838815
+          ],
+          [
+            6249.7304147,
+            10449.13219079
+          ],
+          [
+            6201.006782428,
+            10435.648545804
+          ],
+          [
+            6153.003451006,
+            10419.790387139
+          ],
+          [
+            6105.836064664,
+            10401.595918487
+          ],
+          [
+            6059.618253767,
+            10381.108971917
+          ],
+          [
+            6014.461361069,
+            10358.378902279
+          ],
+          [
+            5970.474173481,
+            10333.4604683
+          ],
+          [
+            5927.76265999,
+            10306.413700672
+          ],
+          [
+            5886.429716373,
+            10277.303757425
+          ],
+          [
+            5846.574917311,
+            10246.200766964
+          ],
+          [
+            5808.294276508,
+            10213.179659116
+          ],
+          [
+            5771.680015378,
+            10178.319984622
+          ],
+          [
+            5736.820340884,
+            10141.705723492
+          ],
+          [
+            5703.799233036,
+            10103.425082689
+          ],
+          [
+            5672.696242575,
+            10063.570283627
+          ],
+          [
+            5643.586299328,
+            10022.23734001
+          ],
+          [
+            5616.5395317,
+            9979.525826519
+          ],
+          [
+            5591.621097721,
+            9935.538638931
+          ],
+          [
+            5568.891028083,
+            9890.381746233
+          ],
+          [
+            5548.404081513,
+            9844.163935336
+          ],
+          [
+            5530.209612861,
+            9796.996548994
+          ],
+          [
+            5514.351454196,
+            9748.993217572
+          ],
+          [
+            5500.86780921,
+            9700.2695853
+          ],
+          [
+            5489.791161185,
+            9650.943031677
+          ],
+          [
+            5481.148194736,
+            9601.132388689
+          ],
+          [
+            5474.959731528,
+            9550.957654539
+          ],
+          [
+            5471.240680109,
+            9500.539704557
+          ],
+          [
+            5470.0,
+            9450.0
+          ],
+          [
+            5471.240680109,
+            9399.460295443
+          ],
+          [
+            5474.959731528,
+            9349.042345461
+          ],
+          [
+            5481.148194736,
+            9298.867611311
+          ],
+          [
+            5489.791161185,
+            9249.056968323
+          ],
+          [
+            5500.86780921,
+            9199.7304147
+          ],
+          [
+            5514.351454196,
+            9151.006782428
+          ],
+          [
+            5530.209612861,
+            9103.003451006
+          ],
+          [
+            5548.404081513,
+            9055.836064664
+          ],
+          [
+            5568.891028083,
+            9009.618253767
+          ],
+          [
+            5591.621097721,
+            8964.461361069
+          ],
+          [
+            5616.5395317,
+            8920.474173481
+          ],
+          [
+            5643.586299328,
+            8877.76265999
+          ],
+          [
+            5672.696242575,
+            8836.429716373
+          ],
+          [
+            5703.799233036,
+            8796.574917311
+          ],
+          [
+            5736.820340884,
+            8758.294276508
+          ],
+          [
+            5771.680015378,
+            8721.680015378
+          ],
+          [
+            5808.294276508,
+            8686.820340884
+          ],
+          [
+            5846.574917311,
+            8653.799233036
+          ],
+          [
+            5886.429716373,
+            8622.696242575
+          ],
+          [
+            5927.76265999,
+            8593.586299328
+          ],
+          [
+            5970.474173481,
+            8566.5395317
+          ],
+          [
+            6014.461361069,
+            8541.621097721
+          ],
+          [
+            6059.618253767,
+            8518.891028083
+          ],
+          [
+            6105.836064664,
+            8498.404081513
+          ],
+          [
+            6153.003451006,
+            8480.209612861
+          ],
+          [
+            6201.006782428,
+            8464.351454196
+          ],
+          [
+            6249.7304147,
+            8450.86780921
+          ],
+          [
+            6299.056968323,
+            8439.791161185
+          ],
+          [
+            6348.867611311,
+            8431.148194736
+          ],
+          [
+            6399.042345461,
+            8424.959731528
+          ],
+          [
+            6449.460295443,
+            8421.240680109
+          ],
+          [
+            6500.0,
+            8420.0
+          ],
+          [
+            6550.539704557,
+            8421.240680109
+          ],
+          [
+            6600.957654539,
+            8424.959731528
+          ],
+          [
+            6651.132388689,
+            8431.148194736
+          ],
+          [
+            6700.943031677,
+            8439.791161185
+          ],
+          [
+            6750.2695853,
+            8450.86780921
+          ],
+          [
+            6798.993217572,
+            8464.351454196
+          ],
+          [
+            6846.996548994,
+            8480.209612861
+          ],
+          [
+            6894.163935336,
+            8498.404081513
+          ],
+          [
+            6940.381746233,
+            8518.891028083
+          ],
+          [
+            6985.538638931,
+            8541.621097721
+          ],
+          [
+            7029.525826519,
+            8566.5395317
+          ],
+          [
+            7072.23734001,
+            8593.586299328
+          ],
+          [
+            7113.570283627,
+            8622.696242575
+          ],
+          [
+            7153.425082689,
+            8653.799233036
+          ],
+          [
+            7191.705723492,
+            8686.820340884
+          ],
+          [
+            7228.319984622,
+            8721.680015378
+          ],
+          [
+            7263.179659116,
+            8758.294276508
+          ],
+          [
+            7296.200766964,
+            8796.574917311
+          ],
+          [
+            7327.303757425,
+            8836.429716373
+          ],
+          [
+            7356.413700672,
+            8877.76265999
+          ],
+          [
+            7383.4604683,
+            8920.474173481
+          ],
+          [
+            7408.378902279,
+            8964.461361069
+          ],
+          [
+            7431.108971917,
+            9009.618253767
+          ],
+          [
+            7451.595918487,
+            9055.836064664
+          ],
+          [
+            7469.790387139,
+            9103.003451006
+          ],
+          [
+            7485.648545804,
+            9151.006782428
+          ],
+          [
+            7499.13219079,
+            9199.7304147
+          ],
+          [
+            7510.208838815,
+            9249.056968323
+          ],
+          [
+            7518.851805264,
+            9298.867611311
+          ],
+          [
+            7525.040268472,
+            9349.042345461
+          ],
+          [
+            7528.759319891,
+            9399.460295443
+          ]
+        ],
+        "cut_outline": [
+          [
+            7560.0,
+            9450.0
+          ],
+          [
+            7558.723183577,
+            9502.011734787
+          ],
+          [
+            7554.895810273,
+            9553.898168749
+          ],
+          [
+            7548.527100563,
+            9605.534302923
+          ],
+          [
+            7539.632397227,
+            9656.795741337
+          ],
+          [
+            7528.233128386,
+            9707.558990697
+          ],
+          [
+            7514.356755876,
+            9757.70175789
+          ],
+          [
+            7498.036709094,
+            9807.103244596
+          ],
+          [
+            7479.312304462,
+            9855.644438307
+          ],
+          [
+            7458.228650711,
+            9903.208399036
+          ],
+          [
+            7434.836540209,
+            9949.680541036
+          ],
+          [
+            7409.1923266,
+            9994.948908845
+          ],
+          [
+            7381.357789041,
+            10038.904447001
+          ],
+          [
+            7351.399983369,
+            10081.441262762
+          ],
+          [
+            7319.391080565,
+            10122.456881213
+          ],
+          [
+            7285.408192876,
+            10161.852492138
+          ],
+          [
+            7249.533188058,
+            10199.533188058
+          ],
+          [
+            7211.852492138,
+            10235.408192876
+          ],
+          [
+            7172.456881213,
+            10269.391080565
+          ],
+          [
+            7131.441262762,
+            10301.399983369
+          ],
+          [
+            7088.904447001,
+            10331.357789041
+          ],
+          [
+            7044.948908845,
+            10359.1923266
+          ],
+          [
+            6999.680541036,
+            10384.836540209
+          ],
+          [
+            6953.208399036,
+            10408.228650711
+          ],
+          [
+            6905.644438307,
+            10429.312304462
+          ],
+          [
+            6857.103244596,
+            10448.036709094
+          ],
+          [
+            6807.70175789,
+            10464.356755876
+          ],
+          [
+            6757.558990697,
+            10478.233128386
+          ],
+          [
+            6706.795741337,
+            10489.632397227
+          ],
+          [
+            6655.534302923,
+            10498.527100563
+          ],
+          [
+            6603.898168749,
+            10504.895810273
+          ],
+          [
+            6552.011734787,
+            10508.723183577
+          ],
+          [
+            6500.0,
+            10510.0
+          ],
+          [
+            6447.988265213,
+            10508.723183577
+          ],
+          [
+            6396.101831251,
+            10504.895810273
+          ],
+          [
+            6344.465697077,
+            10498.527100563
+          ],
+          [
+            6293.204258663,
+            10489.632397227
+          ],
+          [
+            6242.441009303,
+            10478.233128386
+          ],
+          [
+            6192.29824211,
+            10464.356755876
+          ],
+          [
+            6142.896755404,
+            10448.036709094
+          ],
+          [
+            6094.355561693,
+            10429.312304462
+          ],
+          [
+            6046.791600964,
+            10408.228650711
+          ],
+          [
+            6000.319458964,
+            10384.836540209
+          ],
+          [
+            5955.051091155,
+            10359.1923266
+          ],
+          [
+            5911.095552999,
+            10331.357789041
+          ],
+          [
+            5868.558737238,
+            10301.399983369
+          ],
+          [
+            5827.543118787,
+            10269.391080565
+          ],
+          [
+            5788.147507862,
+            10235.408192876
+          ],
+          [
+            5750.466811942,
+            10199.533188058
+          ],
+          [
+            5714.591807124,
+            10161.852492138
+          ],
+          [
+            5680.608919435,
+            10122.456881213
+          ],
+          [
+            5648.600016631,
+            10081.441262762
+          ],
+          [
+            5618.642210959,
+            10038.904447001
+          ],
+          [
+            5590.8076734,
+            9994.948908845
+          ],
+          [
+            5565.163459791,
+            9949.680541036
+          ],
+          [
+            5541.771349289,
+            9903.208399036
+          ],
+          [
+            5520.687695538,
+            9855.644438307
+          ],
+          [
+            5501.963290906,
+            9807.103244596
+          ],
+          [
+            5485.643244124,
+            9757.70175789
+          ],
+          [
+            5471.766871614,
+            9707.558990697
+          ],
+          [
+            5460.367602773,
+            9656.795741337
+          ],
+          [
+            5451.472899437,
+            9605.534302923
+          ],
+          [
+            5445.104189727,
+            9553.898168749
+          ],
+          [
+            5441.276816423,
+            9502.011734787
+          ],
+          [
+            5440.0,
+            9450.0
+          ],
+          [
+            5441.276816423,
+            9397.988265213
+          ],
+          [
+            5445.104189727,
+            9346.101831251
+          ],
+          [
+            5451.472899437,
+            9294.465697077
+          ],
+          [
+            5460.367602773,
+            9243.204258663
+          ],
+          [
+            5471.766871614,
+            9192.441009303
+          ],
+          [
+            5485.643244124,
+            9142.29824211
+          ],
+          [
+            5501.963290906,
+            9092.896755404
+          ],
+          [
+            5520.687695538,
+            9044.355561693
+          ],
+          [
+            5541.771349289,
+            8996.791600964
+          ],
+          [
+            5565.163459791,
+            8950.319458964
+          ],
+          [
+            5590.8076734,
+            8905.051091155
+          ],
+          [
+            5618.642210959,
+            8861.095552999
+          ],
+          [
+            5648.600016631,
+            8818.558737238
+          ],
+          [
+            5680.608919435,
+            8777.543118787
+          ],
+          [
+            5714.591807124,
+            8738.147507862
+          ],
+          [
+            5750.466811942,
+            8700.466811942
+          ],
+          [
+            5788.147507862,
+            8664.591807124
+          ],
+          [
+            5827.543118787,
+            8630.608919435
+          ],
+          [
+            5868.558737238,
+            8598.600016631
+          ],
+          [
+            5911.095552999,
+            8568.642210959
+          ],
+          [
+            5955.051091155,
+            8540.8076734
+          ],
+          [
+            6000.319458964,
+            8515.163459791
+          ],
+          [
+            6046.791600964,
+            8491.771349289
+          ],
+          [
+            6094.355561693,
+            8470.687695538
+          ],
+          [
+            6142.896755404,
+            8451.963290906
+          ],
+          [
+            6192.29824211,
+            8435.643244124
+          ],
+          [
+            6242.441009303,
+            8421.766871614
+          ],
+          [
+            6293.204258663,
+            8410.367602773
+          ],
+          [
+            6344.465697077,
+            8401.472899437
+          ],
+          [
+            6396.101831251,
+            8395.104189727
+          ],
+          [
+            6447.988265213,
+            8391.276816423
+          ],
+          [
+            6500.0,
+            8390.0
+          ],
+          [
+            6552.011734787,
+            8391.276816423
+          ],
+          [
+            6603.898168749,
+            8395.104189727
+          ],
+          [
+            6655.534302923,
+            8401.472899437
+          ],
+          [
+            6706.795741337,
+            8410.367602773
+          ],
+          [
+            6757.558990697,
+            8421.766871614
+          ],
+          [
+            6807.70175789,
+            8435.643244124
+          ],
+          [
+            6857.103244596,
+            8451.963290906
+          ],
+          [
+            6905.644438307,
+            8470.687695538
+          ],
+          [
+            6953.208399036,
+            8491.771349289
+          ],
+          [
+            6999.680541036,
+            8515.163459791
+          ],
+          [
+            7044.948908845,
+            8540.8076734
+          ],
+          [
+            7088.904447001,
+            8568.642210959
+          ],
+          [
+            7131.441262762,
+            8598.600016631
+          ],
+          [
+            7172.456881213,
+            8630.608919435
+          ],
+          [
+            7211.852492138,
+            8664.591807124
+          ],
+          [
+            7249.533188058,
+            8700.466811942
+          ],
+          [
+            7285.408192876,
+            8738.147507862
+          ],
+          [
+            7319.391080565,
+            8777.543118787
+          ],
+          [
+            7351.399983369,
+            8818.558737238
+          ],
+          [
+            7381.357789041,
+            8861.095552999
+          ],
+          [
+            7409.1923266,
+            8905.051091155
+          ],
+          [
+            7434.836540209,
+            8950.319458964
+          ],
+          [
+            7458.228650711,
+            8996.791600964
+          ],
+          [
+            7479.312304462,
+            9044.355561693
+          ],
+          [
+            7498.036709094,
+            9092.896755404
+          ],
+          [
+            7514.356755876,
+            9142.29824211
+          ],
+          [
+            7528.233128386,
+            9192.441009303
+          ],
+          [
+            7539.632397227,
+            9243.204258663
+          ],
+          [
+            7548.527100563,
+            9294.465697077
+          ],
+          [
+            7554.895810273,
+            9346.101831251
+          ],
+          [
+            7558.723183577,
+            9397.988265213
+          ]
+        ],
+        "landing_outline": [
+          [
+            6500.0,
+            8340.0
+          ],
+          [
+            7650.0,
+            8340.0
+          ],
+          [
+            7650.0,
+            9350.0
+          ],
+          [
+            6500.0,
+            9350.0
+          ]
+        ],
+        "approach_zones": [
+          {
+            "name": "spiral foot",
+            "outline": [
+              [
+                5470.0,
+                9450.0
+              ],
+              [
+                6400.0,
+                9450.0
+              ],
+              [
+                6400.0,
+                10450.0
+              ],
+              [
+                5470.0,
+                10450.0
+              ]
+            ],
+            "z0": 0.0,
+            "z1": 2100.0
+          },
+          {
+            "name": "spiral upper exit",
+            "outline": [
+              [
+                6500.0,
+                7320.0
+              ],
+              [
+                7500.0,
+                7320.0
+              ],
+              [
+                7500.0,
+                8320.0
+              ],
+              [
+                6500.0,
+                8320.0
+              ]
+            ],
+            "z0": 3300.0,
+            "z1": 5400.0
+          }
+        ],
+        "steps": 20,
+        "riser": 165.0,
+        "walkline_going": 282.743338823,
+        "clear_width": 930,
+        "turn_headroom": 2585.0,
+        "rise": 3300,
+        "top": 3300.0,
+        "physical_headroom_mm": 2000.0,
+        "headroom_obstructions": []
+      },
+      "warning": "Use tread geometry; a single hull fills stairwell and under-stair space"
+    },
+    {
+      "id": "ST_HALL",
+      "source_params_mm": {
+        "rise": 3300.0,
+        "to_level": "L1"
+      },
+      "source_derived_mm": {
+        "outline": [
+          [
+            -4696.8584,
+            17605.3416
+          ],
+          [
+            -3504.4088,
+            17470.9416
+          ],
+          [
+            -2944.4088,
+            22439.4816
+          ],
+          [
+            -4136.8584,
+            22573.8816
+          ]
+        ],
+        "landing": [
+          [
+            -3056.4088,
+            21445.7736
+          ],
+          [
+            -2062.7008,
+            21333.7736
+          ],
+          [
+            -1950.7008,
+            22327.4816
+          ],
+          [
+            -2944.4088,
+            22439.4816
+          ]
+        ],
+        "approach_zones": [
+          {
+            "name": "hall stair foot",
+            "outline": [
+              [
+                -3504.4088,
+                17470.9416
+              ],
+              [
+                -2510.7008,
+                17358.9416
+              ],
+              [
+                -2398.7008,
+                18352.6496
+              ],
+              [
+                -3392.4088,
+                18464.6496
+              ]
+            ],
+            "z0": 0.0,
+            "z1": 2100.0
+          },
+          {
+            "name": "hall upper landing",
+            "outline": [
+              [
+                -3056.4088,
+                21445.7736
+              ],
+              [
+                -2062.7008,
+                21333.7736
+              ],
+              [
+                -1950.7008,
+                22327.4816
+              ],
+              [
+                -2944.4088,
+                22439.4816
+              ]
+            ],
+            "z0": 3300.0,
+            "z1": 5400.0
+          }
+        ],
+        "steps": 20,
+        "riser": 165.0,
+        "going": 260,
+        "winder_walkline_going": 272.271468031,
+        "clear_width": 1000,
+        "rise": 3300,
+        "top": 3300.0,
+        "tread_polygons": [
+          [
+            [
+              -3504.4088,
+              17470.9416
+            ],
+            [
+              -3566.632599559,
+              17479.609763253
+            ],
+            [
+              -3628.31746695,
+              17491.52258914
+            ],
+            [
+              -3689.294328239,
+              17506.647425434
+            ],
+            [
+              -3749.39605009,
+              17524.94281601
+            ],
+            [
+              -3808.457897858,
+              17546.358614474
+            ],
+            [
+              -3866.317987126,
+              17570.83612161
+            ],
+            [
+              -3452.726997854,
+              18481.298686935
+            ],
+            [
+              -3443.083649643,
+              18477.219102412
+            ],
+            [
+              -3433.240008348,
+              18473.649802668
+            ],
+            [
+              -3423.223054707,
+              18470.600570906
+            ],
+            [
+              -3413.060244492,
+              18468.079764857
+            ],
+            [
+              -3402.77943326,
+              18466.094293875
+            ],
+            [
+              -3392.4088,
+              18464.6496
+            ]
+          ],
+          [
+            [
+              -3866.317987126,
+              17570.83612161
+            ],
+            [
+              -3922.817727409,
+              17598.308246274
+            ],
+            [
+              -3977.802256848,
+              17628.699689282
+            ],
+            [
+              -4031.120866669,
+              17661.927149799
+            ],
+            [
+              -4082.627414269,
+              17697.899553667
+            ],
+            [
+              -4132.18072378,
+              17736.518303028
+            ],
+            [
+              -4179.644973026,
+              17777.677546572
+            ],
+            [
+              -3504.948162171,
+              18515.772257762
+            ],
+            [
+              -3497.037453963,
+              18508.912383838
+            ],
+            [
+              -3488.778569045,
+              18502.475925611
+            ],
+            [
+              -3480.194144445,
+              18496.480524967
+            ],
+            [
+              -3471.307709475,
+              18490.94261488
+            ],
+            [
+              -3462.143621235,
+              18485.877374379
+            ],
+            [
+              -3452.726997854,
+              18481.298686935
+            ]
+          ],
+          [
+            [
+              -4179.644973026,
+              17777.677546572
+            ],
+            [
+              -4224.890065799,
+              17821.264469676
+            ],
+            [
+              -4267.791988445,
+              17867.159603612
+            ],
+            [
+              -4308.233149775,
+              17915.237153008
+            ],
+            [
+              -4346.102703377,
+              17965.365340644
+            ],
+            [
+              -4381.296851438,
+              18017.406768641
+            ],
+            [
+              -4413.719129244,
+              18071.218795062
+            ],
+            [
+              -3543.960521541,
+              18564.695799177
+            ],
+            [
+              -3538.556808573,
+              18555.727128107
+            ],
+            [
+              -3532.69111723,
+              18547.053556774
+            ],
+            [
+              -3526.379524962,
+              18538.698858835
+            ],
+            [
+              -3519.639331407,
+              18530.685933935
+            ],
+            [
+              -3512.489010967,
+              18523.036744946
+            ],
+            [
+              -3504.948162171,
+              18515.772257762
+            ]
+          ],
+          [
+            [
+              -4413.719129244,
+              18071.218795062
+            ],
+            [
+              -4443.280669584,
+              18126.653924884
+            ],
+            [
+              -4469.900446333,
+              18183.560214269
+            ],
+            [
+              -4493.505496531,
+              18241.781687033
+            ],
+            [
+              -4514.031120377,
+              18301.158762166
+            ],
+            [
+              -4531.421058563,
+              18361.528691233
+            ],
+            [
+              -4545.627646478,
+              18422.726004454
+            ],
+            [
+              -3565.945274413,
+              18623.280334076
+            ],
+            [
+              -3563.577509761,
+              18613.080781872
+            ],
+            [
+              -3560.67918673,
+              18603.019127028
+            ],
+            [
+              -3557.258249422,
+              18593.122947839
+            ],
+            [
+              -3553.324074389,
+              18583.419369045
+            ],
+            [
+              -3548.887444931,
+              18573.934987481
+            ],
+            [
+              -3543.960521541,
+              18564.695799177
+            ]
+          ],
+          [
+            [
+              -4545.627646478,
+              18422.726004454
+            ],
+            [
+              -4556.61194485,
+              18484.582964248
+            ],
+            [
+              -4564.343846482,
+              18546.930024988
+            ],
+            [
+              -4568.802158769,
+              18609.596297713
+            ],
+            [
+              -4569.974661786,
+              18672.410018525
+            ],
+            [
+              -4567.858141785,
+              18735.199019384
+            ],
+            [
+              -4562.4584,
+              18797.7912
+            ],
+            [
+              -3568.7504,
+              18685.7912
+            ],
+            [
+              -3569.650356964,
+              18675.359169897
+            ],
+            [
+              -3570.003110298,
+              18664.894336421
+            ],
+            [
+              -3569.807693128,
+              18654.425382952
+            ],
+            [
+              -3569.06464108,
+              18643.981004165
+            ],
+            [
+              -3567.775990808,
+              18633.589827375
+            ],
+            [
+              -3565.945274413,
+              18623.280334076
+            ]
+          ],
+          [
+            [
+              -4562.4584,
+              18797.7912
+            ],
+            [
+              -3568.7504,
+              18685.7912
+            ],
+            [
+              -3539.6304,
+              18944.15528
+            ],
+            [
+              -4533.3384,
+              19056.15528
+            ]
+          ],
+          [
+            [
+              -4533.3384,
+              19056.15528
+            ],
+            [
+              -3539.6304,
+              18944.15528
+            ],
+            [
+              -3510.5104,
+              19202.51936
+            ],
+            [
+              -4504.2184,
+              19314.51936
+            ]
+          ],
+          [
+            [
+              -4504.2184,
+              19314.51936
+            ],
+            [
+              -3510.5104,
+              19202.51936
+            ],
+            [
+              -3481.3904,
+              19460.88344
+            ],
+            [
+              -4475.0984,
+              19572.88344
+            ]
+          ],
+          [
+            [
+              -4475.0984,
+              19572.88344
+            ],
+            [
+              -3481.3904,
+              19460.88344
+            ],
+            [
+              -3452.2704,
+              19719.24752
+            ],
+            [
+              -4445.9784,
+              19831.24752
+            ]
+          ],
+          [
+            [
+              -4445.9784,
+              19831.24752
+            ],
+            [
+              -3452.2704,
+              19719.24752
+            ],
+            [
+              -3423.1504,
+              19977.6116
+            ],
+            [
+              -4416.8584,
+              20089.6116
+            ]
+          ],
+          [
+            [
+              -4416.8584,
+              20089.6116
+            ],
+            [
+              -3423.1504,
+              19977.6116
+            ],
+            [
+              -3394.0304,
+              20235.97568
+            ],
+            [
+              -4387.7384,
+              20347.97568
+            ]
+          ],
+          [
+            [
+              -4387.7384,
+              20347.97568
+            ],
+            [
+              -3394.0304,
+              20235.97568
+            ],
+            [
+              -3364.9104,
+              20494.33976
+            ],
+            [
+              -4358.6184,
+              20606.33976
+            ]
+          ],
+          [
+            [
+              -4358.6184,
+              20606.33976
+            ],
+            [
+              -3364.9104,
+              20494.33976
+            ],
+            [
+              -3335.7904,
+              20752.70384
+            ],
+            [
+              -4329.4984,
+              20864.70384
+            ]
+          ],
+          [
+            [
+              -4329.4984,
+              20864.70384
+            ],
+            [
+              -3335.7904,
+              20752.70384
+            ],
+            [
+              -3306.6704,
+              21011.06792
+            ],
+            [
+              -4300.3784,
+              21123.06792
+            ]
+          ],
+          [
+            [
+              -4300.3784,
+              21123.06792
+            ],
+            [
+              -3306.6704,
+              21011.06792
+            ],
+            [
+              -3277.5504,
+              21269.432
+            ],
+            [
+              -4271.2584,
+              21381.432
+            ]
+          ],
+          [
+            [
+              -4271.2584,
+              21381.432
+            ],
+            [
+              -4262.590236747,
+              21443.655799559
+            ],
+            [
+              -4250.67741086,
+              21505.34066695
+            ],
+            [
+              -4235.552574566,
+              21566.317528239
+            ],
+            [
+              -4217.25718399,
+              21626.41925009
+            ],
+            [
+              -4195.841385526,
+              21685.481097858
+            ],
+            [
+              -4171.36387839,
+              21743.341187126
+            ],
+            [
+              -3260.901313065,
+              21329.750197854
+            ],
+            [
+              -3264.980897588,
+              21320.106849643
+            ],
+            [
+              -3268.550197332,
+              21310.263208348
+            ],
+            [
+              -3271.599429094,
+              21300.246254707
+            ],
+            [
+              -3274.120235143,
+              21290.083444492
+            ],
+            [
+              -3276.105706125,
+              21279.80263326
+            ],
+            [
+              -3277.5504,
+              21269.432
+            ]
+          ],
+          [
+            [
+              -4171.36387839,
+              21743.341187126
+            ],
+            [
+              -4143.891753726,
+              21799.840927409
+            ],
+            [
+              -4113.500310718,
+              21854.825456848
+            ],
+            [
+              -4080.272850201,
+              21908.144066669
+            ],
+            [
+              -4044.300446333,
+              21959.650614269
+            ],
+            [
+              -4005.681696972,
+              22009.20392378
+            ],
+            [
+              -3964.522453427,
+              22056.668173026
+            ],
+            [
+              -3226.427742238,
+              21381.971362171
+            ],
+            [
+              -3233.287616162,
+              21374.060653963
+            ],
+            [
+              -3239.724074389,
+              21365.801769045
+            ],
+            [
+              -3245.719475033,
+              21357.217344445
+            ],
+            [
+              -3251.25738512,
+              21348.330909475
+            ],
+            [
+              -3256.322625621,
+              21339.166821235
+            ],
+            [
+              -3260.901313065,
+              21329.750197854
+            ]
+          ],
+          [
+            [
+              -3964.522453427,
+              22056.668173026
+            ],
+            [
+              -3920.935530324,
+              22101.913265799
+            ],
+            [
+              -3875.040396388,
+              22144.815188445
+            ],
+            [
+              -3826.962846992,
+              22185.256349775
+            ],
+            [
+              -3776.834659356,
+              22223.125903377
+            ],
+            [
+              -3724.793231359,
+              22258.320051438
+            ],
+            [
+              -3670.981204938,
+              22290.742329244
+            ],
+            [
+              -3177.504200823,
+              21420.983721541
+            ],
+            [
+              -3186.472871893,
+              21415.580008573
+            ],
+            [
+              -3195.146443226,
+              21409.71431723
+            ],
+            [
+              -3203.501141165,
+              21403.402724962
+            ],
+            [
+              -3211.514066065,
+              21396.662531407
+            ],
+            [
+              -3219.163255054,
+              21389.512210967
+            ],
+            [
+              -3226.427742238,
+              21381.971362171
+            ]
+          ],
+          [
+            [
+              -3670.981204938,
+              22290.742329244
+            ],
+            [
+              -3615.546075116,
+              22320.303869584
+            ],
+            [
+              -3558.639785731,
+              22346.923646333
+            ],
+            [
+              -3500.418312967,
+              22370.528696531
+            ],
+            [
+              -3441.041237834,
+              22391.054320377
+            ],
+            [
+              -3380.671308767,
+              22408.444258563
+            ],
+            [
+              -3319.473995546,
+              22422.650846478
+            ],
+            [
+              -3118.919665924,
+              21442.968474413
+            ],
+            [
+              -3129.119218128,
+              21440.600709761
+            ],
+            [
+              -3139.180872972,
+              21437.70238673
+            ],
+            [
+              -3149.077052161,
+              21434.281449422
+            ],
+            [
+              -3158.780630955,
+              21430.347274389
+            ],
+            [
+              -3168.265012519,
+              21425.910644931
+            ],
+            [
+              -3177.504200823,
+              21420.983721541
+            ]
+          ],
+          [
+            [
+              -3319.473995546,
+              22422.650846478
+            ],
+            [
+              -3257.617035752,
+              22433.63514485
+            ],
+            [
+              -3195.269975012,
+              22441.367046482
+            ],
+            [
+              -3132.603702287,
+              22445.825358769
+            ],
+            [
+              -3069.789981475,
+              22446.997861786
+            ],
+            [
+              -3007.000980617,
+              22444.881341785
+            ],
+            [
+              -2944.4088,
+              22439.4816
+            ],
+            [
+              -3056.4088,
+              21445.7736
+            ],
+            [
+              -3066.840830103,
+              21446.673556964
+            ],
+            [
+              -3077.305663579,
+              21447.026310298
+            ],
+            [
+              -3087.774617048,
+              21446.830893128
+            ],
+            [
+              -3098.218995835,
+              21446.08784108
+            ],
+            [
+              -3108.610172625,
+              21444.799190808
+            ],
+            [
+              -3118.919665924,
+              21442.968474413
+            ]
+          ]
+        ],
+        "walkline": [
+          [
+            -3600.603992419,
+            17827.964819274
+          ],
+          [
+            -3847.47880957,
+            17940.111330004
+          ],
+          [
+            -4047.615535455,
+            18123.057513797
+          ],
+          [
+            -4181.42339291,
+            18358.895323521
+          ],
+          [
+            -4235.804336553,
+            18624.539311183
+          ],
+          [
+            -4051.0444,
+            18870.97324
+          ],
+          [
+            -4021.9244,
+            19129.33732
+          ],
+          [
+            -3992.8044,
+            19387.7014
+          ],
+          [
+            -3963.6844,
+            19646.06548
+          ],
+          [
+            -3934.5644,
+            19904.42956
+          ],
+          [
+            -3905.4444,
+            20162.79364
+          ],
+          [
+            -3876.3244,
+            20421.15772
+          ],
+          [
+            -3847.2044,
+            20679.5218
+          ],
+          [
+            -3818.0844,
+            20937.88588
+          ],
+          [
+            -3788.9644,
+            21196.24996
+          ],
+          [
+            -3914.235180726,
+            21477.627192419
+          ],
+          [
+            -3802.088669996,
+            21724.50200957
+          ],
+          [
+            -3619.142486203,
+            21924.638735455
+          ],
+          [
+            -3383.304676479,
+            22058.44659291
+          ],
+          [
+            -3117.660688817,
+            22112.827536553
+          ]
+        ],
+        "physical_headroom_mm": 2000.0,
+        "headroom_obstructions": []
+      },
+      "warning": "Use tread geometry; a single hull fills stairwell and under-stair space"
+    }
+  ],
+  "candidate_route_graph": [
+    {
+      "from": "living",
+      "to": "exterior",
+      "via": [
+        "D_FRONT"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 3.264
+    },
+    {
+      "from": "living",
+      "to": "exterior",
+      "via": [
+        "D_E1"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.574
+    },
+    {
+      "from": "living",
+      "to": "exterior",
+      "via": [
+        "D_E2"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.574
+    },
+    {
+      "from": "living",
+      "to": "exterior",
+      "via": [
+        "D_W1"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.124
+    },
+    {
+      "from": "living",
+      "to": "exterior",
+      "via": [
+        "D_W2"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.124
+    },
+    {
+      "from": "dining",
+      "to": "pergola",
+      "via": [
+        "D_PERGOLA"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.225
+    },
+    {
+      "from": "guest_corridor",
+      "to": "exterior",
+      "via": [
+        "N_GUEST_E0"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.074
+    },
+    {
+      "from": "bed1",
+      "to": "exterior",
+      "via": [
+        "N_GUEST_E1"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.074
+    },
+    {
+      "from": "master",
+      "to": "master_bath",
+      "via": [
+        "D_MASTER_BATH"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.02
+    },
+    {
+      "from": "kitchen",
+      "to": "exterior",
+      "via": [
+        "D_KITCHEN_GARDEN"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.0175
+    },
+    {
+      "from": "kitchen",
+      "to": "pergola",
+      "via": [
+        "D_KITCHEN_TERRACE"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 0.8825
+    },
+    {
+      "from": "hall",
+      "to": "exterior",
+      "via": [
+        "D_ENTRY"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.27
+    },
+    {
+      "from": "bed2",
+      "to": "guest_corridor",
+      "via": [
+        "D_BED2"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 0.92
+    },
+    {
+      "from": "bed2",
+      "to": "bath2",
+      "via": [
+        "D_BATH2"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 0.82
+    },
+    {
+      "from": "bed1",
+      "to": "guest_corridor",
+      "via": [
+        "D_BED1"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 0.92
+    },
+    {
+      "from": "bed1",
+      "to": "bath1",
+      "via": [
+        "D_BATH1"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 0.82
+    },
+    {
+      "from": "bed3",
+      "to": "bath3",
+      "via": [
+        "D_BATH3"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 0.92
+    },
+    {
+      "from": "guest_corridor",
+      "to": "laundry",
+      "via": [
+        "D_LAUNDRY"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 0.82
+    },
+    {
+      "from": "guest_corridor",
+      "to": "wc",
+      "via": [
+        "D_WC"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 0.82
+    },
+    {
+      "from": "bed4",
+      "to": "bath4",
+      "via": [
+        "D_BATH4"
+      ],
+      "type": "door",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 0.92
+    },
+    {
+      "from": "dining",
+      "to": "kitchen",
+      "via": [
+        "A_KITCHEN",
+        "A_DINING_K",
+        "THRESHOLD_K_DINING"
+      ],
+      "type": "paired_arch",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.1
+    },
+    {
+      "from": "master_bath",
+      "to": "bed3",
+      "via": [
+        "A_MASTER_LINK",
+        "A_DRESSING_K",
+        "THRESHOLD_K_MASTER"
+      ],
+      "type": "paired_arch",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.1
+    },
+    {
+      "from": "kitchen",
+      "to": "hall",
+      "via": [
+        "A_HALL_K",
+        "A_K_HALL",
+        "THRESHOLD_HK_L0"
+      ],
+      "type": "paired_arch",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.1
+    },
+    {
+      "from": "bath3",
+      "to": "landing",
+      "via": [
+        "A_BED3_HALL",
+        "A_HALL_BED3",
+        "THRESHOLD_HK_L1"
+      ],
+      "type": "paired_arch",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.0
+    },
+    {
+      "from": "hall",
+      "to": "guest_corridor",
+      "via": [
+        "A_HALL_GUEST",
+        "A_GUEST_HALL",
+        "THRESHOLD_HA_L0"
+      ],
+      "type": "paired_arch",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.0
+    },
+    {
+      "from": "landing",
+      "to": "bed4",
+      "via": [
+        "A_HALL_SUITE4",
+        "A_SUITE4_HALL",
+        "THRESHOLD_HA_L1"
+      ],
+      "type": "paired_arch",
+      "status": "unverified_final_mesh_and_runtime",
+      "clear_width_m": 1.0
+    },
+    {
+      "from": "living",
+      "to": "dining",
+      "via": [],
+      "type": "open_room_boundary",
+      "status": "unverified_final_mesh_and_runtime"
+    },
+    {
+      "from": "dining",
+      "to": "master_bath",
+      "via": [
+        "ST_MASTER"
+      ],
+      "type": "stair",
+      "status": "unverified_final_mesh_and_runtime"
+    },
+    {
+      "from": "hall",
+      "to": "landing",
+      "via": [
+        "ST_HALL"
+      ],
+      "type": "stair",
+      "status": "unverified_final_mesh_and_runtime"
+    }
+  ],
+  "bookmarks": [
+    {
+      "name": "Pool garden overview",
+      "location": [
+        17.5,
+        -15.5,
+        4.0
+      ],
+      "look": [
+        -0.58,
+        0.8,
+        0.03
+      ],
+      "exposure": 0.0,
+      "base_exposure": 0.0,
+      "frame": 1,
+      "bookmark_number": 1,
+      "source_room_id": null,
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false,
+      "spawn_attention": "Overview or low detail camera: preserve comparison pose separately; floor trace and capsule sweep are required for walking spawn"
+    },
+    {
+      "name": "The great garden arch",
+      "location": [
+        2.0,
+        -12.0,
+        1.65
+      ],
+      "look": [
+        0.15,
+        1.0,
+        0.17
+      ],
+      "exposure": 0.0,
+      "base_exposure": 0.0,
+      "frame": 97,
+      "bookmark_number": 2,
+      "source_room_id": null,
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Pool and olive grove",
+      "location": [
+        18.8,
+        -5.0,
+        1.65
+      ],
+      "look": [
+        -1.0,
+        0.32,
+        0.03
+      ],
+      "exposure": 0.0,
+      "base_exposure": 0.0,
+      "frame": 193,
+      "bookmark_number": 3,
+      "source_room_id": null,
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Summer kitchen terrace",
+      "location": [
+        18.8,
+        3.4,
+        1.65
+      ],
+      "look": [
+        0.0,
+        1.0,
+        0.08
+      ],
+      "exposure": 0.15,
+      "base_exposure": 0.15,
+      "frame": 289,
+      "bookmark_number": 4,
+      "source_room_id": null,
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Salon · fireplace and garden",
+      "location": [
+        1.1,
+        6.25,
+        1.6
+      ],
+      "look": [
+        0.6,
+        -0.77,
+        -0.025
+      ],
+      "exposure": 2.05,
+      "base_exposure": 0.8,
+      "frame": 385,
+      "bookmark_number": 5,
+      "source_room_id": "living",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Salon · stone fireplace",
+      "location": [
+        3.3,
+        6.5,
+        1.65
+      ],
+      "look": [
+        0.85,
+        -0.49,
+        0.015
+      ],
+      "exposure": 1.95,
+      "base_exposure": 0.7,
+      "frame": 481,
+      "bookmark_number": 6,
+      "source_room_id": "living",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Dining room",
+      "location": [
+        0.95,
+        9.25,
+        1.58
+      ],
+      "look": [
+        0.76,
+        -0.63,
+        -0.04
+      ],
+      "exposure": 1.9,
+      "base_exposure": 0.65,
+      "frame": 577,
+      "bookmark_number": 7,
+      "source_room_id": "dining",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Kitchen · oak island",
+      "location": [
+        -1.0,
+        15.25,
+        1.56
+      ],
+      "look": [
+        -0.34,
+        -0.94,
+        -0.03
+      ],
+      "exposure": 2.1,
+      "base_exposure": 0.85,
+      "frame": 673,
+      "bookmark_number": 8,
+      "source_room_id": "kitchen",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Kitchen · cooking range",
+      "location": [
+        -4.25,
+        9.45,
+        1.56
+      ],
+      "look": [
+        0.36,
+        0.93,
+        -0.03
+      ],
+      "exposure": 2.1,
+      "base_exposure": 0.85,
+      "frame": 769,
+      "bookmark_number": 9,
+      "source_room_id": "kitchen",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Ochre entrance hall",
+      "location": [
+        -1.85,
+        17.3,
+        1.6
+      ],
+      "look": [
+        -0.1,
+        0.995,
+        0.035
+      ],
+      "exposure": 1.9,
+      "base_exposure": 0.65,
+      "frame": 865,
+      "bookmark_number": 10,
+      "source_room_id": "hall",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Garden bedroom one",
+      "location": [
+        -1.4,
+        26.53,
+        1.58
+      ],
+      "look": [
+        0.011258947,
+        0.996929034,
+        -0.077496696
+      ],
+      "exposure": 1.8,
+      "base_exposure": 0.55,
+      "frame": 961,
+      "bookmark_number": 11,
+      "source_room_id": "bed1",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Garden bedroom two",
+      "location": [
+        -6.3,
+        27.55,
+        1.6
+      ],
+      "look": [
+        -0.43,
+        0.9,
+        -0.09
+      ],
+      "exposure": 1.8,
+      "base_exposure": 0.55,
+      "frame": 1057,
+      "bookmark_number": 12,
+      "source_room_id": "bed2",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Principal suite · arched window",
+      "location": [
+        6.6,
+        6.25,
+        4.95
+      ],
+      "look": [
+        -0.48,
+        -0.86,
+        -0.12
+      ],
+      "exposure": 2.05,
+      "base_exposure": 0.8,
+      "frame": 1153,
+      "bookmark_number": 13,
+      "source_room_id": "master",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Principal suite · timber roof",
+      "location": [
+        6.2,
+        1.4,
+        4.85
+      ],
+      "look": [
+        -0.42,
+        0.9,
+        0.13
+      ],
+      "exposure": 2.05,
+      "base_exposure": 0.8,
+      "frame": 1249,
+      "bookmark_number": 14,
+      "source_room_id": "master",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Bedroom above kitchen",
+      "location": [
+        -4.25,
+        9.15,
+        4.87
+      ],
+      "look": [
+        0.57,
+        0.82,
+        -0.07
+      ],
+      "exposure": 2.0,
+      "base_exposure": 0.75,
+      "frame": 1345,
+      "bookmark_number": 15,
+      "source_room_id": "bed3",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Upper guest suite",
+      "location": [
+        -1.6,
+        25.85,
+        4.93
+      ],
+      "look": [
+        -0.81,
+        0.58,
+        -0.09
+      ],
+      "exposure": 1.9,
+      "base_exposure": 0.65,
+      "frame": 1441,
+      "bookmark_number": 16,
+      "source_room_id": "bed4",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Principal bathroom",
+      "location": [
+        5.3,
+        8.1,
+        4.9
+      ],
+      "look": [
+        -0.66,
+        0.76,
+        -0.07
+      ],
+      "exposure": 2.0,
+      "base_exposure": 0.75,
+      "frame": 1537,
+      "bookmark_number": 17,
+      "source_room_id": "master_bath",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Bedroom three bathroom",
+      "location": [
+        -1.35,
+        14.0,
+        4.88
+      ],
+      "look": [
+        -0.75,
+        0.66,
+        -0.07
+      ],
+      "exposure": 2.05,
+      "base_exposure": 0.8,
+      "frame": 1633,
+      "bookmark_number": 18,
+      "source_room_id": "bath3",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Guest suite bathroom",
+      "location": [
+        -7.14,
+        27.8,
+        4.9
+      ],
+      "look": [
+        -0.17,
+        0.98,
+        -0.09
+      ],
+      "exposure": 2.05,
+      "base_exposure": 0.8,
+      "frame": 1729,
+      "bookmark_number": 19,
+      "source_room_id": "bath4",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Garden bedroom one bathroom",
+      "location": [
+        -5.15,
+        27.6,
+        1.58
+      ],
+      "look": [
+        0.8,
+        0.56,
+        -0.2
+      ],
+      "exposure": 0.65,
+      "base_exposure": 0.65,
+      "frame": 1825,
+      "bookmark_number": 20,
+      "source_room_id": "bath1",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Garden bedroom two bathroom",
+      "location": [
+        -7.23,
+        26.0,
+        1.48
+      ],
+      "look": [
+        -0.86,
+        -0.4,
+        -0.32
+      ],
+      "exposure": 0.65,
+      "base_exposure": 0.65,
+      "frame": 1921,
+      "bookmark_number": 21,
+      "source_room_id": "bath2",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Limestone shower detail · photo04–05 material study",
+      "location": [
+        3.4,
+        8.8,
+        4.85
+      ],
+      "look": [
+        0.73,
+        0.67,
+        -0.145
+      ],
+      "exposure": 1.9,
+      "base_exposure": 0.65,
+      "frame": 2017,
+      "bookmark_number": 22,
+      "source_room_id": "master_bath",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Laundry · plan-derived fittings",
+      "location": [
+        -5.194821357727051,
+        24.531038284301758,
+        1.059999942779541
+      ],
+      "look": [
+        -0.7916243672370911,
+        0.5260400772094727,
+        -0.3108260929584503
+      ],
+      "exposure": 0.6,
+      "base_exposure": 0.6,
+      "frame": 2113,
+      "bookmark_number": 23,
+      "source_room_id": "laundry",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false,
+      "spawn_attention": "Overview or low detail camera: preserve comparison pose separately; floor trace and capsule sweep are required for walking spawn"
+    },
+    {
+      "name": "Guest WC · plan-derived fittings",
+      "location": [
+        -3.3953404426574707,
+        24.860992431640625,
+        1.1200000047683716
+      ],
+      "look": [
+        -0.8858484625816345,
+        0.10382775217294693,
+        -0.45220834016799927
+      ],
+      "exposure": 0.6,
+      "base_exposure": 0.6,
+      "frame": 2209,
+      "bookmark_number": 24,
+      "source_room_id": "wc",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false,
+      "spawn_attention": "Overview or low detail camera: preserve comparison pose separately; floor trace and capsule sweep are required for walking spawn"
+    },
+    {
+      "name": "Upper entrance gallery",
+      "location": [
+        -1.72,
+        22.06,
+        4.94
+      ],
+      "look": [
+        -0.18,
+        -0.97,
+        -0.16
+      ],
+      "exposure": 1.8,
+      "base_exposure": 0.55,
+      "frame": 2305,
+      "bookmark_number": 25,
+      "source_room_id": "landing",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    },
+    {
+      "name": "Guest corridor",
+      "location": [
+        -1.86,
+        25.21,
+        1.57
+      ],
+      "look": [
+        -0.95,
+        0.3,
+        -0.08
+      ],
+      "exposure": 0.55,
+      "base_exposure": 0.55,
+      "frame": 2401,
+      "bookmark_number": 26,
+      "source_room_id": "guest_corridor",
+      "pose_semantics": "Blender camera eye pose in metres; not a capsule center",
+      "safe_grounded_spawn_verified": false
+    }
+  ],
+  "native_architectural_clashes": [
+    {
+      "a": "MS",
+      "b": "D_FRONT.surround",
+      "volume_mm3": 131632738.214283,
+      "depth_mm": 20.000000300002135,
+      "bbox": {
+        "min": [
+          1820.0,
+          -6.84560311986126e-13,
+          0.0
+        ],
+        "max": [
+          6180.0,
+          20.000000000000373,
+          5730.0
+        ]
+      }
+    },
+    {
+      "a": "ME",
+      "b": "CH_MAIN",
+      "volume_mm3": 29999999.999999903,
+      "depth_mm": 200.00000030000137,
+      "bbox": {
+        "min": [
+          7650.0,
+          4200.0,
+          6300.0
+        ],
+        "max": [
+          7900.0,
+          4800.0,
+          6500.0
+        ]
+      }
+    },
+    {
+      "a": "MW",
+      "b": "THRESHOLD_K_MASTER",
+      "volume_mm3": 38499999.99999999,
+      "depth_mm": 100.00000036213305,
+      "bbox": {
+        "min": [
+          9.947598300641403e-14,
+          9100.0,
+          3200.0
+        ],
+        "max": [
+          350.00000000000034,
+          10200.0,
+          3300.0
+        ]
+      }
+    },
+    {
+      "a": "D_FRONT",
+      "b": "D_FRONT.glass",
+      "volume_mm3": 4466010.823654917,
+      "depth_mm": 10.000000300000778,
+      "bbox": {
+        "min": [
+          2368.6614667950557,
+          169.9999999999995,
+          52.0
+        ],
+        "max": [
+          5631.338533204945,
+          1750.6492839446987,
+          5182.0
+        ]
+      }
+    },
+    {
+      "a": "D_E1",
+      "b": "D_E1.glass",
+      "volume_mm3": 1047397.8900665131,
+      "depth_mm": 10.000001200000042,
+      "bbox": {
+        "min": [
+          7820.0,
+          1538.0,
+          686.5
+        ],
+        "max": [
+          7830.0,
+          3112.0,
+          2837.0
+        ]
+      }
+    },
+    {
+      "a": "D_E2",
+      "b": "D_E2.glass",
+      "volume_mm3": 1047397.890066511,
+      "depth_mm": 10.000001200000042,
+      "bbox": {
+        "min": [
+          7820.0,
+          5588.0,
+          686.5
+        ],
+        "max": [
+          7830.0,
+          7162.0,
+          2837.0
+        ]
+      }
+    },
+    {
+      "a": "D_W1",
+      "b": "D_W1.glass",
+      "volume_mm3": 419900.0,
+      "depth_mm": 10.000001199999986,
+      "bbox": {
+        "min": [
+          170.0,
+          5808.0,
+          869.8333333333334
+        ],
+        "max": [
+          180.00000000000014,
+          6932.0,
+          1730.1666666666667
+        ]
+      }
+    },
+    {
+      "a": "D_W2",
+      "b": "D_W2.glass",
+      "volume_mm3": 419900.0,
+      "depth_mm": 10.000001199999986,
+      "bbox": {
+        "min": [
+          170.0,
+          1768.0,
+          869.8333333333334
+        ],
+        "max": [
+          180.00000000000014,
+          2892.0,
+          1730.1666666666667
+        ]
+      }
+    },
+    {
+      "a": "N_W2",
+      "b": "N_W2.glass",
+      "volume_mm3": 227999.99999999997,
+      "depth_mm": 10.00000030000001,
+      "bbox": {
+        "min": [
+          170.00000000000014,
+          2385.0,
+          4445.0
+        ],
+        "max": [
+          180.00000000000014,
+          2415.0,
+          5205.0
+        ]
+      }
+    },
+    {
+      "a": "D_PERGOLA",
+      "b": "D_PERGOLA.glass",
+      "volume_mm3": 3708946.6839036974,
+      "depth_mm": 10.000001199998223,
+      "bbox": {
+        "min": [
+          2750.0,
+          10820.0,
+          50.0
+        ],
+        "max": [
+          5250.0,
+          10830.0,
+          2700.0000000000005
+        ]
+      }
+    },
+    {
+      "a": "N_MASTER_N",
+      "b": "N_MASTER_N.glass",
+      "volume_mm3": 1511999.9999999998,
+      "depth_mm": 26.852004749378466,
+      "bbox": {
+        "min": [
+          3300.0,
+          10820.0,
+          3600.0
+        ],
+        "max": [
+          5000.0,
+          10830.0,
+          5300.0
+        ]
+      }
+    },
+    {
+      "a": "N_GUEST_E0",
+      "b": "N_GUEST_E0.glass",
+      "volume_mm3": 710864.6197567,
+      "depth_mm": 10.000001200001861,
+      "bbox": {
+        "min": [
+          -1294.9531258255392,
+          24120.18433733498,
+          686.5
+        ],
+        "max": [
+          -889.9667022016823,
+          25122.32017128778,
+          2587.0
+        ]
+      }
+    },
+    {
+      "a": "N_SUITE4_E0",
+      "b": "N_SUITE4_E0.glass",
+      "volume_mm3": 1073999.9999999483,
+      "depth_mm": 10.000001199998223,
+      "bbox": {
+        "min": [
+          -1286.8477470644802,
+          24140.636790369757,
+          4060.0
+        ],
+        "max": [
+          -879.6507655966985,
+          25148.350566059315,
+          5540.0
+        ]
+      }
+    },
+    {
+      "a": "N_GUEST_E1",
+      "b": "N_GUEST_E1.glass",
+      "volume_mm3": 710864.6197565822,
+      "depth_mm": 10.0000012000055,
+      "bbox": {
+        "min": [
+          -208.09551922903037,
+          26862.672357907417,
+          686.5
+        ],
+        "max": [
+          196.89090439482516,
+          27864.80819186022,
+          2587.0
+        ]
+      }
+    },
+    {
+      "a": "N_SUITE4_E1",
+      "b": "N_SUITE4_E1.glass",
+      "volume_mm3": 1073999.9999999607,
+      "depth_mm": 10.000001200001861,
+      "bbox": {
+        "min": [
+          -199.9901404679717,
+          26883.124810942194,
+          4060.0
+        ],
+        "max": [
+          207.20684099980875,
+          27890.83858663175,
+          5540.0
+        ]
+      }
+    },
+    {
+      "a": "N_GUEST_W",
+      "b": "N_GUEST_W.glass",
+      "volume_mm3": 1044000.0000000522,
+      "depth_mm": 27.35070662590624,
+      "bbox": {
+        "min": [
+          -9144.41292069059,
+          28596.862375625475,
+          760.0
+        ],
+        "max": [
+          -9000.152622126852,
+          29619.367577359124,
+          2240.0
+        ]
+      }
+    },
+    {
+      "a": "N_BATH4_W",
+      "b": "N_BATH4_W.glass",
+      "volume_mm3": 1194000.0000000019,
+      "depth_mm": 10.000001199998223,
+      "bbox": {
+        "min": [
+          -9170.499469616554,
+          28398.57094372502,
+          4010.0
+        ],
+        "max": [
+          -9000.152622126852,
+          29619.367577359124,
+          5590.0
+        ]
+      }
+    },
+    {
+      "a": "C0_MAIN",
+      "b": "FP",
+      "volume_mm3": 3317376.0000000023,
+      "depth_mm": 8.000000300000465,
+      "bbox": {
+        "min": [
+          7330.0,
+          3707.7599999999998,
+          2972.0
+        ],
+        "max": [
+          7630.0,
+          5092.240000000001,
+          2980.0
+        ]
+      }
+    },
+    {
+      "a": "C0_MAIN.B8",
+      "b": "FP",
+      "volume_mm3": 5400000.0,
+      "depth_mm": 120.00000029999956,
+      "bbox": {
+        "min": [
+          7330.0,
+          3795.0,
+          2822.0
+        ],
+        "max": [
+          7630.0,
+          3915.0,
+          2972.0
+        ]
+      }
+    },
+    {
+      "a": "C0_MAIN.B9",
+      "b": "FP",
+      "volume_mm3": 5400000.0,
+      "depth_mm": 120.00000030000047,
+      "bbox": {
+        "min": [
+          7330.0,
+          4265.0,
+          2822.0
+        ],
+        "max": [
+          7630.0,
+          4385.0,
+          2972.0
+        ]
+      }
+    },
+    {
+      "a": "C0_MAIN.B10",
+      "b": "FP",
+      "volume_mm3": 5400000.0,
+      "depth_mm": 120.00000030000047,
+      "bbox": {
+        "min": [
+          7330.0,
+          4735.0,
+          2822.0
+        ],
+        "max": [
+          7630.0,
+          4855.0,
+          2972.0
+        ]
+      }
+    },
+    {
+      "a": "C0_A",
+      "b": "P_BED2",
+      "volume_mm3": 56164074.32591196,
+      "depth_mm": 28.00000030102001,
+      "bbox": {
+        "min": [
+          -7249.523004644278,
+          24809.79062482842,
+          2972.0
+        ],
+        "max": [
+          -4862.890751887211,
+          30270.704063305686,
+          3000.0
+        ]
+      }
+    },
+    {
+      "a": "C0_A",
+      "b": "P_BATH2",
+      "volume_mm3": 8547470.699095378,
+      "depth_mm": 28.00000030001638,
+      "bbox": {
+        "min": [
+          -9179.265555384476,
+          26149.250745125773,
+          2972.0
+        ],
+        "max": [
+          -6734.659064998408,
+          27070.72029224145,
+          3000.0
+        ]
+      }
+    },
+    {
+      "a": "C0_A",
+      "b": "P_BED1",
+      "volume_mm3": 17979713.810322274,
+      "depth_mm": 28.000000300065494,
+      "bbox": {
+        "min": [
+          -5996.695958473666,
+          25618.872594607783,
+          2972.0
+        ],
+        "max": [
+          -845.3931460418131,
+          27316.754251634396,
+          3000.0
+        ]
+      }
+    },
+    {
+      "a": "C0_A",
+      "b": "P_BATH1",
+      "volume_mm3": 10006068.06291771,
+      "depth_mm": 28.000000300410193,
+      "bbox": {
+        "min": [
+          -3950.854355477052,
+          26659.932301666264,
+          2972.0
+        ],
+        "max": [
+          -3012.819563284892,
+          29556.863873219332,
+          3000.0
+        ]
+      }
+    },
+    {
+      "a": "C0_A",
+      "b": "P_WC",
+      "volume_mm3": 4186687.0504651424,
+      "depth_mm": 28.000000302348326,
+      "bbox": {
+        "min": [
+          -3477.667987535432,
+          23736.766806086478,
+          2972.0
+        ],
+        "max": [
+          -3034.364913194977,
+          24970.867655293645,
+          3000.0
+        ]
+      }
+    },
+    {
+      "a": "C0_A",
+      "b": "P_SERV",
+      "volume_mm3": 11750392.2196526,
+      "depth_mm": 28.00000030000774,
+      "bbox": {
+        "min": [
+          -6480.488184629708,
+          24915.00804265193,
+          2972.0
+        ],
+        "max": [
+          -3074.4120575330444,
+          26059.544745045438,
+          3000.0
+        ]
+      }
+    },
+    {
+      "a": "C0_A",
+      "b": "P_LAUNDRY",
+      "volume_mm3": 4035300.0168626807,
+      "depth_mm": 28.000000300130523,
+      "bbox": {
+        "min": [
+          -5147.396315306349,
+          24240.176090527766,
+          2972.0
+        ],
+        "max": [
+          -4617.116373050336,
+          25402.796409394618,
+          3000.0
+        ]
+      }
+    },
+    {
+      "a": "C1_A",
+      "b": "P_BATH4",
+      "volume_mm3": 56219503.852432996,
+      "depth_mm": 28.000000308620656,
+      "bbox": {
+        "min": [
+          -7406.7173280638035,
+          24856.684151197547,
+          6472.0
+        ],
+        "max": [
+          -5232.56098319196,
+          30397.89465868507,
+          6500.0
+        ]
+      }
+    },
+    {
+      "a": "GUEST_CEILING_TIMBERS",
+      "b": "P_BED2",
+      "volume_mm3": 32427436.46311462,
+      "depth_mm": 55.0000003000132,
+      "bbox": {
+        "min": [
+          -7188.6246784208715,
+          24968.21088288958,
+          2887.0
+        ],
+        "max": [
+          -4862.890751887211,
+          30270.704063305686,
+          2972.0
+        ]
+      }
+    },
+    {
+      "a": "GUEST_CEILING_TIMBERS",
+      "b": "P_BATH2",
+      "volume_mm3": 19674055.586539112,
+      "depth_mm": 120.00000030000956,
+      "bbox": {
+        "min": [
+          -9174.721654278574,
+          26165.030431470914,
+          2647.0
+        ],
+        "max": [
+          -6751.9594888497195,
+          27041.542790122854,
+          2972.0
+        ]
+      }
+    },
+    {
+      "a": "GUEST_CEILING_TIMBERS",
+      "b": "P_BED1",
+      "volume_mm3": 13022187.368324928,
+      "depth_mm": 120.0000003000132,
+      "bbox": {
+        "min": [
+          -3726.8869843440243,
+          25674.72343669236,
+          2647.0
+        ],
+        "max": [
+          -846.8970854476574,
+          26613.9523021527,
+          2972.0
+        ]
+      }
+    },
+    {
+      "a": "GUEST_CEILING_TIMBERS",
+      "b": "P_BATH1",
+      "volume_mm3": 6042459.740786199,
+      "depth_mm": 55.0000003000132,
+      "bbox": {
+        "min": [
+          -3941.3261026188848,
+          26689.6811458777,
+          2887.0
+        ],
+        "max": [
+          -3012.8195632848915,
+          29556.863873219332,
+          2972.0
+        ]
+      }
+    },
+    {
+      "a": "GUEST_CEILING_TIMBERS",
+      "b": "P_WC",
+      "volume_mm3": 2730252.620151716,
+      "depth_mm": 55.00000030000956,
+      "bbox": {
+        "min": [
+          -3467.3917016865466,
+          23768.649970967323,
+          2887.0
+        ],
+        "max": [
+          -3034.364913194976,
+          24970.867655293645,
+          2972.0
+        ]
+      }
+    },
+    {
+      "a": "GUEST_CEILING_TIMBERS",
+      "b": "P_SERV",
+      "volume_mm3": 20743402.00509169,
+      "depth_mm": 120.0000003000132,
+      "bbox": {
+        "min": [
+          -6440.3636116027055,
+          24928.9931933952,
+          2647.0
+        ],
+        "max": [
+          -3089.9101002864154,
+          26059.54474504544,
+          2972.0
+        ]
+      }
+    },
+    {
+      "a": "GUEST_CEILING_TIMBERS",
+      "b": "P_LAUNDRY",
+      "volume_mm3": 2244653.462052033,
+      "depth_mm": 55.00000030000956,
+      "bbox": {
+        "min": [
+          -5113.1383143454905,
+          24332.182443660105,
+          2887.0
+        ],
+        "max": [
+          -4678.830255501076,
+          25238.961426166832,
+          2972.0
+        ]
+      }
+    },
+    {
+      "a": "KITCHEN_BEAM1",
+      "b": "K3",
+      "volume_mm3": 467601.25203452434,
+      "depth_mm": 7.558470263772506,
+      "bbox": {
+        "min": [
+          -5080.0,
+          11707.5,
+          2557.0
+        ],
+        "max": [
+          -5072.441529986228,
+          11992.5,
+          2867.0
+        ]
+      }
+    },
+    {
+      "a": "KITCHEN_BEAM2",
+      "b": "K3",
+      "volume_mm3": 2223650.143983973,
+      "depth_mm": 27.43451884271326,
+      "bbox": {
+        "min": [
+          -5080.0,
+          12957.5,
+          2557.0
+        ],
+        "max": [
+          -5052.565481407287,
+          13242.5,
+          2867.0
+        ]
+      }
+    },
+    {
+      "a": "KITCHEN_BEAM3",
+      "b": "K3",
+      "volume_mm3": 3979699.0359333907,
+      "depth_mm": 47.31056742165492,
+      "bbox": {
+        "min": [
+          -5080.0,
+          14207.5,
+          2557.0
+        ],
+        "max": [
+          -5032.689432828345,
+          14492.5,
+          2867.0
+        ]
+      }
+    },
+    {
+      "a": "R_MAIN",
+      "b": "CH_MAIN",
+      "volume_mm3": 64799999.999999925,
+      "depth_mm": 166.8930941220242,
+      "bbox": {
+        "min": [
+          7300.0,
+          4200.0,
+          6753.127343233844
+        ],
+        "max": [
+          7900.0,
+          4800.0,
+          7175.543078734938
+        ]
+      }
+    },
+    {
+      "a": "ME_INFILL",
+      "b": "CH_MAIN",
+      "volume_mm3": 45544593.21948567,
+      "depth_mm": 250.00000030000047,
+      "bbox": {
+        "min": [
+          7650.0,
+          4200.0,
+          6500.0
+        ],
+        "max": [
+          7900.0,
+          4800.0,
+          6854.133899692633
+        ]
+      }
+    },
+    {
+      "a": "C1_MAIN_VAULT",
+      "b": "CH_MAIN",
+      "volume_mm3": 5040000.000000131,
+      "depth_mm": 22.25241280960472,
+      "bbox": {
+        "min": [
+          7300.0,
+          4200.0,
+          6829.133899692633
+        ],
+        "max": [
+          7650.0,
+          4800.0,
+          6994.54307873494
+        ]
+      }
+    },
+    {
+      "a": "MASTER_ROOF_TIMBERS",
+      "b": "CH_MAIN",
+      "volume_mm3": 2082500.0000000056,
+      "depth_mm": 70.0000003000041,
+      "bbox": {
+        "min": [
+          7300.0,
+          4565.0,
+          6743.133899692633
+        ],
+        "max": [
+          7650.0,
+          4635.0,
+          6969.54307873494
+        ]
+      }
+    },
+    {
+      "a": "C1_K",
+      "b": "P_BATH3",
+      "volume_mm3": 7330884.575316779,
+      "depth_mm": 21.824148570320176,
+      "bbox": {
+        "min": [
+          -5059.601602604252,
+          12740.0,
+          5604.847933390258
+        ],
+        "max": [
+          -2368.675214882288,
+          12860.0,
+          6500.000000000001
+        ]
+      }
+    },
+    {
+      "a": "THRESHOLD_K_MASTER",
+      "b": "K1",
+      "volume_mm3": 38500000.00000002,
+      "depth_mm": 100.00000036213305,
+      "bbox": {
+        "min": [
+          -350.0,
+          9100.0,
+          3200.0
+        ],
+        "max": [
+          3.410605131648481e-13,
+          10200.0,
+          3300.0
+        ]
+      }
+    },
+    {
+      "a": "THRESHOLD_HK_L1",
+      "b": "K2",
+      "volume_mm3": 38301091.3621848,
+      "depth_mm": 100.00000040056966,
+      "bbox": {
+        "min": [
+          -3105.080549919063,
+          16087.721757369873,
+          3200.0
+        ],
+        "max": [
+          -1960.1358729133044,
+          16663.69642857143,
+          3300.0
+        ]
+      }
+    },
+    {
+      "a": "THRESHOLD_HK_L1",
+      "b": "H4",
+      "volume_mm3": 26286270.48774597,
+      "depth_mm": 100.00000040056966,
+      "bbox": {
+        "min": [
+          -3029.178571428571,
+          16429.38857189013,
+          3200.0
+        ],
+        "max": [
+          -1912.521022430881,
+          16918.406572769953,
+          3300.0
+        ]
+      }
+    },
+    {
+      "a": "THRESHOLD_HA_L1",
+      "b": "H2",
+      "volume_mm3": 31171780.977628537,
+      "depth_mm": 100.0000004059948,
+      "bbox": {
+        "min": [
+          -3300.0,
+          22920.0,
+          3200.0
+        ],
+        "max": [
+          -2259.719029374202,
+          23476.723746236104,
+          3300.0
+        ]
+      }
+    },
+    {
+      "a": "THRESHOLD_HA_L1",
+      "b": "A4",
+      "volume_mm3": 17101582.324041247,
+      "depth_mm": 100.00000040000032,
+      "bbox": {
+        "min": [
+          -3216.3393325332718,
+          23251.698595146867,
+          3200.0
+        ],
+        "max": [
+          -2218.136941164512,
+          23673.000607046255,
+          3300.0
+        ]
+      }
+    },
+    {
+      "a": "D_KITCHEN_GARDEN",
+      "b": "D_KITCHEN_GARDEN.glass",
+      "volume_mm3": 3395553.5992484484,
+      "depth_mm": 10.000001199998223,
+      "bbox": {
+        "min": [
+          -3782.0,
+          8570.0,
+          55.0
+        ],
+        "max": [
+          -1692.0,
+          8580.0,
+          2385.0
+        ]
+      }
+    },
+    {
+      "a": "D_KITCHEN_TERRACE",
+      "b": "D_KITCHEN_TERRACE.glass",
+      "volume_mm3": 2868339.313069029,
+      "depth_mm": 10.00000120000061,
+      "bbox": {
+        "min": [
+          -180.00000000000026,
+          12795.0,
+          45.0
+        ],
+        "max": [
+          -169.99999999999963,
+          14605.0,
+          2455.0
+        ]
+      }
+    },
+    {
+      "a": "D_ENTRY",
+      "b": "D_ENTRY.glass",
+      "volume_mm3": 953000.0000000092,
+      "depth_mm": 10.000001200007318,
+      "bbox": {
+        "min": [
+          -530.9607443234731,
+          18304.109422635396,
+          1060.0
+        ],
+        "max": [
+          -237.67281117992928,
+          20688.503942959192,
+          3500.0
+        ]
+      }
+    },
+    {
+      "a": "N_HALL",
+      "b": "N_HALL.glass",
+      "volume_mm3": 491995.1999280045,
+      "depth_mm": 10.000000304571177,
+      "bbox": {
+        "min": [
+          -390.69859600884575,
+          19483.80028457769,
+          3600.0
+        ],
+        "max": [
+          -377.93495949455405,
+          19508.813081016888,
+          5700.0
+        ]
+      }
+    },
+    {
+      "a": "N_BED3_S",
+      "b": "N_BED3_S.glass",
+      "volume_mm3": 759000.0,
+      "depth_mm": 10.000001199998223,
+      "bbox": {
+        "min": [
+          -3352.0,
+          8570.0,
+          4010.0
+        ],
+        "max": [
+          -2122.0,
+          8580.0,
+          5340.0
+        ]
+      }
+    },
+    {
+      "a": "N_BATH3_E",
+      "b": "N_BATH3_E.glass",
+      "volume_mm3": 714000.0000000001,
+      "depth_mm": 10.000001199999986,
+      "bbox": {
+        "min": [
+          -180.0,
+          13610.0,
+          4260.0
+        ],
+        "max": [
+          -169.99999999999974,
+          14790.0,
+          5490.0
+        ]
+      }
+    }
+  ],
+  "dressed_scene_raw_findings": [
+    {
+      "rule": "inside_wall",
+      "object": "exterior_A1_INFILL_individual_rubble",
+      "detail": "1538 mm into A1_INFILL at (-0.46, 25.70, 6.30)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_A2_INFILL_individual_rubble",
+      "detail": "226 mm into A2_INFILL at (-4.07, 30.27, 6.30)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_A3_INFILL_individual_rubble",
+      "detail": "783 mm into A3_INFILL at (-9.34, 28.54, 6.30)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_A4_INFILL_individual_rubble",
+      "detail": "299 mm into A4_INFILL at (-7.04, 24.46, 6.30)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_H1_INFILL_individual_rubble",
+      "detail": "532 mm into H1_INFILL at (-0.18, 19.58, 6.30)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_H3_INFILL_individual_rubble",
+      "detail": "507 mm into H3_INFILL at (-5.02, 20.16, 6.30)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_K2_INFILL_individual_rubble",
+      "detail": "119 mm into K2_INFILL at (-0.44, 16.11, 6.30)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_BATH3_E_projecting_sill",
+      "detail": "84 mm into K1 at (-0.03, 14.20, 4.11)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_BATH4_W_projecting_sill",
+      "detail": "84 mm into A3 at (-9.23, 29.03, 3.86)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_BED3_S_projecting_sill",
+      "detail": "84 mm into K4 at (-2.74, 8.43, 3.86)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_E1_oculus_reveal_5",
+      "detail": "116 mm into ME at (7.93, 2.20, 5.08)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_E1_oculus_reveal_6",
+      "detail": "116 mm into ME at (7.93, 2.45, 5.08)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_E2_oculus_reveal_5",
+      "detail": "116 mm into ME at (7.93, 6.25, 5.08)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_E2_oculus_reveal_6",
+      "detail": "116 mm into ME at (7.93, 6.50, 5.08)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_GUEST_W_projecting_sill",
+      "detail": "84 mm into A3 at (-9.22, 29.13, 0.61)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_MASTER_N_projecting_sill",
+      "detail": "84 mm into MN at (4.15, 10.97, 3.46)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_SUITE4_E0_projecting_sill",
+      "detail": "84 mm into A1 at (-0.95, 24.59, 3.91)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_SUITE4_E1_projecting_sill",
+      "detail": "84 mm into A1 at (0.14, 27.33, 3.91)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_W1_oculus_reveal_5",
+      "detail": "116 mm into MW at (0.07, 8.17, 5.08)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_W1_oculus_reveal_6",
+      "detail": "116 mm into MW at (0.07, 7.93, 5.08)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "exterior_N_W2_projecting_sill",
+      "detail": "84 mm into MW at (0.03, 2.40, 4.31)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "in_the_way",
+      "object": "guest_1_queen_upholstered_base",
+      "detail": "in front of N_GUEST_E1 at (-1.73, 27.82, 0.10)",
+      "scope": "other_presentation"
+    },
+    {
+      "rule": "in_the_way",
+      "object": "guest_1_queen_white_duvet",
+      "detail": "in front of N_GUEST_E1 at (-1.77, 27.71, 0.12)",
+      "scope": "other_presentation"
+    },
+    {
+      "rule": "in_the_way",
+      "object": "guest_1_queen_woven_coverlet",
+      "detail": "in front of N_GUEST_E1 at (-1.91, 27.30, 0.11)",
+      "scope": "other_presentation"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_A_exterior_canal_covers",
+      "detail": "1103 mm into A1_INFILL at (-4.53, 27.38, 6.74)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_A_exterior_canal_pans",
+      "detail": "1136 mm into A1_INFILL at (-4.53, 27.38, 6.70)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_A_exterior_gable_bedding",
+      "detail": "1136 mm into A1_INFILL at (-4.54, 27.38, 6.70)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_A_exterior_gable_coping",
+      "detail": "1119 mm into A1_INFILL at (-4.54, 27.37, 6.72)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_H_exterior_canal_covers",
+      "detail": "661 mm into A1_INFILL at (-2.59, 19.88, 5.94)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_H_exterior_canal_pans",
+      "detail": "661 mm into A1_INFILL at (-2.59, 19.88, 5.91)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_H_exterior_gable_bedding",
+      "detail": "661 mm into A1_INFILL at (-2.59, 19.88, 5.90)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_H_exterior_gable_coping",
+      "detail": "657 mm into A1_INFILL at (-2.59, 19.88, 5.92)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_K_exterior_canal_covers",
+      "detail": "350 mm into K1_INFILL at (-2.74, 12.78, 5.71)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_K_exterior_canal_pans",
+      "detail": "350 mm into K1_INFILL at (-2.74, 12.78, 5.67)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_K_exterior_gable_bedding",
+      "detail": "350 mm into K1_INFILL at (-2.74, 12.78, 5.67)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_K_exterior_gable_coping",
+      "detail": "346 mm into K1_INFILL at (-2.74, 12.78, 5.69)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_MAIN_exterior_canal_covers",
+      "detail": "350 mm into R_MAIN.G1 at (4.00, 5.50, 6.81)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_MAIN_exterior_canal_pans",
+      "detail": "350 mm into R_MAIN.G1 at (4.00, 5.50, 6.77)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_MAIN_exterior_gable_bedding",
+      "detail": "350 mm into R_MAIN.G1 at (4.00, 5.50, 6.78)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_MAIN_exterior_gable_coping",
+      "detail": "350 mm into R_MAIN.G1 at (4.00, 5.50, 6.79)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_MAIN_exterior_genoise_beds",
+      "detail": "86 mm into R_MAIN.G1 at (4.00, 5.50, 6.55)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_MAIN_exterior_genoise_tiles",
+      "detail": "119 mm into R_MAIN.G1 at (4.00, 5.50, 6.51)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_POOLHOUSE_exterior_canal_covers",
+      "detail": "500 mm into R_POOLHOUSE.G1 at (18.70, 11.15, 3.19)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_POOLHOUSE_exterior_canal_pans",
+      "detail": "500 mm into R_POOLHOUSE.G1 at (18.70, 11.15, 3.16)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_POOLHOUSE_exterior_gable_bedding",
+      "detail": "500 mm into R_POOLHOUSE.G1 at (18.70, 11.15, 3.16)",
+      "scope": "exterior"
+    },
+    {
+      "rule": "inside_wall",
+      "object": "R_POOLHOUSE_exterior_gable_coping",
+      "detail": "500 mm into R_POOLHOUSE.G1 at (18.70, 11.15, 3.18)",
+      "scope": "exterior"
+    }
+  ],
+  "retained_limitations": [
+    "55 native architectural clashes and 46 dressed raw findings have different overlapping scopes; do not add them",
+    "N_GUEST_E1 route reported obstructed by guest_1_queen_upholstered_base, guest_1_queen_white_duvet, guest_1_queen_woven_coverlet",
+    "D_FRONT lower leaves are already open 78 degrees; upper fanlight and transom remain fixed",
+    "D_ENTRY central paired leaves are separate from fixed sidelights/transom; detailed panels and handles must move with leaves",
+    "T_PERGOLA and entry lawn are modelled at zero level; photographed courtyard risers were deliberately not added",
+    "IR floor datum excludes some dressed finish thickness; final evaluated floor trace remains required",
+    "bed3 glazing ratio remains 0.086 against 0.1 guideline"
+  ]
+}

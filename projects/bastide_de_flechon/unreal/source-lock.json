@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "generation": "9340bb88d26d4244a5364682e8d81807",
+  "source_commit": "60b89b4f02f0d6224642f8bcdfb68ffe11b1eaa6",
+  "conversion_base_commit": "613823900212f006a170037c8ffb51832a875d0e",
+  "artifacts": {
+    "packed_model": {
+      "path": "/Users/cloud/.codex/worktrees/49bf/homespec/projects/bastide_de_flechon/deliverables/model/house_walk.blend",
+      "sha256": "caa9878ba4ca5d71850f4887e0ce3d00fd3f7f218fcafc5fc2873f83d392d23a",
+      "bytes": 311475047
+    },
+    "portable_archive": {
+      "path": "/Users/cloud/.codex/worktrees/49bf/homespec/projects/bastide_de_flechon/deliverables/La-Bastide-de-Flechon-Walkthrough.zip",
+      "sha256": "067b25d2b784eb17e61640bfe81fa2c58465e65139127237e51ad4d0e271cd32",
+      "bytes": 315328619
+    },
+    "render_scene": {
+      "path": "/Users/cloud/.codex/worktrees/49bf/homespec/out/bastide_de_flechon/presentation/9340bb88d26d4244a5364682e8d81807/43073ec090c23923/house.blend",
+      "sha256": "4e7203ef12d3f08482c87a58dddbf2ecbb6fd00ded5b2799a8aea9aac6016a5e",
+      "bytes": 119524406
+    }
+  }
+}

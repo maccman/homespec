@@ -1,0 +1,11 @@
+# Local model conversion/cache/build artifacts; source/configuration is reviewable.
+BastideWalk/Binaries/
+BastideWalk/Build/Mac/
+BastideWalk/Content/Bastide/
+BastideWalk/DerivedDataCache/
+BastideWalk/Intermediate/
+BastideWalk/Saved/
+BastideWalk/.vs/
+BastideWalk/*.xcworkspace/
+BastideWalk/*.xcodeproj/
+BastideWalk/*.sln
