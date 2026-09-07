@@ -1,40 +1,28 @@
 # La Bastide — native interactive walkthrough
 
 Explore the furnished house in a local Mac app using the mouse and keyboard,
-with architectural collision and a room selector. The deliverable is an
-interactive walkthrough targeting 60 fps. Screenshots and a matching image gallery
-are not required to use or complete it. The frozen Blender source remains unchanged.
+with architectural collision and a room selector. The priority is a high-quality
+real-time view of the furnished house, with lighting and materials that better
+preserve the source appearance. Visual fidelity takes priority over frame-rate
+targets. The frozen Blender source remains unchanged.
 
-The final native app has been packaged and its fullscreen performance verified.
-The delivery preset is
-**1280 × 720 fullscreen, 67% internal resolution and FXAA**, with GI, shadows and
-reflections at quality 0, VSync enabled and a 60 fps limit.
+The new source preset is **1600 × 900 fullscreen at 100% internal resolution with
+TSR**, Epic scalability, software Lumen GI and reflections, and restored shadows.
+Motion blur is disabled for a sharp walkthrough. VSync is enabled with no explicit
+frame-rate limit. The [quality package](../../../out/unreal/runs/20260907T013432Z_7a55abfb_package_editor/stage-receipt.json)
+completed and the new app is installed. Reviewed exterior and kitchen previews
+show restored lighting and material depth; that assessment is limited to those
+two views. The earlier performance preset was rejected for its appearance.
 
-With normal runtime settings, the final navigation run recorded **59.9141 fps
-mean and 16.6669 ms p95 across 10,420 frames**. These are Game Tick timings during
-navigation, separate from the uncapped capacity measurements below.
-
-The packaged **1280 × 720 fullscreen** benchmark, with engine caps and Mac frame
-pacing disabled, recorded:
-
-| Route | Mean fps | 95th-percentile frame time |
-| --- | ---: | ---: |
-| Interior | 203.539 | 9.3409 ms |
-| Pool return | 199.218 | 17.3769 ms |
-
-Both valid routes passed the declared nominal 60 Hz criterion: mean ≥59.7 fps and
-p95 ≤17.5 ms. Actual fullscreen mode and dimensions were verified, along with
-uncapped render capacity. The normal app enables VSync and caps output at 60 fps;
-individual frames can still exceed the nominal 16.67 ms budget.
-[Package receipt](../../../out/unreal/runs/20260907T010531Z_26320bdc_package_editor/stage-receipt.json)
-and [performance receipt](../../../out/unreal/runs/20260907T010831Z_69e3cb67_validate_packaged/stage-receipt.json)
-retain the exact measurements and checks.
+The [installed-app smoke test](../../../out/unreal/runs/20260907T013705Z_2640c10e_validate_packaged/stage-receipt.json)
+passed with the quality settings, all 19 aperture-light shadows, 26 bookmarks,
+safe spawn and actual dining-to-kitchen walking verified.
 
 ## Launch and controls
 
-The verified local copy is installed at
-`/Users/cloud/Applications/BastideWalk.app`; open it directly. Its 33 files match
-the packaged archive byte-for-byte and its code signature verifies.
+The quality build is installed at `/Users/cloud/Applications/BastideWalk.app`;
+open it directly. The previous performance app is retained separately under
+`out/unreal/previous-performance-app`.
 
 Open [Launch Walkthrough.command](<Launch Walkthrough.command>). It finds the complete
 app under `out/unreal/package`, normally
@@ -55,18 +43,18 @@ opens the native project in the installed editor.
 
 Source surfaces use baked PBR materials and documented real-time approximations.
 Glass, colored bottles, water, mirrors and thin fabric can differ from Cycles;
-further image-by-image matching is outside the current delivery goal. Software
-reflections have visible limitations. Walking retains per-polygon architectural
+focused source-camera comparisons guide the quality work. Software Lumen mirrors
+retain platform limitations. Walking retains per-polygon architectural
 collision with a 56 cm wide, 176 cm tall standing body.
 
-The final packaged navigation run passed **13 of 16 routes**, including hall-stair
+The prior packaged geometry validation passed **13 of 16 routes**, including hall-stair
 ascent, WC-to-corridor return and salon-to-dining through the west chair gap. Main
 stair ascent/descent timed out. Hall-stair descent also timed out, with a target-height
 tolerance miss rather than demonstrated physical blockage. Local room selection
 does not establish a continuous route to every room.
 [Navigation audit](../../../out/unreal/runs/20260907T011251Z_8d2acb4f_validate_packaged/Validation/runtime-audit.json).
 
-- [Runtime, controls, benchmarking and packaging](runtime.md)
+- [Runtime, controls, validation and packaging](runtime.md)
 - [Mac platform and rendering choices](platform.md)
 - [Source geometry, material and circulation evidence](source-audit.md)
 - [Frozen source hashes](source-lock.json)
@@ -76,15 +64,18 @@ does not establish a continuous route to every room.
 Run from the repository root with the development environment installed:
 
 ```sh
-python3 projects/bastide_de_flechon/unreal/tools/run_unreal.py play --runtime packaged --fullscreen --width 1280 --height 720
-python3 projects/bastide_de_flechon/unreal/tools/run_unreal.py validate --runtime packaged --fullscreen --width 1280 --height 720 --benchmark --route-data /absolute/performance-routes.json
+python3 projects/bastide_de_flechon/unreal/tools/run_unreal.py play --runtime packaged --fullscreen --width 1600 --height 900
+python3 projects/bastide_de_flechon/unreal/tools/run_unreal.py validate --runtime packaged --fullscreen --width 1600 --height 900 --route-data /absolute/candidate-routes.json
 python3 projects/bastide_de_flechon/unreal/tools/run_unreal.py package --reuse-cook
 ```
 
-The benchmark disables engine caps and records actual window mode, viewport and
-Mac presentation pacing after warmup. Windowed timing alone does not prove uncapped
-render capacity. Use the same route input to compare builds. Optional `--captures`
-is a separate validation mode and cannot be combined with `--benchmark`.
+Optional `--captures` supports source-camera comparison during validation. Optional
+`--benchmark` records performance separately and cannot be combined with captures;
+its old 60 fps acceptance result is not a delivery gate.
+
+The rejected 720p/67%/FXAA preset disabled GI, shadows and reflections. Its
+[historical benchmark](../../../out/unreal/runs/20260907T010831Z_69e3cb67_validate_packaged/stage-receipt.json)
+and navigation timing describe that earlier build, not the new quality preset.
 
 The sandbox-aware runner copies requested route input into the signed app's
 container and copies native logs and audit output back to `out/unreal/runs` after

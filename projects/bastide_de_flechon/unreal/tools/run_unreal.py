@@ -53,7 +53,7 @@ def parse_render_cvar(value: str) -> str:
     return f"{match[1]} {match[2]}"
 
 
-def gameplay_benchmark_receipt(benchmark: dict, route_names: list[str], width: int = 1280, height: int = 720,
+def gameplay_benchmark_receipt(benchmark: dict, route_names: list[str], width: int = 1600, height: int = 900,
                                requested_window_mode: str | None = None) -> dict:
     takes = benchmark.get("routes", [])
     require(benchmark.get("status") == "completed", "Gameplay benchmark did not complete")
@@ -328,8 +328,8 @@ def main() -> int:
     parser.add_argument("--reuse-receipt", type=Path, help="Reuse completed native assets from a matching import receipt, rechecking the current scene")
     parser.add_argument("--look-config", type=Path, default=UNREAL / "look.daylight.json")
     parser.add_argument("--import-receipt", type=Path, help="Completed native import receipt required by the look stage")
-    parser.add_argument("--width", type=int, default=1280)
-    parser.add_argument("--height", type=int, default=720)
+    parser.add_argument("--width", type=int, default=1600)
+    parser.add_argument("--height", type=int, default=900)
     parser.add_argument("--captures", action="store_true", help="Capture every source camera during validation")
     parser.add_argument("--benchmark", action="store_true", help="Measure gameplay after native asset/focus warmup with engine caps disabled; presentation may remain synchronized")
     parser.add_argument("--fullscreen", action="store_true", help="Request true fullscreen at --width x --height for play/validate; actual viewport mode and dimensions may depend on the display")

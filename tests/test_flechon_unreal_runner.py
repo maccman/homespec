@@ -305,18 +305,18 @@ def test_packaged_render_overrides_use_one_exec_argument_and_benchmark_caps_last
     assert [arg for arg in command if arg.startswith("-ExecCmds=")] == [expected]
     assert ("-BastideBenchmark" in command) is benchmark
     if fullscreen:
-        assert "-fullscreen" in command and "-Res=1280x720f" in command
+        assert "-fullscreen" in command and "-Res=1600x900f" in command
         assert "-ForceRes" in command
         assert "-windowed" not in command
         assert not any(arg.startswith(("-ResX=", "-ResY=")) for arg in command)
     else:
-        assert "-windowed" in command and "-ResX=1280" in command and "-ResY=720" in command
+        assert "-windowed" in command and "-ResX=1600" in command and "-ResY=900" in command
         assert "-fullscreen" not in command
 
 
 def benchmark_case():
     settings = {"app_fixed_time_step": False, "app_benchmarking": False, "engine_fixed_frame_rate": False,
-                "engine_smooth_frame_rate": False, "viewport_width": 1280, "viewport_height": 720,
+                "engine_smooth_frame_rate": False, "viewport_width": 1600, "viewport_height": 900,
                 "cvars": {"r.VSync": 0, "t.MaxFPS": 0}}
     take = {"name": "Interior", "valid_take": True, "warmup_completed": True, "focus_stable": True,
             "assets_stable": True, "clocks_realtime": True, "route_passed": True,
@@ -381,7 +381,7 @@ def test_steady_nominal_60_requires_both_average_and_tail(samples, strict, stead
 def test_fast_benchmark_at_wrong_or_unverified_requested_viewport_is_invalid(side, mutation):
     document = benchmark_case()
     for key in ("settings_start", "settings_end"):
-        document["routes"][0][key]["window_mode"] = "Fullscreen"
+        document["routes"][0][key].update(window_mode="Fullscreen", viewport_width=1280, viewport_height=720)
     settings = document["routes"][0][side]
     if mutation == "size":
         settings.update(viewport_width=800, viewport_height=600)

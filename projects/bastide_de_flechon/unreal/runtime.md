@@ -1,25 +1,21 @@
 # Native walkthrough runtime
 
-The delivery is a local interactive Mac walkthrough targeting 60 fps at
-1280 × 720 fullscreen. Walking, room selection and architectural collision are the main
-experience. Image capture and the stationary source cameras are optional tools;
-no screenshot set is required for delivery.
+The delivery is a high-quality local Mac walkthrough of the furnished house.
+Lighting, material appearance, walking, room selection and architectural collision
+are the priorities. Visual fidelity takes precedence over frame-rate targets.
+Stationary source cameras and optional captures support focused visual comparison.
 
-The full import, final package `20260907T010531Z_26320bdc` and native fullscreen
-performance verification have completed. The preset uses 67% internal resolution,
-FXAA, GI/shadow/reflection quality 0, VSync and a 60 fps limit.
+The new source preset uses **1600 × 900 fullscreen, 100% internal resolution, TSR
+and Epic scalability**. Software Lumen GI/reflections, shadows and detail tracing
+are restored. Motion blur is off, VSync is on and the explicit frame-rate limit is
+0. [Quality package `20260907T013432Z_7a55abfb`](../../../out/unreal/runs/20260907T013432Z_7a55abfb_package_editor/stage-receipt.json)
+completed and replaced the installed app at `/Users/cloud/Applications/BastideWalk.app`.
+Reviewed exterior and kitchen previews show restored lighting and material depth;
+visual assessment is limited to those two views.
 
-The packaged 1280 × 720 **fullscreen** benchmark measured 203.539 fps indoors
-(9.3409 ms p95) and 199.218 fps on the pool-return route (17.3769 ms p95). Both
-valid takes passed the declared nominal 60 Hz criterion: mean ≥59.7 fps and p95
-≤17.5 ms. Actual viewport and fullscreen mode matched; engine caps were disabled,
-the Mac frame pacer was off and nonblocking presentation was 0. The
-[performance receipt](../../../out/unreal/runs/20260907T010831Z_69e3cb67_validate_packaged/stage-receipt.json)
-verifies uncapped render capacity. The shipped app restores VSync and its 60 fps cap.
-
-The final navigation run with normal runtime settings recorded **10,420 frames,
-59.9141 fps mean and 16.6669 ms p95**. This is Game Tick timing across navigation,
-including transitions, and is separate from the warm uncapped capacity benchmark.
+The [installed-app smoke test](../../../out/unreal/runs/20260907T013705Z_2640c10e_validate_packaged/stage-receipt.json)
+passed: 26 bookmarks, a clear supported spawn, dining-to-kitchen walking and all
+19 aperture fills casting shadows were verified, without a benchmark.
 
 ## Launch
 
@@ -62,41 +58,26 @@ found, it explains the failure and keeps the optional Photo action available.
 A safe local target does not establish a continuous route from another room.
 Original furniture, closed glazed doors and tight stair headroom remain obstacles.
 
-## Performance measurement
+## Quality and validation
 
-Use the same bounded interior/exterior route file for comparisons:
+All scalability groups use Epic (3), including view distance and foliage. Explicit
+settings select TSR (`r.AntiAliasingMethod=4`), 100% screen percentage, SSR quality
+3, mesh-SDF detail tracing and distance-field shadows. The 19 source aperture fills
+cast shadows while retaining their source positions,
+colors and intensities. The audit records actual matched and shadowless light
+counts. See [platform choices](platform.md) for the complete preset and limits.
 
-```sh
-python3 tools/run_unreal.py validate --runtime packaged --fullscreen --width 1280 --height 720 --benchmark --route-data /absolute/performance-routes.json
-```
+`--fullscreen --width 1600 --height 900` requests the intended display mode; the
+native audit records actual mode and dimensions. Optional `--captures` supports
+source-camera comparison. Optional `--benchmark` disables engine caps and records
+warm, focused gameplay plus Mac presentation state; it cannot be combined with
+captures or a survey. Performance measurements are diagnostic, not a delivery gate.
 
-Run these commands from this directory. `--benchmark` is incompatible with
-`--captures` and `--survey`. It disables engine caps (`r.VSync 0`, `t.MaxFPS 0`)
-and records focus, realtime clock state, asset readiness, actual viewport/window
-mode, Mac presentation pacing, scalability and movement results. Engine caps being
-disabled does not itself prove unsynchronized presentation. Measurements start after native warmup;
-view transitions and screenshot readback are not the performance workload. Earlier
-camera-audit frame intervals are not comparable warm benchmarks.
-
-At 1280 × 720 output, 67% screen percentage requests approximately 858 × 482 internal
-pixels before engine alignment. FXAA replaces temporal anti-aliasing; GI, shadows
-and reflections use quality 0, with SSR explicitly disabled. Texture streaming remains enabled.
-See [platform choices](platform.md) for the exact settings and limitations.
-
-`BeginPlay` disables shadow casting only for RectLights carrying all three exact
-tags: `BastideGenerated`, `BastideLookAperture` and
-`LightRole:supplemental_window`. Their intensity, color and visibility are unchanged;
-other lights retain their settings. The runtime audit reads actual component
-state into `aperture_fill_lights_matched` and
-`aperture_fill_lights_without_shadows`. The final quality-0 shadow profile also
-disables rendered shadows globally; source light positions, colors and intensities remain.
-
-A 60 fps cap or VSync controls presentation; it cannot demonstrate sufficient
-performance. A nominal 60 fps frame budget is 16.67 ms; the declared acceptance
-criterion allows p95 up to 17.5 ms and does not guarantee every frame. The final
-fullscreen run passed that criterion on both measured routes. `--fullscreen`
-requests the chosen dimensions; each future audit must still confirm the actual
-window mode and viewport accepted by the display.
+Historical results belong to the rejected 720p/67%/FXAA/GI0-shadow0-reflection0
+preset: uncapped means were 203.539/199.218 fps with p95 9.3409/17.3769 ms, while
+the capped navigation run recorded 59.9141 fps mean and 16.6669 ms p95 over 10,420
+frames. These do not describe the new quality preset.
+[Historical benchmark receipt](../../../out/unreal/runs/20260907T010831Z_69e3cb67_validate_packaged/stage-receipt.json).
 
 ## Build, package and run
 
@@ -106,8 +87,8 @@ python3 tools/run_unreal.py import
 python3 tools/run_unreal.py play --runtime editor
 python3 tools/run_unreal.py package
 python3 tools/run_unreal.py package --reuse-cook
-python3 tools/run_unreal.py validate --runtime packaged --fullscreen --route-data /absolute/candidate-routes.json
-python3 tools/run_unreal.py play --runtime packaged --fullscreen
+python3 tools/run_unreal.py validate --runtime packaged --fullscreen --width 1600 --height 900 --route-data /absolute/candidate-routes.json
+python3 tools/run_unreal.py play --runtime packaged --fullscreen --width 1600 --height 900
 ```
 
 `--dry-run` prints the planned command. The runner defaults to the installed
@@ -135,16 +116,17 @@ failed runs. Direct workspace paths are not assumed accessible from the app.
 
 Each stage records command arguments, source/config/data hashes, process output
 and outcome in a unique `out/unreal/runs/<id>_<stage>_<runtime>` directory. A zero
-process exit is separate from route findings or performance acceptance. Optional
-`--captures` records the source cameras during a separate validation run; no image
-set is required for interactive delivery.
+process exit is separate from route findings and visual acceptance. Optional
+`--captures` records the source cameras during a separate validation run.
 
 ## Movement and source evidence
 
-The [final packaged navigation audit](../../../out/unreal/runs/20260907T011251Z_8d2acb4f_validate_packaged/Validation/runtime-audit.json)
+The [prior packaged navigation audit](../../../out/unreal/runs/20260907T011251Z_8d2acb4f_validate_packaged/Validation/runtime-audit.json)
 passed **13 of 16 routes** with the 28 cm radius standing capsule. Passes include
 `ST_HALL ascent`, the WC-to-guest-corridor reverse route and salon-to-dining through
 the west end-chair gap. `ST_MASTER ascent` and `ST_MASTER descent` timed out.
+The quality changes preserve source geometry and collision; these remain prior
+movement results rather than a new all-room-access claim.
 
 `ST_HALL descent` timed out at segment 1 while grounded: horizontal error was
 0.086 cm, but vertical error was 12.637 cm against the 12 cm acceptance tolerance.

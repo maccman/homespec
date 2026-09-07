@@ -2,9 +2,6 @@
 
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
-#include "Components/LightComponent.h"
-#include "Engine/RectLight.h"
-#include "EngineUtils.h"
 #include "Components/InputComponent.h"
 #include "Dom/JsonObject.h"
 #include "Engine/World.h"
@@ -74,15 +71,6 @@ void ABastideCharacter::BeginPlay()
 {
     Super::BeginPlay();
     StartedAt = FPlatformTime::Seconds();
-    // Supplemental aperture fills retain light/color/intensity without the
-    // cost of another set of shadows. Original sun/practical lights are kept.
-    for (TActorIterator<ARectLight> It(GetWorld()); It; ++It)
-    {
-        if (!It->ActorHasTag(TEXT("BastideGenerated")) ||
-            !It->ActorHasTag(TEXT("BastideLookAperture")) ||
-            !It->ActorHasTag(TEXT("LightRole:supplemental_window"))) continue;
-        if (ULightComponent* Light = It->GetLightComponent()) Light->SetCastShadows(false);
-    }
     ValidationDirectory = FPaths::ProjectSavedDir() / TEXT("Validation");
     FString RequestedValidationDirectory;
     if (FParse::Value(FCommandLine::Get(), TEXT("BastideValidationDir="), RequestedValidationDirectory))

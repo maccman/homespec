@@ -1,21 +1,17 @@
-# Mac platform and performance choices
+# Mac platform and visual quality
 
-The target is a native interactive walkthrough on this Apple Silicon Mac, aiming
-for 60 fps at 1280 × 720 fullscreen. Image matching is not a delivery requirement.
-Final package `20260907T010531Z_26320bdc` completed and its native fullscreen
-benchmark passed with the actual 1280 × 720 viewport verified.
+The goal is a high-quality native view of the furnished house, preserving source
+lighting and material appearance within the Mac renderer's capabilities. Visual
+quality takes priority over frame-rate targets. The new source preset is 1600 × 900
+fullscreen, 100% resolution, TSR and Epic scalability. The
+[quality package](../../../out/unreal/runs/20260907T013432Z_7a55abfb_package_editor/stage-receipt.json)
+completed and is installed. Exterior and kitchen previews show restored lighting
+and material depth; assessment is limited to those two views. The earlier
+performance build was rejected for its appearance.
 
-The packaged **1280 × 720 fullscreen** benchmark measured **203.539 fps indoors /
-9.3409 ms p95** and **199.218 fps on pool return / 17.3769 ms p95**. Both valid
-routes passed the declared nominal 60 Hz criterion (mean ≥59.7 fps, p95 ≤17.5 ms).
-Engine caps were disabled, the Mac frame pacer was off and nonblocking presentation
-was 0, establishing uncapped render capacity for these takes. Normal delivery uses
-VSync and a 60 fps cap; the criterion is not an every-frame guarantee.
-[Final performance receipt](../../../out/unreal/runs/20260907T010831Z_69e3cb67_validate_packaged/stage-receipt.json).
-
-With the normal VSync/60 fps settings, the final navigation run recorded 10,420
-frames at **59.9141 fps mean and 16.6669 ms p95**. These Game Tick timings across
-navigation are distinct from the uncapped render-capacity benchmark.
+The [installed-app smoke test](../../../out/unreal/runs/20260907T013705Z_2640c10e_validate_packaged/stage-receipt.json)
+passed; its log verifies 1600 × 900, 100% screen percentage, TSR/SSR/Epic lighting
+settings and motion blur off, and its audit verifies all 19 aperture fills casting shadows.
 
 ## Installed platform
 
@@ -39,52 +35,49 @@ system settings or downloading tools. No toolchain override is currently needed.
 Retain any actual compiler failure before considering a different installation;
 do not suppress engine version checks or globally switch Xcode speculatively.
 
-## Current runtime profile
+## Quality preset
 
-The final performance preset uses the desktop deferred renderer with FXAA and
-GI/shadow/reflection quality 0. Nanite, Virtual Shadow Maps and hardware ray tracing
-remain disabled. Software Lumen and TSR are supported alternatives on Apple Silicon;
-Epic's Mac matrix does not support hardware
+The new preset uses the desktop deferred renderer, software Lumen GI/reflections
+and TSR. Nanite, Virtual Shadow Maps and hardware ray tracing remain disabled.
+Software Lumen and TSR are supported on Apple Silicon; Epic's Mac matrix does not support hardware
 ray-traced Lumen or MegaLights. [Epic rendering support](https://dev.epicgames.com/documentation/unreal-engine/macos-development-requirements-for-unreal-engine?lang=en-US).
 
-| Setting | Current value |
+| Setting | Quality preset |
 | --- | --- |
-| Output / internal resolution | 1280 × 720 fullscreen / 67%, approximately 858 × 482 before alignment |
-| Presentation | VSync enabled; 60 fps frame-rate limit |
-| GI / reflections | `sg.GlobalIlluminationQuality=0`, `sg.ReflectionQuality=0`, `r.SSR.Quality=0` |
-| Shadows / postprocessing | `sg.ShadowQuality=0`, `sg.PostProcessQuality=0` |
-| Anti-aliasing / effects | FXAA (`r.AntiAliasingMethod=1`), `sg.AntiAliasingQuality=1`, `sg.EffectsQuality=1` |
-| Texture quality / streaming pool | `sg.TextureQuality=2`, `r.Streaming.PoolSize=2400` |
-| Mesh-SDF detail tracing | `r.Lumen.TraceMeshSDFs.Allow=0` |
-| Distance-field shadows | `r.DistanceFieldShadowing=0` |
+| Output / internal resolution | 1600 × 900 fullscreen / 100% |
+| Presentation | VSync enabled; `FrameRateLimit=0` |
+| GI / reflections | `sg.GlobalIlluminationQuality=3`, `sg.ReflectionQuality=3`, `r.SSR.Quality=3` |
+| Shadows / postprocessing | `sg.ShadowQuality=3`, `sg.PostProcessQuality=3`; motion blur disabled |
+| Anti-aliasing / effects | TSR (`r.AntiAliasingMethod=4`), `sg.AntiAliasingQuality=3`, `sg.EffectsQuality=3` |
+| Texture quality / streaming pool | `sg.TextureQuality=3`, `r.Streaming.PoolSize=2400` |
+| View distance / foliage / shading | `sg.ViewDistanceQuality=3`, `sg.FoliageQuality=3`, `sg.ShadingQuality=3` |
+| Mesh-SDF detail tracing | `r.Lumen.TraceMeshSDFs.Allow=1` |
+| Distance-field shadows | `r.DistanceFieldShadowing=1` |
 
-Quality 0 disables Lumen GI and dynamic shadows; reflections are also disabled
-for this preset. This trades indirect-lighting and reflective fidelity for runtime
-speed while retaining the source geometry. Installed `Engine/Config/BaseScalability.ini`
-defines the quality groups. [Epic Lumen performance
+Epic GI uses Screen Probe Gather and a 4096-pixel Surface Cache atlas, with finer
+indirect-lighting sampling and foliage backface lighting. Epic reflections enable
+Lumen reflections and full-resolution reconstruction. Installed
+`Engine/Config/BaseScalability.ini` defines these quality groups. [Epic Lumen
 guide](https://dev.epicgames.com/documentation/en-us/unreal-engine/lumen-performance-guide-for-unreal-engine).
 
 Explicit project SystemSettings have higher priority than scalability settings.
-The project now sets mesh-SDF detail tracing and distance-field shadows to zero
-there, so lowering quality is not defeated by the previous pins. Keep texture
-streaming enabled and measure memory pressure before shrinking its pool. Generic
+The new preset restores detail tracing, distance-field shadows, SSR and native
+screen percentage there so the old performance pins cannot suppress Epic quality.
+Keep texture streaming enabled and account for unified-memory use. Generic
 foliage density scaling does not thin the ordinary StaticMeshActors used here.
-A geometry or Nanite rebuild is not part of this performance pass.
+A geometry or Nanite rebuild is not part of this lighting and rendering change.
 
 The 19 tagged aperture RectLights retain their positions, colors and intensities
-but disable shadow casting in `BeginPlay`; the audit records actual matched and
-shadowless counts. Independently, the final shadow-quality-0 profile disables
-rendered shadows globally. No isolated speedup is attributed to the aperture change.
+and cast shadows again. Source emitter sizes remain in use,
+including the sun's 0.8-degree angle and 6 cm kitchen point-light radius. The audit
+records actual aperture-light state. The current visual review covers exterior
+and kitchen previews rather than every material or room.
 
-Use focused gameplay after warmup for performance measurements. The runner's
-`--benchmark` disables engine caps and records Mac presentation state; fullscreen
-mode, actual dimensions and disabled pacing must be verified before interpreting
-uncapped capacity. Windowed presentation can remain synchronized. VSync or
-a 60 fps cap is presentation control, not proof of throughput. Fixed screen
-percentage makes this benchmark reproducible. Installed `MetalRHI.cpp` enables
-dynamic resolution, while Epic's public platform list omits Mac; any future
-adaptive-resolution profile therefore needs a native check rather than an assumed
-benefit. [Epic dynamic resolution documentation](https://dev.epicgames.com/documentation/en-us/unreal-engine/dynamic-resolution-in-unreal-engine).
+The rejected 720p/67%/FXAA preset disabled GI, shadows and reflections. Its
+[historical benchmark](../../../out/unreal/runs/20260907T010831Z_69e3cb67_validate_packaged/stage-receipt.json)
+recorded 203.539/199.218 fps means with 9.3409/17.3769 ms p95; the capped navigation
+run recorded 59.9141 fps mean. Those measurements describe the earlier preset and
+are not quality claims or acceptance gates for the replacement.
 
 ## Geometry, materials and collision
 
@@ -108,7 +101,7 @@ without automatic convex hulls sealing rooms. Clear glazing keeps geometry and
 collision but omits shadow casting and distance-field contribution so it does not
 block window lighting as an opaque panel. Thin fabric/foliage backs use supported
 two-sided appearance where evidenced. Tight source furniture gaps, closed glazing
-and stair headroom can constrain standing routes. The final packaged audit passed
+and stair headroom can constrain standing routes. The prior packaged geometry audit passed
 13/16 routes, including hall-stair ascent, WC return and the 28 cm radius route
 through the west dining-chair gap. Main-stair ascent/descent timed out; hall-stair
 descent missed its target-height tolerance, which does not prove physical blockage. See
@@ -137,9 +130,9 @@ traversability.
 
 ## Local packaging
 
-The final app uses Mac ARM64 Development with `-nodebuginfo`, build, cook,
-stage, package and archive; its last runtime/config update reused the retained cook. The complete
-app is `out/unreal/package/Mac/BastideWalk.app`; the runner verifies its cooked
+The quality replacement package completed successfully. Packaging uses Mac ARM64 Development
+with `-nodebuginfo`, build, cook, stage, package and archive. The complete app path
+is `out/unreal/package/Mac/BastideWalk.app`; the runner verifies its cooked
 content, staged room-data hashes, ARM64 executable and local signature before a
 separate packaged run. [Epic packaging overview](https://dev.epicgames.com/documentation/unreal-engine/packaging-your-project).
 
