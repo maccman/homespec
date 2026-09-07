@@ -13,6 +13,10 @@ was 0, establishing uncapped render capacity for these takes. Normal delivery us
 VSync and a 60 fps cap; the criterion is not an every-frame guarantee.
 [Final performance receipt](../../../out/unreal/runs/20260907T010831Z_69e3cb67_validate_packaged/stage-receipt.json).
 
+With the normal VSync/60 fps settings, the final navigation run recorded 10,420
+frames at **59.9141 fps mean and 16.6669 ms p95**. These Game Tick timings across
+navigation are distinct from the uncapped render-capacity benchmark.
+
 ## Installed platform
 
 | Item | Observed value |
@@ -104,7 +108,10 @@ without automatic convex hulls sealing rooms. Clear glazing keeps geometry and
 collision but omits shadow casting and distance-field contribution so it does not
 block window lighting as an opaque panel. Thin fabric/foliage backs use supported
 two-sided appearance where evidenced. Tight source furniture gaps, closed glazing
-and main-stair headroom can still block standing routes. See
+and stair headroom can constrain standing routes. The final packaged audit passed
+13/16 routes, including hall-stair ascent, WC return and the 28 cm radius route
+through the west dining-chair gap. Main-stair ascent/descent timed out; hall-stair
+descent missed its target-height tolerance, which does not prove physical blockage. See
 [runtime controls and route evidence](runtime.md) and [the source audit](source-audit.md).
 
 ## Import reliability

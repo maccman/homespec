@@ -10,6 +10,10 @@ The delivery preset is
 **1280 × 720 fullscreen, 67% internal resolution and FXAA**, with GI, shadows and
 reflections at quality 0, VSync enabled and a 60 fps limit.
 
+With normal runtime settings, the final navigation run recorded **59.9141 fps
+mean and 16.6669 ms p95 across 10,420 frames**. These are Game Tick timings during
+navigation, separate from the uncapped capacity measurements below.
+
 The packaged **1280 × 720 fullscreen** benchmark, with engine caps and Mac frame
 pacing disabled, recorded:
 
@@ -27,6 +31,10 @@ and [performance receipt](../../../out/unreal/runs/20260907T010831Z_69e3cb67_val
 retain the exact measurements and checks.
 
 ## Launch and controls
+
+The verified local copy is installed at
+`/Users/cloud/Applications/BastideWalk.app`; open it directly. Its 33 files match
+the packaged archive byte-for-byte and its code signature verifies.
 
 Open [Launch Walkthrough.command](<Launch Walkthrough.command>). It finds the complete
 app under `out/unreal/package`, normally
@@ -49,9 +57,14 @@ Source surfaces use baked PBR materials and documented real-time approximations.
 Glass, colored bottles, water, mirrors and thin fabric can differ from Cycles;
 further image-by-image matching is outside the current delivery goal. Software
 reflections have visible limitations. Walking retains per-polygon architectural
-collision. Some original furnishings, closed glazing and the main
-stair constrain access; local room selection is not proof that every room has a
-continuous standing route. The current standing body is 56 cm wide and 176 cm tall.
+collision with a 56 cm wide, 176 cm tall standing body.
+
+The final packaged navigation run passed **13 of 16 routes**, including hall-stair
+ascent, WC-to-corridor return and salon-to-dining through the west chair gap. Main
+stair ascent/descent timed out. Hall-stair descent also timed out, with a target-height
+tolerance miss rather than demonstrated physical blockage. Local room selection
+does not establish a continuous route to every room.
+[Navigation audit](../../../out/unreal/runs/20260907T011251Z_8d2acb4f_validate_packaged/Validation/runtime-audit.json).
 
 - [Runtime, controls, benchmarking and packaging](runtime.md)
 - [Mac platform and rendering choices](platform.md)

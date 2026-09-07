@@ -17,6 +17,10 @@ the Mac frame pacer was off and nonblocking presentation was 0. The
 [performance receipt](../../../out/unreal/runs/20260907T010831Z_69e3cb67_validate_packaged/stage-receipt.json)
 verifies uncapped render capacity. The shipped app restores VSync and its 60 fps cap.
 
+The final navigation run with normal runtime settings recorded **10,420 frames,
+59.9141 fps mean and 16.6669 ms p95**. This is Game Tick timing across navigation,
+including transitions, and is separate from the warm uncapped capacity benchmark.
+
 ## Launch
 
 [Launch Walkthrough.command](<Launch Walkthrough.command>) locates a complete
@@ -136,6 +140,16 @@ process exit is separate from route findings or performance acceptance. Optional
 set is required for interactive delivery.
 
 ## Movement and source evidence
+
+The [final packaged navigation audit](../../../out/unreal/runs/20260907T011251Z_8d2acb4f_validate_packaged/Validation/runtime-audit.json)
+passed **13 of 16 routes** with the 28 cm radius standing capsule. Passes include
+`ST_HALL ascent`, the WC-to-guest-corridor reverse route and salon-to-dining through
+the west end-chair gap. `ST_MASTER ascent` and `ST_MASTER descent` timed out.
+
+`ST_HALL descent` timed out at segment 1 while grounded: horizontal error was
+0.086 cm, but vertical error was 12.637 cm against the 12 cm acceptance tolerance.
+Its forward diagnostic hit was 74.263 cm away. This result does not establish a
+physical blockage; the descent remains unpassed by the automated route check.
 
 `validate` runs local floor/capsule checks and actual CharacterMovement along the
 configured routes. It records achieved positions, failures and blocking source
